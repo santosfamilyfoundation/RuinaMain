@@ -24,22 +24,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-MyApp-tvOS.xcscheme</key>
+		<key>Pods-Ruina-tvOS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-MyApp-tvOSTests.xcscheme</key>
+		<key>Pods-Ruina-tvOSTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-MyApp.xcscheme</key>
+		<key>Pods-Ruina.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-MyAppTests.xcscheme</key>
+		<key>Pods-RuinaTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
