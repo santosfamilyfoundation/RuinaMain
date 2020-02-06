@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
-import { TextInput } from 'react-native';
+import { TextInput, Text } from 'react-native';
 import { Button, Divider, Layout, TopNavigation } from '@ui-kitten/components';
 import { connect } from 'react-redux';
 
@@ -10,25 +10,27 @@ class Home extends Component {
   }
     render() {
 
-        const navigateDetails = () => {
-            this.props.navigation.navigate('Details');
+        const navigateResult = () => {
+            this.props.navigation.navigate('Result');
           };
 
         const writing = "story that is written nicely";
 
         return (
             <SafeAreaView style={{ flex: 1 }}>
-              <TopNavigation title='Ruina' alignment='center'/>
+              <TopNavigation title='Home' alignment='center'/>
               <Divider/>
-              <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-              <TextInput
-                        style={{ height: 40, borderColor: 'gray', borderWidth: 1, width: 100 }}
+              <Text style={{fontSize: 30, textAlign: 'center'}}>Welcome to Ruina!</Text>
+              <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                <TextInput
+                        style={{ borderColor: 'gray', borderWidth: 1, width: 500, height: 300, marginBottom: 20}}
+                        multiline={true}
+                        numberOfLines={8}
                         onChangeText={text => this.setState({content: text})}
                         value={this.state.content}/>
                 <Button onPress={() =>this.props.writeStory(this.state.content)}>SAVE</Button>
-                <Button onPress={() => console.log(this.state)}>log state</Button>
               </Layout>
-              <Button onPress={navigateDetails}>NEXT</Button>
+              <Button onPress={navigateResult}>NEXT</Button>
             </SafeAreaView>
           );
     }

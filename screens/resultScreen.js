@@ -1,11 +1,11 @@
 import React from 'react';
 import { Icon, TopNavigationAction } from '@ui-kitten/components';
-import Detail from './components/Detail';
+import Result from '../components/Result';
 
-export const DetailsScreen = ({ navigation }) => {
+export const ResultScreen = ({ navigation }) => {
 
   return (
-    <Detail 
+    <Result
         navigation = { navigation }
         BackAction = { () => <TopNavigationAction icon={ (style) => <Icon {...style} name='arrow-back' /> } 
                                                   onPress={() => navigation.goBack()}/> }
