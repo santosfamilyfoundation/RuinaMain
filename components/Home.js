@@ -14,8 +14,6 @@ class Home extends Component {
             this.props.navigation.navigate('Result');
           };
 
-        const writing = "story that is written nicely";
-
         return (
             <SafeAreaView style={{ flex: 1 }}>
               <TopNavigation title='Home' alignment='center'/>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
-import { Button, Divider, Icon, Layout, Text, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
+import { Divider, Layout, Text, TopNavigation } from '@ui-kitten/components';
 import { connect } from 'react-redux';
 
 class Result extends Component {
