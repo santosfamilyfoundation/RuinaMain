@@ -10,9 +10,12 @@ class Home extends Component {
   }
     render() {
 
-        const navigateResult = () => {
+        const navigateNotepad = () => {
             this.props.navigation.navigate('NotepadHome');
           };
+        const navigateAutoComponent = () => {
+        this.props.navigation.navigate('Auto1');
+        };
 
         return (
             <SafeAreaView style={{ flex: 1 }}>
@@ -20,7 +23,8 @@ class Home extends Component {
               <Divider/>
               <Text style={{fontSize: 30, textAlign: 'center'}}>Welcome to Ruina!</Text>
               <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <Button onPress={navigateResult}>Notepad</Button>
+                <Button style={{margin: 10}} onPress={navigateNotepad}>Notepad</Button>
+                <Button style={{margin: 10}} onPress={navigateAutoComponent}>Auto Component</Button>
               </Layout>
               
             </SafeAreaView>
