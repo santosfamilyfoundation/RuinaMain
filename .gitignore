@@ -1,3 +1,6 @@
 node_modules/
 /ios/build/
 /android/app/build/
+/android/.gradle
+/ios/Ruina.xcworkspace/xcuserdata/
+/ios/Pods/Pods.xcodeproj/xcuserdata/

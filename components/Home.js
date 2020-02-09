@@ -11,7 +11,7 @@ class Home extends Component {
     render() {
 
         const navigateResult = () => {
-            this.props.navigation.navigate('Result');
+            this.props.navigation.navigate('NotepadHome');
           };
 
         return (
@@ -20,27 +20,17 @@ class Home extends Component {
               <Divider/>
               <Text style={{fontSize: 30, textAlign: 'center'}}>Welcome to Ruina!</Text>
               <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <TextInput
-                        style={{ borderColor: 'gray', borderWidth: 1, width: 500, height: 300, marginBottom: 20}}
-                        multiline={true}
-                        numberOfLines={8}
-                        onChangeText={text => this.setState({content: text})}
-                        value={this.state.content}/>
-                <Button onPress={() =>this.props.writeStory(this.state.content)}>SAVE</Button>
+                <Button onPress={navigateResult}>Notepad</Button>
               </Layout>
-              <Button onPress={navigateResult}>NEXT</Button>
+              
             </SafeAreaView>
           );
     }
 };
-
-const mapDispatchToProps = dispatch => ({
-  writeStory: (story) => dispatch({ type: 'WRITE', payload: story })
-});
 
 const mapStateToProps = (state) => {
   const { story } = state
   return { story }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps)(Home);
