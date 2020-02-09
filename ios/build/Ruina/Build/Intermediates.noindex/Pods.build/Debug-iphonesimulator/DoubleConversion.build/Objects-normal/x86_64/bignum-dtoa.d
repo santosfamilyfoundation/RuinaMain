@@ -1,8 +1,0 @@
-dependencies: \
-  /Users/Danny/SCOPE/RuinaMain/ios/Pods/DoubleConversion/double-conversion/bignum-dtoa.cc \
-  /Users/Danny/SCOPE/RuinaMain/ios/Pods/Target\ Support\ Files/DoubleConversion/DoubleConversion-prefix.pch \
-  /Users/Danny/SCOPE/RuinaMain/ios/Pods/DoubleConversion/double-conversion/bignum-dtoa.h \
-  /Users/Danny/SCOPE/RuinaMain/ios/Pods/DoubleConversion/double-conversion/utils.h \
-  /Users/Danny/SCOPE/RuinaMain/ios/Pods/DoubleConversion/double-conversion/bignum.h \
-  /Users/Danny/SCOPE/RuinaMain/ios/Pods/DoubleConversion/double-conversion/ieee.h \
-  /Users/Danny/SCOPE/RuinaMain/ios/Pods/DoubleConversion/double-conversion/diy-fp.h
