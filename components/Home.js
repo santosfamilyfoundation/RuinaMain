@@ -11,14 +11,19 @@ class Home extends Component {
     render() {
 
         const navigateResult = () => {
-            this.props.navigation.navigate('Result');
-          };
+          this.props.navigation.navigate('Result');
+        };
+        
+        const navigateWeather = () => {
+          this.props.navigation.navigate('Weather');
+        }
 
         return (
             <SafeAreaView style={{ flex: 1 }}>
               <TopNavigation title='Home' alignment='center'/>
               <Divider/>
               <Text style={{fontSize: 30, textAlign: 'center'}}>Welcome to Ruina!</Text>
+              <Button onPress={navigateWeather}>Go to Weather Screen</Button>
               <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                 <TextInput
                         style={{ borderColor: 'gray', borderWidth: 1, width: 500, height: 300, marginBottom: 20}}
