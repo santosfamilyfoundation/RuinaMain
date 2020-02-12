@@ -2,22 +2,22 @@ import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { Divider, Layout, Text, TopNavigation } from '@ui-kitten/components';
 import Geolocation from '@react-native-community/geolocation';
+import { API_KEY } from '../utils/WeatherAPIKey';
 
 export default class Weather extends Component {
     state = {
         isLoading: true,
-        position: null,
+        temperature: 0,
+        weatherCondition: null,
         error: ''
     }
 
     componentDidMount() {
         Geolocation.getCurrentPosition(
           position => {
-            this.setState({ position });
-            console.log(this.state.position)
-            console.log(this.state.position.coords.latitude)
-            this.setState({ isLoading: false });
-            console.log(this.state.isLoading)
+            console.log(position.coords)
+            this.fetchWeather(position.coords.latitude, position.coords.longitude)
+            
           },
           error => {
             this.setState({
@@ -25,7 +25,21 @@ export default class Weather extends Component {
             });
           }
         );
-      }
+    }
+
+    fetchWeather(lat = 25, lon = 25) {
+        fetch(
+          `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${API_KEY}&units=metric`
+        )
+          .then(res => res.json())
+          .then(json => {
+            this.setState({
+                temperature: json.main.temp,
+                weatherCondition: json.weather[0].main,
+                isLoading: false
+            })
+          });
+    }
 
     render() {
         const { isLoading } = this.state;
@@ -39,8 +53,8 @@ export default class Weather extends Component {
                         (<Text>Fetching The Weather</Text>) : 
                         (
                         <SafeAreaView>
-                            <Text>latitude: {this.state.position.coords.latitude}</Text>
-                            <Text>longitude: {this.state.position.coords.longitude}</Text>
+                            <Text>Temperature: {this.state.temperature}</Text>
+                            <Text>Weather Condition: {this.state.weatherCondition}</Text>
                         </SafeAreaView>
 
                         )
