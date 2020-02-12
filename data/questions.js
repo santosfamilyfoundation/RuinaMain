@@ -1,23 +1,23 @@
 export const questions = {
     "data": [
         {
-            "id":"1",
+            "id":"C1",
             "question": "Crash Classification",
-            "helper_text": "",
+            "helperText": "",
             "subquestions": [
                 {
                     "id":"S1",
                     "question":"Ownership",
-                    "helper_text":"",
+                    "helperText":"",
                     "subquestions": null,
-                    "answer_type":"dropdown",
-                    "answer_options":[
+                    "answerType":"dropdown",
+                    "answerOptions":[
                         {
-                            "id_code":01,
+                            "idCode":"01",
                             "text":"Public Property"
                         },
                         {
-                            "id_code":02,
+                            "idCode":"02",
                             "text":"Private Property"
                         }
                     ]
@@ -25,20 +25,20 @@ export const questions = {
                 {
                     "id":"S2",
                     "question":"Characteristics",
-                    "helper_text":"",
+                    "helperText":"",
                     "subquestions": null,
-                    "answer_type":"dropdown",
-                    "answer_options":[
+                    "answerType":"dropdown",
+                    "answerOptions":[
                         {
-                            "id_code":01,
+                            "idCode":"01",
                             "text":"Trafficway, On Road"
                         },
                         {
-                            "id_code":02,
+                            "idCode":"02",
                             "text":"Trafficway, Not on Road"
                         },
                         {
-                            "id_code":03,
+                            "idCode":"03",
                             "text":"Non-Trafficway"
                         }
                     ]
@@ -46,31 +46,31 @@ export const questions = {
                 {
                     "id":"S3",
                     "question":"Secondary Crash",
-                    "helper_text":"",
+                    "helperText":"",
                     "subquestions": null,
-                    "answer_type":"dropdown",
-                    "answer_options":[
+                    "answerType":"dropdown",
+                    "answerOptions":[
                         {
-                            "id_code":01,
+                            "idCode":"01",
                             "text":"No"
                         },
                         {
-                            "id_code":02,
+                            "idCode":"02",
                             "text":"Yes"
                         }
                     ]
                 }
             ],
-            "answer_type": null,
-            "answer_options":null
+            "answerType": null,
+            "answerOptions":null
         },
         {
             "id":"C5",
             "question":"Crash City/Place",
-            "helper_text":"Political Jurisdiction",
+            "helperText":"Political Jurisdiction",
             "subquestions": null,
-            "answer_type":"open_textbox",
-            "answer_options": null
+            "answerType":"open_textbox",
+            "answerOptions": null
         }
     ]
 }

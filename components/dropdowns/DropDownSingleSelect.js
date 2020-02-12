@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
   Layout,
   Select,
-  Text
+  Text,
+  Card
 } from '@ui-kitten/components';
 import { styles } from './DropDownSingleSelect.style';
 import { connect } from 'react-redux';
@@ -16,18 +17,25 @@ const DropDownSingleSelect = (props) => {
 
     const setOption = (selection) => {
         setSelectedOption({text: selection.text});
-        props.genericWriteAction({actionType:'WRITE_SELECTION', field: 'Gen1', content: selection.text})
+        props.genericWriteAction({actionType:"WRITE_SELECTION", field: data.id, content: selection.idCode})
     }
 
     return (
         <Layout style={styles.container}>
-            <Select
-                data={data}
-                selectedOption={selectedOption}
-                multiSelect={false}
-                onSelect={(e) => setOption(e)}
-            />
-            <Text>Hello</Text>
+            <Card>
+                <Layout style={styles.headingText}>
+                    <Text category="h6">{data.id}: <Text category="s1">{data.question}</Text></Text>
+                </Layout>
+                <Layout style={styles.content}>
+                    <Text style={styles.helperText}>{data.helperText}</Text>
+                    <Select
+                        data={data.answerOptions}
+                        selectedOption={selectedOption}
+                        multiSelect={false}
+                        onSelect={(e) => setOption(e)}
+                    />
+                </Layout>
+            </Card>
         </Layout>
     );
 };

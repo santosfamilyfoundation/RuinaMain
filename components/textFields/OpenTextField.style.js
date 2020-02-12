@@ -8,7 +8,9 @@ export const styles = StyleSheet.create({
     inputField: {
       maxWidth: 500,
     },
-    headingText: {},
+    headingText: {
+
+    },
     helperText: {
       marginTop: 10,
       marginBottom: 10
