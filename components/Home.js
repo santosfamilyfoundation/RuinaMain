@@ -16,7 +16,7 @@ class Home extends Component {
 
         return (
             <SafeAreaView style={{ flex: 1 }}>
-              <TopNavigation title='Home' alignment='center'/>
+              <TopNavigation title='Home' alignment='center' leftControl={this.props.BackAction()}/>
               <Divider/>
               <Text style={{fontSize: 30, textAlign: 'center'}}>Welcome to Ruina!</Text>
               <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
