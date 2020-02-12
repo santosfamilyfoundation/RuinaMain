@@ -12,13 +12,19 @@ class Home extends Component {
 
         const navigateResult = () => {
             this.props.navigation.navigate('Result');
-          };
+        };
+
+        const navigateVehicle = () => {
+          this.props.navigation.navigate('Vehicle');
+      };
 
         return (
             <SafeAreaView style={{ flex: 1 }}>
               <TopNavigation title='Home' alignment='center'/>
               <Divider/>
               <Text style={{fontSize: 30, textAlign: 'center'}}>Welcome to Ruina!</Text>
+              <Button onPress={navigateResult}>Go to Reseult</Button>
+              <Button onPress={navigateVehicle}>Go to Vehicle Information</Button>
               <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                 <TextInput
                         style={{ borderColor: 'gray', borderWidth: 1, width: 500, height: 300, marginBottom: 20}}
@@ -28,7 +34,6 @@ class Home extends Component {
                         value={this.state.content}/>
                 <Button onPress={() =>this.props.writeStory(this.state.content)}>SAVE</Button>
               </Layout>
-              <Button onPress={navigateResult}>NEXT</Button>
             </SafeAreaView>
           );
     }
