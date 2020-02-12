@@ -3,6 +3,7 @@ import { SafeAreaView } from 'react-navigation';
 import { TextInput, Text } from 'react-native';
 import { Button, Divider, Layout, TopNavigation } from '@ui-kitten/components';
 import { connect } from 'react-redux';
+import { genericWriteAction } from '../actions/GenericAction';
 
 class Home extends Component {
   state = {
@@ -26,7 +27,8 @@ class Home extends Component {
                         numberOfLines={8}
                         onChangeText={text => this.setState({content: text})}
                         value={this.state.content}/>
-                <Button onPress={() =>this.props.writeStory(this.state.content)}>SAVE</Button>
+                {/* <Button onPress={() =>this.props.writeStory(this.state.content)}>SAVE</Button> */}
+                <Button onPress={() =>this.props.genericWriteAction({actionType:'SET_NEW', field:'tester', content:this.state.content})}>TRY ME!</Button>
               </Layout>
               <Button onPress={navigateResult}>NEXT</Button>
             </SafeAreaView>
@@ -34,9 +36,14 @@ class Home extends Component {
     }
 };
 
-const mapDispatchToProps = dispatch => ({
-  writeStory: (story) => dispatch({ type: 'WRITE', payload: story })
-});
+// const mapDispatchToProps = dispatch => ({
+//   writeStory: (story) => dispatch({ type: 'WRITE', payload: story }),
+//   genericWriteAction
+// });
+
+const mapDispatchToProps = {
+  genericWriteAction
+}
 
 const mapStateToProps = (state) => {
   const { story } = state
