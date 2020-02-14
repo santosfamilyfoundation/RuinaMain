@@ -14,6 +14,10 @@ class Home extends Component {
             this.props.navigation.navigate('Result');
           };
 
+        const navigateMap = () => {
+            this.props.navigation.navigate('Map');
+          };
+
         return (
             <SafeAreaView style={{ flex: 1 }}>
               <TopNavigation title='Home' alignment='center'/>
@@ -29,6 +33,7 @@ class Home extends Component {
                 <Button onPress={() =>this.props.writeStory(this.state.content)}>SAVE</Button>
               </Layout>
               <Button onPress={navigateResult}>NEXT</Button>
+              <Button onPress={navigateMap}>MAP</Button>
             </SafeAreaView>
           );
     }

@@ -11,6 +11,7 @@ class Result extends Component {
                 <Divider/>
                 <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                     <Text category='h1'>{this.props.story.current}</Text>
+                    <Text>HERE AT RESULTS</Text>
                 </Layout>
             </SafeAreaView>
         )
@@ -22,5 +23,5 @@ const mapStateToProps = (state) => {
     const { story } = state
     return { story }
 };
-  
+
 export default connect(mapStateToProps)(Result);
