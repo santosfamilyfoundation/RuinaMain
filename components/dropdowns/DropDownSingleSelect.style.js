@@ -2,8 +2,8 @@ import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
     container: {
-      minHeight: 228,
-      width: '100%',
+      width: '90%',
+      marginBottom: 10
     },
     inputField: {
       maxWidth: 500,

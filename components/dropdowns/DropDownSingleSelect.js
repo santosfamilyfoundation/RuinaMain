@@ -3,26 +3,32 @@ import {
   Layout,
   Select,
   Text,
-  Card
+  Card,
+  CardHeader
 } from '@ui-kitten/components';
 import { styles } from './DropDownSingleSelect.style';
 import { connect } from 'react-redux';
 import { genericWriteAction } from '../../actions/GenericAction';
 
 const DropDownSingleSelect = (props) => {
-    const [selectedOption, setSelectedOption] = React.useState(props.data[0]);  // Need to change indexing!
-    const {data} = props;
+    console.log("HERE!")
 
-    console.log(data)
+    const [selectedOption, setSelectedOption] = React.useState(props.data[0]);  // Need to change indexing!
+    const {data, key} = props;
+
 
     const setOption = (selection) => {
         setSelectedOption({text: selection.text});
         props.genericWriteAction({actionType:"WRITE_SELECTION", field: data.id, content: selection.idCode})
     }
 
+    const Header = () => (
+        <CardHeader title={data.id + ': ' + data.question}/>
+      );
+
     return (
-        <Layout style={styles.container}>
-            <Card>
+        <Layout key={key} style={styles.container}>
+            <Card header={Header} status='danger'>
                 <Layout style={styles.headingText}>
                     <Text category="h6">{data.id}: <Text category="s1">{data.question}</Text></Text>
                 </Layout>

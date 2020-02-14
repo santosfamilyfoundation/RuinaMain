@@ -2,20 +2,26 @@ import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
     container: {
-      minHeight: 228,
-      width: '100%',
-    },
-    inputField: {
-      maxWidth: 500,
-    },
-    headingText: {
-
+      width: '90%',
+      marginBottom: 10
     },
     helperText: {
-      marginTop: 10,
       marginBottom: 10
     },
     content: {
       margin: 10,
+    },
+    input: {
+      marginBottom: 10,
+      height: 'auto',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
+    inputField: {
+      flexGrow: 1,
+    },
+    submitButton: {
+      // flex: 1,
+      marginLeft: 10,
     }
 });
