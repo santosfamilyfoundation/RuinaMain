@@ -6,7 +6,7 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { connect } from 'react-redux';
 import MapView, { Marker, AnimatedRegion, Polyline, PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
-
+//<TopNavigation title='Scene Diagram' alignment='center' leftControl={this.props.BackAction()}
 const { width, height } = Dimensions.get('window');
 const SCREEN_WIDTH = width;
 const ASPECT_RATIO = width / height;
@@ -82,7 +82,7 @@ class DiagramView extends Component {
 
         return (
           <SafeAreaView style={{ flex: 1 }}>
-              <TopNavigation title='Scene Diagram' alignment='center' leftControl={this.props.BackAction()}/>
+              <TopNavigation title='Scene Diagram' alignment='center' />
               <Divider/>
               <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <MapView
