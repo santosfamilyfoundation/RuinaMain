@@ -1,17 +1,78 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { TextInput, Text, Dimensions, StyleSheet, View } from 'react-native';
-import { Button, Divider, Layout, TopNavigation } from '@ui-kitten/components';
+import { Button, Divider, Layout, TopNavigation, Icon} from '@ui-kitten/components';
+import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { connect } from 'react-redux';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { Marker, AnimatedRegion, Polyline, PROVIDER_GOOGLE } from 'react-native-maps';
+import Geolocation from '@react-native-community/geolocation';
 
 const { width, height } = Dimensions.get('window');
 const SCREEN_WIDTH = width;
 const ASPECT_RATIO = width / height;
 
+let id = 0;
+
+
+function getColor(id){
+  return id%2 ? 'blue' : 'red'
+}
+
 class DiagramView extends Component {
   state = {
-    markers: []
+    markers:[],
+    currentLat: '',
+    currentLong: '',
+    LatDelta:'',
+    LongDelta:'',
+  }
+
+  watchID: ?number = null;
+
+  componentDidMount() {
+    Geolocation.getCurrentPosition(
+      position => {
+
+        const currentPositionDetails = JSON.stringify(position);
+
+        this.setState({
+          makers: [],
+          currentLat: position.coords.latitude,
+          currentLong: position.coords.longitude,
+          latDelta:'',
+          longDelta:'',
+        });
+
+      },
+      error => Alert.alert('Error', JSON.stringify(error)),
+      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000},
+    );
+  }
+
+  componentWillUnmount() {
+    this.watchID != null && Geolocation.clearWatch(this.watchID);
+  }
+
+  onMapPress(e) {
+    this.setState({
+      markers: [
+        ...this.state.markers,
+        {
+          coordinate: e.nativeEvent.coordinate,
+          key: id++,
+          color: getColor(id),
+        },
+      ],
+    });
+  }
+
+  onRegionChange(region) {
+    this.setState({
+      currentLat: region.latitude,
+      currentLong: region.longitude,
+      latDelta: region.latitudeDelta,
+      longDelta: region.longitudeDelta,
+    });
   }
 
     render() {
@@ -21,18 +82,26 @@ class DiagramView extends Component {
               <TopNavigation title='Scene Diagram' alignment='center' leftControl={this.props.BackAction()}/>
               <Divider/>
               <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-
                 <MapView
                     provider={PROVIDER_GOOGLE}
                     style={styles.container}
                     initialRegion={{
-                        latitude: 38.5636,
-                        longitude: -96.8456,
-                        latitudeDelta: 3.20152,
-                        longitudeDelta: 3.20151,
+                        latitude: 42.3836,
+                        longitude: -71.1097,
+                        latitudeDelta: 0.00152,
+                        longitudeDelta: 0.00151,
                       }}
-
+                      onRegionChange={this.onRegionChange.bind(this)}
+                      onPress={e=> this.onMapPress(e)}
                   >
+                  {this.state.markers.map(marker => (
+                    <Marker
+                      key={marker.key}
+                      coordinate={marker.coordinate}
+                      pinColor={marker.color}
+                    />
+                  ))}
+                  <Text style={styles.coords}> {this.state.currentLat}  {this.state.currentLong} </Text>
                   </MapView>
               </Layout>
           </SafeAreaView>
@@ -41,34 +110,31 @@ class DiagramView extends Component {
 };
 
 
+
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
+    ...StyleSheet.absoluteFillObject,
     justifyContent: 'flex-end',
     alignItems: 'center',
+    flex:1,
   },
   map: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
+    ...StyleSheet.absoluteFillObject,
+    height:1000,
   },
+  coords:{
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  }
 });
 
-//TODO: FIX THESE FUNCTIONS
-
 const mapDispatchToProps = dispatch => ({
-  writeStory: (story) => dispatch({ type: 'WRITE', payload: story })
+  writeMapDetails: (mapDetails) => dispatch({ type: 'WRITE', payload: mapDetails })
 });
 
 const mapStateToProps = (state) => {
-  const { story } = state
-  return { story }
+  const { mapDetails } = state
+  return { mapDetails }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DiagramView);
