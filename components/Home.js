@@ -21,13 +21,8 @@ class Home extends Component {
 
         return (
             <SafeAreaView style={{ flex: 1 }}>
-              <TopNavigation title='Home' alignment='center' leftControl={this.props.BackAction()}/>
+              <TopNavigation title='Note Pad' alignment='center' leftControl={this.props.BackAction()}/>
               <Divider/>
-              <Text style={{fontSize: 30, textAlign: 'center'}}>Welcome to Ruina!</Text>
-              <Divider/>
-              <Button onPress={navigateWeather}>Go to Weather Screen</Button>
-              <Divider/>
-              <Button onPress={navigateResult}>Go to Result Screen</Button>
               <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                 <TextInput
                         style={{ borderColor: 'gray', borderWidth: 1, width: 500, height: 300, marginBottom: 20}}
@@ -38,6 +33,7 @@ class Home extends Component {
                 {/* <Button onPress={() =>this.props.writeStory(this.state.content)}>SAVE</Button> */}
                 <Button onPress={() =>this.props.genericWriteAction({actionType:'SET_NEW', field:'tester', content:this.state.content})}>TRY ME!</Button>
               </Layout>
+              <Button onPress={navigateResult}>Go to Result Screen</Button>
             </SafeAreaView>
           );
     }
