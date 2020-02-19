@@ -1,6 +1,5 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
 import storyReducer from './reducers/StoryReducer';
 import genericReducer from './reducers/GenericReducer';
 
