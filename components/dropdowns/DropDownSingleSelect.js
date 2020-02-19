@@ -11,11 +11,17 @@ import { connect } from 'react-redux';
 import { genericWriteAction } from '../../actions/GenericAction';
 
 const DropDownSingleSelect = (props) => {
-    console.log("HERE!")
-
     const [selectedOption, setSelectedOption] = React.useState(props.data[0]);  // Need to change indexing!
-    const {data, key} = props;
+    const {data, key, genericReducer} = props;
 
+    const subQuestionID = data.id.split("-")[1];
+
+    let status;
+    if(!genericReducer[data.id]) {
+        status = 'danger'
+    } else {
+        status = 'success'
+    }
 
     const setOption = (selection) => {
         setSelectedOption({text: selection.text});
@@ -23,17 +29,21 @@ const DropDownSingleSelect = (props) => {
     }
 
     const Header = () => (
-        <CardHeader title={data.id + ': ' + data.question}/>
+        <CardHeader title={subQuestionID + ': ' + data.question}/>
       );
+
+    const HelperText = () => {
+        if(data.helperText.length != 0) {
+            return (<Text style={styles.helperText}>{data.helperText}</Text>)
+        }
+        return null;
+    }
 
     return (
         <Layout key={key} style={styles.container}>
-            <Card header={Header} status='danger'>
-                <Layout style={styles.headingText}>
-                    <Text category="h6">{data.id}: <Text category="s1">{data.question}</Text></Text>
-                </Layout>
+            <Card header={Header} status={status}>
                 <Layout style={styles.content}>
-                    <Text style={styles.helperText}>{data.helperText}</Text>
+                    {HelperText()}
                     <Select
                         data={data.answerOptions}
                         selectedOption={selectedOption}

@@ -6,6 +6,7 @@ import OpenTextField from '../components/textFields/OpenTextField';
 import {questions} from '../data/questions';
 import { styles } from './AutoComponentContainer.style';
 import { ScrollView } from 'react-native-gesture-handler';
+import TriButtonSelector from '../components/buttonSelectors/TriButtonSelector';
 
 const testData = [
     { text: 'Option 1' },
@@ -25,20 +26,28 @@ class AutoComponentContainer extends Component {
 
   render() {
     const renderSingleQuestion = (question) => {
-      if(question.answerType == 'dropdown') {
-        return (
-          <DropDownSingleSelect 
-            data={question}
-            key={question.id}
-          />
-        )
-      } else if(question.answerType == 'open_textbox') {
-        return (
-          <OpenTextField 
-            data={question}
-            key={question.id}
-          />
-        )
+      switch(question.answerType) {
+        case 'dropdown':
+          return (
+            <DropDownSingleSelect 
+              data={question}
+              key={question.id}
+            />
+          )
+        case 'open_textbox':
+          return (
+            <OpenTextField 
+              data={question}
+              key={question.id}
+            />
+          )
+        case 'yes-no-unknown':
+          return (
+            <TriButtonSelector
+              data={question}
+              key={question.id}
+            />
+          )
       }
     }
 
@@ -52,7 +61,7 @@ class AutoComponentContainer extends Component {
         />
       )
       return (
-        <Card header={Header} style={styles.card}>
+        <Card key={questions.id} header={Header} style={styles.card}>
           {renderedQuestions}
         </Card>
       );
