@@ -6,7 +6,9 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { connect } from 'react-redux';
 import MapView, { Marker, AnimatedRegion, Polyline, PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
+
 //<TopNavigation title='Scene Diagram' alignment='center' leftControl={this.props.BackAction()}
+
 const { width, height } = Dimensions.get('window');
 const SCREEN_WIDTH = width;
 const ASPECT_RATIO = width / height;
@@ -20,6 +22,7 @@ function getColor(id){
 class DiagramView extends Component {
   state = {
     markers:[],
+    region: null,
     currentLat: '',
     currentLong: '',
     LatDelta:'',
@@ -67,6 +70,7 @@ class DiagramView extends Component {
 
   onRegionChange(region) {
     this.setState({
+      region: region,
       currentLat: region.latitude,
       currentLong: region.longitude,
       latDelta: region.latitudeDelta,
@@ -75,6 +79,10 @@ class DiagramView extends Component {
   }
 
     render() {
+
+        const navigateSummary = () => {
+          this.props.navigation.navigate('Result');
+        };
 
         const navigateHome = () => {
           this.props.navigation.navigate('Home');
@@ -107,7 +115,9 @@ class DiagramView extends Component {
                   <Text style={styles.coords}> {this.state.currentLat}  {this.state.currentLong} </Text>
                   </MapView>
               </Layout>
-              <Button onPress={navigateHome}>Save</Button>
+              <Button onPress={() =>this.props.writeMapDetails(this.state.currentLat)}>SAVE</Button>
+              <Button onPress={navigateSummary}>Summary</Button>
+              <Button onPress={navigateHome}>Home</Button>
           </SafeAreaView>
           );
     }
