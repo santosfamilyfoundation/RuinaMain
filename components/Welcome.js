@@ -20,6 +20,7 @@ class Welcome extends Component {
               <Layout style={styles.centeredContainer}>
                 <Button style={styles.styledButton} onPress={() => navigateTo('Home')}>Note Pad</Button>
                 <Button style={styles.styledButton} onPress={() => navigateTo('Test')}>Test</Button>
+                <Button style={styles.styledButton} onPress={() => navigateTo('Weather')}>Weather</Button>
               </Layout>
             </SafeAreaView>
           );
