@@ -3,6 +3,7 @@ import { SafeAreaView } from 'react-navigation';
 import { TextInput, Text } from 'react-native';
 import { Button, Divider, Layout, TopNavigation } from '@ui-kitten/components';
 import { connect } from 'react-redux';
+import { genericWriteAction } from '../actions/GenericAction';
 
 class Home extends Component {
   state = {
@@ -20,7 +21,7 @@ class Home extends Component {
 
         return (
             <SafeAreaView style={{ flex: 1 }}>
-              <TopNavigation title='Home' alignment='center'/>
+              <TopNavigation title='Home' alignment='center' leftControl={this.props.BackAction()}/>
               <Divider/>
               <Text style={{fontSize: 30, textAlign: 'center'}}>Welcome to Ruina!</Text>
               <Divider/>
@@ -34,16 +35,22 @@ class Home extends Component {
                         numberOfLines={8}
                         onChangeText={text => this.setState({content: text})}
                         value={this.state.content}/>
-                <Button onPress={() =>this.props.writeStory(this.state.content)}>SAVE</Button>
+                {/* <Button onPress={() =>this.props.writeStory(this.state.content)}>SAVE</Button> */}
+                <Button onPress={() =>this.props.genericWriteAction({actionType:'SET_NEW', field:'tester', content:this.state.content})}>TRY ME!</Button>
               </Layout>
             </SafeAreaView>
           );
     }
 };
 
-const mapDispatchToProps = dispatch => ({
-  writeStory: (story) => dispatch({ type: 'WRITE', payload: story })
-});
+// const mapDispatchToProps = dispatch => ({
+//   writeStory: (story) => dispatch({ type: 'WRITE', payload: story }),
+//   genericWriteAction
+// });
+
+const mapDispatchToProps = {
+  genericWriteAction
+}
 
 const mapStateToProps = (state) => {
   const { story } = state
