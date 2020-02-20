@@ -85,7 +85,7 @@ class DiagramView extends Component {
         };
 
         const navigateHome = () => {
-          this.props.navigation.navigate('Home');
+          this.props.navigation.navigate('Welcome');
         };
 
         return (
@@ -115,8 +115,6 @@ class DiagramView extends Component {
                   <Text style={styles.coords}> {this.state.currentLat}  {this.state.currentLong} </Text>
                   </MapView>
               </Layout>
-              <Button onPress={() =>this.props.writeMapDetails(this.state.currentLat)}>SAVE</Button>
-              <Button onPress={navigateSummary}>Summary</Button>
               <Button onPress={navigateHome}>Home</Button>
           </SafeAreaView>
           );
