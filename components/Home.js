@@ -14,10 +14,6 @@ class Home extends Component {
         const navigateResult = () => {
           this.props.navigation.navigate('Result');
         };
-        
-        const navigateWeather = () => {
-          this.props.navigation.navigate('Weather');
-        }
 
         return (
             <SafeAreaView style={{ flex: 1 }}>

@@ -24,5 +24,5 @@ const mapStateToProps = (state) => {
     const { genericReducer } = state
     return { genericReducer }
 };
-  
+
 export default connect(mapStateToProps)(Result);
