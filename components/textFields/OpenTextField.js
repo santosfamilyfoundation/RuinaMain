@@ -13,9 +13,20 @@ const OpenTextField = (props) => {
     let currId = data.id
     let status;
 
-    const setOption = () => {
+    if(genericReducer[currId] != null && value != genericReducer[currId]) {
+        setValue(genericReducer[currId]);
+        setButtonAppearance('filled');
+    }
+
+    const submitField = () => {
         genericWriteAction({actionType:"WRITE_SELECTION", field: currId, content: value});
         setButtonAppearance('filled');
+    }
+
+    const clearField = () => {
+        setValue('');
+        genericWriteAction({actionType:"WRITE_SELECTION", field: currId, content: ''});
+        setButtonAppearance('outline');
     }
 
     if(!value && buttonAppearance != 'outline') {
@@ -27,9 +38,13 @@ const OpenTextField = (props) => {
     const Header = () => (
         <CardHeader title={data.id + ': ' + data.question}/>
     );
+    
+    const renderClear = (style) => (
+        <Icon {...style} name='close-outline'/>
+    );
 
     
-    if(genericReducer[currId] != value) {
+    if(buttonAppearance == 'outline') {
         status = 'danger'
     } else {
         status = 'success'
@@ -54,6 +69,8 @@ const OpenTextField = (props) => {
                     <Layout style={styles.input}>
                         <Input
                             style={styles.inputField}
+                            icon={renderClear}
+                            onIconPress={() => clearField()}
                             placeholder='Place your Text'
                             value={value}
                             onChangeText={setValue}
@@ -63,7 +80,7 @@ const OpenTextField = (props) => {
                             appearance={buttonAppearance}
                             size='medium' 
                             icon={CheckIcon} 
-                            onPress={() => setOption()}
+                            onPress={() => submitField()}
                         />
                     </Layout>
                 </Layout>

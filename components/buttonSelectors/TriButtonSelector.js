@@ -6,7 +6,6 @@ import { styles } from './TriButtonSelector.style';
 
 
 const TriButtonSelector = (props) => {
-    const [value, setValue] = React.useState('');
     const [selection, setSelection] = React.useState('');
     const {data, key, genericReducer, genericWriteAction} = props;
 
@@ -14,7 +13,11 @@ const TriButtonSelector = (props) => {
     const subQuestionID = currId.split("-")[1];
     let status;
 
-    const setOption = (idCode) => {
+    if(genericReducer[currId] != null && selection != genericReducer[currId]) {
+        setSelection(genericReducer[currId]);
+    };
+
+    const submitField = (idCode) => {
         setSelection(idCode);
         genericWriteAction({actionType:"WRITE_SELECTION", field: data.id, content: idCode})
     }
@@ -53,7 +56,7 @@ const TriButtonSelector = (props) => {
                 style={styles.answerButton}
                 appearance={appearance}
                 icon={CrossIcon}
-                onPress={() => setOption('01')}
+                onPress={() => submitField('01')}
             >
                 01 No
             </Button>
@@ -66,7 +69,7 @@ const TriButtonSelector = (props) => {
                 style={styles.answerButton}
                 appearance={appearance}
                 icon={CheckIcon}
-                onPress={() => setOption('02')}
+                onPress={() => submitField('02')}
             >
                 02 Yes
             </Button>
@@ -79,7 +82,7 @@ const TriButtonSelector = (props) => {
                 size='medium'
                 appearance={appearance}
                 icon={QuestionMarkIcon}
-                onPress={() => setOption('99')}
+                onPress={() => submitField('99')}
             >
                 99 Unknown
             </Button>
