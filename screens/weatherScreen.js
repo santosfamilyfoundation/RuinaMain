@@ -1,10 +1,10 @@
 import React from 'react';
 import { Icon, TopNavigationAction } from '@ui-kitten/components';
-import Home from '../components/Home'
+import Weather from '../components/Weather';
 
-export const HomeScreen = ({ navigation }) => {
+export const WeatherScreen = ({ navigation }) => {
   return (
-          <Home 
+          <Weather 
             navigation = { navigation }
             BackAction = { () => <TopNavigationAction icon={ (style) => <Icon {...style} name='arrow-back' /> } 
                                                   onPress={() => navigation.goBack()}/> }
