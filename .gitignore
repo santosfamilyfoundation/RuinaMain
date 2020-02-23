@@ -1,12 +1,3 @@
-node_modules/
-/ios/build/
-/android/app/build/
-/android/.gradle
-/ios/Ruina.xcworkspace/xcuserdata/
-/ios/Pods/Pods.xcodeproj/xcuserdata/
-
-
-
 # OSX
 #
 .DS_Store
@@ -68,4 +59,8 @@ buck-out/
 /ios/Pods/
 
 # api keys
+<<<<<<< HEAD
 .env
+=======
+.env
+>>>>>>> a787d83f7096dfab58689d778d3d9e152b8dd27e
