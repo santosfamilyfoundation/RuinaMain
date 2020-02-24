@@ -6,7 +6,8 @@ import { DiagramViewScreen } from './screens/diagramViewScreen';
 import { WelcomeScreen } from './screens/welcomeScreen';
 import { TesterScreen } from './screens/testerScreen';
 import { WeatherScreen } from './screens/weatherScreen';
-import { VehicleInfoScreen } from './screens/vehicleinfoScreen'
+import { VehicleInfoScreen } from './screens/vehicleinfoScreen';
+import { ScanScreen } from './screens/scanScreen';
 
 const HomeNavigator = createStackNavigator({
   Welcome: WelcomeScreen,
@@ -15,7 +16,8 @@ const HomeNavigator = createStackNavigator({
   Map: DiagramViewScreen,
   Test: TesterScreen,
   Weather: WeatherScreen,
-  Vehicle: VehicleInfoScreen
+  Vehicle: VehicleInfoScreen,
+  Scan: ScanScreen
 }, {
   headerMode: 'none',
 });

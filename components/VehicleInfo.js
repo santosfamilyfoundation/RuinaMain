@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ScrollView } from 'react-native'
 import { SafeAreaView } from 'react-navigation';
 import { Divider, Layout, Text, TopNavigation } from '@ui-kitten/components';
 
@@ -26,8 +27,10 @@ export default class VehicleInfo extends Component {
             <SafeAreaView style={{ flex: 1 }}>
                 <TopNavigation title='VehicleInfo' alignment='center' leftControl={this.props.BackAction()}/>
                 <Divider/>
-                <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                    <Text>{JSON.stringify(this.state.data)}</Text>
+                <Layout style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
+                    <ScrollView>
+                        <Text>{JSON.stringify(this.state.data)}</Text>
+                    </ScrollView>
                 </Layout>
             </SafeAreaView>
         )
