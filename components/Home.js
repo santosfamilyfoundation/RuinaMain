@@ -7,7 +7,7 @@ import { genericWriteAction } from '../actions/GenericAction';
 
 class Home extends Component {
   state = {
-    content: ''
+    content: '',
   }
     render() {
 

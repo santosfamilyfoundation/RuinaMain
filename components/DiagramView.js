@@ -6,7 +6,7 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { connect } from 'react-redux';
 import MapView, { Marker, AnimatedRegion, Polyline, PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
-
+//import { mapAction } from '../actions/MapAction';
 //<TopNavigation title='Scene Diagram' alignment='center' leftControl={this.props.BackAction()}
 //<Text style={styles.coords}> {this.state.region}  {this.state.region} </Text>
 
@@ -25,11 +25,16 @@ function getColor(id){
 class DiagramView extends Component {
   state = {
     markers:[],
-    mapRegion: null,
     lastLat: null,
     lastLong: null,
     latitudeDelta:  0.005,
     longitudeDelta: 0.005 * (SCREEN_WIDTH / SCREEN_HEIGHT),
+    mapRegion:{
+        latitude: 42.3836,
+        longitude: -71.1097,
+        latitudeDelta: 0.0152,
+        longitudeDelta: 0.0151,
+    },
   }
 
   watchID: ?number = null;
@@ -123,10 +128,14 @@ class DiagramView extends Component {
       this._map.animateToRegion(region, 100);
   }
 
+  onPressRecenter() {
+    this.getCurrentLocation()
+  }
+
     render() {
 
         const navigateSummary = () => {
-          this.props.navigation.navigate('Result');
+          this.props.navigation.navigate('MapSummary');
         };
 
         const navigateHome = () => {
@@ -160,7 +169,13 @@ class DiagramView extends Component {
                       pinColor={marker.color}
                     />
                   ))}
-
+                  <View style={styles.coords}>
+                    <TextInput style={styles.coordText}>
+                      Latitude: { this.state.mapRegion.latitude.toFixed(3)}
+                      {"     "}
+                      Longitude: {this.state.mapRegion.longitude.toFixed(3)}
+                    </TextInput>
+                  </View>
                   </MapView>
                   <View style={styles.sideBox}>
                     <TouchableOpacity
@@ -173,17 +188,26 @@ class DiagramView extends Component {
                     <TouchableOpacity
                         onPress={()=>{this.onPressZoomOut()}}
                         >
-                        <Icon name='plus-circle-outline' width={32} height={32} fill='#3366FF'/>
+                        <View style={styles.sideBoxItems}>
+                          <Icon name='plus-circle-outline' width={32} height={32} fill='#3366FF'/>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={()=>{this.onPressRecenter()}}
+                        >
+                        <View style={styles.sideBoxItems}>
+                          <Icon name='stop-circle-outline' width={32} height={32} fill='#3366FF'/>
+                        </View>
                     </TouchableOpacity>
                   </View>
               </Layout>
               <Button onPress={navigateHome}>Home</Button>
+              <Button onPress={() =>this.props.mapAction(this.state.mapRegion.latitude)}>SAVE</Button>
+              <Button onPress={navigateSummary}>Summary</Button>
           </SafeAreaView>
           );
     }
 };
-
-
 
 const styles = StyleSheet.create({
   container: {
@@ -197,8 +221,7 @@ const styles = StyleSheet.create({
   },
   coords:{
     justifyContent: 'flex-start',
-    alignItems: 'center',
-    fontSize: 30,
+    alignItems: 'flex-start',
   },
   sideBox:{
     alignSelf: 'flex-end',
@@ -207,18 +230,35 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   sideBoxItems:{
-    paddingBottom: 20,
-    paddingTop: 20,
+    paddingBottom: 10,
+    paddingTop: 10,
+  },
+  coordText:{
+    fontSize: 30,
+    backgroundColor: 'white',
+    alignSelf: 'center',
+    padding: 10,
   }
 });
 
+
 const mapDispatchToProps = dispatch => ({
-  writeMapDetails: (mapDetails) => dispatch({ type: 'WRITE', payload: mapDetails })
+  mapAction: (mapDetails) => dispatch({ type: 'WRITE', payload: mapDetails })
 });
+
 
 const mapStateToProps = (state) => {
   const { mapDetails } = state
   return { mapDetails }
 };
+
+
+// <SearchBar
+//   placeholder="Search"
+//   ref={(ref) => this.searchBar = ref}
+//   data={items}
+//   handleResults={this._handleResults.bind(this)}
+//   showOnLoad
+// />
 
 export default connect(mapStateToProps, mapDispatchToProps)(DiagramView);

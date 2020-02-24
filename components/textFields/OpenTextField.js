@@ -28,7 +28,7 @@ const OpenTextField = (props) => {
         <CardHeader title={data.id + ': ' + data.question}/>
     );
 
-    
+
     if(genericReducer[currId] != value) {
         status = 'danger'
     } else {
@@ -58,11 +58,11 @@ const OpenTextField = (props) => {
                             value={value}
                             onChangeText={setValue}
                         />
-                        <Button 
-                            style={styles.submitButton} 
+                        <Button
+                            style={styles.submitButton}
                             appearance={buttonAppearance}
-                            size='medium' 
-                            icon={CheckIcon} 
+                            size='medium'
+                            icon={CheckIcon}
                             onPress={() => setOption()}
                         />
                     </Layout>
