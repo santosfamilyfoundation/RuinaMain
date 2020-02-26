@@ -1,20 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Input, Layout, Text, Card, Button, CardHeader, Icon } from '@ui-kitten/components';
+import { Input, Layout, Text, Card, Button, CardHeader, Icon, Autocomplete } from '@ui-kitten/components';
 import { genericWriteAction } from '../../actions/GenericAction';
-import { styles } from './OpenTextField.style';
+import { styles } from './AutoCompleteDropDown.style';
 
 
-const OpenTextField = (props) => {
-    const [value, setValue] = React.useState('');
+const AutoCompleteDropDown = (props) => {
+    const [value, setValue] = React.useState('');   // value that will be stored in Redux
+    const [title, setTitle] = React.useState('');   // value that will be displayed to user in form field
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const {data, key, genericReducer, genericWriteAction} = props;
+    const [selectionData, setSelectionData] = React.useState(data.answerOptions);
 
     let currId = data.id
     let status;
 
-    if(genericReducer[currId] != null && value != genericReducer[currId]) {
-        setValue(genericReducer[currId]);
+    // Populate if value already exists in redux
+    if(genericReducer[currId] != null && !value) {
+        for(i = 0; i < selectionData.length; i++) {
+            if(selectionData[i].idCode == genericReducer[currId]) {
+                setValue(genericReducer[currId]);
+                setTitle(selectionData[i].title);
+            };
+        };
         setButtonAppearance('filled');
     }
 
@@ -28,9 +36,25 @@ const OpenTextField = (props) => {
 
     const clearField = () => {
         setValue('');
-        genericWriteAction({actionType:"WRITE_SELECTION", field: currId, content: ''});
+        setTitle('');
+        genericWriteAction({actionType:"WRITE_SELECTION", field: currId, content: null});
         setButtonAppearance('outline');
     }
+
+    const onOptionSelect = (selection) => {
+        setValue(selection.idCode);
+        setTitle(selection.title);
+        submitField();
+    }
+
+    const searchItems = (query) => {
+        console.log("QUERY: ", query);
+        setValue(query);
+        setTitle(query);
+        res = data.answerOptions.filter(item => item.title.toLowerCase().includes(query.toLowerCase()))
+        setSelectionData(res);
+    }
+
 
     if(!value && buttonAppearance != 'outline') {
         setButtonAppearance('outline');
@@ -70,13 +94,16 @@ const OpenTextField = (props) => {
                 <Layout style={styles.content}>
                     {HelperText()}
                     <Layout style={styles.input}>
-                        <Input
+                        <Autocomplete
                             style={styles.inputField}
+                            value={title}
+                            // value={value}
+                            data={selectionData}
+                            placeholder='Select your value'
                             icon={renderClear}
                             onIconPress={() => clearField()}
-                            placeholder='Place your Text'
-                            value={value}
-                            onChangeText={setValue}
+                            onChangeText={searchItems}
+                            onSelect={(e) => onOptionSelect(e)}
                         />
                         <Button 
                             style={styles.submitButton} 
@@ -101,4 +128,4 @@ const mapStateToProps = (state) => {
     return { story, genericReducer }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OpenTextField);
+export default connect(mapStateToProps, mapDispatchToProps)(AutoCompleteDropDown);
