@@ -8,11 +8,6 @@ import {
   View,
   Dimensions,
 } from 'react-native';
-import { NavigationActions } from 'react-navigation'
-
-const backAction = NavigationActions.back({
-  key: null
-}) 
 
 export default function ScanResult({
   imagePath,
