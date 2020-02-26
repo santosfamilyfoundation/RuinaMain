@@ -9,7 +9,8 @@ export default class VehicleInfo extends Component {
     }
 
     componentDidMount(){
-        this.fetchVIN("1HGBH41JXMN109186");
+        console.log(this.props.navigation.state.params)
+        this.fetchVIN(this.props.navigation.state.params.VIN);
     }
 
     fetchVIN(vin){

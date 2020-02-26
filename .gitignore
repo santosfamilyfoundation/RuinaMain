@@ -59,8 +59,4 @@ buck-out/
 /ios/Pods/
 
 # api keys
-<<<<<<< HEAD
 .env
-=======
-.env
->>>>>>> a787d83f7096dfab58689d778d3d9e152b8dd27e

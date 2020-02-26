@@ -12,8 +12,6 @@ import AnylineOCR, { getLicenseExpiryDate } from 'anyline-ocr-react-native-modul
 import config from '../config';
 import ScanResult from './ScanResult';
 
-console.log(getLicenseExpiryDate('eyJzY29wZSI6WyJBTEwiXSwicGxhdGZvcm0iOlsiaU9TIiwiQW5kcm9pZCIsIldpbmRvd3MiLCJKUyIsIldlYiJdLCJ2YWxpZCI6IjIwMjAtMDMtMjQiLCJtYWpvclZlcnNpb24iOjMsIm1heERheXNOb3RSZXBvcnRlZCI6NSwic2hvd1dhdGVybWFyayI6dHJ1ZSwicGluZ1JlcG9ydGluZyI6dHJ1ZSwiZGVidWdSZXBvcnRpbmciOiJvcHQtb3V0IiwidG9sZXJhbmNlRGF5cyI6NSwic2hvd1BvcFVwQWZ0ZXJFeHBpcnkiOnRydWUsImlvc0lkZW50aWZpZXIiOlsiY29tLlNhbnRvcy5SdWluYSJdLCJhbmRyb2lkSWRlbnRpZmllciI6WyJjb20uU2FudG9zLlJ1aW5hIl0sIndpbmRvd3NJZGVudGlmaWVyIjpbImNvbS5TYW50b3MuUnVpbmEiXSwid2ViSWRlbnRpZmllciI6WyJjb20uU2FudG9zLlJ1aW5hIl0sImpzSWRlbnRpZmllciI6WyJjb20uU2FudG9zLlJ1aW5hIl0sImltYWdlUmVwb3J0Q2FjaGluZyI6dHJ1ZX0KQW85NlhGbVhBdURyQTRRbEs2SFRzYW5CWmpYL1lNSnF6T0pIUjlyRW12Rnp5UDNOU25XMnU1ZFgwVXhuaEdHWWFDWEd0TUpJY1djT2hYUmlTVGNqRW9sYXlZVnlyb2dWVDlObExwdE9jN0pXK29aLzRnWnlscXdKaSt2Y2pZb2tUY3BzOE1mVjZDQ1lwVlFzc1pXNW15dy8wQlRkcnFHUnh4Rkt1OXJEaDBFM0dkM2x3OFN1MzlOdzBJZytBa0l3WEh6MVk4Q2FKem9haU53SUdnbXRFWGdxRWVFYmpxbE5oQkE5czg0WHJ0NUlYeDViNDB3bW1seTVrQmpQeGhzZjhFQlFHaHBZSUwzTlVJa0tnbjFxQVVSZ2FrTGtCcTNHbUJBZHFCTDJKaGZ5MWRSejY4YXliWUZmSktKd295ZXEyWnFmK1l0Mmx6UkdIcW1wODJ2S3d3PT0=')); // 'YYYY-MM-DD'
-
 
 export default class Scan extends Component {
 
@@ -27,6 +25,7 @@ export default class Scan extends Component {
         meterType: '',
         cutoutBase64: '',
         fullImageBase64: '',
+        text: ''
     };
 
     openOCR = () => {
@@ -80,6 +79,7 @@ export default class Scan extends Component {
 
     onResult = (dataString) => {
         const data = JSON.parse(dataString);
+        console.log(data.text);
 
         this.setState({
             hasScanned: true,
@@ -90,6 +90,7 @@ export default class Scan extends Component {
             meterType: data.meterType,
             cutoutBase64: data.cutoutBase64,
             fullImageBase64: data.fullImageBase64,
+            text: data.text
         });
     };
 
@@ -97,7 +98,7 @@ export default class Scan extends Component {
         console.error(error);
         alert(error);
     };
-
+    
     render() {
         const {
             hasScanned,
@@ -127,6 +128,10 @@ export default class Scan extends Component {
                             meterType={meterType}
                             cutoutBase64={cutoutBase64}
                             fullImageBase64={fullImageBase64}
+                            hasBackButton={true}
+                            navigation={this.props.navigation}
+                            text={this.state.text}
+                            // emptyResult={navigateback}
                         />
                     ) : (
                         platformText

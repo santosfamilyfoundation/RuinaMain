@@ -7,43 +7,37 @@ import {
   Text,
   View,
   Dimensions,
-  TouchableWithoutFeedback,
 } from 'react-native';
+import { NavigationActions } from 'react-navigation'
 
-const flattenObject = (ob) => {
-    const toReturn = {};
-
-    for (const i in ob) {
-        if (!ob.hasOwnProperty(i)) continue;
-
-        if ((typeof ob[i]) == 'object' && ob[i] !== null) {
-            const flatObject = flattenObject(ob[i]);
-            for (const x in flatObject) {
-                if (!flatObject.hasOwnProperty(x)) continue;
-
-                toReturn[i + '.' + x] = flatObject[x];
-            }
-        } else {
-            toReturn[i] = ob[i];
-        }
-    }
-    return toReturn;
-};
-
-const withoutImagePaths = value =>
-  value !== 'imagePath' && value !== 'fullImagePath';
+const backAction = NavigationActions.back({
+  key: null
+}) 
 
 export default function ScanResult({
-  result,
   imagePath,
   fullImagePath,
-  emptyResult,
-  currentScanMode,
   hasBackButton,
   title = false,
+  navigation,
+  text
 }) {
+  let data = [];
   let fullImage = <View />;
   let fullImageText = <View />;
+
+  const fetchVIN = (vin) => {
+    fetch("https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/"+vin+"?format=json&modelyear=2011")
+      .then(response => response.json())
+      .then((responseJson)=> {
+        data = responseJson.Results
+        console.log(data)
+      })
+      .catch(error=>console.log(error)) 
+  }
+  console.log(text);
+  fetchVIN(text);
+
   if (fullImagePath && fullImagePath !== '') {
     fullImage = (
       <Image
@@ -54,17 +48,15 @@ export default function ScanResult({
     );
     fullImageText = <Text style={styles.text}>Full Image:</Text>;
   }
-  const flattenResult = flattenObject(result);
 
   let BackButton = <View />;
   if (hasBackButton) {
     BackButton = (
       <View style={styles.backButton}>
-        <Button title={'Back'} onPress={emptyResult} />
+        <Button title={'Back'} onPress={() => navigation.goBack()} />
       </View>
     );
   }
-  console.log(title);
   let Title = <View />;
   if (title) {
     Title = <Text style={styles.titleText}>{title}</Text>;
@@ -83,32 +75,7 @@ export default function ScanResult({
           resizeMode={'contain'}
           source={{uri: `file://${imagePath}`}}
         />
-        {Object.keys(flattenResult)
-          .filter(withoutImagePaths)
-          .map((value, key) => {
-            return value === 'detectedBarcodes' ? (
-              <View>
-                <Text style={styles.headline}>Detected Barcodes</Text>
-                {flattenResult[value].map((valueBar, keyBar) => (
-                  <View key={`Result_Text_${keyBar}`}>
-                    <Text style={styles.text}>Format: {valueBar.format}</Text>
-                    <Text style={styles.text}>Value: {valueBar.value}</Text>
-                  </View>
-                ))}
-              </View>
-            ) : (
-              <View style={styles.resultContainer}>
-                <Text
-                  style={styles.textResultLabel}
-                  key={`Result_Label_${key}`}>
-                  {value}:
-                </Text>
-                <Text style={styles.textResult} key={`Result_Text_${key}`}>
-                  {flattenResult[value]}
-                </Text>
-              </View>
-            );
-          })}
+        <Button title={`VIN: ${text}`} onPress={() => navigation.navigate('Vehicle', {VIN: text})}/>
         {BackButton}
       </ScrollView>
     </View>
