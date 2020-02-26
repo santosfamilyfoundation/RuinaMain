@@ -32,8 +32,8 @@ class DiagramView extends Component {
     mapRegion:{
         latitude: 42.3836,
         longitude: -71.1097,
-        latitudeDelta: 0.0152,
-        longitudeDelta: 0.0151,
+        latitudeDelta: 0.00152,
+        longitudeDelta: 0.00151,
     },
   }
 
@@ -144,7 +144,7 @@ class DiagramView extends Component {
 
         return (
           <SafeAreaView style={{ flex: 1 }}>
-              <TopNavigation title='Scene Diagram' alignment='center' />
+              <TopNavigation title='Map View' alignment='center'/>
               <Divider/>
               <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <MapView
@@ -158,8 +158,8 @@ class DiagramView extends Component {
                     initialRegion={{
                         latitude: 42.3836,
                         longitude: -71.1097,
-                        latitudeDelta: 0.0152,
-                        longitudeDelta: 0.0151,
+                        latitudeDelta: 0.00152,
+                        longitudeDelta: 0.00151,
                       }}
                   >
                   {this.state.markers.map(marker => (
@@ -201,9 +201,7 @@ class DiagramView extends Component {
                     </TouchableOpacity>
                   </View>
               </Layout>
-              <Button onPress={navigateHome}>Home</Button>
               <Button onPress={() =>this.props.mapAction(this.state.mapRegion.latitude)}>SAVE</Button>
-              <Button onPress={navigateSummary}>Summary</Button>
           </SafeAreaView>
           );
     }
@@ -221,7 +219,6 @@ const styles = StyleSheet.create({
   },
   coords:{
     justifyContent: 'flex-start',
-    alignItems: 'flex-start',
   },
   sideBox:{
     alignSelf: 'flex-end',
