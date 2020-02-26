@@ -7,6 +7,7 @@ import { WelcomeScreen } from './screens/welcomeScreen';
 import { TesterScreen } from './screens/testerScreen';
 import { WeatherScreen } from './screens/weatherScreen';
 import { MapSummaryScreen } from './screens/MapSummaryScreen';
+import { PhotoCaptureScreen } from './screens/photoCaptureScreen'
 
 const HomeNavigator = createStackNavigator({
   Welcome: WelcomeScreen,
@@ -16,6 +17,7 @@ const HomeNavigator = createStackNavigator({
   Test: TesterScreen,
   Weather: WeatherScreen,
   MapSummary: MapSummaryScreen,
+  PhotoCapture: PhotoCaptureScreen,
 }, {
   headerMode: 'none',
 });

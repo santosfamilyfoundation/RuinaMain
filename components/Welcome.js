@@ -22,6 +22,7 @@ class Welcome extends Component {
                 <Button style={styles.styledButton} onPress={() => navigateTo('Test')}>Test</Button>
                 <Button style={styles.styledButton} onPress={() => navigateTo('Weather')}>Weather</Button>
                 <Button style={styles.styledButton} onPress={() => navigateTo('Map')}>Map</Button>
+                <Button style={styles.styledButton} onPress={() => navigateTo('PhotoCapture')}>Take A Photo</Button>
               </Layout>
             </SafeAreaView>
           );
