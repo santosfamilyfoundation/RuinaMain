@@ -10,7 +10,6 @@ const TriButtonSelector = (props) => {
     const {data, key, genericReducer, genericWriteAction} = props;
 
     let currId = data.id
-    const subQuestionID = currId.split("-")[1];
     let status;
 
     if(genericReducer[currId] != null && selection != genericReducer[currId]) {
@@ -23,7 +22,7 @@ const TriButtonSelector = (props) => {
     }
     
     const Header = () => (
-        <CardHeader title={subQuestionID + ': ' + data.question}/>
+        <CardHeader title={data.id + ': ' + data.question}/>
     );
 
     if(!genericReducer[currId]) {

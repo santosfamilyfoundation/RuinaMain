@@ -16,7 +16,6 @@ const DropDownSingleSelect = (props) => {
     const {data, key, genericReducer} = props;
 
     let currId = data.id;
-    const subQuestionID = currId.split("-")[1];
 
     if(!selectedOption) {
         if(genericReducer[currId] != null) {
@@ -49,7 +48,7 @@ const DropDownSingleSelect = (props) => {
     }
 
     const Header = () => (
-        <CardHeader title={subQuestionID + ': ' + data.question}/>
+        <CardHeader title={data.id + ': ' + data.question}/>
       );
 
     const HelperText = () => {
