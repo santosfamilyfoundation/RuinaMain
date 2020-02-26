@@ -5,7 +5,8 @@ import { Divider, Layout, Text, TopNavigation } from '@ui-kitten/components';
 
 export default class VehicleInfo extends Component {
     state = {
-        data: []
+        data: [],
+        fetchedData: false
     }
 
     componentDidMount(){
@@ -17,6 +18,7 @@ export default class VehicleInfo extends Component {
           .then(response => response.json())
           .then((responseJson)=> {
             this.setState({data: responseJson.Results})
+            this.setState({fetchedData: true})
             console.log(this.state.data)
           })
           .catch(error=>console.log(error)) 
@@ -29,7 +31,7 @@ export default class VehicleInfo extends Component {
                 <Divider/>
                 <Layout style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
                     <ScrollView>
-                        <Text>{JSON.stringify(this.state.data)}</Text>
+                        {this.state.fetchedData ? <Text>{JSON.stringify(this.state.data)}</Text> : <Text>fetching data...</Text>}
                     </ScrollView>
                 </Layout>
             </SafeAreaView>
