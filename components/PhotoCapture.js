@@ -6,11 +6,23 @@ import { connect } from 'react-redux';
 import { genericWriteAction } from '../actions/GenericAction';
 import { RNCamera } from 'react-native-camera';
 import BasicDropDown from './BasicDropDown';
+import * as Constants from '../constants';
 
 const { width, height } = Dimensions.get('window');
 const SCREEN_WIDTH = width;
 const SCREEN_HEIGHT = height;
 
+const typeData = [
+  { text: Constants.VIN },
+  { text: Constants.LICENSE },
+  { text: Constants.PLATE },
+];
+
+const objectData = [
+  { text: Constants.VIN },
+  { text: Constants.LICENSE },
+  { text: Constants.PLATE },
+];
 
 class PhotoCapture extends Component {
   state = {
@@ -41,7 +53,6 @@ class PhotoCapture extends Component {
 
         return (
             <SafeAreaView style={{ flex: 1 }}>
-              <TopNavigation title='Photo Capture' alignment='center' leftControl={this.props.BackAction()}/>
               <Divider/>
               <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                 <RNCamera
@@ -50,13 +61,11 @@ class PhotoCapture extends Component {
                 >
                 </RNCamera>
                 <Layout style={styles.bottomBar}>
-                  <Text>
-                    THIS IS THE TEXT THAT I WANT TO PUT IN HERE.
-                  </Text>
+                  <BasicDropDown data={typeData}/>
                   <Text style={styles.capture} onPress={this.takePicture.bind(this)}>
                     Capture
                   </Text>
-                  <BasicDropDown/>
+                  <BasicDropDown data={objectData }/>
                 </Layout>
               </Layout>
             </SafeAreaView>
@@ -80,12 +89,14 @@ const styles = StyleSheet.create({
     padding: 10,
     textAlign: 'center',
     width: 100,
-    alignSelf: 'center',
+    height: 50,
   },
   bottomBar:{
     backgroundColor: 'white',
     width: SCREEN_WIDTH,
-    flex: 0.2,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: 70,
   }
 });
 

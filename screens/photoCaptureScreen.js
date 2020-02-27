@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon, TopNavigationAction } from '@ui-kitten/components';
-import PhotoCapture from '../components/PhotoCapture';
+import PhotoCapture from '../components/PhotoCaptureMain';
 
 export const PhotoCaptureScreen = ({ navigation }) => {
 

@@ -5,18 +5,13 @@ import { connect } from 'react-redux';
 
 const BasicDropDown = (props) => {
 
+  const { data } = props;
+
   const [selectedOption, setSelectedOption] = React.useState(null);  // Need to change indexing!
 
   const setOption = (selection) => {
         setSelectedOption({text: selection.text});
-        console.log("HERE AT SET")
     }
-
-  const data = [
-    { text: 'Option 1' },
-    { text: 'Option 2' },
-    { text: 'Option 3' },
-  ];
 
   return (
       <Layout style={styles.main}>
@@ -32,7 +27,8 @@ const BasicDropDown = (props) => {
 
 const styles = StyleSheet.create({
   main:{
-    width: 200
+    width: 250,
+    padding: 10,
   },
 });
 
