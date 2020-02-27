@@ -9,7 +9,7 @@ class PhotoCaptureMain extends Component {
 
     render() {
 
-      const setValue = false
+      const setValue = true
 
         return (
             <SafeAreaView style={{ flex: 1 }}>
