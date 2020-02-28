@@ -18,8 +18,8 @@ export const styles = StyleSheet.create({
       justifyContent: 'space-between',
     },
     answers: {
-        flex: 2,
-        flexDirection:'row'
+        flex: 1,
+        flexDirection:'row',
     },
     answerButton: {
         marginRight: 10

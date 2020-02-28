@@ -8,6 +8,7 @@ import { styles } from './OpenTextField.style';
 const OpenTextField = (props) => {
     const [value, setValue] = React.useState('');
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
+    const [isInvalid, setIsInvalid] = React.useState(false);
     const {data, key, genericReducer, genericWriteAction} = props;
 
     let currId = data.id
@@ -38,6 +39,12 @@ const OpenTextField = (props) => {
         setButtonAppearance('outline');
     }
 
+    if(value.length > data.maxLength && !isInvalid) {
+        setIsInvalid(true);
+    } else if(isInvalid && value.length <= data.maxLength) {
+        setIsInvalid(false);
+    }
+
     const Header = () => (
         <CardHeader title={data.id + ': ' + data.question}/>
     );
@@ -64,6 +71,17 @@ const OpenTextField = (props) => {
         return null;
     }
 
+    const ErrorMsg = () => {
+        if(isInvalid) {
+            return(
+                <Text>
+                    Too long!
+                </Text>
+            )
+        }
+        return null;
+    };
+
     return (
         <Layout key={key} style={styles.container}>
             <Card header={Header} status={status}>
@@ -86,6 +104,7 @@ const OpenTextField = (props) => {
                             onPress={() => submitField()}
                         />
                     </Layout>
+                    {ErrorMsg()}
                 </Layout>
             </Card>
         </Layout>

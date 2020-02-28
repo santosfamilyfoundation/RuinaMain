@@ -70,7 +70,8 @@ export const questions = {
             helperText:"Political Jurisdiction",
             subquestions: null,
             answerType:"openTextbox",
-            answerOptions: null
+            answerOptions: null,
+            maxLength: 5
         },
         {
             id:"C15",
@@ -91,6 +92,18 @@ export const questions = {
                         {
                             idCode:"02",
                             text:"Yes"
+                        },
+                        {
+                            idCode:"03",
+                            text:"Test"
+                        },
+                        {
+                            idCode:"04",
+                            text:"Test2"
+                        },
+                        {
+                            idCode:"05",
+                            text:"Test3"
                         },
                         {
                             idCode:"99",

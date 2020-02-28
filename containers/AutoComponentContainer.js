@@ -3,7 +3,7 @@ import { SafeAreaView } from 'react-navigation';
 import { Text, Divider, Layout, TopNavigation, CardHeader, Card } from '@ui-kitten/components';
 import { styles } from './AutoComponentContainer.style';
 import { ScrollView } from 'react-native-gesture-handler';
-import TriButtonSelector from '../components/buttonSelectors/TriButtonSelector';
+import MultiButtonSelector from '../components/buttonSelectors/MultiButtonSelector';
 import AutoCompleteDropDown from '../components/dropdowns/AutoCompleteDropDown';
 import DropDownSingleSelect from '../components/dropdowns/DropDownSingleSelect';
 import OpenTextField from '../components/textFields/OpenTextField';
@@ -44,7 +44,7 @@ class AutoComponentContainer extends Component {
           )
         case 'yes-no-unknown':
           return (
-            <TriButtonSelector
+            <MultiButtonSelector
               data={question}
               key={question.id}
             />
