@@ -5,7 +5,12 @@ export const styles = StyleSheet.create({
       width: '90%',
       marginBottom: 10
     },
+    // inputField: {
+    //   maxWidth: 500,
+    // },
+    headingText: {},
     helperText: {
+      marginTop: 10,
       marginBottom: 10
     },
     content: {
@@ -19,6 +24,7 @@ export const styles = StyleSheet.create({
     },
     inputField: {
       flexGrow: 1,
+      minWidth: '80%'
     },
     submitButton: {
       marginLeft: 10,

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   Layout,
   Select,
@@ -10,26 +10,45 @@ import { styles } from './DropDownSingleSelect.style';
 import { connect } from 'react-redux';
 import { genericWriteAction } from '../../actions/GenericAction';
 
+
 const DropDownSingleSelect = (props) => {
-    const [selectedOption, setSelectedOption] = React.useState(props.data[0]);  // Need to change indexing!
+    const [selectedOption, setSelectedOption] = React.useState(null);
     const {data, key, genericReducer} = props;
 
-    const subQuestionID = data.id.split("-")[1];
+    let currId = data.id;
+
+    if(!selectedOption) {
+        if(genericReducer[currId] != null) {
+            let curOption;
+            for (i = 0; i < data.answerOptions.length; i++) {
+                if(data.answerOptions[i].idCode == genericReducer[currId]) {
+                    curOption = {
+                        idCode: genericReducer[currId],
+                        text: data.answerOptions[i].text
+                    };
+                };
+            };
+            if (curOption != null) {
+                setSelectedOption(curOption);
+            }
+        };
+    };
 
     let status;
-    if(!genericReducer[data.id]) {
+    if(!genericReducer[currId]) {
         status = 'danger'
     } else {
         status = 'success'
     }
 
-    const setOption = (selection) => {
-        setSelectedOption({text: selection.text});
-        props.genericWriteAction({actionType:"WRITE_SELECTION", field: data.id, content: selection.idCode})
+    const submitField = (selection) => {
+        console.log("CLICKED: ", selection);
+        setSelectedOption(selection);
+        props.genericWriteAction({actionType:"WRITE_SELECTION", field: currId, content: selection.idCode})
     }
 
     const Header = () => (
-        <CardHeader title={subQuestionID + ': ' + data.question}/>
+        <CardHeader title={data.id + ': ' + data.question}/>
       );
 
     const HelperText = () => {
@@ -38,6 +57,7 @@ const DropDownSingleSelect = (props) => {
         }
         return null;
     }
+
 
     return (
         <Layout key={key} style={styles.container}>
@@ -48,7 +68,7 @@ const DropDownSingleSelect = (props) => {
                         data={data.answerOptions}
                         selectedOption={selectedOption}
                         multiSelect={false}
-                        onSelect={(e) => setOption(e)}
+                        onSelect={(e) => submitField(e)}
                     />
                 </Layout>
             </Card>
