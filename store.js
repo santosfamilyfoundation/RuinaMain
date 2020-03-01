@@ -2,12 +2,12 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import storyReducer from './reducers/StoryReducer';
 import genericReducer from './reducers/GenericReducer';
-import quickquizReducer from './reducers/QuizQuizReducer';
+import mapReducer from './reducers/MapReducer';
 
 const rootReducer = combineReducers({
   story: storyReducer,
   genericReducer: genericReducer,
-  quiz: quickquizReducer
+  mapReducer: mapReducer,
 });
 
 const configureStore = () => {

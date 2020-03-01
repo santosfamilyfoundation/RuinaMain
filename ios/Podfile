@@ -36,13 +36,15 @@ target 'Ruina' do
 
   pod 'react-native-geolocation', :path => '../node_modules/@react-native-community/geolocation'
 
+  pod 'react-native-camera', :path => '../node_modules/react-native-camera'
+
   pod 'AnylineReact', path: '../node_modules/anyline-ocr-react-native-module/ios'
 
   target 'RuinaTests' do
     inherit! :search_paths
     # Pods for testing
   end
-  
+
   # React Native Maps dependencies
   rn_maps_path = '../node_modules/react-native-maps'
   pod 'react-native-google-maps', :path => rn_maps_path
