@@ -48,7 +48,6 @@ const AutoCompleteDropDown = (props) => {
     }
 
     const searchItems = (query) => {
-        console.log("QUERY: ", query);
         setValue(query);
         setTitle(query);
         res = data.answerOptions.filter(item => item.title.toLowerCase().includes(query.toLowerCase()))
