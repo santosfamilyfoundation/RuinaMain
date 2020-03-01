@@ -5,8 +5,6 @@ import { connect } from 'react-redux';
 
 const BasicDropDown = (props) => {
 
-  const { data } = props;
-
   const [selectedOption, setSelectedOption] = React.useState(null);  // Need to change indexing!
 
   const setOption = (selection) => {
@@ -16,10 +14,12 @@ const BasicDropDown = (props) => {
   return (
       <Layout style={styles.main}>
           <Select
-              data={data}
+              data={props.data}
               selectedOption={selectedOption}
               multiSelect={false}
               onSelect={(e) => setOption(e)}
+              placeholder={props.currObject}
+              disabled={props.isDisabled}
           />
       </Layout>
     );

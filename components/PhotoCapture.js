@@ -19,9 +19,9 @@ const typeData = [
 ];
 
 const objectData = [
-  { text: Constants.VIN },
-  { text: Constants.LICENSE },
-  { text: Constants.PLATE },
+  { text: "Person 1" },
+  { text: "P2" },
+  { text: "P3" },
 ];
 
 class PhotoCapture extends Component {
@@ -34,7 +34,7 @@ class PhotoCapture extends Component {
   takePicture() {
       this.camera.takePictureAsync({ skipProcessing: true }).then((data) => {
           this.setState({
-          }, console.log(data.uri))
+          }, console.log(data))
       })
   }
 
@@ -51,6 +51,8 @@ class PhotoCapture extends Component {
           });
         }
 
+        const isObjDisabled = this.props.objectID ? (false) : (true);
+
         return (
             <SafeAreaView style={{ flex: 1 }}>
               <Divider/>
@@ -61,11 +63,11 @@ class PhotoCapture extends Component {
                 >
                 </RNCamera>
                 <Layout style={styles.bottomBar}>
-                  <BasicDropDown data={typeData}/>
+                  <BasicDropDown data={typeData} defaultOption={this.props.type} isDisabled={false}/>
                   <Text style={styles.capture} onPress={this.takePicture.bind(this)}>
                     Capture
                   </Text>
-                  <BasicDropDown data={objectData }/>
+                  <BasicDropDown data={objectData} defaultOption={this.props.objectID} isDisabled={isObjDisabled}/>
                 </Layout>
               </Layout>
             </SafeAreaView>
