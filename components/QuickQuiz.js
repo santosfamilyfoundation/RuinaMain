@@ -6,12 +6,20 @@ import TriButtonSelector from '../components/buttonSelectors/TriButtonSelector';
 import { connect } from 'react-redux';
 import { genericWriteAction } from '../actions/GenericAction';
 import { genericReducer } from '../reducers/GenericReducer';
+import { changeVehicle, changePersons, changeFatality, changeConstruction, changeIntersection, changeSchoolbus, changeHazardous } from '../actions/QuickQuizActions';
 
 class QuickQuiz extends Component {
   state = {
     content: ''
   }
     render() {
+      const {changeVehicle, 
+      changePersons, 
+      changeFatality, 
+      changeConstruction, 
+      changeIntersection, 
+      changeSchoolbus, 
+      changeHazardous} = this.props
 
         return (
             <SafeAreaView style={{ flex: 1 }}>
@@ -19,21 +27,29 @@ class QuickQuiz extends Component {
               <SafeAreaView style = {styles.questionContainer}>
                   <Card>
                     <Text style = {styles.questionText}>NUMBER OF VEHICLES INVOVLED</Text>
-                    <TextInput style = {styles.questionInput}/>
+                    <TextInput 
+                      style = {styles.questionInput}
+                      onChangeText = {changeVehicle}
+                      value = {`${this.props.quiz.numVehicle}`}
+                    />
                   </Card>
               </SafeAreaView>
               <SafeAreaView style = {styles.questionContainer}>
                   <Card>
                     <Text style = {styles.questionText}>NUMBER OF PERSONS INVOVLED</Text>
-                    <TextInput style = {styles.questionInput}/>
+                    <TextInput 
+                      style = {styles.questionInput}
+                      onChangeText = {changePersons}
+                      value = {`${this.props.quiz.numPerson}`}
+                    />
                   </Card>
               </SafeAreaView>
               <SafeAreaView style = {styles.questionContainer}>
                 <Card style = {styles.cardStyle}>
                     <Text style = {styles.questionText}>ARE THERE KNOWN FATALITIES?</Text>
                     <Layout style={{flexDirection: 'row'}}>
-                        <Button style = {styles.buttonSytle}>Yes</Button>
-                        <Button style = {styles.buttonSytle}>No</Button>
+                        <Button style = {styles.buttonSytle} onPress = {() => changeFatality(true)}>Yes</Button>
+                        <Button style = {styles.buttonSytle} onPress = {() => changeFatality(false)}>No</Button>
                     </Layout>
                 </Card>
               </SafeAreaView>
@@ -41,8 +57,8 @@ class QuickQuiz extends Component {
                 <Card style = {styles.cardStyle}>
                     <Text style = {styles.questionText}>IS THE CRASH IN A CONSTRUCTION ZONE?</Text>
                     <Layout style={{flexDirection: 'row'}}>
-                        <Button style = {styles.buttonSytle}>Yes</Button>
-                        <Button style = {styles.buttonSytle}>No</Button>
+                        <Button style = {styles.buttonSytle} onPress = {() => changeConstruction(true)}>Yes</Button>
+                        <Button style = {styles.buttonSytle} onPress = {() => changeConstruction(false)}>No</Button>
                     </Layout>
                 </Card>
               </SafeAreaView>
@@ -50,8 +66,8 @@ class QuickQuiz extends Component {
                 <Card style = {styles.cardStyle}>
                     <Text style = {styles.questionText}>IS THE CRASH IN AN INTERSECTION?</Text>
                     <Layout style={{flexDirection: 'row'}}>
-                        <Button style = {styles.buttonSytle}>Yes</Button>
-                        <Button style = {styles.buttonSytle}>No</Button>
+                        <Button style = {styles.buttonSytle} onPress = {() => changeIntersection(true)}>Yes</Button>
+                        <Button style = {styles.buttonSytle} onPress = {() => changeIntersection(false)}>No</Button>
                     </Layout>
                 </Card>
               </SafeAreaView>
@@ -59,8 +75,8 @@ class QuickQuiz extends Component {
                 <Card style = {styles.cardStyle}>
                     <Text style = {styles.questionText}>IS A SCHOOL BUS INVOVLED?</Text>
                     <Layout style={{flexDirection: 'row'}}>
-                        <Button style = {styles.buttonSytle}>Yes</Button>
-                        <Button style = {styles.buttonSytle}>No</Button>
+                        <Button style = {styles.buttonSytle} onPress = {() => changeSchoolbus(true)}>Yes</Button>
+                        <Button style = {styles.buttonSytle} onPress = {() => changeSchoolbus(false)}>No</Button>
                     </Layout>
                 </Card>
               </SafeAreaView>
@@ -68,26 +84,16 @@ class QuickQuiz extends Component {
                 <Card style = {styles.cardStyle}>
                     <Text style = {styles.questionText}>IS THERE HAZARDOUS WASTE?</Text>
                     <Layout style={{flexDirection: 'row'}}>
-                        <Button style = {styles.buttonSytle}>Yes</Button>
-                        <Button style = {styles.buttonSytle}>No</Button>
+                        <Button style = {styles.buttonSytle} onPress = {() => changeHazardous(true)}>Yes</Button>
+                        <Button style = {styles.buttonSytle} onPress = {() => changeHazardous(false)}>No</Button>
                     </Layout>
                 </Card>
               </SafeAreaView>
-              <Button>Continue</Button>
+              <Button onPress = {() => console.log(this.props.quiz)}>Continue</Button>
 
             </SafeAreaView>
           );
     }
-};
-
-
-const mapDispatchToProps = {
-  genericWriteAction
-}
-
-const mapStateToProps = (state) => {
-  const { story } = state
-  return { story }
 };
 
 const styles = StyleSheet.create({
@@ -115,5 +121,20 @@ const styles = StyleSheet.create({
         width: 80
     }
 })
+
+const mapDispatchToProps = {
+  changeVehicle, 
+  changePersons, 
+  changeFatality, 
+  changeConstruction, 
+  changeIntersection, 
+  changeSchoolbus, 
+  changeHazardous
+}
+
+const mapStateToProps = (state) => {
+  const { quiz } = state
+  return { quiz }
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuickQuiz);
