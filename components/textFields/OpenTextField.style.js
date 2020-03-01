@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
       justifyContent: 'space-between',
     },
     inputField: {
-      flexGrow: 1,
+      flex:1,
     },
     submitButton: {
       marginLeft: 10,

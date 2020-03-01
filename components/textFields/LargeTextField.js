@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Input, Layout, Text, Card, Button, CardHeader, Icon } from '@ui-kitten/components';
 import { genericWriteAction } from '../../actions/GenericAction';
-import { styles } from './OpenTextField.style';
+import { styles } from './LargeTextField.style';
 
 
-const OpenTextField = (props) => {
+const LargeTextField = (props) => {
     const [value, setValue] = React.useState('');
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const [isInvalid, setIsInvalid] = React.useState(false);
@@ -73,7 +73,7 @@ const OpenTextField = (props) => {
     )
 
     const HelperText = () => {
-        if(data.helperText.length != 0) {
+        if(data.helperText != null) {
             return (<Text style={styles.helperText}>{data.helperText}</Text>)
         }
         return null;
@@ -98,6 +98,8 @@ const OpenTextField = (props) => {
                     <Layout style={styles.input}>
                         <Input
                             style={styles.inputField}
+                            multiline={true}
+                            maxLength={data.maxLength}
                             icon={renderClear}
                             onIconPress={() => clearField()}
                             placeholder='Place your Text'
@@ -128,4 +130,4 @@ const mapStateToProps = (state) => {
     return { story, genericReducer }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OpenTextField);
+export default connect(mapStateToProps, mapDispatchToProps)(LargeTextField);

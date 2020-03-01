@@ -74,6 +74,15 @@ export const questions = {
             maxLength: 5
         },
         {
+            id:"H5",
+            question:"Crash Description",
+            helperText: null,
+            subquestions: null,
+            answerType:"largeTextField",
+            answerOptions: null,
+            maxLength: 500
+        },
+        {
             id:"C15",
             question:"Relation to Junction",
             helperText:"",
@@ -93,18 +102,6 @@ export const questions = {
                             idCode:"02",
                             text:"Yes"
                         },
-                        // {
-                        //     idCode:"03",
-                        //     text:"Test"
-                        // },
-                        // {
-                        //     idCode:"04",
-                        //     text:"Test2"
-                        // },
-                        // {
-                        //     idCode:"05",
-                        //     text:"Test3"
-                        // },
                         {
                             idCode:"99",
                             text:"Unknown"

@@ -7,9 +7,10 @@ import MultiButtonSelector from '../components/buttonSelectors/MultiButtonSelect
 import AutoCompleteDropDown from '../components/dropdowns/AutoCompleteDropDown';
 import DropDownSingleSelect from '../components/dropdowns/DropDownSingleSelect';
 import OpenTextField from '../components/textFields/OpenTextField';
+import DropDownMultiSelect from '../components/dropdowns/DropDownMultiSelect';
+import LargeTextField from '../components/textFields/LargeTextField';
 
 import {questions} from '../data/questions';
-import DropDownMultiSelect from '../components/dropdowns/DropDownMultiSelect';
 
 class AutoComponentContainer extends Component {
   constructor(props) {
@@ -38,6 +39,13 @@ class AutoComponentContainer extends Component {
         case 'openTextbox':
           return (
             <OpenTextField 
+              data={question}
+              key={question.id}
+            />
+          )
+        case 'largeTextField':
+          return (
+            <LargeTextField
               data={question}
               key={question.id}
             />
