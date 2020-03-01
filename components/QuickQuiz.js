@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { TextInput, Text, StyleSheet } from 'react-native';
 import { Button, Divider, Layout, TopNavigation, Card } from '@ui-kitten/components';
-import TriButtonSelector from '../components/buttonSelectors/TriButtonSelector';
 import { connect } from 'react-redux';
-import { genericWriteAction } from '../actions/GenericAction';
-import { genericReducer } from '../reducers/GenericReducer';
 import { changeVehicle, changePersons, changeFatality, changeConstruction, changeIntersection, changeSchoolbus, changeHazardous } from '../actions/QuickQuizActions';
 
 class QuickQuiz extends Component {
@@ -19,7 +16,9 @@ class QuickQuiz extends Component {
       changeConstruction, 
       changeIntersection, 
       changeSchoolbus, 
-      changeHazardous} = this.props
+      changeHazardous} = this.props;
+
+      const quiz = this.props.quiz;
 
         return (
             <SafeAreaView style={{ flex: 1 }}>
@@ -30,7 +29,7 @@ class QuickQuiz extends Component {
                     <TextInput 
                       style = {styles.questionInput}
                       onChangeText = {changeVehicle}
-                      value = {`${this.props.quiz.numVehicle}`}
+                      value = {`${quiz.numVehicle}`}
                     />
                   </Card>
               </SafeAreaView>
@@ -40,7 +39,7 @@ class QuickQuiz extends Component {
                     <TextInput 
                       style = {styles.questionInput}
                       onChangeText = {changePersons}
-                      value = {`${this.props.quiz.numPerson}`}
+                      value = {`${quiz.numPerson}`}
                     />
                   </Card>
               </SafeAreaView>
@@ -89,7 +88,7 @@ class QuickQuiz extends Component {
                     </Layout>
                 </Card>
               </SafeAreaView>
-              <Button onPress = {() => console.log(this.props.quiz)}>Continue</Button>
+              <Button onPress = {() => console.log(quiz)}>Continue</Button>
 
             </SafeAreaView>
           );
@@ -133,7 +132,7 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state) => {
-  const { quiz } = state
+  const quiz = state.quickquizReducer
   return { quiz }
 };
 

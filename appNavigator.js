@@ -23,6 +23,7 @@ const HomeNavigator = createStackNavigator({
   PhotoCapture: PhotoCaptureScreen,
   Vehicle: VehicleInfoScreen,
   Scan: ScanScreen,
+  Quiz: QuickQuizScreen
 }, {
   headerMode: 'none',
 });
