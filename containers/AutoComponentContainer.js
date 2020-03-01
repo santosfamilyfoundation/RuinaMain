@@ -1,21 +1,15 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { Text, Divider, Layout, TopNavigation, CardHeader, Card } from '@ui-kitten/components';
-import DropDownSingleSelect from '../components/dropdowns/DropDownSingleSelect';
-import OpenTextField from '../components/textFields/OpenTextField';
-import {questions} from '../data/questions';
 import { styles } from './AutoComponentContainer.style';
 import { ScrollView } from 'react-native-gesture-handler';
 import TriButtonSelector from '../components/buttonSelectors/TriButtonSelector';
+import AutoCompleteDropDown from '../components/dropdowns/AutoCompleteDropDown';
+import DropDownSingleSelect from '../components/dropdowns/DropDownSingleSelect';
+import OpenTextField from '../components/textFields/OpenTextField';
 
-const testData = [
-    { text: 'Option 1' },
-    { text: 'Option 2' },
-    { text: 'Option 3' },
-  ];
-const question1 = questions.data[0];
-const subQuestion1 = question1.subquestions[0]
-const question2 = questions.data[1];
+import {questions} from '../data/questions';
+import DropDownMultiSelect from '../components/dropdowns/DropDownMultiSelect';
 
 class AutoComponentContainer extends Component {
   constructor(props) {
@@ -34,7 +28,14 @@ class AutoComponentContainer extends Component {
               key={question.id}
             />
           )
-        case 'open_textbox':
+        case 'dropdownMultiSelect':
+          return (
+            <DropDownMultiSelect 
+              data={question}
+              key={question.id}
+            />
+          )
+        case 'openTextbox':
           return (
             <OpenTextField 
               data={question}
@@ -44,6 +45,13 @@ class AutoComponentContainer extends Component {
         case 'yes-no-unknown':
           return (
             <TriButtonSelector
+              data={question}
+              key={question.id}
+            />
+          )
+        case 'autoCompleteDropdown':
+          return (
+            <AutoCompleteDropDown
               data={question}
               key={question.id}
             />

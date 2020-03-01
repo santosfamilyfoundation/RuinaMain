@@ -19,6 +19,7 @@ export const styles = StyleSheet.create({
     },
     inputField: {
       flexGrow: 1,
+      minWidth: '80%'
     },
     submitButton: {
       marginLeft: 10,
