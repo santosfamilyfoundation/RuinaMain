@@ -42,7 +42,7 @@ class AutoComponentContainer extends Component {
               key={question.id}
             />
           )
-        case 'yes-no-unknown':
+        case 'multiButton':
           return (
             <MultiButtonSelector
               data={question}

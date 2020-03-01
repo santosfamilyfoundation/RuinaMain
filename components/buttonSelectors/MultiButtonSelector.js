@@ -22,7 +22,7 @@ const MultiButtonSelector = (props) => {
     }
     
     const Header = () => (
-        <CardHeader title={data.id + ': ' + data.question}/>
+        <CardHeader title={data.question}/>
     );
 
     if(!genericReducer[currId]) {
@@ -31,15 +31,15 @@ const MultiButtonSelector = (props) => {
         status = 'success'
     }
 
-    const CheckIcon = (style) => (
-        <Icon {...style} name='checkmark-outline' />
-    )
-    const CrossIcon = (style) => (
-        <Icon {...style} name='close-outline' />
-    )
-    const QuestionMarkIcon = (style) => (
-        <Icon {...style} name='question-mark-outline' />
-    )
+    // const CheckIcon = (style) => (
+    //     <Icon {...style} name='checkmark-outline' />
+    // )
+    // const CrossIcon = (style) => (
+    //     <Icon {...style} name='close-outline' />
+    // )
+    // const QuestionMarkIcon = (style) => (
+    //     <Icon {...style} name='question-mark-outline' />
+    // )
 
     const HelperText = () => {
         if(data.helperText.length != 0) {

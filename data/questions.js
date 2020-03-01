@@ -83,7 +83,7 @@ export const questions = {
                     question:"Within Interchange Area?",
                     helperText:"",
                     subquestions:null,
-                    answerType:"yes-no-unknown",
+                    answerType:"multiButton",
                     answerOptions:[
                         {
                             idCode:"01",
@@ -93,18 +93,18 @@ export const questions = {
                             idCode:"02",
                             text:"Yes"
                         },
-                        {
-                            idCode:"03",
-                            text:"Test"
-                        },
-                        {
-                            idCode:"04",
-                            text:"Test2"
-                        },
-                        {
-                            idCode:"05",
-                            text:"Test3"
-                        },
+                        // {
+                        //     idCode:"03",
+                        //     text:"Test"
+                        // },
+                        // {
+                        //     idCode:"04",
+                        //     text:"Test2"
+                        // },
+                        // {
+                        //     idCode:"05",
+                        //     text:"Test3"
+                        // },
                         {
                             idCode:"99",
                             text:"Unknown"

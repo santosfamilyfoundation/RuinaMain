@@ -46,7 +46,7 @@ const OpenTextField = (props) => {
     }
 
     const Header = () => (
-        <CardHeader title={data.id + ': ' + data.question}/>
+        <CardHeader title={data.question}/>
     );
     
     const renderClear = (style) => (
