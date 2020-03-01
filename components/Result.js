@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 class Result extends Component {
 
     render() {
+        
         return (
             <SafeAreaView style={{ flex: 1 }}>
                 <TopNavigation title='Result' alignment='center' leftControl={this.props.BackAction()}/>

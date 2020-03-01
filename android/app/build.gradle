@@ -128,7 +128,8 @@ android {
     }
     defaultConfig {
         applicationId "com.ruina"
-        minSdkVersion 28
+        missingDimensionStrategy 'react-native-camera', 'general'
+        minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
@@ -186,6 +187,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-camera')
     implementation project(':@react-native-community_geolocation')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules

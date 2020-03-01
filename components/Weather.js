@@ -17,7 +17,7 @@ export default class Weather extends Component {
           position => {
             console.log(position.coords)
             this.fetchWeather(position.coords.latitude, position.coords.longitude)
-            
+
           },
           error => {
             this.setState({
@@ -49,8 +49,8 @@ export default class Weather extends Component {
                 <Divider/>
                 <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                     <Text category='h1'>This is the Weather Screen.</Text>
-                    {isLoading ? 
-                        (<Text>Fetching The Weather</Text>) : 
+                    {isLoading ?
+                        (<Text>Fetching The Weather</Text>) :
                         (
                         <SafeAreaView>
                             <Text>Temperature: {this.state.temperature}</Text>
