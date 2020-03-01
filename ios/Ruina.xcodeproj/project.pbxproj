@@ -472,12 +472,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-<<<<<<< HEAD
-				DEVELOPMENT_TEAM = WDSXQFA4ZP;
-=======
 				DEVELOPMENT_TEAM = 7W52686N5Z;
 				ENABLE_BITCODE = NO;
->>>>>>> master
 				INFOPLIST_FILE = Ruina/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -501,12 +497,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-<<<<<<< HEAD
-				DEVELOPMENT_TEAM = WDSXQFA4ZP;
-=======
 				DEVELOPMENT_TEAM = 7W52686N5Z;
 				ENABLE_BITCODE = NO;
->>>>>>> master
 				INFOPLIST_FILE = Ruina/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (

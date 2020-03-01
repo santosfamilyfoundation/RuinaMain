@@ -46,13 +46,8 @@ const OpenTextField = (props) => {
         <Icon {...style} name='close-outline'/>
     );
 
-<<<<<<< HEAD
-
-    if(genericReducer[currId] != value) {
-=======
 
     if(buttonAppearance == 'outline') {
->>>>>>> master
         status = 'danger'
     } else {
         status = 'success'
