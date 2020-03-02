@@ -4,12 +4,14 @@ import storyReducer from './reducers/StoryReducer';
 import genericReducer from './reducers/GenericReducer';
 import mapReducer from './reducers/MapReducer';
 import quickquizReducer from './reducers/QuizQuizReducer';
+import vehicleReducer from './reducers/VehicleReducer';
 
 const rootReducer = combineReducers({
   storyReducer: storyReducer,
   genericReducer: genericReducer,
   mapReducer: mapReducer,
-  quickquizReducer
+  quickquizReducer,
+  vehicleReducer
 });
 
 const configureStore = () => {

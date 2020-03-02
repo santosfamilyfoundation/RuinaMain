@@ -4,6 +4,7 @@ import { TextInput, Text, StyleSheet, ScrollView } from 'react-native';
 import { Button, Layout, TopNavigation, Card } from '@ui-kitten/components';
 import { connect } from 'react-redux';
 import { changeVehicle, changeDrivers, changeNonmotorists, changePassengers, changeFatality, changeConstruction, changeIntersection, changeSchoolbus, changeHazardous } from '../actions/QuickQuizActions';
+import { addVehicle } from '../actions/VehicleAction';
 
 class QuickQuiz extends Component {
   state = {
@@ -18,7 +19,9 @@ class QuickQuiz extends Component {
       changeConstruction, 
       changeIntersection, 
       changeSchoolbus, 
-      changeHazardous} = this.props;
+      changeHazardous,
+      addVehicle
+    } = this.props;
 
       const quiz = this.props.quiz;
 
@@ -110,7 +113,7 @@ class QuickQuiz extends Component {
                     </Layout>
                 </Card>
               </SafeAreaView>
-              <Button onPress = {() => console.log(quiz)}>Continue</Button>
+              <Button onPress = {() => addVehicle()}>Continue</Button>
 
             </ScrollView>
           );
@@ -155,7 +158,8 @@ const mapDispatchToProps = {
   changeConstruction, 
   changeIntersection, 
   changeSchoolbus, 
-  changeHazardous
+  changeHazardous,
+  addVehicle
 }
 
 const mapStateToProps = (state) => {
