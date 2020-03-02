@@ -5,10 +5,24 @@ export const changeVehicle = numVehicle => {
     }
   }
 
-export const changePersons = numPerson => {
+export const changeDrivers = numDriver => {
   return {
-    type: 'PERSON',
-    numPerson
+    type: 'DRIVER',
+    numDriver
+  }
+};
+
+export const changeNonmotorists = numNonmotorist => {
+  return {
+    type: 'NONMOTORIST',
+    numNonmotorist
+  }
+};
+
+export const changePassengers = numPassenger => {
+  return {
+    type: 'PASSENGER',
+    numPassenger
   }
 };
 

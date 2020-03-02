@@ -1,6 +1,8 @@
 const initialState = {
     numVehicle: 0,
-    numPerson: 0,
+    numDriver: 0,
+    numNonmotorist:0,
+    numPassenger:0,
     fatality: false,
     construction: false,
     intersection: false,
@@ -15,10 +17,20 @@ switch (action.type) {
             ...state,
             numVehicle: action.numVehicle
         }
-    case 'PERSON':
+    case 'DRIVER':
         return {
             ...state,
-            numPerson: action.numPerson
+            numDriver: action.numDriver
+        }
+    case 'NONMOTORIST':
+        return {
+            ...state,
+            numNonmotorist: action.numNonmotorist
+        }
+    case 'PASSENGER':
+        return {
+            ...state,
+            numPassenger: action.numPassenger
         }
     case 'FATALITY':
         return {

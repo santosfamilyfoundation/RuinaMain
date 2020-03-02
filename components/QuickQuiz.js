@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
-import { TextInput, Text, StyleSheet } from 'react-native';
-import { Button, Divider, Layout, TopNavigation, Card } from '@ui-kitten/components';
+import { TextInput, Text, StyleSheet, ScrollView } from 'react-native';
+import { Button, Layout, TopNavigation, Card } from '@ui-kitten/components';
 import { connect } from 'react-redux';
-import { changeVehicle, changePersons, changeFatality, changeConstruction, changeIntersection, changeSchoolbus, changeHazardous } from '../actions/QuickQuizActions';
+import { changeVehicle, changeDrivers, changeNonmotorists, changePassengers, changeFatality, changeConstruction, changeIntersection, changeSchoolbus, changeHazardous } from '../actions/QuickQuizActions';
 
 class QuickQuiz extends Component {
   state = {
@@ -11,7 +11,9 @@ class QuickQuiz extends Component {
   }
     render() {
       const {changeVehicle, 
-      changePersons, 
+      changeDrivers,
+      changeNonmotorists,
+      changePassengers, 
       changeFatality, 
       changeConstruction, 
       changeIntersection, 
@@ -21,7 +23,7 @@ class QuickQuiz extends Component {
       const quiz = this.props.quiz;
 
         return (
-            <SafeAreaView style={{ flex: 1 }}>
+            <ScrollView style={{ flex: 1 }}>
               <TopNavigation title='Quick Quiz' alignment='center' leftControl={this.props.BackAction()}/>
               <SafeAreaView style = {styles.questionContainer}>
                   <Card>
@@ -35,11 +37,31 @@ class QuickQuiz extends Component {
               </SafeAreaView>
               <SafeAreaView style = {styles.questionContainer}>
                   <Card>
-                    <Text style = {styles.questionText}>NUMBER OF PERSONS INVOVLED</Text>
+                    <Text style = {styles.questionText}>NUMBER OF DRIVERS INVOVLED</Text>
                     <TextInput 
                       style = {styles.questionInput}
-                      onChangeText = {changePersons}
-                      value = {`${quiz.numPerson}`}
+                      onChangeText = {changeDrivers}
+                      value = {`${quiz.numDriver}`}
+                    />
+                  </Card>
+              </SafeAreaView>
+              <SafeAreaView style = {styles.questionContainer}>
+                  <Card>
+                    <Text style = {styles.questionText}>NUMBER OF NON-MOTORISTS INVOVLED</Text>
+                    <TextInput 
+                      style = {styles.questionInput}
+                      onChangeText = {changeNonmotorists}
+                      value = {`${quiz.numNonmotorist}`}
+                    />
+                  </Card>
+              </SafeAreaView>
+              <SafeAreaView style = {styles.questionContainer}>
+                  <Card>
+                    <Text style = {styles.questionText}>NUMBER OF PASSENGERS INVOVLED</Text>
+                    <TextInput 
+                      style = {styles.questionInput}
+                      onChangeText = {changePassengers}
+                      value = {`${quiz.numPassenger}`}
                     />
                   </Card>
               </SafeAreaView>
@@ -90,7 +112,7 @@ class QuickQuiz extends Component {
               </SafeAreaView>
               <Button onPress = {() => console.log(quiz)}>Continue</Button>
 
-            </SafeAreaView>
+            </ScrollView>
           );
     }
 };
@@ -109,11 +131,14 @@ const styles = StyleSheet.create({
     questionInput: {
         backgroundColor: 'lightgrey',
         height: 40,
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: 'blue',
+        paddingLeft: 10
         
     },
     cardStyle: {
         flexDirection: 'row',
-        // flex: 0.6,
     },
     buttonSytle: {
         marginRight: 15,
@@ -123,7 +148,9 @@ const styles = StyleSheet.create({
 
 const mapDispatchToProps = {
   changeVehicle, 
-  changePersons, 
+  changeDrivers,
+  changeNonmotorists,
+  changePassengers, 
   changeFatality, 
   changeConstruction, 
   changeIntersection, 
