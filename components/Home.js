@@ -21,30 +21,30 @@ class Home extends Component {
 
         return(
             <SafeAreaView style={{flex:1}}>
-                <TopNavigation title='Home' alignment='center' leftControl={this.props.BackAction()}/>
+                <TopNavigation title='Home' style = {{marginBottom: 15}}alignment='center' leftControl={this.props.BackAction()}/>
                 <SafeAreaView style = {styles.questionContainer}>
                   <Card>
-                    <Text style = {styles.questionText}>number of vehicles: {vehicle.vehicles.length.toString()}</Text>
+                    <Text style = {styles.questionText}>Number of vehicles: {vehicle.vehicles.length.toString()}</Text>
                   </Card>
               </SafeAreaView>
               <SafeAreaView style = {styles.questionContainer}>
                   <Card>
-                  <Text style = {styles.questionText}>number of LVHMs: {numLvhm}</Text>
+                  <Text style = {styles.questionText}>Number of LVHMs: {numLvhm}</Text>
                   </Card>
               </SafeAreaView>
               <SafeAreaView style = {styles.questionContainer}>
                   <Card>
-                  <Text style = {styles.questionText}>number of drivers: {driver.drivers.length.toString()}</Text>
+                  <Text style = {styles.questionText}>Number of drivers: {driver.drivers.length.toString()}</Text>
                   </Card>
               </SafeAreaView>
               <SafeAreaView style = {styles.questionContainer}>
                   <Card>
-                  <Text style = {styles.questionText}>number of nonmotorist: {nonmotorist.nonmotorists.length.toString()}</Text>
+                  <Text style = {styles.questionText}>Number of nonmotorists: {nonmotorist.nonmotorists.length.toString()}</Text>
                   </Card>
               </SafeAreaView>
               <SafeAreaView style = {styles.questionContainer}>
                   <Card>
-                  <Text style = {styles.questionText}>number of passengers: {passenger.passengers.length.toString()}</Text>
+                  <Text style = {styles.questionText}>Number of passengers: {passenger.passengers.length.toString()}</Text>
                   </Card>
               </SafeAreaView>
             </SafeAreaView>
