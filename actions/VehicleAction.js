@@ -1,5 +1,13 @@
-export const addVehicle = () => {
+export const addVehicle = numVehicle => {
     return {
-        type: 'ADD'
+        type: 'ADDVEHICLE',
+        payload: numVehicle
+    }
+}
+
+export const addLvhm = numLvhm => {
+    return {
+        type: 'ADDLVHM',
+        payload: numLvhm
     }
 }

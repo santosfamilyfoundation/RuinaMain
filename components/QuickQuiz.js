@@ -3,27 +3,54 @@ import { SafeAreaView } from 'react-navigation';
 import { TextInput, Text, StyleSheet, ScrollView } from 'react-native';
 import { Button, Layout, TopNavigation, Card } from '@ui-kitten/components';
 import { connect } from 'react-redux';
-import { changeVehicle, changeDrivers, changeNonmotorists, changePassengers, changeFatality, changeConstruction, changeIntersection, changeSchoolbus, changeHazardous } from '../actions/QuickQuizActions';
-import { addVehicle } from '../actions/VehicleAction';
+import { changeVehicle, changeDrivers, changeNonmotorists, changePassengers, changeFatality, changeConstruction, changeIntersection, changeSchoolbus, changeLvhm, changeRespond } from '../actions/QuickQuizActions';
+import { addVehicle, addLvhm } from '../actions/VehicleAction';
+import { addNonmotorist } from '../actions/NonmotoristAction';
+import { addDriver } from '../actions/DriverAction';
+import { addPassenger } from '../actions/PassengerAction';
 
 class QuickQuiz extends Component {
   state = {
     content: ''
   }
     render() {
-      const {changeVehicle, 
-      changeDrivers,
-      changeNonmotorists,
-      changePassengers, 
-      changeFatality, 
-      changeConstruction, 
-      changeIntersection, 
-      changeSchoolbus, 
-      changeHazardous,
-      addVehicle
-    } = this.props;
+      const {navigation,
+        changeRespond,
+        changeVehicle, 
+        changeDrivers,
+        changeNonmotorists,
+        changePassengers, 
+        changeFatality, 
+        changeConstruction, 
+        changeIntersection, 
+        changeSchoolbus, 
+        changeLvhm,
+        addVehicle,
+        addLvhm,
+        addNonmotorist,
+        addDriver,
+        addPassenger
+      } = this.props;
 
       const quiz = this.props.quiz;
+
+      const dispatchAll = () => {
+        addVehicle(quiz.numVehicle - quiz.numLvhm);
+        addLvhm(quiz.numLvhm);
+        addNonmotorist(quiz.numNonmotorist);
+        addDriver(quiz.numDriver);
+        addPassenger(quiz.numPassenger)
+      }
+
+      const moveHome = () => {
+        if (quiz.hasResponded){
+          navigation.navigate('Home');
+          return
+        }
+        changeRespond();
+        dispatchAll();
+        navigation.navigate('Home');
+      }
 
         return (
             <ScrollView style={{ flex: 1 }}>
@@ -45,6 +72,16 @@ class QuickQuiz extends Component {
                       style = {styles.questionInput}
                       onChangeText = {changeDrivers}
                       value = {`${quiz.numDriver}`}
+                    />
+                  </Card>
+              </SafeAreaView>
+              <SafeAreaView style = {styles.questionContainer}>
+                  <Card>
+                    <Text style = {styles.questionText}>NUMBER OF LVHMs INVOVLED</Text>
+                    <TextInput 
+                      style = {styles.questionInput}
+                      onChangeText = {changeLvhm}
+                      value = {`${quiz.numLvhm}`}
                     />
                   </Card>
               </SafeAreaView>
@@ -104,17 +141,8 @@ class QuickQuiz extends Component {
                     </Layout>
                 </Card>
               </SafeAreaView>
-              <SafeAreaView style = {styles.questionContainer}>
-                <Card style = {styles.cardStyle}>
-                    <Text style = {styles.questionText}>IS THERE HAZARDOUS WASTE?</Text>
-                    <Layout style={{flexDirection: 'row'}}>
-                        <Button style = {styles.buttonSytle} onPress = {() => changeHazardous(true)}>Yes</Button>
-                        <Button style = {styles.buttonSytle} onPress = {() => changeHazardous(false)}>No</Button>
-                    </Layout>
-                </Card>
-              </SafeAreaView>
-              <Button onPress = {() => addVehicle()}>Continue</Button>
-
+              <Button onPress = {() => moveHome()}>Continue</Button>
+              
             </ScrollView>
           );
     }
@@ -150,16 +178,21 @@ const styles = StyleSheet.create({
 })
 
 const mapDispatchToProps = {
+  changeRespond,
   changeVehicle, 
   changeDrivers,
+  changeLvhm,
   changeNonmotorists,
   changePassengers, 
   changeFatality, 
   changeConstruction, 
   changeIntersection, 
   changeSchoolbus, 
-  changeHazardous,
-  addVehicle
+  addVehicle,
+  addLvhm,
+  addNonmotorist,
+  addDriver,
+  addPassenger
 }
 
 const mapStateToProps = (state) => {

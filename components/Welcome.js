@@ -110,7 +110,7 @@ class Welcome extends Component {
               <Divider/>
               <Layout style={styles.centeredContainer}>
                 <Button style={styles.styledButton} onPress={() => navigateTo('Quiz')}>Quizk Quiz</Button>
-                <Button style={styles.styledButton} onPress={() => navigateTo('Home')}>Note Pad</Button>
+                <Button style={styles.styledButton} onPress={() => navigateTo('Note')}>Note Pad</Button>
                 <Button style={styles.styledButton} onPress={() => navigateTo('Test')}>Test</Button>
                 <Button style={styles.styledButton} onPress={() => navigateTo('Weather')}>Weather</Button>
                 <Button style={styles.styledButton} onPress={() => navigateTo('Map')}>Map</Button>

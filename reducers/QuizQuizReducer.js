@@ -3,11 +3,12 @@ const initialState = {
     numDriver: 0,
     numNonmotorist:0,
     numPassenger:0,
+    numLvhm: 0,
     fatality: false,
     construction: false,
     intersection: false,
     schoolbus: false,
-    hazardous: false
+    hasResponded: false
   }
   
 export default function quickquizReducer (state = initialState, action) {
@@ -16,6 +17,11 @@ switch (action.type) {
         return {
             ...state,
             numVehicle: action.numVehicle
+        }
+    case 'LVHM':
+        return {
+            ...state,
+            numLvhm: action.numLvhm
         }
     case 'DRIVER':
         return {
@@ -52,10 +58,10 @@ switch (action.type) {
             ...state,
             schoolbus: action.schoolbus
         }
-    case 'HAZARDOUS':
+    case 'RESPOND':
         return {
             ...state,
-            hazardous: action.hazardous
+            hasResponded: true
         }
     default:
     return state

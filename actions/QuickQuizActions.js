@@ -1,9 +1,16 @@
 export const changeVehicle = numVehicle => {
-    return {
-      type: 'VEHICLE',
-      numVehicle
-    }
+  return {
+    type: 'VEHICLE',
+    numVehicle
   }
+};
+
+export const changeLvhm = numLvhm => {
+  return {
+    type:'LVHM',
+    numLvhm
+  }
+}
 
 export const changeDrivers = numDriver => {
   return {
@@ -54,9 +61,8 @@ export const changeSchoolbus = schoolbus => {
   }
 };
 
-export const changeHazardous = hazardous => {
+export const changeRespond = () => {
   return {
-    type: 'HAZARDOUS',
-    hazardous
+    type: 'RESPOND'
   }
-};
+}
