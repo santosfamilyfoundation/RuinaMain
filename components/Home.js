@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextInput, Text, StyleSheet } from 'react-native';
+import { TextInput, Text, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { Button, TopNavigation, Card } from '@ui-kitten/components';
@@ -22,31 +22,54 @@ class Home extends Component {
         return(
             <SafeAreaView style={{flex:1}}>
                 <TopNavigation title='Home' style = {{marginBottom: 15}}alignment='center' leftControl={this.props.BackAction()}/>
-                <SafeAreaView style = {styles.questionContainer}>
-                  <Card>
-                    <Text style = {styles.questionText}>Number of vehicles: {vehicle.vehicles.length.toString()}</Text>
-                  </Card>
-              </SafeAreaView>
-              <SafeAreaView style = {styles.questionContainer}>
-                  <Card>
-                  <Text style = {styles.questionText}>Number of LVHMs: {numLvhm}</Text>
-                  </Card>
-              </SafeAreaView>
-              <SafeAreaView style = {styles.questionContainer}>
-                  <Card>
-                  <Text style = {styles.questionText}>Number of drivers: {driver.drivers.length.toString()}</Text>
-                  </Card>
-              </SafeAreaView>
-              <SafeAreaView style = {styles.questionContainer}>
-                  <Card>
-                  <Text style = {styles.questionText}>Number of nonmotorists: {nonmotorist.nonmotorists.length.toString()}</Text>
-                  </Card>
-              </SafeAreaView>
-              <SafeAreaView style = {styles.questionContainer}>
-                  <Card>
-                  <Text style = {styles.questionText}>Number of passengers: {passenger.passengers.length.toString()}</Text>
-                  </Card>
-              </SafeAreaView>
+                <Card style={{marginBottom: 15}}>
+                    <Text style = {styles.headingText}>People</Text>
+                    <View style={{flexDirection: 'row'}}>
+                        <SafeAreaView style = {styles.questionContainer}>
+                            <Card>
+                                <Text style = {styles.questionText}># of drivers: {driver.drivers.length.toString()}</Text>
+                            </Card>
+                        </SafeAreaView>
+                        <SafeAreaView style = {styles.questionContainer}>
+                            <Card>
+                                <Text style = {styles.questionText}># of nonmotorists: {nonmotorist.nonmotorists.length.toString()}</Text>
+                            </Card>
+                        </SafeAreaView>
+                        <SafeAreaView style = {styles.questionContainer}>
+                            <Card>
+                                <Text style = {styles.questionText}># of passengers: {passenger.passengers.length.toString()}</Text>
+                            </Card>
+                        </SafeAreaView>
+                    </View>
+                </Card>
+                <Card style={{marginBottom: 15}}>
+                    <Text style = {styles.headingText}>Vehicles</Text>
+                    <View style={{flexDirection: 'row'}}>
+                        <SafeAreaView style = {styles.questionContainer}>
+                            <Card>
+                                <Text style = {styles.questionText}># of vehicles: {vehicle.vehicles.length.toString()}</Text>
+                            </Card>
+                        </SafeAreaView>
+                        <SafeAreaView style = {styles.questionContainer}>
+                            <Card>
+                                <Text style = {styles.questionText}># of LVHMs: {numLvhm}</Text>
+                            </Card>
+                        </SafeAreaView>
+                    </View>
+                </Card>
+                <Card>
+                    <Text style = {styles.headingText}>Road</Text>
+                    <View style={{flexDirection: 'row'}}>
+                        <SafeAreaView style = {styles.questionContainer}>
+                            <Card>
+                                <Text style = {styles.questionText}>Road 1 </Text>
+                            </Card>
+                        </SafeAreaView>
+                    </View>
+                </Card>
+
+                
+              
             </SafeAreaView>
         )
 
@@ -66,12 +89,11 @@ const mapStateToProps = (state) => {
 
 const styles = StyleSheet.create({
     questionText: {
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: 'bold',
-        marginBottom: 10
+        marginBottom: 10,
     },
     questionContainer: {
-        marginLeft: 15,
         marginRight: 15,
         marginBottom: 15
     },
@@ -83,6 +105,12 @@ const styles = StyleSheet.create({
         color: 'blue',
         paddingLeft: 10
         
+    },
+    headingText: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        marginBottom: 15,
+        alignSelf: 'center'
     },
     cardStyle: {
         flexDirection: 'row',
