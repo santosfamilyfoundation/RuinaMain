@@ -13,7 +13,6 @@ class Home extends Component {
             vehicle,
             passenger,
             } = this.props
-            console.log(this.props)
         
         const numLvhm = vehicle.vehicles.filter(
             vehicle => vehicle.type == 'hazardous'
