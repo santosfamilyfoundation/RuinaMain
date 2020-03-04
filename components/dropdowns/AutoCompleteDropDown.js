@@ -48,7 +48,6 @@ const AutoCompleteDropDown = (props) => {
     }
 
     const searchItems = (query) => {
-        console.log("QUERY: ", query);
         setValue(query);
         setTitle(query);
         res = data.answerOptions.filter(item => item.title.toLowerCase().includes(query.toLowerCase()))
@@ -63,7 +62,7 @@ const AutoCompleteDropDown = (props) => {
     }
 
     const Header = () => (
-        <CardHeader title={data.id + ': ' + data.question}/>
+        <CardHeader title={data.question}/>
     );
     
     const renderClear = (style) => (

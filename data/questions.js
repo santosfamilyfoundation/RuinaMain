@@ -20,7 +20,8 @@ export const questions = {
                             idCode:"02",
                             text:"Private Property"
                         }
-                    ]
+                    ],
+                    reducer: "genericReducer"
                 },
                 {
                     id:"C1-S2",
@@ -41,7 +42,8 @@ export const questions = {
                             idCode:"03",
                             text:"Non-Trafficway"
                         }
-                    ]
+                    ],
+                    reducer: "genericReducer"
                 },
                 {
                     id:"C1-S3",
@@ -58,7 +60,8 @@ export const questions = {
                             idCode:"02",
                             text:"Yes"
                         }
-                    ]
+                    ],
+                    reducer: "genericReducer"
                 }
             ],
             answerType: null,
@@ -70,7 +73,19 @@ export const questions = {
             helperText:"Political Jurisdiction",
             subquestions: null,
             answerType:"openTextbox",
-            answerOptions: null
+            answerOptions: null,
+            maxLength: 5,
+            reducer: "genericReducer"
+        },
+        {
+            id:"H5",
+            question:"Crash Description",
+            helperText: null,
+            subquestions: null,
+            answerType:"largeTextField",
+            answerOptions: null,
+            maxLength: 500,
+            reducer: "genericReducer"
         },
         {
             id:"C15",
@@ -82,7 +97,7 @@ export const questions = {
                     question:"Within Interchange Area?",
                     helperText:"",
                     subquestions:null,
-                    answerType:"yes-no-unknown",
+                    answerType:"multiButton",
                     answerOptions:[
                         {
                             idCode:"01",
@@ -96,7 +111,8 @@ export const questions = {
                             idCode:"99",
                             text:"Unknown"
                         }
-                    ]
+                    ],
+                    reducer: "genericReducer"
                 }
             ],
             answerType: null,
@@ -150,7 +166,8 @@ export const questions = {
                             idCode:"99",
                             text:"Unknown"
                         },
-                    ]
+                    ],
+                    reducer: "genericReducer"
                 },
                 {
                     id:"P11-S2",
@@ -168,6 +185,7 @@ export const questions = {
                             title:"5678, Portland OR"
                         }
                     ],
+                    reducer: "genericReducer"
                 }
             ]
         },
@@ -215,7 +233,8 @@ export const questions = {
                     idCode:"99",
                     text:"Unknown"
                 },
-            ]
+            ],
+            reducer: "genericReducer"
         },
     ]
 }

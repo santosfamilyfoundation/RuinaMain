@@ -20,12 +20,12 @@ const DropDownMultiSelect = (props) => {
 
     let currId = data.id;
 
+    // Populate if value already exists in redux
     if(selectedOptions.length == 0) {
         if(genericReducer[currId] != null) {
             currOptions = []
             for (i = 0; i < data.answerOptions.length; i++) {                
                 if(genericReducer[currId].includes(data.answerOptions[i].idCode)) {
-                    console.log("HERE")
                     currOptions.push(data.answerOptions[i]);
                 };
             };
@@ -64,15 +64,19 @@ const DropDownMultiSelect = (props) => {
         };
     }
 
+    // Determine submission status
     let status;
     if(!genericReducer[currId]) {
         setIncomplete();
     } else {
         let incompleteFlag = false;
         for(i = 0; i < selectedOptions.length; i++) {
-            if(!genericReducer[currId].includes(selectedOptions[i])){
+            if(!genericReducer[currId].includes(selectedOptions[i].idCode)){
                 incompleteFlag = true;
             }
+        }
+        if (selectedOptions.length < genericReducer[currId].length) {
+            incompleteFlag = true;
         }
         if(incompleteFlag) {
             setIncomplete();
@@ -104,7 +108,7 @@ const DropDownMultiSelect = (props) => {
     }
 
     const Header = () => (
-        <CardHeader title={data.id + ': ' + data.question}/>
+        <CardHeader title={data.question}/>
       );
 
     const HelperText = () => {
@@ -117,7 +121,6 @@ const DropDownMultiSelect = (props) => {
     const CheckIcon = (style) => (
         <Icon {...style} name='checkmark-outline' />
     )
-
 
     return (
         <Layout key={key} style={styles.container}>
