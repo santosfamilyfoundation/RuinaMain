@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextInput, Text, StyleSheet, View } from 'react-native';
+import { TextInput, Text, StyleSheet, View, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { Button, TopNavigation, Card } from '@ui-kitten/components';
@@ -13,57 +13,57 @@ class Home extends Component {
             vehicle,
             passenger,
             } = this.props
-        
-        const numLvhm = vehicle.vehicles.filter(
-            vehicle => vehicle.type == 'hazardous'
-        ).length
 
+        const vehiclesListArr = vehicle.vehicles.map(vehicle => (
+            <Card key={vehicle.id} style={{marginRight: 15}}>
+                {vehicle.hazardous ? 
+                    <Text>hazardous</Text> : <Text>normal</Text>
+                }
+            </Card>
+        ))
+
+        const driverListArr = driver.drivers.map(driver => (
+            <Card key={driver.id} style={{marginRight: 15}}>
+                <Text>driver</Text>
+            </Card>
+        ))
+
+        const nonmotoristListArr = nonmotorist.nonmotorists.map(nonmotorist => (
+            <Card key={nonmotorist.id} style={{marginRight: 15}}>
+                <Text>nonmotorist</Text>
+            </Card>
+        ))
+
+        const passengerListArr = passenger.passengers.map(passenger => (
+            <Card key={passenger.id} style={{marginRight: 15}}>
+                <Text>passenger</Text>
+            </Card>
+        ))
+
+        const peopleListArr = [...driverListArr, ...nonmotoristListArr, ...passengerListArr];
         return(
             <SafeAreaView style={{flex:1}}>
                 <TopNavigation title='Home' style = {{marginBottom: 15}}alignment='center' leftControl={this.props.BackAction()}/>
                 <Card style={{marginBottom: 15}}>
-                    <Text style = {styles.headingText}>People</Text>
-                    <View style={{flexDirection: 'row'}}>
-                        <SafeAreaView style = {styles.questionContainer}>
-                            <Card>
-                                <Text style = {styles.questionText}># of drivers: {driver.drivers.length.toString()}</Text>
-                            </Card>
-                        </SafeAreaView>
-                        <SafeAreaView style = {styles.questionContainer}>
-                            <Card>
-                                <Text style = {styles.questionText}># of nonmotorists: {nonmotorist.nonmotorists.length.toString()}</Text>
-                            </Card>
-                        </SafeAreaView>
-                        <SafeAreaView style = {styles.questionContainer}>
-                            <Card>
-                                <Text style = {styles.questionText}># of passengers: {passenger.passengers.length.toString()}</Text>
-                            </Card>
-                        </SafeAreaView>
-                    </View>
+                    <Text style = {styles.headingText}>Vehicles</Text>
+                    <ScrollView horizontal={true} style = {styles.questionContainer}>
+                        {vehiclesListArr}
+                    </ScrollView>
                 </Card>
                 <Card style={{marginBottom: 15}}>
-                    <Text style = {styles.headingText}>Vehicles</Text>
-                    <View style={{flexDirection: 'row'}}>
-                        <SafeAreaView style = {styles.questionContainer}>
-                            <Card>
-                                <Text style = {styles.questionText}># of vehicles: {vehicle.vehicles.length.toString()}</Text>
-                            </Card>
-                        </SafeAreaView>
-                        <SafeAreaView style = {styles.questionContainer}>
-                            <Card>
-                                <Text style = {styles.questionText}># of LVHMs: {numLvhm}</Text>
-                            </Card>
-                        </SafeAreaView>
-                    </View>
+                    <Text style = {styles.headingText}>People</Text>
+                    <ScrollView horizontal={true} style = {styles.questionContainer}>
+                        {peopleListArr}
+                    </ScrollView>
                 </Card>
                 <Card>
                     <Text style = {styles.headingText}>Road</Text>
                     <View style={{flexDirection: 'row'}}>
-                        <SafeAreaView style = {styles.questionContainer}>
+                        <ScrollView horizontal={true} style = {styles.questionContainer}>
                             <Card>
                                 <Text style = {styles.questionText}>Road 1 </Text>
                             </Card>
-                        </SafeAreaView>
+                        </ScrollView>
                     </View>
                 </Card>
 
@@ -94,7 +94,8 @@ const styles = StyleSheet.create({
     },
     questionContainer: {
         marginRight: 15,
-        marginBottom: 15
+        marginBottom: 15,
+        flexDirection: 'row'
     },
     questionInput: {
         backgroundColor: 'lightgrey',

@@ -40,6 +40,8 @@ target 'Ruina' do
 
   pod 'AnylineReact', path: '../node_modules/anyline-ocr-react-native-module/ios'
 
+  pod 'react-native-uuid-generator', :path => '../node_modules/react-native-uuid-generator'
+
   target 'RuinaTests' do
     inherit! :search_paths
     # Pods for testing

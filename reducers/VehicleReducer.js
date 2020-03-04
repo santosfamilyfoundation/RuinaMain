@@ -1,5 +1,8 @@
+var uuid = require('react-native-uuid');
+
 const initialState = {
-    vehicles: []
+    vehicles: [],
+
 }
 
 export default function vehicleReducer (state=initialState, action) {
@@ -9,7 +12,8 @@ export default function vehicleReducer (state=initialState, action) {
 
             let vehicleArr = []
             for (let i = 0; i < numVehicle; i++){
-                vehicleArr.push({type: 'normal'})
+                let id = uuid.v1();
+                vehicleArr.push({hazardous: null, id})
             }
             return {
                 ...state,
@@ -20,7 +24,8 @@ export default function vehicleReducer (state=initialState, action) {
 
             let lvhmArr = []
             for (let i = 0; i < numLvhm; i++){
-                lvhmArr.push({type: 'hazardous'})
+                let id = uuid.v1();
+                lvhmArr.push({hazardous: true, id})
             }
             return {
                 ...state,
