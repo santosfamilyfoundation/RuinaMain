@@ -12,6 +12,11 @@ import { VehicleInfoScreen } from './screens/vehicleinfoScreen';
 import { ScanScreen } from './screens/scanScreen';
 import { QuickQuizScreen } from './screens/quickquizScreen';
 import { HomeScreen } from './screens/homeScreen';
+import { DriverScreen } from './screens/questions/driverScreen';
+import { NonMotoristScreen } from './screens/questions/nonMotoristScreen';
+import { PassengerScreen } from './screens/questions/passengerScreen';
+import { VehicleScreen } from './screens/questions/vehicleScreen';
+import { RoadScreen } from './screens/questions/roadScreen';
 
 const HomeNavigator = createStackNavigator({
   Welcome: WelcomeScreen,
@@ -25,7 +30,12 @@ const HomeNavigator = createStackNavigator({
   Vehicle: VehicleInfoScreen,
   Scan: ScanScreen,
   Quiz: QuickQuizScreen,
-  Home: HomeScreen
+  Home: HomeScreen,
+  Driver: DriverScreen,
+  NonMotorist: NonMotoristScreen,
+  Passenger: PassengerScreen,
+  Vehicle: VehicleScreen,
+  Road: RoadScreen,
 }, {
   headerMode: 'none',
 });

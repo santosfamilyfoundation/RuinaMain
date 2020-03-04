@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView } from 'react-navigation';
+import { Icon, TopNavigationAction } from '@ui-kitten/components';
 import DiagramView from '../components/DiagramView'
 
 export const DiagramViewScreen = ({ navigation }) => {
