@@ -67,21 +67,21 @@ class QuickQuiz extends Component {
               </SafeAreaView>
               <SafeAreaView style = {styles.questionContainer}>
                   <Card>
-                    <Text style = {styles.questionText}>NUMBER OF DRIVERS INVOVLED</Text>
-                    <TextInput 
-                      style = {styles.questionInput}
-                      onChangeText = {changeDrivers}
-                      value = {`${quiz.numDriver}`}
-                    />
-                  </Card>
-              </SafeAreaView>
-              <SafeAreaView style = {styles.questionContainer}>
-                  <Card>
                     <Text style = {styles.questionText}>NUMBER OF LVHMs INVOVLED</Text>
                     <TextInput 
                       style = {styles.questionInput}
                       onChangeText = {changeLvhm}
                       value = {`${quiz.numLvhm}`}
+                    />
+                  </Card>
+              </SafeAreaView>
+              <SafeAreaView style = {styles.questionContainer}>
+                  <Card>
+                    <Text style = {styles.questionText}>NUMBER OF DRIVERS INVOVLED</Text>
+                    <TextInput 
+                      style = {styles.questionInput}
+                      onChangeText = {changeDrivers}
+                      value = {`${quiz.numDriver}`}
                     />
                   </Card>
               </SafeAreaView>
