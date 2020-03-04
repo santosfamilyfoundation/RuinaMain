@@ -27,7 +27,7 @@ const BasicDropDown = (props) => {
 
 const styles = StyleSheet.create({
   main:{
-    width: 250,
+    flex: 0.3,
     padding: 10,
   },
 });

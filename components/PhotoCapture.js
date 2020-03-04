@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
-import { TextInput, Text, Dimensions, StyleSheet, View, TouchableOpacity } from 'react-native';
+import { TextInput, Text, Dimensions, StyleSheet, View, TouchableOpacity, AsyncStorage } from 'react-native';
 import { Button, Divider, Layout, TopNavigation, Select} from '@ui-kitten/components';
+import firebase from 'react-native-firebase';
+import uuid from 'uuid/v4';
 import { connect } from 'react-redux';
-import { genericWriteAction } from '../actions/GenericAction';
+import { photoAction } from '../actions/PhotoAction';
 import { RNCamera } from 'react-native-camera';
 import BasicDropDown from './BasicDropDown';
 import * as Constants from '../constants';
@@ -11,6 +13,7 @@ import * as Constants from '../constants';
 const { width, height } = Dimensions.get('window');
 const SCREEN_WIDTH = width;
 const SCREEN_HEIGHT = height;
+const { app } = firebase.storage();
 
 const typeData = [
   { text: Constants.VIN },
@@ -26,19 +29,64 @@ const objectData = [
 
 class PhotoCapture extends Component {
   state = {
-    content: '',
-    photosRef: [],
+    images: [],
     selectedOption: '',
+    imgSource: '',
+    imgUri: '',
+    uploading: false,
+    progress:0,
   }
 
   takePicture() {
       this.camera.takePictureAsync({ skipProcessing: true }).then((data) => {
-          this.setState({
-          }, console.log(data))
+        this.setState({
+          imgUri: data["uri"],
+        });
       })
   }
 
+  uploadImage = () => {
+    console.log(this.state);
+    const ext = this.state.imgUri.split('.').pop(); // Extract image extension
+    const filename = `${uuid()}.${ext}`; // Generate unique name
+    this.setState({ uploading: true });
+    firebase
+      .storage()
+      .ref(`CrashImages/${filename}`)
+      .putFile(this.state.imgUri)
+      .on(
+        firebase.storage.TaskEvent.STATE_CHANGED,
+        snapshot => {
+          let state = {};
+          state = {
+            ...state,
+            progress: (snapshot.bytesTransferred / snapshot.totalBytes) * 100 // Calculate progress percentage
+          };
+          if (snapshot.state === firebase.storage.TaskState.SUCCESS) {
+            const allImages = this.state.images;
+            allImages.push(snapshot.downloadURL);
+            state = {
+              ...state,
+              uploading: false,
+              imgSource: '',
+              imgUri: '',
+              progress: 0,
+              images: allImages,
+            };
+            AsyncStorage.setItem('images', JSON.stringify(allImages));
+          }
+          this.setState(state);
+        },
+        error => {
+          unsubscribe();
+          alert('Unable to upload');
+        }
+      );
+  };
+
+
     render() {
+        const photoAction = this.props.photoAction;
 
         const navigateResult = () => {
           this.props.navigation.navigate('Result');
@@ -67,6 +115,12 @@ class PhotoCapture extends Component {
                   <Text style={styles.capture} onPress={this.takePicture.bind(this)}>
                     Capture
                   </Text>
+                  <Text style={styles.capture} onPress={this.uploadImage.bind(this)}>
+                    Save
+                  </Text>
+                  <Text style={styles.capture} onPress={photoAction}>
+                    DOuble save
+                  </Text>
                   <BasicDropDown data={objectData} defaultOption={this.props.objectID} isDisabled={isObjDisabled}/>
                 </Layout>
               </Layout>
@@ -84,13 +138,12 @@ const styles = StyleSheet.create({
     width: SCREEN_WIDTH,
   },
   capture:{
-    flex: 0,
+    flex: 0.3,
     backgroundColor: '#D3D3D3',
     borderRadius: 5,
     color: 'black',
     padding: 10,
     textAlign: 'center',
-    width: 100,
     height: 50,
   },
   bottomBar:{
@@ -98,17 +151,18 @@ const styles = StyleSheet.create({
     width: SCREEN_WIDTH,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    padding: 70,
+    flex: 0.2,
+    alignItems: 'center',
   }
 });
 
 const mapDispatchToProps = {
-  genericWriteAction
+  photoAction
 }
 
 const mapStateToProps = (state) => {
-  const { story } = state
-  return { story }
+  const { photoVals } = state.photosReducer
+  return { photoVals }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhotoCapture);
