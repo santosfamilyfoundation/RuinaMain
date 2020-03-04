@@ -1,52 +1,123 @@
 import React, { Component } from 'react';
+import { TextInput, Text, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
-import { TextInput, Text } from 'react-native';
-import { Button, Divider, Layout, TopNavigation } from '@ui-kitten/components';
 import { connect } from 'react-redux';
-import { genericWriteAction } from '../actions/GenericAction';
+import { Button, TopNavigation, Card } from '@ui-kitten/components';
 
 class Home extends Component {
-  state = {
-    content: ''
-  }
-    render() {
 
-        const navigateResult = () => {
-          this.props.navigation.navigate('Result');
-        };
+    render(){
+        const {
+            driver,
+            nonmotorist,
+            vehicle,
+            passenger,
+            } = this.props
+        
+        const numLvhm = vehicle.vehicles.filter(
+            vehicle => vehicle.type == 'hazardous'
+        ).length
 
-        return (
-            <SafeAreaView style={{ flex: 1 }}>
-              <TopNavigation title='Note Pad' alignment='center' leftControl={this.props.BackAction()}/>
-              <Divider/>
-              <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <TextInput
-                        style={{ borderColor: 'gray', borderWidth: 1, width: 500, height: 300, marginBottom: 20}}
-                        multiline={true}
-                        numberOfLines={8}
-                        onChangeText={text => this.setState({content: text})}
-                        value={this.state.content}/>
-                {/* <Button onPress={() =>this.props.writeStory(this.state.content)}>SAVE</Button> */}
-                <Button onPress={() =>this.props.genericWriteAction({actionType:'SET_NEW', field:'tester', content:this.state.content})}>TRY ME!</Button>
-              </Layout>
-              <Button onPress={navigateResult}>Go to Result Screen</Button>
+        return(
+            <SafeAreaView style={{flex:1}}>
+                <TopNavigation title='Home' style = {{marginBottom: 15}}alignment='center' leftControl={this.props.BackAction()}/>
+                <Card style={{marginBottom: 15}}>
+                    <Text style = {styles.headingText}>People</Text>
+                    <View style={{flexDirection: 'row'}}>
+                        <SafeAreaView style = {styles.questionContainer}>
+                            <Card>
+                                <Text style = {styles.questionText}># of drivers: {driver.drivers.length.toString()}</Text>
+                            </Card>
+                        </SafeAreaView>
+                        <SafeAreaView style = {styles.questionContainer}>
+                            <Card>
+                                <Text style = {styles.questionText}># of nonmotorists: {nonmotorist.nonmotorists.length.toString()}</Text>
+                            </Card>
+                        </SafeAreaView>
+                        <SafeAreaView style = {styles.questionContainer}>
+                            <Card>
+                                <Text style = {styles.questionText}># of passengers: {passenger.passengers.length.toString()}</Text>
+                            </Card>
+                        </SafeAreaView>
+                    </View>
+                </Card>
+                <Card style={{marginBottom: 15}}>
+                    <Text style = {styles.headingText}>Vehicles</Text>
+                    <View style={{flexDirection: 'row'}}>
+                        <SafeAreaView style = {styles.questionContainer}>
+                            <Card>
+                                <Text style = {styles.questionText}># of vehicles: {vehicle.vehicles.length.toString()}</Text>
+                            </Card>
+                        </SafeAreaView>
+                        <SafeAreaView style = {styles.questionContainer}>
+                            <Card>
+                                <Text style = {styles.questionText}># of LVHMs: {numLvhm}</Text>
+                            </Card>
+                        </SafeAreaView>
+                    </View>
+                </Card>
+                <Card>
+                    <Text style = {styles.headingText}>Road</Text>
+                    <View style={{flexDirection: 'row'}}>
+                        <SafeAreaView style = {styles.questionContainer}>
+                            <Card>
+                                <Text style = {styles.questionText}>Road 1 </Text>
+                            </Card>
+                        </SafeAreaView>
+                    </View>
+                </Card>
+
+                
+              
             </SafeAreaView>
-          );
+        )
+
     }
-};
 
-// const mapDispatchToProps = dispatch => ({
-//   writeStory: (story) => dispatch({ type: 'WRITE', payload: story }),
-//   genericWriteAction
-// });
-
-const mapDispatchToProps = {
-  genericWriteAction
 }
 
 const mapStateToProps = (state) => {
-  const { story } = state
-  return { story }
-};
+    return {
+        driver: state.driverReducer,
+        nonmotorist: state.nonmotoristReducer,
+        vehicle: state.vehicleReducer,
+        passenger: state.passengerReducer,
+        quiz: state.quickquizReducer
+    }
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+const styles = StyleSheet.create({
+    questionText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginBottom: 10,
+    },
+    questionContainer: {
+        marginRight: 15,
+        marginBottom: 15
+    },
+    questionInput: {
+        backgroundColor: 'lightgrey',
+        height: 40,
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: 'blue',
+        paddingLeft: 10
+        
+    },
+    headingText: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        marginBottom: 15,
+        alignSelf: 'center'
+    },
+    cardStyle: {
+        flexDirection: 'row',
+    },
+    buttonSytle: {
+        marginRight: 15,
+        width: 80
+    }
+})
+
+export default connect(mapStateToProps)(Home);

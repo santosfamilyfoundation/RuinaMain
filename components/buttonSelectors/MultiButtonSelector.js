@@ -90,8 +90,8 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state) => {
-    const { story, genericReducer } = state
-    return { story, genericReducer }
+    const { genericReducer } = state
+    return { genericReducer }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MultiButtonSelector);

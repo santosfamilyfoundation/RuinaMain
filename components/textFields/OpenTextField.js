@@ -56,12 +56,12 @@ const OpenTextField = (props) => {
     const Header = () => (
         <CardHeader title={data.question}/>
     );
-    
+
     const renderClear = (style) => (
         <Icon {...style} name='close-outline'/>
     );
 
-    
+
     if(buttonAppearance == 'outline') {
         status = 'danger'
     } else {
@@ -104,12 +104,12 @@ const OpenTextField = (props) => {
                             value={value}
                             onChangeText={onTextChange}
                         />
-                        <Button 
-                            style={styles.submitButton} 
+                        <Button
+                            style={styles.submitButton}
                             appearance={buttonAppearance}
-                            size='medium' 
-                            icon={CheckIcon} 
-                            onPress={() => submitField()}
+                            size='medium'
+                            icon={CheckIcon}
+                            onPress={() => setOption()}
                         />
                     </Layout>
                     {ErrorMsg()}
