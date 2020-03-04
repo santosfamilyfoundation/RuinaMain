@@ -1,3 +1,5 @@
+var uuid = require('react-native-uuid');
+
 const initialState = {
     nonmotorists: []
 }
@@ -10,7 +12,8 @@ export default function nonmotoristReducer (state=initialState, action) {
             let nonmotoristArr = []
             console.log(action)
             for (let i = 0; i < numNonmotorist; i++){
-                nonmotoristArr.push({})
+                let id = uuid.v1();
+                nonmotoristArr.push({id})
             }
 
             return {

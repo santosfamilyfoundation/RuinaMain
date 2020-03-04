@@ -114,23 +114,25 @@ class QuickQuiz extends Component {
                           <Button style = {styles.buttonSytle} onPress = {() => changeFatality(false)}>No</Button>
                       </Layout>
                   </Card>
-                </SafeAreaView>
-                <SafeAreaView style = {styles.questionContainer}>
-                  <Card style = {styles.cardStyle}>
-                      <Text style = {styles.questionText}>IS THE CRASH IN A CONSTRUCTION ZONE?</Text>
-                      <Layout style={{flexDirection: 'row'}}>
-                          <Button style = {styles.buttonSytle} onPress = {() => changeConstruction(true)}>Yes</Button>
-                          <Button style = {styles.buttonSytle} onPress = {() => changeConstruction(false)}>No</Button>
-                      </Layout>
+              </SafeAreaView>
+              <SafeAreaView style = {styles.questionContainer}>
+                  <Card>
+                    <Text style = {styles.questionText}>NUMBER OF LVHMs INVOVLED</Text>
+                    <TextInput 
+                      style = {styles.questionInput}
+                      onChangeText = {changeLvhm}
+                      value = {`${quiz.numLvhm}`}
+                    />
                   </Card>
-                </SafeAreaView>
-                <SafeAreaView style = {styles.questionContainer}>
-                  <Card style = {styles.cardStyle}>
-                      <Text style = {styles.questionText}>IS THE CRASH IN AN INTERSECTION?</Text>
-                      <Layout style={{flexDirection: 'row'}}>
-                          <Button style = {styles.buttonSytle} onPress = {() => changeIntersection(true)}>Yes</Button>
-                          <Button style = {styles.buttonSytle} onPress = {() => changeIntersection(false)}>No</Button>
-                      </Layout>
+              </SafeAreaView>
+              <SafeAreaView style = {styles.questionContainer}>
+                  <Card>
+                    <Text style = {styles.questionText}>NUMBER OF DRIVERS INVOVLED</Text>
+                    <TextInput 
+                      style = {styles.questionInput}
+                      onChangeText = {changeDrivers}
+                      value = {`${quiz.numDriver}`}
+                    />
                   </Card>
                 </SafeAreaView>
                 <SafeAreaView style = {styles.questionContainer}>

@@ -1,3 +1,5 @@
+var uuid = require('react-native-uuid');
+
 const initialState = {
     passengers: []
 }
@@ -10,7 +12,8 @@ export default function passengerReducer (state=initialState, action) {
             let passengerArr = []
             console.log(action)
             for (let i = 0; i < numPassenger; i++){
-                passengerArr.push({})
+                let id = uuid.v1();
+                passengerArr.push({id})
             }
 
             return {
