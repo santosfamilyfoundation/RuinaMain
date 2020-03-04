@@ -1,6 +1,8 @@
 platform :ios, '10.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
+# git ignore why are you not doing your job
+
 target 'Ruina' do
   # Pods for Ruina
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
