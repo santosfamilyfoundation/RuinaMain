@@ -3,40 +3,51 @@ import { TextInput, Text, StyleSheet, View, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { Button, TopNavigation, Card } from '@ui-kitten/components';
+import { driverQuestions } from '../data/driverQuestions';
+import { passengerQuestions } from '../data/passengerQuestions';
+import { nonmotoristQuestions } from '../data/nonmotoristQuestions';
+import { vehicleQuestions } from '../data/vehicleQuestions';
+import { lvhmQuestions } from '../data/lvhmQuestions';
 
 class Home extends Component {
 
     render(){
         const {
+            navigation,
             driver,
             nonmotorist,
             vehicle,
             passenger,
             } = this.props
 
+        const navigateQuestion = (form, id, type) => {
+            navigation.navigate('Question', {questions: form.data, objectID: id, type})
+        }
+
         const vehiclesListArr = vehicle.vehicles.map(vehicle => (
             <Card key={vehicle.id} style={{marginRight: 15}}>
                 {vehicle.hazardous ? 
-                    <Text>hazardous</Text> : <Text>normal</Text>
+                    <Button onPress = {() => navigateQuestion(vehicleQuestions, vehicle.id, 'Vehicle')}>hazardous vehicle: {vehicle.id}</Button> : 
+                    <Button onPress = {() => navigateQuestion(vehicleQuestions, vehicle.id, 'Vehicle')}>vehicle: {vehicle.id}</Button>
                 }
             </Card>
         ))
 
         const driverListArr = driver.drivers.map(driver => (
             <Card key={driver.id} style={{marginRight: 15}}>
-                <Text>driver</Text>
+                <Button onPress = {() => navigateQuestion(driverQuestions, driver.id, 'Driver')}>driver: {driver.id}</Button>
             </Card>
         ))
 
         const nonmotoristListArr = nonmotorist.nonmotorists.map(nonmotorist => (
             <Card key={nonmotorist.id} style={{marginRight: 15}}>
-                <Text>nonmotorist</Text>
+                <Button onPress = {() => navigateQuestion(nonmotoristQuestions, nonmotorist.id, 'Nonmotorist')}>nonmotorist: {nonmotorist.id}</Button>
             </Card>
         ))
 
         const passengerListArr = passenger.passengers.map(passenger => (
             <Card key={passenger.id} style={{marginRight: 15}}>
-                <Text>passenger</Text>
+                <Button onPress = {() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger')}>passenger: {passenger.id}</Button>
             </Card>
         ))
 

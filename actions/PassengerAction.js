@@ -4,3 +4,10 @@ export const addPassenger = numPassenger => {
         payload: numPassenger
     }
 }
+
+export const updatePassenger = passengerData => {
+    return {
+        type: 'UPDATEPASSENGER',
+        payload: passengerData
+    }
+}

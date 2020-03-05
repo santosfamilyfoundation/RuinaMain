@@ -1,11 +1,12 @@
 var uuid = require('react-native-uuid');
 
 const initialState = {
-    drivers: []
+    drivers: [],
 }
 
 export default function driverReducer (state=initialState, action) {
     switch (action.type) {
+
         case 'ADDDRIVER':
             const numDriver = action.payload
 
@@ -20,6 +21,17 @@ export default function driverReducer (state=initialState, action) {
                 ...state,
                 drivers: driverArr
             }
+            
+        case 'UPDATEDRIVER':
+            console.log(action.payload)
+            const { id, response } = action.payload
+            let newDriverArr = state.drivers.filter(driver => driver.id != id).concat({id, response})
+
+            return {
+                ...state,
+                drivers: newDriverArr
+            }
+        
         default:
             return state;
     }

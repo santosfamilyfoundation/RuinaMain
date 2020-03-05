@@ -4,3 +4,10 @@ export const addDriver = numDriver => {
         payload: numDriver
     }
 }
+
+export const updateDriver = driverData => {
+    return {
+        type: 'UPDATEDRIVER',
+        payload: driverData
+    }
+}

@@ -20,6 +20,14 @@ export default function passengerReducer (state=initialState, action) {
                 ...state,
                 passengers: passengerArr
             }
+        case 'UPDATEPASSENGER':
+            const { id, response } = action.payload
+            let newPassengerArr = state.passengers.filter(passenger => passenger.id != id).concat({id, response})
+
+            return {
+                ...state,
+                passengers: newPassengerArr
+            }
         default:
             return state;
     }

@@ -31,6 +31,22 @@ export default function vehicleReducer (state=initialState, action) {
                 ...state,
                 vehicles: state.vehicles.concat(lvhmArr)
             }
+        case 'UPDATEVEHICLE':
+            const { id, response } = action.payload
+            const vehicle = state.vehicles.find(vehicle => vehicle.id == id)
+            if (vehicle.hazardous){
+                let newVehicleArr = state.vehicles.filter(vehicle => vehicle.id != id).concat({id, response, hazardous: true})
+                return {
+                    ...state,
+                    vehicles: newVehicleArr
+                }
+            } else {
+                let newVehicleArr = state.vehicles.filter(vehicle => vehicle.id != id).concat({id, response, hazardous: null})
+                return {
+                    ...state,
+                    vehicles: newVehicleArr
+                }
+            }
         default:
             return state;
     }

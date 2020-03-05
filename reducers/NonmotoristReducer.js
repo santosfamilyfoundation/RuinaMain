@@ -10,7 +10,7 @@ export default function nonmotoristReducer (state=initialState, action) {
             const numNonmotorist = action.payload
 
             let nonmotoristArr = []
-            console.log(action)
+
             for (let i = 0; i < numNonmotorist; i++){
                 let id = uuid.v1();
                 nonmotoristArr.push({id})
@@ -19,6 +19,14 @@ export default function nonmotoristReducer (state=initialState, action) {
             return {
                 ...state,
                 nonmotorists: nonmotoristArr
+            }
+        case 'UPDATENONMOTORIST':
+            const { id, response } = action.payload
+            let newNonmotoristArr = state.nonmotorists.filter(nonmotorist => nonmotorist.id !=id).concat({id, response})
+            console.log(newNonmotoristArr)
+            return {
+                ...state,
+                nonmotorists: newNonmotoristArr
             }
         default:
             return state;

@@ -12,6 +12,7 @@ import { VehicleInfoScreen } from './screens/vehicleinfoScreen';
 import { ScanScreen } from './screens/scanScreen';
 import { QuickQuizScreen } from './screens/quickquizScreen';
 import { HomeScreen } from './screens/homeScreen';
+import { QuestionScreen } from './screens/questionScreen';
 
 const HomeNavigator = createStackNavigator({
   Welcome: WelcomeScreen,
@@ -25,7 +26,8 @@ const HomeNavigator = createStackNavigator({
   Vehicle: VehicleInfoScreen,
   Scan: ScanScreen,
   Quiz: QuickQuizScreen,
-  Home: HomeScreen
+  Home: HomeScreen,
+  Question: QuestionScreen
 }, {
   headerMode: 'none',
 });
