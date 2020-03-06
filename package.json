@@ -18,7 +18,6 @@
     "@ui-kitten/eva-icons": "4.4.0-beta.3",
     "anyline-ocr-react-native-module": "^19.0.0",
     "react": "^16.13.0",
-    "react-devtools": "^3.6.3",
     "react-native": "0.61.5",
     "react-native-camera": "^3.18.0",
     "react-native-config": "^0.12.0",

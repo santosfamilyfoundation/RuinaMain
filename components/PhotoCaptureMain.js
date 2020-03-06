@@ -20,7 +20,7 @@ class PhotoCaptureMain extends Component {
 
         return (
             <SafeAreaView style={{ flex: 1 }}>
-                <TopNavigation title='Result' alignment='center' leftControl={this.props.BackAction()}/>
+                <TopNavigation title='Photo Capture' alignment='center' leftControl={this.props.BackAction()}/>
                 <Divider/>
                 <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                     {setValue ?

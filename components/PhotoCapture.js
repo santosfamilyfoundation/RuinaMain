@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
-import { TextInput, Text, Dimensions, StyleSheet, View, TouchableOpacity, AsyncStorage } from 'react-native';
+import { TextInput, Text, View, TouchableOpacity, AsyncStorage } from 'react-native';
 import { Button, Divider, Layout, TopNavigation, Select} from '@ui-kitten/components';
 import firebase from 'react-native-firebase';
 import uuid from 'uuid/v4';
@@ -9,10 +9,8 @@ import { photoAction } from '../actions/PhotoAction';
 import { RNCamera } from 'react-native-camera';
 import BasicDropDown from './BasicDropDown';
 import * as Constants from '../constants';
+import { styles } from './PhotoCapture.style';
 
-const { width, height } = Dimensions.get('window');
-const SCREEN_WIDTH = width;
-const SCREEN_HEIGHT = height;
 const { app } = firebase.storage();
 
 const typeData = [
@@ -31,7 +29,6 @@ class PhotoCapture extends Component {
   state = {
     images: [],
     selectedOption: '',
-    imgSource: '',
     imgUri: '',
     uploading: false,
     progress:0,
@@ -48,9 +45,9 @@ class PhotoCapture extends Component {
   uploadImage = () => {
     console.log(this.state);
     const ext = this.state.imgUri.split('.').pop(); // Extract image extension
-    const filename = `${uuid()}.${ext}`; // Generate unique name
+    const filename = `${uuid()}.${ext}`; // Making a unique name
     this.setState({ uploading: true });
-    firebase
+    firebase //Connect and store in firebase
       .storage()
       .ref(`CrashImages/${filename}`)
       .putFile(this.state.imgUri)
@@ -60,7 +57,7 @@ class PhotoCapture extends Component {
           let state = {};
           state = {
             ...state,
-            progress: (snapshot.bytesTransferred / snapshot.totalBytes) * 100 // Calculate progress percentage
+            progress: (snapshot.bytesTransferred / snapshot.totalBytes) * 100 // Update the progress bar value
           };
           if (snapshot.state === firebase.storage.TaskState.SUCCESS) {
             const allImages = this.state.images;
@@ -68,7 +65,6 @@ class PhotoCapture extends Component {
             state = {
               ...state,
               uploading: false,
-              imgSource: '',
               imgUri: '',
               progress: 0,
               images: allImages,
@@ -104,57 +100,37 @@ class PhotoCapture extends Component {
         return (
             <SafeAreaView style={{ flex: 1 }}>
               <Divider/>
-              <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+              <Layout style={styles.cameraLayout}>
                 <RNCamera
-                  style={styles.preview}
+                  style={styles.cameraPreview}
                   ref={cam => (this.camera = cam)}
                 >
                 </RNCamera>
-                <Layout style={styles.bottomBar}>
-                  <BasicDropDown data={typeData} defaultOption={this.props.type} isDisabled={false}/>
-                  <Text style={styles.capture} onPress={this.takePicture.bind(this)}>
-                    Capture
-                  </Text>
-                  <Text style={styles.capture} onPress={this.uploadImage.bind(this)}>
-                    Save
-                  </Text>
-                  <Text style={styles.capture} onPress={photoAction}>
-                    DOuble save
-                  </Text>
-                  <BasicDropDown data={objectData} defaultOption={this.props.objectID} isDisabled={isObjDisabled}/>
+                <Layout style={styles.controlBar}>
+                  <Layout style={styles.topControlBar}>
+                    <View
+                      style={[styles.progressBar, { width: `${this.state.progress}%` }]}
+                    />
+                  </Layout>
+                  <Layout style={styles.bottomControlBar}>
+                    <BasicDropDown data={typeData} defaultOption={this.props.type} isDisabled={false}/>
+                    <Text style={styles.captureButton} onPress={this.takePicture.bind(this)}>
+                      Capture
+                    </Text>
+                    <Text style={styles.captureButton} onPress={this.uploadImage.bind(this)} disabled={this.state.uploading}>
+                      Save
+                    </Text>
+                    <Text style={styles.captureButton} onPress={photoAction}>
+                      Double save
+                    </Text>
+                    <BasicDropDown data={objectData} defaultOption={this.props.objectID} isDisabled={isObjDisabled}/>
+                  </Layout>
                 </Layout>
               </Layout>
             </SafeAreaView>
           );
     }
 };
-
-const styles = StyleSheet.create({
-  preview:{
-    flex: 1,
-    justifyContent:'center',
-    alignItems: 'center',
-    height: SCREEN_HEIGHT,
-    width: SCREEN_WIDTH,
-  },
-  capture:{
-    flex: 0.3,
-    backgroundColor: '#D3D3D3',
-    borderRadius: 5,
-    color: 'black',
-    padding: 10,
-    textAlign: 'center',
-    height: 50,
-  },
-  bottomBar:{
-    backgroundColor: 'white',
-    width: SCREEN_WIDTH,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    flex: 0.2,
-    alignItems: 'center',
-  }
-});
 
 const mapDispatchToProps = {
   photoAction
