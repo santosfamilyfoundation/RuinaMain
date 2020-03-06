@@ -10,7 +10,7 @@ export default function passengerReducer (state=initialState, action) {
             const numPassenger = action.payload
 
             let passengerArr = []
-            console.log(action)
+
             for (let i = 0; i < numPassenger; i++){
                 let id = uuid.v1();
                 passengerArr.push({id})

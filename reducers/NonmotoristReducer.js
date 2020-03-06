@@ -23,7 +23,7 @@ export default function nonmotoristReducer (state=initialState, action) {
         case 'UPDATENONMOTORIST':
             const { id, response } = action.payload
             let newNonmotoristArr = state.nonmotorists.filter(nonmotorist => nonmotorist.id !=id).concat({id, response})
-            console.log(newNonmotoristArr)
+
             return {
                 ...state,
                 nonmotorists: newNonmotoristArr

@@ -11,7 +11,7 @@ export default function driverReducer (state=initialState, action) {
             const numDriver = action.payload
 
             let driverArr = []
-            console.log(action)
+
             for (let i = 0; i < numDriver; i++){
                 let id = uuid.v1();
                 driverArr.push({id})
@@ -23,7 +23,6 @@ export default function driverReducer (state=initialState, action) {
             }
             
         case 'UPDATEDRIVER':
-            console.log(action.payload)
             const { id, response } = action.payload
             let newDriverArr = state.drivers.filter(driver => driver.id != id).concat({id, response})
 

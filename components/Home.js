@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextInput, Text, StyleSheet, View, ScrollView } from 'react-native';
+import { Text, StyleSheet, View, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { Button, TopNavigation, Card } from '@ui-kitten/components';
@@ -27,7 +27,7 @@ class Home extends Component {
         const vehiclesListArr = vehicle.vehicles.map(vehicle => (
             <Card key={vehicle.id} style={{marginRight: 15}}>
                 {vehicle.hazardous ? 
-                    <Button onPress = {() => navigateQuestion(vehicleQuestions, vehicle.id, 'Vehicle')}>hazardous vehicle: {vehicle.id}</Button> : 
+                    <Button onPress = {() => navigateQuestion(lvhmQuestions, vehicle.id, 'Vehicle')}>hazardous vehicle: {vehicle.id}</Button> : 
                     <Button onPress = {() => navigateQuestion(vehicleQuestions, vehicle.id, 'Vehicle')}>vehicle: {vehicle.id}</Button>
                 }
             </Card>
@@ -52,6 +52,7 @@ class Home extends Component {
         ))
 
         const peopleListArr = [...driverListArr, ...nonmotoristListArr, ...passengerListArr];
+
         return(
             <SafeAreaView style={{flex:1}}>
                 <TopNavigation title='Home' style = {{marginBottom: 15}}alignment='center' leftControl={this.props.BackAction()}/>
@@ -77,14 +78,9 @@ class Home extends Component {
                         </ScrollView>
                     </View>
                 </Card>
-
-                
-              
             </SafeAreaView>
         )
-
     }
-
 }
 
 const mapStateToProps = (state) => {
