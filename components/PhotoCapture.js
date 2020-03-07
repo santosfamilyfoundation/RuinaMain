@@ -120,7 +120,7 @@ class PhotoCapture extends Component {
                     <Text style={styles.captureButton} onPress={this.uploadImage.bind(this)} disabled={this.state.uploading}>
                       Save
                     </Text>
-                    <Text style={styles.captureButton} onPress={photoAction}>
+                    <Text style={styles.captureButton} onPress={() => photoAction(this.state.images)}>
                       Double save
                     </Text>
                     <BasicDropDown data={objectData} defaultOption={this.props.objectID} isDisabled={isObjDisabled}/>
