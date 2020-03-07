@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     width: SCREEN_WIDTH,
   },
   captureButton:{
-    flex: 0.3,
+    flex: 0.15,
     backgroundColor: '#D3D3D3',
     borderRadius: 5,
     color: 'black',

@@ -11,6 +11,10 @@ import BasicDropDown from './BasicDropDown';
 import * as Constants from '../constants';
 import { styles } from './PhotoCapture.style';
 
+//Need to fix so that it automatically puts to reducer
+
+//Do we want a photo Gallary??
+
 const { app } = firebase.storage();
 
 const typeData = [
@@ -20,9 +24,8 @@ const typeData = [
 ];
 
 const objectData = [
-  { text: "Person 1" },
-  { text: "P2" },
-  { text: "P3" },
+  { text: "FAKE Vehicle 1" },
+  { text: "FAKE Vehicle 2" },
 ];
 
 class PhotoCapture extends Component {

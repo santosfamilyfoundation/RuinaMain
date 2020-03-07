@@ -98,7 +98,7 @@ export default class Scan extends Component {
         console.error(error);
         alert(error);
     };
-    
+
     render() {
         const {
             hasScanned,

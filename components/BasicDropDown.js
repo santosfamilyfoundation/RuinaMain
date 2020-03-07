@@ -18,7 +18,7 @@ const BasicDropDown = (props) => {
               selectedOption={selectedOption}
               multiSelect={false}
               onSelect={(e) => setOption(e)}
-              placeholder={props.currObject}
+              placeholder={props.defaultOption}
               disabled={props.isDisabled}
           />
       </Layout>
