@@ -93,7 +93,7 @@ class AutoComponentContainer extends Component {
 
     return (
         <SafeAreaView style={styles.container}>
-          <TopNavigation title='Auto Component' alignment='center' leftControl={this.props.BackAction()}/>
+          <TopNavigation title={this.props.title} alignment='center' leftControl={this.props.BackAction()}/>
           <Divider/>
           <ScrollView>
             <Layout style={styles.content}>

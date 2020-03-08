@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
-import { Button, Divider, Layout, TopNavigation } from '@ui-kitten/components';
+import { Button, ButtonGroup, Divider, Layout, TopNavigation } from '@ui-kitten/components';
 import { styles } from './Welcome.style';
 
 class Welcome extends Component {
@@ -18,6 +18,13 @@ class Welcome extends Component {
               <Layout style={styles.centeredContainer}>
                 <Button style={styles.styledButton} onPress={() => navigateTo('Quiz')}>Quick Quiz</Button>
                 <Button style={styles.styledButton} onPress={() => navigateTo('Note')}>Note Pad</Button>
+                <ButtonGroup>
+                  <Button onPress={() => navigateTo('Driver')}>Driver</Button>
+                  <Button onPress={() => navigateTo('NonMotorist')}>NonMotorist</Button>
+                  <Button onPress={() => navigateTo('Passenger')}>Passenger</Button>
+                  <Button onPress={() => navigateTo('Vehicle')}>Vehicle</Button>
+                  <Button onPress={() => navigateTo('Road')}>Road</Button>
+                </ButtonGroup>
                 <Button style={styles.styledButton} onPress={() => navigateTo('Test')}>Test</Button>
                 <Button style={styles.styledButton} onPress={() => navigateTo('Weather')}>Weather</Button>
                 <Button style={styles.styledButton} onPress={() => navigateTo('Map')}>Map</Button>

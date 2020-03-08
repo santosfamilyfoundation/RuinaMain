@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { TextInput, Text, StyleSheet, ScrollView } from 'react-native';
-import { Button, Layout, TopNavigation, Card } from '@ui-kitten/components';
+import { Button, ButtonGroup, Layout, TopNavigation, Card, Input } from '@ui-kitten/components';
 import { connect } from 'react-redux';
 import { changeVehicle, changeDrivers, changeNonmotorists, changePassengers, changeFatality, changeConstruction, changeIntersection, changeSchoolbus, changeLvhm, changeRespond } from '../actions/QuickQuizActions';
 import { addVehicle, addLvhm } from '../actions/VehicleAction';
 import { addNonmotorist } from '../actions/NonmotoristAction';
 import { addDriver } from '../actions/DriverAction';
 import { addPassenger } from '../actions/PassengerAction';
+import NumberButtonSelector from './buttonSelectors/NumberButtonSelector';
+import { styles } from './QuickQuiz.style';
 
 class QuickQuiz extends Component {
   state = {
@@ -21,8 +23,6 @@ class QuickQuiz extends Component {
         changeNonmotorists,
         changePassengers, 
         changeFatality, 
-        changeConstruction, 
-        changeIntersection, 
         changeSchoolbus, 
         changeLvhm,
         addVehicle,
@@ -53,129 +53,99 @@ class QuickQuiz extends Component {
       }
 
         return (
-            <ScrollView style={{ flex: 1 }}>
+            <SafeAreaView style={{ flex: 1 }}>
               <TopNavigation title='Quick Quiz' alignment='center' leftControl={this.props.BackAction()}/>
-              <SafeAreaView style = {styles.questionContainer}>
-                  <Card>
-                    <Text style = {styles.questionText}>NUMBER OF VEHICLES INVOVLED</Text>
-                    <TextInput 
-                      style = {styles.questionInput}
-                      onChangeText = {changeVehicle}
-                      value = {`${quiz.numVehicle}`}
-                    />
+              <ScrollView style={{ flex: 1 }}>
+                <SafeAreaView style = {styles.questionContainer}>
+                  <NumberButtonSelector 
+                    title="Number of vehicles involved"
+                    submitFunction = {changeVehicle}
+                    reducerName = "quickquizReducer"
+                    fieldName = "numVehicle"
+                  />
+                </SafeAreaView>
+                <SafeAreaView style = {styles.questionContainer}>
+                  <NumberButtonSelector 
+                    title="Number of drivers involved"
+                    submitFunction = {changeDrivers}
+                    reducerName = "quickquizReducer"
+                    fieldName = "numDriver"
+                  />
+                </SafeAreaView>
+                <SafeAreaView style = {styles.questionContainer}>
+                  <NumberButtonSelector 
+                    title="Number of non-motorists involved"
+                    submitFunction = {changeNonmotorists}
+                    reducerName = "quickquizReducer"
+                    fieldName = "numNonmotorist"
+                  />
+                </SafeAreaView>
+                <SafeAreaView style = {styles.questionContainer}>
+                  <NumberButtonSelector 
+                    title="Number of passengers involved"
+                    submitFunction = {changePassengers}
+                    reducerName = "quickquizReducer"
+                    fieldName = "numPassenger"
+                  />
+                </SafeAreaView>
+                <SafeAreaView style = {styles.questionContainer}>
+                  <NumberButtonSelector 
+                    title="Number of large or vehicles with hazardous material"
+                    submitFunction = {changeLvhm}
+                    reducerName = "quickquizReducer"
+                    fieldName = "numLvhm"
+                  />
+                </SafeAreaView>
+                <SafeAreaView style = {styles.questionContainer}>
+                  <Card style = {styles.cardStyle}>
+                      <Text style = {styles.questionText}>Are there known fatalities?</Text>
+                      <Layout style={{flexDirection: 'row'}}>
+                          <Button 
+                            style = {styles.buttonSytle} 
+                            onPress = {() => changeFatality(true)}
+                            appearance={(quiz.fatality ? 'filled':'outline')}
+                          >
+                            Yes
+                          </Button>
+                          <Button 
+                            style = {styles.buttonSytle} 
+                            onPress = {() => changeFatality(false)}
+                            appearance={(quiz.fatality ? 'outline':'filled')}
+                          >
+                            No
+                          </Button>
+                      </Layout>
                   </Card>
               </SafeAreaView>
-              <SafeAreaView style = {styles.questionContainer}>
-                  <Card>
-                    <Text style = {styles.questionText}>NUMBER OF LVHMs INVOVLED</Text>
-                    <TextInput 
-                      style = {styles.questionInput}
-                      onChangeText = {changeLvhm}
-                      value = {`${quiz.numLvhm}`}
-                    />
+                <SafeAreaView style = {styles.questionContainer}>
+                  <Card style = {styles.cardStyle}>
+                      <Text style = {styles.questionText}>Is a school bus involved?</Text>
+                      <Layout style={{flexDirection: 'row'}}>
+                        <Button 
+                          style = {styles.buttonSytle} 
+                          onPress = {() => changeSchoolbus(true)}
+                          appearance={(quiz.schoolbus ? 'filled':'outline')}
+                        >
+                          Yes
+                        </Button>
+                        <Button 
+                          style = {styles.buttonSytle} 
+                          onPress = {() => changeSchoolbus(false)}
+                          appearance={(quiz.schoolbus ? 'outline':'filled')}
+                        >
+                          No
+                        </Button>
+                      </Layout>
                   </Card>
-              </SafeAreaView>
-              <SafeAreaView style = {styles.questionContainer}>
-                  <Card>
-                    <Text style = {styles.questionText}>NUMBER OF DRIVERS INVOVLED</Text>
-                    <TextInput 
-                      style = {styles.questionInput}
-                      onChangeText = {changeDrivers}
-                      value = {`${quiz.numDriver}`}
-                    />
-                  </Card>
-              </SafeAreaView>
-              <SafeAreaView style = {styles.questionContainer}>
-                  <Card>
-                    <Text style = {styles.questionText}>NUMBER OF NON-MOTORISTS INVOVLED</Text>
-                    <TextInput 
-                      style = {styles.questionInput}
-                      onChangeText = {changeNonmotorists}
-                      value = {`${quiz.numNonmotorist}`}
-                    />
-                  </Card>
-              </SafeAreaView>
-              <SafeAreaView style = {styles.questionContainer}>
-                  <Card>
-                    <Text style = {styles.questionText}>NUMBER OF PASSENGERS INVOVLED</Text>
-                    <TextInput 
-                      style = {styles.questionInput}
-                      onChangeText = {changePassengers}
-                      value = {`${quiz.numPassenger}`}
-                    />
-                  </Card>
-              </SafeAreaView>
-              <SafeAreaView style = {styles.questionContainer}>
-                <Card style = {styles.cardStyle}>
-                    <Text style = {styles.questionText}>ARE THERE KNOWN FATALITIES?</Text>
-                    <Layout style={{flexDirection: 'row'}}>
-                        <Button style = {styles.buttonSytle} onPress = {() => changeFatality(true)}>Yes</Button>
-                        <Button style = {styles.buttonSytle} onPress = {() => changeFatality(false)}>No</Button>
-                    </Layout>
-                </Card>
-              </SafeAreaView>
-              <SafeAreaView style = {styles.questionContainer}>
-                <Card style = {styles.cardStyle}>
-                    <Text style = {styles.questionText}>IS THE CRASH IN A CONSTRUCTION ZONE?</Text>
-                    <Layout style={{flexDirection: 'row'}}>
-                        <Button style = {styles.buttonSytle} onPress = {() => changeConstruction(true)}>Yes</Button>
-                        <Button style = {styles.buttonSytle} onPress = {() => changeConstruction(false)}>No</Button>
-                    </Layout>
-                </Card>
-              </SafeAreaView>
-              <SafeAreaView style = {styles.questionContainer}>
-                <Card style = {styles.cardStyle}>
-                    <Text style = {styles.questionText}>IS THE CRASH IN AN INTERSECTION?</Text>
-                    <Layout style={{flexDirection: 'row'}}>
-                        <Button style = {styles.buttonSytle} onPress = {() => changeIntersection(true)}>Yes</Button>
-                        <Button style = {styles.buttonSytle} onPress = {() => changeIntersection(false)}>No</Button>
-                    </Layout>
-                </Card>
-              </SafeAreaView>
-              <SafeAreaView style = {styles.questionContainer}>
-                <Card style = {styles.cardStyle}>
-                    <Text style = {styles.questionText}>IS A SCHOOL BUS INVOVLED?</Text>
-                    <Layout style={{flexDirection: 'row'}}>
-                        <Button style = {styles.buttonSytle} onPress = {() => changeSchoolbus(true)}>Yes</Button>
-                        <Button style = {styles.buttonSytle} onPress = {() => changeSchoolbus(false)}>No</Button>
-                    </Layout>
-                </Card>
-              </SafeAreaView>
+                </SafeAreaView>
+              </ScrollView>
               <Button onPress = {() => moveHome()}>Continue</Button>
-              
-            </ScrollView>
+            </SafeAreaView>
           );
     }
 };
 
-const styles = StyleSheet.create({
-    questionText: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        marginBottom: 10
-    },
-    questionContainer: {
-        marginLeft: 15,
-        marginRight: 15,
-        marginBottom: 15
-    },
-    questionInput: {
-        backgroundColor: 'lightgrey',
-        height: 40,
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: 'blue',
-        paddingLeft: 10
-        
-    },
-    cardStyle: {
-        flexDirection: 'row',
-    },
-    buttonSytle: {
-        marginRight: 15,
-        width: 80
-    }
-})
+
 
 const mapDispatchToProps = {
   changeRespond,

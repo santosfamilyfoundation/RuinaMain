@@ -83,9 +83,6 @@ class DiagramView extends Component {
   }
 
   onRegionChangeComplete(region, lastLat, lastLong) {
-    console.log("ONCHANGE REGION")
-    console.log(region)
-    console.log(lastLat)
     this.setState({
       mapRegion: region,
       lastLat: lastLat,
@@ -144,7 +141,7 @@ class DiagramView extends Component {
 
         return (
           <SafeAreaView style={{ flex: 1 }}>
-              <TopNavigation title='Map View' alignment='center'/>
+              <TopNavigation title='Map View' alignment='center' leftControl={this.props.BackAction()}/>
               <Divider/>
               <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <MapView
