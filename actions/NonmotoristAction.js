@@ -4,3 +4,10 @@ export const addNonmotorist = numNonmotorist => {
         payload: numNonmotorist
     }
 }
+
+export const updateNonmotorist = nonmotoristData => {
+    return {
+        type: 'UPDATENONMOTORIST',
+        payload: nonmotoristData
+    }
+}

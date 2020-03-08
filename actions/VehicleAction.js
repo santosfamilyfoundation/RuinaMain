@@ -11,3 +11,10 @@ export const addLvhm = numLvhm => {
         payload: numLvhm
     }
 }
+
+export const updateVehicle = vehicleData => {
+    return {
+        type: 'UPDATEVEHICLE',
+        payload: vehicleData
+    }
+}

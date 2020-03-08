@@ -1,13 +1,18 @@
-import { combineReducers } from 'redux';
+
 
 const INITIAL_STATE = {
-  new: ''
 };
 
 const genericReducer = (state = INITIAL_STATE, action) => {
-    res = {...state}
-    res[action.field] = action.payload
-    return res
+  switch (action.type){
+    case 'WRITE_SELECTION':
+      res = {...state}
+      res[action.field] = action.payload
+      return res
+    default:
+      return state;
+  }
+
 };
 
 export default genericReducer;

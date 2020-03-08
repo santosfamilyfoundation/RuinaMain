@@ -13,14 +13,14 @@ import { genericWriteAction } from '../../actions/GenericAction';
 
 const DropDownSingleSelect = (props) => {
     const [selectedOption, setSelectedOption] = React.useState(null);
-    const {data, key, genericReducer} = props;
+    const {data, key, genericReducer, genericWriteAction} = props;
 
     let currId = data.id;
 
     if(!selectedOption) {
         if(genericReducer[currId] != null) {
             let curOption;
-            for (i = 0; i < data.answerOptions.length; i++) {
+            for (let i = 0; i < data.answerOptions.length; i++) {
                 if(data.answerOptions[i].idCode == genericReducer[currId]) {
                     curOption = {
                         idCode: genericReducer[currId],
@@ -44,7 +44,7 @@ const DropDownSingleSelect = (props) => {
     const submitField = (selection) => {
         console.log("CLICKED: ", selection);
         setSelectedOption(selection);
-        props.genericWriteAction({actionType:"WRITE_SELECTION", field: currId, content: selection.idCode})
+        genericWriteAction({actionType:"WRITE_SELECTION", field: currId, content: selection.idCode})
     }
 
     const Header = () => (
