@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { TextInput, Text, StyleSheet, View, ScrollView } from 'react-native';
+import { TextInput, StyleSheet, View, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { Button, TopNavigation, Card } from '@ui-kitten/components';
+import { Button, TopNavigation, Text, Card, CardHeader, Layout, Icon } from '@ui-kitten/components';
+import { styles } from './Home.style';
+import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 class Home extends Component {
 
@@ -14,61 +16,82 @@ class Home extends Component {
             passenger,
             } = this.props
 
-        const vehiclesListArr = vehicle.vehicles.map(vehicle => (
-            <Card key={vehicle.id} style={{marginRight: 15}}>
-                {vehicle.hazardous ? 
-                    <Text>hazardous</Text> : <Text>normal</Text>
+        const vehiclesListArr = vehicle.vehicles.map((vehicle, index) => (
+            <Card key={vehicle.id} style={styles.itemCard}>
+            <View style={styles.itemCardContent}>
+                <Icon name='car' width={75} height={75} />
+                {vehicle.hazardous ?
+                    <Text style={styles.itemCardFooter} category="s1">Hazardous Vehicle {index+1}</Text>
+                    :
+                    <Text style={styles.itemCardFooter} category="s1">Vehicle {index+1}</Text>
                 }
+            </View>
+        </Card>
+        ))
+
+        const driverListArr = driver.drivers.map((driver, index) => (
+            <Card key={driver.id} style={styles.itemCard}>
+                <View style={styles.itemCardContent}>
+                    <Icon name='person' width={75} height={75} />
+                    <Text style={styles.itemCardFooter} category="s1">Driver {index+1}</Text>
+                </View>
             </Card>
         ))
 
-        const driverListArr = driver.drivers.map(driver => (
-            <Card key={driver.id} style={{marginRight: 15}}>
-                <Text>driver</Text>
+        const nonmotoristListArr = nonmotorist.nonmotorists.map((nonmotorist, index) => (
+            <Card key={nonmotorist.id} style={styles.itemCard}>
+                <View style={styles.itemCardContent}>
+                    <Icon name='person' width={75} height={75} />
+                    <Text style={styles.itemCardFooter} category="s1">Non-Motorist {index+1}</Text>
+                </View>
             </Card>
         ))
 
-        const nonmotoristListArr = nonmotorist.nonmotorists.map(nonmotorist => (
-            <Card key={nonmotorist.id} style={{marginRight: 15}}>
-                <Text>nonmotorist</Text>
+        const passengerListArr = passenger.passengers.map((passenger, index) => (
+            <Card key={passenger.id} style={styles.itemCard}>
+                <View style={styles.itemCardContent}>
+                    <Icon name='person' width={75} height={75} />
+                    <Text style={styles.itemCardFooter} category="s1">Passenger {index+1}</Text>
+                </View>
             </Card>
         ))
 
-        const passengerListArr = passenger.passengers.map(passenger => (
-            <Card key={passenger.id} style={{marginRight: 15}}>
-                <Text>passenger</Text>
-            </Card>
-        ))
+        const VehiclesHeader = () => (
+            <CardHeader title="Vehicles" />
+        );
+        const PeopleHeader = () => (
+            <CardHeader title="People" />
+        );
+        const RoadHeader = () => (
+            <CardHeader title="Roadway" />
+        );
 
         const peopleListArr = [...driverListArr, ...nonmotoristListArr, ...passengerListArr];
         return(
             <SafeAreaView style={{flex:1}}>
                 <TopNavigation title='Home' style = {{marginBottom: 15}}alignment='center' leftControl={this.props.BackAction()}/>
-                <Card style={{marginBottom: 15}}>
-                    <Text style = {styles.headingText}>Vehicles</Text>
-                    <ScrollView horizontal={true} style = {styles.questionContainer}>
+                <ScrollView>
+                <Card header={VehiclesHeader} style={styles.sectionCard}>
+                    <Layout style={styles.questionContainer}>
                         {vehiclesListArr}
-                    </ScrollView>
+                    </Layout>
                 </Card>
-                <Card style={{marginBottom: 15}}>
-                    <Text style = {styles.headingText}>People</Text>
-                    <ScrollView horizontal={true} style = {styles.questionContainer}>
+                <Card header={PeopleHeader} style={styles.sectionCard}>
+                    <Layout style={styles.questionContainer}>
                         {peopleListArr}
-                    </ScrollView>
+                    </Layout>
                 </Card>
-                <Card>
-                    <Text style = {styles.headingText}>Road</Text>
-                    <View style={{flexDirection: 'row'}}>
-                        <ScrollView horizontal={true} style = {styles.questionContainer}>
-                            <Card>
-                                <Text style = {styles.questionText}>Road 1 </Text>
-                            </Card>
-                        </ScrollView>
-                    </View>
+                <Card header={RoadHeader} style={styles.sectionCard}>
+                    <Layout style={styles.questionContainer}>
+                        <Card style={styles.itemCard}>
+                            <View style={styles.itemCardContent}>
+                                <Icon name='paper-plane' width={75} height={75} />
+                                <Text style={styles.itemCardFooter} category="s1">Road</Text>
+                            </View>
+                        </Card>
+                    </Layout>
                 </Card>
-
-                
-              
+                </ScrollView>
             </SafeAreaView>
         )
 
@@ -86,39 +109,5 @@ const mapStateToProps = (state) => {
     }
 }
 
-const styles = StyleSheet.create({
-    questionText: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        marginBottom: 10,
-    },
-    questionContainer: {
-        marginRight: 15,
-        marginBottom: 15,
-        flexDirection: 'row'
-    },
-    questionInput: {
-        backgroundColor: 'lightgrey',
-        height: 40,
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: 'blue',
-        paddingLeft: 10
-        
-    },
-    headingText: {
-        fontSize: 30,
-        fontWeight: 'bold',
-        marginBottom: 15,
-        alignSelf: 'center'
-    },
-    cardStyle: {
-        flexDirection: 'row',
-    },
-    buttonSytle: {
-        marginRight: 15,
-        width: 80
-    }
-})
 
 export default connect(mapStateToProps)(Home);
