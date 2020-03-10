@@ -53,7 +53,7 @@ class Home extends Component {
         })
 
         const driverListArr = driver.drivers.map((driver, index) => {
-            operatorList.push({id:driver.id, type:'driver'})
+            operatorList.push({id:driver.id, type:'driver', response:{}})
             return (
                 <Card key={driver.id} style={styles.itemCard} onPress = {() => navigateQuestion(driverQuestions, driver.id, 'Driver')}>
                     <View style={styles.itemCardContent}>
@@ -65,7 +65,7 @@ class Home extends Component {
         })
 
         const nonmotoristListArr = nonmotorist.nonmotorists.map((nonmotorist, index) => {
-            operatorList.push({id:nonmotorist.id, type:'nonmotorist'})
+            operatorList.push({id:nonmotorist.id, type:'nonmotorist', response:[]})
             return (
                 <Card key={nonmotorist.id} style={styles.itemCard} onPress = {() => navigateQuestion(nonmotoristQuestions, nonmotorist.id, 'Nonmotorist')}>
                     <View style={styles.itemCardContent}>

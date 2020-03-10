@@ -1,16 +1,28 @@
 import React, { Component } from 'react';
-import { Button, TopNavigation, Text, Card, CardHeader, Layout, Icon } from '@ui-kitten/components';
+import { Text, Card } from '@ui-kitten/components';
 import { TextInput } from 'react-native';
 
 export default class OperatorForm extends Component{
 
     render(){
+
+        const { id, type, updateOperator } = this.props
+
         return(
             <Card>
-                <Text>ID: {this.props.id}</Text>
-                <Text style={{marginBottom: 10}}>type: {this.props.type}</Text>
+                <Text>{type} C1-S1</Text>
+                <TextInput
+                    onChangeText={content => updateOperator("C1-S1", id, content)}
+                    style={{borderWidth:5, borderColor: 'black', height: 40}}
+                    defaultValue='  '
+                />
+                <Text>{type} C1-S2</Text>
+                <TextInput
+                    onChangeText={content => updateOperator("C1-S2", id, content)}
+                    style={{borderWidth:5, borderColor: 'black', height: 40}}
+                    defaultValue='  '
+                />
             </Card>
         )
     }
-
-}
+};
