@@ -93,6 +93,9 @@ class Home extends Component {
         return(
             <SafeAreaView style={{flex:1}}>
                 <TopNavigation title='Home' style = {{marginBottom: 15}}alignment='center' leftControl={this.props.BackAction()}/>
+                <View style={{flexDirection: 'row', justifyContent: "flex-end", marginRight: 30}}>
+                    <Button style={{width:150}}>Info Exchange</Button>
+                </View>
                 <ScrollView>
                 <Card header={VehiclesHeader} style={styles.sectionCard}>
                     <Layout style={styles.questionContainer}>
