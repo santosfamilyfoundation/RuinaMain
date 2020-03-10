@@ -18,7 +18,7 @@ import { updatePassenger } from '../actions/PassengerAction';
 class QuestionForm extends Component {
 
   render() {
-    const {questionDetail, updateDriver, updateNonmotorist, updatePassenger, updateVehicle } = this.props
+    const { questionDetail, updateDriver, updateNonmotorist, updatePassenger, updateVehicle } = this.props
     const saveObjectData = (id) => {
       const response = this.props.response
       switch(questionDetail.type){
