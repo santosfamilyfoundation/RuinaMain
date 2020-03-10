@@ -21,24 +21,36 @@ class OperatorForm extends Component{
         }
 
         return(
-                <Card header= {() => <CardHeader title={`${type}: ${id}`}/>} >
+                <Card header= {() => <CardHeader title={`${type} ${operator.response.name || ''}`}/>} >
+                    <Text>Name: </Text>
+                    <TextInput
+                        onChangeText={content => updateOperator('name', id, content)}
+                        style={{borderWidth:5, borderColor: 'black', height: 40}}
+                        defaultValue= {operator.response['name'] ? `  ${operator.response['name']}` : ''}
+                    />
+                    <Text>Email: </Text>
+                    <TextInput
+                        onChangeText={content => updateOperator('email', id, content)}
+                        style={{borderWidth:5, borderColor: 'black', height: 40}}
+                        defaultValue= {operator.response['email'] ? `  ${operator.response['email']}` : ''}
+                    />
                     <Text>C1-S1</Text>
                     <TextInput
                         onChangeText={content => updateOperator('C1-S1', id, content)}
                         style={{borderWidth:5, borderColor: 'black', height: 40}}
-                        defaultValue= {operator.response && operator.response['C1-S1'] ? `  ${operator.response['C1-S1']}` : ''}
+                        defaultValue= {operator.response['C1-S1'] ? `  ${operator.response['C1-S1']}` : ''}
                     />
                     <Text>C1-S2</Text>
                     <TextInput
                         onChangeText={content => updateOperator('C1-S2', id, content)}
                         style={{borderWidth:5, borderColor: 'black', height: 40}}
-                        defaultValue= {operator.response && operator.response['C1-S2'] ? `  ${operator.response['C1-S2']}` : ''}
+                        defaultValue= {operator.response['C1-S2'] ? `  ${operator.response['C1-S2']}` : ''}
                     />
                     <Text>C1-S3</Text>
                     <TextInput
                         onChangeText={content => updateOperator('C1-S3', id, content)}
                         style={{borderWidth:5, borderColor: 'black', height: 40}}
-                        defaultValue= {operator.response && operator.response['C1-S3'] ? `  ${operator.response['C1-S3']}` : ''}
+                        defaultValue= {operator.response['C1-S3'] ? `  ${operator.response['C1-S3']}` : ''}
                     />
                 </Card>
 
