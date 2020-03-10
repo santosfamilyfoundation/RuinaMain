@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-navigation';
 import OperatorForm from './OperatorForm';
 import { updateDriver } from '../actions/DriverAction';
 import { updateNonmotorist } from '../actions/NonmotoristAction';
+import { ScrollView } from 'react-native-gesture-handler';
 
 class InfoExchangeForm extends Component{
 
@@ -64,7 +65,9 @@ class InfoExchangeForm extends Component{
         return(
             <SafeAreaView style={{flex: 1}}>
                 <TopNavigation title='Info Exchange' style = {{marginBottom: 15}} alignment='center' leftControl={this.props.BackAction()}/>
-                {operatorListArr}
+                    <ScrollView>
+                        {operatorListArr}
+                    </ScrollView>
                 <Button onPress = {() => saveOperatorsAndDispatch()}>Save</Button>
             </SafeAreaView>
         )
