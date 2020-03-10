@@ -23,6 +23,7 @@ class InfoExchangeForm extends Component{
             <SafeAreaView style={{flex: 1}}>
                 <TopNavigation title='Info Exchange' style = {{marginBottom: 15}} alignment='center' leftControl={this.props.BackAction()}/>
                 {operatorListArr}
+                <Button>Save</Button>
             </SafeAreaView>
 
         )

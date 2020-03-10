@@ -7,11 +7,8 @@ export default class OperatorForm extends Component{
     render(){
         return(
             <Card>
+                <Text>ID: {this.props.id}</Text>
                 <Text style={{marginBottom: 10}}>type: {this.props.type}</Text>
-                <TextInput
-                    style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-                    defaultValue= {`  ${this.props.id}`}
-                />
             </Card>
         )
     }
