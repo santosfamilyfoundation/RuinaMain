@@ -5715,6 +5715,6 @@ export const questions = {
                 "idCode": "99"
             }
         ]
-    }, 
+    } 
 ]
 }
