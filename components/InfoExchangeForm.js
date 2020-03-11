@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, TopNavigation, Text, Card, CardHeader, Layout, Icon } from '@ui-kitten/components';
+import { Button, TopNavigation } from '@ui-kitten/components';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
 import OperatorForm from './OperatorForm';

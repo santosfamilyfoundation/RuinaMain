@@ -17,7 +17,6 @@ class OperatorForm extends Component{
             case 'nonmotorist':
                 operator = nonmotorist.nonmotorists.find(nonmotorist => nonmotorist.id == id)
                 break;
-
         }
 
         return(
