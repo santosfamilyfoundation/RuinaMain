@@ -13,13 +13,14 @@ import { genericWriteAction } from '../../actions/GenericAction';
 
 const DropDownSingleSelect = (props) => {
     const [selectedOption, setSelectedOption] = React.useState(null);
-    const {data, key, id, questionReducer, genericWriteAction, submitFunction, actionType} = props;
+    const {data, key, id, questionReducer, submitFunction} = props;
+
+    let currId = data.id;
 
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
 
-    let currId = data.id;
-
+    // Populate if value already exists in redux
     if(!selectedOption) {
         if(existingData != null) {
             if(existingData[currId] != null) {
@@ -41,7 +42,7 @@ const DropDownSingleSelect = (props) => {
 
     let status;
     if(!existingData) {
-        status = 'danger';
+        status = 'danger'
     } else {
         if(!existingData[currId]) {
             status = 'danger';
@@ -51,7 +52,6 @@ const DropDownSingleSelect = (props) => {
     }
 
     const submitField = (selection) => {
-        console.log("CLICKED: ", selection);
         setSelectedOption(selection);
         let content = selection.idCode;
         submitFunction({id, question: currId, selection: content})
@@ -93,7 +93,6 @@ const mapDispatchToProps = {
 const mapStateToProps = (state, props) => {
     const { story } = state;
     const { reducer } = props;
-    console.log(reducer);
     const questionReducer = state[reducer];
     return { story, questionReducer }
   };
