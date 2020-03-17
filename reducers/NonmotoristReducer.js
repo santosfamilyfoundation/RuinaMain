@@ -1,7 +1,7 @@
 var uuid = require('react-native-uuid');
 
 const initialState = {
-    nonmotorists: []
+    data: []
 }
 
 export default function nonmotoristReducer (state=initialState, action) {
@@ -18,15 +18,15 @@ export default function nonmotoristReducer (state=initialState, action) {
 
             return {
                 ...state,
-                nonmotorists: nonmotoristArr
+                data: nonmotoristArr
             }
         case 'UPDATENONMOTORIST':
             const { id, response } = action.payload
-            let newNonmotoristArr = state.nonmotorists.filter(nonmotorist => nonmotorist.id !=id).concat({id, response})
+            let newNonmotoristArr = state.data.filter(nonmotorist => nonmotorist.id !=id).concat({id, response})
 
             return {
                 ...state,
-                nonmotorists: newNonmotoristArr
+                data: newNonmotoristArr
             }
         default:
             return state;

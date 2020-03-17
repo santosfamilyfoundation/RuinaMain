@@ -19,6 +19,34 @@ class QuestionForm extends Component {
 
   render() {
     const {questionDetail, updateDriver, updateNonmotorist, updatePassenger, updateVehicle } = this.props
+
+    let reducer;
+    let submitFunction;
+    let actionType;
+    console.log("QUESTION DETAILS: ", questionDetail);
+    switch(questionDetail.type){
+      case 'Driver':
+        reducer = "driverReducer";
+        submitFunction = updateDriver;
+        actionType = "UPDATEDRIVER";
+        break;
+      case 'Nonmotorist':
+        reducer = "nonmotoristReducer";
+        submitFunction = updateNonmotorist;
+        actionType = "UPDATENONMOTORIST";
+        break;
+      case 'Passenger':
+        reducer = "passengerReducer";
+        submitFunction = updatePassenger;
+        actionType = "UPDATEPASSENGER";
+        break;
+      case 'Vehicle':
+        reducer = "vehicleReducer";
+        submitFunction = updateVehicle;
+        actionType = "UPDATEVEHICLE";
+        break;
+    }
+
     const saveObjectData = (id) => {
       const response = this.props.response
       switch(questionDetail.type){
@@ -46,6 +74,10 @@ class QuestionForm extends Component {
             <DropDownSingleSelect
               data={question}
               key={question.id}
+              id={questionDetail.objectID}
+              reducer={reducer}
+              submitFunction={submitFunction}
+              actionType={actionType}
             />
           )
         case 'dropdownMultiSelect':
@@ -53,6 +85,10 @@ class QuestionForm extends Component {
             <DropDownMultiSelect
               data={question}
               key={question.id}
+              id={questionDetail.objectID}
+              reducer={reducer}
+              submitFunction={submitFunction}
+              actionType={actionType}
             />
           )
         case 'openTextbox':
@@ -60,6 +96,10 @@ class QuestionForm extends Component {
             <OpenTextField
               data={question}
               key={question.id}
+              id={questionDetail.objectID}
+              reducer={reducer}
+              submitFunction={submitFunction}
+              actionType={actionType}
             />
           )
         case 'largeTextField':
@@ -67,6 +107,10 @@ class QuestionForm extends Component {
             <LargeTextField
               data={question}
               key={question.id}
+              id={questionDetail.objectID}
+              reducer={reducer}
+              submitFunction={submitFunction}
+              actionType={actionType}
             />
           )
         case 'multiButton':
@@ -74,6 +118,10 @@ class QuestionForm extends Component {
             <MultiButtonSelector
               data={question}
               key={question.id}
+              id={questionDetail.objectID}
+              reducer={reducer}
+              submitFunction={submitFunction}
+              actionType={actionType}
             />
           )
         case 'autoCompleteDropdown':
@@ -81,6 +129,10 @@ class QuestionForm extends Component {
             <AutoCompleteDropDown
               data={question}
               key={question.id}
+              id={questionDetail.objectID}
+              reducer={reducer}
+              submitFunction={submitFunction}
+              actionType={actionType}
             />
           )
       }

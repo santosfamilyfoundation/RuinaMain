@@ -27,9 +27,8 @@ class Home extends Component {
             navigation.navigate('Question', {questions: form.data, objectID: id, type})
         }
 
-
-        const vehiclesListArr = vehicle.vehicles.map((vehicle, index) => {
-            if(vehicle.hazardous) {
+        const vehiclesListArr = vehicle.data.map((vehicle, index) => {
+            if(vehicle?.hazardous) {
                 return (
                     <Card key={vehicle.id} style={styles.itemCard} onPress= {() => navigateQuestion(lvhmQuestions, vehicle.id, 'Vehicle')}>
                         <View style={styles.itemCardContent}>
@@ -51,7 +50,7 @@ class Home extends Component {
             
         })
 
-        const driverListArr = driver.drivers.map((driver, index) => (
+        const driverListArr = driver.data.map((driver, index) => (
             <Card key={driver.id} style={styles.itemCard} onPress = {() => navigateQuestion(driverQuestions, driver.id, 'Driver')}>
                 <View style={styles.itemCardContent}>
                     <Icon name='person' width={75} height={75} />
@@ -60,7 +59,7 @@ class Home extends Component {
             </Card>
         ))
 
-        const nonmotoristListArr = nonmotorist.nonmotorists.map((nonmotorist, index) => (
+        const nonmotoristListArr = nonmotorist.data.map((nonmotorist, index) => (
             <Card key={nonmotorist.id} style={styles.itemCard} onPress = {() => navigateQuestion(nonmotoristQuestions, nonmotorist.id, 'Nonmotorist')}>
                 <View style={styles.itemCardContent}>
                     <Icon name='person' width={75} height={75} />
@@ -69,7 +68,7 @@ class Home extends Component {
             </Card>
         ))
 
-        const passengerListArr = passenger.passengers.map((passenger, index) => (
+        const passengerListArr = passenger.data.map((passenger, index) => (
             <Card key={passenger.id} style={styles.itemCard} onPress = {() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger')}>
                 <View style={styles.itemCardContent}>
                     <Icon name='person' width={75} height={75} />

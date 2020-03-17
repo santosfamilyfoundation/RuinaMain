@@ -13,38 +13,48 @@ import { genericWriteAction } from '../../actions/GenericAction';
 
 const DropDownSingleSelect = (props) => {
     const [selectedOption, setSelectedOption] = React.useState(null);
-    const {data, key, genericReducer, genericWriteAction} = props;
+    const {data, key, id, questionReducer, genericWriteAction, submitFunction, actionType} = props;
+
+    const reducerData = questionReducer.data.find(entry => entry.id == id);
+    let existingData = !reducerData?.response ? null : reducerData.response;
 
     let currId = data.id;
 
     if(!selectedOption) {
-        if(genericReducer[currId] != null) {
-            let curOption;
-            for (let i = 0; i < data.answerOptions.length; i++) {
-                if(data.answerOptions[i].idCode == genericReducer[currId]) {
-                    curOption = {
-                        idCode: genericReducer[currId],
-                        text: data.answerOptions[i].text
+        if(existingData != null) {
+            if(existingData[currId] != null) {
+                let curOption;
+                for (let i = 0; i < data.answerOptions.length; i++) {
+                    if(data.answerOptions[i].idCode == existingData[currId]) {
+                        curOption = {
+                            idCode: existingData[currId],
+                            text: data.answerOptions[i].text
+                        };
                     };
                 };
+                if (curOption != null) {
+                    setSelectedOption(curOption);
+                }
             };
-            if (curOption != null) {
-                setSelectedOption(curOption);
-            }
         };
     };
 
     let status;
-    if(!genericReducer[currId]) {
-        status = 'danger'
+    if(!existingData) {
+        status = 'danger';
     } else {
-        status = 'success'
+        if(!existingData[currId]) {
+            status = 'danger';
+        } else {
+            status = 'success';
+        }
     }
 
     const submitField = (selection) => {
         console.log("CLICKED: ", selection);
         setSelectedOption(selection);
-        genericWriteAction({actionType:"WRITE_SELECTION", field: currId, content: selection.idCode})
+        let content = selection.idCode;
+        submitFunction({id, question: currId, selection: content})
     }
 
     const Header = () => (
@@ -80,9 +90,12 @@ const mapDispatchToProps = {
     genericWriteAction
 }
 
-const mapStateToProps = (state) => {
-    const { story, genericReducer } = state
-    return { story, genericReducer }
+const mapStateToProps = (state, props) => {
+    const { story } = state;
+    const { reducer } = props;
+    console.log(reducer);
+    const questionReducer = state[reducer];
+    return { story, questionReducer }
   };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DropDownSingleSelect);
