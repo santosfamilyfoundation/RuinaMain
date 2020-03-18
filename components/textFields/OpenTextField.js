@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Input, Layout, Text, Card, Button, CardHeader, Icon } from '@ui-kitten/components';
-import { genericWriteAction } from '../../actions/GenericAction';
 import { styles } from './OpenTextField.style';
 
 

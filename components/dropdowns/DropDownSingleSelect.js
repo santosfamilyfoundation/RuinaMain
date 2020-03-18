@@ -8,7 +8,6 @@ import {
 } from '@ui-kitten/components';
 import { styles } from './DropDownSingleSelect.style';
 import { connect } from 'react-redux';
-import { genericWriteAction } from '../../actions/GenericAction';
 
 
 const DropDownSingleSelect = (props) => {
@@ -91,7 +90,7 @@ const mapStateToProps = (state, props) => {
     const { reducer } = props;
     const questionReducer = state[reducer];
     return { story, questionReducer }
-  };
+};
 
 export default connect(mapStateToProps)(DropDownSingleSelect);
 

@@ -1,45 +1,49 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Input, Layout, Text, Card, Button, CardHeader, Icon, ButtonGroup } from '@ui-kitten/components';
-import { genericWriteAction } from '../../actions/GenericAction';
+import { Layout, Text, Card, Button, CardHeader } from '@ui-kitten/components';
 import { styles } from './MultiButtonSelector.style';
 
 
 const MultiButtonSelector = (props) => {
-    const [selection, setSelection] = React.useState('');
-    const {data, key, genericReducer, genericWriteAction} = props;
+    const [selection, setSelection] = React.useState(null);
+    const {data, key, id, questionReducer, submitFunction} = props;
 
     let currId = data.id
-    let status;
+    let status = 'danger';
 
-    if(genericReducer[currId] != null && selection != genericReducer[currId]) {
-        setSelection(genericReducer[currId]);
-    };
+    const reducerData = questionReducer.data.find(entry => entry.id == id);
+    let existingData = !reducerData?.response ? null: reducerData.response;
+
+    // Populate if value already exists in redux
+    if(!selection) {
+        if(existingData != null) {
+            if(existingData[currId] != selection) {
+                setSelection(existingData[currId]);
+            }
+        }
+    }
 
     const submitField = (idCode) => {
         setSelection(idCode);
-        genericWriteAction({actionType:"WRITE_SELECTION", field: data.id, content: idCode})
+        submitFunction({id, question: currId, selection: idCode})
     }
     
     const Header = () => (
         <CardHeader title={data.question}/>
     );
 
-    if(!genericReducer[currId]) {
+    if(!existingData) {
         status = 'danger'
     } else {
-        status = 'success'
+        if(!existingData[currId]) {
+            status = 'danger';
+        } else if(existingData[currId] != selection) {
+            status = 'danger'
+        } else {
+            status = 'success'
+        }
     }
 
-    // const CheckIcon = (style) => (
-    //     <Icon {...style} name='checkmark-outline' />
-    // )
-    // const CrossIcon = (style) => (
-    //     <Icon {...style} name='close-outline' />
-    // )
-    // const QuestionMarkIcon = (style) => (
-    //     <Icon {...style} name='question-mark-outline' />
-    // )
 
     const HelperText = () => {
         if(data.helperText.length != 0) {
@@ -85,13 +89,11 @@ const MultiButtonSelector = (props) => {
     );
 };
 
-const mapDispatchToProps = {
-    genericWriteAction
-}
-
-const mapStateToProps = (state) => {
-    const { genericReducer } = state
-    return { genericReducer }
+const mapStateToProps = (state, props) => {
+    const { story } = state;
+    const { reducer } = props;
+    const questionReducer = state[reducer];
+    return { story, questionReducer }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MultiButtonSelector);
+export default connect(mapStateToProps)(MultiButtonSelector);
