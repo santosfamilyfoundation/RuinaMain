@@ -11,6 +11,8 @@ const OpenTextField = (props) => {
     const [isInvalid, setIsInvalid] = React.useState(false);
     const {data, key, id, questionReducer, submitFunction} = props;
 
+    console.log("Props 1: ", props);
+
     let currId = data.id
     let status;
 
@@ -127,10 +129,6 @@ const OpenTextField = (props) => {
     );
 };
 
-const mapDispatchToProps = {
-    genericWriteAction
-}
-
 const mapStateToProps = (state, props) => {
     const { story } = state;
     const { reducer } = props;
@@ -138,4 +136,4 @@ const mapStateToProps = (state, props) => {
     return { story, questionReducer }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OpenTextField);
+export default connect(mapStateToProps)(OpenTextField);

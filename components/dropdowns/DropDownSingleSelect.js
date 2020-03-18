@@ -86,10 +86,6 @@ const DropDownSingleSelect = (props) => {
     );
 };
 
-const mapDispatchToProps = {
-    genericWriteAction
-}
-
 const mapStateToProps = (state, props) => {
     const { story } = state;
     const { reducer } = props;
@@ -97,6 +93,6 @@ const mapStateToProps = (state, props) => {
     return { story, questionReducer }
   };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DropDownSingleSelect);
+export default connect(mapStateToProps)(DropDownSingleSelect);
 
 

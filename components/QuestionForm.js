@@ -19,11 +19,10 @@ class QuestionForm extends Component {
 
   render() {
     const {questionDetail, updateDriver, updateNonmotorist, updatePassenger, updateVehicle } = this.props
-
     let reducer;
     let submitFunction;
     let actionType;
-    console.log("QUESTION DETAILS: ", questionDetail);
+
     switch(questionDetail.type){
       case 'Driver':
         reducer = "driverReducer";
@@ -103,6 +102,7 @@ class QuestionForm extends Component {
             />
           )
         case 'largeTextField':
+          console.log("REDUCER: ", reducer);
           return (
             <LargeTextField
               data={question}
