@@ -21,13 +21,19 @@ export default function nonmotoristReducer (state=initialState, action) {
                 data: nonmotoristArr
             }
         case 'UPDATENONMOTORIST':
-            const { id, response } = action.payload
-            let newNonmotoristArr = state.data.filter(nonmotorist => nonmotorist.id !=id).concat({id, response})
+            const { id, question, selection } = action.payload
+            let updatedState = state.data;
+            let selectedNonmotorist = updatedState.find(nonmotorist => nonmotorist.id == id)
+            if(selectedNonmotorist.response == undefined) {
+                selectedNonmotorist.response = {}
+            }
+            selectedNonmotorist.response[question] = selection;
 
             return {
                 ...state,
-                data: newNonmotoristArr
+                data: updatedState
             }
+
         default:
             return state;
     }

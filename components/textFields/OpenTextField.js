@@ -10,8 +10,6 @@ const OpenTextField = (props) => {
     const [isInvalid, setIsInvalid] = React.useState(false);
     const {data, key, id, questionReducer, submitFunction} = props;
 
-    console.log("Props 1: ", props);
-
     let currId = data.id
     let status;
 

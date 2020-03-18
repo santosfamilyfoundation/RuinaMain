@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
-import { Text, Divider, Layout, TopNavigation, CardHeader, Card, Button } from '@ui-kitten/components';
+import { Divider, Layout, TopNavigation, CardHeader, Card } from '@ui-kitten/components';
 import { styles } from '../containers/AutoComponentContainer.style';
 import { ScrollView } from 'react-native-gesture-handler';
 import MultiButtonSelector from './buttonSelectors/MultiButtonSelector';
@@ -46,26 +46,6 @@ class QuestionForm extends Component {
         break;
     }
 
-    const saveObjectData = (id) => {
-      const response = this.props.response
-      switch(questionDetail.type){
-        case 'Driver':
-          updateDriver({id, response})
-          return;
-        case 'Nonmotorist':
-          updateNonmotorist({id, response})
-          return;
-        case 'Passenger':
-          updatePassenger({id, response})
-          return;
-        case 'Vehicle':
-          updateVehicle({id, response})
-          return;
-        default:
-          return;
-      }
-    }
-
     const renderSingleQuestion = (question) => {
       switch (question.answerType) {
         case 'dropdown':
@@ -102,7 +82,6 @@ class QuestionForm extends Component {
             />
           )
         case 'largeTextField':
-          console.log("REDUCER: ", reducer);
           return (
             <LargeTextField
               data={question}
@@ -171,7 +150,6 @@ class QuestionForm extends Component {
           <Layout style={styles.content}>
             {renderedQuestions}
           </Layout>
-          <Button onPress={() => saveObjectData(questionDetail.objectID)}>SAVE</Button>
         </ScrollView>
       </SafeAreaView>
     );
