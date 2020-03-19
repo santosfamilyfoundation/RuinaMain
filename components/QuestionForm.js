@@ -56,7 +56,6 @@ class QuestionForm extends Component {
               id={questionDetail.objectID}
               reducer={reducer}
               submitFunction={submitFunction}
-              actionType={actionType}
             />
           )
         case 'dropdownMultiSelect':
@@ -67,7 +66,6 @@ class QuestionForm extends Component {
               id={questionDetail.objectID}
               reducer={reducer}
               submitFunction={submitFunction}
-              actionType={actionType}
             />
           )
         case 'openTextbox':
@@ -78,7 +76,6 @@ class QuestionForm extends Component {
               id={questionDetail.objectID}
               reducer={reducer}
               submitFunction={submitFunction}
-              actionType={actionType}
             />
           )
         case 'largeTextField':
@@ -89,7 +86,6 @@ class QuestionForm extends Component {
               id={questionDetail.objectID}
               reducer={reducer}
               submitFunction={submitFunction}
-              actionType={actionType}
             />
           )
         case 'multiButton':
@@ -100,7 +96,6 @@ class QuestionForm extends Component {
               id={questionDetail.objectID}
               reducer={reducer}
               submitFunction={submitFunction}
-              actionType={actionType}
             />
           )
         case 'autoCompleteDropdown':
@@ -111,7 +106,6 @@ class QuestionForm extends Component {
               id={questionDetail.objectID}
               reducer={reducer}
               submitFunction={submitFunction}
-              actionType={actionType}
             />
           )
       }

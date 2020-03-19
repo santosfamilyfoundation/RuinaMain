@@ -1,6 +1,15 @@
 export const driverQuestions = {
     "data": [
         {
+            id:"P1",
+            question:"Name of Person Involved",
+            helperText:"",
+            subquestions: null,
+            answerType:"openTextbox",
+            answerOptions: null,
+            maxLength: 30,
+        },
+        {
             id:"C1",
             question: "Crash Classification",
             helperText: "",

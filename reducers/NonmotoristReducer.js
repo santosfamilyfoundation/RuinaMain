@@ -13,7 +13,7 @@ export default function nonmotoristReducer (state=initialState, action) {
 
             for (let i = 0; i < numNonmotorist; i++){
                 let id = uuid.v1();
-                nonmotoristArr.push({id})
+                nonmotoristArr.push({id, response:{}})
             }
 
             return {
@@ -28,6 +28,14 @@ export default function nonmotoristReducer (state=initialState, action) {
                 selectedNonmotorist.response = {}
             }
             selectedNonmotorist.response[question] = selection;
+            // const { id, response } = action.payload
+            // let newNonmotoristArr = state.nonmotorists.filter(nonmotorist => nonmotorist.id !=id).concat({id, response})
+            // const currentResponse = state.nonmotorists.find(nonmotorist => nonmotorist.id == id).response
+            // for (let[key,value] of Object.entries(currentResponse)){
+            //     if (response[key] == null) {
+            //         response[key] = value
+            //     }
+            // }
 
             return {
                 ...state,

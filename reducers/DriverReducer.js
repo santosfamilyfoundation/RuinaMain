@@ -14,7 +14,7 @@ export default function driverReducer (state=initialState, action) {
 
             for (let i = 0; i < numDriver; i++){
                 let id = uuid.v1();
-                driverArr.push({id})
+                driverArr.push({id, response:{}})
             }
 
             return {
@@ -30,6 +30,16 @@ export default function driverReducer (state=initialState, action) {
                 selectedDriver.response = {}
             }
             selectedDriver.response[question] = selection;
+
+            
+            // const { id, response } = action.payload
+            // const currentResponse = state.drivers.find(driver => driver.id == id).response
+            // for (let[key,value] of Object.entries(currentResponse)){
+            //     if (response[key] == null) {
+            //         response[key] = value
+            //     }
+            // }
+            // let newDriverArr = state.drivers.filter(driver => driver.id != id).concat({id, response})
 
             return {
                 ...state,

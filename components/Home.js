@@ -22,6 +22,7 @@ class Home extends Component {
             passenger,
             } = this.props
 
+        const operatorList = [];
 
         const navigateQuestion = (form, id, type) => {
             navigation.navigate('Question', {questions: form.data, objectID: id, type})
@@ -50,23 +51,29 @@ class Home extends Component {
             
         })
 
-        const driverListArr = driver.data.map((driver, index) => (
-            <Card key={driver.id} style={styles.itemCard} onPress = {() => navigateQuestion(driverQuestions, driver.id, 'Driver')}>
-                <View style={styles.itemCardContent}>
-                    <Icon name='person' width={75} height={75} />
-                    <Text style={styles.itemCardFooter} category="s1">Driver {index+1}</Text>
-                </View>
-            </Card>
-        ))
+        const driverListArr = driver.data.map((driver, index) => {
+            operatorList.push({id:driver.id, type:'driver', response:{}})
+            return (
+                <Card key={driver.id} style={styles.itemCard} onPress = {() => navigateQuestion(driverQuestions, driver.id, 'Driver')}>
+                    <View style={styles.itemCardContent}>
+                        <Icon name='person' width={75} height={75} />
+                        <Text style={styles.itemCardFooter} category="s1">Driver {index+1}</Text>
+                    </View>
+                </Card>
+            )
+        })
 
-        const nonmotoristListArr = nonmotorist.data.map((nonmotorist, index) => (
-            <Card key={nonmotorist.id} style={styles.itemCard} onPress = {() => navigateQuestion(nonmotoristQuestions, nonmotorist.id, 'Nonmotorist')}>
-                <View style={styles.itemCardContent}>
-                    <Icon name='person' width={75} height={75} />
-                    <Text style={styles.itemCardFooter} category="s1">Non-Motorist {index+1}</Text>
-                </View>
-            </Card>
-        ))
+        const nonmotoristListArr = nonmotorist.data.map((nonmotorist, index) => {
+            operatorList.push({id:nonmotorist.id, type:'nonmotorist', response:[]})
+            return (
+                <Card key={nonmotorist.id} style={styles.itemCard} onPress = {() => navigateQuestion(nonmotoristQuestions, nonmotorist.id, 'Nonmotorist')}>
+                    <View style={styles.itemCardContent}>
+                        <Icon name='person' width={75} height={75} />
+                        <Text style={styles.itemCardFooter} category="s1">Non-Motorist {index+1}</Text>
+                    </View>
+                </Card>
+            )
+        })
 
         const passengerListArr = passenger.data.map((passenger, index) => (
             <Card key={passenger.id} style={styles.itemCard} onPress = {() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger')}>
@@ -92,6 +99,9 @@ class Home extends Component {
         return(
             <SafeAreaView style={{flex:1}}>
                 <TopNavigation title='Home' style = {{marginBottom: 15}}alignment='center' leftControl={this.props.BackAction()}/>
+                <View style={{flexDirection: 'row', justifyContent: "flex-end", marginRight: 30, marginBottom: 10}}>
+                    <Button style={{width:150}} onPress = {() => navigation.navigate('InfoExchange',{ operatorList })}>Info Exchange</Button>
+                </View>
                 <ScrollView>
                 <Card header={VehiclesHeader} style={styles.sectionCard}>
                     <Layout style={styles.questionContainer}>

@@ -13,6 +13,7 @@ import { ScanScreen } from './screens/scanScreen';
 import { QuickQuizScreen } from './screens/quickquizScreen';
 import { HomeScreen } from './screens/homeScreen';
 import { QuestionScreen } from './screens/questionScreen';
+import { InfoExchangeFormScreen } from './screens/infoExchangeScreen';
 
 const HomeNavigator = createStackNavigator({
   Welcome: WelcomeScreen,
@@ -27,7 +28,8 @@ const HomeNavigator = createStackNavigator({
   Scan: ScanScreen,
   Quiz: QuickQuizScreen,
   Home: HomeScreen,
-  Question: QuestionScreen
+  Question: QuestionScreen,
+  InfoExchange: InfoExchangeFormScreen
 }, {
   headerMode: 'none',
 });
