@@ -1,7 +1,7 @@
 var uuid = require('react-native-uuid');
 
 const initialState = {
-    vehicles: [],
+    data: [],
 
 }
 
@@ -17,7 +17,7 @@ export default function vehicleReducer (state=initialState, action) {
             }
             return {
                 ...state,
-                vehicles: state.vehicles.concat(vehicleArr)
+                data: state.data.concat(vehicleArr)
             }
         case 'ADDLVHM':
             const numLvhm = action.payload
@@ -29,24 +29,22 @@ export default function vehicleReducer (state=initialState, action) {
             }
             return {
                 ...state,
-                vehicles: state.vehicles.concat(lvhmArr)
+                data: state.data.concat(lvhmArr)
             }
         case 'UPDATEVEHICLE':
-            const { id, response } = action.payload
-            const vehicle = state.vehicles.find(vehicle => vehicle.id == id)
-            if (vehicle.hazardous){
-                let newVehicleArr = state.vehicles.filter(vehicle => vehicle.id != id).concat({id, response, hazardous: true})
-                return {
-                    ...state,
-                    vehicles: newVehicleArr
-                }
-            } else {
-                let newVehicleArr = state.vehicles.filter(vehicle => vehicle.id != id).concat({id, response, hazardous: null})
-                return {
-                    ...state,
-                    vehicles: newVehicleArr
-                }
+            const { id, question, selection } = action.payload
+            let updatedState = state.data;
+            let selectedVehicle = updatedState.find(vehicle => vehicle.id == id)
+            if(selectedVehicle.response == undefined) {
+                selectedVehicle.response = {}
             }
+            selectedVehicle.response[question] = selection;
+
+            return {
+                ...state,
+                data: updatedState
+            }
+
         default:
             return state;
     }

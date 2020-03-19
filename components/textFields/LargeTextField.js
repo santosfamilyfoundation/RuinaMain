@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Input, Layout, Text, Card, Button, CardHeader, Icon } from '@ui-kitten/components';
-import { genericWriteAction } from '../../actions/GenericAction';
 import { styles } from './LargeTextField.style';
 
 
@@ -9,42 +8,51 @@ const LargeTextField = (props) => {
     const [value, setValue] = React.useState('');
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const [isInvalid, setIsInvalid] = React.useState(false);
-    const {data, key, genericReducer, genericWriteAction} = props;
+    const {data, key, id, questionReducer, submitFunction} = props;
 
     let currId = data.id
     let status;
 
+    const reducerData = questionReducer.data.find(entry => entry.id == id);
+    let existingData = !reducerData?.response ? null: reducerData.response;
+
     // Populate if value already exists in redux
-    if(genericReducer[currId] != null && !value) {
-        setValue(genericReducer[currId]);
-        setButtonAppearance('filled');
+    if(!value) {
+        if(existingData != null) {
+            if(existingData[currId] != null && !value) {
+                setValue(existingData[currId]);
+                setButtonAppearance('filled');
+            }
+        }
     }
 
     const submitField = () => {
         if(!value) {
             return;
         }
-        genericWriteAction({actionType:"WRITE_SELECTION", field: currId, content: value});
+        submitFunction({id, question: currId, selection: value})
         setButtonAppearance('filled');
     }
 
     const onTextChange = (text) => {
         if(!text) {
-            genericWriteAction({actionType:"WRITE_SELECTION", field: currId, content: null});
+            submitFunction({id, question: currId, selection: null})
         }
         setValue(text);
     }
 
     const clearField = () => {
         setValue('');
-        genericWriteAction({actionType:"WRITE_SELECTION", field: currId, content: null});
+        submitFunction({id, question: currId, selection: null})
         setButtonAppearance('outline');
     }
 
     if(!value && buttonAppearance != 'outline') {
         setButtonAppearance('outline');
-    } else if(value != genericReducer[currId] && buttonAppearance != 'outline') {
-        setButtonAppearance('outline');
+    } else if(existingData != null) {
+        if(value != existingData[currId] && buttonAppearance != 'outline') {
+            setButtonAppearance('outline');
+        }
     }
 
     if(value.length > data.maxLength && !isInvalid) {
@@ -121,13 +129,11 @@ const LargeTextField = (props) => {
     );
 };
 
-const mapDispatchToProps = {
-    genericWriteAction
-}
-
-const mapStateToProps = (state) => {
-    const { story, genericReducer } = state
-    return { story, genericReducer }
+const mapStateToProps = (state, props) => {
+    const { story } = state;
+    const { reducer } = props;
+    const questionReducer = state[reducer];
+    return { story, questionReducer }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LargeTextField);
+export default connect(mapStateToProps)(LargeTextField);

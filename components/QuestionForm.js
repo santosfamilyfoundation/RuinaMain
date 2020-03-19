@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
-import { Text, Divider, Layout, TopNavigation, CardHeader, Card, Button } from '@ui-kitten/components';
+import { Divider, Layout, TopNavigation, CardHeader, Card } from '@ui-kitten/components';
 import { styles } from '../containers/AutoComponentContainer.style';
 import { ScrollView } from 'react-native-gesture-handler';
 import MultiButtonSelector from './buttonSelectors/MultiButtonSelector';
@@ -18,25 +18,32 @@ import { updatePassenger } from '../actions/PassengerAction';
 class QuestionForm extends Component {
 
   render() {
-    const { questionDetail, updateDriver, updateNonmotorist, updatePassenger, updateVehicle } = this.props
-    const saveObjectData = (id) => {
-      const response = this.props.response
-      switch(questionDetail.type){
-        case 'Driver':
-          updateDriver({id, response})
-          return;
-        case 'Nonmotorist':
-          updateNonmotorist({id, response})
-          return;
-        case 'Passenger':
-          updatePassenger({id, response})
-          return;
-        case 'Vehicle':
-          updateVehicle({id, response})
-          return;
-        default:
-          return;
-      }
+    const {questionDetail, updateDriver, updateNonmotorist, updatePassenger, updateVehicle } = this.props
+    let reducer;
+    let submitFunction;
+    let actionType;
+
+    switch(questionDetail.type){
+      case 'Driver':
+        reducer = "driverReducer";
+        submitFunction = updateDriver;
+        actionType = "UPDATEDRIVER";
+        break;
+      case 'Nonmotorist':
+        reducer = "nonmotoristReducer";
+        submitFunction = updateNonmotorist;
+        actionType = "UPDATENONMOTORIST";
+        break;
+      case 'Passenger':
+        reducer = "passengerReducer";
+        submitFunction = updatePassenger;
+        actionType = "UPDATEPASSENGER";
+        break;
+      case 'Vehicle':
+        reducer = "vehicleReducer";
+        submitFunction = updateVehicle;
+        actionType = "UPDATEVEHICLE";
+        break;
     }
 
     const renderSingleQuestion = (question) => {
@@ -46,6 +53,9 @@ class QuestionForm extends Component {
             <DropDownSingleSelect
               data={question}
               key={question.id}
+              id={questionDetail.objectID}
+              reducer={reducer}
+              submitFunction={submitFunction}
             />
           )
         case 'dropdownMultiSelect':
@@ -53,6 +63,9 @@ class QuestionForm extends Component {
             <DropDownMultiSelect
               data={question}
               key={question.id}
+              id={questionDetail.objectID}
+              reducer={reducer}
+              submitFunction={submitFunction}
             />
           )
         case 'openTextbox':
@@ -60,6 +73,9 @@ class QuestionForm extends Component {
             <OpenTextField
               data={question}
               key={question.id}
+              id={questionDetail.objectID}
+              reducer={reducer}
+              submitFunction={submitFunction}
             />
           )
         case 'largeTextField':
@@ -67,6 +83,9 @@ class QuestionForm extends Component {
             <LargeTextField
               data={question}
               key={question.id}
+              id={questionDetail.objectID}
+              reducer={reducer}
+              submitFunction={submitFunction}
             />
           )
         case 'multiButton':
@@ -74,6 +93,9 @@ class QuestionForm extends Component {
             <MultiButtonSelector
               data={question}
               key={question.id}
+              id={questionDetail.objectID}
+              reducer={reducer}
+              submitFunction={submitFunction}
             />
           )
         case 'autoCompleteDropdown':
@@ -81,6 +103,9 @@ class QuestionForm extends Component {
             <AutoCompleteDropDown
               data={question}
               key={question.id}
+              id={questionDetail.objectID}
+              reducer={reducer}
+              submitFunction={submitFunction}
             />
           )
       }
@@ -119,7 +144,6 @@ class QuestionForm extends Component {
           <Layout style={styles.content}>
             {renderedQuestions}
           </Layout>
-          <Button onPress={() => saveObjectData(questionDetail.objectID)}>SAVE</Button>
         </ScrollView>
       </SafeAreaView>
     );

@@ -68,7 +68,7 @@ class InfoExchangeForm extends Component{
                     <ScrollView>
                         {operatorListArr}
                     </ScrollView>
-                <Button onPress = {() => saveOperatorsAndDispatch()}>Save</Button>
+                <Button onPress = {() => this.props.navigation.navigate('Home')}>Finish</Button>
             </SafeAreaView>
         )
     }

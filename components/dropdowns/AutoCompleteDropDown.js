@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Input, Layout, Text, Card, Button, CardHeader, Icon, Autocomplete } from '@ui-kitten/components';
-import { genericWriteAction } from '../../actions/GenericAction';
+import { Layout, Text, Card, Button, CardHeader, Icon, Autocomplete } from '@ui-kitten/components';
 import { styles } from './AutoCompleteDropDown.style';
 
 
@@ -9,35 +8,41 @@ const AutoCompleteDropDown = (props) => {
     const [value, setValue] = React.useState('');   // value that will be stored in Redux
     const [title, setTitle] = React.useState('');   // value that will be displayed to user in form field
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
-    const {data, key, genericReducer, genericWriteAction} = props;
+    const {data, key, id, questionReducer, submitFunction} = props;
     const [selectionData, setSelectionData] = React.useState(data.answerOptions);
-
-    let currId = data.id
+    
     let status;
+    let currId = data.id;
+    const reducerData = questionReducer.data.find(entry => entry.id == id);
+    let existingData = !reducerData?.response ? null : reducerData.response;
 
     // Populate if value already exists in redux
-    if(genericReducer[currId] != null && !value) {
-        for(i = 0; i < selectionData.length; i++) {
-            if(selectionData[i].idCode == genericReducer[currId]) {
-                setValue(genericReducer[currId]);
-                setTitle(selectionData[i].title);
-            };
-        };
-        setButtonAppearance('filled');
+    if(!value) {
+        if(existingData != null) {
+            if(existingData[currId] != null) {
+                for(i = 0; i < selectionData.length; i++) {
+                    if(selectionData[i].idCode == existingData[currId]) {
+                        setValue(existingData[currId]);
+                        setTitle(selectionData[i].title);
+                    };
+                };
+                setButtonAppearance('filled');
+            }
+        }
     }
 
     const submitField = () => {
         if(!value) {
             return;
         }
-        genericWriteAction({actionType:"WRITE_SELECTION", field: currId, content: value});
+        submitFunction({id, question: currId, selection: value})
         setButtonAppearance('filled');
     }
 
     const clearField = () => {
         setValue('');
         setTitle('');
-        genericWriteAction({actionType:"WRITE_SELECTION", field: currId, content: null});
+        submitFunction({id, question: currId, selection: null})
         setButtonAppearance('outline');
     }
 
@@ -50,15 +55,17 @@ const AutoCompleteDropDown = (props) => {
     const searchItems = (query) => {
         setValue(query);
         setTitle(query);
-        res = data.answerOptions.filter(item => item.title.toLowerCase().includes(query.toLowerCase()))
+        let res = data.answerOptions.filter(item => item.title.toLowerCase().includes(query.toLowerCase()))
         setSelectionData(res);
     }
 
 
     if(!value && buttonAppearance != 'outline') {
         setButtonAppearance('outline');
-    } else if(value != genericReducer[currId] && buttonAppearance != 'outline') {
-        setButtonAppearance('outline');
+    } else if(existingData != null) {
+        if(value != existingData[currId] && buttonAppearance != 'outline') {
+            setButtonAppearance('outline');
+        }
     }
 
     const Header = () => (
@@ -118,13 +125,11 @@ const AutoCompleteDropDown = (props) => {
     );
 };
 
-const mapDispatchToProps = {
-    genericWriteAction
-}
-
-const mapStateToProps = (state) => {
-    const { story, genericReducer } = state
-    return { story, genericReducer }
+const mapStateToProps = (state, props) => {
+    const { story } = state;
+    const { reducer } = props;
+    const questionReducer = state[reducer];
+    return { story, questionReducer }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AutoCompleteDropDown);
+export default connect(mapStateToProps)(AutoCompleteDropDown);

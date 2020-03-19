@@ -10,29 +10,32 @@ import {
 } from '@ui-kitten/components';
 import { styles } from './DropDownMultiSelect.style';
 import { connect } from 'react-redux';
-import { genericWriteAction } from '../../actions/GenericAction';
 
 
 const DropDownMultiSelect = (props) => {
     const [selectedOptions, setSelectedOptions] = React.useState([]);
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
-    const {data, key, genericReducer} = props;
+    const {data, key, id, questionReducer, submitFunction} = props;
 
     let currId = data.id;
+    const reducerData = questionReducer.data.find(entry => entry.id == id);
+    let existingData = !reducerData?.response ? null : reducerData.response;
 
     // Populate if value already exists in redux
     if(selectedOptions.length == 0) {
-        if(genericReducer[currId] != null) {
-            currOptions = []
-            for (i = 0; i < data.answerOptions.length; i++) {                
-                if(genericReducer[currId].includes(data.answerOptions[i].idCode)) {
-                    currOptions.push(data.answerOptions[i]);
+        if(existingData != null) {
+            if(existingData[currId] != null) {
+                let currOptions = []
+                for (i = 0; i < data.answerOptions.length; i++) {                
+                    if(existingData[currId].includes(data.answerOptions[i].idCode)) {
+                        currOptions.push(data.answerOptions[i]);
+                    };
+                };
+                if(currOptions.length != 0) {
+                    setSelectedOptions(currOptions);
                 };
             };
-            if(currOptions.length != 0) {
-                setSelectedOptions(currOptions);
-            };
-        };
+        }
     };
 
     // Disable/enable if numOptionsAllowed reached
@@ -66,22 +69,26 @@ const DropDownMultiSelect = (props) => {
 
     // Determine submission status
     let status;
-    if(!genericReducer[currId]) {
+    if(!existingData) {
         setIncomplete();
     } else {
-        let incompleteFlag = false;
-        for(i = 0; i < selectedOptions.length; i++) {
-            if(!genericReducer[currId].includes(selectedOptions[i].idCode)){
-                incompleteFlag = true;
-            }
-        }
-        if (selectedOptions.length < genericReducer[currId].length) {
-            incompleteFlag = true;
-        }
-        if(incompleteFlag) {
+        if(!existingData[currId]) {
             setIncomplete();
         } else {
-            setComplete();
+            let incompleteFlag = false;
+            for(i = 0; i < selectedOptions.length; i++) {
+                if(!existingData[currId].includes(selectedOptions[i].idCode)){
+                    incompleteFlag = true;
+                }
+            }
+            if (selectedOptions.length < existingData[currId].length) {
+                incompleteFlag = true;
+            }
+            if(incompleteFlag) {
+                setIncomplete();
+            } else {
+                setComplete();
+            }
         }
     }
 
@@ -89,15 +96,15 @@ const DropDownMultiSelect = (props) => {
         if(selectedOptions.length == 0) {
             return;
         }
-        res = [];
+        let res = [];
         for(i = 0; i < selectedOptions.length; i++) {
             res.push(selectedOptions[i].idCode);
         }
-        props.genericWriteAction({actionType:"WRITE_SELECTION", field: currId, content: res})
+        submitFunction({id, question: currId, selection: res})
     }
 
     const clearRedux = () => {
-        props.genericWriteAction({actionType:"WRITE_SELECTION", field: currId, content: null})
+        submitFunction({id, question: currId, selection: null})
     }
 
     const addOption = (options) => {
@@ -149,15 +156,13 @@ const DropDownMultiSelect = (props) => {
     );
 };
 
-const mapDispatchToProps = {
-    genericWriteAction
-}
+const mapStateToProps = (state, props) => {
+    const { story } = state;
+    const { reducer } = props;
+    const questionReducer = state[reducer];
+    return { story, questionReducer }
+};
 
-const mapStateToProps = (state) => {
-    const { story, genericReducer } = state
-    return { story, genericReducer }
-  };
-
-export default connect(mapStateToProps, mapDispatchToProps)(DropDownMultiSelect);
+export default connect(mapStateToProps)(DropDownMultiSelect);
 
 
