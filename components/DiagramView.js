@@ -4,6 +4,7 @@ import { TextInput, Text, Dimensions, StyleSheet, View, TouchableOpacity } from 
 import { Button, Divider, Layout, TopNavigation, Icon } from '@ui-kitten/components';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { connect } from 'react-redux';
+import { changeLat, changeLong, updateMarkers } from '../actions/MapAction';
 import MapView, { Marker, AnimatedRegion, Polyline, PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
 //import { mapAction } from '../actions/MapAction';
@@ -55,7 +56,7 @@ class DiagramView extends Component {
             });
       this._map.animateToRegion(region, 100);
       },
-      error => alert('Error', JSON.stringify(error)),
+      error => alert('Location Not Found', JSON.stringify(error)),
       {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000},
     );
   }
@@ -130,6 +131,13 @@ class DiagramView extends Component {
   }
 
     render() {
+        const {
+          navigation,
+          changeLat,
+          changeLong,
+          mapDetails,
+          updateMarkers
+        } = this.props;
 
         const navigateSummary = () => {
           this.props.navigation.navigate('MapSummary');
@@ -137,6 +145,12 @@ class DiagramView extends Component {
 
         const navigateHome = () => {
           this.props.navigation.navigate('Welcome');
+        };
+
+        const saveLocations = () => {
+          changeLat(this.state.mapRegion.latitude);
+          changeLong(this.state.mapRegion.longitude);
+          updateMarkers(this.state.markers);
         };
 
         return (
@@ -198,7 +212,7 @@ class DiagramView extends Component {
                     </TouchableOpacity>
                   </View>
               </Layout>
-              <Button onPress={() =>this.props.mapAction(this.state.mapRegion.latitude)}>SAVE</Button>
+              <Button onPress={() => saveLocations()}>SAVE</Button>
           </SafeAreaView>
           );
     }
@@ -235,10 +249,11 @@ const styles = StyleSheet.create({
   }
 });
 
-
-const mapDispatchToProps = dispatch => ({
-  mapAction: (mapDetails) => dispatch({ type: 'WRITE', payload: mapDetails })
-});
+const mapDispatchToProps = {
+  changeLat,
+  changeLong,
+  updateMarkers,
+}
 
 
 const mapStateToProps = (state) => {

@@ -1,6 +1,20 @@
-export const mapAction = req => {
+export const changeLat = req => {
     return {
-        type: 'WRITE',
+        type: 'UPDATEMAPLAT',
+        payload: req,
+    }
+};
+
+export const changeLong = req => {
+    return {
+        type: 'UPDATEMAPLONG',
+        payload: req,
+    }
+};
+
+export const updateMarkers = req => {
+    return {
+        type: 'UPDATEMARKERS',
         payload: req,
     }
 };

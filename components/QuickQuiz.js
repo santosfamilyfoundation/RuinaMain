@@ -31,7 +31,7 @@ class QuickQuiz extends Component {
         addDriver,
         addPassenger
       } = this.props;
-
+      console.log(this.props)
       const quiz = this.props.quiz;
 
       const dispatchAll = () => {
