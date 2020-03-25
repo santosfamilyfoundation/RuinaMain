@@ -8,6 +8,7 @@ import MultiButtonSelector from './buttonSelectors/MultiButtonSelector';
 import AutoCompleteDropDown from './dropdowns/AutoCompleteDropDown';
 import DropDownSingleSelect from './dropdowns/DropDownSingleSelect';
 import OpenTextField from './textFields/OpenTextField';
+import AdvancedOpenTextField from './textFields/AdvancedOpenTextField';
 import DropDownMultiSelect from './dropdowns/DropDownMultiSelect';
 import LargeTextField from './textFields/LargeTextField';
 import { updateDriver } from '../actions/DriverAction';
@@ -52,6 +53,10 @@ class QuestionForm extends Component {
         break;
     }
 
+    const navigateToAdvanced = (place) =>{
+      this.props.navigation.navigate(place);
+    }
+
     const renderSingleQuestion = (question) => {
       switch (question.answerType) {
         case 'dropdown':
@@ -84,6 +89,17 @@ class QuestionForm extends Component {
               submitFunction={submitFunction}
             />
           )
+          case 'advancedOpenTextbox':
+            return (
+              <AdvancedOpenTextField
+                data={question}
+                key={question.id}
+                id={questionDetail.objectID}
+                reducer={reducer}
+                submitFunction={submitFunction}
+                pageChange={navigateToAdvanced}
+              />
+            )
         case 'largeTextField':
           return (
             <LargeTextField

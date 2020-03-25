@@ -1,15 +1,6 @@
 export const roadQuestions = {
     "data": [
       {
-          id: "C3-S2",
-          question: "Time of Roadway Clearance",
-          helperText: "(HHMM)",
-          subquestions: null,
-          answerType: "openTextbox",
-          answerOptions: null,
-          maxLength: 30,
-      },
-      {
           id: "C4",
           question: "Crash County",
           helperText: "",
@@ -17,6 +8,8 @@ export const roadQuestions = {
           answerType: "openTextbox",
           answerOptions: null,
           maxLength: 30,
+          reducer: "genericReducer",
+          advanvedType: null,
       },
       {
           id: "C5",
@@ -26,6 +19,8 @@ export const roadQuestions = {
           answerType: "openTextbox",
           answerOptions: null,
           maxLength: 30,
+          reducer: "genericReducer",
+          advanvedType: null,
       },
       {
           id: "C6",
@@ -35,24 +30,30 @@ export const roadQuestions = {
           answerType: "openTextbox",
           answerOptions: null,
           maxLength: 30,
+          reducer: "genericReducer",
+          advanvedType: null,
       },
       {
           id: "C6",
           question: "Latitude",
           helperText: "(degrees.minutes.seconds + compass direction)",
           subquestions: null,
-          answerType: "openTextbox",
+          answerType: "advancedOpenTextbox",
           answerOptions: null,
           maxLength: 30,
+          reducer: "genericReducer",
+          advanvedType: "Map",
       },
       {
         id: "C6",
         question: "Longitude",
         helperText: "(degrees.minutes.seconds + compass direction)",
         subquestions: null,
-        answerType: "openTextbox",
+        answerType: "advancedOpenTextbox",
         answerOptions: null,
         maxLength: 30,
+        reducer: "genericReducer",
+        advanvedType: "Map",
       }
     ]
 }
