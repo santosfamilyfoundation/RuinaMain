@@ -14,11 +14,12 @@ import { updateDriver } from '../actions/DriverAction';
 import { updateNonmotorist } from '../actions/NonmotoristAction';
 import { updateVehicle } from '../actions/VehicleAction';
 import { updatePassenger } from '../actions/PassengerAction';
+import { updateRoad } from '../actions/RoadAction';
 
 class QuestionForm extends Component {
 
   render() {
-    const {questionDetail, updateDriver, updateNonmotorist, updatePassenger, updateVehicle } = this.props
+    const {questionDetail, updateDriver, updateNonmotorist, updatePassenger, updateVehicle, updateRoad } = this.props
     let reducer;
     let submitFunction;
     let actionType;
@@ -43,6 +44,11 @@ class QuestionForm extends Component {
         reducer = "vehicleReducer";
         submitFunction = updateVehicle;
         actionType = "UPDATEVEHICLE";
+        break;
+      case 'Road':
+        reducer = "roadReducer";
+        submitFunction = updateRoad;
+        actionType = "UPDATEROAD";
         break;
     }
 
@@ -154,7 +160,8 @@ const mapDispatchToProps = {
   updateDriver,
   updateNonmotorist,
   updateVehicle,
-  updatePassenger
+  updatePassenger,
+  updateRoad,
 }
 
 const mapStateToProps = (state) => {
