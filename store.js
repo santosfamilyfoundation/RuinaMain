@@ -9,6 +9,7 @@ import vehicleReducer from './reducers/VehicleReducer';
 import nonmotoristReducer from './reducers/NonmotoristReducer';
 import driverReducer from './reducers/DriverReducer';
 import passengerReducer from './reducers/PassengerReducer';
+import roadReducer from './reducers/RoadReducer'
 
 const rootReducer = combineReducers({
   storyReducer,
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   vehicleReducer,
   nonmotoristReducer,
   driverReducer,
-  passengerReducer
+  passengerReducer,
+  roadReducer
 });
 
 const configureStore = () => {

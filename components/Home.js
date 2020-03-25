@@ -10,6 +10,7 @@ import { passengerQuestions } from '../data/passengerQuestions';
 import { nonmotoristQuestions } from '../data/nonmotoristQuestions';
 import { vehicleQuestions } from '../data/vehicleQuestions';
 import { lvhmQuestions } from '../data/lvhmQuestions';
+import { roadQuestions } from '../data/roadQuestions';
 
 class Home extends Component {
 
@@ -115,7 +116,7 @@ class Home extends Component {
                 </Card>
                 <Card header={RoadHeader} style={styles.sectionCard}>
                     <Layout style={styles.questionContainer}>
-                        <Card style={styles.itemCard}>
+                        <Card style={styles.itemCard} onPress = {() => navigateQuestion(roadQuestions, 'Generic Id', 'Road')}>
                             <View style={styles.itemCardContent}>
                                 <Icon name='paper-plane' width={75} height={75} />
                                 <Text style={styles.itemCardFooter} category="s1">Road</Text>

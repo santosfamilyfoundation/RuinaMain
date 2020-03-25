@@ -1,44 +1,58 @@
-export const driverQuestions = {
+export const roadQuestions = {
     "data": [
       {
-          answerType: "Guided Text",
-          question: "Time of Roadway Clearance",
           id: "C3-S2",
+          question: "Time of Roadway Clearance",
+          helperText: "(HHMM)",
+          subquestions: null,
+          answerType: "openTextbox",
           answerOptions: null,
-          helperText: "(HHMM)"
+          maxLength: 30,
       },
       {
-          answerType: "Open Textbox",
-          question: "Crash County",
           id: "C4",
-          answerOptions: null
+          question: "Crash County",
+          helperText: "",
+          subquestions: null,
+          answerType: "openTextbox",
+          answerOptions: null,
+          maxLength: 30,
       },
       {
-          answerType: "Open Textbox",
-          question: "Crash City/Place",
           id: "C5",
+          question: "Crash City/Place",
+          helperText: "(Political Jurisdiction)",
+          subquestions: null,
+          answerType: "openTextbox",
           answerOptions: null,
-          helperText: "(Political Jurisdiction)"
+          maxLength: 30,
       },
       {
-          answerType: "Header",
+          id: "C6",
           question: "Crash Location",
-          id: "C6",
-          answerOptions: null
+          helperText: "",
+          subquestions: null,
+          answerType: "openTextbox",
+          answerOptions: null,
+          maxLength: 30,
       },
       {
-          answerType: "Guided Text",
+          id: "C6",
           question: "Latitude",
-          id: "C6",
+          helperText: "(degrees.minutes.seconds + compass direction)",
+          subquestions: null,
+          answerType: "openTextbox",
           answerOptions: null,
-          helperText: "(degrees.minutes.seconds + compass direction)"
+          maxLength: 30,
       },
       {
-          answerType: "Guided Text",
-          question: "Longitude",
-          id: "C6",
-          answerOptions: null,
-          helperText: "(degrees.minutes.seconds + compass direction)"
+        id: "C6",
+        question: "Longitude",
+        helperText: "(degrees.minutes.seconds + compass direction)",
+        subquestions: null,
+        answerType: "openTextbox",
+        answerOptions: null,
+        maxLength: 30,
       }
     ]
 }
