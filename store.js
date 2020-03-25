@@ -11,10 +11,10 @@ import driverReducer from './reducers/DriverReducer';
 import passengerReducer from './reducers/PassengerReducer';
 
 const rootReducer = combineReducers({
-  storyReducer: storyReducer,
-  genericReducer: genericReducer,
-  mapReducer: mapReducer,
-  photosReducer: photosReducer,
+  storyReducer,
+  genericReducer,
+  mapReducer,
+  photosReducer,
   quickquizReducer,
   vehicleReducer,
   nonmotoristReducer,

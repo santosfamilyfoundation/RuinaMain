@@ -35,4 +35,6 @@ const mapStateToProps = (state) => {
     return { genericReducer }
 };
 
+
+
 export default connect(mapStateToProps)(PhotoCaptureMain);

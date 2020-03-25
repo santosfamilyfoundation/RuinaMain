@@ -19,11 +19,6 @@ const typeData = [
   { text: Constants.PLATE },
 ];
 
-const objectData = [
-  { text: "FAKE Vehicle 1" },
-  { text: "FAKE Vehicle 2" },
-];
-
 class PhotoCapture extends Component {
   state = {
     images: [],
@@ -42,7 +37,6 @@ class PhotoCapture extends Component {
   }
 
   uploadImage = () => {
-    console.log(this.state);
     const ext = this.state.imgUri.split('.').pop(); // Extract image extension
     const filename = `${uuid()}.${ext}`; // Making a unique name
     this.setState({ uploading: true });
@@ -81,6 +75,14 @@ class PhotoCapture extends Component {
 
 
     render() {
+
+        const vehicle = this.props.vehicle;
+
+        const objectData = vehicle.data.map((vehicle, index) => {
+            const name = "Vehicle " + (index + 1)
+            return {"text":name};
+        })
+
         const photoAction = this.props.photoAction;
 
         const navigateResult = () => {
@@ -136,8 +138,11 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state) => {
-  const { photoVals } = state.photosReducer
-  return { photoVals }
-};
+    return {
+        photoVals: state.photosReducer,
+        driver: state.driverReducer,
+        vehicle: state.vehicleReducer,
+    }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhotoCapture);

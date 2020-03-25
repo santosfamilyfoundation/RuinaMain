@@ -18,12 +18,12 @@ class QuickQuiz extends Component {
     render() {
       const {navigation,
         changeRespond,
-        changeVehicle, 
+        changeVehicle,
         changeDrivers,
         changeNonmotorists,
-        changePassengers, 
-        changeFatality, 
-        changeSchoolbus, 
+        changePassengers,
+        changeFatality,
+        changeSchoolbus,
         changeLvhm,
         addVehicle,
         addLvhm,
@@ -57,7 +57,7 @@ class QuickQuiz extends Component {
               <TopNavigation title='Quick Quiz' alignment='center' leftControl={this.props.BackAction()}/>
               <ScrollView style={{ flex: 1 }}>
                 <SafeAreaView style = {styles.questionContainer}>
-                  <NumberButtonSelector 
+                  <NumberButtonSelector
                     title="Number of vehicles involved"
                     submitFunction = {changeVehicle}
                     reducerName = "quickquizReducer"
@@ -65,7 +65,7 @@ class QuickQuiz extends Component {
                   />
                 </SafeAreaView>
                 <SafeAreaView style = {styles.questionContainer}>
-                  <NumberButtonSelector 
+                  <NumberButtonSelector
                     title="Number of drivers involved"
                     submitFunction = {changeDrivers}
                     reducerName = "quickquizReducer"
@@ -73,7 +73,7 @@ class QuickQuiz extends Component {
                   />
                 </SafeAreaView>
                 <SafeAreaView style = {styles.questionContainer}>
-                  <NumberButtonSelector 
+                  <NumberButtonSelector
                     title="Number of non-motorists involved"
                     submitFunction = {changeNonmotorists}
                     reducerName = "quickquizReducer"
@@ -81,7 +81,7 @@ class QuickQuiz extends Component {
                   />
                 </SafeAreaView>
                 <SafeAreaView style = {styles.questionContainer}>
-                  <NumberButtonSelector 
+                  <NumberButtonSelector
                     title="Number of passengers involved"
                     submitFunction = {changePassengers}
                     reducerName = "quickquizReducer"
@@ -89,7 +89,7 @@ class QuickQuiz extends Component {
                   />
                 </SafeAreaView>
                 <SafeAreaView style = {styles.questionContainer}>
-                  <NumberButtonSelector 
+                  <NumberButtonSelector
                     title="Number of large or vehicles with hazardous material"
                     submitFunction = {changeLvhm}
                     reducerName = "quickquizReducer"
@@ -100,15 +100,15 @@ class QuickQuiz extends Component {
                   <Card style = {styles.cardStyle}>
                       <Text style = {styles.questionText}>Are there known fatalities?</Text>
                       <Layout style={{flexDirection: 'row'}}>
-                          <Button 
-                            style = {styles.buttonSytle} 
+                          <Button
+                            style = {styles.buttonSytle}
                             onPress = {() => changeFatality(true)}
                             appearance={(quiz.fatality ? 'filled':'outline')}
                           >
                             Yes
                           </Button>
-                          <Button 
-                            style = {styles.buttonSytle} 
+                          <Button
+                            style = {styles.buttonSytle}
                             onPress = {() => changeFatality(false)}
                             appearance={(quiz.fatality ? 'outline':'filled')}
                           >
@@ -121,15 +121,15 @@ class QuickQuiz extends Component {
                   <Card style = {styles.cardStyle}>
                       <Text style = {styles.questionText}>Is a school bus involved?</Text>
                       <Layout style={{flexDirection: 'row'}}>
-                        <Button 
-                          style = {styles.buttonSytle} 
+                        <Button
+                          style = {styles.buttonSytle}
                           onPress = {() => changeSchoolbus(true)}
                           appearance={(quiz.schoolbus ? 'filled':'outline')}
                         >
                           Yes
                         </Button>
-                        <Button 
-                          style = {styles.buttonSytle} 
+                        <Button
+                          style = {styles.buttonSytle}
                           onPress = {() => changeSchoolbus(false)}
                           appearance={(quiz.schoolbus ? 'outline':'filled')}
                         >
@@ -149,15 +149,15 @@ class QuickQuiz extends Component {
 
 const mapDispatchToProps = {
   changeRespond,
-  changeVehicle, 
+  changeVehicle,
   changeDrivers,
   changeLvhm,
   changeNonmotorists,
-  changePassengers, 
-  changeFatality, 
-  changeConstruction, 
-  changeIntersection, 
-  changeSchoolbus, 
+  changePassengers,
+  changeFatality,
+  changeConstruction,
+  changeIntersection,
+  changeSchoolbus,
   addVehicle,
   addLvhm,
   addNonmotorist,

@@ -48,7 +48,7 @@ class Home extends Component {
                     </Card>
                 )
             }
-            
+
         })
 
         const driverListArr = driver.data.map((driver, index) => {
@@ -135,7 +135,7 @@ const mapStateToProps = (state) => {
         nonmotorist: state.nonmotoristReducer,
         vehicle: state.vehicleReducer,
         passenger: state.passengerReducer,
-        quiz: state.quickquizReducer
+        quiz: state.quickquizReducer,
     }
 }
 

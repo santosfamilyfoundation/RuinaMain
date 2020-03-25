@@ -66,5 +66,6 @@ ios/Pods/
 #ios
 .pbxproj
 .xcconfig
+.debug.xcconfig
 
 #.plist
