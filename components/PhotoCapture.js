@@ -11,10 +11,6 @@ import BasicDropDown from './BasicDropDown';
 import * as Constants from '../constants';
 import { styles } from './PhotoCapture.style';
 
-//Need to fix so that it automatically puts to reducer
-
-//Do we want a photo Gallary??
-
 const { app } = firebase.storage();
 
 const typeData = [

@@ -17,8 +17,8 @@ class TestVehiclePage extends Component {
                 <TopNavigation title='TestVehiclePage' alignment='center' leftControl={this.props.BackAction()}/>
                 <Divider/>
                 <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                    <Text style={{textAlign: 'center'}} category='h1'>{"This is where you would be putting in the Vehicle information."}</Text>
-                    <Button onPress = {navigatePhoto}>"Take Picture of Vin"</Button>
+                    <Text style={{textAlign: 'center'}} category='h1'>{"This is where you would be adding general scene photos."}</Text>
+                    <Button onPress = {navigatePhoto}>{"Take Picture of Scene"}</Button>
                 </Layout>
             </SafeAreaView>
         )

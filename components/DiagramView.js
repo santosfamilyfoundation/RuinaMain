@@ -55,7 +55,7 @@ class DiagramView extends Component {
             });
       this._map.animateToRegion(region, 100);
       },
-      error => Alert.alert('Error', JSON.stringify(error)),
+      error => alert('Error', JSON.stringify(error)),
       {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000},
     );
   }

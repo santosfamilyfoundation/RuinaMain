@@ -59,6 +59,8 @@ export default class Scan extends Component {
         try {
             const result = await PermissionsAndroid.check(
                 PermissionsAndroid.PERMISSIONS.CAMERA);
+            console.log("This is hte results")
+            console.log(result)
             return result;
         } catch (err) {
             console.warn(err);
