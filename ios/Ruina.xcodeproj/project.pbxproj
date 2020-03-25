@@ -12,9 +12,9 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2893C09E17204D635FC382AA /* libPods-RuinaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F72C300F9C7CA36A39B91F /* libPods-RuinaTests.a */; };
-		454537ABE7E72AEAF08F7BCF /* libPods-Ruina.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 544E2597F478D8F19EB5D858 /* libPods-Ruina.a */; };
+		172B5694109832D36D919C46 /* libPods-Ruina.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CB33D09535BFD4F7E06C65 /* libPods-Ruina.a */; };
 		ADCB19C0240DCC2B00B1AEFA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADCB19BF240DCC2B00B1AEFA /* GoogleService-Info.plist */; };
+		CF04D1533DF67A8C152FF205 /* libPods-RuinaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A314F5EB828927141B657DF0 /* libPods-RuinaTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,10 +32,7 @@
 		00E356EE1AD99517003FC87E /* RuinaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RuinaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* RuinaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RuinaTests.m; sourceTree = "<group>"; };
-		0181F779F46A4A4AF6864243 /* Pods-Ruina.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ruina.release.xcconfig"; path = "Target Support Files/Pods-Ruina/Pods-Ruina.release.xcconfig"; sourceTree = "<group>"; };
-		02F8805AEBBBA29EE72979B3 /* Pods-Ruina-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ruina-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Ruina-tvOS/Pods-Ruina-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		0D2D109744B386D8424647AF /* Pods-Ruina-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ruina-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Ruina-tvOS/Pods-Ruina-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		1010EF924953EF887EA4FAA7 /* libPods-Ruina-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ruina-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04CB33D09535BFD4F7E06C65 /* libPods-Ruina.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ruina.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* Ruina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ruina.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Ruina/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Ruina/AppDelegate.m; sourceTree = "<group>"; };
@@ -43,17 +40,14 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Ruina/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Ruina/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Ruina/main.m; sourceTree = "<group>"; };
-		52276F840F0F0777F7451182 /* Pods-RuinaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RuinaTests.debug.xcconfig"; path = "Target Support Files/Pods-RuinaTests/Pods-RuinaTests.debug.xcconfig"; sourceTree = "<group>"; };
-		544E2597F478D8F19EB5D858 /* libPods-Ruina.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ruina.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		67F72C300F9C7CA36A39B91F /* libPods-RuinaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RuinaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		70FD75DFC41A2FF33530AFF2 /* Pods-Ruina.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ruina.debug.xcconfig"; path = "Target Support Files/Pods-Ruina/Pods-Ruina.debug.xcconfig"; sourceTree = "<group>"; };
-		74452607BC98C99292890676 /* libPods-Ruina-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ruina-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9CDC4A947EAD6CE427FCEAE7 /* Pods-RuinaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RuinaTests.release.xcconfig"; path = "Target Support Files/Pods-RuinaTests/Pods-RuinaTests.release.xcconfig"; sourceTree = "<group>"; };
+		1B8F0039981AFAEC4824CD68 /* Pods-Ruina.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ruina.debug.xcconfig"; path = "Target Support Files/Pods-Ruina/Pods-Ruina.debug.xcconfig"; sourceTree = "<group>"; };
+		2918513A4AD43ED6A7EBDEDC /* Pods-RuinaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RuinaTests.release.xcconfig"; path = "Target Support Files/Pods-RuinaTests/Pods-RuinaTests.release.xcconfig"; sourceTree = "<group>"; };
+		5D20A4D60EE15655F506E741 /* Pods-Ruina.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ruina.release.xcconfig"; path = "Target Support Files/Pods-Ruina/Pods-Ruina.release.xcconfig"; sourceTree = "<group>"; };
+		A314F5EB828927141B657DF0 /* libPods-RuinaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RuinaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADCB19BF240DCC2B00B1AEFA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		B018D30705128F3483705C5F /* Pods-Ruina-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ruina-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Ruina-tvOSTests/Pods-Ruina-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C7ADEC25FF1A4BC5CDB6D3AE /* Pods-RuinaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RuinaTests.debug.xcconfig"; path = "Target Support Files/Pods-RuinaTests/Pods-RuinaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		F6A0191C05905A6EA4AB13F9 /* Pods-Ruina-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ruina-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Ruina-tvOSTests/Pods-Ruina-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2893C09E17204D635FC382AA /* libPods-RuinaTests.a in Frameworks */,
+				CF04D1533DF67A8C152FF205 /* libPods-RuinaTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				454537ABE7E72AEAF08F7BCF /* libPods-Ruina.a in Frameworks */,
+				172B5694109832D36D919C46 /* libPods-Ruina.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,14 +90,10 @@
 		0B550CB7EA137D8CDFA23F12 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				70FD75DFC41A2FF33530AFF2 /* Pods-Ruina.debug.xcconfig */,
-				0181F779F46A4A4AF6864243 /* Pods-Ruina.release.xcconfig */,
-				0D2D109744B386D8424647AF /* Pods-Ruina-tvOS.debug.xcconfig */,
-				02F8805AEBBBA29EE72979B3 /* Pods-Ruina-tvOS.release.xcconfig */,
-				B018D30705128F3483705C5F /* Pods-Ruina-tvOSTests.debug.xcconfig */,
-				F6A0191C05905A6EA4AB13F9 /* Pods-Ruina-tvOSTests.release.xcconfig */,
-				52276F840F0F0777F7451182 /* Pods-RuinaTests.debug.xcconfig */,
-				9CDC4A947EAD6CE427FCEAE7 /* Pods-RuinaTests.release.xcconfig */,
+				1B8F0039981AFAEC4824CD68 /* Pods-Ruina.debug.xcconfig */,
+				5D20A4D60EE15655F506E741 /* Pods-Ruina.release.xcconfig */,
+				C7ADEC25FF1A4BC5CDB6D3AE /* Pods-RuinaTests.debug.xcconfig */,
+				2918513A4AD43ED6A7EBDEDC /* Pods-RuinaTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -128,10 +118,8 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				544E2597F478D8F19EB5D858 /* libPods-Ruina.a */,
-				74452607BC98C99292890676 /* libPods-Ruina-tvOS.a */,
-				1010EF924953EF887EA4FAA7 /* libPods-Ruina-tvOSTests.a */,
-				67F72C300F9C7CA36A39B91F /* libPods-RuinaTests.a */,
+				04CB33D09535BFD4F7E06C65 /* libPods-Ruina.a */,
+				A314F5EB828927141B657DF0 /* libPods-RuinaTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -174,7 +162,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "RuinaTests" */;
 			buildPhases = (
-				2BF5F4E3FD659EF585354183 /* [CP] Check Pods Manifest.lock */,
+				34D22E15CF3277DB3E90E55A /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
@@ -193,13 +181,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Ruina" */;
 			buildPhases = (
-				F0A415827DA876890A82F48E /* [CP] Check Pods Manifest.lock */,
+				3BFFCFB86291E52BD63657E1 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				81BCF3FDFE4D2912BA683F01 /* [CP] Copy Pods Resources */,
+				85F0D73856DE93DE926D525E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -286,7 +274,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		2BF5F4E3FD659EF585354183 /* [CP] Check Pods Manifest.lock */ = {
+		34D22E15CF3277DB3E90E55A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -308,27 +296,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		81BCF3FDFE4D2912BA683F01 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Ruina/Pods-Ruina-resources.sh",
-				"${PODS_ROOT}/Anyline/AnylineSDK_iOS_19/Framework/AnylineResources.bundle",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AnylineResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ruina/Pods-Ruina-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F0A415827DA876890A82F48E /* [CP] Check Pods Manifest.lock */ = {
+		3BFFCFB86291E52BD63657E1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -348,6 +316,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		85F0D73856DE93DE926D525E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ruina/Pods-Ruina-resources.sh",
+				"${PODS_ROOT}/Anyline/AnylineSDK_iOS_19/Framework/AnylineResources.bundle",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AnylineResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ruina/Pods-Ruina-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -414,7 +402,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52276F840F0F0777F7451182 /* Pods-RuinaTests.debug.xcconfig */;
+			baseConfigurationReference = C7ADEC25FF1A4BC5CDB6D3AE /* Pods-RuinaTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -443,7 +431,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9CDC4A947EAD6CE427FCEAE7 /* Pods-RuinaTests.release.xcconfig */;
+			baseConfigurationReference = 2918513A4AD43ED6A7EBDEDC /* Pods-RuinaTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -469,7 +457,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 70FD75DFC41A2FF33530AFF2 /* Pods-Ruina.debug.xcconfig */;
+			baseConfigurationReference = 1B8F0039981AFAEC4824CD68 /* Pods-Ruina.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -495,7 +483,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0181F779F46A4A4AF6864243 /* Pods-Ruina.release.xcconfig */;
+			baseConfigurationReference = 5D20A4D60EE15655F506E741 /* Pods-Ruina.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";

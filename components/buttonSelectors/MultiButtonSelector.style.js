@@ -18,10 +18,12 @@ export const styles = StyleSheet.create({
       justifyContent: 'space-between',
     },
     answers: {
-        flex: 2,
-        flexDirection:'row'
+        flex: 1,
+        flexDirection:'row',
+        flexWrap: 'wrap',
     },
     answerButton: {
-        marginRight: 10
+        marginRight: 10,
+        marginBottom: 10,
     },
 });
