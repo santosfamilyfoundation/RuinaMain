@@ -106,6 +106,9 @@ const AdvancedOpenTextField = (props) => {
         return null;
     };
 
+    const latValueFromMap = props.mapReducer.markers.length ? String(props.mapReducer.markers[0].coordinate.latitude) : null;
+    const currValue = latValueFromMap ? latValueFromMap : value;
+
     return (
         <Layout key={key} style={styles.container}>
             <Card header={CustomCardHeader} status={status}>
@@ -117,7 +120,7 @@ const AdvancedOpenTextField = (props) => {
                             icon={renderClear}
                             onIconPress={() => clearField()}
                             placeholder='Place your Text'
-                            value={value}
+                            value={currValue}
                             onChangeText={onTextChange}
                         />
                         <Button
@@ -139,7 +142,8 @@ const mapStateToProps = (state, props) => {
     const { story } = state;
     const { reducer } = props;
     const questionReducer = state[reducer];
-    return { story, questionReducer }
+    const mapReducer = state.mapReducer;
+    return { story, questionReducer, mapReducer }
 };
 
 export default connect(mapStateToProps)(AdvancedOpenTextField);
