@@ -48,7 +48,7 @@ export const styles = StyleSheet.create({
         width: 170,
         alignItems: 'center',
         justifyContent: 'center',
-        margin: 15
+        margin: 10
     },
     nonMotoristCard:{
         height: 165,
