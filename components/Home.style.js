@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     itemCard: {
-        height: 300,
+        // height: 300,
         width: '100%',
         margin: 5,
         flex: 1,
@@ -36,6 +36,7 @@ export const styles = StyleSheet.create({
         height:'90%',
         justifyContent:'flex-start',
         flexDirection: 'row',
+        flexWrap:"wrap",
         marginBottom: 5,
     },
     itemCardFooter: {
@@ -45,6 +46,13 @@ export const styles = StyleSheet.create({
     individualCard: {
         height: 150,
         width: 170,
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 15
+    },
+    nonMotoristCard:{
+        height: 165,
+        width: '29%',
         alignItems: 'center',
         justifyContent: 'center',
         margin: 15

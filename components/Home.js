@@ -105,12 +105,20 @@ class Home extends Component {
             <TopNavigationAction icon={infoExchangeIcon} onPress = {() => navigation.navigate('InfoExchange',{ operatorList })}/>
         )
 
+        const NonMotoristHeader = () => (
+            <CardHeader title={`Non-motorists`} />
+        );
+
         return(
             <SafeAreaView style={{flex:1}}>
                 <TopNavigation title='Home' alignment='center' leftControl={this.props.BackAction()} rightControls = {navigateInfoExchange()}/>
                 <ScrollView>
                     {vehiclesListArr}
-                    {nonmotoristListArr}
+                    <Card key={nonmotorist.id} header = {NonMotoristHeader} style={styles.itemCard} >
+                        <View style={styles.itemCardContent}>
+                            {nonmotoristListArr}
+                        </View>
+                    </Card>
                     <Card header={RoadHeader} style={styles.sectionCard}>
                         <Layout style={styles.questionContainer}>
                             <Card style={styles.individualCard}>

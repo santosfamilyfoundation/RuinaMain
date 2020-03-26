@@ -9,23 +9,23 @@ export default class NonMotoristSection extends Component{
 
         const {navigation, nonmotorist, index, name, question} = this.props
 
-        const NonMotoristHeader = () => (
-            <CardHeader title={`Non-motorist ${index+1}`} />
-        );
+        // const NonMotoristHeader = () => (
+        //     <CardHeader title={`Non-motorist ${index+1}`} />
+        // );
 
         const navigateQuestion = (form, id, type) => {
             navigation.navigate('Question', {questions: form.data, objectID: id, type})
         }
 
         return(
-            <Card key={nonmotorist.id} header = {NonMotoristHeader} style={styles.itemCard} >
-                <View style={styles.itemCardContent}>
-                    <Card style={styles.individualCard} onPress = {() => navigateQuestion(nonmotoristQuestions, nonmotorist.id, 'Nonmotorist')}>
-                        <Icon name='person' width={75} height={75} />
-                        <Text style={styles.itemCardFooter} category="s1">Non-Motorist</Text>
+            // <Card key={nonmotorist.id} header = {NonMotoristHeader} style={styles.itemCard} >
+            //     <View style={styles.itemCardContent}>
+                    <Card style={styles.nonMotoristCard} onPress = {() => navigateQuestion(nonmotoristQuestions, nonmotorist.id, 'Nonmotorist')}>
+                        <Icon name= 'person' width={75} height={75} alignSelf= "center" />
+                        <Text style={styles.itemCardFooter} category="s1">Non-Motorist {index+1}</Text>
                     </Card>
-                </View>
-             </Card>
+            //     </View>
+            //  </Card>
         )
     }
 }
