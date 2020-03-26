@@ -2,14 +2,14 @@ import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
     sectionCard: {
-        margin: 15,
+        margin: 5,
     },
     questionContainer: {
         marginRight: 15,
         marginBottom: 15,
         flexDirection: 'row',
         flexWrap: 'wrap',
-        justifyContent: 'space-evenly',
+        justifyContent: 'flex-start',
     },
     questionInput: {
         backgroundColor: 'lightgrey',
@@ -27,18 +27,26 @@ export const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     itemCard: {
-        height: 200,
-        width: '30%',
+        height: 300,
+        width: '100%',
         margin: 5,
+        flex: 1,
     },
     itemCardContent: {
-        height:'100%',
-        justifyContent:'space-evenly',
-        textAlign:'center',
-        alignContent:'center',
-        alignItems:'center',
+        height:'90%',
+        justifyContent:'flex-start',
+        flexDirection: 'row',
+        marginBottom: 5,
     },
     itemCardFooter: {
         textAlign:'center',
+        color: 'black'
+    },
+    individualCard: {
+        height: 150,
+        width: 170,
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 15
     }
 })

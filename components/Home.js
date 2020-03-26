@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { TextInput, StyleSheet, View, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { Button, TopNavigation, Text, Card, CardHeader, Layout, Icon } from '@ui-kitten/components';
+import { Button, TopNavigation, TopNavigationAction, Text, Card, CardHeader, Layout, Icon } from '@ui-kitten/components';
 import { styles } from './Home.style';
 import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { driverQuestions } from '../data/driverQuestions';
@@ -10,6 +10,8 @@ import { passengerQuestions } from '../data/passengerQuestions';
 import { nonmotoristQuestions } from '../data/nonmotoristQuestions';
 import { vehicleQuestions } from '../data/vehicleQuestions';
 import { lvhmQuestions } from '../data/lvhmQuestions';
+import VehicleSection from './VehicleSection';
+import NonMotoristSection from './NonMotoristSection';
 
 class Home extends Component {
 
@@ -28,24 +30,33 @@ class Home extends Component {
             navigation.navigate('Question', {questions: form.data, objectID: id, type})
         }
 
+        const RoadHeader = () => (
+            <CardHeader title="Roadway" />
+        );
+
         const vehiclesListArr = vehicle.data.map((vehicle, index) => {
+
             if(vehicle?.hazardous) {
                 return (
-                    <Card key={vehicle.id} style={styles.itemCard} onPress= {() => navigateQuestion(lvhmQuestions, vehicle.id, 'Vehicle')}>
-                        <View style={styles.itemCardContent}>
-                            <Icon name='car' width={75} height={75} />
-                                <Text style={styles.itemCardFooter} category="s1">Hazardous Vehicle {index+1}</Text>
-                        </View>
-                    </Card>
+                    <VehicleSection
+                        key = {index}
+                        navigation = {navigation}
+                        vehicle = {vehicle}
+                        index = {index}
+                        name = {"Hazardous Vehicle"}
+                        question = {lvhmQuestions}
+                    />
                 )
             } else {
                 return (
-                    <Card key={vehicle.id} style={styles.itemCard} onPress= {() => navigateQuestion(vehicleQuestions, vehicle.id, 'Vehicle')}>
-                        <View style={styles.itemCardContent}>
-                            <Icon name='car' width={75} height={75} />
-                                <Text style={styles.itemCardFooter} category="s1">Vehicle {index+1}</Text>
-                        </View>
-                    </Card>
+                    <VehicleSection 
+                        key = {index}
+                        navigation = {navigation}
+                        vehicle = {vehicle}
+                        index = {index}
+                        name = {"Vehicle"}
+                        question = {vehicleQuestions}
+                    />
                 )
             }
             
@@ -66,12 +77,12 @@ class Home extends Component {
         const nonmotoristListArr = nonmotorist.data.map((nonmotorist, index) => {
             operatorList.push({id:nonmotorist.id, type:'nonmotorist', response:[]})
             return (
-                <Card key={nonmotorist.id} style={styles.itemCard} onPress = {() => navigateQuestion(nonmotoristQuestions, nonmotorist.id, 'Nonmotorist')}>
-                    <View style={styles.itemCardContent}>
-                        <Icon name='person' width={75} height={75} />
-                        <Text style={styles.itemCardFooter} category="s1">Non-Motorist {index+1}</Text>
-                    </View>
-                </Card>
+                <NonMotoristSection
+                    key = {index}
+                    navigation = {navigation}
+                    nonmotorist = {nonmotorist}
+                    index = {index}
+                />
             )
         })
 
@@ -84,45 +95,30 @@ class Home extends Component {
             </Card>
         ))
 
-        const VehiclesHeader = () => (
-            <CardHeader title="Vehicles" />
-        );
-        const PeopleHeader = () => (
-            <CardHeader title="People" />
-        );
-        const RoadHeader = () => (
-            <CardHeader title="Roadway" />
-        );
-
         const peopleListArr = [...driverListArr, ...nonmotoristListArr, ...passengerListArr];
+
+        const infoExchangeIcon = (style) => (
+            <Icon {...style} name='edit-2-outline' />
+          );
+        
+        const navigateInfoExchange = () => (
+            <TopNavigationAction icon={infoExchangeIcon} onPress = {() => navigation.navigate('InfoExchange',{ operatorList })}/>
+        )
 
         return(
             <SafeAreaView style={{flex:1}}>
-                <TopNavigation title='Home' style = {{marginBottom: 15}}alignment='center' leftControl={this.props.BackAction()}/>
-                <View style={{flexDirection: 'row', justifyContent: "flex-end", marginRight: 30, marginBottom: 10}}>
-                    <Button style={{width:150}} onPress = {() => navigation.navigate('InfoExchange',{ operatorList })}>Info Exchange</Button>
-                </View>
+                <TopNavigation title='Home' alignment='center' leftControl={this.props.BackAction()} rightControls = {navigateInfoExchange()}/>
                 <ScrollView>
-                <Card header={VehiclesHeader} style={styles.sectionCard}>
-                    <Layout style={styles.questionContainer}>
-                        {vehiclesListArr}
-                    </Layout>
-                </Card>
-                <Card header={PeopleHeader} style={styles.sectionCard}>
-                    <Layout style={styles.questionContainer}>
-                        {peopleListArr}
-                    </Layout>
-                </Card>
-                <Card header={RoadHeader} style={styles.sectionCard}>
-                    <Layout style={styles.questionContainer}>
-                        <Card style={styles.itemCard}>
-                            <View style={styles.itemCardContent}>
+                    {vehiclesListArr}
+                    {nonmotoristListArr}
+                    <Card header={RoadHeader} style={styles.sectionCard}>
+                        <Layout style={styles.questionContainer}>
+                            <Card style={styles.individualCard}>
                                 <Icon name='paper-plane' width={75} height={75} />
                                 <Text style={styles.itemCardFooter} category="s1">Road</Text>
-                            </View>
-                        </Card>
-                    </Layout>
-                </Card>
+                            </Card>
+                        </Layout>
+                    </Card>
                 </ScrollView>
             </SafeAreaView>
         )

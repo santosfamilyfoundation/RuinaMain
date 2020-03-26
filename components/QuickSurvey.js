@@ -9,9 +9,9 @@ import { addNonmotorist } from '../actions/NonmotoristAction';
 import { addDriver } from '../actions/DriverAction';
 import { addPassenger } from '../actions/PassengerAction';
 import NumberButtonSelector from './buttonSelectors/NumberButtonSelector';
-import { styles } from './QuickQuiz.style';
+import { styles } from './QuickSurvey.style';
 
-class QuickQuiz extends Component {
+class QuickSurvey extends Component {
   state = {
     content: ''
   }
@@ -54,7 +54,7 @@ class QuickQuiz extends Component {
 
         return (
             <SafeAreaView style={{ flex: 1 }}>
-              <TopNavigation title='Quick Quiz' alignment='center' leftControl={this.props.BackAction()}/>
+              <TopNavigation title='Quick Survey' alignment='center' leftControl={this.props.BackAction()}/>
               <ScrollView style={{ flex: 1 }}>
                 <SafeAreaView style = {styles.questionContainer}>
                   <NumberButtonSelector 
@@ -64,14 +64,14 @@ class QuickQuiz extends Component {
                     fieldName = "numVehicle"
                   />
                 </SafeAreaView>
-                <SafeAreaView style = {styles.questionContainer}>
+                {/* <SafeAreaView style = {styles.questionContainer}>
                   <NumberButtonSelector 
                     title="Number of drivers involved"
                     submitFunction = {changeDrivers}
                     reducerName = "quickquizReducer"
                     fieldName = "numDriver"
                   />
-                </SafeAreaView>
+                </SafeAreaView> */}
                 <SafeAreaView style = {styles.questionContainer}>
                   <NumberButtonSelector 
                     title="Number of non-motorists involved"
@@ -80,14 +80,14 @@ class QuickQuiz extends Component {
                     fieldName = "numNonmotorist"
                   />
                 </SafeAreaView>
-                <SafeAreaView style = {styles.questionContainer}>
+                {/* <SafeAreaView style = {styles.questionContainer}>
                   <NumberButtonSelector 
                     title="Number of passengers involved"
                     submitFunction = {changePassengers}
                     reducerName = "quickquizReducer"
                     fieldName = "numPassenger"
                   />
-                </SafeAreaView>
+                </SafeAreaView> */}
                 <SafeAreaView style = {styles.questionContainer}>
                   <NumberButtonSelector 
                     title="Number of large or vehicles with hazardous material"
@@ -170,4 +170,4 @@ const mapStateToProps = (state) => {
   return { quiz }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(QuickQuiz);
+export default connect(mapStateToProps, mapDispatchToProps)(QuickSurvey);
