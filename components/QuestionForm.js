@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
-import { Divider, Layout, TopNavigation, CardHeader, Card } from '@ui-kitten/components';
+import { Divider, Layout, TopNavigation, CardHeader, Card, Button } from '@ui-kitten/components';
 import { styles } from '../containers/AutoComponentContainer.style';
 import { ScrollView } from 'react-native-gesture-handler';
 import MultiButtonSelector from './buttonSelectors/MultiButtonSelector';
@@ -158,9 +158,13 @@ class QuestionForm extends Component {
       }
     });
 
+    //const isAdvancedQuestion = (question.answerType == 'advancedOpenTextbox') ? true : false;
+    const isAdvancedQuestion = ('advancedOpenTextbox' == 'advancedOpenTextbox') ? true : false;
+
     return (
       <SafeAreaView style={styles.container}>
-        <TopNavigation title='Auto Component' alignment='center' leftControl={this.props.BackAction()} />
+        <TopNavigation title='Auto Component' alignment='center' leftControl={this.props.BackAction()}/>
+        { isAdvancedQuestion ? <Button style={styles.importButton} appearance={'filled'} onPress={()=> onImportPress() }>Import from Map</Button> : <Layout/> }
         <Divider />
         <ScrollView>
           <Layout style={styles.content}>

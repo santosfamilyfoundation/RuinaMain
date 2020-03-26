@@ -9,7 +9,7 @@ export const roadQuestions = {
           answerOptions: null,
           maxLength: 30,
           reducer: "genericReducer",
-          advanvedType: null,
+          advanvedType: "Map",
       },
       {
           id: "C5",
@@ -20,7 +20,7 @@ export const roadQuestions = {
           answerOptions: null,
           maxLength: 30,
           reducer: "genericReducer",
-          advanvedType: null,
+          advanvedType: "Map",
       },
       {
           id: "C6",
@@ -31,7 +31,7 @@ export const roadQuestions = {
           answerOptions: null,
           maxLength: 30,
           reducer: "genericReducer",
-          advanvedType: null,
+          advanvedType: "Map",
       },
       {
           id: "C6",

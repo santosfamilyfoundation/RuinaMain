@@ -3,9 +3,6 @@ import { connect } from 'react-redux';
 import { Input, Layout, Text, Card, Button, CardHeader, Icon } from '@ui-kitten/components';
 import { styles } from './AdvancedOpenTextField.style';
 
-//CHANGE STYLE
-
-
 const AdvancedOpenTextField = (props) => {
     const [value, setValue] = React.useState('');
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
@@ -14,10 +11,13 @@ const AdvancedOpenTextField = (props) => {
 
     let currId = data.id
     let status;
+    let currValue;
+    let latValueFromMap;
 
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
-
+    console.log(data.id)
+    console.log("dfdfdfdfd")
     // Populate if value already exists in redux
     if(!value) {
         if(existingData != null) {
@@ -63,6 +63,12 @@ const AdvancedOpenTextField = (props) => {
         setIsInvalid(false);
     }
 
+    const onImportPress = () => {
+      pageChange('Map')
+      const latValueFromMap = props.mapReducer.markers.length ? String(props.mapReducer.markers[0].coordinate.latitude) : null;
+      const currValue = latValueFromMap ? latValueFromMap : value;
+    };
+
     const CustomCardHeader = () => (
         <Layout style={styles.headerObjects}>
           <Text
@@ -70,9 +76,10 @@ const AdvancedOpenTextField = (props) => {
             category='h6'>
             {data.question}
           </Text>
-          <Button style={styles.importButton} appearance={'filled'} onPress={()=> pageChange('Map') }>Import from Map</Button>
+          <Button style={styles.importButton} appearance={'filled'} onPress={()=> onImportPress() }>Import from Map</Button>
         </Layout>
     );
+
 
     const renderClear = (style) => (
         <Icon {...style} name='close-outline'/>
@@ -106,12 +113,9 @@ const AdvancedOpenTextField = (props) => {
         return null;
     };
 
-    const latValueFromMap = props.mapReducer.markers.length ? String(props.mapReducer.markers[0].coordinate.latitude) : null;
-    const currValue = latValueFromMap ? latValueFromMap : value;
-
     return (
         <Layout key={key} style={styles.container}>
-            <Card header={CustomCardHeader} status={status}>
+            <Card status={status} header={CustomCardHeader}>
                 <Layout style={styles.content}>
                     {HelperText()}
                     <Layout style={styles.input}>
