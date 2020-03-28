@@ -51,10 +51,10 @@ export const styles = StyleSheet.create({
         margin: 10
     },
     nonMotoristCard:{
-        height: 165,
-        width: '29%',
+        height: 150,
+        width: 170,
         alignItems: 'center',
         justifyContent: 'center',
-        margin: 15
+        margin: 10
     }
 })

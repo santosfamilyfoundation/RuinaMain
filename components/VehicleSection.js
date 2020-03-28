@@ -47,7 +47,7 @@ export default class VehicleSection extends Component{
 
         return(
             <Card key={vehicle.id} header={VehiclesHeader} style={styles.itemCard} >
-                <ScrollView contentContainerStyle={styles.itemCardContent} horizontal={true}>
+                <View style={styles.itemCardContent}>
                     <Card style={styles.individualCard} onPress= {() => navigateQuestion(question, vehicle.id, 'Vehicle')}>
                         <Icon name='car' width={75} height={75} />
                         <Text style={styles.itemCardFooter} category="s1">{name}</Text>
@@ -61,7 +61,7 @@ export default class VehicleSection extends Component{
                         <Icon name='plus' width={75} height={75} />
                         <Text style={styles.itemCardFooter} category="s1">Passenger</Text>
                     </Card>
-                </ScrollView>
+                </View>
             </Card>
 
         )
