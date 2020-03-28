@@ -11,6 +11,8 @@ import { addPassenger } from '../actions/PassengerAction';
 import NumberButtonSelector from './buttonSelectors/NumberButtonSelector';
 import { styles } from './QuickSurvey.style';
 
+var uuid = require('react-native-uuid');
+
 class QuickSurvey extends Component {
   state = {
     content: ''
@@ -29,17 +31,26 @@ class QuickSurvey extends Component {
         addLvhm,
         addNonmotorist,
         addDriver,
-        addPassenger
+        addPassenger,
+        changeConstruction
       } = this.props;
 
       const quiz = this.props.quiz;
 
       const dispatchAll = () => {
-        addVehicle(quiz.numVehicle - quiz.numLvhm);
-        addLvhm(quiz.numLvhm);
         addNonmotorist(quiz.numNonmotorist);
-        addDriver(quiz.numDriver);
-        addPassenger(quiz.numPassenger)
+        // addPassenger(quiz.numPassenger)
+        for (let i = 0; i < (quiz.numVehicle); i++){
+            let vehicleID = uuid.v1();
+            let driverID = uuid.v1();
+          if (i < quiz.numVehicle-quiz.numLvhm){
+            addVehicle({vehicleID, driverID})
+            addDriver({driverID, vehicleID})
+          }else{
+            addLvhm({vehicleID, driverID})
+            addDriver({driverID, vehicleID})
+          }
+        }
       }
 
       const moveHome = () => {
@@ -116,7 +127,7 @@ class QuickSurvey extends Component {
                           </Button>
                       </Layout>
                   </Card>
-              </SafeAreaView>
+                </SafeAreaView>
                 <SafeAreaView style = {styles.questionContainer}>
                   <Card style = {styles.cardStyle}>
                       <Text style = {styles.questionText}>Is a school bus involved?</Text>
@@ -131,6 +142,27 @@ class QuickSurvey extends Component {
                         <Button 
                           style = {styles.buttonSytle} 
                           onPress = {() => changeSchoolbus(false)}
+                          appearance={(quiz.schoolbus ? 'outline':'filled')}
+                        >
+                          No
+                        </Button>
+                      </Layout>
+                  </Card>
+                </SafeAreaView>
+                <SafeAreaView style = {styles.questionContainer}>
+                  <Card style = {styles.cardStyle}>
+                      <Text style = {styles.questionText}>Is there a construction zone?</Text>
+                      <Layout style={{flexDirection: 'row'}}>
+                        <Button 
+                          style = {styles.buttonSytle} 
+                          onPress = {() => changeConstruction(true)}
+                          appearance={(quiz.schoolbus ? 'filled':'outline')}
+                        >
+                          Yes
+                        </Button>
+                        <Button 
+                          style = {styles.buttonSytle} 
+                          onPress = {() => changeConstruction(false)}
                           appearance={(quiz.schoolbus ? 'outline':'filled')}
                         >
                           No

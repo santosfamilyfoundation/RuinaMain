@@ -7,18 +7,9 @@ const initialState = {
 export default function passengerReducer (state=initialState, action) {
     switch (action.type) {
         case 'ADDPASSENGER':
-            const numPassenger = action.payload
-
-            let passengerArr = []
-
-            for (let i = 0; i < numPassenger; i++){
-                let id = uuid.v1();
-                passengerArr.push({id})
-            }
-
             return {
                 ...state,
-                data: passengerArr
+                data: state.data.concat([{id: action.payload.id, vehicle: action.payload.vehicleID}])
             }
         case 'UPDATEPASSENGER':
             const { id, question, selection } = action.payload

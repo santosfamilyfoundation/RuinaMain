@@ -44,7 +44,6 @@ class Home extends Component {
                         vehicle = {vehicle}
                         index = {index}
                         name = {"Hazardous Vehicle"}
-                        question = {lvhmQuestions}
                     />
                 )
             } else {
@@ -55,7 +54,6 @@ class Home extends Component {
                         vehicle = {vehicle}
                         index = {index}
                         name = {"Vehicle"}
-                        question = {vehicleQuestions}
                     />
                 )
             }
