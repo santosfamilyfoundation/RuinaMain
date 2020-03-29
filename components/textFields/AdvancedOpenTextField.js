@@ -71,6 +71,12 @@ const AdvancedOpenTextField = (props) => {
       setAdvancedButtonAppearance("filled")
     };
 
+    const onImportCameraPress = () => {
+      let currStateVal = !reducerData?.response ? null: reducerData.response;
+      pageChange('Camera', {id:id, question:"THIS QUESTION"})
+      setAdvancedButtonAppearance("filled")
+    };
+
     const onIconPress = () => {
       console.log("Icon pressed!")
     };
@@ -78,6 +84,11 @@ const AdvancedOpenTextField = (props) => {
     const MapIcon = (style) => (
         <Icon {...style} name='map-outline' onIconPress={onIconPress}  />
     );
+
+    const CameraIcon = (style) => (
+        <Icon {...style} name='camera-outline' onIconPress={onIconPress}  />
+    );
+
 
     const CustomCardHeader = () => (
         <Layout style={styles.headerObjects}>
@@ -93,6 +104,13 @@ const AdvancedOpenTextField = (props) => {
               <Layout>
               </Layout>
           }
+          { importFrom == "Camera" ?
+              <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={CameraIcon} onPress={()=> onImportCameraPress() }></Button>
+            :
+              <Layout>
+              </Layout>
+          }
+
         </Layout>
     );
 

@@ -6,6 +6,7 @@ import {
     View,
     Platform
 } from 'react-native';
+import { updateVehicle } from '../actions/VehicleAction';
 
 import AnylineOCR, { getLicenseExpiryDate } from 'anyline-ocr-react-native-module';
 
@@ -83,6 +84,8 @@ export default class Scan extends Component {
         const data = JSON.parse(dataString);
         console.log(data.text);
 
+        let id = this.props.navigation.state.params.id;
+        updateVehicle({id, question:"V1", selection: data.reading.toString() });
         this.setState({
             hasScanned: true,
             result: data.reading,
@@ -113,6 +116,8 @@ export default class Scan extends Component {
             cutoutBase64,
             fullImageBase64,
         } = this.state;
+
+        const { navigation, updateVehicle } = this.props;
 
         const platformText = (Platform.OS === 'android') ?
             (<Text onPress={this.checkCameraPermissionAndOpen}>Open OCR reader!</Text>) :
@@ -152,3 +157,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5FCFF',
     },
 });
+
+
+const mapDispatchToProps = {
+  updateVehicle,
+}

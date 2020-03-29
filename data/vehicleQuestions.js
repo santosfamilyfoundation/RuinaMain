@@ -1,6 +1,17 @@
 export const vehicleQuestions = {
     "data": [
         {
+          id: "V1",
+          question: "Vehicle Identification Number",
+          helperText: "",
+          subquestions: null,
+          answerType: "advancedOpenTextbox",
+          answerOptions: null,
+          maxLength: 30,
+          reducer: "vehicleReducer",
+          advanvedType: "Camera",
+        },
+        {
             id:"C1",
             question: "Crash Classification",
             helperText: "",

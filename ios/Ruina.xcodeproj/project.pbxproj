@@ -214,7 +214,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = WDSXQFA4ZP;
+						DevelopmentTeam = QH6G7D4DNW;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -464,7 +464,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = WDSXQFA4ZP;
+				DEVELOPMENT_TEAM = QH6G7D4DNW;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Ruina/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -489,7 +489,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WDSXQFA4ZP;
+				DEVELOPMENT_TEAM = QH6G7D4DNW;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Ruina/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
