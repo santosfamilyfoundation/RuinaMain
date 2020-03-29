@@ -8,18 +8,9 @@ export default function driverReducer (state=initialState, action) {
     switch (action.type) {
 
         case 'ADDDRIVER':
-            const numDriver = action.payload
-
-            let driverArr = []
-
-            for (let i = 0; i < numDriver; i++){
-                let id = uuid.v1();
-                driverArr.push({id, response:{}})
-            }
-
             return {
                 ...state,
-                data: driverArr
+                data: state.data.concat([{id: action.payload.driverID, vehicle: action.payload.vehicleID}])
             }
             
         case 'UPDATEDRIVER':
