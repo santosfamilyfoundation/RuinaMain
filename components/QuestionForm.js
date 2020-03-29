@@ -9,6 +9,7 @@ import AutoCompleteDropDown from './dropdowns/AutoCompleteDropDown';
 import DropDownSingleSelect from './dropdowns/DropDownSingleSelect';
 import OpenTextField from './textFields/OpenTextField';
 import AdvancedOpenTextField from './textFields/AdvancedOpenTextField';
+import AdvancedDropDown from './dropdowns/AdvancedDropDown';
 import DropDownMultiSelect from './dropdowns/DropDownMultiSelect';
 import LargeTextField from './textFields/LargeTextField';
 import { updateDriver } from '../actions/DriverAction';
@@ -101,6 +102,18 @@ class QuestionForm extends Component {
                 importFrom={question.advanvedType}
               />
             )
+        case 'advancedDropDown':
+          return (
+            <AdvancedDropDown
+              data={question}
+              key={question.id}
+              id={questionDetail.objectID}
+              reducer={reducer}
+              submitFunction={submitFunction}
+              pageChange={navigateToAdvanced}
+              importFrom={question.advanvedType}
+            />
+          )
         case 'largeTextField':
           return (
             <LargeTextField

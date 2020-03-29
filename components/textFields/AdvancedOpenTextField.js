@@ -89,7 +89,6 @@ const AdvancedOpenTextField = (props) => {
         <Icon {...style} name='camera-outline' onIconPress={onIconPress}  />
     );
 
-
     const CustomCardHeader = () => (
         <Layout style={styles.headerObjects}>
           <Text
@@ -110,7 +109,6 @@ const AdvancedOpenTextField = (props) => {
               <Layout>
               </Layout>
           }
-
         </Layout>
     );
 

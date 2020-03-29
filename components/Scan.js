@@ -82,7 +82,6 @@ export default class Scan extends Component {
 
     onResult = (dataString) => {
         const data = JSON.parse(dataString);
-        console.log(data.text);
 
         let id = this.props.navigation.state.params.id;
         updateVehicle({id, question:"V1", selection: data.reading.toString() });
