@@ -11,13 +11,18 @@ const AdvancedOpenTextField = (props) => {
 
     let currId = data.id
     let status;
-    let currValue;
-    let latValueFromMap;
 
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
-    console.log(data.id)
-    console.log("dfdfdfdfd")
+
+    console.log(questionReducer)
+    console.log(reducerData)
+    console.log(existingData);
+    console.log("jijijijfdfdfdf");
+    console.log(currId)
+    console.log(data)
+    console.log(key)
+
     // Populate if value already exists in redux
     if(!value) {
         if(existingData != null) {
@@ -64,9 +69,8 @@ const AdvancedOpenTextField = (props) => {
     }
 
     const onImportPress = () => {
-      pageChange('Map')
-      const latValueFromMap = props.mapReducer.markers.length ? String(props.mapReducer.markers[0].coordinate.latitude) : null;
-      const currValue = latValueFromMap ? latValueFromMap : value;
+      pageChange('Map', {id:id, question:"THIS QUESTION"})
+
     };
 
     const CustomCardHeader = () => (
@@ -78,6 +82,11 @@ const AdvancedOpenTextField = (props) => {
           </Text>
           <Button style={styles.importButton} appearance={'filled'} onPress={()=> onImportPress() }>Import from Map</Button>
         </Layout>
+    );
+
+
+    const Header = () => (
+        <CardHeader title={data.question}/>
     );
 
 
@@ -113,6 +122,9 @@ const AdvancedOpenTextField = (props) => {
         return null;
     };
 
+    //const latValueFromMap = props.mapReducer.markers.length ? String(props.mapReducer.markers[0].coordinate.latitude) : null;
+    //const currValue = latValueFromMap ? latValueFromMap : value;
+
     return (
         <Layout key={key} style={styles.container}>
             <Card status={status} header={CustomCardHeader}>
@@ -124,7 +136,7 @@ const AdvancedOpenTextField = (props) => {
                             icon={renderClear}
                             onIconPress={() => clearField()}
                             placeholder='Place your Text'
-                            value={currValue}
+                            value={value}
                             onChangeText={onTextChange}
                         />
                         <Button
@@ -146,8 +158,7 @@ const mapStateToProps = (state, props) => {
     const { story } = state;
     const { reducer } = props;
     const questionReducer = state[reducer];
-    const mapReducer = state.mapReducer;
-    return { story, questionReducer, mapReducer }
+    return { story, questionReducer }
 };
 
 export default connect(mapStateToProps)(AdvancedOpenTextField);

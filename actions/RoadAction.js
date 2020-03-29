@@ -4,3 +4,10 @@ export const updateRoad = roadData => {
         payload: roadData
     }
 }
+
+export const addRoad = data => {
+    return {
+        type: 'ADDROAD',
+        payload: data
+    }
+}

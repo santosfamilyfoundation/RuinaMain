@@ -8,6 +8,7 @@ import { addVehicle, addLvhm } from '../actions/VehicleAction';
 import { addNonmotorist } from '../actions/NonmotoristAction';
 import { addDriver } from '../actions/DriverAction';
 import { addPassenger } from '../actions/PassengerAction';
+import { addRoad } from '../actions/RoadAction';
 import NumberButtonSelector from './buttonSelectors/NumberButtonSelector';
 import { styles } from './QuickQuiz.style';
 
@@ -29,9 +30,10 @@ class QuickQuiz extends Component {
         addLvhm,
         addNonmotorist,
         addDriver,
-        addPassenger
+        addPassenger,
+        addRoad
       } = this.props;
-      console.log(this.props)
+
       const quiz = this.props.quiz;
 
       const dispatchAll = () => {
@@ -39,7 +41,8 @@ class QuickQuiz extends Component {
         addLvhm(quiz.numLvhm);
         addNonmotorist(quiz.numNonmotorist);
         addDriver(quiz.numDriver);
-        addPassenger(quiz.numPassenger)
+        addPassenger(quiz.numPassenger);
+        addRoad(null);
       }
 
       const moveHome = () => {
@@ -162,7 +165,8 @@ const mapDispatchToProps = {
   addLvhm,
   addNonmotorist,
   addDriver,
-  addPassenger
+  addPassenger,
+  addRoad,
 }
 
 const mapStateToProps = (state) => {

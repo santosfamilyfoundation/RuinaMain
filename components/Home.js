@@ -21,6 +21,7 @@ class Home extends Component {
             nonmotorist,
             vehicle,
             passenger,
+            road
             } = this.props
 
         const operatorList = [];
@@ -116,12 +117,12 @@ class Home extends Component {
                 </Card>
                 <Card header={RoadHeader} style={styles.sectionCard}>
                     <Layout style={styles.questionContainer}>
-                        <Card style={styles.itemCard} onPress = {() => navigateQuestion(roadQuestions, 'Generic Id', 'Road')}>
-                            <View style={styles.itemCardContent}>
-                                <Icon name='paper-plane' width={75} height={75} />
-                                <Text style={styles.itemCardFooter} category="s1">Road</Text>
-                            </View>
-                        </Card>
+                      <Card style={styles.itemCard} onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road')}>
+                          <View style={styles.itemCardContent}>
+                              <Icon name='paper-plane' width={75} height={75} />
+                              <Text style={styles.itemCardFooter} category="s1">Road</Text>
+                          </View>
+                      </Card>
                     </Layout>
                 </Card>
                 </ScrollView>
@@ -137,6 +138,7 @@ const mapStateToProps = (state) => {
         vehicle: state.vehicleReducer,
         passenger: state.passengerReducer,
         quiz: state.quickquizReducer,
+        road: state.roadReducer,
     }
 }
 

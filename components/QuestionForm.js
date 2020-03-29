@@ -53,8 +53,8 @@ class QuestionForm extends Component {
         break;
     }
 
-    const navigateToAdvanced = (place) =>{
-      this.props.navigation.navigate(place);
+    const navigateToAdvanced = (place, props) =>{
+      this.props.navigation.navigate(place, props);
     }
 
     const renderSingleQuestion = (question) => {
