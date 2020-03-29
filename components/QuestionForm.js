@@ -98,6 +98,7 @@ class QuestionForm extends Component {
                 reducer={reducer}
                 submitFunction={submitFunction}
                 pageChange={navigateToAdvanced}
+                importFrom={question.advanvedType}
               />
             )
         case 'largeTextField':
@@ -158,13 +159,9 @@ class QuestionForm extends Component {
       }
     });
 
-    //const isAdvancedQuestion = (question.answerType == 'advancedOpenTextbox') ? true : false;
-    const isAdvancedQuestion = ('advancedOpenTextbox' == 'advancedOpenTextbox') ? true : false;
-
     return (
       <SafeAreaView style={styles.container}>
         <TopNavigation title='Auto Component' alignment='center' leftControl={this.props.BackAction()}/>
-        { isAdvancedQuestion ? <Button style={styles.importButton} appearance={'filled'} onPress={()=> onImportPress() }>Import from Map</Button> : <Layout/> }
         <Divider />
         <ScrollView>
           <Layout style={styles.content}>

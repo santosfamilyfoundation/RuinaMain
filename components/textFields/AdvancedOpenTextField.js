@@ -7,21 +7,13 @@ const AdvancedOpenTextField = (props) => {
     const [value, setValue] = React.useState('');
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const [isInvalid, setIsInvalid] = React.useState(false);
-    const {data, key, id, questionReducer, submitFunction, pageChange} = props;
+    const {data, key, id, questionReducer, submitFunction, pageChange, importFrom} = props;
 
     let currId = data.id
     let status;
 
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
-
-    console.log(questionReducer)
-    console.log(reducerData)
-    console.log(existingData);
-    console.log("jijijijfdfdfdf");
-    console.log(currId)
-    console.log(data)
-    console.log(key)
 
     // Populate if value already exists in redux
     if(!value) {
@@ -68,25 +60,39 @@ const AdvancedOpenTextField = (props) => {
         setIsInvalid(false);
     }
 
-    const onImportPress = () => {
+    const onImportMapPress = () => {
       pageChange('Map', {id:id, question:"THIS QUESTION"})
 
     };
+
+    const onIconPress = () => {
+      console.log("Icon pressed!")
+    };
+
+    const MapIcon = (style) => (
+        <Icon {...style} name='map-outline' onIconPress={onIconPress}  />
+    );
 
     const CustomCardHeader = () => (
         <Layout style={styles.headerObjects}>
           <Text
             style={styles.headerText}
-            category='h6'>
+            category='h6'
+          >
             {data.question}
           </Text>
-          <Button style={styles.importButton} appearance={'filled'} onPress={()=> onImportPress() }>Import from Map</Button>
+          { importFrom == "Map" ?
+              <Button style={styles.importButton} appearance={'filled'} icon={MapIcon} onPress={()=> onImportMapPress() }></Button>
+            :
+              <Layout>
+              </Layout>
+          }
         </Layout>
     );
 
 
     const Header = () => (
-        <CardHeader title={data.question}/>
+        <CardHeader title={data.question} icon={MapIcon} onIconPress={onIconPress} />
     );
 
 

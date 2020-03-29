@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
       marginLeft: 10,
     },
     importButton: {
-      width: '25%'
+      margin: 8,
     },
     headerText: {
       marginHorizontal: 24,
