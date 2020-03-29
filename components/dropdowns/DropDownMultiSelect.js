@@ -26,7 +26,7 @@ const DropDownMultiSelect = (props) => {
         if(existingData != null) {
             if(existingData[currId] != null) {
                 let currOptions = []
-                for (i = 0; i < data.answerOptions.length; i++) {                
+                for (i = 0; i < data.answerOptions.length; i++) {
                     if(existingData[currId].includes(data.answerOptions[i].idCode)) {
                         currOptions.push(data.answerOptions[i]);
                     };
@@ -142,11 +142,11 @@ const DropDownMultiSelect = (props) => {
                             multiSelect={true}
                             onSelect={addOption}
                         />
-                        <Button 
+                        <Button
                             style={styles.submitButton}
                             appearance={buttonAppearance}
-                            size='medium' 
-                            icon={CheckIcon} 
+                            size='medium'
+                            icon={CheckIcon}
                             onPress={() => submitField()}
                         />
                     </Layout>
@@ -164,5 +164,3 @@ const mapStateToProps = (state, props) => {
 };
 
 export default connect(mapStateToProps)(DropDownMultiSelect);
-
-
