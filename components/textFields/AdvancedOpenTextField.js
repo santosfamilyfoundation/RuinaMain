@@ -6,6 +6,7 @@ import { styles } from './AdvancedOpenTextField.style';
 const AdvancedOpenTextField = (props) => {
     const [value, setValue] = React.useState('');
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
+    const [advancedButtonAppearance, setAdvancedButtonAppearance] = React.useState('outline');
     const [isInvalid, setIsInvalid] = React.useState(false);
     const {data, key, id, questionReducer, submitFunction, pageChange, importFrom} = props;
 
@@ -21,6 +22,7 @@ const AdvancedOpenTextField = (props) => {
             if(existingData[currId] != null && !value) {
                 setValue(existingData[currId]);
                 setButtonAppearance('filled');
+                setAdvancedButtonAppearance("filled")
             }
         }
     }
@@ -53,7 +55,6 @@ const AdvancedOpenTextField = (props) => {
             setButtonAppearance('outline');
         }
     }
-
     if(value.length > data.maxLength && !isInvalid) {
         setIsInvalid(true);
     } else if(isInvalid && value.length <= data.maxLength) {
@@ -61,8 +62,13 @@ const AdvancedOpenTextField = (props) => {
     }
 
     const onImportMapPress = () => {
-      pageChange('Map', {id:id, question:"THIS QUESTION"})
+      let currStateVal = !reducerData?.response ? null: reducerData.response;
+      // if(Object.keys(reducerData.response).length == 0){
+      //   pageChange('Map', {id:id, question:"THIS QUESTION"})
+      // }
 
+      pageChange('Map', {id:id, question:"THIS QUESTION"})
+      setAdvancedButtonAppearance("filled")
     };
 
     const onIconPress = () => {
@@ -82,7 +88,7 @@ const AdvancedOpenTextField = (props) => {
             {data.question}
           </Text>
           { importFrom == "Map" ?
-              <Button style={styles.importButton} appearance={'filled'} icon={MapIcon} onPress={()=> onImportMapPress() }></Button>
+              <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={MapIcon} onPress={()=> onImportMapPress() }></Button>
             :
               <Layout>
               </Layout>
