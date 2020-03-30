@@ -10,6 +10,7 @@ import DropDownSingleSelect from './dropdowns/DropDownSingleSelect';
 import OpenTextField from './textFields/OpenTextField';
 import DropDownMultiSelect from './dropdowns/DropDownMultiSelect';
 import LargeTextField from './textFields/LargeTextField';
+import HeaderComponent from './HeaderComponent';
 import { updateDriver } from '../actions/DriverAction';
 import { updateNonmotorist } from '../actions/NonmotoristAction';
 import { updateVehicle } from '../actions/VehicleAction';
@@ -22,27 +23,36 @@ class QuestionForm extends Component {
     let reducer;
     let submitFunction;
     let actionType;
+    let questionsData;
+
+    const filterQuestionsData = (questionType) => {
+      return questionDetail.questions.filter(question => question.display.includes(questionType));
+    }
 
     switch(questionDetail.type){
       case 'Driver':
         reducer = "driverReducer";
         submitFunction = updateDriver;
         actionType = "UPDATEDRIVER";
+        questionsData = filterQuestionsData(questionDetail.type);
         break;
       case 'Nonmotorist':
         reducer = "nonmotoristReducer";
         submitFunction = updateNonmotorist;
         actionType = "UPDATENONMOTORIST";
+        questionsData = filterQuestionsData(questionDetail.type);
         break;
       case 'Passenger':
         reducer = "passengerReducer";
         submitFunction = updatePassenger;
         actionType = "UPDATEPASSENGER";
+        questionsData = filterQuestionsData(questionDetail.type);
         break;
       case 'Vehicle':
         reducer = "vehicleReducer";
         submitFunction = updateVehicle;
         actionType = "UPDATEVEHICLE";
+        questionsData = filterQuestionsData(questionDetail.type);
         break;
     }
 
@@ -108,6 +118,14 @@ class QuestionForm extends Component {
               submitFunction={submitFunction}
             />
           )
+        case 'header':
+          console.log(question.id);
+          return (
+            <HeaderComponent
+              data={question}
+              key={question.id}
+            />
+          )
       }
     }
 
@@ -128,17 +146,21 @@ class QuestionForm extends Component {
       );
     }
 
-    const renderedQuestions = questionDetail.questions.map((question) => {
-      if (!question.subquestions) {
-        return renderSingleQuestion(question)
-      } else {
-        return renderSubQuetions(question)
-      }
+    // const renderedQuestions = questionDetail.questions.map((question) => {
+    //   if (!question.subquestions) {
+    //     return renderSingleQuestion(question)
+    //   } else {
+    //     return renderSubQuetions(question)
+    //   }
+    // });
+
+    const renderedQuestions = questionsData.map((question) => {
+      return renderSingleQuestion(question)  // uncomment for no sub-questions rendering
     });
 
     return (
       <SafeAreaView style={styles.container}>
-        <TopNavigation title='Auto Component' alignment='center' leftControl={this.props.BackAction()} />
+        <TopNavigation title={`${questionDetail.type} Questions`} alignment='center' leftControl={this.props.BackAction()} />
         <Divider />
         <ScrollView>
           <Layout style={styles.content}>
