@@ -9,9 +9,11 @@ import { addNonmotorist } from '../actions/NonmotoristAction';
 import { addDriver } from '../actions/DriverAction';
 import { addPassenger } from '../actions/PassengerAction';
 import NumberButtonSelector from './buttonSelectors/NumberButtonSelector';
-import { styles } from './QuickQuiz.style';
+import { styles } from './QuickSurvey.style';
 
-class QuickQuiz extends Component {
+var uuid = require('react-native-uuid');
+
+class QuickSurvey extends Component {
   state = {
     content: ''
   }
@@ -29,17 +31,26 @@ class QuickQuiz extends Component {
         addLvhm,
         addNonmotorist,
         addDriver,
-        addPassenger
+        addPassenger,
+        changeConstruction
       } = this.props;
 
       const quiz = this.props.quiz;
 
       const dispatchAll = () => {
-        addVehicle(quiz.numVehicle - quiz.numLvhm);
-        addLvhm(quiz.numLvhm);
         addNonmotorist(quiz.numNonmotorist);
-        addDriver(quiz.numDriver);
-        addPassenger(quiz.numPassenger)
+        // addPassenger(quiz.numPassenger)
+        for (let i = 0; i < (quiz.numVehicle); i++){
+            let vehicleID = uuid.v1();
+            let driverID = uuid.v1();
+          if (i < quiz.numVehicle-quiz.numLvhm){
+            addVehicle({vehicleID, driverID})
+            addDriver({driverID, vehicleID})
+          }else{
+            addLvhm({vehicleID, driverID})
+            addDriver({driverID, vehicleID})
+          }
+        }
       }
 
       const moveHome = () => {
@@ -54,7 +65,7 @@ class QuickQuiz extends Component {
 
         return (
             <SafeAreaView style={{ flex: 1 }}>
-              <TopNavigation title='Quick Quiz' alignment='center' leftControl={this.props.BackAction()}/>
+              <TopNavigation title='Quick Survey' alignment='center' leftControl={this.props.BackAction()}/>
               <ScrollView style={{ flex: 1 }}>
                 <SafeAreaView style = {styles.questionContainer}>
                   <NumberButtonSelector 
@@ -64,14 +75,14 @@ class QuickQuiz extends Component {
                     fieldName = "numVehicle"
                   />
                 </SafeAreaView>
-                <SafeAreaView style = {styles.questionContainer}>
+                {/* <SafeAreaView style = {styles.questionContainer}>
                   <NumberButtonSelector 
                     title="Number of drivers involved"
                     submitFunction = {changeDrivers}
                     reducerName = "quickquizReducer"
                     fieldName = "numDriver"
                   />
-                </SafeAreaView>
+                </SafeAreaView> */}
                 <SafeAreaView style = {styles.questionContainer}>
                   <NumberButtonSelector 
                     title="Number of non-motorists involved"
@@ -80,14 +91,14 @@ class QuickQuiz extends Component {
                     fieldName = "numNonmotorist"
                   />
                 </SafeAreaView>
-                <SafeAreaView style = {styles.questionContainer}>
+                {/* <SafeAreaView style = {styles.questionContainer}>
                   <NumberButtonSelector 
                     title="Number of passengers involved"
                     submitFunction = {changePassengers}
                     reducerName = "quickquizReducer"
                     fieldName = "numPassenger"
                   />
-                </SafeAreaView>
+                </SafeAreaView> */}
                 <SafeAreaView style = {styles.questionContainer}>
                   <NumberButtonSelector 
                     title="Number of large or vehicles with hazardous material"
@@ -116,7 +127,7 @@ class QuickQuiz extends Component {
                           </Button>
                       </Layout>
                   </Card>
-              </SafeAreaView>
+                </SafeAreaView>
                 <SafeAreaView style = {styles.questionContainer}>
                   <Card style = {styles.cardStyle}>
                       <Text style = {styles.questionText}>Is a school bus involved?</Text>
@@ -131,6 +142,27 @@ class QuickQuiz extends Component {
                         <Button 
                           style = {styles.buttonSytle} 
                           onPress = {() => changeSchoolbus(false)}
+                          appearance={(quiz.schoolbus ? 'outline':'filled')}
+                        >
+                          No
+                        </Button>
+                      </Layout>
+                  </Card>
+                </SafeAreaView>
+                <SafeAreaView style = {styles.questionContainer}>
+                  <Card style = {styles.cardStyle}>
+                      <Text style = {styles.questionText}>Is there a construction zone?</Text>
+                      <Layout style={{flexDirection: 'row'}}>
+                        <Button 
+                          style = {styles.buttonSytle} 
+                          onPress = {() => changeConstruction(true)}
+                          appearance={(quiz.schoolbus ? 'filled':'outline')}
+                        >
+                          Yes
+                        </Button>
+                        <Button 
+                          style = {styles.buttonSytle} 
+                          onPress = {() => changeConstruction(false)}
                           appearance={(quiz.schoolbus ? 'outline':'filled')}
                         >
                           No
@@ -170,4 +202,4 @@ const mapStateToProps = (state) => {
   return { quiz }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(QuickQuiz);
+export default connect(mapStateToProps, mapDispatchToProps)(QuickSurvey);
