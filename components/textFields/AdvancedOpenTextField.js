@@ -2,17 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Input, Layout, Text, Card, Button, CardHeader, Icon } from '@ui-kitten/components';
 import { styles } from './AdvancedOpenTextField.style';
+import { updateRoad } from '../../actions/RoadAction';
 
 const AdvancedOpenTextField = (props) => {
     const [value, setValue] = React.useState('');
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const [advancedButtonAppearance, setAdvancedButtonAppearance] = React.useState('outline');
     const [isInvalid, setIsInvalid] = React.useState(false);
-    const {data, key, id, questionReducer, submitFunction, pageChange, importFrom} = props;
-
+    const {data, key, id, questionReducer, submitFunction, pageChange, importFrom, updateRoad} = props;
     let currId = data.id
     let status;
-
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
 
@@ -77,16 +76,32 @@ const AdvancedOpenTextField = (props) => {
       setAdvancedButtonAppearance("filled")
     };
 
-    const onIconPress = () => {
-      console.log("Icon pressed!")
+    const onImportTimePress = () => {
+      if(advancedButtonAppearance == "filled"){
+        clearField();
+        setAdvancedButtonAppearance("outline");
+      }else{
+        setAdvancedButtonAppearance("filled")
+        var date = new Date().getDate(); //Current Date
+        var month = new Date().getMonth() + 1; //Current Month
+        var year = new Date().getFullYear(); //Current Year
+        var hours = new Date().getHours(); //Current Hours
+        var min = new Date().getMinutes(); //Current Minutes
+        let fullDate = year.toString() + month.toString() + date.toString() + hours.toString() + min.toString();
+        updateRoad({id, question:data.id, selection: fullDate });
+      }
     };
 
     const MapIcon = (style) => (
-        <Icon {...style} name='map-outline' onIconPress={onIconPress}  />
+        <Icon {...style} name='map-outline'  />
     );
 
     const CameraIcon = (style) => (
-        <Icon {...style} name='camera-outline' onIconPress={onIconPress}  />
+        <Icon {...style} name='camera-outline'  />
+    );
+
+    const ClockIcon = (style) => (
+        <Icon {...style} name='clock-outline'  />
     );
 
     const CustomCardHeader = () => (
@@ -109,14 +124,19 @@ const AdvancedOpenTextField = (props) => {
               <Layout>
               </Layout>
           }
+          { importFrom == "Time" ?
+              <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={ClockIcon} onPress={()=> onImportTimePress() }></Button>
+            :
+              <Layout>
+              </Layout>
+          }
         </Layout>
     );
 
 
     const Header = () => (
-        <CardHeader title={data.question} icon={MapIcon} onIconPress={onIconPress} />
+        <CardHeader title={data.question} icon={MapIcon}/>
     );
-
 
     const renderClear = (style) => (
         <Icon {...style} name='close-outline'/>
@@ -182,6 +202,10 @@ const AdvancedOpenTextField = (props) => {
     );
 };
 
+const mapDispatchToProps = {
+  updateRoad
+}
+
 const mapStateToProps = (state, props) => {
     const { story } = state;
     const { reducer } = props;
@@ -189,4 +213,4 @@ const mapStateToProps = (state, props) => {
     return { story, questionReducer }
 };
 
-export default connect(mapStateToProps)(AdvancedOpenTextField);
+export default connect(mapStateToProps, mapDispatchToProps)(AdvancedOpenTextField);

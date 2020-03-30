@@ -153,13 +153,10 @@ class DiagramView extends Component {
         };
 
         const saveLocations = () => {
-          //changeLat(this.state.mapRegion.latitude);
-          //changeLong(this.state.mapRegion.longitude);
-        //  updateMarkers(this.state.markers);
-
-          //Only need these
           updateRoad({id, question:"C7", selection: this.state.markers[0].coordinate.latitude.toString() });
           updateRoad({id, question:"C8", selection: this.state.markers[0].coordinate.longitude.toString() });
+          console.log(this.props)
+          this.props.navigation.goBack();
         };
 
         return (

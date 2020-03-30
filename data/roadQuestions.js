@@ -12,6 +12,17 @@ export const roadQuestions = {
           advanvedType: "Map",
       },
       {
+          id: "C3-S1",
+          question: "Crash Date and Time",
+          helperText: "(YYYYMMDDHHMM)",
+          subquestions: null,
+          answerType: "advancedOpenTextbox",
+          answerOptions: null,
+          maxLength: 30,
+          reducer: "roadReducer",
+          advanvedType: "Time",
+      },
+      {
           id: "C11",
           question: "Weather Conditions",
           helperText: "(choose up to 2)",
