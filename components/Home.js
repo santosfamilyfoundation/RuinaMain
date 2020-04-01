@@ -96,11 +96,19 @@ class Home extends Component {
         const peopleListArr = [...driverListArr, ...nonmotoristListArr, ...passengerListArr];
 
         const infoExchangeIcon = (style) => (
-            <Icon {...style} name='edit-2-outline' />
-          );
+            <Icon {...style} name='external-link-outline' />
+        );
         
-        const navigateInfoExchange = () => (
-            <TopNavigationAction icon={infoExchangeIcon} onPress = {() => navigation.navigate('InfoExchange',{ operatorList })}/>
+        const finalReportIcon = (style) => (
+            <Icon {...style} name='file-text-outline' />
+        );
+
+        const rightControls = () => (
+            <View style={{flexDirection: 'row'}}>
+                <TopNavigationAction icon={finalReportIcon} onPress = {() => navigation.navigate('FinalReport')}/>
+                <TopNavigationAction icon={infoExchangeIcon} onPress = {() => navigation.navigate('InfoExchange',{ operatorList })}/>   
+            </View>
+            
         )
 
         const NonMotoristHeader = () => (
@@ -109,7 +117,7 @@ class Home extends Component {
 
         return(
             <SafeAreaView style={{flex:1}}>
-                <TopNavigation title='Home' alignment='center' leftControl={this.props.BackAction()} rightControls = {navigateInfoExchange()}/>
+                <TopNavigation title='Home' alignment='center' leftControl={this.props.BackAction()} rightControls = {rightControls()}/>
                 <ScrollView>
                     {vehiclesListArr}
                     <Card key={nonmotorist.id} header = {NonMotoristHeader} style={styles.itemCard} >

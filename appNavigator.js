@@ -14,6 +14,7 @@ import { QuickSurveyScreen } from './screens/quickSurveyScreen';
 import { HomeScreen } from './screens/homeScreen';
 import { QuestionScreen } from './screens/questionScreen';
 import { InfoExchangeFormScreen } from './screens/infoExchangeScreen';
+import { FinalReportScreen } from './screens/finalReportScreen';
 
 const HomeNavigator = createStackNavigator({
   Welcome: WelcomeScreen,
@@ -29,7 +30,8 @@ const HomeNavigator = createStackNavigator({
   Survey: QuickSurveyScreen,
   Home: HomeScreen,
   Question: QuestionScreen,
-  InfoExchange: InfoExchangeFormScreen
+  InfoExchange: InfoExchangeFormScreen,
+  FinalReport: FinalReportScreen
 }, {
   headerMode: 'none',
 });
