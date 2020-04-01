@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Input, Layout, Text, Card, Button, CardHeader, Icon } from '@ui-kitten/components';
 import { styles } from './AdvancedOpenTextField.style';
 import { updateRoad } from '../../actions/RoadAction';
+import * as Constants from '../../constants';
 
 const AdvancedOpenTextField = (props) => {
     const [value, setValue] = React.useState('');
@@ -71,9 +72,13 @@ const AdvancedOpenTextField = (props) => {
     };
 
     const onImportCameraPress = () => {
-      let currStateVal = !reducerData?.response ? null: reducerData.response;
-      pageChange('Camera', {id:id, question:"THIS QUESTION"})
-      setAdvancedButtonAppearance("filled")
+      if(advancedButtonAppearance == "filled"){
+        clearField();
+        setAdvancedButtonAppearance("outline");
+      }else{
+        setAdvancedButtonAppearance("filled")
+        pageChange('Scan', {objectID:id, type:Constants.VIN})
+      }
     };
 
     const onImportTimePress = () => {

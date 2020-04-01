@@ -69,3 +69,6 @@ ios/Pods/
 .debug.xcconfig
 
 #.plist
+
+#Anyline
+config.js

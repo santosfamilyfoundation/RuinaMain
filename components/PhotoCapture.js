@@ -76,14 +76,18 @@ class PhotoCapture extends Component {
 
     render() {
 
-        const vehicle = this.props.vehicle;
+        const {photoAction, vehicle, objectID, type } = this.props
+        console.log(objectID)
+        console.log(type)
+        console.log(this.props)
+
+        console.log("jijidfdfdfdaaaaaaa")
+        const isObjDisabled = objectID ? (false) : (true);
 
         const objectData = vehicle.data.map((vehicle, index) => {
             const name = "Vehicle " + (index + 1)
             return {"text":name};
         })
-
-        const photoAction = this.props.photoAction;
 
         const navigateResult = () => {
           this.props.navigation.navigate('Result');
@@ -95,8 +99,6 @@ class PhotoCapture extends Component {
             selectedOption: e.text,
           });
         }
-
-        const isObjDisabled = this.props.objectID ? (false) : (true);
 
         return (
             <SafeAreaView style={{ flex: 1 }}>

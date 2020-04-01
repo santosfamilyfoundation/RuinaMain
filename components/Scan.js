@@ -7,14 +7,13 @@ import {
     Platform
 } from 'react-native';
 import { updateVehicle } from '../actions/VehicleAction';
-
 import AnylineOCR, { getLicenseExpiryDate } from 'anyline-ocr-react-native-module';
+import { connect } from 'react-redux';
 
 import config from '../config';
 import ScanResult from './ScanResult';
 
-
-export default class Scan extends Component {
+class Scan extends Component {
 
     state = {
         hasScanned: false,
@@ -60,8 +59,6 @@ export default class Scan extends Component {
         try {
             const result = await PermissionsAndroid.check(
                 PermissionsAndroid.PERMISSIONS.CAMERA);
-            console.log("This is hte results")
-            console.log(result)
             return result;
         } catch (err) {
             console.warn(err);
@@ -80,11 +77,21 @@ export default class Scan extends Component {
         });
     };
 
+    fetchVIN = (vin) => {
+      fetch("https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/"+vin+"?format=json&modelyear=2011")
+        .then(response => response.json())
+        .then((responseJson)=> {
+          data = responseJson.Results
+          console.log(data)
+        })
+        .catch(error=>console.log(error))
+    };
+
     onResult = (dataString) => {
         const data = JSON.parse(dataString);
 
-        let id = this.props.navigation.state.params.id;
-        updateVehicle({id, question:"V1", selection: data.reading.toString() });
+        //let id = "testID"//this.props.navigation.state.params.id;
+        //updateVehicle({id, question:"V1", selection: data.reading.toString() });
         this.setState({
             hasScanned: true,
             result: data.reading,
@@ -96,6 +103,10 @@ export default class Scan extends Component {
             fullImageBase64: data.fullImageBase64,
             text: data.text
         });
+
+        this.props.updateVehicle({id:this.props.navigation.state.params.objectID, question:"V1", selection:data.text});
+        //fetchVIN(this.state.text);
+        this.props.navigation.goBack();
     };
 
     onError = (error) => {
@@ -118,9 +129,13 @@ export default class Scan extends Component {
 
         const { navigation, updateVehicle } = this.props;
 
+        const id = this.props.navigation.state.params.objectID;
+
         const platformText = (Platform.OS === 'android') ?
             (<Text onPress={this.checkCameraPermissionAndOpen}>Open OCR reader!</Text>) :
             (<Text onPress={this.openOCR}>Open OCR reader!</Text>);
+
+
 
         return (
             <View style={styles.container}>
@@ -157,7 +172,33 @@ const styles = StyleSheet.create({
     },
 });
 
+//
+// <ScanResult
+//     result={result}
+//     imagePath={imagePath}
+//     fullImagePath={fullImagePath}
+//     barcode={barcode}
+//     scanMode={scanMode}
+//     meterType={meterType}
+//     cutoutBase64={cutoutBase64}
+//     fullImageBase64={fullImageBase64}
+//     hasBackButton={true}
+//     navigation={this.props.navigation}
+//     text={this.state.text}
+//     // emptyResult={navigateback}
+// />
+
 
 const mapDispatchToProps = {
   updateVehicle,
 }
+
+const mapStateToProps = (state) => {
+    return {
+        photoVals: state.photosReducer,
+        vehicle: state.vehicleReducer,
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Scan);

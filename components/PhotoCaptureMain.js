@@ -16,6 +16,7 @@ class PhotoCaptureMain extends Component {
     render() {
 
       const params = this.props.navigation.state.params
+      console.log(params)
 
         return (
             <SafeAreaView style={{ flex: 1 }}>

@@ -7,6 +7,7 @@ import {
   Text,
   View,
   Dimensions,
+  AsyncStorage,
 } from 'react-native';
 import firebase from 'react-native-firebase';
 import uuid from 'uuid/v4';
