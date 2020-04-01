@@ -106,7 +106,7 @@ class QuickSurvey extends Component {
                 </SafeAreaView> */}
                 <SafeAreaView style = {styles.questionContainer}>
                   <NumberButtonSelector
-                    title="Number of large or vehicles with hazardous material"
+                    title="Number of vehicles which are large, towing trailers, or carrying hazardous materials"
                     submitFunction = {changeLvhm}
                     reducerName = "quickquizReducer"
                     fieldName = "numLvhm"
