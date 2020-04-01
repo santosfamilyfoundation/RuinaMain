@@ -64,6 +64,7 @@ class QuestionForm extends Component {
         reducer = "roadReducer";
         submitFunction = updateRoad;
         actionType = "UPDATEROAD";
+        questionsData = filterQuestionsData("road");
         break;
     }
 
