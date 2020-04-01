@@ -46,7 +46,7 @@ const MultiButtonSelector = (props) => {
 
 
     const HelperText = () => {
-        if(data.helperText.length != 0) {
+        if(data?.helperText?.length != 0) {
             return (<Text style={styles.helperText}>{data.helperText}</Text>)
         }
         return null;
