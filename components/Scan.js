@@ -7,10 +7,15 @@ import {
     Platform
 } from 'react-native';
 import { updateVehicle } from '../actions/VehicleAction';
+import { updateDriver } from '../actions/DriverAction';
 import AnylineOCR, { getLicenseExpiryDate } from 'anyline-ocr-react-native-module';
 import { connect } from 'react-redux';
+import * as Constants from '../constants';
 
-import config from '../config';
+import VINconfig from '../anylineConfigs/VINconfig';
+import DriversLicenseconfig from '../anylineConfigs/DriversLicenseconfig';
+import LicensePlateconfig from '../anylineConfigs/LicensePlateconfig';
+
 import ScanResult from './ScanResult';
 
 class Scan extends Component {
@@ -29,6 +34,21 @@ class Scan extends Component {
     };
 
     openOCR = () => {
+      let config;
+      console.log(this.props.navigation.state.params.type)
+      switch(this.props.navigation.state.params.type) {
+      case Constants.VIN:
+        config = VINconfig;
+        break;
+      case Constants.LICENSE:
+        config = DriversLicenseconfig;
+        break;
+      case Constants.PLATE:
+        config = LicensePlateconfig;
+        break;
+      default:
+        config = VINconfig;
+      }
         AnylineOCR.setup(
             JSON.stringify(config),
             'scan',
@@ -87,6 +107,7 @@ class Scan extends Component {
         .catch(error=>console.log(error))
     };
 
+
     onResult = (dataString) => {
         const data = JSON.parse(dataString);
 
@@ -103,9 +124,22 @@ class Scan extends Component {
             fullImageBase64: data.fullImageBase64,
             text: data.text
         });
-
-        this.props.updateVehicle({id:this.props.navigation.state.params.objectID, question:"V1", selection:data.text});
-        //fetchVIN(this.state.text);
+        let values = this.props.navigation.state.params;
+        console.log(data);
+        switch(values.type) {
+        case Constants.VIN:
+          this.fetchVIN(data.text);
+          this.props.updateVehicle({id:values.objectID, question:Constants.VIN_ID, selection:data.text});
+          break;
+        case Constants.LICENSE:
+          this.props.updateDriver({id:values.objectID, question:Constants.DLICENSE_ID, selection:data.text});
+          break;
+        case Constants.PLATE:
+          this.props.updateVehicle({id:values.objectID, question:Constants.LICENSE_PLATE_ID, selection:data.licensePlate});
+          break;
+        default:
+          break;
+        }
         this.props.navigation.goBack();
     };
 
@@ -113,6 +147,11 @@ class Scan extends Component {
         console.error(error);
         alert(error);
     };
+
+    componentDidMount() {
+      console.log("MOUNTED")
+      this.openOCR()
+    }
 
     render() {
         const {
@@ -127,36 +166,8 @@ class Scan extends Component {
             fullImageBase64,
         } = this.state;
 
-        const { navigation, updateVehicle } = this.props;
-
-        const id = this.props.navigation.state.params.objectID;
-
-        const platformText = (Platform.OS === 'android') ?
-            (<Text onPress={this.checkCameraPermissionAndOpen}>Open OCR reader!</Text>) :
-            (<Text onPress={this.openOCR}>Open OCR reader!</Text>);
-
-
-
         return (
             <View style={styles.container}>
-                {hasScanned ? (
-                        <ScanResult
-                            result={result}
-                            imagePath={imagePath}
-                            fullImagePath={fullImagePath}
-                            barcode={barcode}
-                            scanMode={scanMode}
-                            meterType={meterType}
-                            cutoutBase64={cutoutBase64}
-                            fullImageBase64={fullImageBase64}
-                            hasBackButton={true}
-                            navigation={this.props.navigation}
-                            text={this.state.text}
-                            // emptyResult={navigateback}
-                        />
-                    ) : (
-                        platformText
-                    )}
             </View>
         );
     }
@@ -172,25 +183,10 @@ const styles = StyleSheet.create({
     },
 });
 
-//
-// <ScanResult
-//     result={result}
-//     imagePath={imagePath}
-//     fullImagePath={fullImagePath}
-//     barcode={barcode}
-//     scanMode={scanMode}
-//     meterType={meterType}
-//     cutoutBase64={cutoutBase64}
-//     fullImageBase64={fullImageBase64}
-//     hasBackButton={true}
-//     navigation={this.props.navigation}
-//     text={this.state.text}
-//     // emptyResult={navigateback}
-// />
-
 
 const mapDispatchToProps = {
   updateVehicle,
+  updateDriver,
 }
 
 const mapStateToProps = (state) => {

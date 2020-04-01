@@ -80,8 +80,6 @@ export default function ScanResult({
       );
   }
 
-
-  console.log(text);
   fetchVIN(text);
 
   if (fullImagePath && fullImagePath !== '') {

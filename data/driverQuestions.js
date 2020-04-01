@@ -10,6 +10,17 @@ export const driverQuestions = {
             maxLength: 30,
         },
         {
+          id: "P12-S1",
+          question: "License Number",
+          helperText: "",
+          subquestions: null,
+          answerType: "openTextbox",
+          answerOptions: null,
+          maxLength: 30,
+          reducer: "roadReducer",
+          advanvedType: "License_Camera",
+        },
+        {
             id:"C1",
             question: "Crash Classification",
             helperText: "",

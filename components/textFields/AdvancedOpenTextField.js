@@ -66,8 +66,7 @@ const AdvancedOpenTextField = (props) => {
       // if(Object.keys(reducerData.response).length == 0){
       //   pageChange('Map', {id:id, question:"THIS QUESTION"})
       // }
-
-      pageChange('Map', {id:id, question:"THIS QUESTION"})
+      pageChange('Map', {id:id, questionID:props.data.id, questionName:props.data.question})
       setAdvancedButtonAppearance("filled")
     };
 
@@ -77,7 +76,22 @@ const AdvancedOpenTextField = (props) => {
         setAdvancedButtonAppearance("outline");
       }else{
         setAdvancedButtonAppearance("filled")
-        pageChange('Scan', {objectID:id, type:Constants.VIN})
+        let type
+        switch(importFrom) {
+          case "VIN_Camera":
+            type = Constants.VIN;
+            break;
+          case "Plate_Camera":
+            type = Constants.PLATE;
+            break;
+          case "License_Camera":
+            type = Constants.LICENSE
+            break;
+          default:
+            type = Constants.VIN;
+        }
+        pageChange('Scan', {objectID:id, type:type})
+
       }
     };
 
@@ -123,7 +137,7 @@ const AdvancedOpenTextField = (props) => {
               <Layout>
               </Layout>
           }
-          { importFrom == "Camera" ?
+          { (importFrom == "License_Camera" || importFrom == "Plate_Camera" || importFrom == "VIN_Camera") ?
               <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={CameraIcon} onPress={()=> onImportCameraPress() }></Button>
             :
               <Layout>

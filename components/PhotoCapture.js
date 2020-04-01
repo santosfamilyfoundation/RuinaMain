@@ -77,11 +77,7 @@ class PhotoCapture extends Component {
     render() {
 
         const {photoAction, vehicle, objectID, type } = this.props
-        console.log(objectID)
-        console.log(type)
-        console.log(this.props)
 
-        console.log("jijidfdfdfdaaaaaaa")
         const isObjDisabled = objectID ? (false) : (true);
 
         const objectData = vehicle.data.map((vehicle, index) => {

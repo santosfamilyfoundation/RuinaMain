@@ -71,4 +71,4 @@ ios/Pods/
 #.plist
 
 #Anyline
-config.js
+anylineConfigs/

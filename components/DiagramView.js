@@ -8,6 +8,7 @@ import { changeLat, changeLong, updateMarkers } from '../actions/MapAction';
 import { updateRoad } from '../actions/RoadAction';
 import MapView, { Marker, AnimatedRegion, Polyline, PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
+import * as Constants from '../constants';
 //import { mapAction } from '../actions/MapAction';
 //<TopNavigation title='Scene Diagram' alignment='center' leftControl={this.props.BackAction()}
 //<Text style={styles.coords}> {this.state.region}  {this.state.region} </Text>
@@ -153,9 +154,9 @@ class DiagramView extends Component {
         };
 
         const saveLocations = () => {
-          updateRoad({id, question:"C7", selection: this.state.markers[0].coordinate.latitude.toString() });
-          updateRoad({id, question:"C8", selection: this.state.markers[0].coordinate.longitude.toString() });
-          console.log(this.props)
+
+          updateRoad({id, question:Constants.LAT_ID, selection: this.state.markers[0].coordinate.latitude.toString() });
+          updateRoad({id, question:Constants.LONG_ID, selection: this.state.markers[0].coordinate.longitude.toString() });
           this.props.navigation.goBack();
         };
 
