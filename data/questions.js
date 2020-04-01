@@ -653,6 +653,7 @@ export const questions = {
             }
         ],
         "helperText": "(choose up to 2)",
+        "numOptionsAllowed": "2",
         "question": "Contributing Circumstances - Roadway Environment",
         "id": "C14",
         "answerType": "dropdownMultiSelect",
@@ -882,7 +883,7 @@ export const questions = {
         "question": "Was the crash in a construction, mainenance, or utility work zone or was it related to activity within a work zone?",
         "display": [
             "setup",
-            " construction"
+            "construction"
         ],
         "answerOptions": [
             {
@@ -1866,6 +1867,7 @@ export const questions = {
             }
         ],
         "helperText": "(choose up to 4)",
+        "numOptionsAllowed": "4",
         "question": "TCD Type(s)",
         "id": "V17-S1",
         "answerType": "dropdownMultiSelect",
@@ -1989,6 +1991,7 @@ export const questions = {
             }
         ],
         "helperText": "(choose up to 4)",
+        "numOptionsAllowed": "4",
         "question": "Are any Inoperative or Missing?",
         "id": "V17-S2",
         "answerType": "dropdownMultiSelect",
@@ -2228,6 +2231,7 @@ export const questions = {
             }
         ],
         "helperText": "(choose up to 13)",
+        "numOptionsAllowed": "13",
         "question": "Location of Damage Area(s)",
         "id": "V19-S2",
         "answerType": "dropdownMultiSelect",
@@ -2473,6 +2477,7 @@ export const questions = {
             }
         ],
         "helperText": "(choose up to 4)",
+        "numOptionsAllowed": "4",
         "question": "Sequence of Events",
         "id": "V20",
         "answerType": "dropdownMultiSelect",
@@ -3033,6 +3038,7 @@ export const questions = {
             }
         ],
         "helperText": "(choose up to 2)",
+        "numOptionsAllowed": "2",
         "question": "Seating Position",
         "id": "P7",
         "answerType": "dropdownMultiSelect",
@@ -3175,6 +3181,7 @@ export const questions = {
             }
         ],
         "helperText": "(choose up to 4)",
+        "numOptionsAllowed": "4",
         "question": "Air Bag Deployed",
         "id": "P9",
         "answerType": "dropdownMultiSelect",
@@ -3473,6 +3480,7 @@ export const questions = {
             }
         ],
         "helperText": "(choose up to 4)",
+        "numOptionsAllowed": "4",
         "question": "Driver Actions at Time of Crash",
         "id": "P14",
         "answerType": "dropdownMultiSelect",
@@ -3577,6 +3585,7 @@ export const questions = {
             }
         ],
         "helperText": "(choose up to 3)",
+        "numOptionsAllowed": "3",
         "question": "Driver License Restrictions",
         "id": "P16-S1",
         "answerType": "dropdownMultiSelect",
@@ -3797,6 +3806,7 @@ export const questions = {
             }
         ],
         "helperText": "(choose up to 2)",
+        "numOptionsAllowed": "2",
         "question": "Condition at Time of the Crash",
         "id": "P19",
         "answerType": "dropdownMultiSelect",
@@ -4038,6 +4048,7 @@ export const questions = {
             }
         ],
         "helperText": "(choose up to 4)",
+        "numOptionsAllowed": "4",
         "question": "Drug Test Result",
         "id": "P23-S3",
         "answerType": "dropdownMultiSelect",
@@ -4774,8 +4785,7 @@ export const questions = {
         "answerType": "dropdown",
         "question": "Attempted Avoidance Maneuver",
         "display": [
-            "fatality",
-            " driver"
+            "fatalityDriver"
         ],
         "answerOptions": [
             {
@@ -4845,7 +4855,8 @@ export const questions = {
         "answerType": "header",
         "question": "Alcohol Test Type and Results",
         "display": [
-            "fatality"
+            "fatalityDriver",
+            "fatalityNonmotorist"
         ],
         "id": "F2"
     },
@@ -4853,7 +4864,8 @@ export const questions = {
         "answerType": "dropdown",
         "question": "Test Type",
         "display": [
-            "fatality"
+            "fatalityDriver",
+            "fatalityNonmotorist"
         ],
         "answerOptions": [
             {
@@ -4911,7 +4923,8 @@ export const questions = {
         "answerType": "openTextBox",
         "question": "Test Result",
         "display": [
-            "fatality"
+            "fatalityDriver",
+            "fatalityNonmotorist"
         ],
         "id": "F2-S2"
     },
@@ -4919,7 +4932,8 @@ export const questions = {
         "answerType": "header",
         "question": "Drug Test Type and Results",
         "display": [
-            "fatality"
+            "fatalityDriver",
+            "fatalityNonmotorist"
         ],
         "id": "F3"
     },
@@ -4927,7 +4941,8 @@ export const questions = {
         "answerType": "dropdown",
         "question": "Test Type",
         "display": [
-            "fatality"
+            "fatalityDriver",
+            "fatalityNonmotorist"
         ],
         "answerOptions": [
             {
@@ -4965,7 +4980,8 @@ export const questions = {
         "answerType": "openTextBox",
         "question": "Test Result",
         "display": [
-            "fatality"
+            "fatalityDriver",
+            "fatalityNonmotorist"
         ],
         "id": "F3-S2"
     },
@@ -4973,8 +4989,7 @@ export const questions = {
         "answerType": "header",
         "question": "CMV License Status and Compliance with CDL Endorsements",
         "display": [
-            "lvhm",
-            " driver"
+            "lvhmDriver"
         ],
         "id": "LV1"
     },
@@ -4982,8 +4997,7 @@ export const questions = {
         "answerType": "dropdown",
         "question": "CMV License Status",
         "display": [
-            "lvhm",
-            " driver"
+            "lvhmDriver"
         ],
         "answerOptions": [
             {
@@ -5033,8 +5047,7 @@ export const questions = {
         "answerType": "dropdown",
         "question": "Compliance with CDL Endorsement(s)",
         "display": [
-            "lvhm",
-            " driver"
+            "lvhmDriver"
         ],
         "answerOptions": [
             {
@@ -5436,6 +5449,7 @@ export const questions = {
             }
         ],
         "helperText": "(choose up to 4)",
+        "numOptionsAllowed": "4",
         "question": "Special Sizing",
         "id": "LV8-S2",
         "answerType": "dropdownMultiSelect",
@@ -5781,6 +5795,7 @@ export const questions = {
             }
         ],
         "helperText": "(choose up to 2)",
+        "numOptionsAllowed": "2",
         "question": "Non-Motorist Contributing Action(s)/Circumstance(s)",
         "id": "NM3",
         "answerType": "dropdownMultiSelect",
@@ -5910,6 +5925,7 @@ export const questions = {
             }
         ],
         "helperText": "(choose up to 5)",
+        "numOptionsAllowed": "5",
         "question": "Non-Motorist Safety Equipment",
         "id": "NM5",
         "answerType": "dropdownMultiSelect",
