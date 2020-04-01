@@ -16,6 +16,8 @@ import { updateNonmotorist } from '../actions/NonmotoristAction';
 import { updateVehicle } from '../actions/VehicleAction';
 import { updatePassenger } from '../actions/PassengerAction';
 
+import {questions} from '../data/questions';
+
 class QuestionForm extends Component {
 
   render() {
@@ -26,7 +28,7 @@ class QuestionForm extends Component {
     let questionsData;
 
     const filterQuestionsData = (questionType) => {
-      return questionDetail.questions.filter(question => question.display.includes(questionType));
+      return questions.data.filter(question => question.display.includes(questionType));
     }
 
     switch(questionDetail.type){
@@ -34,25 +36,26 @@ class QuestionForm extends Component {
         reducer = "driverReducer";
         submitFunction = updateDriver;
         actionType = "UPDATEDRIVER";
-        questionsData = filterQuestionsData(questionDetail.type);
+        questionsData = filterQuestionsData('driver');
         break;
       case 'Nonmotorist':
         reducer = "nonmotoristReducer";
         submitFunction = updateNonmotorist;
         actionType = "UPDATENONMOTORIST";
-        questionsData = filterQuestionsData(questionDetail.type);
+        questionsData = filterQuestionsData('nonmotorist');
         break;
       case 'Passenger':
         reducer = "passengerReducer";
         submitFunction = updatePassenger;
         actionType = "UPDATEPASSENGER";
-        questionsData = filterQuestionsData(questionDetail.type);
+        questionsData = filterQuestionsData("passenger");
         break;
       case 'Vehicle':
         reducer = "vehicleReducer";
         submitFunction = updateVehicle;
         actionType = "UPDATEVEHICLE";
-        questionsData = filterQuestionsData(questionDetail.type);
+        questionsData = filterQuestionsData("vehicle");
+        console.log(questionsData);
         break;
     }
 
@@ -78,7 +81,7 @@ class QuestionForm extends Component {
               submitFunction={submitFunction}
             />
           )
-        case 'openTextbox':
+        case 'openTextBox':
           return (
             <OpenTextField
               data={question}
@@ -119,7 +122,6 @@ class QuestionForm extends Component {
             />
           )
         case 'header':
-          console.log(question.id);
           return (
             <HeaderComponent
               data={question}
@@ -129,22 +131,22 @@ class QuestionForm extends Component {
       }
     }
 
-    const renderSubQuetions = (questions) => {
-      const renderedQuestions = questions.subquestions.map(question => (
-        renderSingleQuestion(question)
-      ));
-      const Header = () => (
-        <CardHeader
-          title={questions.question}
-        />
-      )
+    // const renderSubQuetions = (questions) => {
+    //   const renderedQuestions = questions.subquestions.map(question => (
+    //     renderSingleQuestion(question)
+    //   ));
+    //   const Header = () => (
+    //     <CardHeader
+    //       title={questions.question}
+    //     />
+    //   )
 
-      return (
-        <Card key={questions.id} header={Header} style={styles.card}>
-          {renderedQuestions}
-        </Card>
-      );
-    }
+    //   return (
+    //     <Card key={questions.id} header={Header} style={styles.card}>
+    //       {renderedQuestions}
+    //     </Card>
+    //   );
+    // }
 
     // const renderedQuestions = questionDetail.questions.map((question) => {
     //   if (!question.subquestions) {

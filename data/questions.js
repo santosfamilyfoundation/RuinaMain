@@ -2774,8 +2774,8 @@ export const questions = {
         "question": "Name of Person Involved",
         "display": [
             "driver",
-            " passenger",
-            " nonmotorist"
+            "passenger",
+            "nonmotorist"
         ],
         "id": "P1"
     },
@@ -2784,8 +2784,8 @@ export const questions = {
         "question": "Date of Birth",
         "display": [
             "driver",
-            " passenger",
-            " nonmotorist"
+            "passenger",
+            "nonmotorist"
         ],
         "id": "P2"
     },
@@ -2797,8 +2797,8 @@ export const questions = {
         "answerType": "autoComplete",
         "display": [
             "driver",
-            " passenger",
-            " nonmotorist"
+            "passenger",
+            "nonmotorist"
         ]
     },
     {
@@ -2807,8 +2807,8 @@ export const questions = {
         "question": "Age",
         "display": [
             "driver",
-            " passenger",
-            " nonmotorist"
+            "passenger",
+            "nonmotorist"
         ],
         "id": "P2"
     },
@@ -2818,8 +2818,8 @@ export const questions = {
         "question": "Sex",
         "display": [
             "driver",
-            " passenger",
-            " nonmotorist"
+            "passenger",
+            "nonmotorist"
         ],
         "id": "P3"
     },
@@ -2828,8 +2828,8 @@ export const questions = {
         "question": "Person Type",
         "display": [
             "driver",
-            " passenger",
-            " nonmotorist"
+            "passenger",
+            "nonmotorist"
         ],
         "id": "P4"
     },
@@ -2838,8 +2838,8 @@ export const questions = {
         "question": "Person Type",
         "display": [
             "driver",
-            " passenger",
-            " nonmotorist"
+            "passenger",
+            "nonmotorist"
         ],
         "answerOptions": [
             {
@@ -2862,8 +2862,8 @@ export const questions = {
         "question": "Incident Responder?",
         "display": [
             "driver",
-            " passenger",
-            " nonmotorist"
+            "passenger",
+            "nonmotorist"
         ],
         "answerOptions": [
             {
@@ -2934,8 +2934,8 @@ export const questions = {
         "question": "Injury Status",
         "display": [
             "driver",
-            " passenger",
-            " nonmotorist"
+            "passenger",
+            "nonmotorist"
         ],
         "answerOptions": [
             {
@@ -3038,7 +3038,7 @@ export const questions = {
         "answerType": "dropdownMultiSelect",
         "display": [
             "driver",
-            " passenger"
+            "passenger"
         ]
     },
     {
@@ -3046,7 +3046,7 @@ export const questions = {
         "question": "Restraint Systems / Motorcycle Helmet Use",
         "display": [
             "driver",
-            " passenger"
+            "passenger"
         ],
         "answerOptions": [
             {
@@ -3129,7 +3129,7 @@ export const questions = {
         "question": "Any Indication of Improper Use?",
         "display": [
             "driver",
-            " passenger"
+            "passenger"
         ],
         "answerOptions": [
             {
@@ -3180,7 +3180,7 @@ export const questions = {
         "answerType": "dropdownMultiSelect",
         "display": [
             "driver",
-            " passenger"
+            "passenger"
         ]
     },
     {
@@ -3188,7 +3188,7 @@ export const questions = {
         "question": "Ejection",
         "display": [
             "driver",
-            " passenger"
+            "passenger"
         ],
         "answerOptions": [
             {
@@ -3683,7 +3683,7 @@ export const questions = {
         "question": "Distracted By",
         "display": [
             "driver",
-            " nonmotorist"
+            "nonmotorist"
         ],
         "id": "P18"
     },
@@ -3692,7 +3692,7 @@ export const questions = {
         "question": "Action",
         "display": [
             "driver",
-            " nonmotorist"
+            "nonmotorist"
         ],
         "answerOptions": [
             {
@@ -3723,7 +3723,7 @@ export const questions = {
         "question": "Source",
         "display": [
             "driver",
-            " nonmotorist"
+            "nonmotorist"
         ],
         "answerOptions": [
             {
@@ -3802,7 +3802,7 @@ export const questions = {
         "answerType": "dropdownMultiSelect",
         "display": [
             "driver",
-            " nonmotorist"
+            "nonmotorist"
         ]
     },
     {
@@ -3810,7 +3810,7 @@ export const questions = {
         "question": "Law Enforcement Suspects Alcohol Use",
         "display": [
             "driver",
-            " nonmotorist"
+            "nonmotorist"
         ],
         "answerOptions": [
             {
@@ -3833,7 +3833,7 @@ export const questions = {
         "question": "Alcohol Test",
         "display": [
             "driver",
-            " nonmotorist"
+            "nonmotorist"
         ],
         "id": "P21"
     },
@@ -3842,7 +3842,7 @@ export const questions = {
         "question": "Test Status",
         "display": [
             "driver",
-            " nonmotorist"
+            "nonmotorist"
         ],
         "answerOptions": [
             {
@@ -3869,7 +3869,7 @@ export const questions = {
         "question": "Type of Test",
         "display": [
             "driver",
-            " nonmotorist"
+            "nonmotorist"
         ],
         "answerOptions": [
             {
@@ -3900,7 +3900,7 @@ export const questions = {
         "question": "BAC Test Result",
         "display": [
             "driver",
-            " nonmotorist"
+            "nonmotorist"
         ],
         "id": "P21-S3"
     },
@@ -3909,7 +3909,7 @@ export const questions = {
         "question": "Law Enforcement Suspects Drug Use",
         "display": [
             "driver",
-            " nonmotorist"
+            "nonmotorist"
         ],
         "answerOptions": [
             {
@@ -3932,7 +3932,7 @@ export const questions = {
         "question": "Drug Test",
         "display": [
             "driver",
-            " nonmotorist"
+            "nonmotorist"
         ],
         "id": "P23"
     },
@@ -3941,7 +3941,7 @@ export const questions = {
         "question": "Test Status",
         "display": [
             "driver",
-            " nonmotorist"
+            "nonmotorist"
         ],
         "answerOptions": [
             {
@@ -3968,7 +3968,7 @@ export const questions = {
         "question": "Type of Test",
         "display": [
             "driver",
-            " nonmotorist"
+            "nonmotorist"
         ],
         "answerOptions": [
             {
@@ -4043,7 +4043,7 @@ export const questions = {
         "answerType": "dropdownMultiSelect",
         "display": [
             "driver",
-            " nonmotorist"
+            "nonmotorist"
         ]
     },
     {
