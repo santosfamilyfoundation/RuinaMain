@@ -16,11 +16,16 @@ const OpenTextField = (props) => {
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
 
+    console.log(existingData)
+    console.log(value)
     // Populate if value already exists in redux
     if(!value) {
         if(existingData != null) {
             if(existingData[currId] != null && !value) {
+                console.log("HEre at value")
+                console.log(existingData[currId])
                 setValue(existingData[currId]);
+                console.log(value)
                 setButtonAppearance('filled');
             }
         }

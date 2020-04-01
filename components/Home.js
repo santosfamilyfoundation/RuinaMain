@@ -8,6 +8,18 @@ import {questions} from '../data/questions';
 import VehicleSection from './VehicleSection';
 import NonMotoristSection from './NonMotoristSection';
 
+
+//May not need all of these:
+
+import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { driverQuestions } from '../data/driverQuestions';
+import { passengerQuestions } from '../data/passengerQuestions';
+import { nonmotoristQuestions } from '../data/nonmotoristQuestions';
+import { vehicleQuestions } from '../data/vehicleQuestions';
+import { lvhmQuestions } from '../data/lvhmQuestions';
+import { roadQuestions } from '../data/roadQuestions';
+
+
 class Home extends Component {
 
     render(){
@@ -17,6 +29,7 @@ class Home extends Component {
             nonmotorist,
             vehicle,
             passenger,
+            road
             } = this.props
 
         const operatorList = [];
@@ -43,7 +56,7 @@ class Home extends Component {
                 )
             } else {
                 return (
-                    <VehicleSection 
+                    <VehicleSection
                         key = {index}
                         navigation = {navigation}
                         vehicle = {vehicle}
@@ -52,7 +65,7 @@ class Home extends Component {
                     />
                 )
             }
-            
+
         })
 
         const driverListArr = driver.data.map((driver, index) => {
@@ -93,7 +106,7 @@ class Home extends Component {
         const infoExchangeIcon = (style) => (
             <Icon {...style} name='edit-2-outline' />
           );
-        
+
         const navigateInfoExchange = () => (
             <TopNavigationAction icon={infoExchangeIcon} onPress = {() => navigation.navigate('InfoExchange',{ operatorList })}/>
         )
@@ -114,12 +127,13 @@ class Home extends Component {
                     </Card>
                     <Card header={RoadHeader} style={styles.sectionCard}>
                         <Layout style={styles.questionContainer}>
-                            <Card style={styles.individualCard}>
+                            <Card style={styles.individualCard} onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road')}>
                                 <Icon name='paper-plane' width={75} height={75} />
                                 <Text style={styles.itemCardFooter} category="s1">Road</Text>
                             </Card>
                         </Layout>
                     </Card>
+
                 </ScrollView>
             </SafeAreaView>
         )
@@ -132,7 +146,8 @@ const mapStateToProps = (state) => {
         nonmotorist: state.nonmotoristReducer,
         vehicle: state.vehicleReducer,
         passenger: state.passengerReducer,
-        quiz: state.quickquizReducer
+        quiz: state.quickquizReducer,
+        road: state.roadReducer,
     }
 }
 

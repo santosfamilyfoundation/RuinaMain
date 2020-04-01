@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
-import { Divider, Layout, TopNavigation, CardHeader, Card } from '@ui-kitten/components';
+import { Divider, Layout, TopNavigation, CardHeader, Card, Button } from '@ui-kitten/components';
 import { styles } from '../containers/AutoComponentContainer.style';
 import { ScrollView } from 'react-native-gesture-handler';
 import MultiButtonSelector from './buttonSelectors/MultiButtonSelector';
 import AutoCompleteDropDown from './dropdowns/AutoCompleteDropDown';
 import DropDownSingleSelect from './dropdowns/DropDownSingleSelect';
 import OpenTextField from './textFields/OpenTextField';
+import AdvancedOpenTextField from './textFields/AdvancedOpenTextField';
+import AdvancedDropDown from './dropdowns/AdvancedDropDown';
 import DropDownMultiSelect from './dropdowns/DropDownMultiSelect';
 import LargeTextField from './textFields/LargeTextField';
 import HeaderComponent from './HeaderComponent';
@@ -15,13 +17,14 @@ import { updateDriver } from '../actions/DriverAction';
 import { updateNonmotorist } from '../actions/NonmotoristAction';
 import { updateVehicle } from '../actions/VehicleAction';
 import { updatePassenger } from '../actions/PassengerAction';
+import { updateRoad } from '../actions/RoadAction';
 
 import {questions} from '../data/questions';
 
 class QuestionForm extends Component {
 
   render() {
-    const {questionDetail, updateDriver, updateNonmotorist, updatePassenger, updateVehicle } = this.props
+    const {questionDetail, updateDriver, updateNonmotorist, updatePassenger, updateVehicle, updateRoad } = this.props
     let reducer;
     let submitFunction;
     let actionType;
@@ -57,6 +60,15 @@ class QuestionForm extends Component {
         questionsData = filterQuestionsData("vehicle");
         console.log(questionsData);
         break;
+      case 'Road':
+        reducer = "roadReducer";
+        submitFunction = updateRoad;
+        actionType = "UPDATEROAD";
+        break;
+    }
+
+    const navigateToAdvanced = (place, props) =>{
+      this.props.navigation.navigate(place, props);
     }
 
     const renderSingleQuestion = (question) => {
@@ -89,6 +101,30 @@ class QuestionForm extends Component {
               id={questionDetail.objectID}
               reducer={reducer}
               submitFunction={submitFunction}
+            />
+          )
+          case 'advancedOpenTextbox':
+            return (
+              <AdvancedOpenTextField
+                data={question}
+                key={question.id}
+                id={questionDetail.objectID}
+                reducer={reducer}
+                submitFunction={submitFunction}
+                pageChange={navigateToAdvanced}
+                importFrom={question.advanvedType}
+              />
+            )
+        case 'advancedDropDown':
+          return (
+            <AdvancedDropDown
+              data={question}
+              key={question.id}
+              id={questionDetail.objectID}
+              reducer={reducer}
+              submitFunction={submitFunction}
+              pageChange={navigateToAdvanced}
+              importFrom={question.advanvedType}
             />
           )
         case 'largeTextField':
@@ -178,7 +214,8 @@ const mapDispatchToProps = {
   updateDriver,
   updateNonmotorist,
   updateVehicle,
-  updatePassenger
+  updatePassenger,
+  updateRoad,
 }
 
 const mapStateToProps = (state) => {

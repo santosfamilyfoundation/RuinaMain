@@ -62,3 +62,13 @@ ios/Pods/
 
 # api keys
 .env
+
+#ios
+.pbxproj
+.xcconfig
+.debug.xcconfig
+
+#.plist
+
+#Anyline
+anylineConfigs/

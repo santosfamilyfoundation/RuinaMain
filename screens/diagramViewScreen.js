@@ -2,7 +2,8 @@ import React from 'react';
 import { Icon, TopNavigationAction } from '@ui-kitten/components';
 import DiagramView from '../components/DiagramView'
 
-export const DiagramViewScreen = ({ navigation }) => {
+export const DiagramViewScreen = ({ navigation}) => {
+
   return (
           <DiagramView
             navigation = { navigation }

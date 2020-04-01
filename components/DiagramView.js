@@ -4,8 +4,11 @@ import { TextInput, Text, Dimensions, StyleSheet, View, TouchableOpacity } from 
 import { Button, Divider, Layout, TopNavigation, Icon } from '@ui-kitten/components';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { connect } from 'react-redux';
+import { changeLat, changeLong, updateMarkers } from '../actions/MapAction';
+import { updateRoad } from '../actions/RoadAction';
 import MapView, { Marker, AnimatedRegion, Polyline, PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
+import * as Constants from '../constants';
 //import { mapAction } from '../actions/MapAction';
 //<TopNavigation title='Scene Diagram' alignment='center' leftControl={this.props.BackAction()}
 //<Text style={styles.coords}> {this.state.region}  {this.state.region} </Text>
@@ -55,7 +58,7 @@ class DiagramView extends Component {
             });
       this._map.animateToRegion(region, 100);
       },
-      error => Alert.alert('Error', JSON.stringify(error)),
+      error => alert('Using Default Location', JSON.stringify(error)),
       {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000},
     );
   }
@@ -130,6 +133,17 @@ class DiagramView extends Component {
   }
 
     render() {
+        const {
+          navigation,
+          changeLat,
+          changeLong,
+          mapDetails,
+          updateMarkers,
+          updateRoad
+        } = this.props;
+
+        const id = this.props.navigation.state.params.id;
+        const question = this.props.navigation.state.params.question;
 
         const navigateSummary = () => {
           this.props.navigation.navigate('MapSummary');
@@ -137,6 +151,13 @@ class DiagramView extends Component {
 
         const navigateHome = () => {
           this.props.navigation.navigate('Welcome');
+        };
+
+        const saveLocations = () => {
+
+          updateRoad({id, question:Constants.LAT_ID, selection: this.state.markers[0].coordinate.latitude.toString() });
+          updateRoad({id, question:Constants.LONG_ID, selection: this.state.markers[0].coordinate.longitude.toString() });
+          this.props.navigation.goBack();
         };
 
         return (
@@ -198,7 +219,7 @@ class DiagramView extends Component {
                     </TouchableOpacity>
                   </View>
               </Layout>
-              <Button onPress={() =>this.props.mapAction(this.state.mapRegion.latitude)}>SAVE</Button>
+              <Button onPress={() => saveLocations()}>SAVE</Button>
           </SafeAreaView>
           );
     }
@@ -235,10 +256,12 @@ const styles = StyleSheet.create({
   }
 });
 
-
-const mapDispatchToProps = dispatch => ({
-  mapAction: (mapDetails) => dispatch({ type: 'WRITE', payload: mapDetails })
-});
+const mapDispatchToProps = {
+  changeLat,
+  changeLong,
+  updateMarkers,
+  updateRoad,
+}
 
 
 const mapStateToProps = (state) => {
