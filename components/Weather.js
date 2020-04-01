@@ -15,7 +15,6 @@ export default class Weather extends Component {
     componentDidMount() {
         Geolocation.getCurrentPosition(
           position => {
-            console.log(position.coords)
             this.fetchWeather(position.coords.latitude, position.coords.longitude)
 
           },

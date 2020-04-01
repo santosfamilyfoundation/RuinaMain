@@ -18,8 +18,6 @@ class OperatorForm extends Component{
         let submitFunction;
         let typeUpperCase = type.charAt(0).toUpperCase() + type.slice(1)
 
-        let nameField = "P1";
-
 
         switch(type) {
             case 'driver':
@@ -65,7 +63,7 @@ class OperatorForm extends Component{
 
 
         return(
-                <Card header= {() => <CardHeader title={`${typeUpperCase}: ${operator.response[nameField] || ''}`}/>} >
+                <Card header= {() => <CardHeader title={`${typeUpperCase}: ${operator.response?.P1 || ''}`}/>} >
                     <ScrollView>
                         <Layout style={styles.content}>
                             {renderedQuestions}

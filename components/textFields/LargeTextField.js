@@ -81,7 +81,7 @@ const LargeTextField = (props) => {
     )
 
     const HelperText = () => {
-        if(data.helperText != null) {
+        if(data?.helperText != null) {
             return (<Text style={styles.helperText}>{data.helperText}</Text>)
         }
         return null;

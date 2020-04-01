@@ -7,7 +7,6 @@ class MapSummary extends Component {
 
     render() {
 
-      console.log(this.props);
         return (
             <SafeAreaView style={{ flex: 1 }}>
                 <TopNavigation title='Map Summary' alignment='center' leftControl={this.props.BackAction()}/>

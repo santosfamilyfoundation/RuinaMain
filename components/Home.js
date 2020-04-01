@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-import { TextInput, StyleSheet, View, ScrollView } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { Button, TopNavigation, TopNavigationAction, Text, Card, CardHeader, Layout, Icon } from '@ui-kitten/components';
+import { TopNavigation, TopNavigationAction, Text, Card, CardHeader, Layout, Icon } from '@ui-kitten/components';
 import { styles } from './Home.style';
-import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { driverQuestions } from '../data/driverQuestions';
-import { passengerQuestions } from '../data/passengerQuestions';
-import { nonmotoristQuestions } from '../data/nonmotoristQuestions';
-import { vehicleQuestions } from '../data/vehicleQuestions';
-import { lvhmQuestions } from '../data/lvhmQuestions';
+import {questions} from '../data/questions';
 import VehicleSection from './VehicleSection';
 import NonMotoristSection from './NonMotoristSection';
 
@@ -63,7 +58,7 @@ class Home extends Component {
         const driverListArr = driver.data.map((driver, index) => {
             operatorList.push({id:driver.id, type:'driver', response:{}})
             return (
-                <Card key={driver.id} style={styles.itemCard} onPress = {() => navigateQuestion(driverQuestions, driver.id, 'Driver')}>
+                <Card key={driver.id} style={styles.itemCard} onPress = {() => navigateQuestion(questions, driver.id, 'Driver')}>
                     <View style={styles.itemCardContent}>
                         <Icon name='person' width={75} height={75} />
                         <Text style={styles.itemCardFooter} category="s1">Driver {index+1}</Text>
@@ -85,7 +80,7 @@ class Home extends Component {
         })
 
         const passengerListArr = passenger.data.map((passenger, index) => (
-            <Card key={passenger.id} style={styles.itemCard} onPress = {() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger')}>
+            <Card key={passenger.id} style={styles.itemCard} onPress = {() => navigateQuestion(questions, passenger.id, 'Passenger')}>
                 <View style={styles.itemCardContent}>
                     <Icon name='person' width={75} height={75} />
                     <Text style={styles.itemCardFooter} category="s1">Passenger {index+1}</Text>
