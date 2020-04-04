@@ -26,6 +26,7 @@ class PhotoCapture extends Component {
     imgUri: '',
     uploading: false,
     progress:0,
+    currImage :'',
   }
 
 
@@ -72,8 +73,9 @@ class PhotoCapture extends Component {
                 imgUri: '',
                 progress: 0,
                 images: allImages,
+                currImage: snapshot.downloadURL,
               };
-              this.props.photoAction(allImages);
+              this.props.photoAction({image: snapshot.downloadURL, tag: this.state.selectedOption});
               AsyncStorage.setItem('images', JSON.stringify(allImages));
             }
             this.setState(state);
@@ -86,12 +88,17 @@ class PhotoCapture extends Component {
       };
   };
 
+  setOption = (text) => {
+    this.setState({
+      selectedOption: text,
+    });
+  }
 
     render() {
 
         const {photoAction, vehicle, objectID, type } = this.props
 
-        const isObjDisabled = objectID ? (false) : (true);
+        const isObjDisabled = vehicle.data.length == 0 ? (true) : (false);
 
         const objectData = vehicle.data.map((vehicle, index) => {
             const name = "Vehicle " + (index + 1)
@@ -102,12 +109,7 @@ class PhotoCapture extends Component {
           this.props.navigation.navigate('Result');
         };
 
-        const setSelectedOption = (e) => {
-          setSelectedOption({text: e.text});
-          this.setState({
-            selectedOption: e.text,
-          });
-        }
+        const progress = this.state.progress;
 
         return (
             <SafeAreaView style={{ flex: 1 }}>
@@ -119,17 +121,22 @@ class PhotoCapture extends Component {
                 >
                 </RNCamera>
                 <Layout style={styles.controlBar}>
-                  <Layout style={styles.topControlBar}>
-                    <View
-                      style={[styles.progressBar, { width: `${this.state.progress}%` }]}
-                    />
-                  </Layout>
+                    <Layout style={styles.topControlBar}>
+                    { progress < 100 && progress != 0 ?
+                        <Layout>
+                          <Text>
+                            Uploading...
+                          </Text>
+                          <View style={[styles.progressBar, { width: `${this.state.progress}%` }]}/>
+                        </Layout>
+                      :
+                        <Layout>
+                        </Layout>
+                    }
+                    </Layout>
                   <Layout style={styles.bottomControlBar}>
-                    <BasicDropDown data={typeData} defaultOption={this.props.type} isDisabled={false}/>
-                    <Text style={styles.captureButton} onPress={this.capture.bind(this)}>
-                      Capture
-                    </Text>
-                    <BasicDropDown data={objectData} defaultOption={this.props.objectID} isDisabled={isObjDisabled}/>
+                    <BasicDropDown data={objectData} selectFunction={this.setOption} isDisabled={isObjDisabled}/>
+                    <Button style={styles.captureButton} appearance={"filled"} onPress={this.capture.bind(this)}>{"Capture"}</Button>
                   </Layout>
                 </Layout>
               </Layout>
