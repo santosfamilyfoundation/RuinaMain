@@ -28,49 +28,62 @@ class PhotoCapture extends Component {
     progress:0,
   }
 
-  takePicture() {
-      this.camera.takePictureAsync({ skipProcessing: true }).then((data) => {
-        this.setState({
-          imgUri: data["uri"],
-        });
-      })
+
+  capture() {
+    this.camera.takePictureAsync({ skipProcessing: true }).then((data) => {
+      this.setState({
+        imgUri: data["uri"],
+      });
+      this.uploadImage()
+    })
+  }
+
+  componentDidMount() {
+      this.mounted = true;
+  }
+
+  componentWillUnmount(){
+      this.mounted = false;
   }
 
   uploadImage = () => {
     const ext = this.state.imgUri.split('.').pop(); // Extract image extension
     const filename = `${uuid()}.${ext}`; // Making a unique name
-    this.setState({ uploading: true });
-    firebase //Connect and store in firebase
-      .storage()
-      .ref(`CrashImages/${filename}`)
-      .putFile(this.state.imgUri)
-      .on(
-        firebase.storage.TaskEvent.STATE_CHANGED,
-        snapshot => {
-          let state = {};
-          state = {
-            ...state,
-            progress: (snapshot.bytesTransferred / snapshot.totalBytes) * 100 // Update the progress bar value
-          };
-          if (snapshot.state === firebase.storage.TaskState.SUCCESS) {
-            const allImages = this.state.images;
-            allImages.push(snapshot.downloadURL);
+    if(this.mounted) {
+      this.setState({ uploading: true });
+      firebase //Connect and store in firebase
+        .storage()
+        .ref(`CrashImages/${filename}`)
+        .putFile(this.state.imgUri)
+        .on(
+          firebase.storage.TaskEvent.STATE_CHANGED,
+          snapshot => {
+            let state = {};
             state = {
               ...state,
-              uploading: false,
-              imgUri: '',
-              progress: 0,
-              images: allImages,
+              progress: (snapshot.bytesTransferred / snapshot.totalBytes) * 100 // Update the progress bar value
             };
-            AsyncStorage.setItem('images', JSON.stringify(allImages));
+            if (snapshot.state === firebase.storage.TaskState.SUCCESS) {
+              const allImages = this.state.images;
+              allImages.push(snapshot.downloadURL);
+              state = {
+                ...state,
+                uploading: false,
+                imgUri: '',
+                progress: 0,
+                images: allImages,
+              };
+              this.props.photoAction(allImages);
+              AsyncStorage.setItem('images', JSON.stringify(allImages));
+            }
+            this.setState(state);
+          },
+          error => {
+            unsubscribe();
+            alert('Unable to upload');
           }
-          this.setState(state);
-        },
-        error => {
-          unsubscribe();
-          alert('Unable to upload');
-        }
-      );
+        );
+      };
   };
 
 
@@ -113,14 +126,8 @@ class PhotoCapture extends Component {
                   </Layout>
                   <Layout style={styles.bottomControlBar}>
                     <BasicDropDown data={typeData} defaultOption={this.props.type} isDisabled={false}/>
-                    <Text style={styles.captureButton} onPress={this.takePicture.bind(this)}>
+                    <Text style={styles.captureButton} onPress={this.capture.bind(this)}>
                       Capture
-                    </Text>
-                    <Text style={styles.captureButton} onPress={this.uploadImage.bind(this)} disabled={this.state.uploading}>
-                      Save
-                    </Text>
-                    <Text style={styles.captureButton} onPress={() => photoAction(this.state.images)}>
-                      Double save
                     </Text>
                     <BasicDropDown data={objectData} defaultOption={this.props.objectID} isDisabled={isObjDisabled}/>
                   </Layout>

@@ -1,6 +1,6 @@
 export const photoAction = images => (
     {
-      type: 'WRITE',
+      type: 'ADDPHOTOS',
       images,
     }
   );

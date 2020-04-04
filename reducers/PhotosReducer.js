@@ -6,8 +6,9 @@ const INITIAL_STATE = {
 
 const photosReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'WRITE':
-        return { ...state, images: action.images}
+    case 'ADDPHOTOS':
+        let imagesArr = Array.from(new Set(state.images.concat(action.images)));
+        return { ...state, images: imagesArr}
     default:
       return state;
   }
