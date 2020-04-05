@@ -14,6 +14,8 @@ import Geolocation from '@react-native-community/geolocation';
 import { API_KEY } from '../../utils/WeatherAPIKey';
 import * as Constants from '../../constants';
 
+//This component is used for "advanced" tool access with drop downs (weather)
+
 const AdvancedDropDown = (props) => {
     const [selectedOptions, setSelectedOptions] = React.useState([]);
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
@@ -60,13 +62,7 @@ const AdvancedDropDown = (props) => {
         };
     }
 
-    const setComplete = () => {
-        status = 'success'
-        if(buttonAppearance != 'filled') {
-            setButtonAppearance('filled');
-        };
-    }
-
+    //Calls weather API
     const findWeatherData = () => {
         Geolocation.getCurrentPosition(
           position => {
@@ -90,8 +86,13 @@ const AdvancedDropDown = (props) => {
           });
     };
 
-
-
+    //Updates color status of card
+    const setComplete = () => {
+        status = 'success'
+        if(buttonAppearance != 'filled') {
+            setButtonAppearance('filled');
+        };
+    }
 
     const setIncomplete = () => {
         status = 'danger'
@@ -99,7 +100,6 @@ const AdvancedDropDown = (props) => {
             setButtonAppearance('outline');
         };
     };
-
 
     // Determine submission status
     let status;
@@ -126,6 +126,7 @@ const AdvancedDropDown = (props) => {
         }
     }
 
+    //Updated reducer
     const submitField = () => {
         if(selectedOptions.length == 0) {
             return;
@@ -137,6 +138,7 @@ const AdvancedDropDown = (props) => {
         submitFunction({id, question: currId, selection: res})
     }
 
+    //Clears selection
     const clearRedux = () => {
         submitFunction({id, question: currId, selection: null})
     }
@@ -159,12 +161,18 @@ const AdvancedDropDown = (props) => {
         return null;
     }
 
+    //Icons from Eva Icons: https://akveo.github.io/eva-icons/#/
+
     const CheckIcon = (style) => (
         <Icon {...style} name='checkmark-outline' />
-    )
+    );
 
+    const WeatherIcon = (style) => (
+        <Icon {...style} name='sun-outline' />
+    );
 
     const onImportWeatherPress = () => {
+      //Shows the user weather helper data
       if(!toggleWeatherHelper){
         setToggleWeatherHelper(true);
         setAdvancedButtonAppearance("filled");
@@ -173,10 +181,6 @@ const AdvancedDropDown = (props) => {
         setAdvancedButtonAppearance("outline");
       }
     };
-
-    const WeatherIcon = (style) => (
-        <Icon {...style} name='sun-outline' />
-    );
 
     const CustomCardHeader = () => (
       <Layout style={styles.headerObjects}>
@@ -194,8 +198,6 @@ const AdvancedDropDown = (props) => {
           }
       </Layout>
     );
-
-
 
 
     const WeatherHelper = () => {

@@ -5,6 +5,8 @@ import { styles } from './AdvancedOpenTextField.style';
 import { updateRoad } from '../../actions/RoadAction';
 import * as Constants from '../../constants';
 
+//This component is used for "advanced" tool access (map, photo, and time)
+
 const AdvancedOpenTextField = (props) => {
     const [value, setValue] = React.useState('');
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
@@ -28,6 +30,7 @@ const AdvancedOpenTextField = (props) => {
     }
 
     const submitField = () => {
+      //submits data to reducer and is shown as complete
         if(!value) {
             return;
         }
@@ -36,6 +39,7 @@ const AdvancedOpenTextField = (props) => {
     }
 
     const onTextChange = (text) => {
+        //Updated the reducer when user types
         if(!text) {
             submitFunction({id, question: currId, selection: null})
         }
@@ -43,11 +47,13 @@ const AdvancedOpenTextField = (props) => {
     }
 
     const clearField = () => {
+        // Resets the question field
         setValue('');
         submitFunction({id, question: currId, selection: null})
         setButtonAppearance('outline');
     }
 
+    // Update the fill of the check button to show completeness
     if(!value && buttonAppearance != 'outline') {
         setButtonAppearance('outline');
     } else if(existingData != null) {
@@ -62,15 +68,14 @@ const AdvancedOpenTextField = (props) => {
     }
 
     const onImportMapPress = () => {
+      //Sends user to map tool
       let currStateVal = !reducerData?.response ? null: reducerData.response;
-      // if(Object.keys(reducerData.response).length == 0){
-      //   pageChange('Map', {id:id, question:"THIS QUESTION"})
-      // }
       pageChange('Map', {id:id, questionID:props.data.id})
       setAdvancedButtonAppearance("filled")
     };
 
     const onImportCameraPress = () => {
+      //Sends user to camera tool (for VIN, LISCENSE PLATE, or DRIVERS LISCENSE photo)
       if(advancedButtonAppearance == "filled"){
         clearField();
         setAdvancedButtonAppearance("outline");
@@ -96,6 +101,7 @@ const AdvancedOpenTextField = (props) => {
     };
 
     const onImportTimePress = () => {
+      //Gets the current date and time for user and autofills question
       if(advancedButtonAppearance == "filled"){
         clearField();
         setAdvancedButtonAppearance("outline");
@@ -111,6 +117,8 @@ const AdvancedOpenTextField = (props) => {
       }
     };
 
+    //Icons from Eva Icons: https://akveo.github.io/eva-icons/#/
+
     const MapIcon = (style) => (
         <Icon {...style} name='map-outline'  />
     );
@@ -123,7 +131,16 @@ const AdvancedOpenTextField = (props) => {
         <Icon {...style} name='clock-outline'  />
     );
 
+    const CheckIcon = (style) => (
+        <Icon {...style} name='checkmark-outline' />
+    );
+
+    const renderClear = (style) => (
+        <Icon {...style} name='close-outline'/>
+    );
+
     const CustomCardHeader = () => (
+        //Displays a button for the advanced tools
         <Layout style={styles.headerObjects}>
           <Text
             style={styles.headerText}
@@ -152,26 +169,15 @@ const AdvancedOpenTextField = (props) => {
         </Layout>
     );
 
-
-    const Header = () => (
-        <CardHeader title={data.question} icon={MapIcon}/>
-    );
-
-    const renderClear = (style) => (
-        <Icon {...style} name='close-outline'/>
-    );
-
+    //Updates color status of card
     if(buttonAppearance == 'outline') {
         status = 'danger'
     } else {
         status = 'success'
     }
 
-    const CheckIcon = (style) => (
-        <Icon {...style} name='checkmark-outline' />
-    )
-
     const HelperText = () => {
+      //Text that shows up on questions with helper text fields
         if(data.helperText.length != 0) {
             return (<Text style={styles.helperText}>{data.helperText}</Text>)
         }
@@ -188,9 +194,6 @@ const AdvancedOpenTextField = (props) => {
         }
         return null;
     };
-
-    //const latValueFromMap = props.mapReducer.markers.length ? String(props.mapReducer.markers[0].coordinate.latitude) : null;
-    //const currValue = latValueFromMap ? latValueFromMap : value;
 
     return (
         <Layout key={key} style={styles.container}>
