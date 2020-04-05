@@ -66,7 +66,7 @@ const AdvancedOpenTextField = (props) => {
       // if(Object.keys(reducerData.response).length == 0){
       //   pageChange('Map', {id:id, question:"THIS QUESTION"})
       // }
-      pageChange('Map', {id:id, questionID:props.data.id, questionName:props.data.question})
+      pageChange('Map', {id:id, questionID:props.data.id})
       setAdvancedButtonAppearance("filled")
     };
 

@@ -33,9 +33,6 @@ const styles = StyleSheet.create({
   },
 });
 
-
-
-
 const mapStateToProps = (state) => {
   const { dropDownDetails } = state
   return { dropDownDetails }
