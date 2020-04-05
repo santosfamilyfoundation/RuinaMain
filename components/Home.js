@@ -30,6 +30,10 @@ class Home extends Component {
             navigation.navigate('Question', {questions: form.data, objectID: id, type})
         }
 
+        const navigatePhotos = () => {
+            navigation.navigate('PhotoCapture')
+        }
+
         const vehiclesListArr = vehicle.data.map((vehicle, index) => {
             if(vehicle?.hazardous) {
                 return (
@@ -121,6 +125,12 @@ class Home extends Component {
                           <View style={styles.itemCardContent}>
                               <Icon name='paper-plane' width={75} height={75} />
                               <Text style={styles.itemCardFooter} category="s1">Road</Text>
+                          </View>
+                      </Card>
+                      <Card style={styles.itemCard} onPress = {() => navigatePhotos()}>
+                          <View style={styles.itemCardContent}>
+                              <Icon name='camera-outline' width={75} height={75} />
+                              <Text style={styles.itemCardFooter} category="s1">Photos</Text>
                           </View>
                       </Card>
                     </Layout>

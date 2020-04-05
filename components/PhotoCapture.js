@@ -13,12 +13,6 @@ import { styles } from './PhotoCapture.style';
 
 const { app } = firebase.storage();
 
-const typeData = [
-  { text: Constants.VIN },
-  { text: Constants.LICENSE },
-  { text: Constants.PLATE },
-];
-
 class PhotoCapture extends Component {
   state = {
     images: [],
@@ -96,7 +90,7 @@ class PhotoCapture extends Component {
 
     render() {
 
-        const {photoAction, vehicle, objectID, type } = this.props
+        const {photoAction, vehicle } = this.props
 
         const isObjDisabled = vehicle.data.length == 0 ? (true) : (false);
 
@@ -104,6 +98,8 @@ class PhotoCapture extends Component {
             const name = "Vehicle " + (index + 1)
             return {"text":name};
         })
+
+        objectData.push({"text":"Crash Scene"})
 
         const navigateResult = () => {
           this.props.navigation.navigate('Result');
@@ -152,7 +148,6 @@ const mapDispatchToProps = {
 const mapStateToProps = (state) => {
     return {
         photoVals: state.photosReducer,
-        driver: state.driverReducer,
         vehicle: state.vehicleReducer,
     }
 }

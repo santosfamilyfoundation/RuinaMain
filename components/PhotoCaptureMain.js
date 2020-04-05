@@ -8,22 +8,13 @@ import * as Constants from '../constants';
 
 class PhotoCaptureMain extends Component {
 
-  // {setValue ?
-  //     (<PhotoCapture type={params.type} objectID={obj2}/>) :
-  //     (<PhotoCapture type={Constants.VIN} objectID={obj1}/>)
-  // }
-
     render() {
-
-      const params = this.props.navigation.state.params
-      console.log(params)
-
         return (
             <SafeAreaView style={{ flex: 1 }}>
                 <TopNavigation title='Photo Capture' alignment='center' leftControl={this.props.BackAction()}/>
                 <Divider/>
                 <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <PhotoCapture type={params.type} objectID={params.id}/>
+                  <PhotoCapture/>
                 </Layout>
             </SafeAreaView>
         )
