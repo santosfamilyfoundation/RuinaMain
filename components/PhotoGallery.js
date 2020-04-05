@@ -11,6 +11,7 @@ class PhotoGallery extends Component {
     render(){
         const { photos, navigation } = this.props;
 
+        //Move to photo capture component
         const navigatePhotos = () => {
             navigation.navigate('PhotoCapture')
         }
@@ -18,6 +19,7 @@ class PhotoGallery extends Component {
         const allPhotos = [];
         let index = 0;
 
+        //For each tag in the current photo reducer, make a card for each image
         for (let [tag, imagesArray] of Object.entries(photos.images)) {
           imagesArray.forEach(elm => {
             index+=1
@@ -32,10 +34,10 @@ class PhotoGallery extends Component {
             )
           })
         }
+
         const PhotosHeader = () => (
             <CardHeader title="Photo Gallery" />
         );
-
 
         return(
             <SafeAreaView style={{flex:1}}>
