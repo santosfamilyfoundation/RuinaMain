@@ -1,11 +1,11 @@
 import React from 'react';
 import { Icon, TopNavigationAction } from '@ui-kitten/components';
-import MapView from '../components/MapView'
+import Map from '../components/Map'
 
-export const MapViewScreen = ({ navigation}) => {
+export const MapScreen = ({ navigation}) => {
 
   return (
-          <MapView
+          <Map
             navigation = { navigation }
             BackAction = { () => <TopNavigationAction icon={ (style) => <Icon {...style} name='arrow-back' /> }
                                                       onPress={() => navigation.goBack()}/> }

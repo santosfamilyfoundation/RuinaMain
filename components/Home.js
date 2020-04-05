@@ -34,6 +34,10 @@ class Home extends Component {
             navigation.navigate('PhotoCapture')
         }
 
+        const navigateGallery = () => {
+          navigation.navigate('PhotoGallery')
+        }
+
         const vehiclesListArr = vehicle.data.map((vehicle, index) => {
             if(vehicle?.hazardous) {
                 return (
@@ -130,7 +134,13 @@ class Home extends Component {
                       <Card style={styles.itemCard} onPress = {() => navigatePhotos()}>
                           <View style={styles.itemCardContent}>
                               <Icon name='camera-outline' width={75} height={75} />
-                              <Text style={styles.itemCardFooter} category="s1">Photos</Text>
+                              <Text style={styles.itemCardFooter} category="s1">Take Photo</Text>
+                          </View>
+                      </Card>
+                      <Card style={styles.itemCard} onPress = {() => navigateGallery()}>
+                          <View style={styles.itemCardContent}>
+                              <Icon name='archive-outline' width={75} height={75} />
+                              <Text style={styles.itemCardFooter} category="s1">Photo Gallery</Text>
                           </View>
                       </Card>
                     </Layout>

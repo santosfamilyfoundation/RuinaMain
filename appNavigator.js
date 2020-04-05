@@ -2,7 +2,7 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { NoteScreen } from './screens/noteScreen';
 import { ResultScreen } from './screens/resultScreen';
-import { MapViewScreen } from './screens/mapViewScreen';
+import { MapScreen } from './screens/mapScreen';
 import { WelcomeScreen } from './screens/welcomeScreen';
 import { TesterScreen } from './screens/testerScreen';
 import { WeatherScreen } from './screens/weatherScreen';
@@ -13,12 +13,13 @@ import { QuickQuizScreen } from './screens/quickquizScreen';
 import { HomeScreen } from './screens/homeScreen';
 import { QuestionScreen } from './screens/questionScreen';
 import { InfoExchangeFormScreen } from './screens/infoExchangeScreen';
+import { PhotoGalleryScreen } from './screens/photoGalleryScreen';
 
 const HomeNavigator = createStackNavigator({
   Welcome: WelcomeScreen,
   Note: NoteScreen,
   Result: ResultScreen,
-  Map: MapViewScreen,
+  Map: MapScreen,
   Test: TesterScreen,
   Weather: WeatherScreen,
   PhotoCapture: PhotoCaptureScreen,
@@ -27,7 +28,8 @@ const HomeNavigator = createStackNavigator({
   Quiz: QuickQuizScreen,
   Home: HomeScreen,
   Question: QuestionScreen,
-  InfoExchange: InfoExchangeFormScreen
+  InfoExchange: InfoExchangeFormScreen,
+  PhotoGallery: PhotoGalleryScreen,
 }, {
   headerMode: 'none',
 });
