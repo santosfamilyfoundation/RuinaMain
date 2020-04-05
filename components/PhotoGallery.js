@@ -23,7 +23,6 @@ class PhotoGallery extends Component {
         for (let [tag, imagesArray] of Object.entries(photos.images)) {
           imagesArray.forEach(elm => {
             index+=1
-            console.log(elm)
             allPhotos.push(
               <Card key={index} style={styles.itemCard}>
                   <View style={styles.itemCardContent}>

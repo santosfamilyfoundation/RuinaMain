@@ -5,8 +5,8 @@ export const styles = StyleSheet.create({
         margin: 15,
     },
     image :{
-      width: 75,
-      height: 75,
+      width: 85,
+      height: 85,
     },
     questionContainer: {
         marginRight: 15,
