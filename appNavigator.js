@@ -10,7 +10,6 @@ import { MapSummaryScreen } from './screens/MapSummaryScreen';
 import { PhotoCaptureScreen } from './screens/photoCaptureScreen'
 import { VehicleInfoScreen } from './screens/vehicleinfoScreen';
 import { ScanScreen } from './screens/scanScreen';
-import { TestVehiclePageScreen } from './screens/TestVehiclePageScreen';
 import { QuickQuizScreen } from './screens/quickquizScreen';
 import { HomeScreen } from './screens/homeScreen';
 import { QuestionScreen } from './screens/questionScreen';
@@ -27,7 +26,6 @@ const HomeNavigator = createStackNavigator({
   PhotoCapture: PhotoCaptureScreen,
   Vehicle: VehicleInfoScreen,
   Scan: ScanScreen,
-  TestVehiclePage: TestVehiclePageScreen,
   Quiz: QuickQuizScreen,
   Home: HomeScreen,
   Question: QuestionScreen,
