@@ -2775,14 +2775,14 @@ export const questions = {
     },
     {
         "autoMethod": "advCamera",
-        "answerType": "autoComplete",
+        "answerType": "autocomplete",
         "question": "Name of Person Involved",
         "display": [
             "driver",
             "passenger",
             "nonmotorist"
         ],
-        "id": "P1"
+        "id": "P1",
     },
     {
         "answerType": "header",
@@ -2860,7 +2860,7 @@ export const questions = {
                 "idCode": "03"
             }
         ],
-        "id": "P4-S1"
+        "id": "P4-S1",
     },
     {
         "answerType": "dropdown",
