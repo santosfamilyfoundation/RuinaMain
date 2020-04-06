@@ -1224,7 +1224,8 @@ export const questions = {
         "answerType": "openTextBox", 
         "question": "Identifier", 
         "display": [
-            "vehicle"
+            "vehicle", 
+            "info"
         ], 
         "id": "V3-S1"
     }, 
@@ -1233,7 +1234,8 @@ export const questions = {
         "helperText": "Year of Motor Vehicle Registration (YYYY)", 
         "question": "Motor Vehicle Registration", 
         "display": [
-            "vehicle"
+            "vehicle", 
+            "info"
         ], 
         "id": "V3-S2"
     }, 
@@ -1250,7 +1252,8 @@ export const questions = {
         "answerType": "openTextBox", 
         "question": "Motor Vehicle Make", 
         "display": [
-            "vehicle"
+            "vehicle", 
+            "info"
         ], 
         "id": "V5"
     }, 
@@ -1259,7 +1262,8 @@ export const questions = {
         "helperText": "(YYYY)", 
         "question": "Motor Vehicle Model Year", 
         "display": [
-            "vehicle"
+            "vehicle", 
+            "info"
         ], 
         "id": "V6"
     }, 
@@ -1267,7 +1271,8 @@ export const questions = {
         "answerType": "openTextBox", 
         "question": "Motor Vehicle Model", 
         "display": [
-            "vehicle"
+            "vehicle", 
+            "info"
         ], 
         "id": "V7"
     }, 
@@ -2260,7 +2265,8 @@ export const questions = {
         "answerType": "multiButton", 
         "question": "Resulting Extent of Damage", 
         "display": [
-            "vehicle"
+            "vehicle", 
+            "info"
         ], 
         "answerOptions": [
             {
@@ -2796,7 +2802,8 @@ export const questions = {
         "display": [
             "driver", 
             "passenger", 
-            "nonmotorist"
+            "nonmotorist", 
+            "info"
         ], 
         "id": "P1"
     }, 
@@ -2819,7 +2826,7 @@ export const questions = {
             "passenger", 
             "nonmotorist"
         ], 
-        "id": "P2"
+        "id": "P2-S1"
     }, 
     {
         "answerType": "openTextBox", 
@@ -2827,9 +2834,10 @@ export const questions = {
         "display": [
             "driver", 
             "passenger", 
-            "nonmotorist"
+            "nonmotorist", 
+            "setup"
         ], 
-        "id": "P2"
+        "id": "P2-S2"
     }, 
     {
         "answerType": "multiButton", 
@@ -3311,7 +3319,8 @@ export const questions = {
         "helperText": "Provide the specific State, Province or Nation indicated on the Driver's License (see Appendix E: ANSI State FIPS and USPS Codes or Appendix F: ISO 3166-2 Codes for Canada and Mexico)", 
         "question": "Name of Jurisdiction (ANSI Code)", 
         "display": [
-            "driver"
+            "driver", 
+            "info"
         ], 
         "id": "P11-S2"
     }, 
@@ -3328,7 +3337,8 @@ export const questions = {
         "answerType": "advancedOpenTextBox", 
         "question": "License Number", 
         "display": [
-            "driver"
+            "driver", 
+            "info"
         ], 
         "id": "P12-S1"
     }, 
@@ -6123,6 +6133,46 @@ export const questions = {
             }
         ], 
         "id": "DV1-S3"
+    }, 
+    {
+        "answerType": "openTextBox", 
+        "question": "Number of vehicles which are large, towing trailers, or carrying hazardous materials", 
+        "display": [
+            "setup"
+        ], 
+        "id": "numLvhm"
+    }, 
+    {
+        "answerType": "openTextBox", 
+        "question": "Address", 
+        "display": [
+            "info"
+        ], 
+        "id": "address"
+    }, 
+    {
+        "answerType": "openTextBox", 
+        "question": "Vehicle owner", 
+        "display": [
+            "info"
+        ], 
+        "id": "owner-S1"
+    }, 
+    {
+        "answerType": "openTextBox", 
+        "question": "Owner's address", 
+        "display": [
+            "info"
+        ], 
+        "id": "owner-S2"
+    }, 
+    {
+        "answerType": "openTextBox", 
+        "question": "Insurance company name", 
+        "display": [
+            "info"
+        ], 
+        "id": "insurance"
     }
 ]
 }
