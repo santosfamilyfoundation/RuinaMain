@@ -112,7 +112,7 @@ class QuestionForm extends Component {
                 reducer={reducer}
                 submitFunction={submitFunction}
                 pageChange={navigateToAdvanced}
-                importFrom={question.advanvedType}
+                importFrom={question.advancedType}
               />
             )
         case 'advancedDropDown':
@@ -124,7 +124,7 @@ class QuestionForm extends Component {
               reducer={reducer}
               submitFunction={submitFunction}
               pageChange={navigateToAdvanced}
-              importFrom={question.advanvedType}
+              importFrom={question.advancedType}
             />
           )
         case 'largeTextField':
