@@ -127,9 +127,8 @@ class Home extends Component {
         const rightControls = () => (
             <View style={{flexDirection: 'row'}}>
                 <TopNavigationAction icon={finalReportIcon} onPress = {() => navigation.navigate('FinalReport')}/>
-                <TopNavigationAction icon={infoExchangeIcon} onPress = {() => navigation.navigate('InfoExchange',{ operatorList })}/>   
+                <TopNavigationAction icon={infoExchangeIcon} onPress = {() => navigation.navigate('InfoExchangeForm',{ operatorList })}/>   
             </View>
-            
         )
         return(
             <SafeAreaView style={{flex:1}}>

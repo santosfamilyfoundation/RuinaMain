@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button, TopNavigation } from '@ui-kitten/components';
+import { View } from 'react-native';
+import { Button, TopNavigation, TopNavigationAction, Icon } from '@ui-kitten/components';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
 import OperatorForm from './OperatorForm';
@@ -62,9 +63,19 @@ class InfoExchangeForm extends Component{
             }
         }
 
+        const infoIcon = (style) => (
+            <Icon {...style} name='external-link-outline' />
+        );
+
+        const rightControls = () => (
+            <View style={{flexDirection: 'row'}}>
+                <TopNavigationAction icon={infoIcon} onPress = {() => this.props.navigation.navigate('InfoExchange')}/>   
+            </View>
+        )
+
         return(
             <SafeAreaView style={{flex: 1}}>
-                <TopNavigation title='Info Exchange' style = {{marginBottom: 15}} alignment='center' leftControl={this.props.BackAction()}/>
+                <TopNavigation title='Info Exchange' style = {{marginBottom: 15}} alignment='center' leftControl={this.props.BackAction()} rightControls = {rightControls()}/>
                     <ScrollView>
                         {operatorListArr}
                     </ScrollView>

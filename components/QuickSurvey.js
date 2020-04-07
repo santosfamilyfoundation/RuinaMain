@@ -41,7 +41,7 @@ class QuickSurvey extends Component {
 
       const dispatchAll = () => {
         addNonmotorist(quiz.numNonmotorist);
-        addDriver(quiz.numDriver);
+        // addDriver(quiz.numDriver);
         addPassenger(quiz.numPassenger);
         addRoad(null);
         // addPassenger(quiz.numPassenger)
