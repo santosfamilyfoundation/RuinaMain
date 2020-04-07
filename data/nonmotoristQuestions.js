@@ -1,6 +1,13 @@
 export const nonmotoristQuestions = {
     "data": [
         {
+            id:"C70",
+            text:"Test Header",
+            helperText: "This is helper",
+            answerType:"header",
+            display: ["Driver", "Nonmotorist"],
+        },
+        {
             id:"C1",
             question: "Crash Classification",
             helperText: "",
@@ -21,7 +28,7 @@ export const nonmotoristQuestions = {
                             text:"Private Property"
                         }
                     ],
-                    reducer: "genericReducer"
+                    display: ["Driver", "Nonmotorist"],
                 },
                 {
                     id:"C1-S2",
@@ -43,7 +50,7 @@ export const nonmotoristQuestions = {
                             text:"Non-Trafficway"
                         }
                     ],
-                    reducer: "genericReducer"
+                    display: ["Driver", "Nonmotorist"],
                 },
                 {
                     id:"C1-S3",
@@ -61,10 +68,11 @@ export const nonmotoristQuestions = {
                             text:"Yes"
                         }
                     ],
-                    reducer: "genericReducer"
+                    display: ["Driver", "Nonmotorist"],
                 }
             ],
             answerType: null,
+            display: ["Driver", "Nonmotorist"],
             answerOptions:null
         },
         {
@@ -75,7 +83,7 @@ export const nonmotoristQuestions = {
             answerType:"openTextbox",
             answerOptions: null,
             maxLength: 5,
-            reducer: "genericReducer"
+            display: ["Driver", "Nonmotorist"],
         },
         {
             id:"H5",
@@ -85,7 +93,7 @@ export const nonmotoristQuestions = {
             answerType:"largeTextField",
             answerOptions: null,
             maxLength: 500,
-            reducer: "genericReducer"
+            display: ["Driver", "Nonmotorist"],
         },
         {
             id:"C15",
@@ -112,11 +120,12 @@ export const nonmotoristQuestions = {
                             text:"Unknown"
                         }
                     ],
-                    reducer: "genericReducer"
+                    display: ["Driver", "Nonmotorist"],
                 }
             ],
             answerType: null,
-            answerOptions:null
+            answerOptions:null,
+            display: ["Driver", "Nonmotorist"],
         },
         {
             id:"P11",
@@ -167,7 +176,7 @@ export const nonmotoristQuestions = {
                             text:"Unknown"
                         },
                     ],
-                    reducer: "genericReducer"
+                    display: ["Driver", "Nonmotorist"],
                 },
                 {
                     id:"P11-S2",
@@ -185,9 +194,10 @@ export const nonmotoristQuestions = {
                             title:"5678, Portland OR"
                         }
                     ],
-                    reducer: "genericReducer"
+                    display: ["Driver", "Nonmotorist"],
                 }
-            ]
+            ],
+            display: ["Driver", "Nonmotorist"],
         },
         {
             id:"P19",
@@ -234,7 +244,7 @@ export const nonmotoristQuestions = {
                     text:"Unknown"
                 },
             ],
-            reducer: "genericReducer"
+            display: ["Driver", "Nonmotorist"],
         },
     ]
 }

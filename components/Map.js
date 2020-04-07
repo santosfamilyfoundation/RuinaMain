@@ -4,12 +4,12 @@ import { TextInput, Text, Dimensions, StyleSheet, View, TouchableOpacity } from 
 import { Button, Divider, Layout, TopNavigation, Icon } from '@ui-kitten/components';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { connect } from 'react-redux';
+import { styles } from './Map.style';
+import { changeLat, changeLong, updateMarkers } from '../actions/MapAction';
+import { updateRoad } from '../actions/RoadAction';
 import MapView, { Marker, AnimatedRegion, Polyline, PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
-//import { mapAction } from '../actions/MapAction';
-//<TopNavigation title='Scene Diagram' alignment='center' leftControl={this.props.BackAction()}
-//<Text style={styles.coords}> {this.state.region}  {this.state.region} </Text>
-
+import * as Constants from '../constants';
 
 const { width, height } = Dimensions.get('window');
 const SCREEN_WIDTH = width;
@@ -19,17 +19,18 @@ const ASPECT_RATIO = width / height;
 let id = 0;
 
 function getColor(id){
+  //Alternates marker color from red to blue
   return id%2 ? 'blue' : 'red'
 }
 
-class DiagramView extends Component {
+class Map extends Component {
   state = {
     markers:[],
     lastLat: null,
     lastLong: null,
     latitudeDelta:  0.005,
     longitudeDelta: 0.005 * (SCREEN_WIDTH / SCREEN_HEIGHT),
-    mapRegion:{
+    mapRegion:{ //Default Region
         latitude: 42.3836,
         longitude: -71.1097,
         latitudeDelta: 0.00152,
@@ -40,6 +41,7 @@ class DiagramView extends Component {
   watchID: ?number = null;
 
   async getCurrentLocation() {
+    //Gets current location if avaliable
     Geolocation.getCurrentPosition(
       position => {
         let region = {
@@ -55,21 +57,24 @@ class DiagramView extends Component {
             });
       this._map.animateToRegion(region, 100);
       },
-      error => Alert.alert('Error', JSON.stringify(error)),
+      error => alert('Using Default Location', JSON.stringify(error)),
       {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000},
     );
   }
 
 
   componentDidMount() {
+    //Map loads when component loads
     this.getCurrentLocation()
   }
 
   componentWillUnmount() {
+    //Clear the call for location
     this.watchID != null && Geolocation.clearWatch(this.watchID);
   }
 
   onMapPress(e) {
+    //Set the markers on the map when the map is pressed
     this.setState({
       markers: [
         ...this.state.markers,
@@ -83,6 +88,7 @@ class DiagramView extends Component {
   }
 
   onRegionChangeComplete(region, lastLat, lastLong) {
+    // When the user move around in the map (zoom in, zoom out, and navigate) this updates the state
     this.setState({
       mapRegion: region,
       lastLat: lastLat,
@@ -91,6 +97,7 @@ class DiagramView extends Component {
   }
 
   onPressZoomOut() {
+    //Zooms out by 2x when user presses zoom out button and resets state
     region = {
       latitude: this.state.mapRegion.latitude,
       longitude: this.state.mapRegion.longitude,
@@ -104,11 +111,13 @@ class DiagramView extends Component {
       lastLat: region.latitude,
       lastLong: region.longitude
     });
+      //makes the map appear to "move" to the user
       this._map.animateToRegion(region, 100);
   }
 
 
   onPressZoomIn() {
+      //Zooms in by 2x when user presses zoom out button and resets state
     region = {
       latitude: this.state.mapRegion.latitude,
       longitude: this.state.mapRegion.longitude,
@@ -122,21 +131,33 @@ class DiagramView extends Component {
       lastLat: region.latitude,
       lastLong: region.longitude
     });
+      //makes the map appear to "move" to the user
       this._map.animateToRegion(region, 100);
   }
 
   onPressRecenter() {
+    // When the user presses teh center button they return to the current location of the device
     this.getCurrentLocation()
   }
 
     render() {
+        const {
+          navigation,
+          changeLat,
+          changeLong,
+          mapDetails,
+          updateMarkers,
+          updateRoad
+        } = this.props;
 
-        const navigateSummary = () => {
-          this.props.navigation.navigate('MapSummary');
-        };
+        const id = this.props.navigation.state.params.id; //The road id for this crash
 
-        const navigateHome = () => {
-          this.props.navigation.navigate('Welcome');
+        const saveLocations = () => {
+          //Update the road reducer with marker first location
+          updateRoad({id, question:Constants.LAT_ID, selection: this.state.markers[0].coordinate.latitude.toString() });
+          updateRoad({id, question:Constants.LONG_ID, selection: this.state.markers[0].coordinate.longitude.toString() });
+          //Return to questions
+          this.props.navigation.goBack();
         };
 
         return (
@@ -198,47 +219,18 @@ class DiagramView extends Component {
                     </TouchableOpacity>
                   </View>
               </Layout>
-              <Button onPress={() =>this.props.mapAction(this.state.mapRegion.latitude)}>SAVE</Button>
+              <Button onPress={() => saveLocations()}>SAVE</Button>
           </SafeAreaView>
           );
     }
 };
 
-const styles = StyleSheet.create({
-  container: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: 'flex-end',
-    flex:1,
-  },
-  map: {
-    ...StyleSheet.absoluteFillObject,
-    height:1000, //Will need to find a better way to set this
-  },
-  coords:{
-    justifyContent: 'flex-start',
-  },
-  sideBox:{
-    alignSelf: 'flex-end',
-    backgroundColor: '#D3D3D3',
-    padding: 10,
-    flex: 1,
-  },
-  sideBoxItems:{
-    paddingBottom: 10,
-    paddingTop: 10,
-  },
-  coordText:{
-    fontSize: 30,
-    backgroundColor: 'white',
-    alignSelf: 'center',
-    padding: 10,
-  }
-});
-
-
-const mapDispatchToProps = dispatch => ({
-  mapAction: (mapDetails) => dispatch({ type: 'WRITE', payload: mapDetails })
-});
+const mapDispatchToProps = {
+  changeLat,
+  changeLong,
+  updateMarkers,
+  updateRoad,
+}
 
 
 const mapStateToProps = (state) => {
@@ -247,12 +239,4 @@ const mapStateToProps = (state) => {
 };
 
 
-// <SearchBar
-//   placeholder="Search"
-//   ref={(ref) => this.searchBar = ref}
-//   data={items}
-//   handleResults={this._handleResults.bind(this)}
-//   showOnLoad
-// />
-
-export default connect(mapStateToProps, mapDispatchToProps)(DiagramView);
+export default connect(mapStateToProps, mapDispatchToProps)(Map);

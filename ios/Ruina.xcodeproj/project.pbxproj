@@ -12,8 +12,9 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		23BD58602345168F48DC2C50 /* libPods-RuinaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E122EE2D074C1AF7350CF880 /* libPods-RuinaTests.a */; };
-		2CCF5DD8634035B5EC5253B2 /* libPods-Ruina.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CB33D09535BFD4F7E06C65 /* libPods-Ruina.a */; };
+		172B5694109832D36D919C46 /* libPods-Ruina.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CB33D09535BFD4F7E06C65 /* libPods-Ruina.a */; };
+		ADCB19C0240DCC2B00B1AEFA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADCB19BF240DCC2B00B1AEFA /* GoogleService-Info.plist */; };
+		CF04D1533DF67A8C152FF205 /* libPods-RuinaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A314F5EB828927141B657DF0 /* libPods-RuinaTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,11 +40,12 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Ruina/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Ruina/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Ruina/main.m; sourceTree = "<group>"; };
-		3069319A969BA03C7BA06FE0 /* Pods-RuinaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RuinaTests.debug.xcconfig"; path = "Target Support Files/Pods-RuinaTests/Pods-RuinaTests.debug.xcconfig"; sourceTree = "<group>"; };
-		92BA9EE5CAEF402A0CD24DA3 /* Pods-Ruina.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ruina.debug.xcconfig"; path = "Target Support Files/Pods-Ruina/Pods-Ruina.debug.xcconfig"; sourceTree = "<group>"; };
-		A6549AAE992275B16BBC828F /* Pods-RuinaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RuinaTests.release.xcconfig"; path = "Target Support Files/Pods-RuinaTests/Pods-RuinaTests.release.xcconfig"; sourceTree = "<group>"; };
-		B1D8443FD159A2611AF35BEE /* Pods-Ruina.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ruina.release.xcconfig"; path = "Target Support Files/Pods-Ruina/Pods-Ruina.release.xcconfig"; sourceTree = "<group>"; };
-		E122EE2D074C1AF7350CF880 /* libPods-RuinaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RuinaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B8F0039981AFAEC4824CD68 /* Pods-Ruina.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ruina.debug.xcconfig"; path = "Target Support Files/Pods-Ruina/Pods-Ruina.debug.xcconfig"; sourceTree = "<group>"; };
+		2918513A4AD43ED6A7EBDEDC /* Pods-RuinaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RuinaTests.release.xcconfig"; path = "Target Support Files/Pods-RuinaTests/Pods-RuinaTests.release.xcconfig"; sourceTree = "<group>"; };
+		5D20A4D60EE15655F506E741 /* Pods-Ruina.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ruina.release.xcconfig"; path = "Target Support Files/Pods-Ruina/Pods-Ruina.release.xcconfig"; sourceTree = "<group>"; };
+		A314F5EB828927141B657DF0 /* libPods-RuinaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RuinaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADCB19BF240DCC2B00B1AEFA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C7ADEC25FF1A4BC5CDB6D3AE /* Pods-RuinaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RuinaTests.debug.xcconfig"; path = "Target Support Files/Pods-RuinaTests/Pods-RuinaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -53,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23BD58602345168F48DC2C50 /* libPods-RuinaTests.a in Frameworks */,
+				CF04D1533DF67A8C152FF205 /* libPods-RuinaTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CCF5DD8634035B5EC5253B2 /* libPods-Ruina.a in Frameworks */,
+				172B5694109832D36D919C46 /* libPods-Ruina.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,10 +90,10 @@
 		0B550CB7EA137D8CDFA23F12 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				92BA9EE5CAEF402A0CD24DA3 /* Pods-Ruina.debug.xcconfig */,
-				B1D8443FD159A2611AF35BEE /* Pods-Ruina.release.xcconfig */,
-				3069319A969BA03C7BA06FE0 /* Pods-RuinaTests.debug.xcconfig */,
-				A6549AAE992275B16BBC828F /* Pods-RuinaTests.release.xcconfig */,
+				1B8F0039981AFAEC4824CD68 /* Pods-Ruina.debug.xcconfig */,
+				5D20A4D60EE15655F506E741 /* Pods-Ruina.release.xcconfig */,
+				C7ADEC25FF1A4BC5CDB6D3AE /* Pods-RuinaTests.debug.xcconfig */,
+				2918513A4AD43ED6A7EBDEDC /* Pods-RuinaTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -99,6 +101,7 @@
 		13B07FAE1A68108700A75B9A /* Ruina */ = {
 			isa = PBXGroup;
 			children = (
+				ADCB19BF240DCC2B00B1AEFA /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -116,7 +119,7 @@
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				04CB33D09535BFD4F7E06C65 /* libPods-Ruina.a */,
-				E122EE2D074C1AF7350CF880 /* libPods-RuinaTests.a */,
+				A314F5EB828927141B657DF0 /* libPods-RuinaTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				ADCB19C0240DCC2B00B1AEFA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,7 +402,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3069319A969BA03C7BA06FE0 /* Pods-RuinaTests.debug.xcconfig */;
+			baseConfigurationReference = C7ADEC25FF1A4BC5CDB6D3AE /* Pods-RuinaTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -427,7 +431,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A6549AAE992275B16BBC828F /* Pods-RuinaTests.release.xcconfig */;
+			baseConfigurationReference = 2918513A4AD43ED6A7EBDEDC /* Pods-RuinaTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -453,14 +457,14 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 92BA9EE5CAEF402A0CD24DA3 /* Pods-Ruina.debug.xcconfig */;
+			baseConfigurationReference = 1B8F0039981AFAEC4824CD68 /* Pods-Ruina.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = 7W52686N5Z;
+				DEVELOPMENT_TEAM = WDSXQFA4ZP;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Ruina/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -469,7 +473,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Santos.Ruina;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Testing.Ruina;
 				PRODUCT_NAME = Ruina;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -479,13 +483,13 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B1D8443FD159A2611AF35BEE /* Pods-Ruina.release.xcconfig */;
+			baseConfigurationReference = 5D20A4D60EE15655F506E741 /* Pods-Ruina.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7W52686N5Z;
+				DEVELOPMENT_TEAM = WDSXQFA4ZP;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Ruina/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -494,7 +498,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Santos.Ruina;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Testing.Ruina;
 				PRODUCT_NAME = Ruina;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

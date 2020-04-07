@@ -8,6 +8,7 @@ const BasicDropDown = (props) => {
   const [selectedOption, setSelectedOption] = React.useState(null);  // Need to change indexing!
 
   const setOption = (selection) => {
+        props.selectFunction(selection.text);
         setSelectedOption({text: selection.text});
     }
 
@@ -18,7 +19,7 @@ const BasicDropDown = (props) => {
               selectedOption={selectedOption}
               multiSelect={false}
               onSelect={(e) => setOption(e)}
-              placeholder={props.currObject}
+              placeholder={props.defaultOption}
               disabled={props.isDisabled}
           />
       </Layout>
@@ -27,13 +28,10 @@ const BasicDropDown = (props) => {
 
 const styles = StyleSheet.create({
   main:{
-    width: 250,
-    padding: 10,
+    margin: 10,
+    minWidth: '50%'
   },
 });
-
-
-
 
 const mapStateToProps = (state) => {
   const { dropDownDetails } = state

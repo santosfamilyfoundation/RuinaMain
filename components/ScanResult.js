@@ -7,7 +7,33 @@ import {
   Text,
   View,
   Dimensions,
+  AsyncStorage,
 } from 'react-native';
+import firebase from 'react-native-firebase';
+import uuid from 'uuid/v4';
+
+uploadImage = (imgUri, images) => {
+  const ext = imgUri.split('.').pop(); // Extract image extension
+  const filename = `${uuid()}.${ext}`; // Making a unique name
+  firebase //Connect and store in firebase
+    .storage()
+    .ref(`VINImages/${filename}`)
+    .putFile(imgUri)
+    .on(
+      firebase.storage.TaskEvent.STATE_CHANGED,
+      snapshot => {
+        if (firebase.storage.TaskState.SUCCESS) {
+          const allImages = images;
+          allImages.push(snapshot.downloadURL);
+          AsyncStorage.setItem('images', JSON.stringify(allImages));
+        }
+      },
+      error => {
+        unsubscribe();
+        alert('Unable to upload');
+      }
+    );
+};
 
 export default function ScanResult({
   imagePath,
@@ -28,9 +54,32 @@ export default function ScanResult({
         data = responseJson.Results
         console.log(data)
       })
-      .catch(error=>console.log(error)) 
+      .catch(error=>console.log(error))
   }
-  console.log(text);
+
+  const uploadImage = (imgUri, images) => {
+    const ext = imgUri.split('.').pop(); // Extract image extension
+    const filename = `${uuid()}.${ext}`; // Making a unique name
+    firebase //Connect and store in firebase
+      .storage()
+      .ref(`VINImages/${filename}`)
+      .putFile(imgUri)
+      .on(
+        firebase.storage.TaskEvent.STATE_CHANGED,
+        snapshot => {
+          if (firebase.storage.TaskState.SUCCESS) {
+            const allImages = images;
+            allImages.push(snapshot.downloadURL);
+            AsyncStorage.setItem('images', JSON.stringify(allImages));
+          }
+        },
+        error => {
+          unsubscribe();
+          alert('Unable to upload');
+        }
+      );
+  }
+
   fetchVIN(text);
 
   if (fullImagePath && fullImagePath !== '') {
@@ -43,6 +92,8 @@ export default function ScanResult({
     );
     fullImageText = <Text style={styles.text}>Full Image:</Text>;
   }
+
+  uploadImage(fullImagePath, [fullImagePath]);
 
   let BackButton = <View />;
   if (hasBackButton) {

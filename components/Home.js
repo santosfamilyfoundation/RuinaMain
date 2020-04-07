@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
-import { TextInput, StyleSheet, View, ScrollView } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { Button, TopNavigation, TopNavigationAction, Text, Card, CardHeader, Layout, Icon } from '@ui-kitten/components';
+import { TopNavigation, TopNavigationAction, Text, Card, CardHeader, Layout, Icon } from '@ui-kitten/components';
 import { styles } from './Home.style';
+import {questions} from '../data/questions';
+import VehicleSection from './VehicleSection';
+import NonMotoristSection from './NonMotoristSection';
+
+
+//May not need all of these:
+
 import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { driverQuestions } from '../data/driverQuestions';
 import { passengerQuestions } from '../data/passengerQuestions';
 import { nonmotoristQuestions } from '../data/nonmotoristQuestions';
 import { vehicleQuestions } from '../data/vehicleQuestions';
 import { lvhmQuestions } from '../data/lvhmQuestions';
-import VehicleSection from './VehicleSection';
-import NonMotoristSection from './NonMotoristSection';
+import { roadQuestions } from '../data/roadQuestions';
+
 
 class Home extends Component {
 
@@ -22,12 +29,21 @@ class Home extends Component {
             nonmotorist,
             vehicle,
             passenger,
+            road
             } = this.props
 
         const operatorList = [];
 
         const navigateQuestion = (form, id, type) => {
             navigation.navigate('Question', {questions: form.data, objectID: id, type})
+        }
+
+        const navigatePhotos = () => {
+            navigation.navigate('PhotoCapture')
+        }
+
+        const navigateGallery = () => {
+          navigation.navigate('PhotoGallery')
         }
 
         const RoadHeader = () => (
@@ -48,7 +64,7 @@ class Home extends Component {
                 )
             } else {
                 return (
-                    <VehicleSection 
+                    <VehicleSection
                         key = {index}
                         navigation = {navigation}
                         vehicle = {vehicle}
@@ -57,13 +73,13 @@ class Home extends Component {
                     />
                 )
             }
-            
+
         })
 
         const driverListArr = driver.data.map((driver, index) => {
             operatorList.push({id:driver.id, type:'driver', response:{}})
             return (
-                <Card key={driver.id} style={styles.itemCard} onPress = {() => navigateQuestion(driverQuestions, driver.id, 'Driver')}>
+                <Card key={driver.id} style={styles.itemCard} onPress = {() => navigateQuestion(questions, driver.id, 'Driver')}>
                     <View style={styles.itemCardContent}>
                         <Icon name='person' width={75} height={75} />
                         <Text style={styles.itemCardFooter} category="s1">Driver {index+1}</Text>
@@ -85,7 +101,7 @@ class Home extends Component {
         })
 
         const passengerListArr = passenger.data.map((passenger, index) => (
-            <Card key={passenger.id} style={styles.itemCard} onPress = {() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger')}>
+            <Card key={passenger.id} style={styles.itemCard} onPress = {() => navigateQuestion(questions, passenger.id, 'Passenger')}>
                 <View style={styles.itemCardContent}>
                     <Icon name='person' width={75} height={75} />
                     <Text style={styles.itemCardFooter} category="s1">Passenger {index+1}</Text>
@@ -96,19 +112,11 @@ class Home extends Component {
         const peopleListArr = [...driverListArr, ...nonmotoristListArr, ...passengerListArr];
 
         const infoExchangeIcon = (style) => (
-            <Icon {...style} name='external-link-outline' />
-        );
-        
-        const finalReportIcon = (style) => (
-            <Icon {...style} name='file-text-outline' />
-        );
+            <Icon {...style} name='edit-2-outline' />
+          );
 
-        const rightControls = () => (
-            <View style={{flexDirection: 'row'}}>
-                <TopNavigationAction icon={finalReportIcon} onPress = {() => navigation.navigate('FinalReport')}/>
-                <TopNavigationAction icon={infoExchangeIcon} onPress = {() => navigation.navigate('InfoExchange',{ operatorList })}/>   
-            </View>
-            
+        const navigateInfoExchange = () => (
+            <TopNavigationAction icon={infoExchangeIcon} onPress = {() => navigation.navigate('InfoExchange',{ operatorList })}/>
         )
 
         const NonMotoristHeader = () => (
@@ -127,10 +135,24 @@ class Home extends Component {
                     </Card>
                     <Card header={RoadHeader} style={styles.sectionCard}>
                         <Layout style={styles.questionContainer}>
-                            <Card style={styles.individualCard}>
-                                <Icon name='paper-plane' width={75} height={75} />
-                                <Text style={styles.itemCardFooter} category="s1">Road</Text>
-                            </Card>
+                          <Card style={styles.itemCard} onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road')}>
+                              <View style={styles.itemCardContent}>
+                                  <Icon name='paper-plane' width={75} height={75} />
+                                  <Text style={styles.itemCardFooter} category="s1">Road</Text>
+                              </View>
+                          </Card>
+                          <Card style={styles.itemCard} onPress = {() => navigatePhotos()}>
+                              <View style={styles.itemCardContent}>
+                                  <Icon name='camera-outline' width={75} height={75} />
+                                  <Text style={styles.itemCardFooter} category="s1">Take Photo</Text>
+                              </View>
+                          </Card>
+                          <Card style={styles.itemCard} onPress = {() => navigateGallery()}>
+                              <View style={styles.itemCardContent}>
+                                  <Icon name='archive-outline' width={75} height={75} />
+                                  <Text style={styles.itemCardFooter} category="s1">Photo Gallery</Text>
+                              </View>
+                          </Card>
                         </Layout>
                     </Card>
                 </ScrollView>
@@ -145,7 +167,8 @@ const mapStateToProps = (state) => {
         nonmotorist: state.nonmotoristReducer,
         vehicle: state.vehicleReducer,
         passenger: state.passengerReducer,
-        quiz: state.quickquizReducer
+        quiz: state.quickquizReducer,
+        road: state.roadReducer,
     }
 }
 

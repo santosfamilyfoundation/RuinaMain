@@ -2,11 +2,10 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { NoteScreen } from './screens/noteScreen';
 import { ResultScreen } from './screens/resultScreen';
-import { DiagramViewScreen } from './screens/diagramViewScreen';
+import { MapScreen } from './screens/mapScreen';
 import { WelcomeScreen } from './screens/welcomeScreen';
 import { TesterScreen } from './screens/testerScreen';
 import { WeatherScreen } from './screens/weatherScreen';
-import { MapSummaryScreen } from './screens/MapSummaryScreen';
 import { PhotoCaptureScreen } from './screens/photoCaptureScreen'
 import { VehicleInfoScreen } from './screens/vehicleinfoScreen';
 import { ScanScreen } from './screens/scanScreen';
@@ -14,16 +13,15 @@ import { QuickSurveyScreen } from './screens/quickSurveyScreen';
 import { HomeScreen } from './screens/homeScreen';
 import { QuestionScreen } from './screens/questionScreen';
 import { InfoExchangeFormScreen } from './screens/infoExchangeScreen';
-import { FinalReportScreen } from './screens/finalReportScreen';
+import { PhotoGalleryScreen } from './screens/photoGalleryScreen';
 
 const HomeNavigator = createStackNavigator({
   Welcome: WelcomeScreen,
   Note: NoteScreen,
   Result: ResultScreen,
-  Map: DiagramViewScreen,
+  Map: MapScreen,
   Test: TesterScreen,
   Weather: WeatherScreen,
-  MapSummary: MapSummaryScreen,
   PhotoCapture: PhotoCaptureScreen,
   Vehicle: VehicleInfoScreen,
   Scan: ScanScreen,
@@ -31,7 +29,7 @@ const HomeNavigator = createStackNavigator({
   Home: HomeScreen,
   Question: QuestionScreen,
   InfoExchange: InfoExchangeFormScreen,
-  FinalReport: FinalReportScreen
+  PhotoGallery: PhotoGalleryScreen,
 }, {
   headerMode: 'none',
 });

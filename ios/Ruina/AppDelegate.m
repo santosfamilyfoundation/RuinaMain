@@ -12,6 +12,7 @@
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import <Firebase.h>
 
 @implementation AppDelegate
 
@@ -19,6 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
+  [FIRApp configure]; // Configure firebase
   NSString *googleAPIKey = [ReactNativeConfig envFor:@"GOOGLE_KEY"];
   [GMSServices provideAPIKey:googleAPIKey];
 

@@ -15,7 +15,7 @@ const DropDownSingleSelect = (props) => {
     const {data, key, id, questionReducer, submitFunction} = props;
 
     let currId = data.id;
-
+    console.log(props)
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
 
@@ -61,7 +61,7 @@ const DropDownSingleSelect = (props) => {
       );
 
     const HelperText = () => {
-        if(data.helperText.length != 0) {
+        if(data?.helperText?.length != 0) {
             return (<Text style={styles.helperText}>{data.helperText}</Text>)
         }
         return null;
@@ -93,5 +93,3 @@ const mapStateToProps = (state, props) => {
 };
 
 export default connect(mapStateToProps)(DropDownSingleSelect);
-
-

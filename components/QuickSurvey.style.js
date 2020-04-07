@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     questionInput: {
         flex: 2,
         paddingLeft: 10
-        
+
     },
     cardStyle: {
         flexDirection: 'row',
