@@ -1174,13 +1174,14 @@ export const questions = {
         "id": "O2"
     }, 
     {
-        "answerType": "openTextBox", 
+        "answerType": "advancedOpenTextBox", 
         "helperText": "(VIN)", 
         "question": "Vehicle Identification Number", 
         "display": [
             "vehicle"
         ], 
         "id": "V1"
+        "autoMethod": "VINCamera"
     }, 
     {
         "answerType": "header", 
