@@ -12,11 +12,14 @@ import AdvancedOpenTextField from './textFields/AdvancedOpenTextField';
 import AdvancedDropDown from './dropdowns/AdvancedDropDown';
 import DropDownMultiSelect from './dropdowns/DropDownMultiSelect';
 import LargeTextField from './textFields/LargeTextField';
+import HeaderComponent from './HeaderComponent';
 import { updateDriver } from '../actions/DriverAction';
 import { updateNonmotorist } from '../actions/NonmotoristAction';
 import { updateVehicle } from '../actions/VehicleAction';
 import { updatePassenger } from '../actions/PassengerAction';
 import { updateRoad } from '../actions/RoadAction';
+
+import {questions} from '../data/questions';
 
 class QuestionForm extends Component {
 
@@ -25,27 +28,37 @@ class QuestionForm extends Component {
     let reducer;
     let submitFunction;
     let actionType;
+    let questionsData;
+
+    const filterQuestionsData = (questionType) => {
+      return questions.data.filter(question => question.display.includes(questionType));
+    }
 
     switch(questionDetail.type){
       case 'Driver':
         reducer = "driverReducer";
         submitFunction = updateDriver;
         actionType = "UPDATEDRIVER";
+        questionsData = filterQuestionsData('driver');
         break;
       case 'Nonmotorist':
         reducer = "nonmotoristReducer";
         submitFunction = updateNonmotorist;
         actionType = "UPDATENONMOTORIST";
+        questionsData = filterQuestionsData('nonmotorist');
         break;
       case 'Passenger':
         reducer = "passengerReducer";
         submitFunction = updatePassenger;
         actionType = "UPDATEPASSENGER";
+        questionsData = filterQuestionsData("passenger");
         break;
       case 'Vehicle':
         reducer = "vehicleReducer";
         submitFunction = updateVehicle;
         actionType = "UPDATEVEHICLE";
+        questionsData = filterQuestionsData("vehicle");
+        console.log(questionsData);
         break;
       case 'Road':
         reducer = "roadReducer";
@@ -80,7 +93,7 @@ class QuestionForm extends Component {
               submitFunction={submitFunction}
             />
           )
-        case 'openTextbox':
+        case 'openTextBox':
           return (
             <OpenTextField
               data={question}
@@ -99,7 +112,7 @@ class QuestionForm extends Component {
                 reducer={reducer}
                 submitFunction={submitFunction}
                 pageChange={navigateToAdvanced}
-                importFrom={question.advanvedType}
+                importFrom={question.advancedType}
               />
             )
         case 'advancedDropDown':
@@ -111,7 +124,7 @@ class QuestionForm extends Component {
               reducer={reducer}
               submitFunction={submitFunction}
               pageChange={navigateToAdvanced}
-              importFrom={question.advanvedType}
+              importFrom={question.advancedType}
             />
           )
         case 'largeTextField':
@@ -144,37 +157,48 @@ class QuestionForm extends Component {
               submitFunction={submitFunction}
             />
           )
+        case 'header':
+          return (
+            <HeaderComponent
+              data={question}
+              key={question.id}
+            />
+          )
       }
     }
 
-    const renderSubQuetions = (questions) => {
-      const renderedQuestions = questions.subquestions.map(question => (
-        renderSingleQuestion(question)
-      ));
-      const Header = () => (
-        <CardHeader
-          title={questions.question}
-        />
-      )
+    // const renderSubQuetions = (questions) => {
+    //   const renderedQuestions = questions.subquestions.map(question => (
+    //     renderSingleQuestion(question)
+    //   ));
+    //   const Header = () => (
+    //     <CardHeader
+    //       title={questions.question}
+    //     />
+    //   )
 
-      return (
-        <Card key={questions.id} header={Header} style={styles.card}>
-          {renderedQuestions}
-        </Card>
-      );
-    }
+    //   return (
+    //     <Card key={questions.id} header={Header} style={styles.card}>
+    //       {renderedQuestions}
+    //     </Card>
+    //   );
+    // }
 
-    const renderedQuestions = questionDetail.questions.map((question) => {
-      if (!question.subquestions) {
-        return renderSingleQuestion(question)
-      } else {
-        return renderSubQuetions(question)
-      }
+    // const renderedQuestions = questionDetail.questions.map((question) => {
+    //   if (!question.subquestions) {
+    //     return renderSingleQuestion(question)
+    //   } else {
+    //     return renderSubQuetions(question)
+    //   }
+    // });
+
+    const renderedQuestions = questionsData.map((question) => {
+      return renderSingleQuestion(question)  // uncomment for no sub-questions rendering
     });
 
     return (
       <SafeAreaView style={styles.container}>
-        <TopNavigation title='Auto Component' alignment='center' leftControl={this.props.BackAction()}/>
+        <TopNavigation title={`${questionDetail.type} Questions`} alignment='center' leftControl={this.props.BackAction()} />
         <Divider />
         <ScrollView>
           <Layout style={styles.content}>

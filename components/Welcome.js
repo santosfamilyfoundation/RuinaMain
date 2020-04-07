@@ -16,7 +16,7 @@ class Welcome extends Component {
               <TopNavigation title='Welcome' alignment='center'/>
               <Divider/>
               <Layout style={styles.centeredContainer}>
-                <Button style={styles.styledButton} onPress={() => navigateTo('Quiz')}>Quick Quiz</Button>
+                <Button style={styles.styledButton} onPress={() => navigateTo('Survey')}>Quick Survey</Button>
                 <Button style={styles.styledButton} onPress={() => navigateTo('Note')}>Note Pad</Button>
                 <ButtonGroup>
                   <Button onPress={() => navigateTo('Driver')}>Driver</Button>

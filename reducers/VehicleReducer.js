@@ -1,4 +1,4 @@
-var uuid = require('react-native-uuid');
+// var uuid = require('react-native-uuid');
 
 const initialState = {
     data: [],
@@ -8,28 +8,14 @@ const initialState = {
 export default function vehicleReducer (state=initialState, action) {
     switch (action.type) {
         case 'ADDVEHICLE':
-            const numVehicle = action.payload
-
-            let vehicleArr = []
-            for (let i = 0; i < numVehicle; i++){
-                let id = uuid.v1();
-                vehicleArr.push({hazardous: null, id})
-            }
             return {
                 ...state,
-                data: state.data.concat(vehicleArr)
+                data: state.data.concat([{hazardous: null, id:action.payload.vehicleID, driver: action.payload.driverID}])
             }
         case 'ADDLVHM':
-            const numLvhm = action.payload
-
-            let lvhmArr = []
-            for (let i = 0; i < numLvhm; i++){
-                let id = uuid.v1();
-                lvhmArr.push({hazardous: true, id})
-            }
             return {
                 ...state,
-                data: state.data.concat(lvhmArr)
+                data: state.data.concat([{hazardous: true, id:action.payload.vehicleID, driver: action.payload.driverID}])
             }
         case 'UPDATEVEHICLE':
             const { id, question, selection } = action.payload

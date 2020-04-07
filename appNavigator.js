@@ -9,7 +9,7 @@ import { WeatherScreen } from './screens/weatherScreen';
 import { PhotoCaptureScreen } from './screens/photoCaptureScreen'
 import { VehicleInfoScreen } from './screens/vehicleinfoScreen';
 import { ScanScreen } from './screens/scanScreen';
-import { QuickQuizScreen } from './screens/quickquizScreen';
+import { QuickSurveyScreen } from './screens/quickSurveyScreen';
 import { HomeScreen } from './screens/homeScreen';
 import { QuestionScreen } from './screens/questionScreen';
 import { InfoExchangeFormScreen } from './screens/infoExchangeScreen';
@@ -25,7 +25,7 @@ const HomeNavigator = createStackNavigator({
   PhotoCapture: PhotoCaptureScreen,
   Vehicle: VehicleInfoScreen,
   Scan: ScanScreen,
-  Quiz: QuickQuizScreen,
+  Survey: QuickSurveyScreen,
   Home: HomeScreen,
   Question: QuestionScreen,
   InfoExchange: InfoExchangeFormScreen,

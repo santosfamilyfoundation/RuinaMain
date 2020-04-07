@@ -155,7 +155,7 @@ const AdvancedDropDown = (props) => {
       );
 
     const HelperText = () => {
-        if(data.helperText.length != 0) {
+        if(data?.helperText?.length != 0) {
             return (<Text style={styles.helperText}>{data.helperText}</Text>)
         }
         return null;
@@ -182,21 +182,20 @@ const AdvancedDropDown = (props) => {
       }
     };
 
+    const RenderHeaderIcon = () => {
+        switch(importFrom) {
+            case "Weather":
+                return (
+                    <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={WeatherIcon} onPress={()=> onImportWeatherPress() }></Button>
+                )
+        }
+    }
+
     const CustomCardHeader = () => (
-      <Layout style={styles.headerObjects}>
-          <Text
-            style={styles.headerText}
-            category='h6'
-          >
-            {data.question}
-          </Text>
-          { importFrom == "Weather" ?
-              <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={WeatherIcon} onPress={()=> onImportWeatherPress() }></Button>
-            :
-              <Layout>
-              </Layout>
-          }
-      </Layout>
+      <CardHeader
+          title={data.question}
+          accessory={RenderHeaderIcon}
+      />
     );
 
 

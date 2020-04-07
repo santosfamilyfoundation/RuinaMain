@@ -19,7 +19,6 @@ export default class VehicleInfo extends Component {
           .then((responseJson)=> {
             this.setState({data: responseJson.Results})
             this.setState({fetchedData: true})
-            console.log(this.state.data)
           })
           .catch(error=>console.log(error)) 
     }
