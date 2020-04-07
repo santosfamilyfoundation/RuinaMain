@@ -12,13 +12,8 @@ export const styles = StyleSheet.create({
     width: SCREEN_WIDTH,
   },
   captureButton:{
-    flex: 0.15,
-    backgroundColor: '#D3D3D3',
-    borderRadius: 5,
-    color: 'black',
-    padding: 10,
     textAlign: 'center',
-    height: 50,
+    padding: 10,
   },
   controlBar:{
     flexDirection: 'column',
@@ -30,16 +25,15 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    flex: 0.2,
+    flex: 0.7
   },
   progressBar: {
-    backgroundColor: 'blue',
+    backgroundColor: 'lightgrey',
     height: 5,
-    shadowColor: '#000',
     alignSelf: 'flex-start',
   },
   topControlBar: {
-    paddingTop: 10,
-    paddingBottom: 10,
+    paddingTop: 20,
+    flex: 0.2
   },
 });

@@ -38,6 +38,14 @@ class Home extends Component {
             navigation.navigate('Question', {questions: form.data, objectID: id, type})
         }
 
+        const navigatePhotos = () => {
+            navigation.navigate('PhotoCapture')
+        }
+
+        const navigateGallery = () => {
+          navigation.navigate('PhotoGallery')
+        }
+
         const RoadHeader = () => (
             <CardHeader title="Roadway" />
         );
@@ -127,13 +135,26 @@ class Home extends Component {
                     </Card>
                     <Card header={RoadHeader} style={styles.sectionCard}>
                         <Layout style={styles.questionContainer}>
-                            <Card style={styles.individualCard} onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road')}>
-                                <Icon name='paper-plane' width={75} height={75} />
-                                <Text style={styles.itemCardFooter} category="s1">Road</Text>
-                            </Card>
+                          <Card style={styles.itemCard} onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road')}>
+                              <View style={styles.itemCardContent}>
+                                  <Icon name='paper-plane' width={75} height={75} />
+                                  <Text style={styles.itemCardFooter} category="s1">Road</Text>
+                              </View>
+                          </Card>
+                          <Card style={styles.itemCard} onPress = {() => navigatePhotos()}>
+                              <View style={styles.itemCardContent}>
+                                  <Icon name='camera-outline' width={75} height={75} />
+                                  <Text style={styles.itemCardFooter} category="s1">Take Photo</Text>
+                              </View>
+                          </Card>
+                          <Card style={styles.itemCard} onPress = {() => navigateGallery()}>
+                              <View style={styles.itemCardContent}>
+                                  <Icon name='archive-outline' width={75} height={75} />
+                                  <Text style={styles.itemCardFooter} category="s1">Photo Gallery</Text>
+                              </View>
+                          </Card>
                         </Layout>
                     </Card>
-
                 </ScrollView>
             </SafeAreaView>
         )

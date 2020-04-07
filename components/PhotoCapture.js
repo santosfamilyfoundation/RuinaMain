@@ -13,12 +13,6 @@ import { styles } from './PhotoCapture.style';
 
 const { app } = firebase.storage();
 
-const typeData = [
-  { text: Constants.VIN },
-  { text: Constants.LICENSE },
-  { text: Constants.PLATE },
-];
-
 class PhotoCapture extends Component {
   state = {
     images: [],
@@ -26,75 +20,99 @@ class PhotoCapture extends Component {
     imgUri: '',
     uploading: false,
     progress:0,
+    currImage :'',
   }
 
-  takePicture() {
-      this.camera.takePictureAsync({ skipProcessing: true }).then((data) => {
-        this.setState({
-          imgUri: data["uri"],
-        });
-      })
+  capture() {
+    //Calls for the screen to be captured
+    this.camera.takePictureAsync({ skipProcessing: true }).then((data) => {
+      this.setState({
+        imgUri: data["uri"],
+      });
+      this.uploadImage()
+    })
+  }
+
+  componentDidMount() {
+      this.mounted = true;
+  }
+
+  componentWillUnmount(){
+      this.mounted = false;
   }
 
   uploadImage = () => {
+    //Upload Image to Firebase Storage (see Drive documentation for password and access to firebase account)
     const ext = this.state.imgUri.split('.').pop(); // Extract image extension
     const filename = `${uuid()}.${ext}`; // Making a unique name
-    this.setState({ uploading: true });
-    firebase //Connect and store in firebase
-      .storage()
-      .ref(`CrashImages/${filename}`)
-      .putFile(this.state.imgUri)
-      .on(
-        firebase.storage.TaskEvent.STATE_CHANGED,
-        snapshot => {
-          let state = {};
-          state = {
-            ...state,
-            progress: (snapshot.bytesTransferred / snapshot.totalBytes) * 100 // Update the progress bar value
-          };
-          if (snapshot.state === firebase.storage.TaskState.SUCCESS) {
-            const allImages = this.state.images;
-            allImages.push(snapshot.downloadURL);
+    if(this.mounted) {
+      this.setState({ uploading: true });
+      firebase //Connect and store in firebase
+        .storage()
+        .ref(`CrashImages/${filename}`)
+        .putFile(this.state.imgUri)
+        .on(
+          firebase.storage.TaskEvent.STATE_CHANGED,
+          snapshot => {
+            let state = {};
             state = {
               ...state,
-              uploading: false,
-              imgUri: '',
-              progress: 0,
-              images: allImages,
+              progress: (snapshot.bytesTransferred / snapshot.totalBytes) * 100 // Update the progress bar value
             };
-            AsyncStorage.setItem('images', JSON.stringify(allImages));
+            if (snapshot.state === firebase.storage.TaskState.SUCCESS) {
+              const allImages = this.state.images;
+              allImages.push(snapshot.downloadURL);
+              state = {
+                ...state,
+                uploading: false,
+                imgUri: '',
+                progress: 0,
+                images: allImages,
+                currImage: snapshot.downloadURL,
+              };
+              //Updated photo reducer
+              this.props.photoAction({image: snapshot.downloadURL, tag: this.state.selectedOption});
+              AsyncStorage.setItem('images', JSON.stringify(allImages));
+            }
+            this.setState(state);
+          },
+          error => {
+            unsubscribe();
+            alert('Unable to upload');
           }
-          this.setState(state);
-        },
-        error => {
-          unsubscribe();
-          alert('Unable to upload');
-        }
-      );
+        );
+      };
   };
 
+  setOption = (text) => {
+    //Sets what object that is tagged in photo
+    this.setState({
+      selectedOption: text,
+    });
+  }
 
     render() {
 
-        const {photoAction, vehicle, objectID, type } = this.props
+        const {photoAction, vehicle} = this.props
 
-        const isObjDisabled = objectID ? (false) : (true);
+        //If there are no objects in reducers yet, the dropdown is disabled
+        const isObjDisabled = vehicle.data.length == 0 ? (true) : (false);
 
+        //Map vehicles to options in dropdown
         const objectData = vehicle.data.map((vehicle, index) => {
             const name = "Vehicle " + (index + 1)
             return {"text":name};
         })
 
+        //Adding a general crash scene option to dropdown
+        objectData.push({"text":"Crash Scene"})
+
         const navigateResult = () => {
           this.props.navigation.navigate('Result');
         };
 
-        const setSelectedOption = (e) => {
-          setSelectedOption({text: e.text});
-          this.setState({
-            selectedOption: e.text,
-          });
-        }
+        //Keeping track of progress for uploading progress bar
+        const progress = this.state.progress;
 
         return (
             <SafeAreaView style={{ flex: 1 }}>
@@ -106,23 +124,22 @@ class PhotoCapture extends Component {
                 >
                 </RNCamera>
                 <Layout style={styles.controlBar}>
-                  <Layout style={styles.topControlBar}>
-                    <View
-                      style={[styles.progressBar, { width: `${this.state.progress}%` }]}
-                    />
-                  </Layout>
+                    <Layout style={styles.topControlBar}>
+                    { progress < 100 && progress != 0 ?
+                        <Layout>
+                          <Text>
+                            Uploading...
+                          </Text>
+                          <View style={[styles.progressBar, { width: `${this.state.progress}%` }]}/>
+                        </Layout>
+                      :
+                        <Layout>
+                        </Layout>
+                    }
+                    </Layout>
                   <Layout style={styles.bottomControlBar}>
-                    <BasicDropDown data={typeData} defaultOption={this.props.type} isDisabled={false}/>
-                    <Text style={styles.captureButton} onPress={this.takePicture.bind(this)}>
-                      Capture
-                    </Text>
-                    <Text style={styles.captureButton} onPress={this.uploadImage.bind(this)} disabled={this.state.uploading}>
-                      Save
-                    </Text>
-                    <Text style={styles.captureButton} onPress={() => photoAction(this.state.images)}>
-                      Double save
-                    </Text>
-                    <BasicDropDown data={objectData} defaultOption={this.props.objectID} isDisabled={isObjDisabled}/>
+                    <BasicDropDown data={objectData} selectFunction={this.setOption} isDisabled={isObjDisabled}/>
+                    <Button style={styles.captureButton} appearance={"filled"} onPress={this.capture.bind(this)}>{"Capture"}</Button>
                   </Layout>
                 </Layout>
               </Layout>
@@ -138,7 +155,6 @@ const mapDispatchToProps = {
 const mapStateToProps = (state) => {
     return {
         photoVals: state.photosReducer,
-        driver: state.driverReducer,
         vehicle: state.vehicleReducer,
     }
 }
