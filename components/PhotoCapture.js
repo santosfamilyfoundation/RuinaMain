@@ -16,7 +16,7 @@ const { app } = firebase.storage();
 class PhotoCapture extends Component {
   state = {
     images: [],
-    selectedOption: '',
+    selectedOption: 'Other',
     imgUri: '',
     uploading: false,
     progress:0,
