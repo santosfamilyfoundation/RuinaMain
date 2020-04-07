@@ -1,64 +1,131 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Text, Card, CardHeader, Layout } from '@ui-kitten/components';
-import { TextInput, ScrollView } from 'react-native';
+import { Card, CardHeader, Layout } from '@ui-kitten/components';
+import { ScrollView } from 'react-native';
 import { styles } from '../containers/AutoComponentContainer.style';
 import OpenTextField from './textFields/OpenTextField';
+import AdvancedOpenTextField from './textFields/AdvancedOpenTextField';
 import { updateDriver } from '../actions/DriverAction';
 import { updateNonmotorist } from '../actions/NonmotoristAction';
-import {infoExchangeQuestions} from '../data/infoExchangeQuestions';
-import MultiButtonSelector from './buttonSelectors/MultiButtonSelector';
+import {updateVehicle} from '../actions/VehicleAction';
+import {questions} from '../data/questions';
 
 class OperatorForm extends Component{
+    filterQuestionsData(questionType){
+        return questions.data.filter(question => question.display.includes(questionType));
+    }
+
     render(){
-
-        const { id, type, driver, nonmotorist, updateDriver, updateNonmotorist } = this.props
+        const { id, type, drivers, vehicles, nonmotorists, updateDriver, updateNonmotorist, updateVehicle } = this.props
         let operator;
-        let reducer;
-        let submitFunction;
+        let vehicleId;
         let typeUpperCase = type.charAt(0).toUpperCase() + type.slice(1)
-
+        let questionsData = this.filterQuestionsData('info');
 
         switch(type) {
             case 'driver':
-                reducer = "driverReducer";
-                submitFunction = updateDriver;
-                operator = driver.data.find(driver => driver.id == id)
+                operator = drivers.data.find(driver => driver.id == id)
+                let vehicle = vehicles.data.find(vehicle => vehicle.driver == operator.id)
+                vehicleId = vehicle.id;
                 break;
             case 'nonmotorist':
-                reducer = "nonmotoristReducer";
-                submitFunction = updateNonmotorist;
-                operator = nonmotorist.data.find(nonmotorist => nonmotorist.id == id)
+                operator = nonmotorists.data.find(nonmotorist => nonmotorist.id == id)
                 break;
         }
 
-        const renderSingleQuestion = (question) => {
+        const navigateToAdvanced = (place, props) =>{
+            this.props.navigation.navigate(place, props);
+        }
+
+        const renderDriverQuestion = (question) => {
             switch(question.answerType) {
-                case 'openTextbox':
+                case 'openTextBox':
                     return (
                         <OpenTextField
                             data={question}
                             key={question.id}
                             id={id}
-                            reducer={reducer}
-                            submitFunction={submitFunction}
+                            reducer={"driverReducer"}
+                            submitFunction={updateDriver}
                         />
                     )
-                case 'multiButton':
+                case 'advancedOpenTextBox':
                     return (
-                        <MultiButtonSelector
+                        <AdvancedOpenTextField
                             data={question}
                             key={question.id}
                             id={id}
-                            reducer={reducer}
-                            submitFunction={submitFunction}
+                            reducer={"driverReducer"}
+                            submitFunction={updateDriver}
+                            pageChange={navigateToAdvanced}
+                            importFrom={question.autoMethod}
                         />
                     )
             }
         }
 
-        const renderedQuestions = infoExchangeQuestions.data.map((question) => {
-            return renderSingleQuestion(question);
+        const renderNonmotoristQuestion = (question) => {
+            switch(question.answerType) {
+                case 'openTextBox':
+                    return (
+                        <OpenTextField
+                            data={question}
+                            key={question.id}
+                            id={id}
+                            reducer={"nonmotoristReducer"}
+                            submitFunction={updateNonmotorist}
+                        />
+                    )
+                case 'advancedOpenTextBox':
+                    return (
+                        <AdvancedOpenTextField
+                            data={question}
+                            key={question.id}
+                            id={id}
+                            reducer={"nonmotoristReducer"}
+                            submitFunction={updateNonmotorist}
+                            pageChange={navigateToAdvanced}
+                            importFrom={question.autoMethod}
+                        />
+                    )
+            }
+        }
+
+        const renderVehicleQuestion = (question) => {
+            switch(question.answerType) {
+                case 'openTextBox':
+                    return (
+                        <OpenTextField
+                            data={question}
+                            key={question.id}
+                            id={vehicleId}
+                            reducer={"vehicleReducer"}
+                            submitFunction={updateVehicle}
+                        />
+                    )
+                case 'advancedOpenTextBox':
+                    return (
+                        <AdvancedOpenTextField
+                            data={question}
+                            key={question.id}
+                            id={vehicleId}
+                            reducer={"vehicleReducer"}
+                            submitFunction={updateVehicle}
+                            pageChange={navigateToAdvanced}
+                            importFrom={question.autoMethod}
+                        />
+                    )
+            }
+        }
+
+        const renderedQuestions = questionsData.map((question) => {
+            if(question.display.includes('driver')) {
+                return renderDriverQuestion(question);
+            } else if(question.display.includes('vehicle')) {
+                return renderVehicleQuestion(question);
+            } else if(question.display.includes('nonmotorist')) {
+                return renderNonmotoristQuestion(question);
+            }
         })
 
 
@@ -77,10 +144,10 @@ class OperatorForm extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        driver: state.driverReducer,
-        nonmotorist: state.nonmotoristReducer,
-        vehicle: state.vehicleReducer,
-        passenger: state.passengerReducer,
+        drivers: state.driverReducer,
+        nonmotorists: state.nonmotoristReducer,
+        vehicles: state.vehicleReducer,
+        passengers: state.passengerReducer,
         quiz: state.quickquizReducer
     }
 }
@@ -88,6 +155,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     updateDriver,
     updateNonmotorist,
+    updateVehicle,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(OperatorForm);

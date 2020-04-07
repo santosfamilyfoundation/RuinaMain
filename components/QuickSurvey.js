@@ -41,10 +41,9 @@ class QuickSurvey extends Component {
 
       const dispatchAll = () => {
         addNonmotorist(quiz.numNonmotorist);
-        addDriver(quiz.numDriver);
-        addPassenger(quiz.numPassenger);
         addRoad(null);
-        // addPassenger(quiz.numPassenger)
+
+        // connect vehicles with drivers
         for (let i = 0; i < (quiz.numVehicle); i++){
             let vehicleID = uuid.v1();
             let driverID = uuid.v1();

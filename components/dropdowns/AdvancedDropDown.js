@@ -71,8 +71,6 @@ const AdvancedDropDown = (props) => {
     const findWeatherData = () => {
       Geolocation.getCurrentPosition(
         position => {
-          console.log(position.coords.latitude)
-          console.log(position.coords.longitude)
           fetchWeather(position.coords.latitude, position.coords.longitude)
         },
         error => alert('Using Default Location', JSON.stringify(error)),
@@ -93,7 +91,6 @@ const AdvancedDropDown = (props) => {
             setDegree(json.wind.deg)
             setPlace(json.name)
             setIsLoading(false)
-            console.log(json)
           });
 
     };

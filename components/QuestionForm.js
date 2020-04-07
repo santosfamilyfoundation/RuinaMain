@@ -58,7 +58,6 @@ class QuestionForm extends Component {
         submitFunction = updateVehicle;
         actionType = "UPDATEVEHICLE";
         questionsData = filterQuestionsData("vehicle");
-        console.log(questionsData);
         break;
       case 'Road':
         reducer = "roadReducer";
@@ -168,33 +167,8 @@ class QuestionForm extends Component {
       }
     }
 
-    // const renderSubQuetions = (questions) => {
-    //   const renderedQuestions = questions.subquestions.map(question => (
-    //     renderSingleQuestion(question)
-    //   ));
-    //   const Header = () => (
-    //     <CardHeader
-    //       title={questions.question}
-    //     />
-    //   )
-
-    //   return (
-    //     <Card key={questions.id} header={Header} style={styles.card}>
-    //       {renderedQuestions}
-    //     </Card>
-    //   );
-    // }
-
-    // const renderedQuestions = questionDetail.questions.map((question) => {
-    //   if (!question.subquestions) {
-    //     return renderSingleQuestion(question)
-    //   } else {
-    //     return renderSubQuetions(question)
-    //   }
-    // });
-
     const renderedQuestions = questionsData.map((question) => {
-      return renderSingleQuestion(question)  // uncomment for no sub-questions rendering
+      return renderSingleQuestion(question);
     });
 
     return (

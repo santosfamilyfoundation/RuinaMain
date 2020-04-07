@@ -21,7 +21,7 @@ export default function vehicleReducer (state=initialState, action) {
             const { id, question, selection } = action.payload
             let updatedState = state.data;
             let selectedVehicle = updatedState.find(vehicle => vehicle.id == id)
-            if(selectedVehicle.response == undefined) {
+            if(selectedVehicle?.response == undefined) {
                 selectedVehicle.response = {}
             }
             selectedVehicle.response[question] = selection;
