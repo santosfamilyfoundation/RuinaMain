@@ -14,6 +14,7 @@ import { HomeScreen } from './screens/homeScreen';
 import { QuestionScreen } from './screens/questionScreen';
 import { InfoExchangeFormScreen } from './screens/infoExchangeScreen';
 import { PhotoGalleryScreen } from './screens/photoGalleryScreen';
+import { FinalReportScreen } from './screens/finalReportScreen';
 
 const HomeNavigator = createStackNavigator({
   Welcome: WelcomeScreen,
@@ -30,6 +31,7 @@ const HomeNavigator = createStackNavigator({
   Question: QuestionScreen,
   InfoExchange: InfoExchangeFormScreen,
   PhotoGallery: PhotoGalleryScreen,
+  FinalReport: FinalReportScreen
 }, {
   headerMode: 'none',
 });

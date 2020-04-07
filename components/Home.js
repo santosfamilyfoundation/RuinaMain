@@ -115,14 +115,22 @@ class Home extends Component {
             <Icon {...style} name='edit-2-outline' />
           );
 
-        const navigateInfoExchange = () => (
-            <TopNavigationAction icon={infoExchangeIcon} onPress = {() => navigation.navigate('InfoExchange',{ operatorList })}/>
-        )
+        const finalReportIcon = (style) => (
+            <Icon {...style} name='file-text-outline' />
+        );
 
         const NonMotoristHeader = () => (
             <CardHeader title={`Non-motorists`} />
         );
+        
 
+        const rightControls = () => (
+            <View style={{flexDirection: 'row'}}>
+                <TopNavigationAction icon={finalReportIcon} onPress = {() => navigation.navigate('FinalReport')}/>
+                <TopNavigationAction icon={infoExchangeIcon} onPress = {() => navigation.navigate('InfoExchange',{ operatorList })}/>   
+            </View>
+            
+        )
         return(
             <SafeAreaView style={{flex:1}}>
                 <TopNavigation title='Home' alignment='center' leftControl={this.props.BackAction()} rightControls = {rightControls()}/>
