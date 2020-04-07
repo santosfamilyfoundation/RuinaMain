@@ -104,7 +104,7 @@ class QuestionForm extends Component {
               submitFunction={submitFunction}
             />
           )
-          case 'advancedOpenTextbox':
+          case 'advancedOpenTextBox':
             return (
               <AdvancedOpenTextField
                 data={question}
@@ -113,7 +113,7 @@ class QuestionForm extends Component {
                 reducer={reducer}
                 submitFunction={submitFunction}
                 pageChange={navigateToAdvanced}
-                importFrom={question.advancedType}
+                importFrom={question.autoMethod}
               />
             )
         case 'advancedDropDown':
@@ -125,7 +125,7 @@ class QuestionForm extends Component {
               reducer={reducer}
               submitFunction={submitFunction}
               pageChange={navigateToAdvanced}
-              importFrom={question.advancedType}
+              importFrom={question.autoMethod}
             />
           )
         case 'largeTextField':

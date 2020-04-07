@@ -125,14 +125,13 @@ class Scan extends Component {
             text: data.text
         });
         let values = this.props.navigation.state.params;
-        console.log(data);
         switch(values.type) {
         case Constants.VIN:
           this.fetchVIN(data.text);
           this.props.updateVehicle({id:values.objectID, question:Constants.VIN_ID, selection:data.text});
           break;
         case Constants.LICENSE:
-          this.props.updateDriver({id:values.objectID, question:Constants.DLICENSE_ID, selection:data.text});
+          this.props.updateDriver({id:values.objectID, question:Constants.DLICENSE_ID, selection:data.documentNumber});
           break;
         case Constants.PLATE:
           this.props.updateVehicle({id:values.objectID, question:Constants.LICENSE_PLATE_ID, selection:data.licensePlate});

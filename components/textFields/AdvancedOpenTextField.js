@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Input, Layout, Text, Card, Button, CardHeader, Icon, ListItem } from '@ui-kitten/components';
+import { Input, Layout, Text, Card, Button, CardHeader, Icon, ListItem, CheckBox } from '@ui-kitten/components';
 import { styles } from './AdvancedOpenTextField.style';
 import { updateRoad } from '../../actions/RoadAction';
 import * as Constants from '../../constants';
@@ -83,13 +83,13 @@ const AdvancedOpenTextField = (props) => {
         setAdvancedButtonAppearance("filled")
         let type
         switch(importFrom) {
-          case "VIN_Camera":
+          case "VINCamera":
             type = Constants.VIN;
             break;
-          case "Plate_Camera":
+          case "plateCamera":
             type = Constants.PLATE;
             break;
-          case "License_Camera":
+          case "driverIDCamera":
             type = Constants.LICENSE
             break;
           default:
@@ -141,23 +141,23 @@ const AdvancedOpenTextField = (props) => {
 
     const RenderHeaderIcon = () => {
         switch(importFrom) {
-            case "Map":
+            case "map":
                 return (
                     <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={MapIcon} onPress={()=> onImportMapPress() }></Button>
                 )
-            case "License_Camera":
+            case "driverIDCamera":
                 return (
                     <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={CameraIcon} onPress={()=> onImportCameraPress() }></Button>
                 )
-            case "Plate_Camera":
+            case "plateCamera":
                 return (
                     <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={CameraIcon} onPress={()=> onImportCameraPress() }></Button>
                 )
-            case "VIN_Camera":
+            case "VINCamera":
                 return (
                     <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={CameraIcon} onPress={()=> onImportCameraPress() }></Button>
                 )
-            case "Time":
+            case "time":
                 return (
                     <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={ClockIcon} onPress={()=> onImportTimePress() }></Button>
                 )
