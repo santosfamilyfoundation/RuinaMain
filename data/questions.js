@@ -1,6177 +1,6187 @@
 export const questions = {
     "data": [
     {
-        "answerType": "header", 
-        "question": "Crash Classification", 
+        "answerType": "header",
+        "question": "Crash Classification",
         "display": [
             "road"
-        ], 
+        ],
         "id": "C2"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Ownership", 
+        "answerType": "multiButton",
+        "question": "Ownership",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Public Property", 
+                "text": "Public Property",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Private Property", 
+                "text": "Private Property",
                 "idCode": "02"
             }
-        ], 
+        ],
         "id": "C2-S1"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Characteristics", 
+        "answerType": "multiButton",
+        "question": "Characteristics",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Trafficway, On Road", 
+                "text": "Trafficway, On Road",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Trafficway, Not on Road", 
+                "text": "Trafficway, Not on Road",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Non-Trafficway", 
+                "text": "Non-Trafficway",
                 "idCode": "03"
             }
-        ], 
+        ],
         "id": "C2-S2"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Secondary Crash", 
+        "answerType": "multiButton",
+        "question": "Secondary Crash",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No", 
+                "text": "No",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Yes", 
+                "text": "Yes",
                 "idCode": "02"
             }
-        ], 
+        ],
         "id": "C2-S3"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Crash Date and Time", 
+        "answerType": "header",
+        "question": "Crash Date and Time",
         "display": [
             "road"
-        ], 
+        ],
         "id": "C3"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "(YYYYMMDDHHMM)", 
-        "question": "Crash Date and Time", 
+        "answerType": "openTextBox",
+        "helperText": "(YYYYMMDDHHMM)",
+        "question": "Crash Date and Time",
         "display": [
             "road"
-        ], 
+        ],
         "id": "C3"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "(HHMM)", 
-        "question": "Time of Roadway Clearance", 
+        "answerType": "openTextBox",
+        "helperText": "(HHMM)",
+        "question": "Time of Roadway Clearance",
         "display": [
             "road"
-        ], 
+        ],
         "id": "C3-S2"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Crash County", 
+        "answerType": "openTextBox",
+        "question": "Crash County",
         "display": [
             "road"
-        ], 
+        ],
         "id": "C4"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "(Political Jurisdiction)", 
-        "question": "Crash City/Place", 
+        "answerType": "openTextBox",
+        "helperText": "(Political Jurisdiction)",
+        "question": "Crash City/Place",
         "display": [
             "road"
-        ], 
+        ],
         "id": "C5"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Crash Location", 
+        "answerType": "header",
+        "question": "Crash Location",
         "display": [
             "road"
-        ], 
+        ],
         "id": "C6"
-    }, 
+    },
     {
-        "autoMethod": "map", 
-        "helperText": "(degrees.minutes.seconds + compass direction)", 
-        "question": "Latitude", 
-        "id": "C6-S1", 
-        "answerType": "advancedOpenTextBox", 
+        "autoMethod": "map",
+        "helperText": "(degrees.minutes.seconds + compass direction)",
+        "question": "Latitude",
+        "id": "C6-S1",
+        "answerType": "advancedOpenTextBox",
         "display": [
             "road"
         ]
-    }, 
+    },
     {
-        "autoMethod": "map", 
-        "helperText": "(degrees.minutes.seconds + compass direction)", 
-        "question": "Longitude", 
-        "id": "C6-S2", 
-        "answerType": "advancedOpenTextBox", 
+        "autoMethod": "map",
+        "helperText": "(degrees.minutes.seconds + compass direction)",
+        "question": "Longitude",
+        "id": "C6-S2",
+        "answerType": "advancedOpenTextBox",
         "display": [
             "road"
         ]
-    }, 
+    },
     {
         "answerOptions": [
             {
-                "text": "Cargo/Equipment Loss or Shift", 
+                "text": "Cargo/Equipment Loss or Shift",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Fell/Jumped From Motor Vehicle", 
+                "text": "Fell/Jumped From Motor Vehicle",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Fire/Explosion", 
+                "text": "Fire/Explosion",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Immersion, Full or Partial", 
+                "text": "Immersion, Full or Partial",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Jackknife", 
+                "text": "Jackknife",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Other Non-Collision", 
+                "text": "Other Non-Collision",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Overturn/Rollover", 
+                "text": "Overturn/Rollover",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Thrown or Falling Object", 
+                "text": "Thrown or Falling Object",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "Animal (live)", 
+                "text": "Animal (live)",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Construction Equipment (backhoe, bulldozer, etc.)", 
+                "text": "Construction Equipment (backhoe, bulldozer, etc.)",
                 "idCode": "10"
-            }, 
+            },
             {
-                "text": "Farm Equipment (tractor, combine harvester, etc.)", 
+                "text": "Farm Equipment (tractor, combine harvester, etc.)",
                 "idCode": "11"
-            }, 
+            },
             {
-                "text": "Motor Vehicle in Transport", 
+                "text": "Motor Vehicle in Transport",
                 "idCode": "12"
-            }, 
+            },
             {
-                "text": "Other Non-Fixed Object", 
+                "text": "Other Non-Fixed Object",
                 "idCode": "13"
-            }, 
+            },
             {
-                "text": "Other Non-motorist", 
+                "text": "Other Non-motorist",
                 "idCode": "14"
-            }, 
+            },
             {
-                "text": "Parked Motor Vehicle", 
+                "text": "Parked Motor Vehicle",
                 "idCode": "15"
-            }, 
+            },
             {
-                "text": "Pedalcycle", 
+                "text": "Pedalcycle",
                 "idCode": "16"
-            }, 
+            },
             {
-                "text": "Pedestrian", 
+                "text": "Pedestrian",
                 "idCode": "17"
-            }, 
+            },
             {
-                "text": "Railway Vehicle (train, engine)", 
+                "text": "Railway Vehicle (train, engine)",
                 "idCode": "18"
-            }, 
+            },
             {
-                "text": "Strikes Object at Rest from MV in Transport", 
+                "text": "Strikes Object at Rest from MV in Transport",
                 "idCode": "19"
-            }, 
+            },
             {
-                "text": "Struck by Falling, Shifting Cargo or Anything Set in Motion by Motor Vehicle", 
+                "text": "Struck by Falling, Shifting Cargo or Anything Set in Motion by Motor Vehicle",
                 "idCode": "20"
-            }, 
+            },
             {
-                "text": "Bridge Overhead Structure", 
+                "text": "Bridge Overhead Structure",
                 "idCode": "21"
-            }, 
+            },
             {
-                "text": "Bridge Pier or Support", 
+                "text": "Bridge Pier or Support",
                 "idCode": "22"
-            }, 
+            },
             {
-                "text": "Bridge Rail", 
+                "text": "Bridge Rail",
                 "idCode": "23"
-            }, 
+            },
             {
-                "text": "Cable Barrier", 
+                "text": "Cable Barrier",
                 "idCode": "24"
-            }, 
+            },
             {
-                "text": "Concrete Traffic Barrier", 
+                "text": "Concrete Traffic Barrier",
                 "idCode": "25"
-            }, 
+            },
             {
-                "text": "Culvert", 
+                "text": "Culvert",
                 "idCode": "26"
-            }, 
+            },
             {
-                "text": "Curb", 
+                "text": "Curb",
                 "idCode": "27"
-            }, 
+            },
             {
-                "text": "Ditch", 
+                "text": "Ditch",
                 "idCode": "28"
-            }, 
+            },
             {
-                "text": "Embankment", 
+                "text": "Embankment",
                 "idCode": "29"
-            }, 
+            },
             {
-                "text": "Fence", 
+                "text": "Fence",
                 "idCode": "30"
-            }, 
+            },
             {
-                "text": "Guardrail End Terminal", 
+                "text": "Guardrail End Terminal",
                 "idCode": "31"
-            }, 
+            },
             {
-                "text": "Guardrail Face", 
+                "text": "Guardrail Face",
                 "idCode": "32"
-            }, 
+            },
             {
-                "text": "Impact Attenuator/Crash Cushion", 
+                "text": "Impact Attenuator/Crash Cushion",
                 "idCode": "33"
-            }, 
+            },
             {
-                "text": "Mailbox", 
+                "text": "Mailbox",
                 "idCode": "34"
-            }, 
+            },
             {
-                "text": "Other Fixed Object (wall, building, tunnel, etc.)", 
+                "text": "Other Fixed Object (wall, building, tunnel, etc.)",
                 "idCode": "35"
-            }, 
+            },
             {
-                "text": "Other Post, Pole, or Support", 
+                "text": "Other Post, Pole, or Support",
                 "idCode": "36"
-            }, 
+            },
             {
-                "text": "Other Traffic Barrier", 
+                "text": "Other Traffic Barrier",
                 "idCode": "37"
-            }, 
+            },
             {
-                "text": "Traffic Sign Support", 
+                "text": "Traffic Sign Support",
                 "idCode": "38"
-            }, 
+            },
             {
-                "text": "Traffic Signal Support", 
+                "text": "Traffic Signal Support",
                 "idCode": "39"
-            }, 
+            },
             {
-                "text": "Tree (standing)", 
+                "text": "Tree (standing)",
                 "idCode": "40"
-            }, 
+            },
             {
-                "text": "Utility Pole/Light Support", 
+                "text": "Utility Pole/Light Support",
                 "idCode": "41"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
-        "helperText": "Non-Collision Harmful Events; Collision With Person, Motor Vehicle, or Non-Fixed Object; Collision with Fixed Object", 
-        "question": "First Harmful Event", 
-        "id": "C7", 
-        "answerType": "dropdown", 
+        ],
+        "helperText": "Non-Collision Harmful Events; Collision With Person, Motor Vehicle, or Non-Fixed Object; Collision with Fixed Object",
+        "question": "First Harmful Event",
+        "id": "C7",
+        "answerType": "dropdown",
         "display": [
             "road"
         ]
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Location of First Harmful Event Relative to the Trafficway", 
+        "answerType": "dropdown",
+        "question": "Location of First Harmful Event Relative to the Trafficway",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Gore", 
+                "text": "Gore",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "In Parking Lane or Zone", 
+                "text": "In Parking Lane or Zone",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Median", 
+                "text": "Median",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Off-Roadway, Location Unknown", 
+                "text": "Off-Roadway, Location Unknown",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "On Roadway", 
+                "text": "On Roadway",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "On Shoulder, Left Side", 
+                "text": "On Shoulder, Left Side",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "On Shoulder, Right Side", 
+                "text": "On Shoulder, Right Side",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Outside Road/Right-of-Way", 
+                "text": "Outside Road/Right-of-Way",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "Roadside", 
+                "text": "Roadside",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Separator/Traffic Island", 
+                "text": "Separator/Traffic Island",
                 "idCode": "10"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "C8"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Manner of Crash/ Collision Impact", 
+        "answerType": "dropdown",
+        "question": "Manner of Crash/ Collision Impact",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Not a Collision Between Two Motor Vehicles", 
+                "text": "Not a Collision Between Two Motor Vehicles",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Angle", 
+                "text": "Angle",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Front to Front", 
+                "text": "Front to Front",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Front to Rear", 
+                "text": "Front to Rear",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Rear to Rear", 
+                "text": "Rear to Rear",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Rear to Side", 
+                "text": "Rear to Side",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Sideswipe, Opposite Direction", 
+                "text": "Sideswipe, Opposite Direction",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Sideswipe, Same Direction", 
+                "text": "Sideswipe, Same Direction",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Other", 
+                "text": "Other",
                 "idCode": "98"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "C9"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Source of Information", 
+        "answerType": "header",
+        "question": "Source of Information",
         "display": [
             "road"
-        ], 
+        ],
         "id": "C10"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Source of Information", 
+        "answerType": "multiButton",
+        "question": "Source of Information",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Law Enforcement Agency", 
+                "text": "Law Enforcement Agency",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Civilian", 
+                "text": "Civilian",
                 "idCode": "02"
             }
-        ], 
+        ],
         "id": "C10-S1"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "9 character NCIC Originating Agency Identifier", 
-        "question": "Law Enforcement Agency Identifier", 
+        "answerType": "openTextBox",
+        "helperText": "9 character NCIC Originating Agency Identifier",
+        "question": "Law Enforcement Agency Identifier",
         "display": [
             "road"
-        ], 
+        ],
         "id": "C10-S2"
-    }, 
+    },
     {
-        "autoMethod": "weather", 
-        "helperText": "(choose up to 2)", 
-        "question": "Weather Conditions", 
-        "id": "C11", 
-        "answerType": "advancedDropDown", 
+        "autoMethod": "weather",
+        "helperText": "(choose up to 2)",
+        "question": "Weather Conditions",
+        "id": "C11",
+        "answerType": "advancedDropDown",
         "display": [
             "road"
-        ]
-    }, 
-    {
-        "answerType": "dropdown", 
-        "question": "Light Condition", 
-        "display": [
-            "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Daylight", 
+                "text": "Daylight",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Dawn/Dusk", 
+                "text": "Dawn/Dusk",
                 "idCode": "02"
-            }, 
+            }
+        ]
+    },
+    {
+        "answerType": "dropdown",
+        "question": "Light Condition",
+        "display": [
+            "road"
+        ],
+        "answerOptions": [
             {
-                "text": "Dark - Lighted", 
+                "text": "Daylight",
+                "idCode": "01"
+            },
+            {
+                "text": "Dawn/Dusk",
+                "idCode": "02"
+            },
+            {
+                "text": "Dark - Lighted",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Dark - Not Lighted", 
+                "text": "Dark - Not Lighted",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Dark - Unknown Lighting", 
+                "text": "Dark - Unknown Lighting",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Other", 
+                "text": "Other",
                 "idCode": "98"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "C12"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Roadway Surface Condition", 
+        "answerType": "dropdown",
+        "question": "Roadway Surface Condition",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Dry", 
+                "text": "Dry",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Ice/Frost", 
+                "text": "Ice/Frost",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Mud, Dirt, Gravel", 
+                "text": "Mud, Dirt, Gravel",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Oil", 
+                "text": "Oil",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Sand", 
+                "text": "Sand",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Slush", 
+                "text": "Slush",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Snow", 
+                "text": "Snow",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Water (standing, moving)", 
+                "text": "Water (standing, moving)",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "Wet", 
+                "text": "Wet",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Other", 
+                "text": "Other",
                 "idCode": "98"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "C13"
-    }, 
+    },
     {
         "answerOptions": [
             {
-                "text": "None", 
+                "text": "None",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Animal(s)", 
+                "text": "Animal(s)",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Debris", 
+                "text": "Debris",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Glare", 
+                "text": "Glare",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Non-Highway Work", 
+                "text": "Non-Highway Work",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Obstructed Crosswalks", 
+                "text": "Obstructed Crosswalks",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Obstruction in Roadway", 
+                "text": "Obstruction in Roadway",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Prior Crash", 
+                "text": "Prior Crash",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Prior Non-Recurring Incident", 
+                "text": "Prior Non-Recurring Incident",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "Regular Congestion", 
+                "text": "Regular Congestion",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Related to a Bus Stop", 
+                "text": "Related to a Bus Stop",
                 "idCode": "10"
-            }, 
+            },
             {
-                "text": "Road Surface Condition (wet, icy, snow, slush, etc.)", 
+                "text": "Road Surface Condition (wet, icy, snow, slush, etc.)",
                 "idCode": "11"
-            }, 
+            },
             {
-                "text": "Ruts, Holes, Bumps", 
+                "text": "Ruts, Holes, Bumps",
                 "idCode": "12"
-            }, 
+            },
             {
-                "text": "Shoulders (none, low, soft, high)", 
+                "text": "Shoulders (none, low, soft, high)",
                 "idCode": "13"
-            }, 
+            },
             {
-                "text": "Toll Booth/Plaza Related", 
+                "text": "Toll Booth/Plaza Related",
                 "idCode": "14"
-            }, 
+            },
             {
-                "text": "Traffic Control Device", 
+                "text": "Traffic Control Device",
                 "idCode": "15"
-            }, 
+            },
             {
-                "text": "Traffic Incident", 
+                "text": "Traffic Incident",
                 "idCode": "16"
-            }, 
+            },
             {
-                "text": "Visual Obstruction(s)", 
+                "text": "Visual Obstruction(s)",
                 "idCode": "17"
-            }, 
+            },
             {
-                "text": "Weather Conditions", 
+                "text": "Weather Conditions",
                 "idCode": "18"
-            }, 
+            },
             {
-                "text": "Work Zone (construction/maintenance/utility)", 
+                "text": "Work Zone (construction/maintenance/utility)",
                 "idCode": "19"
-            }, 
+            },
             {
-                "text": "Worn, Travel-Polished Surface", 
+                "text": "Worn, Travel-Polished Surface",
                 "idCode": "20"
             }
-        ], 
-        "helperText": "(choose up to 2)", 
-        "numOptionsAllowed": "2", 
-        "question": "Contributing Circumstances - Roadway Environment", 
-        "id": "C14", 
-        "answerType": "dropdownMultiSelect", 
+        ],
+        "helperText": "(choose up to 2)",
+        "numOptionsAllowed": "2",
+        "question": "Contributing Circumstances - Roadway Environment",
+        "id": "C14",
+        "answerType": "dropdownMultiSelect",
         "display": [
             "road"
         ]
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Relation to Junction", 
+        "answerType": "header",
+        "question": "Relation to Junction",
         "display": [
             "road"
-        ], 
+        ],
         "id": "C15"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Within Interchange Area?", 
+        "answerType": "multiButton",
+        "question": "Within Interchange Area?",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No", 
+                "text": "No",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Yes", 
+                "text": "Yes",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "C15-S1"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Specific Location", 
+        "answerType": "dropdown",
+        "question": "Specific Location",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Not an Interchange Area", 
+                "text": "Not an Interchange Area",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Acceleration/Deceleration Lane", 
+                "text": "Acceleration/Deceleration Lane",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Crossover-Related", 
+                "text": "Crossover-Related",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Driveway Access or Related", 
+                "text": "Driveway Access or Related",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Entrance/Exit Ramp or Related", 
+                "text": "Entrance/Exit Ramp or Related",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Intersection or Related", 
+                "text": "Intersection or Related",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Non-Junction", 
+                "text": "Non-Junction",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Railway Grade Crossing", 
+                "text": "Railway Grade Crossing",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Shared-Use Path or Trail", 
+                "text": "Shared-Use Path or Trail",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "Through Roadway", 
+                "text": "Through Roadway",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Other Location Not Listed Above Within an Interchange Area (median, shoulder an", 
+                "text": "Other Location Not Listed Above Within an Interchange Area (median, shoulder an",
                 "idCode": "10"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "C15-S2"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Type of Intersection", 
+        "answerType": "header",
+        "question": "Type of Intersection",
         "display": [
             "road"
-        ], 
+        ],
         "id": "C16"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Number of Approaches", 
+        "answerType": "multiButton",
+        "question": "Number of Approaches",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Not an Intersection", 
+                "text": "Not an Intersection",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "(2) Two", 
+                "text": "(2) Two",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "(3) Three", 
+                "text": "(3) Three",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "(4) Four", 
+                "text": "(4) Four",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "(5+) Five or more", 
+                "text": "(5+) Five or more",
                 "idCode": "05"
             }
-        ], 
+        ],
         "id": "C16-S1"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Overall Intersection Geometry", 
+        "answerType": "multiButton",
+        "question": "Overall Intersection Geometry",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Angled/Skewed", 
+                "text": "Angled/Skewed",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Roundabout/Traffic Circle", 
+                "text": "Roundabout/Traffic Circle",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Perpendicular", 
+                "text": "Perpendicular",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Not Applicable/Not an Intersection", 
+                "text": "Not Applicable/Not an Intersection",
                 "idCode": "97"
             }
-        ], 
+        ],
         "id": "C16-S2"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Overall Traffic Control Device", 
+        "answerType": "multiButton",
+        "question": "Overall Traffic Control Device",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Signalized", 
+                "text": "Signalized",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Stop - All Way", 
+                "text": "Stop - All Way",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Stop - Partial", 
+                "text": "Stop - Partial",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Yield", 
+                "text": "Yield",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "No Controls", 
+                "text": "No Controls",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Not Applicable/Not an Intersection", 
+                "text": "Not Applicable/Not an Intersection",
                 "idCode": "97"
             }
-        ], 
+        ],
         "id": "C16-S3"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "School Bus-Related", 
+        "answerType": "multiButton",
+        "question": "School Bus-Related",
         "display": [
             "setup"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No", 
+                "text": "No",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Yes, School Bus Directly Involved", 
+                "text": "Yes, School Bus Directly Involved",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Yes, School Bus Indirectly Involved", 
+                "text": "Yes, School Bus Indirectly Involved",
                 "idCode": "03"
             }
-        ], 
+        ],
         "id": "C17"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "helperText": "(Constrution/Maintenance/Utility)", 
-        "question": "Work Zone-Related", 
+        "answerType": "header",
+        "helperText": "(Constrution/Maintenance/Utility)",
+        "question": "Work Zone-Related",
         "display": [
             "construction"
-        ], 
+        ],
         "id": "C18"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Was the crash in a construction, mainenance, or utility work zone or was it related to activity within a work zone?", 
+        "answerType": "multiButton",
+        "question": "Was the crash in a construction, mainenance, or utility work zone or was it related to activity within a work zone?",
         "display": [
-            "setup", 
+            "setup",
             "construction"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No", 
+                "text": "No",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Yes", 
+                "text": "Yes",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "C18-S1"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Location of the Crash", 
+        "answerType": "dropdown",
+        "question": "Location of the Crash",
         "display": [
             "construction"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Before the First Work Zone Warning Sign", 
+                "text": "Before the First Work Zone Warning Sign",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Advance Warning Area", 
+                "text": "Advance Warning Area",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Transition Area", 
+                "text": "Transition Area",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Activity Area", 
+                "text": "Activity Area",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Termination Area", 
+                "text": "Termination Area",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Not Applicable/Not Within or Related to a Work Zone", 
+                "text": "Not Applicable/Not Within or Related to a Work Zone",
                 "idCode": "98"
             }
-        ], 
+        ],
         "id": "C18-S2"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Type of Work Zone", 
+        "answerType": "dropdown",
+        "question": "Type of Work Zone",
         "display": [
             "construction"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Lane Closure", 
+                "text": "Lane Closure",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Lane Shift/Crossover", 
+                "text": "Lane Shift/Crossover",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Work on Shoulder or Median", 
+                "text": "Work on Shoulder or Median",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Intermittent or Moving Work", 
+                "text": "Intermittent or Moving Work",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Other Type of Work Zone", 
+                "text": "Other Type of Work Zone",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Not Applicable/Not Within or Related to a Work Zone", 
+                "text": "Not Applicable/Not Within or Related to a Work Zone",
                 "idCode": "98"
             }
-        ], 
+        ],
         "id": "C18-S3"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Workers Present", 
+        "answerType": "multiButton",
+        "question": "Workers Present",
         "display": [
             "construction"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No", 
+                "text": "No",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Yes", 
+                "text": "Yes",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Not Applicable/Not Within or Related to a Work Zone", 
+                "text": "Not Applicable/Not Within or Related to a Work Zone",
                 "idCode": "98"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "C18-S4"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Law Enforcement Present", 
+        "answerType": "multiButton",
+        "question": "Law Enforcement Present",
         "display": [
             "construction"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No", 
+                "text": "No",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Yes", 
+                "text": "Yes",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Not Applicable/Not Within or Related to a Work Zone", 
+                "text": "Not Applicable/Not Within or Related to a Work Zone",
                 "idCode": "98"
             }
-        ], 
+        ],
         "id": "C18-S5"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Crash Severity", 
+        "answerType": "multiButton",
+        "question": "Crash Severity",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "(K) Fatal Injury**", 
+                "text": "(K) Fatal Injury**",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "(A) Suspected Serious Injury", 
+                "text": "(A) Suspected Serious Injury",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "(B) Suspected Minor Injury", 
+                "text": "(B) Suspected Minor Injury",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "(C) Possible Injury", 
+                "text": "(C) Possible Injury",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "(O) Property Damage-Only", 
+                "text": "(O) Property Damage-Only",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "C19"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Number of Motor Vehicles Involved", 
+        "answerType": "openTextBox",
+        "question": "Number of Motor Vehicles Involved",
         "display": [
             "setup"
-        ], 
+        ],
         "id": "C20"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Number of Non-Motorists", 
+        "answerType": "openTextBox",
+        "question": "Number of Non-Motorists",
         "display": [
             "setup"
-        ], 
+        ],
         "id": "C22"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Number of Non-Fatally Injured Persons", 
+        "answerType": "openTextBox",
+        "question": "Number of Non-Fatally Injured Persons",
         "display": [
             "road"
-        ], 
+        ],
         "id": "C23"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Number of Fatalities", 
+        "answerType": "openTextBox",
+        "question": "Number of Fatalities",
         "display": [
             "setup"
-        ], 
+        ],
         "id": "C24"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Alcohol Involvement", 
+        "answerType": "multiButton",
+        "question": "Alcohol Involvement",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No", 
+                "text": "No",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Yes", 
+                "text": "Yes",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "C25"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Drug Involvement", 
+        "answerType": "multiButton",
+        "question": "Drug Involvement",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No", 
+                "text": "No",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Yes", 
+                "text": "Yes",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "C26"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Day of Week", 
+        "answerType": "dropdown",
+        "question": "Day of Week",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Sunday", 
+                "text": "Sunday",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Monday", 
+                "text": "Monday",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Tuesday", 
+                "text": "Tuesday",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Wednesday", 
+                "text": "Wednesday",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Thursday", 
+                "text": "Thursday",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Friday", 
+                "text": "Friday",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Saturday", 
+                "text": "Saturday",
                 "idCode": "07"
             }
-        ], 
+        ],
         "id": "C27"
-    }, 
+    },
     {
-        "answerType": "largeTextField", 
-        "question": "Crash Description", 
+        "answerType": "largeTextField",
+        "question": "Crash Description",
         "display": [
             "road"
-        ], 
+        ],
         "id": "O1"
-    }, 
+    },
     {
-        "answerType": "largeTextField", 
-        "question": "Crash Diagram", 
+        "answerType": "largeTextField",
+        "question": "Crash Diagram",
         "display": [
             "road"
-        ], 
+        ],
         "id": "O2"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "(VIN)", 
-        "question": "Vehicle Identification Number", 
+        "answerType": "openTextBox",
+        "helperText": "(VIN)",
+        "question": "Vehicle Identification Number",
         "display": [
             "vehicle"
-        ], 
+        ],
         "id": "V1"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Motor Vehicle Unit Type and Number", 
+        "answerType": "header",
+        "question": "Motor Vehicle Unit Type and Number",
         "display": [
             "vehicle"
-        ], 
+        ],
         "id": "V2"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Type", 
+        "answerType": "multiButton",
+        "question": "Type",
         "display": [
             "vehicle"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Motor Vehicle in Transport", 
+                "text": "Motor Vehicle in Transport",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Parked Motor Vehicle", 
+                "text": "Parked Motor Vehicle",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Working Vehicle/Equipment", 
+                "text": "Working Vehicle/Equipment",
                 "idCode": "03"
             }
-        ], 
+        ],
         "id": "V2-S1"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Motor Vehicle Registration State and Year", 
+        "answerType": "header",
+        "question": "Motor Vehicle Registration State and Year",
         "display": [
             "vehicle"
-        ], 
+        ],
         "id": "V3"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Identifier", 
+        "answerType": "openTextBox",
+        "question": "Identifier",
         "display": [
-            "vehicle", 
+            "vehicle",
             "info"
-        ], 
+        ],
         "id": "V3-S1"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "Year of Motor Vehicle Registration (YYYY)", 
-        "question": "Motor Vehicle Registration", 
+        "answerType": "openTextBox",
+        "helperText": "Year of Motor Vehicle Registration (YYYY)",
+        "question": "Motor Vehicle Registration",
         "display": [
-            "vehicle", 
+            "vehicle",
             "info"
-        ], 
+        ],
         "id": "V3-S2"
-    }, 
+    },
     {
-        "autoMethod": "plateCamera", 
-        "answerType": "advancedOpenTextBox", 
-        "question": "Motor Vehicle License Plate Number", 
+        "autoMethod": "plateCamera",
+        "answerType": "advancedOpenTextBox",
+        "question": "Motor Vehicle License Plate Number",
         "display": [
             "vehicle"
-        ], 
+        ],
         "id": "V4"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Motor Vehicle Make", 
+        "answerType": "openTextBox",
+        "question": "Motor Vehicle Make",
         "display": [
-            "vehicle", 
+            "vehicle",
             "info"
-        ], 
+        ],
         "id": "V5"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "(YYYY)", 
-        "question": "Motor Vehicle Model Year", 
+        "answerType": "openTextBox",
+        "helperText": "(YYYY)",
+        "question": "Motor Vehicle Model Year",
         "display": [
-            "vehicle", 
+            "vehicle",
             "info"
-        ], 
+        ],
         "id": "V6"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Motor Vehicle Model", 
+        "answerType": "openTextBox",
+        "question": "Motor Vehicle Model",
         "display": [
-            "vehicle", 
+            "vehicle",
             "info"
-        ], 
+        ],
         "id": "V7"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Motor Vehicle Body Type Category", 
+        "answerType": "header",
+        "question": "Motor Vehicle Body Type Category",
         "display": [
             "vehicle"
-        ], 
+        ],
         "id": "V8"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Body Type Category", 
+        "answerType": "openTextBox",
+        "question": "Body Type Category",
         "display": [
             "vehicle"
-        ], 
+        ],
         "id": "V8-S1"
-    }, 
+    },
     {
         "answerOptions": [
             {
-                "text": "Not Applicable (vehicle with no trailing units)", 
+                "text": "Not Applicable (vehicle with no trailing units)",
                 "idCode": "97"
             }
-        ], 
-        "helperText": "Note: GVWR is used for single-unit trucks and other body types. GCWR is used for combination trucks or any vehicle with a trailing unit", 
-        "question": "Number of Trailing Units", 
-        "id": "V8-S2", 
-        "answerType": "multiButton", 
+        ],
+        "helperText": "Note: GVWR is used for single-unit trucks and other body types. GCWR is used for combination trucks or any vehicle with a trailing unit",
+        "question": "Number of Trailing Units",
+        "id": "V8-S2",
+        "answerType": "multiButton",
         "display": [
             "lvhm"
         ]
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Vehicle Size", 
+        "answerType": "multiButton",
+        "question": "Vehicle Size",
         "display": [
             "vehicle"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Light (Less than 10,000 lbs. GVWR/GCWR)", 
+                "text": "Light (Less than 10,000 lbs. GVWR/GCWR)",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Medium (10,001 - 26,000 lbs. GVWR/GCWR)**", 
+                "text": "Medium (10,001 - 26,000 lbs. GVWR/GCWR)**",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Heavy (Greater than 26,000 lbs. GVWR/GCWR)**", 
+                "text": "Heavy (Greater than 26,000 lbs. GVWR/GCWR)**",
                 "idCode": "03"
             }
-        ], 
+        ],
         "id": "V8-S3"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Did this motor vehicle display a hazardous materials (HM) placard?", 
+        "answerType": "multiButton",
+        "question": "Did this motor vehicle display a hazardous materials (HM) placard?",
         "display": [
             "lvhm"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No", 
+                "text": "No",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Yes**", 
+                "text": "Yes**",
                 "idCode": "02"
             }
-        ], 
+        ],
         "id": "V8-S4"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Total Occupants in Motor Vehicle", 
+        "answerType": "openTextBox",
+        "question": "Total Occupants in Motor Vehicle",
         "display": [
             "vehicle"
-        ], 
+        ],
         "id": "V9"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Special Function of Motor Vehicle in Transport", 
+        "answerType": "dropdown",
+        "question": "Special Function of Motor Vehicle in Transport",
         "display": [
             "vehicle"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No Special Function", 
+                "text": "No Special Function",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Bus - School (Public or Private)", 
+                "text": "Bus - School (Public or Private)",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Bus - Childcare/Daycare", 
+                "text": "Bus - Childcare/Daycare",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Bus - Transit/Commuter", 
+                "text": "Bus - Transit/Commuter",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Bus - Charter/Tour", 
+                "text": "Bus - Charter/Tour",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Bus - Intercity", 
+                "text": "Bus - Intercity",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Bus - Shuttle", 
+                "text": "Bus - Shuttle",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Bus - Other", 
+                "text": "Bus - Other",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Farm Vehicle", 
+                "text": "Farm Vehicle",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "Fire Truck", 
+                "text": "Fire Truck",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Highway/Maintenance", 
+                "text": "Highway/Maintenance",
                 "idCode": "10"
-            }, 
+            },
             {
-                "text": "Mail Carrier", 
+                "text": "Mail Carrier",
                 "idCode": "11"
-            }, 
+            },
             {
-                "text": "Military", 
+                "text": "Military",
                 "idCode": "12"
-            }, 
+            },
             {
-                "text": "Ambulance", 
+                "text": "Ambulance",
                 "idCode": "13"
-            }, 
+            },
             {
-                "text": "Police", 
+                "text": "Police",
                 "idCode": "14"
-            }, 
+            },
             {
-                "text": "Public Utility", 
+                "text": "Public Utility",
                 "idCode": "15"
-            }, 
+            },
             {
-                "text": "Non-Transport Emergency Services Vehicle", 
+                "text": "Non-Transport Emergency Services Vehicle",
                 "idCode": "16"
-            }, 
+            },
             {
-                "text": "Safety Service Patrols - Incident Response", 
+                "text": "Safety Service Patrols - Incident Response",
                 "idCode": "17"
-            }, 
+            },
             {
-                "text": "Other Incident Response", 
+                "text": "Other Incident Response",
                 "idCode": "18"
-            }, 
+            },
             {
-                "text": "Rental Truck (Over 10,000 lbs.)", 
+                "text": "Rental Truck (Over 10,000 lbs.)",
                 "idCode": "19"
-            }, 
+            },
             {
-                "text": "Towing - Incident Response", 
+                "text": "Towing - Incident Response",
                 "idCode": "20"
-            }, 
+            },
             {
-                "text": "Truck Acting as Crash Attenuator", 
+                "text": "Truck Acting as Crash Attenuator",
                 "idCode": "21"
-            }, 
+            },
             {
-                "text": "Taxi", 
+                "text": "Taxi",
                 "idCode": "22"
-            }, 
+            },
             {
-                "text": "Vehicle Used for Electronic Ride-hailing (transportation network company)", 
+                "text": "Vehicle Used for Electronic Ride-hailing (transportation network company)",
                 "idCode": "23"
-            }, 
+            },
             {
-                "text": "Other", 
+                "text": "Other",
                 "idCode": "98"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "V10"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Emergency Motor Vehicle Use", 
+        "answerType": "dropdown",
+        "question": "Emergency Motor Vehicle Use",
         "display": [
             "vehicle"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Non-Emergency, Non-Transport", 
+                "text": "Non-Emergency, Non-Transport",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Non-Emergency Transport", 
+                "text": "Non-Emergency Transport",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Emergency Operation, Emergency Warning Equipment Not in Use", 
+                "text": "Emergency Operation, Emergency Warning Equipment Not in Use",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Emergency Operation, Emergency Warning Equipment in Use", 
+                "text": "Emergency Operation, Emergency Warning Equipment in Use",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Not Applicable", 
+                "text": "Not Applicable",
                 "idCode": "97"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "V11"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Motor Vehicle Posted/ Statutory Speed Limit", 
+        "answerType": "openTextBox",
+        "question": "Motor Vehicle Posted/ Statutory Speed Limit",
         "display": [
             "vehicle"
-        ], 
+        ],
         "id": "V12"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Direction of Travel Before Crash", 
+        "answerType": "multiButton",
+        "question": "Direction of Travel Before Crash",
         "display": [
             "vehicle"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Not on Roadway", 
+                "text": "Not on Roadway",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Northbound", 
+                "text": "Northbound",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Eastbound", 
+                "text": "Eastbound",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Southbound", 
+                "text": "Southbound",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Westbound", 
+                "text": "Westbound",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "V13"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Trafficway Description", 
+        "answerType": "header",
+        "question": "Trafficway Description",
         "display": [
             "road"
-        ], 
+        ],
         "id": "V14"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Travel Directions", 
+        "answerType": "multiButton",
+        "question": "Travel Directions",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "One-Way", 
+                "text": "One-Way",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Two-Way", 
+                "text": "Two-Way",
                 "idCode": "02"
             }
-        ], 
+        ],
         "id": "V14-S1"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Divided?", 
+        "answerType": "dropdown",
+        "question": "Divided?",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Not Divided", 
+                "text": "Not Divided",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Not Divided, With a Continuous Left-Turn Lane", 
+                "text": "Not Divided, With a Continuous Left-Turn Lane",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Divided, Flush Median (greater than 4ft wide)", 
+                "text": "Divided, Flush Median (greater than 4ft wide)",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Divided, Raised Median (curbed)", 
+                "text": "Divided, Raised Median (curbed)",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Divided, Depressed Median", 
+                "text": "Divided, Depressed Median",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "V14-S2"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Barrier Type", 
+        "answerType": "multiButton",
+        "question": "Barrier Type",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No Barrier", 
+                "text": "No Barrier",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Cable Barrier", 
+                "text": "Cable Barrier",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Concrete Barrier (e.g. Jersey Barrier)", 
+                "text": "Concrete Barrier (e.g. Jersey Barrier)",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Earth Embankment", 
+                "text": "Earth Embankment",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Guardrail", 
+                "text": "Guardrail",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Other", 
+                "text": "Other",
                 "idCode": "98"
             }
-        ], 
+        ],
         "id": "V14-S3"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "HOV/HOT Lanes", 
+        "answerType": "dropdown",
+        "question": "HOV/HOT Lanes",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "None present", 
+                "text": "None present",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Separated, Barrier, Flush (greater than 4ft wide), Raised or Depressed Median", 
+                "text": "Separated, Barrier, Flush (greater than 4ft wide), Raised or Depressed Median",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Not Separated, Painted Pavement Markings, Post-Mounted Delineators", 
+                "text": "Not Separated, Painted Pavement Markings, Post-Mounted Delineators",
                 "idCode": "02"
             }
-        ], 
+        ],
         "id": "V14-S4"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Crash Related to HOV/HOT Lane?", 
+        "answerType": "multiButton",
+        "question": "Crash Related to HOV/HOT Lane?",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No", 
+                "text": "No",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Yes", 
+                "text": "Yes",
                 "idCode": "02"
             }
-        ], 
+        ],
         "id": "V14-S5"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Total Lanes in Roadway", 
+        "answerType": "header",
+        "question": "Total Lanes in Roadway",
         "display": [
             "road"
-        ], 
+        ],
         "id": "V15"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "(specify 2 values)", 
-        "question": "Undivided Trafficways", 
+        "answerType": "openTextBox",
+        "helperText": "(specify 2 values)",
+        "question": "Undivided Trafficways",
         "display": [
             "road"
-        ], 
+        ],
         "id": "V15"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "(specify 2 values)", 
-        "question": "Divided Trafficways", 
+        "answerType": "openTextBox",
+        "helperText": "(specify 2 values)",
+        "question": "Divided Trafficways",
         "display": [
             "road"
-        ], 
+        ],
         "id": "V15"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Roadway Alignment and Grade", 
+        "answerType": "header",
+        "question": "Roadway Alignment and Grade",
         "display": [
             "road"
-        ], 
+        ],
         "id": "V16"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Horizontal Alignment", 
+        "answerType": "multiButton",
+        "question": "Horizontal Alignment",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Straight", 
+                "text": "Straight",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Curve Left", 
+                "text": "Curve Left",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Curve Right", 
+                "text": "Curve Right",
                 "idCode": "03"
             }
-        ], 
+        ],
         "id": "V16-S1"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Grade", 
+        "answerType": "multiButton",
+        "question": "Grade",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Level", 
+                "text": "Level",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Uphill", 
+                "text": "Uphill",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Hillcrest", 
+                "text": "Hillcrest",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Downhill", 
+                "text": "Downhill",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Sag (bottom)", 
+                "text": "Sag (bottom)",
                 "idCode": "05"
             }
-        ], 
+        ],
         "id": "V16-S2"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Traffic Control Device Type", 
+        "answerType": "header",
+        "question": "Traffic Control Device Type",
         "display": [
             "road"
-        ], 
+        ],
         "id": "V17"
-    }, 
+    },
     {
         "answerOptions": [
             {
-                "text": "No Controls", 
+                "text": "No Controls",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Person (including flagger, law enforcement, crossing guard, etc)", 
+                "text": "Person (including flagger, law enforcement, crossing guard, etc)",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Bicycle Crossing Sign", 
+                "text": "Bicycle Crossing Sign",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "\"Curve Ahead\" Warning Sign", 
+                "text": "\"Curve Ahead\" Warning Sign",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "\"Intersection Ahead\" Warning Sign", 
+                "text": "\"Intersection Ahead\" Warning Sign",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Other Warning Sign", 
+                "text": "Other Warning Sign",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Pedestrian Crossing Sign", 
+                "text": "Pedestrian Crossing Sign",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Railroad Crossing Sign", 
+                "text": "Railroad Crossing Sign",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "\"Reduce Speed Ahead\" Warning Sign", 
+                "text": "\"Reduce Speed Ahead\" Warning Sign",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "School Zone Sign", 
+                "text": "School Zone Sign",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Stop Sign", 
+                "text": "Stop Sign",
                 "idCode": "10"
-            }, 
+            },
             {
-                "text": "Yield Sign", 
+                "text": "Yield Sign",
                 "idCode": "11"
-            }, 
+            },
             {
-                "text": "Flashing Railroad Crossing Signal (may include gates)", 
+                "text": "Flashing Railroad Crossing Signal (may include gates)",
                 "idCode": "12"
-            }, 
+            },
             {
-                "text": "Flashing School Zone Signal", 
+                "text": "Flashing School Zone Signal",
                 "idCode": "13"
-            }, 
+            },
             {
-                "text": "Flashing Traffic Control Signal", 
+                "text": "Flashing Traffic Control Signal",
                 "idCode": "14"
-            }, 
+            },
             {
-                "text": "Lane Use Control Signal", 
+                "text": "Lane Use Control Signal",
                 "idCode": "15"
-            }, 
+            },
             {
-                "text": "Other Signal", 
+                "text": "Other Signal",
                 "idCode": "16"
-            }, 
+            },
             {
-                "text": "Ramp Meter Signal", 
+                "text": "Ramp Meter Signal",
                 "idCode": "17"
-            }, 
+            },
             {
-                "text": "Traffic Control Signal", 
+                "text": "Traffic Control Signal",
                 "idCode": "18"
-            }, 
+            },
             {
-                "text": "Bicycle Crossing", 
+                "text": "Bicycle Crossing",
                 "idCode": "19"
-            }, 
+            },
             {
-                "text": "Other Pavement Marking (excluding edgelines, centerlines, or lane lines)", 
+                "text": "Other Pavement Marking (excluding edgelines, centerlines, or lane lines)",
                 "idCode": "20"
-            }, 
+            },
             {
-                "text": "Pedestrian Crossing", 
+                "text": "Pedestrian Crossing",
                 "idCode": "21"
-            }, 
+            },
             {
-                "text": "Railroad Crossing", 
+                "text": "Railroad Crossing",
                 "idCode": "22"
-            }, 
+            },
             {
-                "text": "School Zone", 
+                "text": "School Zone",
                 "idCode": "23"
-            }, 
+            },
             {
-                "text": "No Controls", 
+                "text": "No Controls",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Person (including flagger, law enforcement, crossing guard, etc.)", 
+                "text": "Person (including flagger, law enforcement, crossing guard, etc.)",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Other", 
+                "text": "Other",
                 "idCode": "98"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
-        "helperText": "(choose up to 4)", 
-        "numOptionsAllowed": "4", 
-        "question": "TCD Type(s)", 
-        "id": "V17-S1", 
-        "answerType": "dropdownMultiSelect", 
+        ],
+        "helperText": "(choose up to 4)",
+        "numOptionsAllowed": "4",
+        "question": "TCD Type(s)",
+        "id": "V17-S1",
+        "answerType": "dropdownMultiSelect",
         "display": [
             "road"
         ]
-    }, 
+    },
     {
         "answerOptions": [
             {
-                "text": "None inoperative or missing", 
+                "text": "None inoperative or missing",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Person (including flagger, law enforcement, crossing guard, etc)", 
+                "text": "Person (including flagger, law enforcement, crossing guard, etc)",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Bicycle Crossing Sign", 
+                "text": "Bicycle Crossing Sign",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "\"Curve Ahead\" Warning Sign", 
+                "text": "\"Curve Ahead\" Warning Sign",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "\"Intersection Ahead\" Warning Sign", 
+                "text": "\"Intersection Ahead\" Warning Sign",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Other Warning Sign", 
+                "text": "Other Warning Sign",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Pedestrian Crossing Sign", 
+                "text": "Pedestrian Crossing Sign",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Railroad Crossing Sign", 
+                "text": "Railroad Crossing Sign",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "\"Reduce Speed Ahead\" Warning Sign", 
+                "text": "\"Reduce Speed Ahead\" Warning Sign",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "School Zone Sign", 
+                "text": "School Zone Sign",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Stop Sign", 
+                "text": "Stop Sign",
                 "idCode": "10"
-            }, 
+            },
             {
-                "text": "Yield Sign", 
+                "text": "Yield Sign",
                 "idCode": "11"
-            }, 
+            },
             {
-                "text": "Flashing Railroad Crossing Signal (may include gates)", 
+                "text": "Flashing Railroad Crossing Signal (may include gates)",
                 "idCode": "12"
-            }, 
+            },
             {
-                "text": "Flashing School Zone Signal", 
+                "text": "Flashing School Zone Signal",
                 "idCode": "13"
-            }, 
+            },
             {
-                "text": "Flashing Traffic Control Signal", 
+                "text": "Flashing Traffic Control Signal",
                 "idCode": "14"
-            }, 
+            },
             {
-                "text": "Lane Use Control Signal", 
+                "text": "Lane Use Control Signal",
                 "idCode": "15"
-            }, 
+            },
             {
-                "text": "Other Signal", 
+                "text": "Other Signal",
                 "idCode": "16"
-            }, 
+            },
             {
-                "text": "Ramp Meter Signal", 
+                "text": "Ramp Meter Signal",
                 "idCode": "17"
-            }, 
+            },
             {
-                "text": "Traffic Control Signal", 
+                "text": "Traffic Control Signal",
                 "idCode": "18"
-            }, 
+            },
             {
-                "text": "Bicycle Crossing", 
+                "text": "Bicycle Crossing",
                 "idCode": "19"
-            }, 
+            },
             {
-                "text": "Other Pavement Marking (excluding edgelines, centerlines, or lane lines)", 
+                "text": "Other Pavement Marking (excluding edgelines, centerlines, or lane lines)",
                 "idCode": "20"
-            }, 
+            },
             {
-                "text": "Pedestrian Crossing", 
+                "text": "Pedestrian Crossing",
                 "idCode": "21"
-            }, 
+            },
             {
-                "text": "Railroad Crossing", 
+                "text": "Railroad Crossing",
                 "idCode": "22"
-            }, 
+            },
             {
-                "text": "School Zone", 
+                "text": "School Zone",
                 "idCode": "23"
-            }, 
+            },
             {
-                "text": "No Controls", 
+                "text": "No Controls",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Person (including flagger, law enforcement, crossing guard, etc.)", 
+                "text": "Person (including flagger, law enforcement, crossing guard, etc.)",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Other", 
+                "text": "Other",
                 "idCode": "98"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
-        "helperText": "(choose up to 4)", 
-        "numOptionsAllowed": "4", 
-        "question": "Are any Inoperative or Missing?", 
-        "id": "V17-S2", 
-        "answerType": "dropdownMultiSelect", 
+        ],
+        "helperText": "(choose up to 4)",
+        "numOptionsAllowed": "4",
+        "question": "Are any Inoperative or Missing?",
+        "id": "V17-S2",
+        "answerType": "dropdownMultiSelect",
         "display": [
             "road"
         ]
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Motor Vehicle Maneuver/Action", 
+        "answerType": "dropdown",
+        "question": "Motor Vehicle Maneuver/Action",
         "display": [
             "vehicle"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Backing", 
+                "text": "Backing",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Changing Lanes", 
+                "text": "Changing Lanes",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Entering Traffic Lane", 
+                "text": "Entering Traffic Lane",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Leaving Traffic Lane", 
+                "text": "Leaving Traffic Lane",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Making U-Turn", 
+                "text": "Making U-Turn",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Movements Essentially Straight Ahead", 
+                "text": "Movements Essentially Straight Ahead",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Negotiating a Curve", 
+                "text": "Negotiating a Curve",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Overtaking/Passing", 
+                "text": "Overtaking/Passing",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "Parked", 
+                "text": "Parked",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Slowing", 
+                "text": "Slowing",
                 "idCode": "10"
-            }, 
+            },
             {
-                "text": "Stopped in Traffic", 
+                "text": "Stopped in Traffic",
                 "idCode": "11"
-            }, 
+            },
             {
-                "text": "Turning Left", 
+                "text": "Turning Left",
                 "idCode": "12"
-            }, 
+            },
             {
-                "text": "Turning Right", 
+                "text": "Turning Right",
                 "idCode": "13"
-            }, 
+            },
             {
-                "text": "Other", 
+                "text": "Other",
                 "idCode": "98"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "V18"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Vehicle Damage", 
+        "answerType": "header",
+        "question": "Vehicle Damage",
         "display": [
             "vehicle"
-        ], 
+        ],
         "id": "V19"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Initial Point of Contact", 
+        "answerType": "dropdown",
+        "question": "Initial Point of Contact",
         "display": [
             "vehicle"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Non-Collision", 
+                "text": "Non-Collision",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "(Clock Position) 1", 
+                "text": "(Clock Position) 1",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "(Clock Position) 2", 
+                "text": "(Clock Position) 2",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "(Clock Position) 3", 
+                "text": "(Clock Position) 3",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "(Clock Position) 4", 
+                "text": "(Clock Position) 4",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "(Clock Position) 5", 
+                "text": "(Clock Position) 5",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "(Clock Position) 6", 
+                "text": "(Clock Position) 6",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "(Clock Position) 7", 
+                "text": "(Clock Position) 7",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "(Clock Position) 8", 
+                "text": "(Clock Position) 8",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "(Clock Position) 9", 
+                "text": "(Clock Position) 9",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "(Clock Position) 10", 
+                "text": "(Clock Position) 10",
                 "idCode": "10"
-            }, 
+            },
             {
-                "text": "(Clock Position) 11", 
+                "text": "(Clock Position) 11",
                 "idCode": "11"
-            }, 
+            },
             {
-                "text": "(Clock Position) 12", 
+                "text": "(Clock Position) 12",
                 "idCode": "12"
-            }, 
+            },
             {
-                "text": "Top", 
+                "text": "Top",
                 "idCode": "13"
-            }, 
+            },
             {
-                "text": "Undercarriage", 
+                "text": "Undercarriage",
                 "idCode": "14"
-            }, 
+            },
             {
-                "text": "Cargo Loss", 
+                "text": "Cargo Loss",
                 "idCode": "15"
-            }, 
+            },
             {
-                "text": "Vehicle Not at Scene", 
+                "text": "Vehicle Not at Scene",
                 "idCode": "16"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "V19-S1"
-    }, 
+    },
     {
         "answerOptions": [
             {
-                "text": "No Damage", 
+                "text": "No Damage",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "(Clock Position) 1", 
+                "text": "(Clock Position) 1",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "(Clock Position) 2", 
+                "text": "(Clock Position) 2",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "(Clock Position) 3", 
+                "text": "(Clock Position) 3",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "(Clock Position) 4", 
+                "text": "(Clock Position) 4",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "(Clock Position) 5", 
+                "text": "(Clock Position) 5",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "(Clock Position) 6", 
+                "text": "(Clock Position) 6",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "(Clock Position) 7", 
+                "text": "(Clock Position) 7",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "(Clock Position) 8", 
+                "text": "(Clock Position) 8",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "(Clock Position) 9", 
+                "text": "(Clock Position) 9",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "(Clock Position) 10", 
+                "text": "(Clock Position) 10",
                 "idCode": "10"
-            }, 
+            },
             {
-                "text": "(Clock Position) 11", 
+                "text": "(Clock Position) 11",
                 "idCode": "11"
-            }, 
+            },
             {
-                "text": "(Clock Position) 12", 
+                "text": "(Clock Position) 12",
                 "idCode": "12"
-            }, 
+            },
             {
-                "text": "Top", 
+                "text": "Top",
                 "idCode": "13"
-            }, 
+            },
             {
-                "text": "Undercarriage", 
+                "text": "Undercarriage",
                 "idCode": "14"
-            }, 
+            },
             {
-                "text": "All Areas", 
+                "text": "All Areas",
                 "idCode": "15"
-            }, 
+            },
             {
-                "text": "Vehicle Not at Scene", 
+                "text": "Vehicle Not at Scene",
                 "idCode": "16"
             }
-        ], 
-        "helperText": "(choose up to 13)", 
-        "numOptionsAllowed": "13", 
-        "question": "Location of Damage Area(s)", 
-        "id": "V19-S2", 
-        "answerType": "dropdownMultiSelect", 
+        ],
+        "helperText": "(choose up to 13)",
+        "numOptionsAllowed": "13",
+        "question": "Location of Damage Area(s)",
+        "id": "V19-S2",
+        "answerType": "dropdownMultiSelect",
         "display": [
             "vehicle"
         ]
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Resulting Extent of Damage", 
+        "answerType": "multiButton",
+        "question": "Resulting Extent of Damage",
         "display": [
-            "vehicle", 
+            "vehicle",
             "info"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No Damage", 
+                "text": "No Damage",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Minor Damage", 
+                "text": "Minor Damage",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Functional Damage", 
+                "text": "Functional Damage",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Disabling Damage", 
+                "text": "Disabling Damage",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Vehicle Not at Scene", 
+                "text": "Vehicle Not at Scene",
                 "idCode": "04"
             }
-        ], 
+        ],
         "id": "V19-S3"
-    }, 
+    },
     {
         "answerOptions": [
             {
-                "text": "Cross Centerline", 
+                "text": "Cross Centerline",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Cross Median", 
+                "text": "Cross Median",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "End Departure (T-intersection, dead-end, etc.)", 
+                "text": "End Departure (T-intersection, dead-end, etc.)",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Downhill Runaway", 
+                "text": "Downhill Runaway",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Equipment Failure (blown tire, brake failure, etc.)", 
+                "text": "Equipment Failure (blown tire, brake failure, etc.)",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Ran Off Roadway Left", 
+                "text": "Ran Off Roadway Left",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Ran Off Roadway Right", 
+                "text": "Ran Off Roadway Right",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Reentering Roadway", 
+                "text": "Reentering Roadway",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "Separation of Units", 
+                "text": "Separation of Units",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Other Non-Harmful Event", 
+                "text": "Other Non-Harmful Event",
                 "idCode": "10"
-            }, 
+            },
             {
-                "text": "Cargo/Equipment Loss or Shift", 
+                "text": "Cargo/Equipment Loss or Shift",
                 "idCode": "11"
-            }, 
+            },
             {
-                "text": "Fell/Jumped From Motor Vehicle", 
+                "text": "Fell/Jumped From Motor Vehicle",
                 "idCode": "12"
-            }, 
+            },
             {
-                "text": "Fire/Explosion", 
+                "text": "Fire/Explosion",
                 "idCode": "13"
-            }, 
+            },
             {
-                "text": "Immersion, Full or Partial", 
+                "text": "Immersion, Full or Partial",
                 "idCode": "14"
-            }, 
+            },
             {
-                "text": "Jackknife", 
+                "text": "Jackknife",
                 "idCode": "15"
-            }, 
+            },
             {
-                "text": "Other Non-Collision Harmful Event", 
+                "text": "Other Non-Collision Harmful Event",
                 "idCode": "16"
-            }, 
+            },
             {
-                "text": "Overturn/Rollover", 
+                "text": "Overturn/Rollover",
                 "idCode": "17"
-            }, 
+            },
             {
-                "text": "Thrown or Falling Object", 
+                "text": "Thrown or Falling Object",
                 "idCode": "18"
-            }, 
+            },
             {
-                "text": "Animal (live)", 
+                "text": "Animal (live)",
                 "idCode": "19"
-            }, 
+            },
             {
-                "text": "Motor Vehicle in Transport", 
+                "text": "Motor Vehicle in Transport",
                 "idCode": "20"
-            }, 
+            },
             {
-                "text": "Other Non-Fixed Object", 
+                "text": "Other Non-Fixed Object",
                 "idCode": "21"
-            }, 
+            },
             {
-                "text": "Other Non-Motorist", 
+                "text": "Other Non-Motorist",
                 "idCode": "22"
-            }, 
+            },
             {
-                "text": "Parked Motor Vehicle", 
+                "text": "Parked Motor Vehicle",
                 "idCode": "23"
-            }, 
+            },
             {
-                "text": "Pedalcycle", 
+                "text": "Pedalcycle",
                 "idCode": "24"
-            }, 
+            },
             {
-                "text": "Pedestrian", 
+                "text": "Pedestrian",
                 "idCode": "25"
-            }, 
+            },
             {
-                "text": "Railway Vehicle (train, engine)", 
+                "text": "Railway Vehicle (train, engine)",
                 "idCode": "26"
-            }, 
+            },
             {
-                "text": "Strikes Object at Rest from MV in Transport", 
+                "text": "Strikes Object at Rest from MV in Transport",
                 "idCode": "27"
-            }, 
+            },
             {
-                "text": "Struck by Falling, Shifting Cargo or Anything Set in Motion by Motor Vehicle", 
+                "text": "Struck by Falling, Shifting Cargo or Anything Set in Motion by Motor Vehicle",
                 "idCode": "28"
-            }, 
+            },
             {
-                "text": "Work Zone/Maintenance Equipment", 
+                "text": "Work Zone/Maintenance Equipment",
                 "idCode": "29"
-            }, 
+            },
             {
-                "text": "Bridge Overhead Structure", 
+                "text": "Bridge Overhead Structure",
                 "idCode": "30"
-            }, 
+            },
             {
-                "text": "Bridge Pier or Support", 
+                "text": "Bridge Pier or Support",
                 "idCode": "31"
-            }, 
+            },
             {
-                "text": "Bridge Rail", 
+                "text": "Bridge Rail",
                 "idCode": "32"
-            }, 
+            },
             {
-                "text": "Cable Barrier", 
+                "text": "Cable Barrier",
                 "idCode": "33"
-            }, 
+            },
             {
-                "text": "Concrete Traffic Barrier", 
+                "text": "Concrete Traffic Barrier",
                 "idCode": "34"
-            }, 
+            },
             {
-                "text": "Culvert", 
+                "text": "Culvert",
                 "idCode": "35"
-            }, 
+            },
             {
-                "text": "Curb", 
+                "text": "Curb",
                 "idCode": "36"
-            }, 
+            },
             {
-                "text": "Ditch", 
+                "text": "Ditch",
                 "idCode": "37"
-            }, 
+            },
             {
-                "text": "Embankment", 
+                "text": "Embankment",
                 "idCode": "38"
-            }, 
+            },
             {
-                "text": "Fence", 
+                "text": "Fence",
                 "idCode": "39"
-            }, 
+            },
             {
-                "text": "Guardrail End Terminal", 
+                "text": "Guardrail End Terminal",
                 "idCode": "40"
-            }, 
+            },
             {
-                "text": "Guardrail Face", 
+                "text": "Guardrail Face",
                 "idCode": "41"
-            }, 
+            },
             {
-                "text": "Impact Attenuator/Crash Cushion", 
+                "text": "Impact Attenuator/Crash Cushion",
                 "idCode": "42"
-            }, 
+            },
             {
-                "text": "Mailbox", 
+                "text": "Mailbox",
                 "idCode": "43"
-            }, 
+            },
             {
-                "text": "Other Fixed Object (wall, building, tunnel, etc.)", 
+                "text": "Other Fixed Object (wall, building, tunnel, etc.)",
                 "idCode": "44"
-            }, 
+            },
             {
-                "text": "Other Post, Pole or Support", 
+                "text": "Other Post, Pole or Support",
                 "idCode": "45"
-            }, 
+            },
             {
-                "text": "Other Traffic Barrier", 
+                "text": "Other Traffic Barrier",
                 "idCode": "46"
-            }, 
+            },
             {
-                "text": "Traffic Sign Support", 
+                "text": "Traffic Sign Support",
                 "idCode": "47"
-            }, 
+            },
             {
-                "text": "Traffic Signal Support", 
+                "text": "Traffic Signal Support",
                 "idCode": "48"
-            }, 
+            },
             {
-                "text": "Tree (standing)", 
+                "text": "Tree (standing)",
                 "idCode": "49"
-            }, 
+            },
             {
-                "text": "Utility Pole/Light Support", 
+                "text": "Utility Pole/Light Support",
                 "idCode": "50"
-            }, 
+            },
             {
-                "text": "Unknown Fixed Object", 
+                "text": "Unknown Fixed Object",
                 "idCode": "51"
             }
-        ], 
-        "helperText": "(choose up to 4)", 
-        "numOptionsAllowed": "4", 
-        "question": "Sequence of Events", 
-        "id": "V20", 
-        "answerType": "dropdownMultiSelect", 
+        ],
+        "helperText": "(choose up to 4)",
+        "numOptionsAllowed": "4",
+        "question": "Sequence of Events",
+        "id": "V20",
+        "answerType": "dropdownMultiSelect",
         "display": [
             "vehicle"
         ]
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Most Harmful Event for this Motor Vehicle", 
+        "answerType": "dropdown",
+        "question": "Most Harmful Event for this Motor Vehicle",
         "display": [
             "vehicle"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Cargo/Equipment Loss or Shift", 
+                "text": "Cargo/Equipment Loss or Shift",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Fell/Jumped From Motor Vehicle", 
+                "text": "Fell/Jumped From Motor Vehicle",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Fire/Explosion", 
+                "text": "Fire/Explosion",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Immersion, Full or Partial", 
+                "text": "Immersion, Full or Partial",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Jackknife", 
+                "text": "Jackknife",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Other Non-Collision Harmful Event", 
+                "text": "Other Non-Collision Harmful Event",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Overturn/Rollover", 
+                "text": "Overturn/Rollover",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Thrown or Falling Object", 
+                "text": "Thrown or Falling Object",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "Animal (live)", 
+                "text": "Animal (live)",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Motor Vehicle in Transport", 
+                "text": "Motor Vehicle in Transport",
                 "idCode": "10"
-            }, 
+            },
             {
-                "text": "Other Non-Fixed Object", 
+                "text": "Other Non-Fixed Object",
                 "idCode": "11"
-            }, 
+            },
             {
-                "text": "Other Non-Motorist", 
+                "text": "Other Non-Motorist",
                 "idCode": "12"
-            }, 
+            },
             {
-                "text": "Parked Motor Vehicle", 
+                "text": "Parked Motor Vehicle",
                 "idCode": "13"
-            }, 
+            },
             {
-                "text": "Pedalcycle", 
+                "text": "Pedalcycle",
                 "idCode": "14"
-            }, 
+            },
             {
-                "text": "Pedestrian", 
+                "text": "Pedestrian",
                 "idCode": "15"
-            }, 
+            },
             {
-                "text": "Railway Vehicle (train, engine)", 
+                "text": "Railway Vehicle (train, engine)",
                 "idCode": "16"
-            }, 
+            },
             {
-                "text": "Strikes Object at Rest from MV in Transport", 
+                "text": "Strikes Object at Rest from MV in Transport",
                 "idCode": "17"
-            }, 
+            },
             {
-                "text": "Struck by Falling, Shifting Cargo or Anything Set in Motion by Motor Vehicle", 
+                "text": "Struck by Falling, Shifting Cargo or Anything Set in Motion by Motor Vehicle",
                 "idCode": "18"
-            }, 
+            },
             {
-                "text": "Work Zone / Maintenance Equipment", 
+                "text": "Work Zone / Maintenance Equipment",
                 "idCode": "19"
-            }, 
+            },
             {
-                "text": "Bridge Overhead Structure", 
+                "text": "Bridge Overhead Structure",
                 "idCode": "20"
-            }, 
+            },
             {
-                "text": "Bridge Pier or Support", 
+                "text": "Bridge Pier or Support",
                 "idCode": "21"
-            }, 
+            },
             {
-                "text": "Bridge Rail", 
+                "text": "Bridge Rail",
                 "idCode": "22"
-            }, 
+            },
             {
-                "text": "Cable Barrier", 
+                "text": "Cable Barrier",
                 "idCode": "23"
-            }, 
+            },
             {
-                "text": "Concrete Traffic Barrier", 
+                "text": "Concrete Traffic Barrier",
                 "idCode": "24"
-            }, 
+            },
             {
-                "text": "Culvert", 
+                "text": "Culvert",
                 "idCode": "25"
-            }, 
+            },
             {
-                "text": "Curb", 
+                "text": "Curb",
                 "idCode": "26"
-            }, 
+            },
             {
-                "text": "Ditch", 
+                "text": "Ditch",
                 "idCode": "27"
-            }, 
+            },
             {
-                "text": "Embankment", 
+                "text": "Embankment",
                 "idCode": "28"
-            }, 
+            },
             {
-                "text": "Fence", 
+                "text": "Fence",
                 "idCode": "29"
-            }, 
+            },
             {
-                "text": "Guardrail End Terminal", 
+                "text": "Guardrail End Terminal",
                 "idCode": "30"
-            }, 
+            },
             {
-                "text": "Guardrail Face", 
+                "text": "Guardrail Face",
                 "idCode": "31"
-            }, 
+            },
             {
-                "text": "Impact Attenuator/Crash Cushion", 
+                "text": "Impact Attenuator/Crash Cushion",
                 "idCode": "32"
-            }, 
+            },
             {
-                "text": "Mailbox", 
+                "text": "Mailbox",
                 "idCode": "33"
-            }, 
+            },
             {
-                "text": "Other Fixed Object (wall, building, tunnel, etc.)", 
+                "text": "Other Fixed Object (wall, building, tunnel, etc.)",
                 "idCode": "34"
-            }, 
+            },
             {
-                "text": "Other Post, Pole or Support", 
+                "text": "Other Post, Pole or Support",
                 "idCode": "35"
-            }, 
+            },
             {
-                "text": "Other Traffic Barrier", 
+                "text": "Other Traffic Barrier",
                 "idCode": "36"
-            }, 
+            },
             {
-                "text": "Traffic Sign Support", 
+                "text": "Traffic Sign Support",
                 "idCode": "37"
-            }, 
+            },
             {
-                "text": "Traffic Signal Support", 
+                "text": "Traffic Signal Support",
                 "idCode": "38"
-            }, 
+            },
             {
-                "text": "Tree (standing)", 
+                "text": "Tree (standing)",
                 "idCode": "39"
-            }, 
+            },
             {
-                "text": "Utility Pole/Light Support", 
+                "text": "Utility Pole/Light Support",
                 "idCode": "40"
-            }, 
+            },
             {
-                "text": "Unknown Collision With Fixed Object", 
+                "text": "Unknown Collision With Fixed Object",
                 "idCode": "41"
             }
-        ], 
+        ],
         "id": "V21"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Hit and Run", 
+        "answerType": "multiButton",
+        "question": "Hit and Run",
         "display": [
             "vehicle"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No, Did Not Leave Scene", 
+                "text": "No, Did Not Leave Scene",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Yes, Driver or Car and Driver Left Scene", 
+                "text": "Yes, Driver or Car and Driver Left Scene",
                 "idCode": "02"
             }
-        ], 
+        ],
         "id": "V22"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Towed Due to Disabling Damage", 
+        "answerType": "multiButton",
+        "question": "Towed Due to Disabling Damage",
         "display": [
             "vehicle"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Not towed", 
+                "text": "Not towed",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Towed, But Not Due to Disabling Damage", 
+                "text": "Towed, But Not Due to Disabling Damage",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Towed Due to Disabling Damage", 
+                "text": "Towed Due to Disabling Damage",
                 "idCode": "02"
             }
-        ], 
+        ],
         "id": "V23"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Contributing Circumstances, Motor Vehicle", 
+        "answerType": "dropdown",
+        "question": "Contributing Circumstances, Motor Vehicle",
         "display": [
             "vehicle"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "None", 
+                "text": "None",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Brakes", 
+                "text": "Brakes",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Exhaust System", 
+                "text": "Exhaust System",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Body, Doors", 
+                "text": "Body, Doors",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Steering", 
+                "text": "Steering",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Power Train", 
+                "text": "Power Train",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Suspension", 
+                "text": "Suspension",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Tires", 
+                "text": "Tires",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Wheels", 
+                "text": "Wheels",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "Lights (head, signal, tail)", 
+                "text": "Lights (head, signal, tail)",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Windows/Windshield", 
+                "text": "Windows/Windshield",
                 "idCode": "10"
-            }, 
+            },
             {
-                "text": "Mirrors", 
+                "text": "Mirrors",
                 "idCode": "11"
-            }, 
+            },
             {
-                "text": "Wipers", 
+                "text": "Wipers",
                 "idCode": "12"
-            }, 
+            },
             {
-                "text": "Truck Coupling/Trailer Hitch/Safety Chains", 
+                "text": "Truck Coupling/Trailer Hitch/Safety Chains",
                 "idCode": "13"
-            }, 
+            },
             {
-                "text": "Other", 
+                "text": "Other",
                 "idCode": "98"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "V24"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Name of Person Involved", 
+        "answerType": "openTextBox",
+        "question": "Name of Person Involved",
         "display": [
-            "driver", 
-            "passenger", 
-            "nonmotorist", 
+            "driver",
+            "passenger",
+            "nonmotorist",
             "info"
-        ], 
+        ],
         "id": "P1"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Date of Birth", 
+        "answerType": "header",
+        "question": "Date of Birth",
         "display": [
-            "driver", 
-            "passenger", 
+            "driver",
+            "passenger",
             "nonmotorist"
-        ], 
+        ],
         "id": "P2"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "(YYYY/MM/DD)", 
-        "question": "Date of Birth", 
+        "answerType": "openTextBox",
+        "helperText": "(YYYY/MM/DD)",
+        "question": "Date of Birth",
         "display": [
-            "driver", 
-            "passenger", 
+            "driver",
+            "passenger",
             "nonmotorist"
-        ], 
+        ],
         "id": "P2-S1"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Age", 
+        "answerType": "openTextBox",
+        "question": "Age",
         "display": [
-            "driver", 
-            "passenger", 
-            "nonmotorist", 
+            "driver",
+            "passenger",
+            "nonmotorist",
             "setup"
-        ], 
+        ],
         "id": "P2-S2"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Sex", 
+        "answerType": "multiButton",
+        "question": "Sex",
         "display": [
-            "driver", 
-            "passenger", 
+            "driver",
+            "passenger",
             "nonmotorist"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Female", 
+                "text": "Female",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Male", 
+                "text": "Male",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Other", 
+                "text": "Other",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "P3"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Person Type", 
+        "answerType": "header",
+        "question": "Person Type",
         "display": [
-            "driver", 
-            "passenger", 
+            "driver",
+            "passenger",
             "nonmotorist"
-        ], 
+        ],
         "id": "P4"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Person Type", 
+        "answerType": "dropdown",
+        "question": "Person Type",
         "display": [
-            "driver", 
-            "passenger", 
+            "driver",
+            "passenger",
             "nonmotorist"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Driver", 
+                "text": "Driver",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Passenger", 
+                "text": "Passenger",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Occupant of MV Not in Transport", 
+                "text": "Occupant of MV Not in Transport",
                 "idCode": "03"
             }
-        ], 
+        ],
         "id": "P4-S1"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Incident Responder?", 
+        "answerType": "dropdown",
+        "question": "Incident Responder?",
         "display": [
-            "driver", 
-            "passenger", 
+            "driver",
+            "passenger",
             "nonmotorist"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Bicyclist**", 
+                "text": "Bicyclist**",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Other Cyclist**", 
+                "text": "Other Cyclist**",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Pedestrian**", 
+                "text": "Pedestrian**",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Other Pedestrian (wheelchair, person in a building, skater, personal convey.)**", 
+                "text": "Other Pedestrian (wheelchair, person in a building, skater, personal convey.)**",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Occupant of a Non-Motor Vehicle Transportation Device**", 
+                "text": "Occupant of a Non-Motor Vehicle Transportation Device**",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "Unknown Type of Non-Motorist**", 
+                "text": "Unknown Type of Non-Motorist**",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
-            }, 
+            },
             {
-                "text": "No", 
+                "text": "No",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Other", 
+                "text": "Other",
                 "idCode": "98"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
-            }, 
+            },
             {
-                "text": "EMS", 
+                "text": "EMS",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Fire", 
+                "text": "Fire",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Police", 
+                "text": "Police",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Tow Operator", 
+                "text": "Tow Operator",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Transportation (i.e. maintenance workers, safety service patrol operators, etc.", 
+                "text": "Transportation (i.e. maintenance workers, safety service patrol operators, etc.",
                 "idCode": "06"
             }
-        ], 
+        ],
         "id": "P4-S2"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Injury Status", 
+        "answerType": "multiButton",
+        "question": "Injury Status",
         "display": [
-            "driver", 
-            "passenger", 
+            "driver",
+            "passenger",
             "nonmotorist"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "(K) Fatal Injury**", 
+                "text": "(K) Fatal Injury**",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "(A) Suspected Serious Injury", 
+                "text": "(A) Suspected Serious Injury",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "(B) Suspected Minor Injury", 
+                "text": "(B) Suspected Minor Injury",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "(C) Possible Injury", 
+                "text": "(C) Possible Injury",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "(O) No Apparent Injury", 
+                "text": "(O) No Apparent Injury",
                 "idCode": "05"
             }
-        ], 
+        ],
         "id": "P5"
-    }, 
+    },
     {
         "answerOptions": [
             {
-                "text": "Front", 
+                "text": "Front",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Second", 
+                "text": "Second",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Third", 
+                "text": "Third",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Fourth", 
+                "text": "Fourth",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Other Row (bus, 15 passenger van, etc.)", 
+                "text": "Other Row (bus, 15 passenger van, etc.)",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Unknown Row", 
+                "text": "Unknown Row",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Left (usually the motor vehicle or motorcycle driver except for postal vehicles", 
+                "text": "Left (usually the motor vehicle or motorcycle driver except for postal vehicles",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Middle", 
+                "text": "Middle",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "Right", 
+                "text": "Right",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Unknown Seat", 
+                "text": "Unknown Seat",
                 "idCode": "10"
-            }, 
+            },
             {
-                "text": "Other Enclosed Cargo Area", 
+                "text": "Other Enclosed Cargo Area",
                 "idCode": "11"
-            }, 
+            },
             {
-                "text": "Riding on Motor Vehicle Exterior (non-trailing unit)", 
+                "text": "Riding on Motor Vehicle Exterior (non-trailing unit)",
                 "idCode": "12"
-            }, 
+            },
             {
-                "text": "Sleeper Section of Cab (truck)", 
+                "text": "Sleeper Section of Cab (truck)",
                 "idCode": "13"
-            }, 
+            },
             {
-                "text": "Trailing Unit", 
+                "text": "Trailing Unit",
                 "idCode": "14"
-            }, 
+            },
             {
-                "text": "Unenclosed Cargo Area", 
+                "text": "Unenclosed Cargo Area",
                 "idCode": "15"
-            }, 
+            },
             {
-                "text": "Not Applicable", 
+                "text": "Not Applicable",
                 "idCode": "98"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
-        "helperText": "(choose up to 2)", 
-        "numOptionsAllowed": "2", 
-        "question": "Seating Position", 
-        "id": "P7", 
-        "answerType": "dropdownMultiSelect", 
+        ],
+        "helperText": "(choose up to 2)",
+        "numOptionsAllowed": "2",
+        "question": "Seating Position",
+        "id": "P7",
+        "answerType": "dropdownMultiSelect",
         "display": [
-            "driver", 
+            "driver",
             "passenger"
         ]
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Restraint Systems / Motorcycle Helmet Use", 
+        "answerType": "dropdown",
+        "question": "Restraint Systems / Motorcycle Helmet Use",
         "display": [
-            "driver", 
+            "driver",
             "passenger"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Booster Seat", 
+                "text": "Booster Seat",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Child Restraint System - Forward Facing", 
+                "text": "Child Restraint System - Forward Facing",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Child Restraint System - Rear Facing", 
+                "text": "Child Restraint System - Rear Facing",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Child Restraint - Type Unknown", 
+                "text": "Child Restraint - Type Unknown",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Lap Belt Only Used", 
+                "text": "Lap Belt Only Used",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "None Used - Motor Vehicle Occupant", 
+                "text": "None Used - Motor Vehicle Occupant",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Restraint Used - Type Unknown", 
+                "text": "Restraint Used - Type Unknown",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Shoulder and Lap Belt Used", 
+                "text": "Shoulder and Lap Belt Used",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "Shoulder Belt Only Used", 
+                "text": "Shoulder Belt Only Used",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Stretcher", 
+                "text": "Stretcher",
                 "idCode": "10"
-            }, 
+            },
             {
-                "text": "Wheelchair", 
+                "text": "Wheelchair",
                 "idCode": "11"
-            }, 
+            },
             {
-                "text": "DOT-Compliant Motorcycle Helmet", 
+                "text": "DOT-Compliant Motorcycle Helmet",
                 "idCode": "12"
-            }, 
+            },
             {
-                "text": "Not DOT-Compliant Motorcycle Helmet", 
+                "text": "Not DOT-Compliant Motorcycle Helmet",
                 "idCode": "13"
-            }, 
+            },
             {
-                "text": "Unknown If DOT-Compliant Motorcycle Helmet", 
+                "text": "Unknown If DOT-Compliant Motorcycle Helmet",
                 "idCode": "14"
-            }, 
+            },
             {
-                "text": "No Helmet", 
+                "text": "No Helmet",
                 "idCode": "15"
-            }, 
+            },
             {
-                "text": "Not Applicable", 
+                "text": "Not Applicable",
                 "idCode": "97"
-            }, 
+            },
             {
-                "text": "Other", 
+                "text": "Other",
                 "idCode": "98"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "P8-S1"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Any Indication of Improper Use?", 
+        "answerType": "multiButton",
+        "question": "Any Indication of Improper Use?",
         "display": [
-            "driver", 
+            "driver",
             "passenger"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No", 
+                "text": "No",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Yes", 
+                "text": "Yes",
                 "idCode": "02"
             }
-        ], 
+        ],
         "id": "P8-S2"
-    }, 
+    },
     {
         "answerOptions": [
             {
-                "text": "Not Deployed", 
+                "text": "Not Deployed",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Not Applicable", 
+                "text": "Not Applicable",
                 "idCode": "97"
-            }, 
+            },
             {
-                "text": "Curtain", 
+                "text": "Curtain",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Front", 
+                "text": "Front",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Side", 
+                "text": "Side",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Other (knee, air belt, etc.)", 
+                "text": "Other (knee, air belt, etc.)",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Deployment Unknown", 
+                "text": "Deployment Unknown",
                 "idCode": "05"
             }
-        ], 
-        "helperText": "(choose up to 4)", 
-        "numOptionsAllowed": "4", 
-        "question": "Air Bag Deployed", 
-        "id": "P9", 
-        "answerType": "dropdownMultiSelect", 
+        ],
+        "helperText": "(choose up to 4)",
+        "numOptionsAllowed": "4",
+        "question": "Air Bag Deployed",
+        "id": "P9",
+        "answerType": "dropdownMultiSelect",
         "display": [
-            "driver", 
+            "driver",
             "passenger"
         ]
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Ejection", 
+        "answerType": "multiButton",
+        "question": "Ejection",
         "display": [
-            "driver", 
+            "driver",
             "passenger"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Not Ejected", 
+                "text": "Not Ejected",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Ejected, Partially", 
+                "text": "Ejected, Partially",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Ejected, Totally", 
+                "text": "Ejected, Totally",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Not Applicable", 
+                "text": "Not Applicable",
                 "idCode": "97"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "P10"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Driver License Jurisdiction", 
+        "answerType": "header",
+        "question": "Driver License Jurisdiction",
         "display": [
             "driver"
-        ], 
+        ],
         "id": "P11"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Type", 
+        "answerType": "dropdown",
+        "question": "Type",
         "display": [
             "driver"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Not Licensed", 
+                "text": "Not Licensed",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Canada", 
+                "text": "Canada",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Indian Nation", 
+                "text": "Indian Nation",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "International License (other than Mexico or Canada)", 
+                "text": "International License (other than Mexico or Canada)",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Mexico", 
+                "text": "Mexico",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "State", 
+                "text": "State",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "U.S. Government", 
+                "text": "U.S. Government",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Not Applicable", 
+                "text": "Not Applicable",
                 "idCode": "97"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "P11-S1"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "Provide the specific State, Province or Nation indicated on the Driver's License (see Appendix E: ANSI State FIPS and USPS Codes or Appendix F: ISO 3166-2 Codes for Canada and Mexico)", 
-        "question": "Name of Jurisdiction (ANSI Code)", 
+        "answerType": "openTextBox",
+        "helperText": "Provide the specific State, Province or Nation indicated on the Driver's License (see Appendix E: ANSI State FIPS and USPS Codes or Appendix F: ISO 3166-2 Codes for Canada and Mexico)",
+        "question": "Name of Jurisdiction (ANSI Code)",
         "display": [
-            "driver", 
+            "driver",
             "info"
-        ], 
+        ],
         "id": "P11-S2"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Driver License Number, Class, CDL and Endorsements", 
+        "answerType": "header",
+        "question": "Driver License Number, Class, CDL and Endorsements",
         "display": [
             "driver"
-        ], 
+        ],
         "id": "P12"
-    }, 
+    },
     {
-        "autoMethod": "driverIDCamera", 
-        "answerType": "advancedOpenTextBox", 
-        "question": "License Number", 
+        "autoMethod": "driverIDCamera",
+        "answerType": "advancedOpenTextBox",
+        "question": "License Number",
         "display": [
-            "driver", 
+            "driver",
             "info"
-        ], 
+        ],
         "id": "P12-S1"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Class", 
+        "answerType": "dropdown",
+        "question": "Class",
         "display": [
             "driver"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "None", 
+                "text": "None",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Class A", 
+                "text": "Class A",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Class B", 
+                "text": "Class B",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Class C", 
+                "text": "Class C",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Class M", 
+                "text": "Class M",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Regular Driver License Class", 
+                "text": "Regular Driver License Class",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Not Applicable", 
+                "text": "Not Applicable",
                 "idCode": "97"
             }
-        ], 
+        ],
         "id": "P12-S2"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Commercial Driver License (CDL)", 
+        "answerType": "multiButton",
+        "question": "Commercial Driver License (CDL)",
         "display": [
             "driver"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No", 
+                "text": "No",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Yes", 
+                "text": "Yes",
                 "idCode": "02"
             }
-        ], 
+        ],
         "id": "P12-S3"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Endorsements", 
+        "answerType": "dropdown",
+        "question": "Endorsements",
         "display": [
             "driver"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "None/Not Applicable", 
+                "text": "None/Not Applicable",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "H - Hazardous Materials", 
+                "text": "H - Hazardous Materials",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "N - Tank Vehicle", 
+                "text": "N - Tank Vehicle",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "P - Passenger", 
+                "text": "P - Passenger",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "S - School", 
+                "text": "S - School",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "T - Double/Triple Trailers", 
+                "text": "T - Double/Triple Trailers",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "X - Combination of Tank Vehicle and Hazardous Materials", 
+                "text": "X - Combination of Tank Vehicle and Hazardous Materials",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Other non-commercial license endorsements (e.g., motorcycle, etc.)", 
+                "text": "Other non-commercial license endorsements (e.g., motorcycle, etc.)",
                 "idCode": "07"
             }
-        ], 
+        ],
         "id": "P12-S4"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Speeding-Related", 
+        "answerType": "multiButton",
+        "question": "Speeding-Related",
         "display": [
             "driver"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No", 
+                "text": "No",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Exceeded Speed Limit", 
+                "text": "Exceeded Speed Limit",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Racing", 
+                "text": "Racing",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Too Fast for Conditions", 
+                "text": "Too Fast for Conditions",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "P13"
-    }, 
+    },
     {
         "answerOptions": [
             {
-                "text": "Other Contributing Action", 
+                "text": "Other Contributing Action",
                 "idCode": "98"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
-            }, 
+            },
             {
-                "text": "No Contributing Action", 
+                "text": "No Contributing Action",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Disregarded Other Road Markings", 
+                "text": "Disregarded Other Road Markings",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Disregarded Other Traffic Sign", 
+                "text": "Disregarded Other Traffic Sign",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Failed to Keep in Proper Lane", 
+                "text": "Failed to Keep in Proper Lane",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Failed to Yield Right-of-Way", 
+                "text": "Failed to Yield Right-of-Way",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Followed Too Closely", 
+                "text": "Followed Too Closely",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Improper Backing", 
+                "text": "Improper Backing",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Improper Passing", 
+                "text": "Improper Passing",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Improper Turn", 
+                "text": "Improper Turn",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "Operated Motor Vehicle in Inattentive, Careless, Negligent, or Erratic Manner", 
+                "text": "Operated Motor Vehicle in Inattentive, Careless, Negligent, or Erratic Manner",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Operated Motor Vehicle in Reckless or Aggressive Manner", 
+                "text": "Operated Motor Vehicle in Reckless or Aggressive Manner",
                 "idCode": "10"
-            }, 
+            },
             {
-                "text": "Over-Correcting/Over-Steering", 
+                "text": "Over-Correcting/Over-Steering",
                 "idCode": "11"
-            }, 
+            },
             {
-                "text": "Ran Off Roadway", 
+                "text": "Ran Off Roadway",
                 "idCode": "12"
-            }, 
+            },
             {
-                "text": "Ran Red Light", 
+                "text": "Ran Red Light",
                 "idCode": "13"
-            }, 
+            },
             {
-                "text": "Ran Stop Sign", 
+                "text": "Ran Stop Sign",
                 "idCode": "14"
-            }, 
+            },
             {
-                "text": "Swerved or Avoided Due to Wind, Slippery Surface, Motor Vehicle, Object, Non-Mo", 
+                "text": "Swerved or Avoided Due to Wind, Slippery Surface, Motor Vehicle, Object, Non-Mo",
                 "idCode": "15"
-            }, 
+            },
             {
-                "text": "Wrong Side or Wrong Way", 
+                "text": "Wrong Side or Wrong Way",
                 "idCode": "16"
             }
-        ], 
-        "helperText": "(choose up to 4)", 
-        "numOptionsAllowed": "4", 
-        "question": "Driver Actions at Time of Crash", 
-        "id": "P14", 
-        "answerType": "dropdownMultiSelect", 
+        ],
+        "helperText": "(choose up to 4)",
+        "numOptionsAllowed": "4",
+        "question": "Driver Actions at Time of Crash",
+        "id": "P14",
+        "answerType": "dropdownMultiSelect",
         "display": [
             "driver"
         ]
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "(choose up to 2)", 
-        "question": "Violation Codes", 
+        "answerType": "openTextBox",
+        "helperText": "(choose up to 2)",
+        "question": "Violation Codes",
         "display": [
             "driver"
-        ], 
+        ],
         "id": "P15"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Driver License Restrictions", 
+        "answerType": "header",
+        "question": "Driver License Restrictions",
         "display": [
             "driver"
-        ], 
+        ],
         "id": "P16"
-    }, 
+    },
     {
         "answerOptions": [
             {
-                "text": "None", 
+                "text": "None",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Alcohol Interlock Device", 
+                "text": "Alcohol Interlock Device",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "CDL Intrastate Only", 
+                "text": "CDL Intrastate Only",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Corrective Lenses", 
+                "text": "Corrective Lenses",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Farm Waiver", 
+                "text": "Farm Waiver",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Except Class A Bus", 
+                "text": "Except Class A Bus",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Except Class A and Class B Bus", 
+                "text": "Except Class A and Class B Bus",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Except Tractor-Trailer", 
+                "text": "Except Tractor-Trailer",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Intermediate License Restrictions", 
+                "text": "Intermediate License Restrictions",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "Learner's Permit Restrictions", 
+                "text": "Learner's Permit Restrictions",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Limited to Daylight Only", 
+                "text": "Limited to Daylight Only",
                 "idCode": "10"
-            }, 
+            },
             {
-                "text": "Limited to Employment", 
+                "text": "Limited to Employment",
                 "idCode": "11"
-            }, 
+            },
             {
-                "text": "Limited-Other", 
+                "text": "Limited-Other",
                 "idCode": "12"
-            }, 
+            },
             {
-                "text": "Mechanical Devices (special brakes, hand controls, or other adaptive devices)", 
+                "text": "Mechanical Devices (special brakes, hand controls, or other adaptive devices)",
                 "idCode": "13"
-            }, 
+            },
             {
-                "text": "Military Vehicles Only", 
+                "text": "Military Vehicles Only",
                 "idCode": "14"
-            }, 
+            },
             {
-                "text": "Motor Vehicles Without Air Brakes", 
+                "text": "Motor Vehicles Without Air Brakes",
                 "idCode": "15"
-            }, 
+            },
             {
-                "text": "Outside Mirror", 
+                "text": "Outside Mirror",
                 "idCode": "16"
-            }, 
+            },
             {
-                "text": "Prosthetic Aid", 
+                "text": "Prosthetic Aid",
                 "idCode": "17"
-            }, 
+            },
             {
-                "text": "Other", 
+                "text": "Other",
                 "idCode": "98"
             }
-        ], 
-        "helperText": "(choose up to 3)", 
-        "numOptionsAllowed": "3", 
-        "question": "Driver License Restrictions", 
-        "id": "P16-S1", 
-        "answerType": "dropdownMultiSelect", 
+        ],
+        "helperText": "(choose up to 3)",
+        "numOptionsAllowed": "3",
+        "question": "Driver License Restrictions",
+        "id": "P16-S1",
+        "answerType": "dropdownMultiSelect",
         "display": [
             "driver"
         ]
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Alcohol Interlock Present?", 
+        "answerType": "multiButton",
+        "question": "Alcohol Interlock Present?",
         "display": [
             "driver"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No", 
+                "text": "No",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Yes", 
+                "text": "Yes",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "P16-S2"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Driver License Status", 
+        "answerType": "header",
+        "question": "Driver License Status",
         "display": [
             "driver"
-        ], 
+        ],
         "id": "P17"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Type Applicable for This Person", 
+        "answerType": "dropdown",
+        "question": "Type Applicable for This Person",
         "display": [
             "driver"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Non-CDL Driver license", 
+                "text": "Non-CDL Driver license",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Non-CDL Restricted Driver license (Learner\ufffds permit, Temporary/ Limited, Gradua", 
+                "text": "Non-CDL Restricted Driver license (Learner\ufffds permit, Temporary/ Limited, Gradua",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Commercial Driver License (CDL)", 
+                "text": "Commercial Driver License (CDL)",
                 "idCode": "03"
             }
-        ], 
+        ],
         "id": "P17-S1"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Status", 
+        "answerType": "dropdown",
+        "question": "Status",
         "display": [
             "driver"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Not Licensed", 
+                "text": "Not Licensed",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Canceled or Denied", 
+                "text": "Canceled or Denied",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Disqualified (CDL)", 
+                "text": "Disqualified (CDL)",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Expired", 
+                "text": "Expired",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Revoked", 
+                "text": "Revoked",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Suspended", 
+                "text": "Suspended",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Valid License", 
+                "text": "Valid License",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "P17-S2"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Distracted By", 
+        "answerType": "header",
+        "question": "Distracted By",
         "display": [
-            "driver", 
+            "driver",
             "nonmotorist"
-        ], 
+        ],
         "id": "P18"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Action", 
+        "answerType": "dropdown",
+        "question": "Action",
         "display": [
-            "driver", 
+            "driver",
             "nonmotorist"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Not Distracted", 
+                "text": "Not Distracted",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Talking/listening", 
+                "text": "Talking/listening",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Manually Operating (texting, dialing, playing game, etc.)", 
+                "text": "Manually Operating (texting, dialing, playing game, etc.)",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Other Action (looking away from task, etc.)", 
+                "text": "Other Action (looking away from task, etc.)",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "P18-S1"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Source", 
+        "answerType": "dropdown",
+        "question": "Source",
         "display": [
-            "driver", 
+            "driver",
             "nonmotorist"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Hands-Free Mobile Phone", 
+                "text": "Hands-Free Mobile Phone",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Hand-Held Mobile Phone", 
+                "text": "Hand-Held Mobile Phone",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Other Electronic Device", 
+                "text": "Other Electronic Device",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Vehicle-Integrated Device", 
+                "text": "Vehicle-Integrated Device",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Passenger/Other Non-Motorist", 
+                "text": "Passenger/Other Non-Motorist",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "External (to vehicle/non-motorist area)", 
+                "text": "External (to vehicle/non-motorist area)",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Other Distraction (animal, food, grooming)", 
+                "text": "Other Distraction (animal, food, grooming)",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Not Applicable (Not Distracted)", 
+                "text": "Not Applicable (Not Distracted)",
                 "idCode": "97"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "P18-S2"
-    }, 
+    },
     {
         "answerOptions": [
             {
-                "text": "Asleep or Fatigued", 
+                "text": "Asleep or Fatigued",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Emotional (depressed, angry, disturbed, etc.)", 
+                "text": "Emotional (depressed, angry, disturbed, etc.)",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Ill (sick), Fainted", 
+                "text": "Ill (sick), Fainted",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Physically Impaired", 
+                "text": "Physically Impaired",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Under the Influence of Medications/Drugs/Alcohol", 
+                "text": "Under the Influence of Medications/Drugs/Alcohol",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Not Applicable", 
+                "text": "Not Applicable",
                 "idCode": "97"
-            }, 
+            },
             {
-                "text": "Other", 
+                "text": "Other",
                 "idCode": "98"
             }
-        ], 
-        "helperText": "(choose up to 2)", 
-        "numOptionsAllowed": "2", 
-        "question": "Condition at Time of the Crash", 
-        "id": "P19", 
-        "answerType": "dropdownMultiSelect", 
+        ],
+        "helperText": "(choose up to 2)",
+        "numOptionsAllowed": "2",
+        "question": "Condition at Time of the Crash",
+        "id": "P19",
+        "answerType": "dropdownMultiSelect",
         "display": [
-            "driver", 
+            "driver",
             "nonmotorist"
         ]
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Law Enforcement Suspects Alcohol Use", 
+        "answerType": "multiButton",
+        "question": "Law Enforcement Suspects Alcohol Use",
         "display": [
-            "driver", 
+            "driver",
             "nonmotorist"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No", 
+                "text": "No",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Yes", 
+                "text": "Yes",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "P20"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Alcohol Test", 
+        "answerType": "header",
+        "question": "Alcohol Test",
         "display": [
-            "driver", 
+            "driver",
             "nonmotorist"
-        ], 
+        ],
         "id": "P21"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Test Status", 
+        "answerType": "multiButton",
+        "question": "Test Status",
         "display": [
-            "driver", 
+            "driver",
             "nonmotorist"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Test Not Given", 
+                "text": "Test Not Given",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Test Given", 
+                "text": "Test Given",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Test Refused", 
+                "text": "Test Refused",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Unknown if Tested", 
+                "text": "Unknown if Tested",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "P21-S1"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Type of Test", 
+        "answerType": "multiButton",
+        "question": "Type of Test",
         "display": [
-            "driver", 
+            "driver",
             "nonmotorist"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Blood", 
+                "text": "Blood",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Breath", 
+                "text": "Breath",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Urine", 
+                "text": "Urine",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Not Applicable (Test Not Given)", 
+                "text": "Not Applicable (Test Not Given)",
                 "idCode": "97"
-            }, 
+            },
             {
-                "text": "Other", 
+                "text": "Other",
                 "idCode": "98"
             }
-        ], 
+        ],
         "id": "P21-S2"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "BAC Test Result", 
+        "answerType": "openTextBox",
+        "question": "BAC Test Result",
         "display": [
-            "driver", 
+            "driver",
             "nonmotorist"
-        ], 
+        ],
         "id": "P21-S3"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Law Enforcement Suspects Drug Use", 
+        "answerType": "multiButton",
+        "question": "Law Enforcement Suspects Drug Use",
         "display": [
-            "driver", 
+            "driver",
             "nonmotorist"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No", 
+                "text": "No",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Yes", 
+                "text": "Yes",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "P22"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Drug Test", 
+        "answerType": "header",
+        "question": "Drug Test",
         "display": [
-            "driver", 
+            "driver",
             "nonmotorist"
-        ], 
+        ],
         "id": "P23"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Test Status", 
+        "answerType": "multiButton",
+        "question": "Test Status",
         "display": [
-            "driver", 
+            "driver",
             "nonmotorist"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Test Not Given", 
+                "text": "Test Not Given",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Test Given", 
+                "text": "Test Given",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Test Refused", 
+                "text": "Test Refused",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Unknown if Tested", 
+                "text": "Unknown if Tested",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "P23-S1"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Type of Test", 
+        "answerType": "multiButton",
+        "question": "Type of Test",
         "display": [
-            "driver", 
+            "driver",
             "nonmotorist"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Blood", 
+                "text": "Blood",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Saliva", 
+                "text": "Saliva",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Urine", 
+                "text": "Urine",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Not Applicable (Test Not Given)", 
+                "text": "Not Applicable (Test Not Given)",
                 "idCode": "97"
-            }, 
+            },
             {
-                "text": "Other", 
+                "text": "Other",
                 "idCode": "98"
             }
-        ], 
+        ],
         "id": "P23-S2"
-    }, 
+    },
     {
         "answerOptions": [
             {
-                "text": "Negative", 
+                "text": "Negative",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Amphetamine", 
+                "text": "Amphetamine",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Cocaine", 
+                "text": "Cocaine",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Marijuana", 
+                "text": "Marijuana",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Opiate", 
+                "text": "Opiate",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Other Controlled Substance", 
+                "text": "Other Controlled Substance",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "PCP", 
+                "text": "PCP",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Other Drug (excludes post-crash drugs)", 
+                "text": "Other Drug (excludes post-crash drugs)",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "Not Applicable (Test Not Given)", 
+                "text": "Not Applicable (Test Not Given)",
                 "idCode": "97"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
-        "helperText": "(choose up to 4)", 
-        "numOptionsAllowed": "4", 
-        "question": "Drug Test Result", 
-        "id": "P23-S3", 
-        "answerType": "dropdownMultiSelect", 
+        ],
+        "helperText": "(choose up to 4)",
+        "numOptionsAllowed": "4",
+        "question": "Drug Test Result",
+        "id": "P23-S3",
+        "answerType": "dropdownMultiSelect",
         "display": [
-            "driver", 
+            "driver",
             "nonmotorist"
         ]
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Transported to First Medical Facility By", 
+        "answerType": "header",
+        "question": "Transported to First Medical Facility By",
         "display": [
             "injured"
-        ], 
+        ],
         "id": "P24"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Source of Transport to First Medical Facility", 
+        "answerType": "multiButton",
+        "question": "Source of Transport to First Medical Facility",
         "display": [
             "injured"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Not Transported", 
+                "text": "Not Transported",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "EMS Air", 
+                "text": "EMS Air",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "EMS Ground", 
+                "text": "EMS Ground",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Law Enforcement", 
+                "text": "Law Enforcement",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Other", 
+                "text": "Other",
                 "idCode": "98"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "P24-S1"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "EMS Response Agency Idenitifier", 
+        "answerType": "openTextBox",
+        "question": "EMS Response Agency Idenitifier",
         "display": [
             "injured"
-        ], 
+        ],
         "id": "P24-S2"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "EMS Response Run Number", 
+        "answerType": "openTextBox",
+        "question": "EMS Response Run Number",
         "display": [
             "injured"
-        ], 
+        ],
         "id": "P24-S3"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Medical Facility Recieving Patient", 
+        "answerType": "openTextBox",
+        "question": "Medical Facility Recieving Patient",
         "display": [
             "injured"
-        ], 
+        ],
         "id": "P24-S4"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Injury Area", 
+        "answerType": "dropdown",
+        "question": "Injury Area",
         "display": [
             "injured"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Head", 
+                "text": "Head",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Face", 
+                "text": "Face",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Neck", 
+                "text": "Neck",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Upper Extremity", 
+                "text": "Upper Extremity",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Thorax (chest)", 
+                "text": "Thorax (chest)",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Spine", 
+                "text": "Spine",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Abdomen and Pelvis", 
+                "text": "Abdomen and Pelvis",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Lower Extremity", 
+                "text": "Lower Extremity",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "Unspecified", 
+                "text": "Unspecified",
                 "idCode": "09"
             }
-        ], 
+        ],
         "id": "P25"
-    }, 
+    },
     {
-        "answerType": "largeTextField", 
-        "helperText": "Description of the injury according to data elements included in teh files being linked such as the body areas and types of injuries listed on the crash and EMS records and/or the ICD-10 codes listed on the hospital discharge records.", 
-        "question": "Injury Diagnosis", 
+        "answerType": "largeTextField",
+        "helperText": "Description of the injury according to data elements included in teh files being linked such as the body areas and types of injuries listed on the crash and EMS records and/or the ICD-10 codes listed on the hospital discharge records.",
+        "question": "Injury Diagnosis",
         "display": [
             "injured"
-        ], 
+        ],
         "id": "P26"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Injury Severity", 
+        "answerType": "multiButton",
+        "question": "Injury Severity",
         "display": [
             "injured"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Fatal", 
+                "text": "Fatal",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Serious", 
+                "text": "Serious",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Moderate", 
+                "text": "Moderate",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Minor", 
+                "text": "Minor",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "No Injury", 
+                "text": "No Injury",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "P27"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Bridge/Structure Identification Number", 
+        "answerType": "openTextBox",
+        "question": "Bridge/Structure Identification Number",
         "display": [
             "road"
-        ], 
+        ],
         "id": "R1"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "helperText": "(specify up to 3)", 
-        "question": "Roadway Curvature", 
+        "answerType": "header",
+        "helperText": "(specify up to 3)",
+        "question": "Roadway Curvature",
         "display": [
             "road"
-        ], 
+        ],
         "id": "R2"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Curve Radius", 
+        "answerType": "openTextBox",
+        "question": "Curve Radius",
         "display": [
             "road"
-        ], 
+        ],
         "id": "R2"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Length", 
+        "answerType": "openTextBox",
+        "question": "Length",
         "display": [
             "road"
-        ], 
+        ],
         "id": "R2"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Superelevation", 
+        "answerType": "openTextBox",
+        "question": "Superelevation",
         "display": [
             "road"
-        ], 
+        ],
         "id": "R2"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Grade", 
+        "answerType": "header",
+        "question": "Grade",
         "display": [
             "road"
-        ], 
+        ],
         "id": "R3"
-    }, 
+    },
     {
         "answerOptions": [
             {
-                "text": "Up (+)", 
+                "text": "Up (+)",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Down (-)", 
+                "text": "Down (-)",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
-        "helperText": "Up (+) or Down (-)", 
-        "question": "Direction of Slope", 
-        "id": "R3-S1", 
-        "answerType": "multiButton", 
+        ],
+        "helperText": "Up (+) or Down (-)",
+        "question": "Direction of Slope",
+        "id": "R3-S1",
+        "answerType": "multiButton",
         "display": [
             "road"
         ]
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "Nearest Percent of Slope", 
-        "question": "Percent of Slope", 
+        "answerType": "openTextBox",
+        "helperText": "Nearest Percent of Slope",
+        "question": "Percent of Slope",
         "display": [
             "road"
-        ], 
+        ],
         "id": "R3-S2"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Part of National Highway System", 
+        "answerType": "multiButton",
+        "question": "Part of National Highway System",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No", 
+                "text": "No",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Yes", 
+                "text": "Yes",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "R4"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Roadway Functional Class", 
+        "answerType": "dropdown",
+        "question": "Roadway Functional Class",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
-            }, 
+            },
             {
-                "text": "Interstate", 
+                "text": "Interstate",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Principal Arterial - Other Freeway or Expressway", 
+                "text": "Principal Arterial - Other Freeway or Expressway",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Principal Arterial - Other", 
+                "text": "Principal Arterial - Other",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Minor Arterial", 
+                "text": "Minor Arterial",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Major Collector", 
+                "text": "Major Collector",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Minor Collector", 
+                "text": "Minor Collector",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Local", 
+                "text": "Local",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Unknown Rural", 
+                "text": "Unknown Rural",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "Interstate", 
+                "text": "Interstate",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Principal Arterial - Other Freeway or Expressway", 
+                "text": "Principal Arterial - Other Freeway or Expressway",
                 "idCode": "10"
-            }, 
+            },
             {
-                "text": "Principal Arterial - Other", 
+                "text": "Principal Arterial - Other",
                 "idCode": "11"
-            }, 
+            },
             {
-                "text": "Minor Arterial", 
+                "text": "Minor Arterial",
                 "idCode": "12"
-            }, 
+            },
             {
-                "text": "Collector", 
+                "text": "Collector",
                 "idCode": "13"
-            }, 
+            },
             {
-                "text": "Local", 
+                "text": "Local",
                 "idCode": "14"
-            }, 
+            },
             {
-                "text": "Unknown Urban", 
+                "text": "Unknown Urban",
                 "idCode": "15"
             }
-        ], 
+        ],
         "id": "R5"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Annual Average Daily Traffic", 
+        "answerType": "header",
+        "question": "Annual Average Daily Traffic",
         "display": [
             "road"
-        ], 
+        ],
         "id": "R6"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "AADT (Year)", 
+        "answerType": "openTextBox",
+        "question": "AADT (Year)",
         "display": [
             "road"
-        ], 
+        ],
         "id": "R6-S1"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "AADT", 
+        "answerType": "openTextBox",
+        "question": "AADT",
         "display": [
             "road"
-        ], 
+        ],
         "id": "R6-S2"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Truck (over 10,000 lbs.) Count or Percentage", 
+        "answerType": "openTextBox",
+        "question": "Truck (over 10,000 lbs.) Count or Percentage",
         "display": [
             "road"
-        ], 
+        ],
         "id": "R6-S3"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Motorcycle Count or Percentage", 
+        "answerType": "openTextBox",
+        "question": "Motorcycle Count or Percentage",
         "display": [
             "road"
-        ], 
+        ],
         "id": "R6-S4"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Width of Lane(s) and SHoulder(s)", 
+        "answerType": "header",
+        "question": "Width of Lane(s) and SHoulder(s)",
         "display": [
             "road"
-        ], 
+        ],
         "id": "R7"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "(Width in feet)", 
-        "question": "Lane Width", 
+        "answerType": "openTextBox",
+        "helperText": "(Width in feet)",
+        "question": "Lane Width",
         "display": [
             "road"
-        ], 
+        ],
         "id": "R7-S1"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "(Width in feet)", 
-        "question": "Left Shoulder Width", 
+        "answerType": "openTextBox",
+        "helperText": "(Width in feet)",
+        "question": "Left Shoulder Width",
         "display": [
             "road"
-        ], 
+        ],
         "id": "R7-S2"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "(Width in feet)", 
-        "question": "RIght Shoulder Width", 
+        "answerType": "openTextBox",
+        "helperText": "(Width in feet)",
+        "question": "RIght Shoulder Width",
         "display": [
             "road"
-        ], 
+        ],
         "id": "R7-S3"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "(feet)", 
-        "question": "Width of Median", 
+        "answerType": "openTextBox",
+        "helperText": "(feet)",
+        "question": "Width of Median",
         "display": [
             "road"
-        ], 
+        ],
         "id": "R8"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Access Control", 
+        "answerType": "multiButton",
+        "question": "Access Control",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No Access Control", 
+                "text": "No Access Control",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Partial Access Control", 
+                "text": "Partial Access Control",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Full Access Control", 
+                "text": "Full Access Control",
                 "idCode": "03"
             }
-        ], 
+        ],
         "id": "R9"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Railway Crossing ID", 
+        "answerType": "openTextBox",
+        "question": "Railway Crossing ID",
         "display": [
             "road"
-        ], 
+        ],
         "id": "R10"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Roadway Lighting", 
+        "answerType": "dropdown",
+        "question": "Roadway Lighting",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Continuous Lighting on Both Sides", 
+                "text": "Continuous Lighting on Both Sides",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Continuous Lighting on One Side", 
+                "text": "Continuous Lighting on One Side",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "No Lighting", 
+                "text": "No Lighting",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Spot Illumination on Both Sides", 
+                "text": "Spot Illumination on Both Sides",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Spot Illumination on One Side", 
+                "text": "Spot Illumination on One Side",
                 "idCode": "05"
             }
-        ], 
+        ],
         "id": "R11"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Pavement Markings, Longitudinal", 
+        "answerType": "header",
+        "question": "Pavement Markings, Longitudinal",
         "display": [
             "road"
-        ], 
+        ],
         "id": "R12"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Edgeline Presence/Type", 
+        "answerType": "multiButton",
+        "question": "Edgeline Presence/Type",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No Marked Edgeline", 
+                "text": "No Marked Edgeline",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Standard Width Edgeline", 
+                "text": "Standard Width Edgeline",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Wide Edgeline", 
+                "text": "Wide Edgeline",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Other", 
+                "text": "Other",
                 "idCode": "98"
             }
-        ], 
+        ],
         "id": "R12-S1"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Centerline Presence/Type", 
+        "answerType": "multiButton",
+        "question": "Centerline Presence/Type",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No Marked Centerline", 
+                "text": "No Marked Centerline",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Centerline With Centerline Rumble Strip", 
+                "text": "Centerline With Centerline Rumble Strip",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Standard Centerline Markings", 
+                "text": "Standard Centerline Markings",
                 "idCode": "03"
             }
-        ], 
+        ],
         "id": "R12-S2"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Lane Line Markings", 
+        "answerType": "multiButton",
+        "question": "Lane Line Markings",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No Lane Markings", 
+                "text": "No Lane Markings",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Standard Lane Line", 
+                "text": "Standard Lane Line",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Wide Lane Line", 
+                "text": "Wide Lane Line",
                 "idCode": "03"
             }
-        ], 
+        ],
         "id": "R12-S3"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Presence/Type of Bicycle Facility", 
+        "answerType": "header",
+        "question": "Presence/Type of Bicycle Facility",
         "display": [
             "road"
-        ], 
+        ],
         "id": "R13"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Facility", 
+        "answerType": "multiButton",
+        "question": "Facility",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "None", 
+                "text": "None",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Marked Bicycle Lane", 
+                "text": "Marked Bicycle Lane",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Separate Bicycle Path/Trail", 
+                "text": "Separate Bicycle Path/Trail",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Unmarked Paved Shoulder", 
+                "text": "Unmarked Paved Shoulder",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Wide Curb Lane", 
+                "text": "Wide Curb Lane",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "R13-S1"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Signed Bicycle Route", 
+        "answerType": "multiButton",
+        "question": "Signed Bicycle Route",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No", 
+                "text": "No",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Yes", 
+                "text": "Yes",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Not Applicable", 
+                "text": "Not Applicable",
                 "idCode": "97"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "R13-S2"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Mainline Number of Lanes at Intersection", 
+        "answerType": "dropdown",
+        "question": "Mainline Number of Lanes at Intersection",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Not an Intersection or Interchange", 
+                "text": "Not an Intersection or Interchange",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "One Lane", 
+                "text": "One Lane",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Two Lanes", 
+                "text": "Two Lanes",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Three Lanes", 
+                "text": "Three Lanes",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Four to Six Lanes", 
+                "text": "Four to Six Lanes",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Seven or More Lanes", 
+                "text": "Seven or More Lanes",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "R14"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Cross-Street Number of Lanes at Intersection", 
+        "answerType": "dropdown",
+        "question": "Cross-Street Number of Lanes at Intersection",
         "display": [
             "road"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Not an Intersection or Interchange", 
+                "text": "Not an Intersection or Interchange",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "One Lane", 
+                "text": "One Lane",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Two Lanes", 
+                "text": "Two Lanes",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Three Lanes", 
+                "text": "Three Lanes",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Four to Six Lanes", 
+                "text": "Four to Six Lanes",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Seven or More Lanes", 
+                "text": "Seven or More Lanes",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "R15"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "helperText": "Total entering vehicles for all approaches of an intersection.", 
-        "question": "Total Volume of Entering Vehicles", 
+        "answerType": "header",
+        "helperText": "Total entering vehicles for all approaches of an intersection.",
+        "question": "Total Volume of Entering Vehicles",
         "display": [
             "road"
-        ], 
+        ],
         "id": "R16"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "(Year)", 
-        "question": "AADT", 
+        "answerType": "openTextBox",
+        "helperText": "(Year)",
+        "question": "AADT",
         "display": [
             "road"
-        ], 
+        ],
         "id": "R16-S1"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "AADT", 
+        "answerType": "openTextBox",
+        "question": "AADT",
         "display": [
             "road"
-        ], 
+        ],
         "id": "R16-S2"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Attempted Avoidance Maneuver", 
+        "answerType": "dropdown",
+        "question": "Attempted Avoidance Maneuver",
         "display": [
             "fatalityDriver"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No Driver Present/Unknown if Driver Present", 
+                "text": "No Driver Present/Unknown if Driver Present",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Accelerating", 
+                "text": "Accelerating",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Accelerating and Steering Left", 
+                "text": "Accelerating and Steering Left",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Accelerating and Steering Right", 
+                "text": "Accelerating and Steering Right",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Braking and Steering Left", 
+                "text": "Braking and Steering Left",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Braking and Steering Right", 
+                "text": "Braking and Steering Right",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Braking (Lockup)", 
+                "text": "Braking (Lockup)",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Braking (Lockup Unknown)", 
+                "text": "Braking (Lockup Unknown)",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Braking (No Lockup)", 
+                "text": "Braking (No Lockup)",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "No Avoidance Maneuver", 
+                "text": "No Avoidance Maneuver",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Releasing Brakes", 
+                "text": "Releasing Brakes",
                 "idCode": "10"
-            }, 
+            },
             {
-                "text": "Steering Left", 
+                "text": "Steering Left",
                 "idCode": "11"
-            }, 
+            },
             {
-                "text": "Steering Right", 
+                "text": "Steering Right",
                 "idCode": "12"
-            }, 
+            },
             {
-                "text": "Other Actions", 
+                "text": "Other Actions",
                 "idCode": "98"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "F1"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Alcohol Test Type and Results", 
+        "answerType": "header",
+        "question": "Alcohol Test Type and Results",
         "display": [
-            "fatalityDriver", 
+            "fatalityDriver",
             "fatalityNonmotorist"
-        ], 
+        ],
         "id": "F2"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Test Type", 
+        "answerType": "dropdown",
+        "question": "Test Type",
         "display": [
-            "fatalityDriver", 
+            "fatalityDriver",
             "fatalityNonmotorist"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Test Not Given", 
+                "text": "Test Not Given",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Breath Test (AC)", 
+                "text": "Breath Test (AC)",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Blood", 
+                "text": "Blood",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Blood Clot", 
+                "text": "Blood Clot",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Blood Plasma/Serum", 
+                "text": "Blood Plasma/Serum",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Liver", 
+                "text": "Liver",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Preliminary Breath Test (PBT)", 
+                "text": "Preliminary Breath Test (PBT)",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Unknown if Tested", 
+                "text": "Unknown if Tested",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Urine", 
+                "text": "Urine",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "Vitreous", 
+                "text": "Vitreous",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Other Test Type", 
+                "text": "Other Test Type",
                 "idCode": "98"
-            }, 
+            },
             {
-                "text": "Unknown Test Type", 
+                "text": "Unknown Test Type",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "F2-S1"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Test Result", 
+        "answerType": "openTextBox",
+        "question": "Test Result",
         "display": [
-            "fatalityDriver", 
+            "fatalityDriver",
             "fatalityNonmotorist"
-        ], 
+        ],
         "id": "F2-S2"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Drug Test Type and Results", 
+        "answerType": "header",
+        "question": "Drug Test Type and Results",
         "display": [
-            "fatalityDriver", 
+            "fatalityDriver",
             "fatalityNonmotorist"
-        ], 
+        ],
         "id": "F3"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Test Type", 
+        "answerType": "dropdown",
+        "question": "Test Type",
         "display": [
-            "fatalityDriver", 
+            "fatalityDriver",
             "fatalityNonmotorist"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Test Not Given", 
+                "text": "Test Not Given",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Blood", 
+                "text": "Blood",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Both Blood and Urine", 
+                "text": "Both Blood and Urine",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Unknown Test Type", 
+                "text": "Unknown Test Type",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Urine", 
+                "text": "Urine",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Other Test Type", 
+                "text": "Other Test Type",
                 "idCode": "98"
-            }, 
+            },
             {
-                "text": "Unknown if Tested", 
+                "text": "Unknown if Tested",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "F3-S1"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Test Result", 
+        "answerType": "openTextBox",
+        "question": "Test Result",
         "display": [
-            "fatalityDriver", 
+            "fatalityDriver",
             "fatalityNonmotorist"
-        ], 
+        ],
         "id": "F3-S2"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "CMV License Status and Compliance with CDL Endorsements", 
+        "answerType": "header",
+        "question": "CMV License Status and Compliance with CDL Endorsements",
         "display": [
             "lvhmDriver"
-        ], 
+        ],
         "id": "LV1"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "CMV License Status", 
+        "answerType": "dropdown",
+        "question": "CMV License Status",
         "display": [
             "lvhmDriver"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No CDL", 
+                "text": "No CDL",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Canceled or Denied", 
+                "text": "Canceled or Denied",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Disqualified", 
+                "text": "Disqualified",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Expired", 
+                "text": "Expired",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Revoked", 
+                "text": "Revoked",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Suspended", 
+                "text": "Suspended",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Learner's Permit", 
+                "text": "Learner's Permit",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Valid", 
+                "text": "Valid",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Other - Not Valid", 
+                "text": "Other - Not Valid",
                 "idCode": "98"
-            }, 
+            },
             {
-                "text": "Unknown License Status", 
+                "text": "Unknown License Status",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "LV1-S1"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Compliance with CDL Endorsement(s)", 
+        "answerType": "dropdown",
+        "question": "Compliance with CDL Endorsement(s)",
         "display": [
             "lvhmDriver"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No Endorsement(s) Required for the Vehicle", 
+                "text": "No Endorsement(s) Required for the Vehicle",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Endorsement(s) Required, Complied With", 
+                "text": "Endorsement(s) Required, Complied With",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Endorsement(s) Required, Not Complied With", 
+                "text": "Endorsement(s) Required, Not Complied With",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Endorsement(s) Required, Compliance Unknown", 
+                "text": "Endorsement(s) Required, Compliance Unknown",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Unknown if Required", 
+                "text": "Unknown if Required",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "LV1-S2"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Trailer License Plate Number", 
+        "answerType": "header",
+        "question": "Trailer License Plate Number",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV2"
-    }, 
+    },
     {
-        "autoMethod": "plateCamera", 
-        "helperText": "License Plate 1", 
-        "question": "First Trailer Behind Tractor", 
-        "id": "LV2-S1", 
-        "answerType": "advancedOpenTextBox", 
+        "autoMethod": "plateCamera",
+        "helperText": "License Plate 1",
+        "question": "First Trailer Behind Tractor",
+        "id": "LV2-S1",
+        "answerType": "advancedOpenTextBox",
         "display": [
             "lvhm"
         ]
-    }, 
+    },
     {
-        "autoMethod": "plateCamera", 
-        "helperText": "License Plate 2", 
-        "question": "Second Trailer Behind Tractor", 
-        "id": "LV2-S2", 
-        "answerType": "advancedOpenTextBox", 
+        "autoMethod": "plateCamera",
+        "helperText": "License Plate 2",
+        "question": "Second Trailer Behind Tractor",
+        "id": "LV2-S2",
+        "answerType": "advancedOpenTextBox",
         "display": [
             "lvhm"
         ]
-    }, 
+    },
     {
-        "autoMethod": "plateCamera", 
-        "helperText": "License Plate 3", 
-        "question": "Third Trailer Behind Tractor", 
-        "id": "LV2-S3", 
-        "answerType": "advancedOpenTextBox", 
+        "autoMethod": "plateCamera",
+        "helperText": "License Plate 3",
+        "question": "Third Trailer Behind Tractor",
+        "id": "LV2-S3",
+        "answerType": "advancedOpenTextBox",
         "display": [
             "lvhm"
         ]
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Trailer VIN(s)", 
+        "answerType": "header",
+        "question": "Trailer VIN(s)",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV3"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "VIN 1", 
-        "question": "First Trailer Behind Tractor", 
+        "answerType": "openTextBox",
+        "helperText": "VIN 1",
+        "question": "First Trailer Behind Tractor",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV3-S1"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "VIN 2", 
-        "question": "Second Trailer Behind Tractor", 
+        "answerType": "openTextBox",
+        "helperText": "VIN 2",
+        "question": "Second Trailer Behind Tractor",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV3-S2"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "VIN 3", 
-        "question": "Third Trailer Behind Tractor", 
+        "answerType": "openTextBox",
+        "helperText": "VIN 3",
+        "question": "Third Trailer Behind Tractor",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV3-S3"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Trailer Make(s)", 
+        "answerType": "header",
+        "question": "Trailer Make(s)",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV4"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "Make 1", 
-        "question": "First Trailer Behind Tractor", 
+        "answerType": "openTextBox",
+        "helperText": "Make 1",
+        "question": "First Trailer Behind Tractor",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV4-S1"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "Make 2", 
-        "question": "Second Trailer Behind Tractor", 
+        "answerType": "openTextBox",
+        "helperText": "Make 2",
+        "question": "Second Trailer Behind Tractor",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV4-S2"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "Make 3", 
-        "question": "Third Trailer Behind Tractor", 
+        "answerType": "openTextBox",
+        "helperText": "Make 3",
+        "question": "Third Trailer Behind Tractor",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV4-S3"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Trailer Model(s)", 
+        "answerType": "header",
+        "question": "Trailer Model(s)",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV5"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "Model 1", 
-        "question": "First Trailer Behind Tractor", 
+        "answerType": "openTextBox",
+        "helperText": "Model 1",
+        "question": "First Trailer Behind Tractor",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV5-S1"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "Model 2", 
-        "question": "Second Trailer Behind Tractor", 
+        "answerType": "openTextBox",
+        "helperText": "Model 2",
+        "question": "Second Trailer Behind Tractor",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV5-S2"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "Model 3", 
-        "question": "Third Trailer Behind Tractor", 
+        "answerType": "openTextBox",
+        "helperText": "Model 3",
+        "question": "Third Trailer Behind Tractor",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV5-S3"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Trailer Model Year(s)", 
+        "answerType": "header",
+        "question": "Trailer Model Year(s)",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV6"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "Year 1", 
-        "question": "First Trailer Behind Tractor", 
+        "answerType": "openTextBox",
+        "helperText": "Year 1",
+        "question": "First Trailer Behind Tractor",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV6-S1"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "Year 2", 
-        "question": "Second Trailer Behind Tractor", 
+        "answerType": "openTextBox",
+        "helperText": "Year 2",
+        "question": "Second Trailer Behind Tractor",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV6-S2"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "Year 3", 
-        "question": "Third Trailer Behind Tractor", 
+        "answerType": "openTextBox",
+        "helperText": "Year 3",
+        "question": "Third Trailer Behind Tractor",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV6-S3"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Motor Carrier Identification", 
+        "answerType": "header",
+        "question": "Motor Carrier Identification",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV7"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Identification Type", 
+        "answerType": "multiButton",
+        "question": "Identification Type",
         "display": [
             "lvhm"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "US DOT Number", 
+                "text": "US DOT Number",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "State Number", 
+                "text": "State Number",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Not Applicable", 
+                "text": "Not Applicable",
                 "idCode": "97"
-            }, 
+            },
             {
-                "text": "Unknown/Unable to Determine", 
+                "text": "Unknown/Unable to Determine",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "LV7-S1"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "Non-US Country Code (e.g. Mexico or Canada) US State Code", 
-        "question": "Country/State Code", 
+        "answerType": "openTextBox",
+        "helperText": "Non-US Country Code (e.g. Mexico or Canada) US State Code",
+        "question": "Country/State Code",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV7-S2"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "US DOT Number - up to 7 digits          If not a US DOT Number, include State issued Identification Number and State", 
-        "question": "Identification Number", 
+        "answerType": "openTextBox",
+        "helperText": "US DOT Number - up to 7 digits          If not a US DOT Number, include State issued Identification Number and State",
+        "question": "Identification Number",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV7-S3"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "helperText": "Motor Carrier Name", 
-        "question": "Name", 
+        "answerType": "openTextBox",
+        "helperText": "Motor Carrier Name",
+        "question": "Name",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV7-S4"
-    }, 
+    },
     {
-        "answerType": "largeTextField", 
-        "helperText": "Street Address 1; Street Address 2; City, State   Zip; Country", 
-        "question": "Motor Carrier Address", 
+        "answerType": "largeTextField",
+        "helperText": "Street Address 1; Street Address 2; City, State   Zip; Country",
+        "question": "Motor Carrier Address",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV7-S5"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Type of Carrier", 
+        "answerType": "multiButton",
+        "question": "Type of Carrier",
         "display": [
             "lvhm"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Interstate Carrier", 
+                "text": "Interstate Carrier",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Intrastate Carrier", 
+                "text": "Intrastate Carrier",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Not in Commerce/Government", 
+                "text": "Not in Commerce/Government",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Not in Commerce/Other Truck or Bus", 
+                "text": "Not in Commerce/Other Truck or Bus",
                 "idCode": "04"
             }
-        ], 
+        ],
         "id": "LV7-S6"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Vehicle Configuration", 
+        "answerType": "header",
+        "question": "Vehicle Configuration",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV8"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Vehicle Configuration", 
+        "answerType": "dropdown",
+        "question": "Vehicle Configuration",
         "display": [
             "lvhm"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Vehicle 10,000 lbs. or less placarded for hazardous materials", 
+                "text": "Vehicle 10,000 lbs. or less placarded for hazardous materials",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Bus/Large Van (seats for 9-15 occupants, including driver)", 
+                "text": "Bus/Large Van (seats for 9-15 occupants, including driver)",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Bus (seats more than 15 occupants, including driver)", 
+                "text": "Bus (seats more than 15 occupants, including driver)",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Single-Unit Truck (2-axle and GVWR > 10,000 lbs.)", 
+                "text": "Single-Unit Truck (2-axle and GVWR > 10,000 lbs.)",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Single-Unit Truck (3 or more axles)", 
+                "text": "Single-Unit Truck (3 or more axles)",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Truck Pulling Trailer(s)", 
+                "text": "Truck Pulling Trailer(s)",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Truck Tractor (Bobtail)", 
+                "text": "Truck Tractor (Bobtail)",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Truck Tractor/Semi-Trailer", 
+                "text": "Truck Tractor/Semi-Trailer",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "Truck Tractor/Double", 
+                "text": "Truck Tractor/Double",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Truck Tractor/Triple", 
+                "text": "Truck Tractor/Triple",
                 "idCode": "10"
-            }, 
+            },
             {
-                "text": "Truck More Than 10,000 lbs., cannot classify", 
+                "text": "Truck More Than 10,000 lbs., cannot classify",
                 "idCode": "11"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "LV8-S1"
-    }, 
+    },
     {
         "answerOptions": [
             {
-                "text": "No special sizing", 
+                "text": "No special sizing",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Over-height", 
+                "text": "Over-height",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Over-length", 
+                "text": "Over-length",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Over-weight", 
+                "text": "Over-weight",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Over-width", 
+                "text": "Over-width",
                 "idCode": "04"
             }
-        ], 
-        "helperText": "(choose up to 4)", 
-        "question": "Special Sizing", 
-        "id": "LV8-S2", 
-        "answerType": "multiButton", 
+        ],
+        "helperText": "(choose up to 4)",
+        "question": "Special Sizing",
+        "id": "LV8-S2",
+        "answerType": "multiButton",
         "display": [
             "lvhm"
         ]
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Permitted?", 
+        "answerType": "multiButton",
+        "question": "Permitted?",
         "display": [
             "lvhm"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Non-Permitted Load", 
+                "text": "Non-Permitted Load",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Permitted Load", 
+                "text": "Permitted Load",
                 "idCode": "02"
             }
-        ], 
+        ],
         "id": "LV8-S3"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Cargo Body Type", 
+        "answerType": "dropdown",
+        "question": "Cargo Body Type",
         "display": [
             "lvhm"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No Cargo Body (bobtail, light MV with hazardous materials [HM] placard, etc.)", 
+                "text": "No Cargo Body (bobtail, light MV with hazardous materials [HM] placard, etc.)",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Bus", 
+                "text": "Bus",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Auto Transporter", 
+                "text": "Auto Transporter",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Cargo Tank", 
+                "text": "Cargo Tank",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Concrete Mixer", 
+                "text": "Concrete Mixer",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Dump", 
+                "text": "Dump",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Flatbed", 
+                "text": "Flatbed",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Garbage/Refuse", 
+                "text": "Garbage/Refuse",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Grain/Chips/Gravel", 
+                "text": "Grain/Chips/Gravel",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "Intermodal Container Chassis", 
+                "text": "Intermodal Container Chassis",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Log", 
+                "text": "Log",
                 "idCode": "10"
-            }, 
+            },
             {
-                "text": "Pole-Trailer", 
+                "text": "Pole-Trailer",
                 "idCode": "11"
-            }, 
+            },
             {
-                "text": "Van/Enclosed Box", 
+                "text": "Van/Enclosed Box",
                 "idCode": "12"
-            }, 
+            },
             {
-                "text": "Vehicle Towing Another Vehicle", 
+                "text": "Vehicle Towing Another Vehicle",
                 "idCode": "13"
-            }, 
+            },
             {
-                "text": "Not Applicable (MV 10,000 lbs. or less, not displaying HM placard)", 
+                "text": "Not Applicable (MV 10,000 lbs. or less, not displaying HM placard)",
                 "idCode": "97"
-            }, 
+            },
             {
-                "text": "Other", 
+                "text": "Other",
                 "idCode": "98"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "LV9"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Hazardous Materials (Cargo Only)", 
+        "answerType": "header",
+        "question": "Hazardous Materials (Cargo Only)",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV10"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Hazardous Materials ID", 
+        "answerType": "openTextBox",
+        "question": "Hazardous Materials ID",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV10-S1"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Hazardous Materials Class", 
+        "answerType": "openTextBox",
+        "question": "Hazardous Materials Class",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV10-S2"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Release of hazardous materials from a cargo compartment (e.g. trailer), cargo container (e.g. tank) or from a package?", 
+        "answerType": "multiButton",
+        "question": "Release of hazardous materials from a cargo compartment (e.g. trailer), cargo container (e.g. tank) or from a package?",
         "display": [
             "lvhm"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No", 
+                "text": "No",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Yes", 
+                "text": "Yes",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Not Applicable", 
+                "text": "Not Applicable",
                 "idCode": "97"
-            }, 
+            },
             {
-                "text": "Unknown if Released", 
+                "text": "Unknown if Released",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "LV10-S3"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Total Number of Axles", 
+        "answerType": "header",
+        "question": "Total Number of Axles",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV11"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Truck Tractor", 
+        "answerType": "openTextBox",
+        "question": "Truck Tractor",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV11-S1"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "First Trailer Behind Tractor", 
+        "answerType": "openTextBox",
+        "question": "First Trailer Behind Tractor",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV11-S2"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Second Trailer Behind Tractor", 
+        "answerType": "openTextBox",
+        "question": "Second Trailer Behind Tractor",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV11-S3"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Third Trailer Behind Tractor", 
+        "answerType": "openTextBox",
+        "question": "Third Trailer Behind Tractor",
         "display": [
             "lvhm"
-        ], 
+        ],
         "id": "LV11-S4"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Unit Number of Motor Vehicle Striking Non-Motorist", 
+        "answerType": "openTextBox",
+        "question": "Unit Number of Motor Vehicle Striking Non-Motorist",
         "display": [
             "nonmotorist"
-        ], 
+        ],
         "id": "NM-S1"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Non-Motorist Action/Circumstance Prior to Crash", 
+        "answerType": "header",
+        "question": "Non-Motorist Action/Circumstance Prior to Crash",
         "display": [
             "nonmotorist"
-        ], 
+        ],
         "id": "NM2"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Action/Circumstance", 
+        "answerType": "dropdown",
+        "question": "Action/Circumstance",
         "display": [
             "nonmotorist"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "None", 
+                "text": "None",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Adjacent to Roadway (e.g., Shoulder, Median)", 
+                "text": "Adjacent to Roadway (e.g., Shoulder, Median)",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Crossing Roadway", 
+                "text": "Crossing Roadway",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "In Roadway - Other", 
+                "text": "In Roadway - Other",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Waiting to Cross Roadway", 
+                "text": "Waiting to Cross Roadway",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Walking/Cycling Along Roadway Against Traffic (In or Adjacent to Travel Lane)", 
+                "text": "Walking/Cycling Along Roadway Against Traffic (In or Adjacent to Travel Lane)",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Walking/Cycling Along Roadway with Traffic (In or Adjacent to Travel Lane)", 
+                "text": "Walking/Cycling Along Roadway with Traffic (In or Adjacent to Travel Lane)",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Walking/Cycling on Sidewalk", 
+                "text": "Walking/Cycling on Sidewalk",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Working in Trafficway (Incident Response)", 
+                "text": "Working in Trafficway (Incident Response)",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "Other", 
+                "text": "Other",
                 "idCode": "98"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "NM2-S1"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Origin/Destination", 
+        "answerType": "multiButton",
+        "question": "Origin/Destination",
         "display": [
             "nonmotorist"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Going to or from School (K-12)", 
+                "text": "Going to or from School (K-12)",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Going to or from Transit", 
+                "text": "Going to or from Transit",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Not Applicable", 
+                "text": "Not Applicable",
                 "idCode": "97"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "NM2-S2"
-    }, 
+    },
     {
         "answerOptions": [
             {
-                "text": "Dart/Dash", 
+                "text": "Dart/Dash",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Disabled Vehicle-Related (Working on, Pushing, Leaving/Approaching)", 
+                "text": "Disabled Vehicle-Related (Working on, Pushing, Leaving/Approaching)",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Entering/Exiting Parked/Standing Vehicle", 
+                "text": "Entering/Exiting Parked/Standing Vehicle",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Failure to Obey Traffic Signs, Signals, or Officer", 
+                "text": "Failure to Obey Traffic Signs, Signals, or Officer",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Failure to Yield Right-Of-Way", 
+                "text": "Failure to Yield Right-Of-Way",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Improper Passing", 
+                "text": "Improper Passing",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Improper Turn/Merge", 
+                "text": "Improper Turn/Merge",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Inattentive (Talking, Eating, etc.)", 
+                "text": "Inattentive (Talking, Eating, etc.)",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "In Roadway Improperly (Standing, Lying, Working, Playing)", 
+                "text": "In Roadway Improperly (Standing, Lying, Working, Playing)",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Not Visible (Dark Clothing, No Lighting, etc.)", 
+                "text": "Not Visible (Dark Clothing, No Lighting, etc.)",
                 "idCode": "10"
-            }, 
+            },
             {
-                "text": "Wrong-Way Riding or Walking", 
+                "text": "Wrong-Way Riding or Walking",
                 "idCode": "11"
-            }, 
+            },
             {
-                "text": "Other", 
+                "text": "Other",
                 "idCode": "98"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
-        "helperText": "(choose up to 2)", 
-        "numOptionsAllowed": "2", 
-        "question": "Non-Motorist Contributing Action(s)/Circumstance(s)", 
-        "id": "NM3", 
-        "answerType": "dropdownMultiSelect", 
+        ],
+        "helperText": "(choose up to 2)",
+        "numOptionsAllowed": "2",
+        "question": "Non-Motorist Contributing Action(s)/Circumstance(s)",
+        "id": "NM3",
+        "answerType": "dropdownMultiSelect",
         "display": [
             "nonmotorist"
         ]
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Non-Motorist Location at Time of Crash", 
+        "answerType": "dropdown",
+        "question": "Non-Motorist Location at Time of Crash",
         "display": [
             "nonmotorist"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Other", 
+                "text": "Other",
                 "idCode": "98"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
-            }, 
+            },
             {
-                "text": "Intersection - Marked Crosswalk", 
+                "text": "Intersection - Marked Crosswalk",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Intersection - Unmarked Crosswalk", 
+                "text": "Intersection - Unmarked Crosswalk",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Intersection - Other", 
+                "text": "Intersection - Other",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Median/Crossing Island", 
+                "text": "Median/Crossing Island",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Midblock - Marked Crosswalk", 
+                "text": "Midblock - Marked Crosswalk",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Shoulder/Roadside", 
+                "text": "Shoulder/Roadside",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Travel Lane - Other Location", 
+                "text": "Travel Lane - Other Location",
                 "idCode": "07"
-            }, 
+            },
             {
-                "text": "Signed Route (no pavement marking)", 
+                "text": "Signed Route (no pavement marking)",
                 "idCode": "08"
-            }, 
+            },
             {
-                "text": "Shared Lane Markings", 
+                "text": "Shared Lane Markings",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "On-Street Bike Lanes", 
+                "text": "On-Street Bike Lanes",
                 "idCode": "10"
-            }, 
+            },
             {
-                "text": "On-Street Buffered Bike Lanes", 
+                "text": "On-Street Buffered Bike Lanes",
                 "idCode": "11"
-            }, 
+            },
             {
-                "text": "Separated Bike Lanes", 
+                "text": "Separated Bike Lanes",
                 "idCode": "12"
-            }, 
+            },
             {
-                "text": "Off-Street Trails/Sidepaths", 
+                "text": "Off-Street Trails/Sidepaths",
                 "idCode": "13"
-            }, 
+            },
             {
-                "text": "Driveway Access", 
+                "text": "Driveway Access",
                 "idCode": "14"
-            }, 
+            },
             {
-                "text": "Non-Trafficway Area", 
+                "text": "Non-Trafficway Area",
                 "idCode": "15"
-            }, 
+            },
             {
-                "text": "Shared-Use Path or Trail", 
+                "text": "Shared-Use Path or Trail",
                 "idCode": "16"
-            }, 
+            },
             {
-                "text": "Sidewalk", 
+                "text": "Sidewalk",
                 "idCode": "17"
             }
-        ], 
+        ],
         "id": "NM4"
-    }, 
+    },
     {
         "answerOptions": [
             {
-                "text": "None", 
+                "text": "None",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Helmet", 
+                "text": "Helmet",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Protective Pads Used (elbows, knees, shins, etc.)", 
+                "text": "Protective Pads Used (elbows, knees, shins, etc.)",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Reflective Wear (backpack, triangles, etc.)", 
+                "text": "Reflective Wear (backpack, triangles, etc.)",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Lighting", 
+                "text": "Lighting",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Reflectors", 
+                "text": "Reflectors",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Other", 
+                "text": "Other",
                 "idCode": "98"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
-        "helperText": "(choose up to 5)", 
-        "numOptionsAllowed": "5", 
-        "question": "Non-Motorist Safety Equipment", 
-        "id": "NM5", 
-        "answerType": "dropdownMultiSelect", 
+        ],
+        "helperText": "(choose up to 5)",
+        "numOptionsAllowed": "5",
+        "question": "Non-Motorist Safety Equipment",
+        "id": "NM5",
+        "answerType": "dropdownMultiSelect",
         "display": [
             "nonmotorist"
         ]
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Initial Contact Point on Non-Motorist", 
+        "answerType": "multiButton",
+        "question": "Initial Contact Point on Non-Motorist",
         "display": [
             "nonmotorist"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "Right", 
+                "text": "Right",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "Rear", 
+                "text": "Rear",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Left", 
+                "text": "Left",
                 "idCode": "09"
-            }, 
+            },
             {
-                "text": "Front", 
+                "text": "Front",
                 "idCode": "12"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "NM6"
-    }, 
+    },
     {
-        "answerType": "header", 
-        "question": "Motor Vehicle Automated Driving System(s)", 
+        "answerType": "header",
+        "question": "Motor Vehicle Automated Driving System(s)",
         "display": [
             "vehicle"
-        ], 
+        ],
         "id": "DV1"
-    }, 
+    },
     {
-        "answerType": "multiButton", 
-        "question": "Automated System or Systems in Vehicle", 
+        "answerType": "multiButton",
+        "question": "Automated System or Systems in Vehicle",
         "display": [
             "vehicle"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No", 
+                "text": "No",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Yes", 
+                "text": "Yes",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "DV1-S1"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Automated System Levels In Vehicle", 
+        "answerType": "dropdown",
+        "question": "Automated System Levels In Vehicle",
         "display": [
             "vehicle"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No Automation", 
+                "text": "No Automation",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Driver Assistance", 
+                "text": "Driver Assistance",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Partial Automation", 
+                "text": "Partial Automation",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Conditional Automation", 
+                "text": "Conditional Automation",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "High Automation", 
+                "text": "High Automation",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Full Automation", 
+                "text": "Full Automation",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Automation Level Unknown", 
+                "text": "Automation Level Unknown",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "DV1-S2"
-    }, 
+    },
     {
-        "answerType": "dropdown", 
-        "question": "Automated Systems Levels Engaged at Time of Crash", 
+        "answerType": "dropdown",
+        "question": "Automated Systems Levels Engaged at Time of Crash",
         "display": [
             "vehicle"
-        ], 
+        ],
         "answerOptions": [
             {
-                "text": "No Automation", 
+                "text": "No Automation",
                 "idCode": "00"
-            }, 
+            },
             {
-                "text": "Driver Assistance", 
+                "text": "Driver Assistance",
                 "idCode": "01"
-            }, 
+            },
             {
-                "text": "Partial Automation", 
+                "text": "Partial Automation",
                 "idCode": "02"
-            }, 
+            },
             {
-                "text": "Conditional Automation", 
+                "text": "Conditional Automation",
                 "idCode": "03"
-            }, 
+            },
             {
-                "text": "High Automation", 
+                "text": "High Automation",
                 "idCode": "04"
-            }, 
+            },
             {
-                "text": "Full Automation", 
+                "text": "Full Automation",
                 "idCode": "05"
-            }, 
+            },
             {
-                "text": "Automation Level Unknown", 
+                "text": "Automation Level Unknown",
                 "idCode": "06"
-            }, 
+            },
             {
-                "text": "Unknown", 
+                "text": "Unknown",
                 "idCode": "99"
             }
-        ], 
+        ],
         "id": "DV1-S3"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Number of vehicles which are large, towing trailers, or carrying hazardous materials", 
+        "answerType": "openTextBox",
+        "question": "Number of vehicles which are large, towing trailers, or carrying hazardous materials",
         "display": [
             "setup"
-        ], 
+        ],
         "id": "numLvhm"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Address", 
+        "answerType": "openTextBox",
+        "question": "Address",
         "display": [
             "info"
-        ], 
+        ],
         "id": "address"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Vehicle owner", 
+        "answerType": "openTextBox",
+        "question": "Vehicle owner",
         "display": [
             "info"
-        ], 
+        ],
         "id": "owner-S1"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Owner's address", 
+        "answerType": "openTextBox",
+        "question": "Owner's address",
         "display": [
             "info"
-        ], 
+        ],
         "id": "owner-S2"
-    }, 
+    },
     {
-        "answerType": "openTextBox", 
-        "question": "Insurance company name", 
+        "answerType": "openTextBox",
+        "question": "Insurance company name",
         "display": [
             "info"
-        ], 
+        ],
         "id": "insurance"
     }
 ]

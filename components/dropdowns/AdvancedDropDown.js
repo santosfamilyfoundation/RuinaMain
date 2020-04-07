@@ -25,12 +25,16 @@ const AdvancedDropDown = (props) => {
     const [isLoading, setIsLoading] = React.useState(true);
     const [temp, setTemp] = React.useState("");
     const [conditions, setConditions] = React.useState("");
+    const [place, setPlace] = React.useState("");
+    const [speed, setSpeed] = React.useState("");
+    const [degree, setDegree] = React.useState("");
 
     let currId = data.id;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
     let i;
     // Populate if value already exists in redux
+
     if(selectedOptions.length == 0) {
         if(existingData != null) {
             if(existingData[currId] != null) {
@@ -46,6 +50,7 @@ const AdvancedDropDown = (props) => {
             };
         }
     };
+
 
     // Disable/enable if numOptionsAllowed reached
     if(selectedOptions.length == data.numOptionsAllowed) {
@@ -64,15 +69,17 @@ const AdvancedDropDown = (props) => {
 
     //Calls weather API
     const findWeatherData = () => {
-        Geolocation.getCurrentPosition(
-          position => {
-            this.fetchWeather(position.coords.latitude, position.coords.longitude)
-
-          },
-          error => alert('Cannot find weather', JSON.stringify(error)),
-        );
-        return position;
+      Geolocation.getCurrentPosition(
+        position => {
+          console.log(position.coords.latitude)
+          console.log(position.coords.longitude)
+          fetchWeather(position.coords.latitude, position.coords.longitude)
+        },
+        error => alert('Using Default Location', JSON.stringify(error)),
+        {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000},
+      );
     };
+
 
     const fetchWeather = (lat = 25, lon = 25) => {
         fetch(
@@ -82,8 +89,13 @@ const AdvancedDropDown = (props) => {
           .then(json => {
             setTemp(json.main.temp)
             setConditions(json.weather[0].main)
+            setSpeed(json.wind.speed)
+            setDegree(json.wind.deg)
+            setPlace(json.name)
             setIsLoading(false)
+            console.log(json)
           });
+
     };
 
     //Updates color status of card
@@ -184,7 +196,7 @@ const AdvancedDropDown = (props) => {
 
     const RenderHeaderIcon = () => {
         switch(importFrom) {
-            case "Weather":
+            case "weather":
                 return (
                     <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={WeatherIcon} onPress={()=> onImportWeatherPress() }></Button>
                 )
@@ -198,20 +210,29 @@ const AdvancedDropDown = (props) => {
       />
     );
 
-
     const WeatherHelper = () => {
       if(toggleWeatherHelper){
-        fetchWeather()
+        //fetchWeather()
+        findWeatherData()
         return(
           isLoading ?
               (<Text>Fetching The Weather</Text>) :
               (
                 <Layout style={styles.weatherCard}>
                   <Text style={{margin: 8, fontWeight: 'bold',}}>
+                    {Constants.TEMP_ANNOUNCE_NAME} {place}
+                  </Text>
+                  <Text style={{margin: 8, fontWeight: 'bold',}}>
                     {Constants.TEMP_ANNOUNCE} {temp}
                   </Text>
                   <Text style={{margin: 8, fontWeight: 'bold',}}>
                     {Constants.CONDITIONS_ANNOUNCE} {conditions}
+                  </Text>
+                  <Text style={{margin: 8, fontWeight: 'bold',}}>
+                    {Constants.WIND_SPEED_ANNOUNCE} {speed}
+                  </Text>
+                  <Text style={{margin: 8, fontWeight: 'bold',}}>
+                    {Constants.WIND_DEG_ANNOUNCE} {degree}
                   </Text>
                 </Layout>
               )
