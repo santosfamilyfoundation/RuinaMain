@@ -9,11 +9,6 @@ export const questions = {
         "id": "C2"
     },
     {
-        "answerType": "multiButton",
-        "question": "Ownership",
-        "display": [
-            "road"
-        ],
         "answerOptions": [
             {
                 "text": "Public Property",
@@ -24,14 +19,15 @@ export const questions = {
                 "idCode": "02"
             }
         ],
-        "id": "C2-S1"
-    },
-    {
+        "numOptionsAllowed": "1",
+        "question": "Ownership",
+        "id": "C2-S1",
         "answerType": "multiButton",
-        "question": "Characteristics",
         "display": [
             "road"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "Trafficway, On Road",
@@ -46,14 +42,15 @@ export const questions = {
                 "idCode": "03"
             }
         ],
-        "id": "C2-S2"
-    },
-    {
+        "numOptionsAllowed": "1",
+        "question": "Characteristics",
+        "id": "C2-S2",
         "answerType": "multiButton",
-        "question": "Secondary Crash",
         "display": [
             "road"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "No",
@@ -64,7 +61,13 @@ export const questions = {
                 "idCode": "02"
             }
         ],
-        "id": "C2-S3"
+        "numOptionsAllowed": "1",
+        "question": "Secondary Crash",
+        "id": "C2-S3",
+        "answerType": "multiButton",
+        "display": [
+            "road"
+        ]
     },
     {
         "answerType": "header",
@@ -75,13 +78,14 @@ export const questions = {
         "id": "C3"
     },
     {
-        "answerType": "openTextBox",
+        "autoMethod": "time",
         "helperText": "(YYYYMMDDHHMM)",
         "question": "Crash Date and Time",
+        "id": "C3",
+        "answerType": "advancedOpenTextBox",
         "display": [
             "road"
-        ],
-        "id": "C3"
+        ]
     },
     {
         "answerType": "openTextBox",
@@ -309,6 +313,7 @@ export const questions = {
             }
         ],
         "helperText": "Non-Collision Harmful Events; Collision With Person, Motor Vehicle, or Non-Fixed Object; Collision with Fixed Object",
+        "numOptionsAllowed": "1",
         "question": "First Harmful Event",
         "id": "C7",
         "answerType": "dropdown",
@@ -317,11 +322,6 @@ export const questions = {
         ]
     },
     {
-        "answerType": "dropdown",
-        "question": "Location of First Harmful Event Relative to the Trafficway",
-        "display": [
-            "road"
-        ],
         "answerOptions": [
             {
                 "text": "Gore",
@@ -368,14 +368,15 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "C8"
-    },
-    {
+        "numOptionsAllowed": "1",
+        "question": "Location of First Harmful Event Relative to the Trafficway",
+        "id": "C8",
         "answerType": "dropdown",
-        "question": "Manner of Crash/ Collision Impact",
         "display": [
             "road"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "Not a Collision Between Two Motor Vehicles",
@@ -418,7 +419,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "C9"
+        "numOptionsAllowed": "1",
+        "question": "Manner of Crash/ Collision Impact",
+        "id": "C9",
+        "answerType": "dropdown",
+        "display": [
+            "road"
+        ]
     },
     {
         "answerType": "header",
@@ -429,11 +436,6 @@ export const questions = {
         "id": "C10"
     },
     {
-        "answerType": "multiButton",
-        "question": "Source of Information",
-        "display": [
-            "road"
-        ],
         "answerOptions": [
             {
                 "text": "Law Enforcement Agency",
@@ -444,7 +446,13 @@ export const questions = {
                 "idCode": "02"
             }
         ],
-        "id": "C10-S1"
+        "numOptionsAllowed": "1",
+        "question": "Source of Information",
+        "id": "C10-S1",
+        "answerType": "multiButton",
+        "display": [
+            "road"
+        ]
     },
     {
         "answerType": "openTextBox",
@@ -457,30 +465,66 @@ export const questions = {
     },
     {
         "autoMethod": "weather",
+        "answerOptions": [
+            {
+                "text": "Other",
+                "idCode": "98"
+            },
+            {
+                "text": "Unknown",
+                "idCode": "99"
+            },
+            {
+                "text": "Blowing Sand, Soil, Dirt",
+                "idCode": "01"
+            },
+            {
+                "text": "Blowing Snow",
+                "idCode": "02"
+            },
+            {
+                "text": "Clear",
+                "idCode": "03"
+            },
+            {
+                "text": "Cloudy",
+                "idCode": "04"
+            },
+            {
+                "text": "Fog, Smog, Smoke",
+                "idCode": "05"
+            },
+            {
+                "text": "Freezing Rain or Freezing Drizzle",
+                "idCode": "06"
+            },
+            {
+                "text": "Rain",
+                "idCode": "07"
+            },
+            {
+                "text": "Severe Crosswinds",
+                "idCode": "08"
+            },
+            {
+                "text": "Sleet or Hail",
+                "idCode": "09"
+            },
+            {
+                "text": "Snow",
+                "idCode": "10"
+            }
+        ],
         "helperText": "(choose up to 2)",
+        "numOptionsAllowed": "2",
         "question": "Weather Conditions",
         "id": "C11",
         "answerType": "advancedDropDown",
         "display": [
             "road"
-        ],
-        "answerOptions": [
-            {
-                "text": "Daylight",
-                "idCode": "01"
-            },
-            {
-                "text": "Dawn/Dusk",
-                "idCode": "02"
-            }
         ]
     },
     {
-        "answerType": "dropdown",
-        "question": "Light Condition",
-        "display": [
-            "road"
-        ],
         "answerOptions": [
             {
                 "text": "Daylight",
@@ -511,14 +555,15 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "C12"
-    },
-    {
+        "numOptionsAllowed": "1",
+        "question": "Light Condition",
+        "id": "C12",
         "answerType": "dropdown",
-        "question": "Roadway Surface Condition",
         "display": [
             "road"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "Dry",
@@ -565,7 +610,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "C13"
+        "numOptionsAllowed": "1",
+        "question": "Roadway Surface Condition",
+        "id": "C13",
+        "answerType": "dropdown",
+        "display": [
+            "road"
+        ]
     },
     {
         "answerOptions": [
@@ -672,11 +723,6 @@ export const questions = {
         "id": "C15"
     },
     {
-        "answerType": "multiButton",
-        "question": "Within Interchange Area?",
-        "display": [
-            "road"
-        ],
         "answerOptions": [
             {
                 "text": "No",
@@ -691,14 +737,15 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "C15-S1"
-    },
-    {
-        "answerType": "dropdown",
-        "question": "Specific Location",
+        "numOptionsAllowed": "1",
+        "question": "Within Interchange Area?",
+        "id": "C15-S1",
+        "answerType": "multiButton",
         "display": [
             "road"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "Not an Interchange Area",
@@ -749,7 +796,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "C15-S2"
+        "numOptionsAllowed": "1",
+        "question": "Specific Location",
+        "id": "C15-S2",
+        "answerType": "dropdown",
+        "display": [
+            "road"
+        ]
     },
     {
         "answerType": "header",
@@ -760,11 +813,6 @@ export const questions = {
         "id": "C16"
     },
     {
-        "answerType": "multiButton",
-        "question": "Number of Approaches",
-        "display": [
-            "road"
-        ],
         "answerOptions": [
             {
                 "text": "Not an Intersection",
@@ -787,14 +835,15 @@ export const questions = {
                 "idCode": "05"
             }
         ],
-        "id": "C16-S1"
-    },
-    {
+        "numOptionsAllowed": "1",
+        "question": "Number of Approaches",
+        "id": "C16-S1",
         "answerType": "multiButton",
-        "question": "Overall Intersection Geometry",
         "display": [
             "road"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "Angled/Skewed",
@@ -813,14 +862,15 @@ export const questions = {
                 "idCode": "97"
             }
         ],
-        "id": "C16-S2"
-    },
-    {
+        "numOptionsAllowed": "1",
+        "question": "Overall Intersection Geometry",
+        "id": "C16-S2",
         "answerType": "multiButton",
-        "question": "Overall Traffic Control Device",
         "display": [
             "road"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "Signalized",
@@ -847,14 +897,15 @@ export const questions = {
                 "idCode": "97"
             }
         ],
-        "id": "C16-S3"
+        "numOptionsAllowed": "1",
+        "question": "Overall Traffic Control Device",
+        "id": "C16-S3",
+        "answerType": "multiButton",
+        "display": [
+            "road"
+        ]
     },
     {
-        "answerType": "multiButton",
-        "question": "School Bus-Related",
-        "display": [
-            "setup"
-        ],
         "answerOptions": [
             {
                 "text": "No",
@@ -869,7 +920,13 @@ export const questions = {
                 "idCode": "03"
             }
         ],
-        "id": "C17"
+        "numOptionsAllowed": "1",
+        "question": "School Bus-Related",
+        "id": "C17",
+        "answerType": "multiButton",
+        "display": [
+            "setup"
+        ]
     },
     {
         "answerType": "header",
@@ -881,12 +938,6 @@ export const questions = {
         "id": "C18"
     },
     {
-        "answerType": "multiButton",
-        "question": "Was the crash in a construction, mainenance, or utility work zone or was it related to activity within a work zone?",
-        "display": [
-            "setup",
-            "construction"
-        ],
         "answerOptions": [
             {
                 "text": "No",
@@ -901,14 +952,16 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "C18-S1"
+        "numOptionsAllowed": "1",
+        "question": "Was the crash in a construction, mainenance, or utility work zone or was it related to activity within a work zone?",
+        "id": "C18-S1",
+        "answerType": "multiButton",
+        "display": [
+            "setup",
+            "construction"
+        ]
     },
     {
-        "answerType": "dropdown",
-        "question": "Location of the Crash",
-        "display": [
-            "construction"
-        ],
         "answerOptions": [
             {
                 "text": "Before the First Work Zone Warning Sign",
@@ -935,14 +988,15 @@ export const questions = {
                 "idCode": "98"
             }
         ],
-        "id": "C18-S2"
-    },
-    {
+        "numOptionsAllowed": "1",
+        "question": "Location of the Crash",
+        "id": "C18-S2",
         "answerType": "dropdown",
-        "question": "Type of Work Zone",
         "display": [
             "construction"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "Lane Closure",
@@ -969,14 +1023,15 @@ export const questions = {
                 "idCode": "98"
             }
         ],
-        "id": "C18-S3"
-    },
-    {
-        "answerType": "multiButton",
-        "question": "Workers Present",
+        "numOptionsAllowed": "1",
+        "question": "Type of Work Zone",
+        "id": "C18-S3",
+        "answerType": "dropdown",
         "display": [
             "construction"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "No",
@@ -995,14 +1050,15 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "C18-S4"
-    },
-    {
+        "numOptionsAllowed": "1",
+        "question": "Workers Present",
+        "id": "C18-S4",
         "answerType": "multiButton",
-        "question": "Law Enforcement Present",
         "display": [
             "construction"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "No",
@@ -1017,14 +1073,15 @@ export const questions = {
                 "idCode": "98"
             }
         ],
-        "id": "C18-S5"
+        "numOptionsAllowed": "1",
+        "question": "Law Enforcement Present",
+        "id": "C18-S5",
+        "answerType": "multiButton",
+        "display": [
+            "construction"
+        ]
     },
     {
-        "answerType": "multiButton",
-        "question": "Crash Severity",
-        "display": [
-            "road"
-        ],
         "answerOptions": [
             {
                 "text": "(K) Fatal Injury**",
@@ -1051,7 +1108,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "C19"
+        "numOptionsAllowed": "1",
+        "question": "Crash Severity",
+        "id": "C19",
+        "answerType": "multiButton",
+        "display": [
+            "road"
+        ]
     },
     {
         "answerType": "openTextBox",
@@ -1086,33 +1149,29 @@ export const questions = {
         "id": "C24"
     },
     {
-        "answerType": "multiButton",
+        "answerOptions": [
+            {
+                "text": "No",
+                "idCode": "01"
+            },
+            {
+                "text": "Yes",
+                "idCode": "02"
+            },
+            {
+                "text": "Unknown",
+                "idCode": "99"
+            }
+        ],
+        "numOptionsAllowed": "1",
         "question": "Alcohol Involvement",
-        "display": [
-            "road"
-        ],
-        "answerOptions": [
-            {
-                "text": "No",
-                "idCode": "01"
-            },
-            {
-                "text": "Yes",
-                "idCode": "02"
-            },
-            {
-                "text": "Unknown",
-                "idCode": "99"
-            }
-        ],
-        "id": "C25"
-    },
-    {
+        "id": "C25",
         "answerType": "multiButton",
-        "question": "Drug Involvement",
         "display": [
             "road"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "No",
@@ -1127,14 +1186,15 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "C26"
-    },
-    {
-        "answerType": "dropdown",
-        "question": "Day of Week",
+        "numOptionsAllowed": "1",
+        "question": "Drug Involvement",
+        "id": "C26",
+        "answerType": "multiButton",
         "display": [
             "road"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "Sunday",
@@ -1165,7 +1225,13 @@ export const questions = {
                 "idCode": "07"
             }
         ],
-        "id": "C27"
+        "numOptionsAllowed": "1",
+        "question": "Day of Week",
+        "id": "C27",
+        "answerType": "dropdown",
+        "display": [
+            "road"
+        ]
     },
     {
         "answerType": "largeTextField",
@@ -1184,13 +1250,14 @@ export const questions = {
         "id": "O2"
     },
     {
-        "answerType": "openTextBox",
+        "autoMethod": "VINCamera",
         "helperText": "(VIN)",
         "question": "Vehicle Identification Number",
+        "id": "V1",
+        "answerType": "advancedOpenTextBox",
         "display": [
             "vehicle"
-        ],
-        "id": "V1"
+        ]
     },
     {
         "answerType": "header",
@@ -1201,11 +1268,6 @@ export const questions = {
         "id": "V2"
     },
     {
-        "answerType": "multiButton",
-        "question": "Type",
-        "display": [
-            "vehicle"
-        ],
         "answerOptions": [
             {
                 "text": "Motor Vehicle in Transport",
@@ -1220,7 +1282,13 @@ export const questions = {
                 "idCode": "03"
             }
         ],
-        "id": "V2-S1"
+        "numOptionsAllowed": "1",
+        "question": "Type",
+        "id": "V2-S1",
+        "answerType": "multiButton",
+        "display": [
+            "vehicle"
+        ]
     },
     {
         "answerType": "header",
@@ -1310,6 +1378,7 @@ export const questions = {
             }
         ],
         "helperText": "Note: GVWR is used for single-unit trucks and other body types. GCWR is used for combination trucks or any vehicle with a trailing unit",
+        "numOptionsAllowed": "1",
         "question": "Number of Trailing Units",
         "id": "V8-S2",
         "answerType": "multiButton",
@@ -1318,11 +1387,6 @@ export const questions = {
         ]
     },
     {
-        "answerType": "multiButton",
-        "question": "Vehicle Size",
-        "display": [
-            "vehicle"
-        ],
         "answerOptions": [
             {
                 "text": "Light (Less than 10,000 lbs. GVWR/GCWR)",
@@ -1337,14 +1401,15 @@ export const questions = {
                 "idCode": "03"
             }
         ],
-        "id": "V8-S3"
+        "numOptionsAllowed": "1",
+        "question": "Vehicle Size",
+        "id": "V8-S3",
+        "answerType": "multiButton",
+        "display": [
+            "vehicle"
+        ]
     },
     {
-        "answerType": "multiButton",
-        "question": "Did this motor vehicle display a hazardous materials (HM) placard?",
-        "display": [
-            "lvhm"
-        ],
         "answerOptions": [
             {
                 "text": "No",
@@ -1355,7 +1420,13 @@ export const questions = {
                 "idCode": "02"
             }
         ],
-        "id": "V8-S4"
+        "numOptionsAllowed": "1",
+        "question": "Did this motor vehicle display a hazardous materials (HM) placard?",
+        "id": "V8-S4",
+        "answerType": "multiButton",
+        "display": [
+            "lvhm"
+        ]
     },
     {
         "answerType": "openTextBox",
@@ -1366,11 +1437,6 @@ export const questions = {
         "id": "V9"
     },
     {
-        "answerType": "dropdown",
-        "question": "Special Function of Motor Vehicle in Transport",
-        "display": [
-            "vehicle"
-        ],
         "answerOptions": [
             {
                 "text": "No Special Function",
@@ -1477,14 +1543,15 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "V10"
-    },
-    {
+        "numOptionsAllowed": "1",
+        "question": "Special Function of Motor Vehicle in Transport",
+        "id": "V10",
         "answerType": "dropdown",
-        "question": "Emergency Motor Vehicle Use",
         "display": [
             "vehicle"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "Non-Emergency, Non-Transport",
@@ -1511,7 +1578,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "V11"
+        "numOptionsAllowed": "1",
+        "question": "Emergency Motor Vehicle Use",
+        "id": "V11",
+        "answerType": "dropdown",
+        "display": [
+            "vehicle"
+        ]
     },
     {
         "answerType": "openTextBox",
@@ -1522,11 +1595,6 @@ export const questions = {
         "id": "V12"
     },
     {
-        "answerType": "multiButton",
-        "question": "Direction of Travel Before Crash",
-        "display": [
-            "vehicle"
-        ],
         "answerOptions": [
             {
                 "text": "Not on Roadway",
@@ -1553,7 +1621,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "V13"
+        "numOptionsAllowed": "1",
+        "question": "Direction of Travel Before Crash",
+        "id": "V13",
+        "answerType": "multiButton",
+        "display": [
+            "vehicle"
+        ]
     },
     {
         "answerType": "header",
@@ -1564,11 +1638,6 @@ export const questions = {
         "id": "V14"
     },
     {
-        "answerType": "multiButton",
-        "question": "Travel Directions",
-        "display": [
-            "road"
-        ],
         "answerOptions": [
             {
                 "text": "One-Way",
@@ -1579,14 +1648,15 @@ export const questions = {
                 "idCode": "02"
             }
         ],
-        "id": "V14-S1"
-    },
-    {
-        "answerType": "dropdown",
-        "question": "Divided?",
+        "numOptionsAllowed": "1",
+        "question": "Travel Directions",
+        "id": "V14-S1",
+        "answerType": "multiButton",
         "display": [
             "road"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "Not Divided",
@@ -1613,14 +1683,15 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "V14-S2"
-    },
-    {
-        "answerType": "multiButton",
-        "question": "Barrier Type",
+        "numOptionsAllowed": "1",
+        "question": "Divided?",
+        "id": "V14-S2",
+        "answerType": "dropdown",
         "display": [
             "road"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "No Barrier",
@@ -1647,14 +1718,15 @@ export const questions = {
                 "idCode": "98"
             }
         ],
-        "id": "V14-S3"
-    },
-    {
-        "answerType": "dropdown",
-        "question": "HOV/HOT Lanes",
+        "numOptionsAllowed": "1",
+        "question": "Barrier Type",
+        "id": "V14-S3",
+        "answerType": "multiButton",
         "display": [
             "road"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "None present",
@@ -1669,14 +1741,15 @@ export const questions = {
                 "idCode": "02"
             }
         ],
-        "id": "V14-S4"
-    },
-    {
-        "answerType": "multiButton",
-        "question": "Crash Related to HOV/HOT Lane?",
+        "numOptionsAllowed": "1",
+        "question": "HOV/HOT Lanes",
+        "id": "V14-S4",
+        "answerType": "dropdown",
         "display": [
             "road"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "No",
@@ -1687,7 +1760,13 @@ export const questions = {
                 "idCode": "02"
             }
         ],
-        "id": "V14-S5"
+        "numOptionsAllowed": "1",
+        "question": "Crash Related to HOV/HOT Lane?",
+        "id": "V14-S5",
+        "answerType": "multiButton",
+        "display": [
+            "road"
+        ]
     },
     {
         "answerType": "header",
@@ -1724,11 +1803,6 @@ export const questions = {
         "id": "V16"
     },
     {
-        "answerType": "multiButton",
-        "question": "Horizontal Alignment",
-        "display": [
-            "road"
-        ],
         "answerOptions": [
             {
                 "text": "Straight",
@@ -1743,14 +1817,15 @@ export const questions = {
                 "idCode": "03"
             }
         ],
-        "id": "V16-S1"
-    },
-    {
+        "numOptionsAllowed": "1",
+        "question": "Horizontal Alignment",
+        "id": "V16-S1",
         "answerType": "multiButton",
-        "question": "Grade",
         "display": [
             "road"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "Level",
@@ -1773,7 +1848,13 @@ export const questions = {
                 "idCode": "05"
             }
         ],
-        "id": "V16-S2"
+        "numOptionsAllowed": "1",
+        "question": "Grade",
+        "id": "V16-S2",
+        "answerType": "multiButton",
+        "display": [
+            "road"
+        ]
     },
     {
         "answerType": "header",
@@ -2032,11 +2113,6 @@ export const questions = {
         ]
     },
     {
-        "answerType": "dropdown",
-        "question": "Motor Vehicle Maneuver/Action",
-        "display": [
-            "vehicle"
-        ],
         "answerOptions": [
             {
                 "text": "Backing",
@@ -2099,7 +2175,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "V18"
+        "numOptionsAllowed": "1",
+        "question": "Motor Vehicle Maneuver/Action",
+        "id": "V18",
+        "answerType": "dropdown",
+        "display": [
+            "vehicle"
+        ]
     },
     {
         "answerType": "header",
@@ -2110,11 +2192,6 @@ export const questions = {
         "id": "V19"
     },
     {
-        "answerType": "dropdown",
-        "question": "Initial Point of Contact",
-        "display": [
-            "vehicle"
-        ],
         "answerOptions": [
             {
                 "text": "Non-Collision",
@@ -2189,7 +2266,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "V19-S1"
+        "numOptionsAllowed": "1",
+        "question": "Initial Point of Contact",
+        "id": "V19-S1",
+        "answerType": "dropdown",
+        "display": [
+            "vehicle"
+        ]
     },
     {
         "answerOptions": [
@@ -2272,12 +2355,6 @@ export const questions = {
         ]
     },
     {
-        "answerType": "multiButton",
-        "question": "Resulting Extent of Damage",
-        "display": [
-            "vehicle",
-            "info"
-        ],
         "answerOptions": [
             {
                 "text": "No Damage",
@@ -2300,7 +2377,14 @@ export const questions = {
                 "idCode": "04"
             }
         ],
-        "id": "V19-S3"
+        "numOptionsAllowed": "1",
+        "question": "Resulting Extent of Damage",
+        "id": "V19-S3",
+        "answerType": "multiButton",
+        "display": [
+            "vehicle",
+            "info"
+        ]
     },
     {
         "answerOptions": [
@@ -2519,11 +2603,6 @@ export const questions = {
         ]
     },
     {
-        "answerType": "dropdown",
-        "question": "Most Harmful Event for this Motor Vehicle",
-        "display": [
-            "vehicle"
-        ],
         "answerOptions": [
             {
                 "text": "Cargo/Equipment Loss or Shift",
@@ -2690,14 +2769,15 @@ export const questions = {
                 "idCode": "41"
             }
         ],
-        "id": "V21"
-    },
-    {
-        "answerType": "multiButton",
-        "question": "Hit and Run",
+        "numOptionsAllowed": "1",
+        "question": "Most Harmful Event for this Motor Vehicle",
+        "id": "V21",
+        "answerType": "dropdown",
         "display": [
             "vehicle"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "No, Did Not Leave Scene",
@@ -2708,14 +2788,15 @@ export const questions = {
                 "idCode": "02"
             }
         ],
-        "id": "V22"
-    },
-    {
+        "numOptionsAllowed": "1",
+        "question": "Hit and Run",
+        "id": "V22",
         "answerType": "multiButton",
-        "question": "Towed Due to Disabling Damage",
         "display": [
             "vehicle"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "Not towed",
@@ -2730,14 +2811,15 @@ export const questions = {
                 "idCode": "02"
             }
         ],
-        "id": "V23"
-    },
-    {
-        "answerType": "dropdown",
-        "question": "Contributing Circumstances, Motor Vehicle",
+        "numOptionsAllowed": "1",
+        "question": "Towed Due to Disabling Damage",
+        "id": "V23",
+        "answerType": "multiButton",
         "display": [
             "vehicle"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "None",
@@ -2804,7 +2886,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "V24"
+        "numOptionsAllowed": "1",
+        "question": "Contributing Circumstances, Motor Vehicle",
+        "id": "V24",
+        "answerType": "dropdown",
+        "display": [
+            "vehicle"
+        ]
     },
     {
         "answerType": "openTextBox",
@@ -2850,13 +2938,6 @@ export const questions = {
         "id": "P2-S2"
     },
     {
-        "answerType": "multiButton",
-        "question": "Sex",
-        "display": [
-            "driver",
-            "passenger",
-            "nonmotorist"
-        ],
         "answerOptions": [
             {
                 "text": "Female",
@@ -2867,15 +2948,27 @@ export const questions = {
                 "idCode": "02"
             },
             {
-                "text": "Other",
+                "text": "Nonbinary",
                 "idCode": "03"
+            },
+            {
+                "text": "Other",
+                "idCode": "98"
             },
             {
                 "text": "Unknown",
                 "idCode": "99"
             }
         ],
-        "id": "P3"
+        "numOptionsAllowed": "1",
+        "question": "Sex",
+        "id": "P3",
+        "answerType": "multiButton",
+        "display": [
+            "driver",
+            "passenger",
+            "nonmotorist"
+        ]
     },
     {
         "answerType": "header",
@@ -2888,13 +2981,6 @@ export const questions = {
         "id": "P4"
     },
     {
-        "answerType": "dropdown",
-        "question": "Person Type",
-        "display": [
-            "driver",
-            "passenger",
-            "nonmotorist"
-        ],
         "answerOptions": [
             {
                 "text": "Driver",
@@ -2909,16 +2995,17 @@ export const questions = {
                 "idCode": "03"
             }
         ],
-        "id": "P4-S1"
-    },
-    {
+        "numOptionsAllowed": "1",
+        "question": "Person Type",
+        "id": "P4-S1",
         "answerType": "dropdown",
-        "question": "Incident Responder?",
         "display": [
             "driver",
             "passenger",
             "nonmotorist"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "Bicyclist**",
@@ -2981,16 +3068,17 @@ export const questions = {
                 "idCode": "06"
             }
         ],
-        "id": "P4-S2"
-    },
-    {
-        "answerType": "multiButton",
-        "question": "Injury Status",
+        "numOptionsAllowed": "1",
+        "question": "Incident Responder?",
+        "id": "P4-S2",
+        "answerType": "dropdown",
         "display": [
             "driver",
             "passenger",
             "nonmotorist"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "(K) Fatal Injury**",
@@ -3013,7 +3101,15 @@ export const questions = {
                 "idCode": "05"
             }
         ],
-        "id": "P5"
+        "numOptionsAllowed": "1",
+        "question": "Injury Status",
+        "id": "P5",
+        "answerType": "multiButton",
+        "display": [
+            "driver",
+            "passenger",
+            "nonmotorist"
+        ]
     },
     {
         "answerOptions": [
@@ -3097,12 +3193,6 @@ export const questions = {
         ]
     },
     {
-        "answerType": "dropdown",
-        "question": "Restraint Systems / Motorcycle Helmet Use",
-        "display": [
-            "driver",
-            "passenger"
-        ],
         "answerOptions": [
             {
                 "text": "Booster Seat",
@@ -3177,15 +3267,16 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "P8-S1"
-    },
-    {
-        "answerType": "multiButton",
-        "question": "Any Indication of Improper Use?",
+        "numOptionsAllowed": "1",
+        "question": "Restraint Systems / Motorcycle Helmet Use",
+        "id": "P8-S1",
+        "answerType": "dropdown",
         "display": [
             "driver",
             "passenger"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "No",
@@ -3196,7 +3287,14 @@ export const questions = {
                 "idCode": "02"
             }
         ],
-        "id": "P8-S2"
+        "numOptionsAllowed": "1",
+        "question": "Any Indication of Improper Use?",
+        "id": "P8-S2",
+        "answerType": "multiButton",
+        "display": [
+            "driver",
+            "passenger"
+        ]
     },
     {
         "answerOptions": [
@@ -3240,12 +3338,6 @@ export const questions = {
         ]
     },
     {
-        "answerType": "multiButton",
-        "question": "Ejection",
-        "display": [
-            "driver",
-            "passenger"
-        ],
         "answerOptions": [
             {
                 "text": "Not Ejected",
@@ -3268,7 +3360,14 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "P10"
+        "numOptionsAllowed": "1",
+        "question": "Ejection",
+        "id": "P10",
+        "answerType": "multiButton",
+        "display": [
+            "driver",
+            "passenger"
+        ]
     },
     {
         "answerType": "header",
@@ -3279,11 +3378,6 @@ export const questions = {
         "id": "P11"
     },
     {
-        "answerType": "dropdown",
-        "question": "Type",
-        "display": [
-            "driver"
-        ],
         "answerOptions": [
             {
                 "text": "Not Licensed",
@@ -3322,7 +3416,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "P11-S1"
+        "numOptionsAllowed": "1",
+        "question": "Type",
+        "id": "P11-S1",
+        "answerType": "dropdown",
+        "display": [
+            "driver"
+        ]
     },
     {
         "answerType": "openTextBox",
@@ -3353,11 +3453,6 @@ export const questions = {
         "id": "P12-S1"
     },
     {
-        "answerType": "dropdown",
-        "question": "Class",
-        "display": [
-            "driver"
-        ],
         "answerOptions": [
             {
                 "text": "None",
@@ -3388,14 +3483,15 @@ export const questions = {
                 "idCode": "97"
             }
         ],
-        "id": "P12-S2"
-    },
-    {
-        "answerType": "multiButton",
-        "question": "Commercial Driver License (CDL)",
+        "numOptionsAllowed": "1",
+        "question": "Class",
+        "id": "P12-S2",
+        "answerType": "dropdown",
         "display": [
             "driver"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "No",
@@ -3406,14 +3502,15 @@ export const questions = {
                 "idCode": "02"
             }
         ],
-        "id": "P12-S3"
-    },
-    {
-        "answerType": "dropdown",
-        "question": "Endorsements",
+        "numOptionsAllowed": "1",
+        "question": "Commercial Driver License (CDL)",
+        "id": "P12-S3",
+        "answerType": "multiButton",
         "display": [
             "driver"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "None/Not Applicable",
@@ -3448,14 +3545,15 @@ export const questions = {
                 "idCode": "07"
             }
         ],
-        "id": "P12-S4"
-    },
-    {
-        "answerType": "multiButton",
-        "question": "Speeding-Related",
+        "numOptionsAllowed": "1",
+        "question": "Endorsements",
+        "id": "P12-S4",
+        "answerType": "dropdown",
         "display": [
             "driver"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "No",
@@ -3478,7 +3576,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "P13"
+        "numOptionsAllowed": "1",
+        "question": "Speeding-Related",
+        "id": "P13",
+        "answerType": "multiButton",
+        "display": [
+            "driver"
+        ]
     },
     {
         "answerOptions": [
@@ -3674,11 +3778,6 @@ export const questions = {
         ]
     },
     {
-        "answerType": "multiButton",
-        "question": "Alcohol Interlock Present?",
-        "display": [
-            "driver"
-        ],
         "answerOptions": [
             {
                 "text": "No",
@@ -3693,7 +3792,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "P16-S2"
+        "numOptionsAllowed": "1",
+        "question": "Alcohol Interlock Present?",
+        "id": "P16-S2",
+        "answerType": "multiButton",
+        "display": [
+            "driver"
+        ]
     },
     {
         "answerType": "header",
@@ -3704,11 +3809,6 @@ export const questions = {
         "id": "P17"
     },
     {
-        "answerType": "dropdown",
-        "question": "Type Applicable for This Person",
-        "display": [
-            "driver"
-        ],
         "answerOptions": [
             {
                 "text": "Non-CDL Driver license",
@@ -3723,14 +3823,15 @@ export const questions = {
                 "idCode": "03"
             }
         ],
-        "id": "P17-S1"
-    },
-    {
+        "numOptionsAllowed": "1",
+        "question": "Type Applicable for This Person",
+        "id": "P17-S1",
         "answerType": "dropdown",
-        "question": "Status",
         "display": [
             "driver"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "Not Licensed",
@@ -3765,7 +3866,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "P17-S2"
+        "numOptionsAllowed": "1",
+        "question": "Status",
+        "id": "P17-S2",
+        "answerType": "dropdown",
+        "display": [
+            "driver"
+        ]
     },
     {
         "answerType": "header",
@@ -3777,12 +3884,6 @@ export const questions = {
         "id": "P18"
     },
     {
-        "answerType": "dropdown",
-        "question": "Action",
-        "display": [
-            "driver",
-            "nonmotorist"
-        ],
         "answerOptions": [
             {
                 "text": "Not Distracted",
@@ -3805,15 +3906,16 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "P18-S1"
-    },
-    {
+        "numOptionsAllowed": "1",
+        "question": "Action",
+        "id": "P18-S1",
         "answerType": "dropdown",
-        "question": "Source",
         "display": [
             "driver",
             "nonmotorist"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "Hands-Free Mobile Phone",
@@ -3852,7 +3954,14 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "P18-S2"
+        "numOptionsAllowed": "1",
+        "question": "Source",
+        "id": "P18-S2",
+        "answerType": "dropdown",
+        "display": [
+            "driver",
+            "nonmotorist"
+        ]
     },
     {
         "answerOptions": [
@@ -3896,12 +4005,6 @@ export const questions = {
         ]
     },
     {
-        "answerType": "multiButton",
-        "question": "Law Enforcement Suspects Alcohol Use",
-        "display": [
-            "driver",
-            "nonmotorist"
-        ],
         "answerOptions": [
             {
                 "text": "No",
@@ -3916,7 +4019,14 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "P20"
+        "numOptionsAllowed": "1",
+        "question": "Law Enforcement Suspects Alcohol Use",
+        "id": "P20",
+        "answerType": "multiButton",
+        "display": [
+            "driver",
+            "nonmotorist"
+        ]
     },
     {
         "answerType": "header",
@@ -3928,12 +4038,6 @@ export const questions = {
         "id": "P21"
     },
     {
-        "answerType": "multiButton",
-        "question": "Test Status",
-        "display": [
-            "driver",
-            "nonmotorist"
-        ],
         "answerOptions": [
             {
                 "text": "Test Not Given",
@@ -3952,15 +4056,16 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "P21-S1"
-    },
-    {
+        "numOptionsAllowed": "1",
+        "question": "Test Status",
+        "id": "P21-S1",
         "answerType": "multiButton",
-        "question": "Type of Test",
         "display": [
             "driver",
             "nonmotorist"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "Blood",
@@ -3983,7 +4088,14 @@ export const questions = {
                 "idCode": "98"
             }
         ],
-        "id": "P21-S2"
+        "numOptionsAllowed": "1",
+        "question": "Type of Test",
+        "id": "P21-S2",
+        "answerType": "multiButton",
+        "display": [
+            "driver",
+            "nonmotorist"
+        ]
     },
     {
         "answerType": "openTextBox",
@@ -3995,12 +4107,6 @@ export const questions = {
         "id": "P21-S3"
     },
     {
-        "answerType": "multiButton",
-        "question": "Law Enforcement Suspects Drug Use",
-        "display": [
-            "driver",
-            "nonmotorist"
-        ],
         "answerOptions": [
             {
                 "text": "No",
@@ -4015,7 +4121,14 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "P22"
+        "numOptionsAllowed": "1",
+        "question": "Law Enforcement Suspects Drug Use",
+        "id": "P22",
+        "answerType": "multiButton",
+        "display": [
+            "driver",
+            "nonmotorist"
+        ]
     },
     {
         "answerType": "header",
@@ -4027,12 +4140,6 @@ export const questions = {
         "id": "P23"
     },
     {
-        "answerType": "multiButton",
-        "question": "Test Status",
-        "display": [
-            "driver",
-            "nonmotorist"
-        ],
         "answerOptions": [
             {
                 "text": "Test Not Given",
@@ -4051,15 +4158,16 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "P23-S1"
-    },
-    {
+        "numOptionsAllowed": "1",
+        "question": "Test Status",
+        "id": "P23-S1",
         "answerType": "multiButton",
-        "question": "Type of Test",
         "display": [
             "driver",
             "nonmotorist"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "Blood",
@@ -4082,7 +4190,14 @@ export const questions = {
                 "idCode": "98"
             }
         ],
-        "id": "P23-S2"
+        "numOptionsAllowed": "1",
+        "question": "Type of Test",
+        "id": "P23-S2",
+        "answerType": "multiButton",
+        "display": [
+            "driver",
+            "nonmotorist"
+        ]
     },
     {
         "answerOptions": [
@@ -4146,11 +4261,6 @@ export const questions = {
         "id": "P24"
     },
     {
-        "answerType": "multiButton",
-        "question": "Source of Transport to First Medical Facility",
-        "display": [
-            "injured"
-        ],
         "answerOptions": [
             {
                 "text": "Not Transported",
@@ -4177,7 +4287,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "P24-S1"
+        "numOptionsAllowed": "1",
+        "question": "Source of Transport to First Medical Facility",
+        "id": "P24-S1",
+        "answerType": "multiButton",
+        "display": [
+            "injured"
+        ]
     },
     {
         "answerType": "openTextBox",
@@ -4204,11 +4320,6 @@ export const questions = {
         "id": "P24-S4"
     },
     {
-        "answerType": "dropdown",
-        "question": "Injury Area",
-        "display": [
-            "injured"
-        ],
         "answerOptions": [
             {
                 "text": "Head",
@@ -4247,7 +4358,13 @@ export const questions = {
                 "idCode": "09"
             }
         ],
-        "id": "P25"
+        "numOptionsAllowed": "1",
+        "question": "Injury Area",
+        "id": "P25",
+        "answerType": "dropdown",
+        "display": [
+            "injured"
+        ]
     },
     {
         "answerType": "largeTextField",
@@ -4259,11 +4376,6 @@ export const questions = {
         "id": "P26"
     },
     {
-        "answerType": "multiButton",
-        "question": "Injury Severity",
-        "display": [
-            "injured"
-        ],
         "answerOptions": [
             {
                 "text": "Fatal",
@@ -4290,7 +4402,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "P27"
+        "numOptionsAllowed": "1",
+        "question": "Injury Severity",
+        "id": "P27",
+        "answerType": "multiButton",
+        "display": [
+            "injured"
+        ]
     },
     {
         "answerType": "openTextBox",
@@ -4357,6 +4475,7 @@ export const questions = {
             }
         ],
         "helperText": "Up (+) or Down (-)",
+        "numOptionsAllowed": "1",
         "question": "Direction of Slope",
         "id": "R3-S1",
         "answerType": "multiButton",
@@ -4374,11 +4493,6 @@ export const questions = {
         "id": "R3-S2"
     },
     {
-        "answerType": "multiButton",
-        "question": "Part of National Highway System",
-        "display": [
-            "road"
-        ],
         "answerOptions": [
             {
                 "text": "No",
@@ -4393,14 +4507,15 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "R4"
-    },
-    {
-        "answerType": "dropdown",
-        "question": "Roadway Functional Class",
+        "numOptionsAllowed": "1",
+        "question": "Part of National Highway System",
+        "id": "R4",
+        "answerType": "multiButton",
         "display": [
             "road"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "Unknown",
@@ -4467,7 +4582,13 @@ export const questions = {
                 "idCode": "15"
             }
         ],
-        "id": "R5"
+        "numOptionsAllowed": "1",
+        "question": "Roadway Functional Class",
+        "id": "R5",
+        "answerType": "dropdown",
+        "display": [
+            "road"
+        ]
     },
     {
         "answerType": "header",
@@ -4554,11 +4675,6 @@ export const questions = {
         "id": "R8"
     },
     {
-        "answerType": "multiButton",
-        "question": "Access Control",
-        "display": [
-            "road"
-        ],
         "answerOptions": [
             {
                 "text": "No Access Control",
@@ -4573,7 +4689,13 @@ export const questions = {
                 "idCode": "03"
             }
         ],
-        "id": "R9"
+        "numOptionsAllowed": "1",
+        "question": "Access Control",
+        "id": "R9",
+        "answerType": "multiButton",
+        "display": [
+            "road"
+        ]
     },
     {
         "answerType": "openTextBox",
@@ -4584,11 +4706,6 @@ export const questions = {
         "id": "R10"
     },
     {
-        "answerType": "dropdown",
-        "question": "Roadway Lighting",
-        "display": [
-            "road"
-        ],
         "answerOptions": [
             {
                 "text": "Continuous Lighting on Both Sides",
@@ -4611,7 +4728,13 @@ export const questions = {
                 "idCode": "05"
             }
         ],
-        "id": "R11"
+        "numOptionsAllowed": "1",
+        "question": "Roadway Lighting",
+        "id": "R11",
+        "answerType": "dropdown",
+        "display": [
+            "road"
+        ]
     },
     {
         "answerType": "header",
@@ -4622,11 +4745,6 @@ export const questions = {
         "id": "R12"
     },
     {
-        "answerType": "multiButton",
-        "question": "Edgeline Presence/Type",
-        "display": [
-            "road"
-        ],
         "answerOptions": [
             {
                 "text": "No Marked Edgeline",
@@ -4645,14 +4763,15 @@ export const questions = {
                 "idCode": "98"
             }
         ],
-        "id": "R12-S1"
-    },
-    {
+        "numOptionsAllowed": "1",
+        "question": "Edgeline Presence/Type",
+        "id": "R12-S1",
         "answerType": "multiButton",
-        "question": "Centerline Presence/Type",
         "display": [
             "road"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "No Marked Centerline",
@@ -4667,14 +4786,15 @@ export const questions = {
                 "idCode": "03"
             }
         ],
-        "id": "R12-S2"
-    },
-    {
+        "numOptionsAllowed": "1",
+        "question": "Centerline Presence/Type",
+        "id": "R12-S2",
         "answerType": "multiButton",
-        "question": "Lane Line Markings",
         "display": [
             "road"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "No Lane Markings",
@@ -4689,7 +4809,13 @@ export const questions = {
                 "idCode": "03"
             }
         ],
-        "id": "R12-S3"
+        "numOptionsAllowed": "1",
+        "question": "Lane Line Markings",
+        "id": "R12-S3",
+        "answerType": "multiButton",
+        "display": [
+            "road"
+        ]
     },
     {
         "answerType": "header",
@@ -4700,11 +4826,6 @@ export const questions = {
         "id": "R13"
     },
     {
-        "answerType": "multiButton",
-        "question": "Facility",
-        "display": [
-            "road"
-        ],
         "answerOptions": [
             {
                 "text": "None",
@@ -4731,14 +4852,15 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "R13-S1"
-    },
-    {
+        "numOptionsAllowed": "1",
+        "question": "Facility",
+        "id": "R13-S1",
         "answerType": "multiButton",
-        "question": "Signed Bicycle Route",
         "display": [
             "road"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "No",
@@ -4757,52 +4879,54 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "R13-S2"
+        "numOptionsAllowed": "1",
+        "question": "Signed Bicycle Route",
+        "id": "R13-S2",
+        "answerType": "multiButton",
+        "display": [
+            "road"
+        ]
     },
     {
-        "answerType": "dropdown",
+        "answerOptions": [
+            {
+                "text": "Not an Intersection or Interchange",
+                "idCode": "00"
+            },
+            {
+                "text": "One Lane",
+                "idCode": "01"
+            },
+            {
+                "text": "Two Lanes",
+                "idCode": "02"
+            },
+            {
+                "text": "Three Lanes",
+                "idCode": "03"
+            },
+            {
+                "text": "Four to Six Lanes",
+                "idCode": "04"
+            },
+            {
+                "text": "Seven or More Lanes",
+                "idCode": "05"
+            },
+            {
+                "text": "Unknown",
+                "idCode": "99"
+            }
+        ],
+        "numOptionsAllowed": "1",
         "question": "Mainline Number of Lanes at Intersection",
+        "id": "R14",
+        "answerType": "dropdown",
         "display": [
             "road"
-        ],
-        "answerOptions": [
-            {
-                "text": "Not an Intersection or Interchange",
-                "idCode": "00"
-            },
-            {
-                "text": "One Lane",
-                "idCode": "01"
-            },
-            {
-                "text": "Two Lanes",
-                "idCode": "02"
-            },
-            {
-                "text": "Three Lanes",
-                "idCode": "03"
-            },
-            {
-                "text": "Four to Six Lanes",
-                "idCode": "04"
-            },
-            {
-                "text": "Seven or More Lanes",
-                "idCode": "05"
-            },
-            {
-                "text": "Unknown",
-                "idCode": "99"
-            }
-        ],
-        "id": "R14"
+        ]
     },
     {
-        "answerType": "dropdown",
-        "question": "Cross-Street Number of Lanes at Intersection",
-        "display": [
-            "road"
-        ],
         "answerOptions": [
             {
                 "text": "Not an Intersection or Interchange",
@@ -4833,7 +4957,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "R15"
+        "numOptionsAllowed": "1",
+        "question": "Cross-Street Number of Lanes at Intersection",
+        "id": "R15",
+        "answerType": "dropdown",
+        "display": [
+            "road"
+        ]
     },
     {
         "answerType": "header",
@@ -4862,11 +4992,6 @@ export const questions = {
         "id": "R16-S2"
     },
     {
-        "answerType": "dropdown",
-        "question": "Attempted Avoidance Maneuver",
-        "display": [
-            "fatalityDriver"
-        ],
         "answerOptions": [
             {
                 "text": "No Driver Present/Unknown if Driver Present",
@@ -4929,7 +5054,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "F1"
+        "numOptionsAllowed": "1",
+        "question": "Attempted Avoidance Maneuver",
+        "id": "F1",
+        "answerType": "dropdown",
+        "display": [
+            "fatalityDriver"
+        ]
     },
     {
         "answerType": "header",
@@ -4941,12 +5072,6 @@ export const questions = {
         "id": "F2"
     },
     {
-        "answerType": "dropdown",
-        "question": "Test Type",
-        "display": [
-            "fatalityDriver",
-            "fatalityNonmotorist"
-        ],
         "answerOptions": [
             {
                 "text": "Test Not Given",
@@ -4997,7 +5122,14 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "F2-S1"
+        "numOptionsAllowed": "1",
+        "question": "Test Type",
+        "id": "F2-S1",
+        "answerType": "dropdown",
+        "display": [
+            "fatalityDriver",
+            "fatalityNonmotorist"
+        ]
     },
     {
         "answerType": "openTextBox",
@@ -5018,12 +5150,6 @@ export const questions = {
         "id": "F3"
     },
     {
-        "answerType": "dropdown",
-        "question": "Test Type",
-        "display": [
-            "fatalityDriver",
-            "fatalityNonmotorist"
-        ],
         "answerOptions": [
             {
                 "text": "Test Not Given",
@@ -5054,7 +5180,14 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "F3-S1"
+        "numOptionsAllowed": "1",
+        "question": "Test Type",
+        "id": "F3-S1",
+        "answerType": "dropdown",
+        "display": [
+            "fatalityDriver",
+            "fatalityNonmotorist"
+        ]
     },
     {
         "answerType": "openTextBox",
@@ -5074,11 +5207,6 @@ export const questions = {
         "id": "LV1"
     },
     {
-        "answerType": "dropdown",
-        "question": "CMV License Status",
-        "display": [
-            "lvhmDriver"
-        ],
         "answerOptions": [
             {
                 "text": "No CDL",
@@ -5121,14 +5249,15 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "LV1-S1"
-    },
-    {
+        "numOptionsAllowed": "1",
+        "question": "CMV License Status",
+        "id": "LV1-S1",
         "answerType": "dropdown",
-        "question": "Compliance with CDL Endorsement(s)",
         "display": [
             "lvhmDriver"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "No Endorsement(s) Required for the Vehicle",
@@ -5151,7 +5280,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "LV1-S2"
+        "numOptionsAllowed": "1",
+        "question": "Compliance with CDL Endorsement(s)",
+        "id": "LV1-S2",
+        "answerType": "dropdown",
+        "display": [
+            "lvhmDriver"
+        ]
     },
     {
         "answerType": "header",
@@ -5340,11 +5475,6 @@ export const questions = {
         "id": "LV7"
     },
     {
-        "answerType": "multiButton",
-        "question": "Identification Type",
-        "display": [
-            "lvhm"
-        ],
         "answerOptions": [
             {
                 "text": "US DOT Number",
@@ -5363,7 +5493,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "LV7-S1"
+        "numOptionsAllowed": "1",
+        "question": "Identification Type",
+        "id": "LV7-S1",
+        "answerType": "multiButton",
+        "display": [
+            "lvhm"
+        ]
     },
     {
         "answerType": "openTextBox",
@@ -5402,11 +5538,6 @@ export const questions = {
         "id": "LV7-S5"
     },
     {
-        "answerType": "multiButton",
-        "question": "Type of Carrier",
-        "display": [
-            "lvhm"
-        ],
         "answerOptions": [
             {
                 "text": "Interstate Carrier",
@@ -5425,7 +5556,13 @@ export const questions = {
                 "idCode": "04"
             }
         ],
-        "id": "LV7-S6"
+        "numOptionsAllowed": "1",
+        "question": "Type of Carrier",
+        "id": "LV7-S6",
+        "answerType": "multiButton",
+        "display": [
+            "lvhm"
+        ]
     },
     {
         "answerType": "header",
@@ -5436,11 +5573,6 @@ export const questions = {
         "id": "LV8"
     },
     {
-        "answerType": "dropdown",
-        "question": "Vehicle Configuration",
-        "display": [
-            "lvhm"
-        ],
         "answerOptions": [
             {
                 "text": "Vehicle 10,000 lbs. or less placarded for hazardous materials",
@@ -5491,7 +5623,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "LV8-S1"
+        "numOptionsAllowed": "1",
+        "question": "Vehicle Configuration",
+        "id": "LV8-S1",
+        "answerType": "dropdown",
+        "display": [
+            "lvhm"
+        ]
     },
     {
         "answerOptions": [
@@ -5517,6 +5655,7 @@ export const questions = {
             }
         ],
         "helperText": "(choose up to 4)",
+        "numOptionsAllowed": "4",
         "question": "Special Sizing",
         "id": "LV8-S2",
         "answerType": "multiButton",
@@ -5525,11 +5664,6 @@ export const questions = {
         ]
     },
     {
-        "answerType": "multiButton",
-        "question": "Permitted?",
-        "display": [
-            "lvhm"
-        ],
         "answerOptions": [
             {
                 "text": "Non-Permitted Load",
@@ -5540,14 +5674,15 @@ export const questions = {
                 "idCode": "02"
             }
         ],
-        "id": "LV8-S3"
-    },
-    {
-        "answerType": "dropdown",
-        "question": "Cargo Body Type",
+        "numOptionsAllowed": "1",
+        "question": "Permitted?",
+        "id": "LV8-S3",
+        "answerType": "multiButton",
         "display": [
             "lvhm"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "No Cargo Body (bobtail, light MV with hazardous materials [HM] placard, etc.)",
@@ -5618,7 +5753,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "LV9"
+        "numOptionsAllowed": "1",
+        "question": "Cargo Body Type",
+        "id": "LV9",
+        "answerType": "dropdown",
+        "display": [
+            "lvhm"
+        ]
     },
     {
         "answerType": "header",
@@ -5645,11 +5786,6 @@ export const questions = {
         "id": "LV10-S2"
     },
     {
-        "answerType": "multiButton",
-        "question": "Release of hazardous materials from a cargo compartment (e.g. trailer), cargo container (e.g. tank) or from a package?",
-        "display": [
-            "lvhm"
-        ],
         "answerOptions": [
             {
                 "text": "No",
@@ -5668,7 +5804,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "LV10-S3"
+        "numOptionsAllowed": "1",
+        "question": "Release of hazardous materials from a cargo compartment (e.g. trailer), cargo container (e.g. tank) or from a package?",
+        "id": "LV10-S3",
+        "answerType": "multiButton",
+        "display": [
+            "lvhm"
+        ]
     },
     {
         "answerType": "header",
@@ -5727,11 +5869,6 @@ export const questions = {
         "id": "NM2"
     },
     {
-        "answerType": "dropdown",
-        "question": "Action/Circumstance",
-        "display": [
-            "nonmotorist"
-        ],
         "answerOptions": [
             {
                 "text": "None",
@@ -5778,14 +5915,15 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "NM2-S1"
-    },
-    {
-        "answerType": "multiButton",
-        "question": "Origin/Destination",
+        "numOptionsAllowed": "1",
+        "question": "Action/Circumstance",
+        "id": "NM2-S1",
+        "answerType": "dropdown",
         "display": [
             "nonmotorist"
-        ],
+        ]
+    },
+    {
         "answerOptions": [
             {
                 "text": "Going to or from School (K-12)",
@@ -5804,7 +5942,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "NM2-S2"
+        "numOptionsAllowed": "1",
+        "question": "Origin/Destination",
+        "id": "NM2-S2",
+        "answerType": "multiButton",
+        "display": [
+            "nonmotorist"
+        ]
     },
     {
         "answerOptions": [
@@ -5871,11 +6015,6 @@ export const questions = {
         ]
     },
     {
-        "answerType": "dropdown",
-        "question": "Non-Motorist Location at Time of Crash",
-        "display": [
-            "nonmotorist"
-        ],
         "answerOptions": [
             {
                 "text": "Other",
@@ -5954,7 +6093,13 @@ export const questions = {
                 "idCode": "17"
             }
         ],
-        "id": "NM4"
+        "numOptionsAllowed": "1",
+        "question": "Non-Motorist Location at Time of Crash",
+        "id": "NM4",
+        "answerType": "dropdown",
+        "display": [
+            "nonmotorist"
+        ]
     },
     {
         "answerOptions": [
@@ -6001,11 +6146,6 @@ export const questions = {
         ]
     },
     {
-        "answerType": "multiButton",
-        "question": "Initial Contact Point on Non-Motorist",
-        "display": [
-            "nonmotorist"
-        ],
         "answerOptions": [
             {
                 "text": "Right",
@@ -6028,7 +6168,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "NM6"
+        "numOptionsAllowed": "1",
+        "question": "Initial Contact Point on Non-Motorist",
+        "id": "NM6",
+        "answerType": "multiButton",
+        "display": [
+            "nonmotorist"
+        ]
     },
     {
         "answerType": "header",
@@ -6039,11 +6185,6 @@ export const questions = {
         "id": "DV1"
     },
     {
-        "answerType": "multiButton",
-        "question": "Automated System or Systems in Vehicle",
-        "display": [
-            "vehicle"
-        ],
         "answerOptions": [
             {
                 "text": "No",
@@ -6058,56 +6199,58 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "DV1-S1"
+        "numOptionsAllowed": "1",
+        "question": "Automated System or Systems in Vehicle",
+        "id": "DV1-S1",
+        "answerType": "multiButton",
+        "display": [
+            "vehicle"
+        ]
     },
     {
-        "answerType": "dropdown",
+        "answerOptions": [
+            {
+                "text": "No Automation",
+                "idCode": "00"
+            },
+            {
+                "text": "Driver Assistance",
+                "idCode": "01"
+            },
+            {
+                "text": "Partial Automation",
+                "idCode": "02"
+            },
+            {
+                "text": "Conditional Automation",
+                "idCode": "03"
+            },
+            {
+                "text": "High Automation",
+                "idCode": "04"
+            },
+            {
+                "text": "Full Automation",
+                "idCode": "05"
+            },
+            {
+                "text": "Automation Level Unknown",
+                "idCode": "06"
+            },
+            {
+                "text": "Unknown",
+                "idCode": "99"
+            }
+        ],
+        "numOptionsAllowed": "1",
         "question": "Automated System Levels In Vehicle",
+        "id": "DV1-S2",
+        "answerType": "dropdown",
         "display": [
             "vehicle"
-        ],
-        "answerOptions": [
-            {
-                "text": "No Automation",
-                "idCode": "00"
-            },
-            {
-                "text": "Driver Assistance",
-                "idCode": "01"
-            },
-            {
-                "text": "Partial Automation",
-                "idCode": "02"
-            },
-            {
-                "text": "Conditional Automation",
-                "idCode": "03"
-            },
-            {
-                "text": "High Automation",
-                "idCode": "04"
-            },
-            {
-                "text": "Full Automation",
-                "idCode": "05"
-            },
-            {
-                "text": "Automation Level Unknown",
-                "idCode": "06"
-            },
-            {
-                "text": "Unknown",
-                "idCode": "99"
-            }
-        ],
-        "id": "DV1-S2"
+        ]
     },
     {
-        "answerType": "dropdown",
-        "question": "Automated Systems Levels Engaged at Time of Crash",
-        "display": [
-            "vehicle"
-        ],
         "answerOptions": [
             {
                 "text": "No Automation",
@@ -6142,7 +6285,13 @@ export const questions = {
                 "idCode": "99"
             }
         ],
-        "id": "DV1-S3"
+        "numOptionsAllowed": "1",
+        "question": "Automated Systems Levels Engaged at Time of Crash",
+        "id": "DV1-S3",
+        "answerType": "dropdown",
+        "display": [
+            "vehicle"
+        ]
     },
     {
         "answerType": "openTextBox",
