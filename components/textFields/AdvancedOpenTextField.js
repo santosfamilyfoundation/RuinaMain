@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Input, Layout, Text, Card, Button, CardHeader, Icon } from '@ui-kitten/components';
+import { Input, Layout, Text, Card, Button, CardHeader, Icon, ListItem } from '@ui-kitten/components';
 import { styles } from './AdvancedOpenTextField.style';
 import { updateRoad } from '../../actions/RoadAction';
 import * as Constants from '../../constants';
@@ -123,34 +123,39 @@ const AdvancedOpenTextField = (props) => {
         <Icon {...style} name='clock-outline'  />
     );
 
-    const CustomCardHeader = () => (
-        <Layout style={styles.headerObjects}>
-          <Text
-            style={styles.headerText}
-            category='h6'
-          >
-            {data.question}
-          </Text>
-          { importFrom == "Map" ?
-              <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={MapIcon} onPress={()=> onImportMapPress() }></Button>
-            :
-              <Layout>
-              </Layout>
-          }
-          { (importFrom == "License_Camera" || importFrom == "Plate_Camera" || importFrom == "VIN_Camera") ?
-              <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={CameraIcon} onPress={()=> onImportCameraPress() }></Button>
-            :
-              <Layout>
-              </Layout>
-          }
-          { importFrom == "Time" ?
-              <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={ClockIcon} onPress={()=> onImportTimePress() }></Button>
-            :
-              <Layout>
-              </Layout>
-          }
-        </Layout>
-    );
+    const RenderHeaderIcon = () => {
+        switch(importFrom) {
+            case "Map":
+                return (
+                    <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={MapIcon} onPress={()=> onImportMapPress() }></Button>
+                )
+            case "License_Camera":
+                return (
+                    <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={CameraIcon} onPress={()=> onImportCameraPress() }></Button>
+                )
+            case "Plate_Camera":
+                return (
+                    <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={CameraIcon} onPress={()=> onImportCameraPress() }></Button>
+                )
+            case "VIN_Camera":
+                return (
+                    <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={CameraIcon} onPress={()=> onImportCameraPress() }></Button>
+                )
+            case "Time":
+                return (
+                    <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={ClockIcon} onPress={()=> onImportTimePress() }></Button>
+                )
+        }
+    }
+
+    const CustomCardHeader = () => {
+        return (
+            <CardHeader 
+                title={data.question}
+                accessory={RenderHeaderIcon}
+            />
+        )
+    }
 
 
     const Header = () => (
@@ -172,7 +177,7 @@ const AdvancedOpenTextField = (props) => {
     )
 
     const HelperText = () => {
-        if(data.helperText.length != 0) {
+        if(data?.helperText?.length != 0) {
             return (<Text style={styles.helperText}>{data.helperText}</Text>)
         }
         return null;
