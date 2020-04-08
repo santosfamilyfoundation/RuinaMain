@@ -3,8 +3,8 @@ import { Button, TopNavigation } from '@ui-kitten/components';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
 import OperatorForm from './OperatorForm';
-import { updateDriver } from '../actions/DriverAction';
-import { updateNonmotorist } from '../actions/NonmotoristAction';
+import { updateDriver } from '../../actions/DriverAction';
+import { updateNonmotorist } from '../../actions/NonmotoristAction';
 import { ScrollView } from 'react-native-gesture-handler';
 
 class InfoExchangeForm extends Component{

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon, TopNavigationAction } from '@ui-kitten/components';
-import Result from '../components/Result';
+import Result from '../components/modules/Result';
 
 export const ResultScreen = ({ navigation }) => {
 

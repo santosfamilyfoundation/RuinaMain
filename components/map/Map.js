@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { TextInput, Text, Dimensions, StyleSheet, View, TouchableOpacity } from 'react-native';
+import MapView, { Marker, AnimatedRegion, Polyline, PROVIDER_GOOGLE } from 'react-native-maps';
+import Geolocation from '@react-native-community/geolocation';
 import { Button, Divider, Layout, TopNavigation, Icon } from '@ui-kitten/components';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { connect } from 'react-redux';
 import { styles } from './Map.style';
-import { changeLat, changeLong, updateMarkers } from '../actions/MapAction';
-import { updateRoad } from '../actions/RoadAction';
-import MapView, { Marker, AnimatedRegion, Polyline, PROVIDER_GOOGLE } from 'react-native-maps';
-import Geolocation from '@react-native-community/geolocation';
-import * as Constants from '../constants';
+import { changeLat, changeLong, updateMarkers } from '../../actions/MapAction';
+import { updateRoad } from '../../actions/RoadAction';
+import * as Constants from '../../constants';
 
 const { width, height } = Dimensions.get('window');
 const SCREEN_WIDTH = width;

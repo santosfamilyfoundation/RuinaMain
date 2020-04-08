@@ -6,17 +6,15 @@ import {
     View,
     Platform
 } from 'react-native';
-import { updateVehicle } from '../actions/VehicleAction';
-import { updateDriver } from '../actions/DriverAction';
-import AnylineOCR, { getLicenseExpiryDate } from 'anyline-ocr-react-native-module';
 import { connect } from 'react-redux';
-import * as Constants from '../constants';
+import AnylineOCR, { getLicenseExpiryDate } from 'anyline-ocr-react-native-module';
+import { updateVehicle } from '../../actions/VehicleAction';
+import { updateDriver } from '../../actions/DriverAction';
+import * as Constants from '../../constants';
 
-import VINconfig from '../anylineConfigs/VINconfig';
-import DriversLicenseconfig from '../anylineConfigs/DriversLicenseconfig';
-import LicensePlateconfig from '../anylineConfigs/LicensePlateconfig';
-
-import ScanResult from './ScanResult';
+import VINconfig from '../../anylineConfigs/VINconfig'
+import DriversLicenseconfig from '../../anylineConfigs/DriversLicenseconfig';
+import LicensePlateconfig from '../../anylineConfigs/LicensePlateconfig';
 
 class Scan extends Component {
 

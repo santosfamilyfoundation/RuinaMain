@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon, TopNavigationAction } from '@ui-kitten/components';
-import QuickSurvey from '../components/QuickSurvey';
+import QuickSurvey from '../components/modules/quickSurvey/QuickSurvey';
 
 export const QuickSurveyScreen = ({ navigation }) => {
   return (

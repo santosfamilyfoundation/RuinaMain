@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Card, CardHeader, Layout } from '@ui-kitten/components';
 import { ScrollView } from 'react-native';
-import { styles } from '../containers/AutoComponentContainer.style';
-import OpenTextField from './textFields/OpenTextField';
-import AdvancedOpenTextField from './textFields/AdvancedOpenTextField';
-import { updateDriver } from '../actions/DriverAction';
-import { updateNonmotorist } from '../actions/NonmotoristAction';
-import {updateVehicle} from '../actions/VehicleAction';
-import {questions} from '../data/questions';
+import { styles } from '../../containers/AutoComponentContainer.style';
+import OpenTextField from '../textFields/OpenTextField';
+import AdvancedOpenTextField from '../textFields/AdvancedOpenTextField';
+import { updateDriver } from '../../actions/DriverAction';
+import { updateNonmotorist } from '../../actions/NonmotoristAction';
+import {updateVehicle} from '../../actions/VehicleAction';
+import {questions} from '../../data/questions';
 
 class OperatorForm extends Component{
     filterQuestionsData(questionType){

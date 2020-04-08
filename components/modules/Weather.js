@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { Divider, Layout, Text, TopNavigation } from '@ui-kitten/components';
 import Geolocation from '@react-native-community/geolocation';
-import { API_KEY } from '../utils/WeatherAPIKey';
+import { API_KEY } from '../../utils/WeatherAPIKey';
 
 export default class Weather extends Component {
     state = {

@@ -5,10 +5,10 @@ import { Button, Divider, Layout, TopNavigation, Select} from '@ui-kitten/compon
 import firebase from 'react-native-firebase';
 import uuid from 'uuid/v4';
 import { connect } from 'react-redux';
-import { photoAction } from '../actions/PhotoAction';
+import { photoAction } from '../../actions/PhotoAction';
 import { RNCamera } from 'react-native-camera';
-import BasicDropDown from './BasicDropDown';
-import * as Constants from '../constants';
+import BasicDropDown from '../dropdowns/BasicDropDown'
+import * as Constants from '../../constants';
 import { styles } from './PhotoCapture.style';
 
 const { app } = firebase.storage();

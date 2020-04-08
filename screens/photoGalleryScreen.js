@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon, TopNavigationAction } from '@ui-kitten/components';
-import PhotoGallery from '../components/PhotoGallery'
+import PhotoGallery from '../components/photos/PhotoGallery'
 
 export const PhotoGalleryScreen = ({ navigation}) => {
 

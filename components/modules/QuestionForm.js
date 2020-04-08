@@ -2,24 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
 import { Divider, Layout, TopNavigation, CardHeader, Card, Button } from '@ui-kitten/components';
-import { styles } from '../containers/AutoComponentContainer.style';
+import { styles } from '../../containers/AutoComponentContainer.style';
 import { ScrollView } from 'react-native-gesture-handler';
-import MultiButtonSelector from './buttonSelectors/MultiButtonSelector';
-import AutoCompleteDropDown from './dropdowns/AutoCompleteDropDown';
-import DropDownSingleSelect from './dropdowns/DropDownSingleSelect';
-import OpenTextField from './textFields/OpenTextField';
-import AdvancedOpenTextField from './textFields/AdvancedOpenTextField';
-import AdvancedDropDown from './dropdowns/AdvancedDropDown';
-import DropDownMultiSelect from './dropdowns/DropDownMultiSelect';
-import LargeTextField from './textFields/LargeTextField';
-import HeaderComponent from './HeaderComponent';
-import { updateDriver } from '../actions/DriverAction';
-import { updateNonmotorist } from '../actions/NonmotoristAction';
-import { updateVehicle } from '../actions/VehicleAction';
-import { updatePassenger } from '../actions/PassengerAction';
-import { updateRoad } from '../actions/RoadAction';
+import MultiButtonSelector from '../buttonSelectors/MultiButtonSelector';
+import AutoCompleteDropDown from '../dropdowns/AutoCompleteDropDown';
+import DropDownSingleSelect from '../dropdowns/DropDownSingleSelect';
+import OpenTextField from '../textFields/OpenTextField';
+import AdvancedOpenTextField from '../textFields/AdvancedOpenTextField';
+import AdvancedDropDown from '../dropdowns/AdvancedDropDown';
+import DropDownMultiSelect from '../dropdowns/DropDownMultiSelect';
+import LargeTextField from '../textFields/LargeTextField';
+import HeaderComponent from '../header/HeaderComponent';
+import { updateDriver } from '../../actions/DriverAction';
+import { updateNonmotorist } from '../../actions/NonmotoristAction';
+import { updateVehicle } from '../../actions/VehicleAction';
+import { updatePassenger } from '../../actions/PassengerAction';
+import { updateRoad } from '../../actions/RoadAction';
 
-import {questions} from '../data/questions';
+import {questions} from '../../data/questions';
 
 class QuestionForm extends Component {
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon, TopNavigationAction } from '@ui-kitten/components';
-import QuestionForm from '../components/QuestionForm';
+import QuestionForm from '../components/modules/QuestionForm';
 
 export const QuestionScreen = ({ navigation }) => {
   return (
