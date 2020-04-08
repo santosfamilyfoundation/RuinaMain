@@ -59,20 +59,20 @@ class InfoExchange extends Component {
                     sex = "female"
                 }else if (Object.entries(infoExchangeResultDriver)[i][1].P3 == "02"){
                     sex = "male"
-                }else{
+                }else if(Object.entries(infoExchangeResultDriver)[i][1].P3 == "99"){
                     sex = "other"
                 }
                 renderDrivers.push(
                     <Card key={Object.entries(infoExchangeResultDriver)[i][0]} header = {() => (<CardHeader title={Object.entries(infoExchangeResultDriver)[i][1].P1}/>)}>
                         <Text style={{fontSize:20}}>
-                            Name: {JSON.stringify(Object.entries(infoExchangeResultDriver)[i][1].P1) !== undefined ? JSON.stringify(Object.entries(infoExchangeResultDriver)[i][1].P1).slice(1,-1):""}
+                            {JSON.stringify(Object.entries(infoExchangeResultDriver)[i][1].P1) !== undefined ? "Name: "+JSON.stringify(Object.entries(infoExchangeResultDriver)[i][1].P1).slice(1,-1):""}
                         </Text>
                         <Text style={{fontSize:20}}>
-                            Date of Birth(YYMMDD): {JSON.stringify(Object.entries(infoExchangeResultDriver)[i][1].P2) !== undefined ? JSON.stringify(Object.entries(infoExchangeResultDriver)[i][1].P2).slice(1,-1):""}
+                            {JSON.stringify(Object.entries(infoExchangeResultDriver)[i][1].P2) !== undefined ? "Date of Birth(YYMMDD): "+JSON.stringify(Object.entries(infoExchangeResultDriver)[i][1].P2).slice(1,-1):""}
                         </Text>
                         <Text style={{fontSize:20}}>
-                            Sex: {sex}
-                        </Text>
+                            {sex !==undefined? "Sex: "+sex : ""}
+                        </Text> 
                     </Card>
                 )
             }
@@ -86,19 +86,19 @@ class InfoExchange extends Component {
                     sex = "female"
                 }else if (Object.entries(infoExchangeResultNonmotorist)[i][1].P3 == "02"){
                     sex = "male"
-                }else{
+                }else if (Object.entries(infoExchangeResultNonmotorist)[i][1].P3 == "99"){
                     sex = "other"
                 }
                 renderNonmotorists.push(
                     <Card key={Object.entries(infoExchangeResultNonmotorist)[i][0]} header = {() => (<CardHeader title={Object.entries(infoExchangeResultNonmotorist)[i][1].P1}/>)}>
                         <Text style={{fontSize:20}}>
-                            Name: {JSON.stringify(Object.entries(infoExchangeResultNonmotorist)[i][1].P1) !==undefined ? JSON.stringify(Object.entries(infoExchangeResultNonmotorist)[i][1].P1).slice(1,-1):""}
+                            {JSON.stringify(Object.entries(infoExchangeResultNonmotorist)[i][1].P1) !==undefined ? "Name: "+JSON.stringify(Object.entries(infoExchangeResultNonmotorist)[i][1].P1).slice(1,-1):""}
                         </Text>
                         <Text style={{fontSize:20}}>
-                            Date of Brith(YYMMDD): {JSON.stringify(Object.entries(infoExchangeResultNonmotorist)[i][1].P2) !==undefined ? JSON.stringify(Object.entries(infoExchangeResultNonmotorist)[i][1].P2).slice(1,-1):""}
+                            {JSON.stringify(Object.entries(infoExchangeResultNonmotorist)[i][1].P2) !==undefined ? "Date of Brith(YYMMDD): " + JSON.stringify(Object.entries(infoExchangeResultNonmotorist)[i][1].P2).slice(1,-1):""}
                         </Text>
                         <Text style={{fontSize:20}}>
-                            Sex: {sex}
+                            {sex !== undefined? "Sex: "+sex : ""}
                         </Text>
                     </Card>
                 )
