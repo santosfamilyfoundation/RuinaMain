@@ -2933,7 +2933,6 @@ export const questions = {
             "driver",
             "passenger",
             "nonmotorist",
-            "setup"
         ],
         "id": "P2-S2"
     },
