@@ -3,12 +3,11 @@ import { Button, TopNavigation } from '@ui-kitten/components';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
 import OperatorForm from './OperatorForm';
-import { updateDriver } from '../actions/DriverAction';
-import { updateNonmotorist } from '../actions/NonmotoristAction';
+import { updateDriver } from '../../actions/DriverAction';
+import { updateNonmotorist } from '../../actions/NonmotoristAction';
 import { ScrollView } from 'react-native-gesture-handler';
 
 class InfoExchangeForm extends Component{
-
     constructor(props){
         super(props);
         this.state = {
@@ -26,41 +25,15 @@ class InfoExchangeForm extends Component{
     }
 
     render() {
-        const { driver, nonmotorist, updateDriver, updateNonmotorist} = this.props;
-        const operators = this.state.operators;
-        const operatorListArr = this.props.operatorDetail.operatorList.map(({id, type}) => 
+        const {operatorDetail} = this.props;
+        const operatorListArr = operatorDetail.operatorList.map(({id, type}) => 
             <OperatorForm
                 key = {id}
                 id = {id}
                 type = {type}
-                updateOperator = {this.updateOperator.bind(this)}
+                // updateOperator = {this.updateOperator.bind(this)}
             />
         )
-
-        const saveOperatorsAndDispatch = () => {
-            for (let i = 0; i < operators.length; i++) {
-                const { id, type, response } = operators[i]
-                let modifiedResponse;
-                switch(type) {
-                    case 'driver':
-                        const newDriver = Object.assign({}, driver.drivers.find(driver => driver.id == id))
-                        modifiedResponse = Object.assign({}, newDriver.response)
-                        for ( let [key, value] of Object.entries(response)) {
-                            modifiedResponse[key] = value
-                        }
-                        updateDriver({id, response: modifiedResponse})
-                        break;
-                    case 'nonmotorist':
-                        const newNonmotorist = Object.assign({}, nonmotorist.nonmotorists.find(nonmotorist => nonmotorist.id == id))
-                        modifiedResponse = Object.assign({}, newNonmotorist.response)
-                        for ( let [key, value] of Object.entries(response)) {
-                            modifiedResponse[key] = value
-                        }
-                        updateNonmotorist({id, response: modifiedResponse})
-                        break;
-                }
-            }
-        }
 
         return(
             <SafeAreaView style={{flex: 1}}>

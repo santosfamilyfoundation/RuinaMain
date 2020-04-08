@@ -4,23 +4,15 @@ import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { TopNavigation, TopNavigationAction, Text, Card, CardHeader, Layout, Icon } from '@ui-kitten/components';
 import { styles } from './Home.style';
-import {questions} from '../data/questions';
-import VehicleSection from './VehicleSection';
-import NonMotoristSection from './NonMotoristSection';
-
-
-//May not need all of these:
-
-import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { driverQuestions } from '../data/driverQuestions';
-import { passengerQuestions } from '../data/passengerQuestions';
-import { nonmotoristQuestions } from '../data/nonmotoristQuestions';
-import { vehicleQuestions } from '../data/vehicleQuestions';
-import { lvhmQuestions } from '../data/lvhmQuestions';
-import { roadQuestions } from '../data/roadQuestions';
+import {questions} from '../../data/questions';
+import VehicleSection from './homeSections/VehicleSection';
+import NonMotoristSection from './homeSections/NonMotoristSection';
 
 
 class Home extends Component {
+    filterQuestionsData = (questionType) => {
+        return questions.data.filter(question => question.display.includes(questionType));
+    }
 
     render(){
         const {
@@ -33,6 +25,7 @@ class Home extends Component {
             } = this.props
 
         const operatorList = [];
+        let roadQuestions = this.filterQuestionsData('road');
 
         const navigateQuestion = (form, id, type) => {
             navigation.navigate('Question', {questions: form.data, objectID: id, type})

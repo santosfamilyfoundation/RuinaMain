@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
-import { styles } from './Home.style';
+import { styles } from '../Home.style';
 import { View} from 'react-native';
 import { Text, Card, CardHeader, Icon } from '@ui-kitten/components';
-import { driverQuestions } from '../data/driverQuestions';
-import { passengerQuestions } from '../data/passengerQuestions';
-import { nonmotoristQuestions } from '../data/nonmotoristQuestions';
-import { vehicleQuestions } from '../data/vehicleQuestions';
-import { lvhmQuestions } from '../data/lvhmQuestions';
-import { ScrollView } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
-import { addPassenger } from '../actions/PassengerAction';
+import { addPassenger } from '../../../actions/PassengerAction';
+import {questions} from '../../../data/questions';
 
 var uuid = require('react-native-uuid');
+
 
 class VehicleSection extends Component{
 
@@ -26,6 +22,10 @@ class VehicleSection extends Component{
 
     }
 
+    filterQuestionsData = (questionType) => {
+        return questions.data.filter(question => question.display.includes(questionType));
+    }
+
     _addPassenger () {
         let passengerID = uuid.v1();
         this.props.addPassenger({id: passengerID, vehicleID: this.props.vehicle.id});
@@ -36,6 +36,9 @@ class VehicleSection extends Component{
 
     render(){
         const {navigation, vehicle, index, name} = this.props
+        let vehicleQuestions = this.filterQuestionsData('vehicle');
+        let passengerQuestions = this.filterQuestionsData('passenger');
+        let driverQuestions = this.filterQuestionsData('driver');
 
         const VehiclesHeader = () => (
             <CardHeader title={`${name} ${index + 1}`} />

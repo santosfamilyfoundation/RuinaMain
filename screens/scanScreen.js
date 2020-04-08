@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon, TopNavigationAction } from '@ui-kitten/components';
-import Scan from '../components/Scan';
+import Scan from '../components/modules/Scan';
 
 export const ScanScreen = ({ navigation }) => {
 
