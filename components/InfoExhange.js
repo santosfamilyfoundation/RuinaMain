@@ -55,8 +55,14 @@ class InfoExchange extends Component {
         for(let i=0;i<Object.entries(infoExchangeResultDriver).length;i++){
             renderDrivers.push(
                 <Card key={Object.entries(infoExchangeResultDriver)[i][0]} header = {() => (<CardHeader title={Object.entries(infoExchangeResultDriver)[i][1].P1}/>)}>
-                    <Text>
-                        {JSON.stringify(Object.entries(infoExchangeResultDriver)[i][1])}
+                    <Text style={{fontSize:20}}>
+                        Name: {JSON.stringify(Object.entries(infoExchangeResultDriver)[i][1].P1).slice(1,-1)}
+                    </Text>
+                    <Text style={{fontSize:20}}>
+                        Date of Birth(YYMMDD): {JSON.stringify(Object.entries(infoExchangeResultDriver)[i][1].P2).slice(1,-1)}
+                    </Text>
+                    <Text style={{fontSize:20}}>
+                        Sex: {JSON.stringify(Object.entries(infoExchangeResultDriver)[i][1].P3).slice(1,-1) == "02" ? "male" : "female"}
                     </Text>
                 </Card>
             )
@@ -66,8 +72,14 @@ class InfoExchange extends Component {
         for(let i=0;i<Object.entries(infoExchangeResultNonmotorist).length;i++){
             renderNonmotorists.push(
                 <Card key={Object.entries(infoExchangeResultNonmotorist)[i][0]} header = {() => (<CardHeader title={Object.entries(infoExchangeResultNonmotorist)[i][1].P1}/>)}>
-                    <Text>
-                        {JSON.stringify(Object.entries(infoExchangeResultNonmotorist)[i][1])}
+                    <Text style={{fontSize:20}}>
+                        Name: {JSON.stringify(Object.entries(infoExchangeResultNonmotorist)[i][1].P1).slice(1,-1)}
+                    </Text>
+                    <Text style={{fontSize:20}}>
+                        Date of Brith(YYMMDD): {JSON.stringify(Object.entries(infoExchangeResultNonmotorist)[i][1].P2).slice(1,-1)}
+                    </Text>
+                    <Text style={{fontSize:20}}>
+                        Sex: {JSON.stringify(Object.entries(infoExchangeResultNonmotorist)[i][1].P3).slice(1,-1) == "02" ? "male" : "female"}
                     </Text>
                 </Card>
             )
