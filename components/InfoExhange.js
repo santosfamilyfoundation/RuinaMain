@@ -28,7 +28,6 @@ class InfoExchange extends Component {
 
         driver.data.map(driver => {
             let driverData = {};
-
             if (driver.response !== undefined) {
                 for (let i=0;i<Object.entries(driver.response).length;i++){
                     if(infoQuestions.includes(Object.entries(driver.response)[i][0])){
@@ -36,6 +35,7 @@ class InfoExchange extends Component {
                     }
                 }
                 infoExchangeResultDriver[driver.id] = driverData;
+
             }
         })
 
@@ -53,36 +53,56 @@ class InfoExchange extends Component {
 
         const renderDrivers =[];
         for(let i=0;i<Object.entries(infoExchangeResultDriver).length;i++){
-            renderDrivers.push(
-                <Card key={Object.entries(infoExchangeResultDriver)[i][0]} header = {() => (<CardHeader title={Object.entries(infoExchangeResultDriver)[i][1].P1}/>)}>
-                    <Text style={{fontSize:20}}>
-                        Name: {JSON.stringify(Object.entries(infoExchangeResultDriver)[i][1].P1).slice(1,-1)}
-                    </Text>
-                    <Text style={{fontSize:20}}>
-                        Date of Birth(YYMMDD): {JSON.stringify(Object.entries(infoExchangeResultDriver)[i][1].P2).slice(1,-1)}
-                    </Text>
-                    <Text style={{fontSize:20}}>
-                        Sex: {JSON.stringify(Object.entries(infoExchangeResultDriver)[i][1].P3).slice(1,-1) == "02" ? "male" : "female"}
-                    </Text>
-                </Card>
-            )
+            if(Object.entries(infoExchangeResultDriver).length !== 0){
+                let sex;
+                if (Object.entries(infoExchangeResultDriver)[i][1].P3 == "01"){
+                    sex = "female"
+                }else if (Object.entries(infoExchangeResultDriver)[i][1].P3 == "02"){
+                    sex = "male"
+                }else{
+                    sex = "other"
+                }
+                renderDrivers.push(
+                    <Card key={Object.entries(infoExchangeResultDriver)[i][0]} header = {() => (<CardHeader title={Object.entries(infoExchangeResultDriver)[i][1].P1}/>)}>
+                        <Text style={{fontSize:20}}>
+                            Name: {JSON.stringify(Object.entries(infoExchangeResultDriver)[i][1].P1) !== undefined ? JSON.stringify(Object.entries(infoExchangeResultDriver)[i][1].P1).slice(1,-1):""}
+                        </Text>
+                        <Text style={{fontSize:20}}>
+                            Date of Birth(YYMMDD): {JSON.stringify(Object.entries(infoExchangeResultDriver)[i][1].P2) !== undefined ? JSON.stringify(Object.entries(infoExchangeResultDriver)[i][1].P2).slice(1,-1):""}
+                        </Text>
+                        <Text style={{fontSize:20}}>
+                            Sex: {sex}
+                        </Text>
+                    </Card>
+                )
+            }
         }
 
         const renderNonmotorists = [];
         for(let i=0;i<Object.entries(infoExchangeResultNonmotorist).length;i++){
-            renderNonmotorists.push(
-                <Card key={Object.entries(infoExchangeResultNonmotorist)[i][0]} header = {() => (<CardHeader title={Object.entries(infoExchangeResultNonmotorist)[i][1].P1}/>)}>
-                    <Text style={{fontSize:20}}>
-                        Name: {JSON.stringify(Object.entries(infoExchangeResultNonmotorist)[i][1].P1).slice(1,-1)}
-                    </Text>
-                    <Text style={{fontSize:20}}>
-                        Date of Brith(YYMMDD): {JSON.stringify(Object.entries(infoExchangeResultNonmotorist)[i][1].P2).slice(1,-1)}
-                    </Text>
-                    <Text style={{fontSize:20}}>
-                        Sex: {JSON.stringify(Object.entries(infoExchangeResultNonmotorist)[i][1].P3).slice(1,-1) == "02" ? "male" : "female"}
-                    </Text>
-                </Card>
-            )
+            if(Object.entries(infoExchangeResultNonmotorist).length !== 0){
+                let sex;
+                if (Object.entries(infoExchangeResultNonmotorist)[i][1].P3 == "01"){
+                    sex = "female"
+                }else if (Object.entries(infoExchangeResultNonmotorist)[i][1].P3 == "02"){
+                    sex = "male"
+                }else{
+                    sex = "other"
+                }
+                renderNonmotorists.push(
+                    <Card key={Object.entries(infoExchangeResultNonmotorist)[i][0]} header = {() => (<CardHeader title={Object.entries(infoExchangeResultNonmotorist)[i][1].P1}/>)}>
+                        <Text style={{fontSize:20}}>
+                            Name: {JSON.stringify(Object.entries(infoExchangeResultNonmotorist)[i][1].P1) !==undefined ? JSON.stringify(Object.entries(infoExchangeResultNonmotorist)[i][1].P1).slice(1,-1):""}
+                        </Text>
+                        <Text style={{fontSize:20}}>
+                            Date of Brith(YYMMDD): {JSON.stringify(Object.entries(infoExchangeResultNonmotorist)[i][1].P2) !==undefined ? JSON.stringify(Object.entries(infoExchangeResultNonmotorist)[i][1].P2).slice(1,-1):""}
+                        </Text>
+                        <Text style={{fontSize:20}}>
+                            Sex: {sex}
+                        </Text>
+                    </Card>
+                )
+            }
         }
         
         return(
