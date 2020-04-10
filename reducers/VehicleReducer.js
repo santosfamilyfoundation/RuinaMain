@@ -1,6 +1,7 @@
 // var uuid = require('react-native-uuid');
 
 const initialState = {
+    c20: 0,     // num vehicles involved question
     data: [],
 
 }
@@ -10,6 +11,7 @@ export default function vehicleReducer (state=initialState, action) {
         case 'ADDVEHICLE':
             return {
                 ...state,
+                c20: state.c20 + 1,
                 data: state.data.concat([{hazardous: null, id:action.payload.vehicleID, driver: action.payload.driverID}])
             }
         case 'ADDLVHM':

@@ -126,27 +126,27 @@ class Home extends Component {
                             {nonmotoristListArr}
                         </View>
                     </Card>
-                    <Card header={RoadHeader} style={styles.sectionCard}>
-                        <Layout style={styles.questionContainer}>
+                    <Card header={RoadHeader} style={styles.itemCard}>
+                        <View style={styles.itemCardContent}>
                           <Card style={styles.itemCard} onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road')}>
-                              <View style={styles.itemCardContent}>
+                              <View style={styles.individualCard}>
                                   <Icon name='paper-plane' width={75} height={75} />
                                   <Text style={styles.itemCardFooter} category="s1">Road</Text>
                               </View>
                           </Card>
                           <Card style={styles.itemCard} onPress = {() => navigatePhotos()}>
-                              <View style={styles.itemCardContent}>
+                              <View style={styles.individualCard}>
                                   <Icon name='camera-outline' width={75} height={75} />
                                   <Text style={styles.itemCardFooter} category="s1">Take Photo</Text>
                               </View>
                           </Card>
                           <Card style={styles.itemCard} onPress = {() => navigateGallery()}>
-                              <View style={styles.itemCardContent}>
+                              <View style={styles.individualCard}>
                                   <Icon name='archive-outline' width={75} height={75} />
                                   <Text style={styles.itemCardFooter} category="s1">Photo Gallery</Text>
                               </View>
                           </Card>
-                        </Layout>
+                        </View>
                     </Card>
                 </ScrollView>
             </SafeAreaView>
