@@ -11,6 +11,7 @@ import com.reactnativecommunity.geolocation.GeolocationPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
+import com.anyline.reactnative.AnylinePackage;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;

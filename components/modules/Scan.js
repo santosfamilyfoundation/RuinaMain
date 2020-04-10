@@ -141,12 +141,11 @@ class Scan extends Component {
     };
 
     onError = (error) => {
-        console.error(error);
         alert(error);
+        this.props.navigation.goBack();
     };
 
     componentDidMount() {
-      console.log("MOUNTED")
       this.openOCR()
     }
 
