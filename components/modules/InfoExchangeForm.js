@@ -31,6 +31,7 @@ class InfoExchangeForm extends Component{
                 key = {id}
                 id = {id}
                 type = {type}
+                nav = {this.props.navigation}
                 // updateOperator = {this.updateOperator.bind(this)}
             />
         )
