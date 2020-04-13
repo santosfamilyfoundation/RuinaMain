@@ -126,6 +126,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     defaultConfig {
         applicationId "com.ruina"
         missingDimensionStrategy 'react-native-camera', 'general'
@@ -198,6 +199,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:17.2.2'
     implementation 'com.google.firebase:firebase-storage:19.1.1'
 
+
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";
         debugImplementation files(hermesPath + "hermes-debug.aar")
@@ -205,6 +207,12 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+
+    implementation (project(':react-native-camera')) {
+        exclude group: "com.android.support"
+        exclude group: "com.google.android.gms"
+    }
+
 }
 
 // Run this once to be able to run the application with BUCK
