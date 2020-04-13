@@ -12,6 +12,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.anyline.reactnative.AnylinePackage;
+import io.invertase.firebase.storage.RNFirebaseStoragePackage;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
@@ -31,6 +32,7 @@ public class MainApplication extends Application implements ReactApplication {
         protected List<ReactPackage> getPackages() {
           @SuppressWarnings("UnnecessaryLocalVariable")
           List<ReactPackage> packages = new PackageList(this).getPackages();
+          packages.add(new RNFirebaseStoragePackage());
           return packages;
         }
 

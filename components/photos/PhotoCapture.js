@@ -11,8 +11,6 @@ import BasicDropDown from '../dropdowns/BasicDropDown'
 import * as Constants from '../../constants';
 import { styles } from './PhotoCapture.style';
 
-const { app } = firebase.storage();
-
 class PhotoCapture extends Component {
   state = {
     images: [],
@@ -42,6 +40,7 @@ class PhotoCapture extends Component {
   }
 
   uploadImage = () => {
+    console.log(firebase.apps)
     //Upload Image to Firebase Storage (see Drive documentation for password and access to firebase account)
     const ext = this.state.imgUri.split('.').pop(); // Extract image extension
     const filename = `${uuid()}.${ext}`; // Making a unique name
