@@ -27,7 +27,6 @@ const Blob = RNFetchBlob.polyfill.blob
 const fs = RNFetchBlob.fs
 //const app = firebase.initializeApp(config);
 
-
 class PhotoCapture extends Component {
   state = {
     images: [],
@@ -59,55 +58,11 @@ class PhotoCapture extends Component {
   }
 
 
-  // uploadImage = () => {
-  //
-  //   //Upload Image to Firebase Storage (see Drive documentation for password and access to firebase account)
-  //   const ext = this.state.imgUri.split('.').pop(); // Extract image extension
-  //   const filename = `${uuid()}.${ext}`; // Making a unique name
-  //
-  //   const { uri } = this.state.imgUri;
-  //
-  //   //const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri;
-  //   this.setState({ uploading: true });
-  //   // setUploading(true);
-  //   // setTransferred(0);
-  //   const task = storage()
-  //     .ref(filename)
-  //     .putFile(uri);
-  //   // set progress state
-  //   task.on('state_changed', snapshot => {
-  //     setTransferred(
-  //       Math.round(snapshot.bytesTransferred / snapshot.totalBytes) * 10000
-  //     );
-  //   });
-  //   try {
-  //     await task;
-  //   } catch (e) {
-  //     console.error(e);
-  //     unsubscribe();
-  //     alert('Unable to upload');
-  //   }
-  //   this.setState({ uploading: false });
-  //   this.props.photoAction({image: snapshot.downloadURL, tag: this.state.selectedOption});
-  //   AsyncStorage.setItem('images', JSON.stringify(allImages));
-  // };
-  //
-  //
-
-  // uploadImage = () => {
-  //     const task = firebase.storage()
-  // };
-//
-
 
 
   uploadImage = () => {
-
     console.log(firebase.apps)
-    console.log(firebase)
-    console.log("THIIJIJIDJFDJFIDFJDIOJFDIOFJDIOFJIO")
-
-    // //Upload Image to Firebase Storage (see Drive documentation for password and access to firebase account)
+    //Upload Image to Firebase Storage (see Drive documentation for password and access to firebase account)
     const ext = this.state.imgUri.split('.').pop(); // Extract image extension
     const filename = `${uuid()}.${ext}`; // Making a unique name
     const uri = this.state.imgUri;
@@ -136,99 +91,7 @@ class PhotoCapture extends Component {
       })
     }
   }
-        // .putFile(this.state.imgUri);
 
-      // task.on(firebase.storage.TaskEvent.STATE_CHANGED, snapshot => {
-      //   let state = {};
-      //   state = {
-      //     ...state,
-      //     progress: (snapshot.bytesTransferred / snapshot.totalBytes) * 100 // Update the progress bar value
-      //   };
-      //   if (snapshot.state === firebase.storage.TaskState.SUCCESS) {
-      //     const allImages = this.state.images;
-      //     allImages.push(snapshot.downloadURL);
-      //     state = {
-      //       ...state,
-      //       uploading: false,
-      //       imgUri: '',
-      //       progress: 0,
-      //       images: allImages,
-      //       currImage: snapshot.downloadURL,
-      //     };
-      //     //Updated photo reducer
-      //     this.props.photoAction({image: snapshot.downloadURL, tag: this.state.selectedOption});
-      //     AsyncStorage.setItem('images', JSON.stringify(allImages));
-      //   }
-      // });
-
-//
-//   //
-//   //     firebase //Connect and store in firebase
-//   //       .storage()
-//   //       .ref(`CrashImages/${filename}`)
-//   //       .putFile(this.state.imgUri)
-//   //       .on(
-//   //         firebase.storage.TaskEvent.STATE_CHANGED,
-//   //         snapshot => {
-//   //           let state = {};
-//   //           state = {
-//   //             ...state,
-//   //             progress: (snapshot.bytesTransferred / snapshot.totalBytes) * 100 // Update the progress bar value
-//   //           };
-//   //           if (snapshot.state === firebase.storage.TaskState.SUCCESS) {
-//   //             const allImages = this.state.images;
-//   //             allImages.push(snapshot.downloadURL);
-//   //             state = {
-//   //               ...state,
-//   //               uploading: false,
-//   //               imgUri: '',
-//   //               progress: 0,
-//   //               images: allImages,
-//   //               currImage: snapshot.downloadURL,
-//   //             };
-//   //             //Updated photo reducer
-//   //             this.props.photoAction({image: snapshot.downloadURL, tag: this.state.selectedOption});
-//   //             AsyncStorage.setItem('images', JSON.stringify(allImages));
-//   //           }
-//   //           this.setState(state);
-//   //         },
-//   //         error => {
-//   //           unsubscribe();
-//   //           alert('Unable to upload');
-//   //         }
-//   //       );
-//   //     };
-//   // };
-//   //
-//   //
-//   // onst uploadImage = async () => {
-//   // const { uri } = image;
-//   // const filename = uri.substring(uri.lastIndexOf('/') + 1);
-//   // const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri;
-//   // setUploading(true);
-//   // setTransferred(0);
-//   // const task = storage()
-//   //   .ref(filename)
-//   //   .putFile(uploadUri);
-//   // // set progress state
-//   // task.on('state_changed', snapshot => {
-//   //   setTransferred(
-//   //     Math.round(snapshot.bytesTransferred / snapshot.totalBytes) * 10000
-//   //   );
-//   // });
-//   // try {
-//   //   await task;
-//   // } catch (e) {
-//   //   console.error(e);
-//   // }
-//   // setUploading(false);
-//   // Alert.alert(
-//   //   'Photo uploaded!',
-//   //   'Your photo has been uploaded to Firebase Cloud Storage!'
-//   // );
-//   // setImage(null);
-//   //
-//   //
   setOption = (text) => {
     //Sets what object that is tagged in photo
     this.setState({

@@ -190,10 +190,14 @@ android {
 
 dependencies {
     implementation project(':react-native-uuid-generator')
-
+    implementation (project(':react-native-camera')) {
+      exclude group: "com.google.android.gms"
+    }
     implementation project(':@react-native-community_geolocation')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation 'com.google.firebase:firebase-analytics:17.2.2'
+    implementation 'com.google.firebase:firebase-storage:19.1.1'
 
 
     if (enableHermes) {
