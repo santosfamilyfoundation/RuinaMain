@@ -1,10 +1,10 @@
 import React from 'react';
 import { Icon, TopNavigationAction } from '@ui-kitten/components';
-import InfoExchange from '../components/InfoExhange';
+import FinalReport from '../components/FinalReport';
 
-export const InfoExchangeScreen = ({navigation}) => {
+export const FinalReportScreen = ({navigation}) => {
     return(
-        <InfoExchange
+        <FinalReport
             navigation = {navigation}
             BackAction = {()=> <TopNavigationAction icon={(style) => <Icon {...style} name='arrow-back'/>}
                                                     onPress={() => navigation.goBack()}/>}

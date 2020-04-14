@@ -13,7 +13,7 @@ export default function nonmotoristReducer (state=initialState, action) {
 
             for (let i = 0; i < numNonmotorist; i++){
                 let id = uuid.v1();
-                nonmotoristArr.push({id, response:{}})
+                nonmotoristArr.push({id})
             }
 
             return {

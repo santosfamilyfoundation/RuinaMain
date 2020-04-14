@@ -12,8 +12,10 @@ import { ScanScreen } from './screens/scanScreen';
 import { QuickSurveyScreen } from './screens/quickSurveyScreen';
 import { HomeScreen } from './screens/homeScreen';
 import { QuestionScreen } from './screens/questionScreen';
-import { InfoExchangeFormScreen } from './screens/infoExchangeScreen';
+import { InfoExchangeFormScreen } from './screens/infoExchangeFormScreen';
+import { InfoExchangeScreen } from './screens/infoExchangeScreen';
 import { PhotoGalleryScreen } from './screens/photoGalleryScreen';
+import { FinalReportScreen } from './screens/finalReportScreen';
 
 const HomeNavigator = createStackNavigator({
   Welcome: WelcomeScreen,
@@ -28,8 +30,10 @@ const HomeNavigator = createStackNavigator({
   Survey: QuickSurveyScreen,
   Home: HomeScreen,
   Question: QuestionScreen,
-  InfoExchange: InfoExchangeFormScreen,
+  InfoExchangeForm: InfoExchangeFormScreen,
   PhotoGallery: PhotoGalleryScreen,
+  FinalReport: FinalReportScreen,
+  InfoExchange: InfoExchangeScreen
 }, {
   headerMode: 'none',
 });
