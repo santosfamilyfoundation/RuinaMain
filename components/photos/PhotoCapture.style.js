@@ -4,11 +4,12 @@ const SCREEN_WIDTH = width;
 const SCREEN_HEIGHT = height;
 
 export const styles = StyleSheet.create({
+  cameraLayout:{
+    flex: 1,
+  },
   cameraPreview:{
     flex: 1,
     justifyContent:'center',
-    alignItems: 'center',
-    height: SCREEN_HEIGHT,
     width: SCREEN_WIDTH,
   },
   captureButton:{
