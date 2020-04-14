@@ -16,6 +16,11 @@ class PhotoGallery extends Component {
             navigation.navigate('PhotoCapture')
         }
 
+
+        const navigateSinglePhoto = (uri, tag) =>{
+            navigation.navigate('SinglePhoto', {image:uri, tag:tag})
+        }
+
         const allPhotos = [];
         let index = 0;
 
@@ -24,7 +29,7 @@ class PhotoGallery extends Component {
           imagesArray.forEach(elm => {
             index+=1
             allPhotos.push(
-              <Card key={index} style={styles.itemCard}>
+              <Card key={index} style={styles.itemCard} onPress = {() => navigateSinglePhoto(elm, tag)}>
                   <View style={styles.itemCardContent}>
                       <Image source={{uri:elm}} style={styles.image}/>
                       <Text style={styles.itemCardFooter} category="s1">{tag}</Text>
