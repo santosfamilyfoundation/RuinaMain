@@ -4,28 +4,10 @@ import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { TopNavigation, TopNavigationAction, Text, Card, CardHeader, Layout, Icon } from '@ui-kitten/components';
 import { styles } from './Home.style';
-<<<<<<< HEAD:components/Home.js
-import {questions} from '../data/questions';
-import VehicleSection from './VehicleSection';
-import NonMotoristSection from './NonMotoristSection';
-
-
-//May not need all of these:
-
-import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { driverQuestions } from '../data/driverQuestions';
-import { passengerQuestions } from '../data/passengerQuestions';
-import { nonmotoristQuestions } from '../data/nonmotoristQuestions';
-import { vehicleQuestions } from '../data/vehicleQuestions';
-import { lvhmQuestions } from '../data/lvhmQuestions';
-import { roadQuestions } from '../data/roadQuestions';
-import LargeTextField from './textFields/LargeTextField';
-=======
 import {questions} from '../../data/questions';
 import VehicleSection from './homeSections/VehicleSection';
 import NonMotoristSection from './homeSections/NonMotoristSection';
 
->>>>>>> 2e8e615fdd3094673c636c001b48e9be0aee834f:components/home/Home.js
 
 class Home extends Component {
     filterQuestionsData = (questionType) => {
@@ -124,7 +106,7 @@ class Home extends Component {
 
         const infoExchangeIcon = (style) => (
             <Icon {...style} name='edit-2-outline' />
-          );
+        );
 
         const finalReportIcon = (style) => (
             <Icon {...style} name='file-text-outline' />

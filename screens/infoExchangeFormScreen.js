@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon, TopNavigationAction } from '@ui-kitten/components';
-import InfoExchangeForm from '../components/InfoExchangeForm';
+import InfoExchangeForm from '../components/modules/InfoExchangeForm';
 
 export const InfoExchangeFormScreen = ({ navigation }) => {
 

@@ -37,6 +37,15 @@ class InfoExchangeForm extends Component{
             />
         )
 
+        const emailIcon = (style) => (
+            <Icon {...style} name='email-outline' />
+        );
+        const rightControls = () => (
+            <View style={{flexDirection: 'row'}}>
+                <TopNavigationAction icon={emailIcon} onPress = {() => this.props.navigation.navigate('InfoExchange')}/>   
+            </View>
+        )
+
         return(
             <SafeAreaView style={{flex: 1}}>
                 <TopNavigation title='Info Exchange' style = {{marginBottom: 15}} alignment='center' leftControl={this.props.BackAction()} rightControls = {rightControls()}/>
