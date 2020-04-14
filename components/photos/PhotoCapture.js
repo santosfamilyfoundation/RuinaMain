@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
-import { TextInput, Text, View, TouchableOpacity, AsyncStorage } from 'react-native';
+import { TextInput, Text, View, TouchableOpacity } from 'react-native';
 import { Button, Divider, Layout, TopNavigation, Select} from '@ui-kitten/components';
 import firebase from 'react-native-firebase';
 import uuid from 'uuid/v4';
@@ -10,6 +10,7 @@ import { RNCamera } from 'react-native-camera';
 import BasicDropDown from '../dropdowns/BasicDropDown'
 import * as Constants from '../../constants';
 import { styles } from './PhotoCapture.style';
+import AsyncStorage from '@react-native-community/async-storage';
 
 class PhotoCapture extends Component {
   state = {
@@ -40,7 +41,6 @@ class PhotoCapture extends Component {
   }
 
   uploadImage = () => {
-    console.log(firebase.apps)
     //Upload Image to Firebase Storage (see Drive documentation for password and access to firebase account)
     const ext = this.state.imgUri.split('.').pop(); // Extract image extension
     const filename = `${uuid()}.${ext}`; // Making a unique name
@@ -71,7 +71,13 @@ class PhotoCapture extends Component {
               };
               //Updated photo reducer
               this.props.photoAction({image: snapshot.downloadURL, tag: this.state.selectedOption});
-              AsyncStorage.setItem('images', JSON.stringify(allImages));
+              storeData = async () => {
+                try {
+                  await AsyncStorage.setItem('images', JSON.stringify(allImages))
+                } catch (e) {
+                  console.log(e)
+                }
+              }
             }
             this.setState(state);
           },
@@ -115,6 +121,7 @@ class PhotoCapture extends Component {
 
         return (
             <SafeAreaView style={{ flex: 1 }}>
+            <TopNavigation title='Photo Capture' alignment='center' leftControl={this.props.BackAction()}/>
               <Divider/>
               <Layout style={styles.cameraLayout}>
                 <RNCamera
