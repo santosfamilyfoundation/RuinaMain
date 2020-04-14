@@ -35,7 +35,6 @@ class InfoExchange extends Component {
                     }
                 }
                 infoExchangeResultDriver[driver.id] = driverData;
-
             }
         })
 

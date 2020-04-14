@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, Keyboard } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { TopNavigation, TopNavigationAction, Text, Card, CardHeader, Layout, Icon } from '@ui-kitten/components';
@@ -18,7 +18,7 @@ import { nonmotoristQuestions } from '../data/nonmotoristQuestions';
 import { vehicleQuestions } from '../data/vehicleQuestions';
 import { lvhmQuestions } from '../data/lvhmQuestions';
 import { roadQuestions } from '../data/roadQuestions';
-
+import LargeTextField from './textFields/LargeTextField';
 
 class Home extends Component {
 
