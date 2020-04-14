@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon, TopNavigationAction } from '@ui-kitten/components';
-import Map from '../components/Map'
+import Map from '../components/map/Map'
 
 export const MapScreen = ({ navigation}) => {
 

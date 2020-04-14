@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon, TopNavigationAction } from '@ui-kitten/components';
-import Weather from '../components/Weather';
+import Weather from '../components/modules/Weather';
 
 export const WeatherScreen = ({ navigation }) => {
   return (

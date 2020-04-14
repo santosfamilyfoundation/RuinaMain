@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { TopNavigation, TopNavigationAction, Text, Card, CardHeader, Layout, Icon } from '@ui-kitten/components';
 import { styles } from './Home.style';
+<<<<<<< HEAD:components/Home.js
 import {questions} from '../data/questions';
 import VehicleSection from './VehicleSection';
 import NonMotoristSection from './NonMotoristSection';
@@ -19,8 +20,17 @@ import { vehicleQuestions } from '../data/vehicleQuestions';
 import { lvhmQuestions } from '../data/lvhmQuestions';
 import { roadQuestions } from '../data/roadQuestions';
 import LargeTextField from './textFields/LargeTextField';
+=======
+import {questions} from '../../data/questions';
+import VehicleSection from './homeSections/VehicleSection';
+import NonMotoristSection from './homeSections/NonMotoristSection';
+
+>>>>>>> 2e8e615fdd3094673c636c001b48e9be0aee834f:components/home/Home.js
 
 class Home extends Component {
+    filterQuestionsData = (questionType) => {
+        return questions.data.filter(question => question.display.includes(questionType));
+    }
 
     render(){
         const {
@@ -33,6 +43,7 @@ class Home extends Component {
             } = this.props
 
         const operatorList = [];
+        let roadQuestions = this.filterQuestionsData('road');
 
         const navigateQuestion = (form, id, type) => {
             navigation.navigate('Question', {questions: form.data, objectID: id, type})
@@ -140,27 +151,27 @@ class Home extends Component {
                             {nonmotoristListArr}
                         </View>
                     </Card>
-                    <Card header={RoadHeader} style={styles.sectionCard}>
-                        <Layout style={styles.questionContainer}>
+                    <Card header={RoadHeader} style={styles.itemCard}>
+                        <View style={styles.itemCardContent}>
                           <Card style={styles.itemCard} onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road')}>
-                              <View style={styles.itemCardContent}>
+                              <View style={styles.individualCard}>
                                   <Icon name='paper-plane' width={75} height={75} />
                                   <Text style={styles.itemCardFooter} category="s1">Road</Text>
                               </View>
                           </Card>
                           <Card style={styles.itemCard} onPress = {() => navigatePhotos()}>
-                              <View style={styles.itemCardContent}>
+                              <View style={styles.individualCard}>
                                   <Icon name='camera-outline' width={75} height={75} />
                                   <Text style={styles.itemCardFooter} category="s1">Take Photo</Text>
                               </View>
                           </Card>
                           <Card style={styles.itemCard} onPress = {() => navigateGallery()}>
-                              <View style={styles.itemCardContent}>
+                              <View style={styles.individualCard}>
                                   <Icon name='archive-outline' width={75} height={75} />
                                   <Text style={styles.itemCardFooter} category="s1">Photo Gallery</Text>
                               </View>
                           </Card>
-                        </Layout>
+                        </View>
                     </Card>
                 </ScrollView>
             </SafeAreaView>

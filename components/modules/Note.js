@@ -3,7 +3,7 @@ import { SafeAreaView } from 'react-navigation';
 import { TextInput, Text } from 'react-native';
 import { Button, Divider, Layout, TopNavigation } from '@ui-kitten/components';
 import { connect } from 'react-redux';
-import { genericWriteAction } from '../actions/GenericAction';
+import { genericWriteAction } from '../../actions/GenericAction';
 
 class Note extends Component {
   state = {

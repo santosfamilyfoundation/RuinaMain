@@ -3,13 +3,13 @@ import { SafeAreaView } from 'react-navigation';
 import { TextInput, Text, StyleSheet, ScrollView } from 'react-native';
 import { Button, ButtonGroup, Layout, TopNavigation, Card, Input } from '@ui-kitten/components';
 import { connect } from 'react-redux';
-import { changeVehicle, changeDrivers, changeNonmotorists, changePassengers, changeFatality, changeConstruction, changeIntersection, changeSchoolbus, changeLvhm, changeRespond } from '../actions/QuickQuizActions';
-import { addVehicle, addLvhm } from '../actions/VehicleAction';
-import { addNonmotorist } from '../actions/NonmotoristAction';
-import { addDriver } from '../actions/DriverAction';
-import { addPassenger } from '../actions/PassengerAction';
-import { addRoad } from '../actions/RoadAction';
-import NumberButtonSelector from './buttonSelectors/NumberButtonSelector';
+import { changeVehicle, changeDrivers, changeNonmotorists, changePassengers, changeFatality, changeConstruction, changeIntersection, changeSchoolbus, changeLvhm, changeRespond } from '../../../actions/QuickQuizActions';
+import { addVehicle, addLvhm } from '../../../actions/VehicleAction';
+import { addNonmotorist } from '../../../actions/NonmotoristAction';
+import { addDriver } from '../../../actions/DriverAction';
+import { addPassenger } from '../../../actions/PassengerAction';
+import { addRoad } from '../../../actions/RoadAction';
+import NumberButtonSelector from '../../buttonSelectors/NumberButtonSelector';
 import { styles } from './QuickSurvey.style';
 
 var uuid = require('react-native-uuid');
@@ -22,9 +22,7 @@ class QuickSurvey extends Component {
       const {navigation,
         changeRespond,
         changeVehicle,
-        changeDrivers,
         changeNonmotorists,
-        changePassengers,
         changeFatality,
         changeSchoolbus,
         changeLvhm,
@@ -32,7 +30,6 @@ class QuickSurvey extends Component {
         addLvhm,
         addNonmotorist,
         addDriver,
-        addPassenger,
         addRoad,
         changeConstruction
       } = this.props;
@@ -41,10 +38,9 @@ class QuickSurvey extends Component {
 
       const dispatchAll = () => {
         addNonmotorist(quiz.numNonmotorist);
-        // addDriver(quiz.numDriver);
-        addPassenger(quiz.numPassenger);
         addRoad(null);
-        // addPassenger(quiz.numPassenger)
+
+        // connect vehicles with drivers
         for (let i = 0; i < (quiz.numVehicle); i++){
             let vehicleID = uuid.v1();
             let driverID = uuid.v1();
@@ -80,14 +76,6 @@ class QuickSurvey extends Component {
                     fieldName = "numVehicle"
                   />
                 </SafeAreaView>
-                {/* <SafeAreaView style = {styles.questionContainer}>
-                  <NumberButtonSelector
-                    title="Number of drivers involved"
-                    submitFunction = {changeDrivers}
-                    reducerName = "quickquizReducer"
-                    fieldName = "numDriver"
-                  />
-                </SafeAreaView> */}
                 <SafeAreaView style = {styles.questionContainer}>
                   <NumberButtonSelector
                     title="Number of non-motorists involved"
@@ -96,14 +84,6 @@ class QuickSurvey extends Component {
                     fieldName = "numNonmotorist"
                   />
                 </SafeAreaView>
-                {/* <SafeAreaView style = {styles.questionContainer}>
-                  <NumberButtonSelector
-                    title="Number of passengers involved"
-                    submitFunction = {changePassengers}
-                    reducerName = "quickquizReducer"
-                    fieldName = "numPassenger"
-                  />
-                </SafeAreaView> */}
                 <SafeAreaView style = {styles.questionContainer}>
                   <NumberButtonSelector
                     title="Number of vehicles which are large, towing trailers, or carrying hazardous materials"
@@ -113,6 +93,14 @@ class QuickSurvey extends Component {
                   />
                 </SafeAreaView>
                 <SafeAreaView style = {styles.questionContainer}>
+                  <NumberButtonSelector
+                    title="Number of fatalities"
+                    submitFunction = {changeFatality}
+                    reducerName = "quickquizReducer"
+                    fieldName = "fatality"
+                  />
+                </SafeAreaView>
+                {/* <SafeAreaView style = {styles.questionContainer}>
                   <Card style = {styles.cardStyle}>
                       <Text style = {styles.questionText}>Are there known fatalities?</Text>
                       <Layout style={{flexDirection: 'row'}}>
@@ -132,7 +120,7 @@ class QuickSurvey extends Component {
                           </Button>
                       </Layout>
                   </Card>
-                </SafeAreaView>
+                </SafeAreaView> */}
                 <SafeAreaView style = {styles.questionContainer}>
                   <Card style = {styles.cardStyle}>
                       <Text style = {styles.questionText}>Is a school bus involved?</Text>
@@ -187,10 +175,8 @@ class QuickSurvey extends Component {
 const mapDispatchToProps = {
   changeRespond,
   changeVehicle,
-  changeDrivers,
   changeLvhm,
   changeNonmotorists,
-  changePassengers,
   changeFatality,
   changeConstruction,
   changeIntersection,
@@ -199,7 +185,6 @@ const mapDispatchToProps = {
   addLvhm,
   addNonmotorist,
   addDriver,
-  addPassenger,
   addRoad,
 }
 

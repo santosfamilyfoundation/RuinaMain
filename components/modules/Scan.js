@@ -6,17 +6,15 @@ import {
     View,
     Platform
 } from 'react-native';
-import { updateVehicle } from '../actions/VehicleAction';
-import { updateDriver } from '../actions/DriverAction';
-import AnylineOCR, { getLicenseExpiryDate } from 'anyline-ocr-react-native-module';
 import { connect } from 'react-redux';
-import * as Constants from '../constants';
+import AnylineOCR, { getLicenseExpiryDate } from 'anyline-ocr-react-native-module';
+import { updateVehicle } from '../../actions/VehicleAction';
+import { updateDriver } from '../../actions/DriverAction';
+import * as Constants from '../../constants';
 
-import VINconfig from '../anylineConfigs/VINconfig';
-import DriversLicenseconfig from '../anylineConfigs/DriversLicenseconfig';
-import LicensePlateconfig from '../anylineConfigs/LicensePlateconfig';
-
-import ScanResult from './ScanResult';
+import VINconfig from '../../anylineConfigs/VINconfig'
+import DriversLicenseconfig from '../../anylineConfigs/DriversLicenseconfig';
+import LicensePlateconfig from '../../anylineConfigs/LicensePlateconfig';
 
 class Scan extends Component {
 
@@ -30,7 +28,8 @@ class Scan extends Component {
         meterType: '',
         cutoutBase64: '',
         fullImageBase64: '',
-        text: ''
+        text: '',
+        vinData: '',
     };
 
     openOCR = () => {
@@ -97,15 +96,31 @@ class Scan extends Component {
         });
     };
 
-    fetchVIN = (vin) => {
+    async fetchVINData(vin) {
+      let response = await fetch("https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/"+vin+"?format=json&modelyear=2011");
+      let body = await response.json();
+      let values = this.props.navigation.state.params;
+      this.props.updateVehicle({id:values.objectID, question:Constants.MAKE_ID, selection:body.Results[6].Value});
+      this.props.updateVehicle({id:values.objectID, question:Constants.MODEL_ID, selection:body.Results[8].Value});
+      this.props.updateVehicle({id:values.objectID, question:Constants.YEAR_ID, selection:body.Results[9].Value});
+    }
+
+    fetchVIN = () =>{
+      const vin = this.state.text
       fetch("https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/"+vin+"?format=json&modelyear=2011")
         .then(response => response.json())
         .then((responseJson)=> {
           data = responseJson.Results
           console.log(data)
+          this.setState({vinData: data})
         })
         .catch(error=>console.log(error))
     };
+
+    componentDidMount() {
+        this.openOCR()
+    }
+
 
 
     onResult = (dataString) => {
@@ -127,8 +142,8 @@ class Scan extends Component {
         let values = this.props.navigation.state.params;
         switch(values.type) {
         case Constants.VIN:
-          this.fetchVIN(data.text);
           this.props.updateVehicle({id:values.objectID, question:Constants.VIN_ID, selection:data.text});
+          let vinData = this.fetchVINData(data.text)
           break;
         case Constants.LICENSE:
           this.props.updateDriver({id:values.objectID, question:Constants.DLICENSE_ID, selection:data.documentNumber});
@@ -143,12 +158,11 @@ class Scan extends Component {
     };
 
     onError = (error) => {
-        console.error(error);
         alert(error);
+        this.props.navigation.goBack();
     };
 
     componentDidMount() {
-      console.log("MOUNTED")
       this.openOCR()
     }
 

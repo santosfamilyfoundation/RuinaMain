@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PhotoCapture from './PhotoCapture'
 import { Text } from 'react-native';
 import { Divider, Layout,TopNavigation } from '@ui-kitten/components';
-import * as Constants from '../constants';
+import * as Constants from '../../constants'
 
 class PhotoCaptureMain extends Component {
 

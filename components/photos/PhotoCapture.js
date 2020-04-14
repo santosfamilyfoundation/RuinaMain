@@ -5,13 +5,11 @@ import { Button, Divider, Layout, TopNavigation, Select} from '@ui-kitten/compon
 import firebase from 'react-native-firebase';
 import uuid from 'uuid/v4';
 import { connect } from 'react-redux';
-import { photoAction } from '../actions/PhotoAction';
+import { photoAction } from '../../actions/PhotoAction';
 import { RNCamera } from 'react-native-camera';
-import BasicDropDown from './BasicDropDown';
-import * as Constants from '../constants';
+import BasicDropDown from '../dropdowns/BasicDropDown'
+import * as Constants from '../../constants';
 import { styles } from './PhotoCapture.style';
-
-const { app } = firebase.storage();
 
 class PhotoCapture extends Component {
   state = {
@@ -42,6 +40,7 @@ class PhotoCapture extends Component {
   }
 
   uploadImage = () => {
+    console.log(firebase.apps)
     //Upload Image to Firebase Storage (see Drive documentation for password and access to firebase account)
     const ext = this.state.imgUri.split('.').pop(); // Extract image extension
     const filename = `${uuid()}.${ext}`; // Making a unique name

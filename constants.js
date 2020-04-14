@@ -17,6 +17,9 @@ export const LONG_ID = "C6-S2";
 export const WEATHER = "C11";
 export const VIN_ID = "V1";
 export const TIME_ID = "C3";
-export const MAKE_ID = "V5";
 export const DLICENSE_ID = "P12-S1";
 export const LICENSE_PLATE_ID = "V4";
+
+export const MAKE_ID = "V5";
+export const MODEL_ID = "V7";
+export const YEAR_ID = "V6";

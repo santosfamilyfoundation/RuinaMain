@@ -1300,7 +1300,7 @@ export const questions = {
     },
     {
         "answerType": "openTextBox",
-        "question": "Identifier",
+        "question": "Vehicle Identifier",
         "display": [
             "vehicle",
             "info"
@@ -2933,7 +2933,6 @@ export const questions = {
             "driver",
             "passenger",
             "nonmotorist",
-            "setup"
         ],
         "id": "P2-S2"
     },
