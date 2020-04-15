@@ -16,7 +16,7 @@ class PhotoGallery extends Component {
             navigation.navigate('PhotoCapture')
         }
 
-
+        //Move to individual photo capture
         const navigateSinglePhoto = (uri, tag) =>{
             navigation.navigate('SinglePhoto', {image:uri, tag:tag})
         }

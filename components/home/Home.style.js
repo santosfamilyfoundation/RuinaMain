@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'blue',
         paddingLeft: 10
-        
+
     },
     headingText: {
         fontSize: 30,
@@ -57,5 +57,5 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         margin: 10
-    }
+    },
 })

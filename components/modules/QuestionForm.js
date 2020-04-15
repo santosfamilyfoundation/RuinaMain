@@ -30,8 +30,6 @@ class QuestionForm extends Component {
     let actionType;
     let questionsData;
 
-    console.log("RENDERED");
-
     const filterQuestionsData = (questionType) => {
       return questions.data.filter(question => question.display.includes(questionType));
     }

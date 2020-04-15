@@ -70,8 +70,14 @@ const AdvancedOpenTextField = (props) => {
     const onImportMapPress = () => {
       //Sends user to map tool
       let currStateVal = !reducerData?.response ? null: reducerData.response;
-      pageChange('Map', {id:id, questionID:props.data.id})
-      setAdvancedButtonAppearance("filled")
+
+      if(advancedButtonAppearance == "filled"){
+        clearField();
+        setAdvancedButtonAppearance("outline");
+      }else{
+        setAdvancedButtonAppearance("filled")
+        pageChange('Map', {id:id, questionID:props.data.id})
+      }
     };
 
     const onImportCameraPress = () => {

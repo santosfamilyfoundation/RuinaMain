@@ -75,13 +75,13 @@ export const questions = {
         "display": [
             "road"
         ],
-        "id": "C3"
+        "id": "C3-A"
     },
     {
         "autoMethod": "time",
         "helperText": "(YYYYMMDDHHMM)",
         "question": "Crash Date and Time",
-        "id": "C3",
+        "id": "C3-B",
         "answerType": "advancedOpenTextBox",
         "display": [
             "road"
@@ -1774,7 +1774,7 @@ export const questions = {
         "display": [
             "road"
         ],
-        "id": "V15"
+        "id": "V15-A"
     },
     {
         "answerType": "openTextBox",
@@ -1783,7 +1783,7 @@ export const questions = {
         "display": [
             "road"
         ],
-        "id": "V15"
+        "id": "V15-B"
     },
     {
         "answerType": "openTextBox",
@@ -1792,7 +1792,7 @@ export const questions = {
         "display": [
             "road"
         ],
-        "id": "V15"
+        "id": "V15-C"
     },
     {
         "answerType": "header",
@@ -4424,7 +4424,7 @@ export const questions = {
         "display": [
             "road"
         ],
-        "id": "R2"
+        "id": "R2-A"
     },
     {
         "answerType": "openTextBox",
@@ -4432,7 +4432,7 @@ export const questions = {
         "display": [
             "road"
         ],
-        "id": "R2"
+        "id": "R2-B"
     },
     {
         "answerType": "openTextBox",
@@ -4440,7 +4440,7 @@ export const questions = {
         "display": [
             "road"
         ],
-        "id": "R2"
+        "id": "R2-C"
     },
     {
         "answerType": "openTextBox",
@@ -4448,7 +4448,7 @@ export const questions = {
         "display": [
             "road"
         ],
-        "id": "R2"
+        "id": "R2-D"
     },
     {
         "answerType": "header",
