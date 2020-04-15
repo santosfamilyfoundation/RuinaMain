@@ -4,9 +4,9 @@ import Note from '../components/modules/Note'
 
 export const NoteScreen = ({ navigation }) => {
   return (
-          <Note 
+          <Note
             navigation = { navigation }
-            BackAction = { () => <TopNavigationAction icon={ (style) => <Icon {...style} name='arrow-back' /> } 
+            BackAction = { () => <TopNavigationAction icon={ (style) => <Icon {...style} name='arrow-back' /> }
                                                   onPress={() => navigation.goBack()}/> }
           />
   );

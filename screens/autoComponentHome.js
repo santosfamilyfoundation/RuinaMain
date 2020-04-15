@@ -5,9 +5,9 @@ import AutoComponent from '../components/AutoComponent';
 
 export const AutoComponentHome = ({ navigation }) => {
   return (
-          <AutoComponent 
+          <AutoComponent
             navigation = { navigation }
-            BackAction = { () => <TopNavigationAction icon={ (style) => <Icon {...style} name='arrow-back' /> } 
+            BackAction = { () => <TopNavigationAction icon={ (style) => <Icon {...style} name='arrow-back' /> }
                                                   onPress={() => navigation.goBack()}/> }
           />
   );

@@ -58,4 +58,15 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         margin: 10
     },
+    rightControlsContainer:{
+      flexDirection: 'row',
+    },
+    rightControls:{
+      flexDirection: 'column',
+      alignItems: 'center',
+      padding: 5
+    },
+    rightControlsText:{
+      fontSize: 10,
+    },
 })

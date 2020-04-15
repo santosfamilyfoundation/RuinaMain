@@ -7,7 +7,7 @@ export const ResultScreen = ({ navigation }) => {
   return (
     <Result
         navigation = { navigation }
-        BackAction = { () => <TopNavigationAction icon={ (style) => <Icon {...style} name='arrow-back' /> } 
+        BackAction = { () => <TopNavigationAction icon={ (style) => <Icon {...style} name='arrow-back' /> }
                                                   onPress={() => navigation.goBack()}/> }
     />
   );

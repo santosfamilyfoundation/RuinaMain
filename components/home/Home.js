@@ -81,6 +81,10 @@ class Home extends Component {
             )
         })
 
+        const NonMotoristHeader = () => (
+            <CardHeader title={`Non-motorists`} />
+        );
+
         const infoExchangeIcon = (style) => (
             <Icon {...style} name='edit-2-outline' />
         );
@@ -89,17 +93,19 @@ class Home extends Component {
             <Icon {...style} name='file-text-outline' />
         );
 
-        const NonMotoristHeader = () => (
-            <CardHeader title={`Non-motorists`} />
-        );
-
-
         const rightControls = () => (
-            <View style={{flexDirection: 'row'}}>
-                <TopNavigationAction icon={finalReportIcon} onPress = {() => navigation.navigate('FinalReport')}/>
-                <TopNavigationAction icon={infoExchangeIcon} onPress = {() => navigation.navigate('InfoExchangeForm',{ operatorList })}/>
+            <View style={styles.rightControlsContainer}>
+                <Layout style={styles.rightControls}>
+                  <TopNavigationAction icon={finalReportIcon} onPress = {() => navigation.navigate('FinalReport')}/>
+                  <Text style={styles.rightControlsText}>Export</Text>
+                </Layout>
+                <Layout style={styles.rightControls}>
+                  <TopNavigationAction icon={infoExchangeIcon} onPress = {() => navigation.navigate('InfoExchangeForm',{ operatorList })}/>
+                  <Text style={styles.rightControlsText}>Info Share</Text>
+                </Layout>
             </View>
         )
+
         return(
             <SafeAreaView style={{flex:1}}>
                 <TopNavigation title='Home' alignment='center' leftControl={this.props.BackAction()} rightControls = {rightControls()}/>
