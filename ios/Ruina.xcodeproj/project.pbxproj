@@ -473,7 +473,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Testing.Ruina.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Testing.Ruina;
 				PRODUCT_NAME = Ruina;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -498,7 +498,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Testing.Ruina.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Testing.Ruina;
 				PRODUCT_NAME = Ruina;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
