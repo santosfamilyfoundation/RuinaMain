@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { SafeAreaView } from 'react-navigation';
-import { Button, Divider, Layout, TopNavigation } from '@ui-kitten/components';
+import { SafeAreaView, Linking} from 'react-navigation';
+import { Button, Divider, Layout, TopNavigation, Text } from '@ui-kitten/components';
 import { styles } from './Welcome.style';
 
 class Welcome extends Component {
@@ -17,6 +17,11 @@ class Welcome extends Component {
               <Divider/>
               <Layout style={styles.centeredContainer}>
                 <Button style={styles.styledButton} onPress={() => navigateTo('Survey')}>Start New Report</Button>
+              </Layout>
+              <Layout style={styles.bottomBar}>
+                <Text style={styles.bottomBarText}>
+                  {"Built by students at Olin College of Engineering"}
+                </Text>
               </Layout>
             </SafeAreaView>
           );

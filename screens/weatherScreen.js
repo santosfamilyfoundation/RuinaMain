@@ -4,9 +4,9 @@ import Weather from '../components/modules/Weather';
 
 export const WeatherScreen = ({ navigation }) => {
   return (
-          <Weather 
+          <Weather
             navigation = { navigation }
-            BackAction = { () => <TopNavigationAction icon={ (style) => <Icon {...style} name='arrow-back' /> } 
+            BackAction = { () => <TopNavigationAction icon={ (style) => <Icon {...style} name='arrow-back' /> }
                                                   onPress={() => navigation.goBack()}/> }
           />
   );

@@ -7,7 +7,7 @@ export const InfoExchangeFormScreen = ({ navigation }) => {
     return(
         <InfoExchangeForm
             navigation = { navigation }
-            BackAction = { () => <TopNavigationAction icon={ (style) => <Icon {...style} name='arrow-back' /> } 
+            BackAction = { () => <TopNavigationAction icon={ (style) => <Icon {...style} name='arrow-back' /> }
                         onPress = {() => navigation.goBack()}/> }
             operatorDetail = {navigation.state.params}
         />

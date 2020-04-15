@@ -9,4 +9,12 @@ export const styles = StyleSheet.create({
     styledButton: {
       margin: 10,
     },
+    bottomBar:{
+      padding: 10,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    bottomBarText:{
+      color: '#A9A9A9',
+    },
   });

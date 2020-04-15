@@ -4,10 +4,10 @@ import AutoComponentContainer from '../containers/AutoComponentContainer';
 
 export const TesterScreen = ({ navigation }) => {
   return (
-          <AutoComponentContainer 
+          <AutoComponentContainer
             navigation = { navigation }
             title = "Test"
-            BackAction = { () => <TopNavigationAction icon={ (style) => <Icon {...style} name='arrow-back' /> } 
+            BackAction = { () => <TopNavigationAction icon={ (style) => <Icon {...style} name='arrow-back' /> }
                                                   onPress={() => navigation.goBack()}/> }
           />
   );
