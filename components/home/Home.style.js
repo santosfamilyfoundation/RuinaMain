@@ -35,6 +35,7 @@ export const styles = StyleSheet.create({
     itemCardContent: {
         height:'90%',
         justifyContent:'flex-start',
+        alignItems:'center',
         flexDirection: 'row',
         flexWrap:"wrap",
         marginBottom: 5,
