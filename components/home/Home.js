@@ -92,12 +92,12 @@ class Home extends Component {
         const NonMotoristHeader = () => (
             <CardHeader title={`Non-motorists`} />
         );
-        
+
 
         const rightControls = () => (
             <View style={{flexDirection: 'row'}}>
                 <TopNavigationAction icon={finalReportIcon} onPress = {() => navigation.navigate('FinalReport')}/>
-                <TopNavigationAction icon={infoExchangeIcon} onPress = {() => navigation.navigate('InfoExchangeForm',{ operatorList })}/>   
+                <TopNavigationAction icon={infoExchangeIcon} onPress = {() => navigation.navigate('InfoExchangeForm',{ operatorList })}/>
             </View>
         )
         return(
@@ -122,7 +122,7 @@ class Home extends Component {
                             </Card>
                             <Card style={styles.nonMotoristCard} onPress = {() => navigateGallery()}>
                                 <Icon name='archive-outline' width={75} height={75} />
-                                <Text style={styles.itemCardFooter} category="s1">Photo Gallery</Text>
+                                <Text style={styles.itemCardFooter} category="s1">Photos</Text>
                             </Card>
                         </View>
                     </Card>

@@ -27,9 +27,8 @@ export const styles = StyleSheet.create({
   },
   sideBox:{
     alignSelf: 'flex-end',
-    backgroundColor: '#D3D3D3',
     padding: 10,
-    flex: 0.1,
+    width: 50,
     height: "100%",
   },
   sideBoxItems:{

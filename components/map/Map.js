@@ -17,7 +17,7 @@ const SCREEN_HEIGHT = height;
 const initalRegion = {
   initalLat: 42.3836,
   initalLong: -71.1097,
-  initialDelta: 0.00232,
+  initialDelta: 0.00111,
 }
 
 let id = 0;
@@ -46,8 +46,8 @@ class Map extends Component {
         let region = {
                 latitude: parseFloat(position.coords.latitude),
                 longitude: parseFloat(position.coords.longitude),
-                latitudeDelta: this.state.latitudeDelta,
-                longitudeDelta: this.state.longitudeDelta,
+                latitudeDelta: initalRegion.initialDelta,
+                longitudeDelta: initalRegion.initialDelta,
             };
         this.setState({
              mapRegion: region,
@@ -67,13 +67,12 @@ class Map extends Component {
         let region = {
                 latitude: parseFloat(position.coords.latitude),
                 longitude: parseFloat(position.coords.longitude),
-                latitudeDelta: this.state.latitudeDelta,
-                longitudeDelta: this.state.longitudeDelta,
+                latitudeDelta: initalRegion.initialDelta,
+                longitudeDelta: initalRegion.initialDelta,
             };
         this.setState({
              mapRegion: region,
         });
-        this._map.animateToRegion(region, 100);
       },
       error => alert('Using Default Location', JSON.stringify(error)),
       {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000},
@@ -96,13 +95,6 @@ class Map extends Component {
           color: getColor(id),
         },
       ],
-    });
-  }
-
-  onRegionChangeComplete(region, lastLat, lastLong) {
-    // When the user move around in the map (zoom in, zoom out, and navigate) this updates the state
-    this.setState({
-      mapRegion: region,
     });
   }
 
@@ -137,6 +129,17 @@ class Map extends Component {
       this._map.animateToRegion(region, 100);
   }
 
+  onPanDrag( positionObject) {
+    let region = {
+      latitude: positionObject.nativeEvent.coordinate.latitude,
+      longitude: positionObject.nativeEvent.coordinate.longitude,
+      latitudeDelta: this.state.mapRegion.latitudeDelta,
+      longitudeDelta: this.state.mapRegion.longitudeDelta,
+    };
+    this.setState({ mapRegion: region });
+    this._map.animateToRegion(region, 100);
+  }
+
   onPressRecenter() {
     // When the user presses teh center button they return to the current location of the device
     this.getCurrentLocation()
@@ -152,8 +155,6 @@ class Map extends Component {
           updateRoad
         } = this.props;
 
-        console.log(this.state.mapRegion)
-
         const id = this.props.navigation.state.params.id; //The road id for this crash
 
         const saveLocations = () => {
@@ -164,21 +165,22 @@ class Map extends Component {
           this.props.navigation.goBack();
         };
 
+
         return (
           <SafeAreaView style={{ flex: 1 }}>
               <TopNavigation title='Map View' alignment='center' leftControl={this.props.BackAction()}/>
               <Divider/>
               <Layout style={styles.pageContainer}>
                 <Layout style={styles.container}>
-                  <MapView
-                      ref={component => {this._map = component;}}
-                      zoomEnabled = {true}
-                      provider={PROVIDER_GOOGLE}
-                      style={styles.mapContainer}
-                      onRegionChangeComplete={this.onRegionChangeComplete.bind(this)}
+                    <MapView
                       region={this.state.mapRegion}
+                      style={styles.mapContainer}
+                      ref={component => {this._map = component;}}
+                      provider={PROVIDER_GOOGLE}
+                      zoomEnabled = {true}
                       onPress={e=> this.onMapPress(e)}
-                      initialRegion={this.state.mapRegion}
+                      scrollEnabled = {false}
+                      onPanDrag={this.onPanDrag.bind(this)}
                     >
                     {this.state.markers.map(marker => (
                       <Marker
@@ -213,11 +215,18 @@ class Map extends Component {
                     </View>
                 </Layout>
                 <View style={styles.coords}>
-                  <TextInput style={styles.coordText}>
-                    Latitude: { this.state.mapRegion.latitude.toFixed(3)}
-                    {"     "}
-                    Longitude: {this.state.mapRegion.longitude.toFixed(3)}
-                  </TextInput>
+                  {
+                    this.state.mapRegion.latitude.toFixed(3) == initalRegion.initalLat.toFixed(3) ?
+                      <Text style={styles.coordText}>
+                        {"Loading Your Location..."}
+                      </Text>
+                      :
+                      <Text style={styles.coordText}>
+                        Latitude: { this.state.mapRegion.latitude.toFixed(3)}
+                        {"     "}
+                        Longitude: {this.state.mapRegion.longitude.toFixed(3)}
+                      </Text>
+                  }
                 </View>
               </Layout>
               <Button onPress={() => saveLocations()}>SAVE</Button>
