@@ -71,7 +71,7 @@ class InfoExchange extends Component {
                         </Text>
                         <Text style={{fontSize:20}}>
                             {sex !==undefined? "Sex: "+sex : ""}
-                        </Text> 
+                        </Text>
                     </Card>
                 )
             }
@@ -103,7 +103,7 @@ class InfoExchange extends Component {
                 )
             }
         }
-        
+
         return(
             <SafeAreaView style={{flex:1}}>
                 <TopNavigation title="InfoExchange Result" alignment="center" leftControl={this.props.BackAction()}/>
@@ -120,7 +120,7 @@ class InfoExchange extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return{        
+    return{
         driver: state.driverReducer,
         nonmotorist: state.nonmotoristReducer,
         vehicle: state.vehicleReducer,
