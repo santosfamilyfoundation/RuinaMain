@@ -14,7 +14,11 @@ import * as Constants from '../../constants';
 const { width, height } = Dimensions.get('window');
 const SCREEN_WIDTH = width;
 const SCREEN_HEIGHT = height;
-const ASPECT_RATIO = width / height;
+const initalRegion = {
+  initalLat: 42.3836,
+  initalLong: -71.1097,
+  initialDelta: 0.00232,
+}
 
 let id = 0;
 
@@ -26,22 +30,17 @@ function getColor(id){
 class Map extends Component {
   state = {
     markers:[],
-    lastLat: null,
-    lastLong: null,
-    latitudeDelta:  0.002,
-    longitudeDelta: 0.002 * (SCREEN_WIDTH / SCREEN_HEIGHT),
     mapRegion:{ //Hard Coded Default Region
-        latitude: 42.3836,
-        longitude: -71.1097,
-        latitudeDelta: 0.00152,
-        longitudeDelta: 0.00151,
+        latitude: initalRegion.initalLat,
+        longitude: initalRegion.initalLong,
+        latitudeDelta: initalRegion.initialDelta,
+        longitudeDelta: initalRegion.initialDelta,
     },
   }
 
   watchID: ?number = null;
 
-  async getCurrentLocation() {
-    //Gets current location if avaliable
+  getCurrentLocation(){
     Geolocation.getCurrentPosition(
       position => {
         let region = {
@@ -50,12 +49,10 @@ class Map extends Component {
                 latitudeDelta: this.state.latitudeDelta,
                 longitudeDelta: this.state.longitudeDelta,
             };
-            this.setState({
-                 mapRegion: region,
-                 lastLat: region.latitude,
-                 lastLong: region.longitude,
-            });
-      this._map.animateToRegion(region, 100);
+        this.setState({
+             mapRegion: region,
+        });
+        this._map.animateToRegion(region, 100);
       },
       error => alert('Using Default Location', JSON.stringify(error)),
       {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000},
@@ -65,7 +62,22 @@ class Map extends Component {
 
   componentDidMount() {
     //Map loads when component loads
-    this.getCurrentLocation()
+    Geolocation.getCurrentPosition(
+      position => {
+        let region = {
+                latitude: parseFloat(position.coords.latitude),
+                longitude: parseFloat(position.coords.longitude),
+                latitudeDelta: this.state.latitudeDelta,
+                longitudeDelta: this.state.longitudeDelta,
+            };
+        this.setState({
+             mapRegion: region,
+        });
+        this._map.animateToRegion(region, 100);
+      },
+      error => alert('Using Default Location', JSON.stringify(error)),
+      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000},
+    );
   }
 
   componentWillUnmount() {
@@ -91,8 +103,6 @@ class Map extends Component {
     // When the user move around in the map (zoom in, zoom out, and navigate) this updates the state
     this.setState({
       mapRegion: region,
-      lastLat: lastLat,
-      lastLong: lastLong,
     });
   }
 
@@ -106,10 +116,6 @@ class Map extends Component {
     };
     this.setState({
       mapRegion: region,
-      latitudeDelta:  region.latitudeDelta,
-      longitudeDelta: region.longitudeDelta,
-      lastLat: region.latitude,
-      lastLong: region.longitude
     });
       //makes the map appear to "move" to the user
       this._map.animateToRegion(region, 100);
@@ -126,10 +132,6 @@ class Map extends Component {
     };
     this.setState({
       mapRegion: region,
-      latitudeDelta:  region.latitudeDelta,
-      longitudeDelta: region.longitudeDelta,
-      lastLat: region.latitude,
-      lastLong: region.longitude
     });
       //makes the map appear to "move" to the user
       this._map.animateToRegion(region, 100);
@@ -149,6 +151,8 @@ class Map extends Component {
           updateMarkers,
           updateRoad
         } = this.props;
+
+        console.log(this.state.mapRegion)
 
         const id = this.props.navigation.state.params.id; //The road id for this crash
 
@@ -174,7 +178,7 @@ class Map extends Component {
                       onRegionChangeComplete={this.onRegionChangeComplete.bind(this)}
                       region={this.state.mapRegion}
                       onPress={e=> this.onMapPress(e)}
-                      initialRegion={this.state.MapRegion}
+                      initialRegion={this.state.mapRegion}
                     >
                     {this.state.markers.map(marker => (
                       <Marker
