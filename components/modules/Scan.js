@@ -34,7 +34,6 @@ class Scan extends Component {
 
     openOCR = () => {
       let config;
-      console.log(this.props.navigation.state.params.type)
       switch(this.props.navigation.state.params.type) {
       case Constants.VIN:
         config = VINconfig;
@@ -64,7 +63,6 @@ class Scan extends Component {
                 PermissionsAndroid.PERMISSIONS.CAMERA
             );
             if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-                console.log('Camera permission allowed');
                 this.openOCR();
             } else {
                 console.log("Camera permission denied");
@@ -86,9 +84,7 @@ class Scan extends Component {
 
     checkCameraPermissionAndOpen = () => {
         this.hasCameraPermission().then((hasCameraPermission) => {
-            console.log('hasCameraPermission result is ' + hasCameraPermission);
             if (hasCameraPermission) {
-                console.log('Opening OCR directly');
                 this.openOCR();
             } else {
                 this.requestCameraPermission();
@@ -111,7 +107,6 @@ class Scan extends Component {
         .then(response => response.json())
         .then((responseJson)=> {
           data = responseJson.Results
-          console.log(data)
           this.setState({vinData: data})
         })
         .catch(error=>console.log(error))
@@ -126,8 +121,6 @@ class Scan extends Component {
     onResult = (dataString) => {
         const data = JSON.parse(dataString);
 
-        //let id = "testID"//this.props.navigation.state.params.id;
-        //updateVehicle({id, question:"V1", selection: data.reading.toString() });
         this.setState({
             hasScanned: true,
             result: data.reading,

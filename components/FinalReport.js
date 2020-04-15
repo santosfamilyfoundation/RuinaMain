@@ -15,7 +15,6 @@ class FinalReport extends Component {
             vehicle,
             passenger,
             } = this.props
-        console.log(JSON.stringify(vehicle.data[0]));
         const VehicleHeader = () => (
             <CardHeader title="Vehicle"/>
         )

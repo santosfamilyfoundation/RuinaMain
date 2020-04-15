@@ -27,7 +27,6 @@ class Note extends Component {
                         onChangeText={text => this.setState({content: text})}
                         value={this.state.content}/>
                 <Button onPress={() =>this.props.genericWriteAction({actionType:'SET_NEW', field:'tester', content:this.state.content})}>TRY ME!</Button>
-                <Button onPress={() => console.log(this.props)}>props</Button>
               </Layout>
               <Button onPress={navigateResult}>Go to Result Screen</Button>
             </SafeAreaView>

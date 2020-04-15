@@ -75,7 +75,7 @@ class PhotoCapture extends Component {
                 try {
                   await AsyncStorage.setItem('images', JSON.stringify(allImages))
                 } catch (e) {
-                  console.log(e)
+                  console.log('Photo upload error: ', e)
                 }
               }
             }
