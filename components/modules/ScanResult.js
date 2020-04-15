@@ -52,7 +52,6 @@ export default function ScanResult({
       .then(response => response.json())
       .then((responseJson)=> {
         data = responseJson.Results
-        console.log(data)
       })
       .catch(error=>console.log(error))
   }

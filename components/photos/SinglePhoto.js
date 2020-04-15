@@ -11,7 +11,6 @@ class SinglePhoto extends Component {
     render(){
         const image = this.props.navigation.state.params.image;
         const tag = this.props.navigation.state.params.tag;
-        console.log(tag)
         return (
             <SafeAreaView style={{ flex: 1 }}>
             <TopNavigation title='Crash Photo' alignment='center' leftControl={this.props.BackAction()}/>

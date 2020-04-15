@@ -69,18 +69,6 @@ class Home extends Component {
 
         })
 
-        const driverListArr = driver.data.map((driver, index) => {
-            operatorList.push({id:driver.id, type:'driver', response:{}})
-            return (
-                <Card key={driver.id} style={styles.itemCard} onPress = {() => navigateQuestion(questions, driver.id, 'Driver')}>
-                    <View style={styles.itemCardContent}>
-                        <Icon name='person' width={75} height={75} />
-                        <Text style={styles.itemCardFooter} category="s1">Driver {index+1}</Text>
-                    </View>
-                </Card>
-            )
-        })
-
         const nonmotoristListArr = nonmotorist.data.map((nonmotorist, index) => {
             operatorList.push({id:nonmotorist.id, type:'nonmotorist', response:[]})
             return (
@@ -92,17 +80,6 @@ class Home extends Component {
                 />
             )
         })
-
-        const passengerListArr = passenger.data.map((passenger, index) => (
-            <Card key={passenger.id} style={styles.itemCard} onPress = {() => navigateQuestion(questions, passenger.id, 'Passenger')}>
-                <View style={styles.itemCardContent}>
-                    <Icon name='person' width={75} height={75} />
-                    <Text style={styles.itemCardFooter} category="s1">Passenger {index+1}</Text>
-                </View>
-            </Card>
-        ))
-
-        const peopleListArr = [...driverListArr, ...nonmotoristListArr, ...passengerListArr];
 
         const infoExchangeIcon = (style) => (
             <Icon {...style} name='edit-2-outline' />
@@ -135,24 +112,18 @@ class Home extends Component {
                     </Card>
                     <Card header={RoadHeader} style={styles.itemCard}>
                         <View style={styles.itemCardContent}>
-                          <Card style={styles.itemCard} onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road')}>
-                              <View style={styles.individualCard}>
-                                  <Icon name='paper-plane' width={75} height={75} />
-                                  <Text style={styles.itemCardFooter} category="s1">Road</Text>
-                              </View>
-                          </Card>
-                          <Card style={styles.itemCard} onPress = {() => navigatePhotos()}>
-                              <View style={styles.individualCard}>
-                                  <Icon name='camera-outline' width={75} height={75} />
-                                  <Text style={styles.itemCardFooter} category="s1">Take Photo</Text>
-                              </View>
-                          </Card>
-                          <Card style={styles.itemCard} onPress = {() => navigateGallery()}>
-                              <View style={styles.individualCard}>
-                                  <Icon name='archive-outline' width={75} height={75} />
-                                  <Text style={styles.itemCardFooter} category="s1">Photo Gallery</Text>
-                              </View>
-                          </Card>
+                            <Card style={styles.nonMotoristCard} onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road')}>
+                                <Icon name='paper-plane' width={75} height={75} />
+                                <Text style={styles.itemCardFooter} category="s1">Road</Text>
+                            </Card>
+                            <Card style={styles.nonMotoristCard} onPress = {() => navigatePhotos()}>
+                                <Icon name='camera-outline' width={75} height={75} />
+                                <Text style={styles.itemCardFooter} category="s1">Take Photo</Text>
+                            </Card>
+                            <Card style={styles.nonMotoristCard} onPress = {() => navigateGallery()}>
+                                <Icon name='archive-outline' width={75} height={75} />
+                                <Text style={styles.itemCardFooter} category="s1">Photo Gallery</Text>
+                            </Card>
                         </View>
                     </Card>
                 </ScrollView>

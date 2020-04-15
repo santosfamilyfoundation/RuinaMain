@@ -34,8 +34,6 @@ class OperatorForm extends Component{
         }
 
         const navigateToAdvanced = (place, props) =>{
-            console.log("HERE");
-            console.log(this.props);
             this.props.nav.navigate(place, props);
         }
 

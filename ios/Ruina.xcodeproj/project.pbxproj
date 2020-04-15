@@ -209,12 +209,12 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = WDSXQFA4ZP;
+						DevelopmentTeam = STUGQDP7LX;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = WDSXQFA4ZP;
+						DevelopmentTeam = STUGQDP7LX;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -408,7 +408,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WDSXQFA4ZP;
+				DEVELOPMENT_TEAM = STUGQDP7LX;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -438,7 +438,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = WDSXQFA4ZP;
+				DEVELOPMENT_TEAM = STUGQDP7LX;
 				INFOPLIST_FILE = RuinaTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -464,7 +464,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = WDSXQFA4ZP;
+				DEVELOPMENT_TEAM = STUGQDP7LX;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Ruina/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -473,7 +473,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Testing.Ruina;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Testing.Ruina.1;
 				PRODUCT_NAME = Ruina;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -489,7 +489,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WDSXQFA4ZP;
+				DEVELOPMENT_TEAM = STUGQDP7LX;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Ruina/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -498,7 +498,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Testing.Ruina;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Testing.Ruina.1;
 				PRODUCT_NAME = Ruina;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
