@@ -28,9 +28,9 @@ class Map extends Component {
     markers:[],
     lastLat: null,
     lastLong: null,
-    latitudeDelta:  0.005,
-    longitudeDelta: 0.005 * (SCREEN_WIDTH / SCREEN_HEIGHT),
-    mapRegion:{ //Default Region
+    latitudeDelta:  0.002,
+    longitudeDelta: 0.002 * (SCREEN_WIDTH / SCREEN_HEIGHT),
+    mapRegion:{ //Hard Coded Default Region
         latitude: 42.3836,
         longitude: -71.1097,
         latitudeDelta: 0.00152,
@@ -164,60 +164,57 @@ class Map extends Component {
           <SafeAreaView style={{ flex: 1 }}>
               <TopNavigation title='Map View' alignment='center' leftControl={this.props.BackAction()}/>
               <Divider/>
-              <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <MapView
-                    ref={component => {this._map = component;}}
-                    zoomEnabled = {true}
-                    provider={PROVIDER_GOOGLE}
-                    style={styles.container}
-                    onRegionChangeComplete={this.onRegionChangeComplete.bind(this)}
-                    region={this.state.mapRegion}
-                    onPress={e=> this.onMapPress(e)}
-                    initialRegion={{
-                        latitude: 42.3836,
-                        longitude: -71.1097,
-                        latitudeDelta: 0.00152,
-                        longitudeDelta: 0.00151,
-                      }}
-                  >
-                  {this.state.markers.map(marker => (
-                    <Marker
-                      key={marker.key}
-                      coordinate={marker.coordinate}
-                      pinColor={marker.color}
-                    />
-                  ))}
-                  <View style={styles.coords}>
-                    <TextInput style={styles.coordText}>
-                      Latitude: { this.state.mapRegion.latitude.toFixed(3)}
-                      {"     "}
-                      Longitude: {this.state.mapRegion.longitude.toFixed(3)}
-                    </TextInput>
-                  </View>
-                  </MapView>
-                  <View style={styles.sideBox}>
-                    <TouchableOpacity
-                        onPress={()=>{this.onPressZoomIn()}}
-                        >
-                        <View style={styles.sideBoxItems}>
-                          <Icon name='minus-circle-outline' width={32} height={32} fill='#3366FF'/>
-                        </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={()=>{this.onPressZoomOut()}}
-                        >
-                        <View style={styles.sideBoxItems}>
-                          <Icon name='plus-circle-outline' width={32} height={32} fill='#3366FF'/>
-                        </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={()=>{this.onPressRecenter()}}
-                        >
-                        <View style={styles.sideBoxItems}>
-                          <Icon name='stop-circle-outline' width={32} height={32} fill='#3366FF'/>
-                        </View>
-                    </TouchableOpacity>
-                  </View>
+              <Layout style={styles.pageContainer}>
+                <Layout style={styles.container}>
+                  <MapView
+                      ref={component => {this._map = component;}}
+                      zoomEnabled = {true}
+                      provider={PROVIDER_GOOGLE}
+                      style={styles.mapContainer}
+                      onRegionChangeComplete={this.onRegionChangeComplete.bind(this)}
+                      region={this.state.mapRegion}
+                      onPress={e=> this.onMapPress(e)}
+                      initialRegion={this.state.MapRegion}
+                    >
+                    {this.state.markers.map(marker => (
+                      <Marker
+                        key={marker.key}
+                        coordinate={marker.coordinate}
+                        pinColor={marker.color}
+                      />
+                    ))}
+                    </MapView>
+                    <View style={styles.sideBox}>
+                      <TouchableOpacity
+                          onPress={()=>{this.onPressZoomIn()}}
+                          >
+                          <View style={styles.sideBoxItems}>
+                            <Icon name='minus-circle-outline' width={32} height={32} fill='#3366FF'/>
+                          </View>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                          onPress={()=>{this.onPressZoomOut()}}
+                          >
+                          <View style={styles.sideBoxItems}>
+                            <Icon name='plus-circle-outline' width={32} height={32} fill='#3366FF'/>
+                          </View>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                          onPress={()=>{this.onPressRecenter()}}
+                          >
+                          <View style={styles.sideBoxItems}>
+                            <Icon name='stop-circle-outline' width={32} height={32} fill='#3366FF'/>
+                          </View>
+                      </TouchableOpacity>
+                    </View>
+                </Layout>
+                <View style={styles.coords}>
+                  <TextInput style={styles.coordText}>
+                    Latitude: { this.state.mapRegion.latitude.toFixed(3)}
+                    {"     "}
+                    Longitude: {this.state.mapRegion.longitude.toFixed(3)}
+                  </TextInput>
+                </View>
               </Layout>
               <Button onPress={() => saveLocations()}>SAVE</Button>
           </SafeAreaView>
