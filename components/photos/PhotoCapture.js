@@ -3,7 +3,6 @@ import { SafeAreaView } from 'react-navigation';
 import { TextInput, Text, View, TouchableOpacity } from 'react-native';
 import { Button, Divider, Layout, TopNavigation, Select} from '@ui-kitten/components';
 import firebase from 'react-native-firebase';
-import uuid from 'uuid/v4';
 import { connect } from 'react-redux';
 import { photoAction } from '../../actions/PhotoAction';
 import { RNCamera } from 'react-native-camera';
@@ -11,6 +10,7 @@ import BasicDropDown from '../dropdowns/BasicDropDown'
 import * as Constants from '../../constants';
 import { styles } from './PhotoCapture.style';
 import AsyncStorage from '@react-native-community/async-storage';
+var uuid = require('react-native-uuid');
 
 class PhotoCapture extends Component {
   state = {
@@ -43,7 +43,7 @@ class PhotoCapture extends Component {
   uploadImage = () => {
     //Upload Image to Firebase Storage (see Drive documentation for password and access to firebase account)
     const ext = this.state.imgUri.split('.').pop(); // Extract image extension
-    const filename = `${uuid()}.${ext}`; // Making a unique name
+    const filename = `${uuid.v1()}.${ext}`; // Making a unique name
     if(this.mounted) {
       this.setState({ uploading: true });
       firebase //Connect and store in firebase

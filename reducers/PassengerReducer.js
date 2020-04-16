@@ -3,7 +3,7 @@ var uuid = require('react-native-uuid');
 const initialState = {
     data: []
 }
-
+let updatedState;
 export default function passengerReducer (state=initialState, action) {
     switch (action.type) {
         case 'ADDPASSENGER':
@@ -13,7 +13,7 @@ export default function passengerReducer (state=initialState, action) {
             }
         case 'UPDATEPASSENGER':
             const { id, question, selection } = action.payload
-            let updatedState = state.data;
+            updatedState = state.data;
             let selectedPassenger = updatedState.find(passenger => passenger.id == id)
             if(selectedPassenger.response == undefined) {
                 selectedPassenger.response = {}
@@ -24,6 +24,15 @@ export default function passengerReducer (state=initialState, action) {
                 ...state,
                 data: updatedState
             }
+        case 'DELETEPASSENGER':
+            const {passengerID} = action.payload
+            updatedState = state.data;
+            updatedState.filter(passenger => passenger.id != passengerID)
+            return {
+                ...state,
+                data: updatedState
+            }
+
 
         default:
             return state;

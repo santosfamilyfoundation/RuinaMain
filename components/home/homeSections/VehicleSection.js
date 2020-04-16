@@ -3,7 +3,7 @@ import { styles } from '../Home.style';
 import { View} from 'react-native';
 import { Text, Card, CardHeader, Icon } from '@ui-kitten/components';
 import { connect } from 'react-redux';
-import { addPassenger } from '../../../actions/PassengerAction';
+import { addPassenger, deletePassenger } from '../../../actions/PassengerAction';
 import {questions} from '../../../data/questions';
 
 var uuid = require('react-native-uuid');
@@ -15,6 +15,7 @@ class VehicleSection extends Component{
         super(props);
 
         this._addPassenger = this._addPassenger.bind(this);
+        this._deletePassenger = this._deletePassenger.bind(this);
 
         this.state = {
             passengers: []
@@ -34,6 +35,15 @@ class VehicleSection extends Component{
         })
     }
 
+    _deletePassenger (id) {
+        console.log(id+" deleted")
+        this.props.deletePassenger({passengerID: id});
+        this.setState({
+            passengers: this.state.passengers.filter(passenger => passenger.id != id)
+        })
+        console.log(this.state.passengers)
+    }
+
     render(){
         const {navigation, vehicle, index, name} = this.props
         let vehicleQuestions = this.filterQuestionsData('vehicle');
@@ -50,7 +60,8 @@ class VehicleSection extends Component{
 
         let passengerListArr = this.state.passengers.map((passenger, index) => {
             return (
-                <Card key={index} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger')}>
+                <Card key={index} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger')}
+                onLongPress={() => this._deletePassenger(passenger.id)}>
                     <Icon name='person' width={75} height={75} />
                     <Text style={styles.itemCardFooter} category="s1">Passenger {index+1}</Text>
                 </Card>
@@ -69,7 +80,7 @@ class VehicleSection extends Component{
                         <Text style={styles.itemCardFooter} category="s1">Driver</Text>
                     </Card>
                     {passengerListArr}
-                    <Card style={styles.individualCard} onPress= {this._addPassenger}>
+                    <Card style={styles.individualCard} onPress= {this._addPassenger} >
                         <Icon name='plus' width={75} height={75} />
                         <Text style={styles.itemCardFooter} category="s1">Passenger</Text>
                     </Card>
@@ -82,7 +93,8 @@ class VehicleSection extends Component{
 }
 
 const mapDispatchToProps = {
-    addPassenger
+    addPassenger,
+    deletePassenger
 };
 
 const mapStateToProps = (state) => {

@@ -11,3 +11,10 @@ export const updatePassenger = passengerData => {
         payload: passengerData
     }
 }
+
+export const deletePassenger = passengerID => {
+    return {
+        type: 'DELETEPASSEMGER',
+        payload: passengerID
+    }
+}
