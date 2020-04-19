@@ -14,7 +14,7 @@ export const updatePassenger = passengerData => {
 
 export const deletePassenger = passengerID => {
     return {
-        type: 'DELETEPASSEMGER',
+        type: 'DELETEPASSENGER',
         payload: passengerID
     }
 }

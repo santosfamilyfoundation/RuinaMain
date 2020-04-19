@@ -27,10 +27,9 @@ export default function passengerReducer (state=initialState, action) {
         case 'DELETEPASSENGER':
             const {passengerID} = action.payload
             updatedState = state.data;
-            updatedState.filter(passenger => passenger.id != passengerID)
             return {
                 ...state,
-                data: updatedState
+                data: updatedState.filter(passenger => passenger.id != passengerID)
             }
 
 
