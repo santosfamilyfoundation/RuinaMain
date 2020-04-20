@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "840933888123",
-    "firebase_url": "https://runia-5fc0d.firebaseio.com",
-    "project_id": "runia-5fc0d",
-    "storage_bucket": "runia-5fc0d.appspot.com"
+    "project_number": "26624977471",
+    "firebase_url": "https://runia-75681.firebaseio.com",
+    "project_id": "runia-75681",
+    "storage_bucket": "runia-75681.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:840933888123:android:116b8a0301451c329d92de",
+        "mobilesdk_app_id": "1:26624977471:android:250e5e198e0eda23d7268a",
         "android_client_info": {
           "package_name": "com.ruina"
         }
       },
       "oauth_client": [
         {
-          "client_id": "840933888123-7cc7l7foos8g877rl7vpksot3isli9g6.apps.googleusercontent.com",
+          "client_id": "26624977471-fm2hlkm6a3705u8c45o06njgf9olopjm.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDYCrVZyJsW7vsm7EgJFkf6ZMWzPXICsfs"
+          "current_key": "AIzaSyD5dZP5MizOHmDKKjJHbi6C1qCNfJy0Wqg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "840933888123-7cc7l7foos8g877rl7vpksot3isli9g6.apps.googleusercontent.com",
+              "client_id": "26624977471-fm2hlkm6a3705u8c45o06njgf9olopjm.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "840933888123-hhq8el5jrfncqahm07vsejr4pniahd9n.apps.googleusercontent.com",
+              "client_id": "26624977471-efdmt99jd4c3nuek7e8ffr2v5rmng9dd.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.Santos.Ruina.App"
+                "bundle_id": "com.ruina"
               }
             }
           ]
