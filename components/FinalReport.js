@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { Text } from 'react-native';
-import {TopNavigation,Card, CardHeader} from '@ui-kitten/components';
+import { Linking } from 'react-native';
+import {TopNavigation,Card, CardHeader, Text, Button} from '@ui-kitten/components';
 
 
 class FinalReport extends Component {
@@ -27,6 +27,9 @@ class FinalReport extends Component {
         const DriverHeader = () => (
             <CardHeader title="Driver"/>
         )
+        const FeedbackHeader = () => (
+            <CardHeader title="Feedback"/>
+        )
         return(
             <SafeAreaView style={{flex:1}}>
                 <TopNavigation title="Final Report" alignment="center" leftControl={this.props.BackAction()}/>
@@ -41,6 +44,10 @@ class FinalReport extends Component {
                 </Card>
                 <Card header={NonMotoristHeader}>
                     <Text>{JSON.stringify(nonmotorist.data)}</Text>
+                </Card>
+                <Card header={FeedbackHeader} style={{marginTop:20}}>
+                <Text style={{marginBottom: 20}}>Tell us what you liked and what you didn't like so we can make your experience better.</Text>
+                <Button onPress={()=>Linking.openURL('https://forms.gle/ho3cZNyoaFArNNN79')}>Submit Feedback</Button>
                 </Card>
 
             </SafeAreaView>

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { SafeAreaView, Linking} from 'react-navigation';
+import { SafeAreaView} from 'react-navigation';
+import {Linking} from 'react-native';
 import { Button, Divider, Layout, TopNavigation, Text } from '@ui-kitten/components';
 import { styles } from './Welcome.style';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 class Welcome extends Component {
 
@@ -19,8 +21,9 @@ class Welcome extends Component {
                 <Button style={styles.styledButton} onPress={() => navigateTo('Survey')}>Start New Report</Button>
               </Layout>
               <Layout style={styles.bottomBar}>
+                <TouchableOpacity onPress={()=>Linking.openURL('https://forms.gle/ho3cZNyoaFArNNN79')}><Text style={{color: 'blue'}}>Submit Feedback</Text></TouchableOpacity>
                 <Text style={styles.bottomBarText}>
-                  {"Built by students at Olin College of Engineering"}
+                  {"Built by students at Olin College of Engineering 2020"}
                 </Text>
               </Layout>
             </SafeAreaView>
