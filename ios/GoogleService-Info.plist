@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>840933888123-hhq8el5jrfncqahm07vsejr4pniahd9n.apps.googleusercontent.com</string>
+	<string>26624977471-efdmt99jd4c3nuek7e8ffr2v5rmng9dd.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.840933888123-hhq8el5jrfncqahm07vsejr4pniahd9n</string>
+	<string>com.googleusercontent.apps.26624977471-efdmt99jd4c3nuek7e8ffr2v5rmng9dd</string>
 	<key>API_KEY</key>
-	<string></string>
+	<string>AIzaSyAf4TU8ZdOhZbNSZg85jqbKQVBVLZTiqZQ</string>
 	<key>GCM_SENDER_ID</key>
-	<string>840933888123</string>
+	<string>26624977471</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.Santos.Ruina.App</string>
+	<string>com.ruina</string>
 	<key>PROJECT_ID</key>
-	<string>runia-5fc0d</string>
+	<string>runia-75681</string>
 	<key>STORAGE_BUCKET</key>
-	<string>runia-5fc0d.appspot.com</string>
+	<string>runia-75681.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:840933888123:ios:21a5a23396b817269d92de</string>
+	<string>1:26624977471:ios:1535ace15bc9401ad7268a</string>
 	<key>DATABASE_URL</key>
-	<string>https://runia-5fc0d.firebaseio.com</string>
+	<string>https://runia-75681.firebaseio.com</string>
 </dict>
 </plist>
