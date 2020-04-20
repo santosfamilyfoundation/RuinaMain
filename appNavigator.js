@@ -17,6 +17,7 @@ import { InfoExchangeFormScreen } from './screens/infoExchangeFormScreen';
 import { InfoExchangeScreen } from './screens/infoExchangeScreen';
 import { PhotoGalleryScreen } from './screens/photoGalleryScreen';
 import { FinalReportScreen } from './screens/finalReportScreen';
+import { FeatureComingSoonScreen } from './screens/featureComingSoonScreen';
 
 const HomeNavigator = createStackNavigator({
   Welcome: WelcomeScreen,
@@ -27,7 +28,8 @@ const HomeNavigator = createStackNavigator({
   Weather: WeatherScreen,
   PhotoCapture: PhotoCaptureScreen,
   Vehicle: VehicleInfoScreen,
-  Scan: ScanScreen,
+  // Scan: ScanScreen,  // uncomment for integration with Anyline
+  Scan: FeatureComingSoonScreen,
   Survey: QuickSurveyScreen,
   Home: HomeScreen,
   Question: QuestionScreen,

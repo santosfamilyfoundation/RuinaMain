@@ -20,6 +20,10 @@
     ```
     $ npx react-native run-ios
     ```
+    or to run on iPad
+    ```
+    $ npm run iPad
+    ```
     You can also specify simulator device:
     ```
     $ npx react-native run-ios --simulator="{SIMULATOR_NAME}"
