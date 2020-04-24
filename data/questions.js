@@ -75,13 +75,13 @@ export const questions = {
         "display": [
             "road"
         ],
-        "id": "C3-A"
+        "id": "C3"
     },
     {
         "autoMethod": "time",
         "helperText": "(YYYYMMDDHHMM)",
         "question": "Crash Date and Time",
-        "id": "C3-B",
+        "id": "C3-S1",
         "answerType": "advancedOpenTextBox",
         "display": [
             "road"
@@ -930,7 +930,7 @@ export const questions = {
     },
     {
         "answerType": "header",
-        "helperText": "(Constrution/Maintenance/Utility)",
+        "helperText": "(Construction/Maintenance/Utility)",
         "question": "Work Zone-Related",
         "display": [
             "construction"
@@ -953,7 +953,7 @@ export const questions = {
             }
         ],
         "numOptionsAllowed": "1",
-        "question": "Was the crash in a construction, mainenance, or utility work zone or was it related to activity within a work zone?",
+        "question": "Was the crash in a construction, maintenance, or utility work zone or was it related to activity within a work zone?",
         "id": "C18-S1",
         "answerType": "multiButton",
         "display": [
@@ -1300,7 +1300,7 @@ export const questions = {
     },
     {
         "answerType": "openTextBox",
-        "question": "Vehicle Identifier",
+        "question": "Identifier",
         "display": [
             "vehicle",
             "info"
@@ -1774,25 +1774,25 @@ export const questions = {
         "display": [
             "road"
         ],
-        "id": "V15-A"
+        "id": "V15"
     },
     {
         "answerType": "openTextBox",
-        "helperText": "(specify 2 values)",
-        "question": "Undivided Trafficways",
+        "helperText": "If traffiway is divided, total only lanes in vehicle's direction",
+        "question": "Enter the total through lanes, excluding auxiliary lanes.",
         "display": [
             "road"
         ],
-        "id": "V15-B"
+        "id": "V15-S1"
     },
     {
         "answerType": "openTextBox",
-        "helperText": "(specify 2 values)",
-        "question": "Divided Trafficways",
+        "helperText": "If traffiway is divided, total only lanes in vehicle's direction",
+        "question": "Enter the total auxiliary lanes",
         "display": [
             "road"
         ],
-        "id": "V15-C"
+        "id": "V15-S2"
     },
     {
         "answerType": "header",
@@ -2933,6 +2933,7 @@ export const questions = {
             "driver",
             "passenger",
             "nonmotorist",
+            "setup"
         ],
         "id": "P2-S2"
     },
@@ -3825,7 +3826,7 @@ export const questions = {
         "numOptionsAllowed": "1",
         "question": "Type Applicable for This Person",
         "id": "P17-S1",
-        "answerType": "dropdown",
+        "answerType": "multiButton",
         "display": [
             "driver"
         ]
@@ -3908,7 +3909,7 @@ export const questions = {
         "numOptionsAllowed": "1",
         "question": "Action",
         "id": "P18-S1",
-        "answerType": "dropdown",
+        "answerType": "multiButton",
         "display": [
             "driver",
             "nonmotorist"
@@ -4424,7 +4425,7 @@ export const questions = {
         "display": [
             "road"
         ],
-        "id": "R2-A"
+        "id": "R2"
     },
     {
         "answerType": "openTextBox",
@@ -4432,7 +4433,7 @@ export const questions = {
         "display": [
             "road"
         ],
-        "id": "R2-B"
+        "id": "R2-S1"
     },
     {
         "answerType": "openTextBox",
@@ -4440,7 +4441,7 @@ export const questions = {
         "display": [
             "road"
         ],
-        "id": "R2-C"
+        "id": "R2-S2"
     },
     {
         "answerType": "openTextBox",
@@ -4448,7 +4449,7 @@ export const questions = {
         "display": [
             "road"
         ],
-        "id": "R2-D"
+        "id": "R2-S3"
     },
     {
         "answerType": "header",
@@ -4730,7 +4731,7 @@ export const questions = {
         "numOptionsAllowed": "1",
         "question": "Roadway Lighting",
         "id": "R11",
-        "answerType": "dropdown",
+        "answerType": "multiButton",
         "display": [
             "road"
         ]
@@ -6287,7 +6288,7 @@ export const questions = {
         "numOptionsAllowed": "1",
         "question": "Automated Systems Levels Engaged at Time of Crash",
         "id": "DV1-S3",
-        "answerType": "dropdown",
+        "answerType": "multiButton",
         "display": [
             "vehicle"
         ]
