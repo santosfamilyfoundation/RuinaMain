@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Card, CardHeader, Layout } from '@ui-kitten/components';
+import { Card, CardHeader, Layout, Text } from '@ui-kitten/components';
 import { ScrollView } from 'react-native';
 import { styles } from '../../containers/AutoComponentContainer.style';
 import OpenTextField from '../textFields/OpenTextField';
@@ -65,6 +65,7 @@ class OperatorForm extends Component{
         }
 
         const renderNonmotoristQuestion = (question) => {
+            console.log("HERE");
             switch(question.answerType) {
                 case 'openTextBox':
                     return (
@@ -118,22 +119,44 @@ class OperatorForm extends Component{
             }
         }
 
-        const renderedQuestions = questionsData.map((question) => {
+        const renderDriverQuestions = questionsData.map((question) => {
             if(question.display.includes('driver')) {
                 return renderDriverQuestion(question);
-            } else if(question.display.includes('vehicle')) {
+            }
+        });
+        const renderVehicleQuestions = questionsData.map((question) => {
+            if(question.display.includes('vehicles')) {
                 return renderVehicleQuestion(question);
-            } else if(question.display.includes('nonmotorist')) {
+            }
+        });
+        const renderNonmotoristQuestions = questionsData.map((question) => {
+            if(question.display.includes('nonmotorist')) {
                 return renderNonmotoristQuestion(question);
             }
-        })
+        });
+
+        const renderQuestions = () => {
+            const {type} = this.props;
+            console.log("TYPE: ", type);
+            if (type == "driver") {
+                return (
+                    <React.Fragment>
+                        {renderDriverQuestions}
+                        {renderVehicleQuestions}
+                    </React.Fragment>
+                )
+            } else if(type == 'nonmotorist') {
+                return renderNonmotoristQuestions
+            }
+        }
 
 
         return(
                 <Card header= {() => <CardHeader title={`${typeUpperCase}: ${operator.response?.P1 || ''}`}/>} >
+                    <Text>Rendered here</Text>
                     <ScrollView>
                         <Layout style={styles.content}>
-                            {renderedQuestions}
+                            {renderQuestions()}
                         </Layout>
                     </ScrollView>
                 </Card>

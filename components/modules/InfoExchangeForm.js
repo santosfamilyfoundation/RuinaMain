@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, SegmentedControlIOSComponent } from 'react-native';
 import { Button, TopNavigation, TopNavigationAction, Icon } from '@ui-kitten/components';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
@@ -27,15 +27,17 @@ class InfoExchangeForm extends Component{
 
     render() {
         const {operatorDetail} = this.props;
-        const operatorListArr = operatorDetail.operatorList.map(({id, type}) => 
-            <OperatorForm
-                key = {id}
-                id = {id}
-                type = {type}
-                nav = {this.props.navigation}
-                // updateOperator = {this.updateOperator.bind(this)}
-            />
-        )
+        const operatorListArr = operatorDetail.operatorList.map(({id, type}) => {
+            return (
+                <OperatorForm
+                    key = {id}
+                    id = {id}
+                    type = {type}
+                    nav = {this.props.navigation}
+                    // updateOperator = {this.updateOperator.bind(this)}
+                />
+            )
+        })
 
         const emailIcon = (style) => (
             <Icon {...style} name='email-outline' />

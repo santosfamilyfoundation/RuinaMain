@@ -44,6 +44,7 @@ class Home extends Component {
         );
 
         const vehiclesListArr = vehicle.data.map((vehicle, index) => {
+            operatorList.push({id: vehicle.driver, type:'driver', response:[]})
 
             if(vehicle?.hazardous) {
                 return (
@@ -80,6 +81,8 @@ class Home extends Component {
                 />
             )
         })
+
+
 
         const NonMotoristHeader = () => (
             <CardHeader title={`Non-motorists`} />
