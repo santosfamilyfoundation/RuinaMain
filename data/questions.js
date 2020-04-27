@@ -6314,18 +6314,20 @@ export const questions = {
     }, 
     {
         "answerType": "openTextBox", 
-        "question": "Vehicle owner", 
+        "question": "Vehicle owner's Name", 
         "display": [
-            "info", 
+            "info",
+            "driver", 
             "vehicle"
         ], 
         "id": "owner-S1"
     }, 
     {
         "answerType": "openTextBox", 
-        "question": "Owner's address", 
+        "question": "Vehicle Owner's address", 
         "display": [
-            "info", 
+            "info",
+            "driver", 
             "vehicle"
         ], 
         "id": "owner-S2"

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Card, CardHeader, Layout, Text } from '@ui-kitten/components';
+import { Card, CardHeader, Layout } from '@ui-kitten/components';
 import { ScrollView } from 'react-native';
 import { styles } from '../../containers/AutoComponentContainer.style';
 import OpenTextField from '../textFields/OpenTextField';
@@ -135,7 +135,8 @@ class OperatorForm extends Component{
         });
 
         const renderQuestions = () => {
-            if (type == "driver") {
+            console.log(type);
+            if (type == 'driver' || type == 'vehicle') {
                 return (
                     <React.Fragment>
                         {renderDriverQuestions}
@@ -150,7 +151,6 @@ class OperatorForm extends Component{
 
         return(
                 <Card header= {() => <CardHeader title={`${typeUpperCase}: ${operator.response?.P1 || ''}`}/>} >
-                    <Text>Rendered here</Text>
                     <ScrollView>
                         <Layout style={styles.content}>
                             {renderQuestions()}
