@@ -65,7 +65,6 @@ class OperatorForm extends Component{
         }
 
         const renderNonmotoristQuestion = (question) => {
-            console.log("HERE");
             switch(question.answerType) {
                 case 'openTextBox':
                     return (
@@ -136,8 +135,6 @@ class OperatorForm extends Component{
         });
 
         const renderQuestions = () => {
-            const {type} = this.props;
-            console.log("TYPE: ", type);
             if (type == "driver") {
                 return (
                     <React.Fragment>

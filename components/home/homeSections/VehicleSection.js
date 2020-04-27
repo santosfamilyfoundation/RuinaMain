@@ -36,12 +36,10 @@ class VehicleSection extends Component{
     }
 
     _deletePassenger (id) {
-        console.log(id+" deleted")
         this.props.deletePassenger({passengerID: id});
         this.setState({
             passengers: this.state.passengers.filter(passenger => passenger.id != id)
         })
-        console.log(this.state.passengers)
     }
 
     render(){
