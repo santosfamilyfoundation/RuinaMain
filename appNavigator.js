@@ -1,7 +1,6 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { NoteScreen } from './screens/noteScreen';
-import { ResultScreen } from './screens/resultScreen';
 import { MapScreen } from './screens/mapScreen';
 import { WelcomeScreen } from './screens/welcomeScreen';
 import { TesterScreen } from './screens/testerScreen';
@@ -22,7 +21,6 @@ import { FeatureComingSoonScreen } from './screens/featureComingSoonScreen';
 const HomeNavigator = createStackNavigator({
   Welcome: WelcomeScreen,
   Note: NoteScreen,
-  Result: ResultScreen,
   Map: MapScreen,
   Test: TesterScreen,
   Weather: WeatherScreen,

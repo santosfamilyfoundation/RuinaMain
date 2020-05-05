@@ -70,7 +70,7 @@ class VehicleSection extends Component{
             <Card key={vehicle.id} header={VehiclesHeader} style={styles.itemCard} >
                 <View style={styles.itemCardContent}>
                     <Card style={styles.individualCard} onPress= {() => navigateQuestion(vehicleQuestions, vehicle.id, 'Vehicle')}>
-                        <Icon name='car' width={75} height={75} />
+                        <Icon name='car' width={75} height={75} style={{justifyItems:'center', alignItems:'center'}}/>
                         <Text style={styles.itemCardFooter} category="s1">{name}</Text>
                     </Card>
                     <Card style={styles.individualCard} onPress= {() => navigateQuestion(driverQuestions, vehicle.driver, 'Driver')}>

@@ -4,7 +4,7 @@ import QuestionForm from '../components/modules/QuestionForm';
 
 export const QuestionScreen = ({ navigation }) => {
   return (
-          <QuestionForm
+        <QuestionForm
             navigation = { navigation }
             BackAction = { () => <TopNavigationAction icon={ (style) => <Icon {...style} name='arrow-back' /> }
                                                   onPress={() => navigation.goBack()}/> }

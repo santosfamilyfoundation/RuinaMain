@@ -100,27 +100,6 @@ class QuickSurvey extends Component {
                     fieldName = "fatality"
                   />
                 </SafeAreaView>
-                {/* <SafeAreaView style = {styles.questionContainer}>
-                  <Card style = {styles.cardStyle}>
-                      <Text style = {styles.questionText}>Are there known fatalities?</Text>
-                      <Layout style={{flexDirection: 'row'}}>
-                          <Button
-                            style = {styles.buttonSytle}
-                            onPress = {() => changeFatality(true)}
-                            appearance={(quiz.fatality ? 'filled':'outline')}
-                          >
-                            Yes
-                          </Button>
-                          <Button
-                            style = {styles.buttonSytle}
-                            onPress = {() => changeFatality(false)}
-                            appearance={(quiz.fatality ? 'outline':'filled')}
-                          >
-                            No
-                          </Button>
-                      </Layout>
-                  </Card>
-                </SafeAreaView> */}
                 <SafeAreaView style = {styles.questionContainer}>
                   <Card style = {styles.cardStyle}>
                       <Text style = {styles.questionText}>Is a school bus involved?</Text>
@@ -149,14 +128,14 @@ class QuickSurvey extends Component {
                         <Button
                           style = {styles.buttonSytle}
                           onPress = {() => changeConstruction(true)}
-                          appearance={(quiz.schoolbus ? 'filled':'outline')}
+                          appearance={(quiz.construction ? 'filled':'outline')}
                         >
                           Yes
                         </Button>
                         <Button
                           style = {styles.buttonSytle}
                           onPress = {() => changeConstruction(false)}
-                          appearance={(quiz.schoolbus ? 'outline':'filled')}
+                          appearance={(quiz.construction ? 'outline':'filled')}
                         >
                           No
                         </Button>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
-import { Divider, Layout, TopNavigation, CardHeader, Card, Button } from '@ui-kitten/components';
+import { Divider, Layout, TopNavigation } from '@ui-kitten/components';
 import { styles } from '../../containers/AutoComponentContainer.style';
 import { ScrollView } from 'react-native-gesture-handler';
 import MultiButtonSelector from '../buttonSelectors/MultiButtonSelector';
@@ -194,8 +194,7 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state) => {
-  const response = state.genericReducer
-  return { response }
+  return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionForm);

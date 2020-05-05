@@ -12,9 +12,9 @@ const NumberButtonSelector = (props) => {
     const [selection, setSelection] = React.useState('');
     const {title, submitFunction, genericReducer, fieldName} = props;
 
-    if(genericReducer[fieldName] != null & selection != genericReducer[fieldName]) {
-        setSelection(genericReducer[fieldName]);
-    }
+    // if(genericReducer[fieldName] != null & selection != genericReducer[fieldName]) {
+    //     setSelection(genericReducer[fieldName]);
+    // }
 
     const submitField = (val) => {
         setSelection(val);

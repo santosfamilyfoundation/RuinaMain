@@ -53,7 +53,7 @@ class Home extends Component {
                         navigation = {navigation}
                         vehicle = {vehicle}
                         index = {index}
-                        name = {"Hazardous Vehicle"}
+                        name = {"(Hazardous) Vehicle"}
                     />
                 )
             } else {

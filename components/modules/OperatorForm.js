@@ -135,7 +135,6 @@ class OperatorForm extends Component{
         });
 
         const renderQuestions = () => {
-            console.log(type);
             if (type == 'driver' || type == 'vehicle') {
                 return (
                     <React.Fragment>
