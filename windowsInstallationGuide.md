@@ -4,7 +4,8 @@ Follow the instructions described below if you want to setup `RuinaMain` using W
 ## Using a tablet
 1. Follow [this](https://reactnative.dev/docs/environment-setup) react native tutorial (select React Native CLI Quickstart, Windows, and Android)
   * Make sure to select Android 9 (Pie) and Android SDK Platform 28 instead of the new versions. This can be done by following the green highlight portion in [this](https://docs.google.com/document/d/1Jq3eBB1jNj5tPj4pSyWM1NAS5JwnqvRIsML5aK6KDPE/edit?usp=sharing) google document
-![image](imagesMD/reactTutorial.PNG)
+
+  ![image](imagesMD/reactTutorial.PNG)
 2. Follow section 1 of [this](https://reactnative.dev/docs/running-on-device) tutorial to connect a tablet with Android (select Android and Windows)
 
   ![image](imagesMD/connectTabletTutorial.PNG)
