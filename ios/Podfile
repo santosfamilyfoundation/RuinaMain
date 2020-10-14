@@ -1,7 +1,7 @@
-platform :ios, '10.0'
+require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-# git ignore why are you not doing your job please!!!!!!
+platform :ios, '10.0'
 
 target 'Ruina' do
   # Pods for Ruina
@@ -9,7 +9,7 @@ target 'Ruina' do
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
   pod 'RCTTypeSafety', :path => "../node_modules/react-native/Libraries/TypeSafety"
-  pod 'React', :path => '../node_modules/react-native'
+  pod 'React', :path => '../node_modules/react-native/'
   pod 'React-Core', :path => '../node_modules/react-native/'
   pod 'React-CoreModules', :path => '../node_modules/react-native/React/CoreModules'
   pod 'React-Core/DevSupport', :path => '../node_modules/react-native/'
@@ -27,7 +27,7 @@ target 'Ruina' do
   pod 'React-jsi', :path => '../node_modules/react-native/ReactCommon/jsi'
   pod 'React-jsiexecutor', :path => '../node_modules/react-native/ReactCommon/jsiexecutor'
   pod 'React-jsinspector', :path => '../node_modules/react-native/ReactCommon/jsinspector'
-  pod 'ReactCommon/jscallinvoker', :path => "../node_modules/react-native/ReactCommon"
+  pod 'React-callinvoker', :path => "../node_modules/react-native/ReactCommon/callinvoker"
   pod 'ReactCommon/turbomodule/core', :path => "../node_modules/react-native/ReactCommon"
   pod 'Yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
   pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
@@ -39,15 +39,16 @@ target 'Ruina' do
 
   pod 'Firebase/Storage', '~> 5.20.1'
 
-  pod 'react-native-geolocation', :path => '../node_modules/@react-native-community/geolocation'
 
 
   pod 'AnylineReact', path: '../node_modules/anyline-ocr-react-native-module/ios'
 
-  pod 'react-native-uuid-generator', :path => '../node_modules/react-native-uuid-generator'
+  config = use_native_modules!
+
+  use_react_native!(:path => config["reactNativePath"])
 
   target 'RuinaTests' do
-    inherit! :search_paths
+    inherit! :complete
     # Pods for testing
   end
 
@@ -56,5 +57,17 @@ target 'Ruina' do
   pod 'react-native-google-maps', :path => rn_maps_path
   pod 'GoogleMaps'
   pod 'Google-Maps-iOS-Utils'
+
   use_native_modules!
+
+  # Enables Flipper.
+  #
+  # Note that if you have use_frameworks! enabled, Flipper will not work and
+  # you should disable these next few lines.
+  use_flipper!
+  post_install do |installer|
+    flipper_post_install(installer)
+  end
+
+
 end
