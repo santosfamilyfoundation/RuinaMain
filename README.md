@@ -36,3 +36,7 @@ Reliable crash data is essential to improving traffic safety. As part of a senio
     ```
     $ xcrun simctl list devices
     ```
+7. To launch Metro server CLI tool if it does not show up (Mac)
+    ```
+    $ /path-to-this-repo/RuinaMain/node_modules/react-native/scripts/launchPackager.command
+    ```

@@ -7,22 +7,16 @@ import {TopNavigation,Card, CardHeader, Text, Button} from '@ui-kitten/component
 
 class FinalReport extends Component {
     saveData = () => {
-        const {
-            navigation,
-            driver,
-            nonmotorist,
-            vehicle,
-            passenger,
-        } = this.props
         const data = {
-            driver: driver.data,
-            nonmotorist: nonmotorist.data,
-            vehicle: vehicle.data,
-            passenger: passenger.data,
+            driver: this.props.driver.data,
+            nonmotorist: this.props.nonmotorist.data,
+            vehicle: this.props.vehicle.data,
+            passenger: this.props.passenger.data,
         }
         // require the module
         var RNFS = require('react-native-fs');
         var path = RNFS.DocumentDirectoryPath + '/final_report.json';
+        // /var/mobile/Containers/Data/Application/12F7361A-BC3E-42C9-B81E-FBBBF7BA3E2C/Documents/final_report.json
 
         // write the file
         RNFS.writeFile(path, JSON.stringify(data), 'utf8')
