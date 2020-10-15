@@ -6,6 +6,34 @@ import {TopNavigation,Card, CardHeader, Text, Button} from '@ui-kitten/component
 
 
 class FinalReport extends Component {
+    saveData = () => {
+        const {
+            navigation,
+            driver,
+            nonmotorist,
+            vehicle,
+            passenger,
+        } = this.props
+        const data = {
+            driver: driver.data,
+            nonmotorist: nonmotorist.data,
+            vehicle: vehicle.data,
+            passenger: passenger.data,
+        }
+        // require the module
+        var RNFS = require('react-native-fs');
+        var path = RNFS.DocumentDirectoryPath + '/final_report.json';
+
+        // write the file
+        RNFS.writeFile(path, JSON.stringify(data), 'utf8')
+            .then((success) => {
+                console.log('FILE WRITTEN!');
+                console.log('Data: ' + JSON.stringify(data) + 'Path: ' + path);
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
+    }
     render(){
 
         const {
@@ -30,9 +58,16 @@ class FinalReport extends Component {
         const FeedbackHeader = () => (
             <CardHeader title="Feedback"/>
         )
+        const SaveDataHeader = () => (
+            <CardHeader title="SaveData" />
+        )
         return(
             <SafeAreaView style={{flex:1}}>
                 <TopNavigation title="Final Report" alignment="center" leftControl={this.props.BackAction()}/>
+                <Card header={SaveDataHeader}>
+                    <Text style={{ marginBottom: 20 }}>Press this button to save the crash report.</Text>
+                    <Button onPress={() => this.saveData()}>Save Data</Button>
+                </Card>
                 <Card header={VehicleHeader}>
                     <Text>{JSON.stringify(vehicle.data)}</Text>
                 </Card>
