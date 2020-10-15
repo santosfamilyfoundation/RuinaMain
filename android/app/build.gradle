@@ -224,6 +224,8 @@ dependencies {
         exclude group: "com.android.support"
         exclude group: "com.google.android.gms"
     }
+    
+    compile project(':react-native-fs')
 
 }
 

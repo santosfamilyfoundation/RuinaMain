@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.rnfs.RNFSPackage;
 
 
 import com.facebook.react.ReactInstanceManager;
@@ -34,6 +35,7 @@ public class MainApplication extends Application implements ReactApplication {
           @SuppressWarnings("UnnecessaryLocalVariable")
           List<ReactPackage> packages = new PackageList(this).getPackages();
           packages.add(new RNFirebaseStoragePackage());
+          packages.add(new RNFSPackage());
           return packages;
         }
 

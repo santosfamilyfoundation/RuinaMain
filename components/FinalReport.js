@@ -7,6 +7,28 @@ import Mailer from 'react-native-mail';
 
 
 class FinalReport extends Component {
+    saveData = () => {
+        const data = {
+            driver: this.props.driver.data,
+            nonmotorist: this.props.nonmotorist.data,
+            vehicle: this.props.vehicle.data,
+            passenger: this.props.passenger.data,
+        }
+        // require the module
+        var RNFS = require('react-native-fs');
+        var path = RNFS.DocumentDirectoryPath + '/final_report.json';
+        // /var/mobile/Containers/Data/Application/12F7361A-BC3E-42C9-B81E-FBBBF7BA3E2C/Documents/final_report.json
+
+        // write the file
+        RNFS.writeFile(path, JSON.stringify(data), 'utf8')
+            .then((success) => {
+                console.log('FILE WRITTEN!');
+                console.log('Data: ' + JSON.stringify(data) + 'Path: ' + path);
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
+    }
     handleEmail() {
       console.log('Sending an email!');
       Mailer.mail({
@@ -71,6 +93,9 @@ class FinalReport extends Component {
         const FeedbackHeader = () => (
             <CardHeader title="Feedback"/>
         )
+        const SaveDataHeader = () => (
+            <CardHeader title="SaveData" />
+        )
         const EmailHeader = () => (
             <CardHeader title="Email"/>
         )
@@ -80,6 +105,14 @@ class FinalReport extends Component {
         return(
             <SafeAreaView style={{flex:1}}>
                 <TopNavigation title="Final Report" alignment="center" leftControl={this.props.BackAction()}/>
+                <Card header={SaveDataHeader}>
+                    <Text style={{ marginBottom: 20 }}>Press this button to save the crash report.</Text>
+                    <Button onPress={() => this.saveData()}>Save Data</Button>
+                </Card>
+                <Card header={EmailHeader}>
+                    <Text style={{ marginBottom: 20 }}>Press this button to email the crash report.</Text>
+                    <Button onPress={() => this.handleEmail()}>Email Report</Button>
+                </Card>
                 <Card header={PrintReportHeader}>
                   <Text style={{marginBottom: 20}}>Press this button to print the crash report.</Text>
                   <Button onPress={()=>this.printReport()}>Print Report</Button>
@@ -99,10 +132,6 @@ class FinalReport extends Component {
                 <Card header={FeedbackHeader} style={{marginTop:20}}>
                   <Text style={{marginBottom: 20}}>Tell us what you liked and what you didn't like so we can make your experience better.</Text>
                   <Button onPress={()=>Linking.openURL('https://forms.gle/ho3cZNyoaFArNNN79')}>Submit Feedback</Button>
-                </Card>
-                <Card header={EmailHeader}>
-                  <Text style={{marginBottom: 20}}>Press this button to email the crash report.</Text>
-                  <Button onPress={()=>this.handleEmail()}>Email Report</Button>
                 </Card>
             </SafeAreaView>
         )
