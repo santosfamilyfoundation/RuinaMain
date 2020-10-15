@@ -36,6 +36,16 @@ class FinalReport extends Component {
         )
       });
     }
+    printReport () {
+      // console.log(JSON.stringify(this.props.driver.data));
+      // console.log(JSON.stringify(this.props.nonmotorist.data));
+      // console.log(JSON.stringify(this.props.vehicle.data));
+      // console.log(JSON.stringify(this.props.passenger.data));
+      // console.log(JSON.stringify(this.props.quiz.data));
+      // // console.log(JSON.stringify(this.props.photos.data));
+      // // console.log(JSON.stringify(this.props.story.data));
+      console.log(JSON.stringify(this.props.road.data));
+    }
     render(){
         const {
             navigation,
@@ -43,6 +53,8 @@ class FinalReport extends Component {
             nonmotorist,
             vehicle,
             passenger,
+            quiz,
+            road,
             } = this.props
         const VehicleHeader = () => (
             <CardHeader title="Vehicle"/>
@@ -62,9 +74,16 @@ class FinalReport extends Component {
         const EmailHeader = () => (
             <CardHeader title="Email"/>
         )
+        const PrintReportHeader = () => (
+            <CardHeader title="Print Report"/>
+        )
         return(
             <SafeAreaView style={{flex:1}}>
                 <TopNavigation title="Final Report" alignment="center" leftControl={this.props.BackAction()}/>
+                <Card header={PrintReportHeader}>
+                  <Text style={{marginBottom: 20}}>Press this button to print the crash report.</Text>
+                  <Button onPress={()=>this.printReport()}>Print Report</Button>
+                </Card>
                 <Card header={VehicleHeader}>
                     <Text>{JSON.stringify(vehicle.data)}</Text>
                 </Card>
@@ -96,7 +115,10 @@ const mapStateToProps = (state) => {
         nonmotorist: state.nonmotoristReducer,
         vehicle: state.vehicleReducer,
         passenger: state.passengerReducer,
-        quiz: state.quickquizReducer
+        quiz: state.quickquizReducer,
+        photos: state.photosReducer,
+        story: state.storyReducer,
+        road: state.roadReducer
     }
 }
 
