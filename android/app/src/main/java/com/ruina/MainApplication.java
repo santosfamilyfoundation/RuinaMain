@@ -35,7 +35,7 @@ public class MainApplication extends Application implements ReactApplication {
           @SuppressWarnings("UnnecessaryLocalVariable")
           List<ReactPackage> packages = new PackageList(this).getPackages();
           packages.add(new RNFirebaseStoragePackage());
-          packages.add(new RNFSPackage());
+//          packages.add(new RNFSPackage());
           return packages;
         }
 
