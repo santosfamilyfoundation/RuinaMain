@@ -1,38 +1,42 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { Linking } from 'react-native';
+import { Linking, TextInput, StyleSheet } from 'react-native';
 import {TopNavigation, Card, CardHeader, Text, Button} from '@ui-kitten/components';
 import Mailer from 'react-native-mail';
-// import OpenTextField from '../components/textFields/OpenTextField';
 
 class EmailFinalReport extends Component {
-  async saveDataInternal(data, fileType) {
+  constructor(props) {
+    super(props);
+    this.state = {filename: this.getDefaultFilename()};
+    this.changeFilename = this.changeFilename.bind(this);
+    this.handleEmail = this.handleEmail.bind(this);
+  }
+  // generate default filename
+  getDefaultFilename() {
+    var date = new Date().toISOString().slice(0, 10).replace(/\W/g, '');
+    return date + "_crashReport";
+  }
+  // update the filename
+  changeFilename(text) {
+    this.setState({filename: text});
+  }
+  // save data as file inside app in order send email with attachment
+  async saveDataInternal(data, filename) {
     var RNFS = require('react-native-fs');
-    // maybe save data in temporary directory path?
-    var path = RNFS.DocumentDirectoryPath + '/final_report.json';
+    var path = RNFS.DocumentDirectoryPath + '/' + filename;
     // write the file
     try {
-        let result = await RNFS.writeFile(path, data, fileType);
+        let result = await RNFS.writeFile(path, data, 'utf8');
         console.log('FILE WRITTEN!');
-        console.log('Data: ' + data + 'Path: ' + path);
         return path;
     } catch(err) {
       console.log(err.message);
       return null;
     }
   }
-  // function not used
-  async deleteData(path) {
-    var RNFS = require('react-native-fs');
-    // delete the file at path
-    try {
-      let result = await RNFS.unlink(path);
-      console.log('FILE DELETED', success, path);
-    } catch(err) {
-      console.log(err.message);
-    }
-  }
+  // temporary function that converts the JSON into a JSON
+  // will be replaced with the JSON converter module
   convertJson(format) {
     const data = {
         driver: this.props.driver.data,
@@ -42,21 +46,23 @@ class EmailFinalReport extends Component {
     }
     return JSON.stringify(data);
   }
-  async sendEmail(path, type) {
-    console.log('Sending an email!');
+  // send email based on the inputted filename
+  // leave everything else blank, except subject (subject = filename)
+  async sendEmail(path, filename) {
+    console.log('Sending email!');
     await Mailer.mail({
-      subject: 'Testing',
-      recipients: ['coverney@olin.edu'],
-      // ccRecipients: ['supportCC@example.com'],
-      // bccRecipients: ['supportBCC@example.com'],
-      body: '<b>A Bold Body</b>',
+      subject: "Sending " + filename,
+      recipients: [''],
+      ccRecipients: [''],
+      bccRecipients: [''],
+      body: '',
       customChooserTitle: "Send Crash Report", // Android only (defaults to "Send Mail")
       isHTML: true,
       attachments: [{
         path: path,  // The absolute path of the file from which to read data.
-        type: type,   // Mime Type: jpg, png, doc, ppt, html, pdf, csv
+        // type: type,   // Mime Type: jpg, png, doc, ppt, html, pdf, csv
         // mimeType - use only if you want to use custom type
-        name: "crash_report",   // Optional: Custom filename for attachment
+        // name: ,   // Optional: Custom filename for attachment
       }]
     }, (error, event) => {
       console.log('errror', error)
@@ -71,44 +77,34 @@ class EmailFinalReport extends Component {
       )
     });
   }
-  async handleEmail(format) {
+  // handles the entire email workflow
+  async handleEmail() {
+    var format = this.props.navigation.state.params.format;
     console.log('Format: ' + format);
     var data = this.convertJson(format);
     console.log('Data: ' + data);
     // save data internally
-    var path = await this.saveDataInternal(data, 'utf8');
-    console.log('this should print after saving data')
+    var path = await this.saveDataInternal(data, this.state.filename + "." + format);
     // send email
-    await this.sendEmail(path, 'json');
-    console.log('this should print after sending the email');
+    await this.sendEmail(path, this.state.filename + "." + format);
   }
+  // required method that creates components of email screen
   render() {
-    const {
-      navigation,
-      driver,
-      nonmotorist,
-      vehicle,
-      passenger,
-      road,
-      } = this.props
-    const format = this.props.navigation.state.params.format;
-    // const testQuestion = {
-    //     "answerType": "openTextBox",
-    //     "helperText": "(HHMM)",
-    //     "question": "Time of Roadway Clearance",
-    //     "display": [
-    //         "road"
-    //     ],
-    //     "id": "C3-S2"
-    // };
+    const EmailHeader = () => (
+        <CardHeader title="Filename"/>
+    )
     return(
       <SafeAreaView style={{flex:1}}>
           <TopNavigation title="Email Crash Report" alignment="center" leftControl={this.props.BackAction()}/>
-          <Card>
-            <Text>{JSON.stringify(driver.data)}</Text>
-            <Text>{format}</Text>
+          <Card header={EmailHeader}>
+            <TextInput style = {styles.input}
+               underlineColorAndroid = "transparent"
+               value = {this.state.filename}
+               autoCapitalize = "none"
+               onChangeText = {this.changeFilename}
+               />
           </Card>
-          <Button onPress = {() => this.handleEmail(format)}>Send</Button>
+          <Button onPress = {() => this.handleEmail()}>Send</Button>
       </SafeAreaView>
     )
   }
@@ -123,5 +119,20 @@ const mapStateToProps = (state) => {
         road: state.roadReducer
     }
 }
+
+const styles = StyleSheet.create({
+   container: {
+     width: '90%',
+     marginBottom: 10
+   },
+   input: {
+      marginBottom: 10,
+      height: 'auto',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      borderColor: 'lightgray',
+      borderWidth: 1
+   },
+})
 
 export default connect(mapStateToProps)(EmailFinalReport)
