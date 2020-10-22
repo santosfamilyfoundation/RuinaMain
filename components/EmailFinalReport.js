@@ -96,6 +96,7 @@ class EmailFinalReport extends Component {
     return(
       <SafeAreaView style={{flex:1}}>
           <TopNavigation title="Email Crash Report" alignment="center" leftControl={this.props.BackAction()}/>
+          // TODO: we could add a file preview feature here
           <Card header={EmailHeader}>
             <TextInput style = {styles.input}
                underlineColorAndroid = "transparent"
