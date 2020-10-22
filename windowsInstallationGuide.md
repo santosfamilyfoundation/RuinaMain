@@ -14,7 +14,7 @@ Follow the instructions described below if you want to setup `RuinaMain` using W
 3. Clone the `RuinaMain` [repo](https://github.com/santosfamilyfoundation/RuinaMain)
   * In a terminal, `cd` into the main directory of the repo
   * `rmdir /s node_modules`
-  * `npm install`
+  * `yarn install`
   * `react-native run-android` (make sure your tablet is plugged in and registered as a device when you type `adb devices` into a terminal) Alas, due to the nature of software development, this command will probably not work right off the bat, so complete steps 4 to 8
 
 4. In order to get the app running, you need to add the required Anyline config files   
@@ -23,7 +23,7 @@ Follow the instructions described below if you want to setup `RuinaMain` using W
 
   ![image](imagesMD/anylineFolder.png)
 
-5. If the `react-native` command is not recognized in the command prompt, then run `npm install -g react-native-cli` to install react-native-cli globally
+5. If the `react-native` command is not recognized in the command prompt, then run `yarn global add react-native-cli` to install react-native-cli globally
 
 6. Rebuild the Android folder with the following commands
     * `cd android`
