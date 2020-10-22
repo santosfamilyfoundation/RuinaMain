@@ -10,7 +10,7 @@ Reliable crash data is essential to improving traffic safety. As part of a senio
     - New features should be on a new branch with the name `feat/{FEATURE_NAME}`
     - Fixes should be on a new branch with the name `fix/{FIX_NAME}`
 3. `Cd` into repo
-4. Install/update all `node_modules` (if `yarn` is not recognized as a command then run `npm install -g yarn`)
+4. Install/update all `node_modules` (if `yarn` is not recognized as a command then run `npm install -g yarn` or `brew install yarn` on a Mac)
     ```
     $ rm -rf node_modules/ && yarn install
     ```
