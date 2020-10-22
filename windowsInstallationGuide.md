@@ -14,7 +14,7 @@ Follow the instructions described below if you want to setup `RuinaMain` using W
 3. Clone the `RuinaMain` [repo](https://github.com/santosfamilyfoundation/RuinaMain)
   * In a terminal, `cd` into the main directory of the repo
   * `rmdir /s node_modules`
-  * `npm install`
+  * `yarn install` (if `yarn` is not recognized as a command then run `npm install -g yarn`)
   * `react-native run-android` (make sure your tablet is plugged in and registered as a device when you type `adb devices` into a terminal) Alas, due to the nature of software development, this command will probably not work right off the bat, so complete steps 4 to 8
 
 4. In order to get the app running, you need to add the required Anyline config files   
@@ -33,7 +33,7 @@ Follow the instructions described below if you want to setup `RuinaMain` using W
 
 7. If you have a gradle problem, you probably need to install it (newest version is fine). Just follow [this](https://gradle.org/install/) tutorial
 
-8. You might have to install an older version of node. I installed [this](https://nodejs.org/dist/v8.17.0/) one
+8. You might have to install a different version of node. I installed [this](https://nodejs.org/download/release/v12.18.3/) one. Pay attention to the `.msi` files. 
 
 9. Once you make a change, you can keep running `react-native run-android` to see whether the app correctly builds and opens  
 
