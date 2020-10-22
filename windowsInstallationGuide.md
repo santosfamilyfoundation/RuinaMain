@@ -23,7 +23,7 @@ Follow the instructions described below if you want to setup `RuinaMain` using W
 
   ![image](imagesMD/anylineFolder.png)
 
-5. If the `react-native` command is not recognized in the command prompt, then run `yarn global add react-native-cli` to install react-native-cli globally
+5. If the `react-native` command is not recognized in the command prompt, then run `npm install -g react-native-cli` to install react-native-cli globally
 
 6. Rebuild the Android folder with the following commands
     * `cd android`
@@ -33,7 +33,7 @@ Follow the instructions described below if you want to setup `RuinaMain` using W
 
 7. If you have a gradle problem, you probably need to install it (newest version is fine). Just follow [this](https://gradle.org/install/) tutorial
 
-8. You might have to install an older version of node. I installed [this](https://nodejs.org/dist/v8.17.0/) one
+8. You might have to install a different version of node. I installed [this](https://nodejs.org/download/release/v12.18.3/) one. Pay attention to the `.msi` files. 
 
 9. Once you make a change, you can keep running `react-native run-android` to see whether the app correctly builds and opens  
 
