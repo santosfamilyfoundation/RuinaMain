@@ -90,22 +90,25 @@ class EmailFinalReport extends Component {
   }
   // required method that creates components of email screen
   render() {
-    const EmailHeader = () => (
+    const FilenameHeader = () => (
         <CardHeader title="Filename"/>
     )
+    // TODO: we could add a file preview feature
     return(
       <SafeAreaView style={{flex:1}}>
-          <TopNavigation title="Email Crash Report" alignment="center" leftControl={this.props.BackAction()}/>
-          // TODO: we could add a file preview feature here
-          <Card header={EmailHeader}>
+        <TopNavigation title="Email Crash Report" alignment="center" leftControl={this.props.BackAction()}/>
+
+        <Card header={FilenameHeader}>
             <TextInput style = {styles.input}
                underlineColorAndroid = "transparent"
                value = {this.state.filename}
                autoCapitalize = "none"
                onChangeText = {this.changeFilename}
                />
-          </Card>
-          <Button onPress = {() => this.handleEmail()}>Send</Button>
+        </Card>
+
+        <Button onPress = {() => this.handleEmail()}>Send</Button>
+
       </SafeAreaView>
     )
   }
