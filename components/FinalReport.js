@@ -102,6 +102,9 @@ class FinalReport extends Component {
         const PrintReportHeader = () => (
             <CardHeader title="Print Report"/>
         )
+        const navigateEmailFinalReport = (format) =>{
+            navigation.navigate('EmailFinalReport', {format:format})
+        }
         return(
             <SafeAreaView style={{flex:1}}>
                 <TopNavigation title="Final Report" alignment="center" leftControl={this.props.BackAction()}/>
@@ -111,7 +114,7 @@ class FinalReport extends Component {
                 </Card>
                 <Card header={EmailHeader}>
                     <Text style={{ marginBottom: 20 }}>Press this button to email the crash report.</Text>
-                    <Button onPress={() => this.handleEmail()}>Email Report</Button>
+                    <Button onPress={() => navigateEmailFinalReport('JSON')}>Email Report</Button>
                 </Card>
                 <Card header={PrintReportHeader}>
                   <Text style={{marginBottom: 20}}>Press this button to print the crash report.</Text>
