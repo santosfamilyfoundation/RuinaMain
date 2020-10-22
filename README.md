@@ -12,7 +12,7 @@ Reliable crash data is essential to improving traffic safety. As part of a senio
 3. `Cd` into repo
 4. Install/update all `node_modules`
     ```
-    $ rm -rf node_modules/ && npm install
+    $ rm -rf node_modules/ && yarn install
     ```
 5. Rebuild cocaopods
     ```
