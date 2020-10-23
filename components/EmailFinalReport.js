@@ -5,7 +5,7 @@ import { Linking, TextInput, StyleSheet } from 'react-native';
 import {TopNavigation, Card, CardHeader, Text, Button} from '@ui-kitten/components';
 import Mailer from 'react-native-mail';
 
-class EmailFinalReport extends Component {
+export class EmailFinalReport extends Component {
   constructor(props) {
     super(props);
     this.state = {filename: this.getDefaultFilename()};
@@ -96,10 +96,11 @@ class EmailFinalReport extends Component {
     // TODO: we could add a file preview feature
     return(
       <SafeAreaView style={{flex:1}}>
-        <TopNavigation title="Email Crash Report" alignment="center" leftControl={this.props.BackAction()}/>
+        <TopNavigation id="emailNavBar" title="Email Crash Report" alignment="center" leftControl={this.props.BackAction()}/>
 
-        <Card header={FilenameHeader}>
-            <TextInput style = {styles.input}
+        <Card id="filenameInput" header={FilenameHeader}>
+            <TextInput id="filenameTextInput"
+               style = {styles.input}
                underlineColorAndroid = "transparent"
                value = {this.state.filename}
                autoCapitalize = "none"
@@ -107,7 +108,7 @@ class EmailFinalReport extends Component {
                />
         </Card>
 
-        <Button onPress = {() => this.handleEmail()}>Send</Button>
+        <Button id="sendButton" onPress = {() => this.handleEmail()}>Send</Button>
 
       </SafeAreaView>
     )
