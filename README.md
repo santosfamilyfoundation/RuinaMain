@@ -10,9 +10,9 @@ Reliable crash data is essential to improving traffic safety. As part of a senio
     - New features should be on a new branch with the name `feat/{FEATURE_NAME}`
     - Fixes should be on a new branch with the name `fix/{FIX_NAME}`
 3. `Cd` into repo
-4. Install/update all `node_modules`
+4. Install/update all `node_modules` (if `yarn` is not recognized as a command then run `npm install -g yarn` or `brew install yarn` on a Mac)
     ```
-    $ rm -rf node_modules/ && npm install
+    $ rm -rf node_modules/ && yarn install
     ```
 5. Rebuild cocaopods
     ```
@@ -21,6 +21,11 @@ Reliable crash data is essential to improving traffic safety. As part of a senio
     $ cd ..
     ```
 6. Start simulator
+    * For Android: either start an emulator from Android Studio or connect a device through usb, then run
+    ```
+    $ npx react-native run-android
+    ```
+    * For ios:
     ```
     $ npx react-native run-ios
     ```
@@ -40,3 +45,4 @@ Reliable crash data is essential to improving traffic safety. As part of a senio
     ```
     $ /path-to-this-repo/RuinaMain/node_modules/react-native/scripts/launchPackager.command
     ```
+8. Additional documentation can be found at [Installation Instructions](https://docs.google.com/document/d/1Jq3eBB1jNj5tPj4pSyWM1NAS5JwnqvRIsML5aK6KDPE/edit?usp=sharing)
