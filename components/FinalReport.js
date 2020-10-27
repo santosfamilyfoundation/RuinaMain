@@ -4,9 +4,25 @@ import { connect } from 'react-redux';
 import { Linking } from 'react-native';
 import {TopNavigation,Card, CardHeader, Text, Button} from '@ui-kitten/components';
 import Mailer from 'react-native-mail';
+import Axios from "axios";
 
 
 class FinalReport extends Component {
+    sendReport= () => {
+      Axios({
+        method: "POST",
+        url: "http://172.24.191.1:5006/v1/addReport",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: {
+          data: '1'
+        }
+      }).then(res => {
+        console.log(res.data);
+        console.log('Report Sent!');
+      });
+    }
     saveData = () => {
         const data = {
             driver: this.props.driver.data,
@@ -93,6 +109,9 @@ class FinalReport extends Component {
         const FeedbackHeader = () => (
             <CardHeader title="Feedback"/>
         )
+        const SendDatabaseHeader = () => (
+            <CardHeader title="SendDatabase" />
+        )
         const SaveDataHeader = () => (
             <CardHeader title="SaveData" />
         )
@@ -108,6 +127,10 @@ class FinalReport extends Component {
         return(
             <SafeAreaView style={{flex:1}}>
                 <TopNavigation title="Final Report" alignment="center" leftControl={this.props.BackAction()}/>
+                <Card header={SendDatabaseHeader}>
+                    <Text style={{ marginBottom: 20 }}>Press this button to save report in database.</Text>
+                    <Button onPress={() => this.sendReport()}>Send Report</Button>
+                </Card>
                 <Card header={SaveDataHeader}>
                     <Text style={{ marginBottom: 20 }}>Press this button to save the crash report.</Text>
                     <Button onPress={() => this.saveData()}>Save Data</Button>
