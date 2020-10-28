@@ -1,22 +1,59 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { Linking } from 'react-native';
 import {TopNavigation,Card, CardHeader, Text, Button} from '@ui-kitten/components';
 import Mailer from 'react-native-mail';
+import { Platform, StyleSheet, PermissionsAndroid, Linking} from 'react-native';
 
 
 class FinalReport extends Component {
+    requestExternalStoragePermission = async () => {
+        try {
+            const granted = await PermissionsAndroid.request(
+                PermissionsAndroid.WRITE_EXTERNAL_STORAGE,
+                {
+                    title: "RuinaMain Write Final Report to Device Files App",
+                    message:
+                        "RuinaMain needs access to your Files App on the device" +
+                        "so you can save the report.",
+                    buttonNeutral: "Ask Me Later",
+                    buttonNegative: "Cancel",
+                    buttonPositive: "OK"
+                }
+            );
+            if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+                console.log("You can use the camera");
+            } else {
+                console.log("Camera permission denied");
+            }
+        } catch (err) {
+            console.warn(err);
+        }
+    };
+
     saveData = () => {
         const data = {
             driver: this.props.driver.data,
             nonmotorist: this.props.nonmotorist.data,
             vehicle: this.props.vehicle.data,
             passenger: this.props.passenger.data,
+            road: this.props.road.data,
         }
+        var device_platform = Platform.OS
+
         // require the module
         var RNFS = require('react-native-fs');
-        var path = RNFS.DocumentDirectoryPath + '/final_report.json';
+        const path_ios = RNFS.DocumentDirectoryPath + '/final_report.json';
+        // Notes for Android External Storage
+        // externalDirectoryPath: /storage/emulated/0/Android/data/com.ruina/files
+        // externalStorageDirectoryPath: /storage/emulated/0
+        const path_android = RNFS.ExternalDirectoryPath + '/final_report.json';
+        const path = device_platform === 'ios' ? path_ios : path_android;
+        if (device_platform === 'android'){
+            this.requestExternalStoragePermission();
+        }
+        console.log('externalDirectoryPath: '+ RNFS.ExternalDirectoryPath);
+        console.log('externalStorageDirectoryPath: ' + RNFS.ExternalStorageDirectoryPath);
         // /var/mobile/Containers/Data/Application/12F7361A-BC3E-42C9-B81E-FBBBF7BA3E2C/Documents/final_report.json
 
         // write the file
