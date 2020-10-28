@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { Linking, TextInput, StyleSheet } from 'react-native';
+import { Linking, TextInput, StyleSheet, Alert } from 'react-native';
 import {TopNavigation, Card, CardHeader, Text, Button} from '@ui-kitten/components';
 import Mailer from 'react-native-mail';
 
@@ -24,11 +24,13 @@ export class EmailFinalReport extends Component {
   // save data as file inside app in order send email with attachment
   async saveDataInternal(data, filename) {
     var RNFS = require('react-native-fs');
-    var path = RNFS.DocumentDirectoryPath + '/' + filename;
+    // var path = RNFS.DocumentDirectoryPath + '/' + filename;
+    var path = RNFS.ExternalDirectoryPath + '/' + filename;
     // write the file
     try {
         let result = await RNFS.writeFile(path, data, 'utf8');
         console.log('FILE WRITTEN!');
+        console.log(path);
         return path;
     } catch(err) {
       console.log(err.message);
