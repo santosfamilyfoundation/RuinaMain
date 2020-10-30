@@ -33,8 +33,11 @@ describe('EmailFinalReport Component', () => {
     // get ReactComponent version of wrapper
     const inst = wrapper.instance();
     // run getDefaultFilename() and make sure output is correct
-    const date = new Date().toISOString().slice(0, 10).replace(/\W/g, '');
-    expect(inst.getDefaultFilename()).toBe(date+"_crashReport");
+    var date = new Date();
+    var localTime = date.toLocaleTimeString().replace(/\W/g, '.');
+    var localDate = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
+    var filename = "Crash Report " + localDate + " at " + localTime;
+    expect(inst.getDefaultFilename()).toBe(filename);
   });
 
   it('assigns correct initial filename TextInput value', () => {

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { Linking, TextInput, StyleSheet, Alert } from 'react-native';
+import { Linking, TextInput, StyleSheet, Alert, View } from 'react-native';
 import {TopNavigation, Card, CardHeader, Text, Button} from '@ui-kitten/components';
 import Mailer from 'react-native-mail';
 
@@ -14,8 +14,10 @@ export class EmailFinalReport extends Component {
   }
   // generate default filename
   getDefaultFilename() {
-    var date = new Date().toISOString().slice(0, 10).replace(/\W/g, '');
-    return date + "_crashReport";
+    var date = new Date();
+    var localTime = date.toLocaleTimeString().replace(/\W/g, '.');
+    var localDate = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
+    return "Crash Report " + localDate + " at " + localTime;
   }
   // update the filename
   changeFilename(text) {
@@ -53,7 +55,7 @@ export class EmailFinalReport extends Component {
   async sendEmail(path, filename) {
     console.log('Sending email!');
     await Mailer.mail({
-      subject: "Sending " + filename,
+      subject: "Sending " + "\"" + filename + "\"",
       recipients: [''],
       ccRecipients: [''],
       bccRecipients: [''],
@@ -93,8 +95,21 @@ export class EmailFinalReport extends Component {
   // required method that creates components of email screen
   render() {
     const FilenameHeader = () => (
-        <CardHeader title="Filename"/>
+        <CardHeader title="Please input report filename"/>
     )
+
+    // const FilenameFooter = (props) => (
+    //   <View {...props} style={[styles.footerContainer]}>
+    //     <Button
+    //       id="sendButton"
+    //       style={styles.footerControl}
+    //       size='small'
+    //       onPress={() => this.handleEmail()}>
+    //       Send
+    //     </Button>
+    //   </View>
+    // )
+
     // TODO: we could add a file preview feature
     return(
       <SafeAreaView style={{flex:1}}>
@@ -104,13 +119,21 @@ export class EmailFinalReport extends Component {
             <TextInput id="filenameTextInput"
                style = {styles.input}
                underlineColorAndroid = "transparent"
-               value = {this.state.filename}
                autoCapitalize = "none"
+               defaultValue = {this.state.filename}
                onChangeText = {this.changeFilename}
                />
-        </Card>
 
-        <Button id="sendButton" onPress = {() => this.handleEmail()}>Send</Button>
+           <View style={[styles.footerContainer]}>
+               <Button
+                 id="sendButton"
+                 style={styles.footerControl}
+                 size='small'
+                 onPress={() => this.handleEmail()}>
+                 Send
+               </Button>
+           </View>
+        </Card>
 
       </SafeAreaView>
     )
@@ -128,18 +151,22 @@ const mapStateToProps = (state) => {
 }
 
 const styles = StyleSheet.create({
-   container: {
-     width: '90%',
-     marginBottom: 10
-   },
-   input: {
-      marginBottom: 10,
-      height: 'auto',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      borderColor: 'lightgray',
-      borderWidth: 1
-   },
+  topContainer: {
+   flexDirection: 'row',
+   justifyContent: 'space-between',
+  },
+  card: {
+   flex: 1,
+   margin: 2,
+  },
+  footerContainer: {
+   flexDirection: 'row',
+   justifyContent: 'flex-end',
+  },
+  footerControl: {
+   marginHorizontal: 5,
+   marginTop: 20,
+  },
 })
 
 export default connect(mapStateToProps)(EmailFinalReport)
