@@ -18,8 +18,10 @@ class SaveToDevice extends Component {
   }
   // generate default filename
   getDefaultFilename() {
-    var date = new Date().toISOString().slice(0, 10).replace(/\W/g, '');
-    return "CrashReport" + date;
+    var date = new Date();
+    var localTime = date.toLocaleTimeString().replace(/\W/g, '.');
+    var localDate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+    return "Crash Report " + localDate + " at " + localTime;
   }
 
   // update filename based on user input

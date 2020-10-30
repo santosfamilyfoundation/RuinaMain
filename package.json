@@ -17,9 +17,12 @@
     "@react-native-community/masked-view": "^0.1.10",
     "@ui-kitten/components": "4.4.0-beta.3",
     "@ui-kitten/eva-icons": "4.4.0-beta.3",
-    "anyline-ocr-react-native-module": "^25.0.0",
+    "anyline-ocr-react-native-module": "^19.0.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
     "firebase": "^7.22.0",
     "react": "16.13.1",
+    "react-dom": "^17.0.1",
     "react-native": "0.63.3",
     "react-native-camera": "^3.40.0",
     "react-native-config": "^0.12.0",
@@ -42,20 +45,24 @@
     "react-navigation-stack": "^2.8.4",
     "react-redux": "^7.2.1",
     "redux": "^4.0.5",
-    "rn-fetch-blob": "^0.12.0"
+    "rn-fetch-blob": "^0.12.0",
+    "sinon": "^9.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/runtime": "^7.11.2",
     "@react-native-community/eslint-config": "^0.0.5",
     "babel-jest": "^25.5.1",
-    "jest": "^25.5.4",
+    "jest": "^26.6.1",
     "metro-react-native-babel-preset": "^0.56.0",
     "react-test-renderer": "16.9.0",
     "redux-devtools-extension": "^2.13.8"
   },
   "jest": {
     "preset": "react-native",
-    "transformIgnorePatterns": []
+    "transformIgnorePatterns": [],
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupTest.js"
+    ]
   }
 }
