@@ -7,8 +7,8 @@ import { Platform, StyleSheet, View, TextInput, Linking, PermissionsAndroid} fro
 class SaveToDevice extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      filename: this.getDefaultFilename(), 
+    this.state = {
+      filename: this.getDefaultFilename(),
       devicePlatform: Platform.OS,
     };
   }
@@ -54,7 +54,7 @@ class SaveToDevice extends Component {
 
       var device_platform = Platform.OS
       var RNFS = require('react-native-fs');
-      
+
       // Notes for Android External Storage
       // for andorid: externalDirectoryPath: /storage/emulated/0/Android/data/com.ruina/files
       // for android: externalStorageDirectoryPath: /storage/emulated/0
@@ -69,7 +69,7 @@ class SaveToDevice extends Component {
         this.requestExternalStoragePermission();
       }
 
-      // write the file and save to Files app on device: 
+      // write the file and save to Files app on device:
       try {
         let result = await RNFS.writeFile(path, data, 'utf8');
         console.log('FILE WRITTEN!');
@@ -96,7 +96,7 @@ class SaveToDevice extends Component {
         return JSON.stringify(data);
     }
   }
-  
+
   render() {
     const saveReportHeader = () => (
       <CardHeader title="Please input a report name" />
@@ -104,7 +104,7 @@ class SaveToDevice extends Component {
 
     const saveReportFooter = (props) => (
       <View {...props} style={[styles.footerContainer]}>
-        <Button 
+        <Button
           style={styles.footerControl}
           size='small'
           onPress={() => this.saveData()}>
