@@ -3,6 +3,8 @@ import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import {TopNavigation, Card, CardHeader, Text, Button, Layout} from '@ui-kitten/components';
 import { Platform, StyleSheet, View, TextInput, Linking, PermissionsAndroid} from 'react-native';
+import { MaterialDialog } from 'react-native-material-dialog';
+import { material } from "react-native-typography";
 
 class SaveToDevice extends Component {
   constructor(props) {
@@ -10,6 +12,8 @@ class SaveToDevice extends Component {
     this.state = { 
       filename: this.getDefaultFilename(), 
       devicePlatform: Platform.OS,
+      reportSavedMessageVisible: false,
+      reportSavedFailedMessageVisible: false,
     };
   }
   // generate default filename
@@ -74,9 +78,11 @@ class SaveToDevice extends Component {
         let result = await RNFS.writeFile(path, data, 'utf8');
         console.log('FILE WRITTEN!');
         console.log('Data: ' + data + '\n' + 'Path: ' + path);
+        this.setState({ reportSavedMessageVisible: true });
         return path;
       } catch (err) {
         console.log(err.message);
+        this.setState({ reportSavedFailedMessageVisible: true });
         return null;
       }
   }
@@ -99,7 +105,7 @@ class SaveToDevice extends Component {
   
   render() {
     const saveReportHeader = () => (
-      <CardHeader title="Please input a report name" />
+      <CardHeader title="Please input report filename" />
     )
 
     const saveReportFooter = (props) => (
@@ -125,6 +131,36 @@ class SaveToDevice extends Component {
             onChangeText={this.setUserInputFilename}
           />
         </Card>
+
+        <MaterialDialog
+          title={"Your Report is saved successfully!"}
+          visible={this.state.reportSavedMessageVisible}
+          onCancel={() => {
+            this.setState({ reportSavedMessageVisible: false });
+          }}
+          onOk={() => {
+            this.setState({ reportSavedMessageVisible: false });
+          }}
+        >
+          <Text style={material.subheading}>
+            Your report has been succesfully saved to the "Files/My Files" app on your device inside either SDCARD or "Internal storage". 
+          </Text>
+        </MaterialDialog>
+
+        <MaterialDialog
+          title={"Fail to save your report!"}
+          visible={this.state.reportSavedFailedMessageVisible}
+          onCancel={() => {
+            this.setState({ reportSavedFailedMessageVisible: false });
+          }}
+          onOk={() => {
+            this.setState({ reportSavedFailedMessageVisible: false });
+          }}
+        >
+          <Text style={material.subheading}>
+            Your report did not save successfully. Please try again later.
+          </Text>
+        </MaterialDialog>
       </SafeAreaView>
     )
   }
