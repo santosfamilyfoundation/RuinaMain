@@ -17,6 +17,7 @@ import { InfoExchangeScreen } from './screens/infoExchangeScreen';
 import { PhotoGalleryScreen } from './screens/photoGalleryScreen';
 import { FinalReportScreen } from './screens/finalReportScreen';
 import { EmailFinalReportScreen } from './screens/emailFinalReportScreen';
+import { SaveToDeviceScreen } from './screens/saveToDeviceScreen';
 import { FeatureComingSoonScreen } from './screens/featureComingSoonScreen';
 
 const HomeNavigator = createStackNavigator({
@@ -36,6 +37,7 @@ const HomeNavigator = createStackNavigator({
   PhotoGallery: PhotoGalleryScreen,
   FinalReport: FinalReportScreen,
   EmailFinalReport: EmailFinalReportScreen,
+  SaveToDevice: SaveToDeviceScreen,
   InfoExchange: InfoExchangeScreen,
   SinglePhoto: SinglePhotoScreen,
 }, {
