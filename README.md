@@ -46,3 +46,9 @@ Reliable crash data is essential to improving traffic safety. As part of a senio
     $ /path-to-this-repo/RuinaMain/node_modules/react-native/scripts/launchPackager.command
     ```
 8. Additional documentation can be found at [Installation Instructions](https://docs.google.com/document/d/1Jq3eBB1jNj5tPj4pSyWM1NAS5JwnqvRIsML5aK6KDPE/edit?usp=sharing)
+9. To run the jest tests for the first time, you need to add a few packages via
+    ```
+    yarn add sinon enzyme enzyme-adapter-react-16 --dev
+    npm install -g jest-cli
+    ```
+    Run tests via `jest <input test filename>` 
