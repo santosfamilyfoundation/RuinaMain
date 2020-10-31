@@ -46,6 +46,7 @@ class FinalReport extends Component {
 
         const navigateDatabase = (format) => {
             console.log('SEND REPORT TO DATABASE!');
+            navigation.navigate('ReportToDatabase', {format:format})
         }
 
         const file_format_extensions = [
