@@ -1,7 +1,7 @@
 PODS:
-  - Anyline (19)
-  - AnylineReact (19.0.0):
-    - Anyline (~> 19.0)
+  - Anyline (25)
+  - AnylineReact (25.0.0):
+    - Anyline (~> 25)
     - React
   - boost-for-react-native (1.63.0)
   - CocoaAsyncSocket (7.6.4)
@@ -432,6 +432,8 @@ PODS:
     - React
   - RNSVG (9.13.6):
     - React
+  - RNVectorIcons (7.1.0):
+    - React
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -505,6 +507,7 @@ DEPENDENCIES:
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -624,18 +627,20 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-screens"
   RNSVG:
     :path: "../node_modules/react-native-svg"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  Anyline: de702b368569a82e00b7e1c6e4d3543a06d666cc
-  AnylineReact: 7e6e1e9ac856e2b3b357dfd2e9e76864f80ddc9e
+  Anyline: 4dedf3b0f2aab9f1ea572a82d1d364f463a29f4d
+  AnylineReact: 20aa36aff61c39e3c2244af70746ce46660c38e2
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
   CocoaLibEvent: 2fab71b8bd46dd33ddb959f7928ec5909f838e3f
-  Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
+  Crashlytics: 9220f5bc89e7a618df411b4f639389dbfb0e03d2
   DoubleConversion: cde416483dac037923206447da6e1454df403714
-  Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
+  Fabric: ea977e3cd9c20425516d3dafd3bf8c941c51223f
   FBLazyVector: 878b59e31113e289e275165efbe4b54fa614d43d
   FBReactNativeSpec: 7da9338acfb98d4ef9e5536805a0704572d33c2f
   Firebase: 0c8cf33f266410c61ab3e2265cfa412200351d9c
@@ -697,9 +702,10 @@ SPEC CHECKSUMS:
   RNReanimated: dd8c286ab5dd4ba36d3a7fef8bff7e08711b5476
   RNScreens: 0e91da98ab26d5d04c7b59a9b6bd694124caf88c
   RNSVG: 8ba35cbeb385a52fd960fd28db9d7d18b4c2974f
+  RNVectorIcons: bc69e6a278b14842063605de32bec61f0b251a59
   Yoga: 7d13633d129fd179e01b8953d38d47be90db185a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: a37a6ade8647c6ba2d6410e658994a0766013336
+PODFILE CHECKSUM: a2839a72f980c5de363a2edfda812199bafa67c1
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0
