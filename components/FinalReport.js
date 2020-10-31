@@ -65,6 +65,7 @@ class FinalReport extends Component {
                         onPress={() => this.setState({ chooseReportFormatVisible: true, exportAction: navigateSaveToDevice })}>
                         Save Report to Local Device
                     </Button>
+
                 </Card>
                 <Card header={EmailHeader}>
                     <Text style={{ marginBottom: 20 }}>Press this button to email the crash report.</Text>

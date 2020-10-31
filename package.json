@@ -20,6 +20,7 @@
     "anyline-ocr-react-native-module": "^19.0.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
+    "axios": "^0.21.0",
     "firebase": "^7.22.0",
     "react": "16.13.1",
     "react-dom": "^17.0.1",
