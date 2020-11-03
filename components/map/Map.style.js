@@ -40,5 +40,10 @@ export const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignSelf: 'center',
     padding: 10,
-  }
+  },
+  spinnerView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
 })
