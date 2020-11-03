@@ -135,7 +135,6 @@ android {
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
-        manifestPlaceholders = [GOOGLE_MAPS_API_KEY: "$System.env.GOOGLE_MAPS_API_KEY"]
     }
     splits {
         abi {
@@ -224,8 +223,8 @@ dependencies {
         exclude group: "com.android.support"
         exclude group: "com.google.android.gms"
     }
-    
-    compile project(':react-native-fs')
+
+    implementation project(':react-native-fs')
 
 }
 
