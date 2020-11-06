@@ -31,7 +31,7 @@
     "react-native-fs": "^2.16.6",
     "react-native-gesture-handler": "^1.8.0",
     "react-native-mail": "^6.0.0",
-    "react-native-maps": "0.26.1",
+    "react-native-maps": "0.27.1",
     "react-native-masked-view": "^0.2.0",
     "react-native-material-dialog": "^0.7.7",
     "react-native-reanimated": "^1.13.1",
@@ -62,8 +62,12 @@
   "jest": {
     "preset": "react-native",
     "transformIgnorePatterns": [],
+    "setupFiles": [
+      "./node_modules/react-native-gesture-handler/jestSetup.js"
+    ],
     "setupFilesAfterEnv": [
-      "<rootDir>/setupTest.js"
+      "<rootDir>/setupTest.js",
+      "./__mocks__/mockFirebase.js"
     ]
   }
 }
