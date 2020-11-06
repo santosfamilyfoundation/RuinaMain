@@ -23,8 +23,9 @@ export class NetInfoAPI extends Component {
                 });
             } catch (e){
                 curConnection = false;
+            } finally {
+                return curConnection;
             }
-            return curConnection;
         }
         let curStatus = await NetInfo.fetch().then(handleConnectivityChange);
         this.status = curStatus;
