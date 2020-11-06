@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Linking, TextInput, StyleSheet, Alert, View } from 'react-native';
 import {TopNavigation, Card, CardHeader, Text, Button} from '@ui-kitten/components';
 import Axios from "axios";
+import NetInfoAPI from "../utils/NetAPI"
 
 
 export class ReportToDatabase extends Component{
@@ -11,6 +12,11 @@ export class ReportToDatabase extends Component{
       super(props);
     }
     async sendHttpRequest(){
+      const net = new NetInfoAPI();
+      await net.checkNetOnce();
+      // net info is wraped in net.status
+      console.log(`NetInfo: ${net.status}`);
+
       const format = this.props.navigation.state.params.format
       // convert data to desired format
       var stringify_data = this.convertJson(format);
