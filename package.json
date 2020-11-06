@@ -62,8 +62,12 @@
   "jest": {
     "preset": "react-native",
     "transformIgnorePatterns": [],
+    "setupFiles": [
+      "./node_modules/react-native-gesture-handler/jestSetup.js"
+    ],
     "setupFilesAfterEnv": [
-      "<rootDir>/setupTest.js"
+      "<rootDir>/setupTest.js",
+      "./__mocks__/mockFirebase.js"
     ]
   }
 }

@@ -9,7 +9,7 @@ import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import { connect } from 'react-redux';
 import { styles } from './Map.style';
-import { changeLat, changeLong, updateMarkers } from '../../actions/MapAction';
+import { changeLat, changeLong } from '../../actions/MapAction';
 import { updateRoad } from '../../actions/RoadAction';
 import * as Constants from '../../constants';
 
@@ -22,7 +22,7 @@ const initalRegion = {
   initialDelta: 0.00111,
 }
 
-class Map extends Component {
+export class Map extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,6 +37,7 @@ class Map extends Component {
       marginTop: 1,
       displayFailedToSaveMessage: false,
       displayFailedToLoadMessage: false,
+      testMode: false,
     };
   }
 
@@ -53,7 +54,9 @@ class Map extends Component {
         this.setState({
              region: region,
         });
-        this._map.animateToRegion(region, 100);
+        if (!this.state.testMode) {
+          this._map.animateToRegion(region, 100);
+        }
       },
       (error) => {
         console.log(JSON.stringify(error));
@@ -67,7 +70,7 @@ class Map extends Component {
   componentDidMount() {
     Geolocation.getCurrentPosition(
       (position) => {
-        const region = {
+        let region = {
             latitude: parseFloat(position.coords.latitude),
             longitude: parseFloat(position.coords.longitude),
             latitudeDelta: initalRegion.initialDelta,
@@ -102,7 +105,7 @@ class Map extends Component {
 
    // Zooms out by 2x when user presses zoom out button and resets state
    onPressZoomOut() {
-    region = {
+    let region = {
       latitude: this.state.region.latitude,
       longitude: this.state.region.longitude,
       latitudeDelta: this.state.region.latitudeDelta /2,
@@ -111,13 +114,15 @@ class Map extends Component {
     this.setState({
       region: region,
     });
-    //makes the map appear to "move" to the user
-    this._map.animateToRegion(region, 100);
+    if (!this.state.testMode) {
+      //makes the map appear to "move" to the user
+      this._map.animateToRegion(region, 100);
+    }
   }
 
   // Zooms in by 2x when user presses zoom in button and resets state
   onPressZoomIn() {
-    region = {
+    let region = {
       latitude: this.state.region.latitude,
       longitude: this.state.region.longitude,
       latitudeDelta: this.state.region.latitudeDelta *2,
@@ -126,8 +131,10 @@ class Map extends Component {
     this.setState({
       region: region,
     });
-    //makes the map appear to "move" to the user
-    this._map.animateToRegion(region, 100);
+    if (!this.state.testMode) {
+      //makes the map appear to "move" to the user
+      this._map.animateToRegion(region, 100);
+    }
   }
 
   // When the user presses the re-center button they return to the current location of the device
@@ -135,47 +142,37 @@ class Map extends Component {
     this.getCurrentLocation()
   }
 
+  // Called when saved button is pressed and saves the current lat and long
+  saveLocations() {
+    try {
+      const id = this.props.navigation.state.params.id; // The road id for this crash
+      // Update the road reducer with displayed lat and long
+      console.log('Lat: ' + this.state.region.latitude.toString() + ' Long: ' + this.state.region.longitude.toString());
+      this.props.updateRoad({id, question:Constants.LAT_ID, selection: this.state.region.latitude.toString() });
+      this.props.updateRoad({id, question:Constants.LONG_ID, selection: this.state.region.longitude.toString() });
+      // Return to questions
+      this.props.navigation.goBack();
+    } catch (e) {
+      console.log('Lat/long coordinates failed to save');
+      this.setState({ displayFailedToSaveMessage: true });
+    }
+  }
+
   render() {
-    const {
-      navigation,
-      changeLat,
-      changeLong,
-      mapDetails,
-      updateMarkers,
-      updateRoad
-    } = this.props;
-
-    const id = this.props.navigation.state.params.id; // The road id for this crash
-
-    // Called when saved button is pressed and saves the current lat and long
-    const saveLocations = () => {
-      try {
-        // Update the road reducer with displayed lat and long
-        console.log('Lat: ' + this.state.region.latitude.toString() + ' Long: ' + this.state.region.longitude.toString());
-        updateRoad({id, question:Constants.LAT_ID, selection: this.state.region.latitude.toString() });
-        updateRoad({id, question:Constants.LONG_ID, selection: this.state.region.longitude.toString() });
-        // Return to questions
-        this.props.navigation.goBack();
-      } catch (e) {
-        console.log('Lat/long coordinates failed to save');
-        this.setState({ displayFailedToSaveMessage: true });
-      }
-    };
-
     if (this.state.loading) {
       return (
         <SafeAreaView style={styles.spinnerView}>
-          <ActivityIndicator size="large" color="#0000ff" />
+          <ActivityIndicator id="loadingScreen" size="large" color="#0000ff" />
         </SafeAreaView>
       );
     } else {
       return (
         <SafeAreaView style={{ flex: 1 }}>
-            <TopNavigation title='Map View' alignment='center' leftControl={this.props.BackAction()}/>
+            <TopNavigation id="mapNavBar" title='Map View' alignment='center' leftControl={this.props.BackAction()}/>
             <Divider/>
             <Layout style={styles.pageContainer}>
               <Layout style={styles.container}>
-                <MapView
+                <MapView id="mapView"
                   style={styles.mapContainer}
                   ref={component => {this._map = component;}}
                   provider={PROVIDER_GOOGLE}
@@ -190,22 +187,22 @@ class Map extends Component {
                   draggable
                 />
                 </MapView>
-                <View style={styles.sideBox}>
-                  <TouchableOpacity
+                <View id="mapButtons" style={styles.sideBox}>
+                  <TouchableOpacity id="zoomInButton"
                       onPress={()=>{this.onPressZoomIn()}}
                       >
                       <View style={styles.sideBoxItems}>
                         <Icon name='minus-circle-outline' width={32} height={32} fill='#3366FF'/>
                       </View>
                   </TouchableOpacity>
-                  <TouchableOpacity
+                  <TouchableOpacity id="zoomOutButton"
                       onPress={()=>{this.onPressZoomOut()}}
                       >
                       <View style={styles.sideBoxItems}>
                         <Icon name='plus-circle-outline' width={32} height={32} fill='#3366FF'/>
                       </View>
                   </TouchableOpacity>
-                  <TouchableOpacity
+                  <TouchableOpacity id="recenterButton"
                       onPress={()=>{this.onPressRecenter()}}
                       >
                       <View style={styles.sideBoxItems}>
@@ -215,16 +212,16 @@ class Map extends Component {
                 </View>
               </Layout>
               <View style={styles.coords}>
-                <Text style={styles.coordText}>
+                <Text id="latLongCoord" style={styles.coordText}>
                   Latitude: { this.state.region.latitude.toFixed(3)}
                   {"     "}
                   Longitude: {this.state.region.longitude.toFixed(3)}
                 </Text>
               </View>
             </Layout>
-            <Button onPress={() => saveLocations()}>SAVE</Button>
+            <Button id="saveButton" onPress={() => {this.saveLocations()}}>SAVE</Button>
 
-            <MaterialDialog
+            <MaterialDialog id="saveFailedDialog"
               title={"Failed to save location!"}
               visible={this.state.displayFailedToSaveMessage}
               onCancel={() => {
@@ -243,7 +240,7 @@ class Map extends Component {
               </Text>
             </MaterialDialog>
 
-            <MaterialDialog
+            <MaterialDialog id="loadFailedDialog"
               title={"Failed to load map!"}
               visible={this.state.displayFailedToLoadMessage}
               onCancel={() => {
@@ -270,7 +267,6 @@ class Map extends Component {
 const mapDispatchToProps = {
   changeLat,
   changeLong,
-  updateMarkers,
   updateRoad,
 }
 
