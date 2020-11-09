@@ -26,7 +26,7 @@ export class ReportToDatabase extends Component{
       if (netStatus==false){
         // deal with internet not connected
         this.setState({ sendDatabaseFailedVisible: true });
-        return; 
+        return;
       }
       this.setState({ sendDatabaseVisible: true });
       const format = this.props.navigation.state.params.format
@@ -82,7 +82,7 @@ export class ReportToDatabase extends Component{
            </View>
         </Card>
         <MaterialDialog
-          title={"Your Report is saved successfully!"}
+          title={"Report saved successfully!"}
           visible={this.state.sendDatabaseVisible}
           onCancel={() => {
             this.setState({ sendDatabaseVisible: false });
@@ -90,10 +90,14 @@ export class ReportToDatabase extends Component{
           onOk={() => {
             this.setState({ sendDatabaseVisible: false });
           }}
-        ></MaterialDialog>
+        >
+          <Text style={material.subheading}>
+            Your crash report was successfully sent to the database.
+          </Text>
+        </MaterialDialog>
 
         <MaterialDialog
-          title={"Fail to send your report to database!"}
+          title={"Failed to send report to database!"}
           visible={this.state.sendDatabaseFailedVisible}
           onCancel={() => {
             this.setState({ sendDatabaseFailedVisible: false });
@@ -103,7 +107,7 @@ export class ReportToDatabase extends Component{
           }}
         >
           <Text style={material.subheading}>
-            Your report did not send successfully. 
+            Your crash report failed to be sent to the database.
             Please check your internet connection and try again later.
           </Text>
         </MaterialDialog>
