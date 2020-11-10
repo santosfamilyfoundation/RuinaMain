@@ -1928,10 +1928,10 @@ ansi-wrap@0.1.0, ansi-wrap@^0.1.0:
   resolved "https://registry.yarnpkg.com/ansi-wrap/-/ansi-wrap-0.1.0.tgz#a82250ddb0015e9a27ca82e82ea603bbfa45efaf"
   integrity sha1-qCJQ3bABXponyoLoLqYDu/pF768=
 
-anyline-ocr-react-native-module@25.0.0:
-  version "25.0.0"
-  resolved "https://registry.yarnpkg.com/anyline-ocr-react-native-module/-/anyline-ocr-react-native-module-25.0.0.tgz#c4ab4e9254f0031ef9a5de4caae1ce7687f3c1e3"
-  integrity sha512-h/twxlxrJWsg6Ag6DHfWNb876cv7DpVryghRWel6sTxSy/BX6EPwKa9eE2AR7iesZbCnxd9cLnX0lbkW0sMFYA==
+anyline-ocr-react-native-module@^19.0.0:
+  version "19.0.0"
+  resolved "https://registry.yarnpkg.com/anyline-ocr-react-native-module/-/anyline-ocr-react-native-module-19.0.0.tgz#060b3a17a0b0b9f68b683c30efc294b2d2943cd0"
+  integrity sha512-41wmR9zf64t+YAmpo8VPBZabvhOfcFEODjhD449Rt98qVU1bLSsL/TnT49Bja5HBidi1AynZJkHQBObGkJ9U+Q==
   dependencies:
     buffer "^5.1.0"
 
@@ -2106,6 +2106,11 @@ astral-regex@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/astral-regex/-/astral-regex-1.0.0.tgz#6c8c3fb827dd43ee3918f27b82782ab7658a6fd9"
   integrity sha512-+Ryf6g3BKoRc7jfp7ad8tM4TtMiaWvbF/1/sQcZPkkS7ag3D5nMBCe2UfOTONtAkaG0tO0ij3C5Lwmf1EiyjHg==
+
+async-wait-until@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/async-wait-until/-/async-wait-until-1.2.6.tgz#b6d8ada89913028af1928ee078925af75862b108"
+  integrity sha512-7I1zd0bnMEo7WfLfDoLZp+iPYKv/dl7kcW8wphazZn+BAElTGvtkDuQuonr480JzkS7f42VcGyP90mk3+3IfWA==
 
 async@^2.4.0:
   version "2.6.3"

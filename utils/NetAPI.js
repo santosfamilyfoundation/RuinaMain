@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import NetInfo, {NetInfoState} from "@react-native-community/netinfo"
-import { Platform, PermissionsAndroid} from 'react-native';
-
 export class NetInfoAPI extends Component {
     constructor(props){
         super(props)

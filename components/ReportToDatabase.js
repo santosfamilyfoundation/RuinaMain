@@ -15,13 +15,14 @@ export class ReportToDatabase extends Component{
       this.state = {
         sendDatabaseVisible: false,
         sendDatabaseFailedVisible: false,
+        dbResponse: null,
       };
     }
     async sendHttpRequest(){
       const net = new NetInfoAPI();
       let netStatus = await net.checkNetOnce();
       // net info is wraped in net.status
-      console.log(`NetInfo: ${net.status}`);
+      // console.log(`NetInfo: ${net.status}`);
 
       if (netStatus==false){
         // deal with internet not connected
@@ -43,8 +44,8 @@ export class ReportToDatabase extends Component{
         data: stringify_data
       }
       }).then(res => {
-        console.log(res.data);
         console.log('Successfully sent report to database!');
+        this.setState({dbResponse: res.data})
       });
     }
     convertJson(format) {
