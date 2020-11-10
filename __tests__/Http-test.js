@@ -27,6 +27,7 @@ describe('ReportToDatabase Component', () => {
     // expect(wrapper.sendHttpRequest).toBeDefined();//Instance is your class or component shallow instance
 
   });
+
   it('send request as expected', async () => {
     const inst = wrapper.instance();
     var spy = sinon.spy(wrapper.instance(), 'sendHttpRequest');
@@ -39,3 +40,4 @@ describe('ReportToDatabase Component', () => {
     });
   });
 });
+
