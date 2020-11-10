@@ -48,6 +48,8 @@ target 'Ruina' do
   use_react_native!(:path => config["reactNativePath"])
 
 
+  pod 'react-native-cameraroll', :path => '../node_modules/@react-native-community/cameraroll'
+
   target 'RuinaTests' do
     inherit! :complete
     # Pods for testing

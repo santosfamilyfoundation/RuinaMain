@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
-import { TextInput, Text, View, TouchableOpacity } from 'react-native';
+import { PermissionsAndroid, Platform, TextInput, Text, View, TouchableOpacity } from 'react-native';
 import { Button, Divider, Layout, TopNavigation, Select} from '@ui-kitten/components';
 import firebase from 'react-native-firebase';
 import { connect } from 'react-redux';
@@ -10,6 +10,7 @@ import BasicDropDown from '../dropdowns/BasicDropDown'
 import * as Constants from '../../constants';
 import { styles } from './PhotoCapture.style';
 import AsyncStorage from '@react-native-community/async-storage';
+import CameraRoll from "@react-native-community/cameraroll";
 var uuid = require('react-native-uuid');
 
 class PhotoCapture extends Component {
@@ -22,13 +23,37 @@ class PhotoCapture extends Component {
     currImage :'',
   }
 
+
+  async hasAndroidStoragePermission() {
+    const permission = PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE;
+
+    const hasPermission = await PermissionsAndroid.check(permission);
+    if (hasPermission) {
+      return true;
+    }
+
+    const status = await PermissionsAndroid.request(permission);
+    return status === 'granted';
+  }
+
   capture() {
     //Calls for the screen to be captured
     this.camera.takePictureAsync({ skipProcessing: true }).then((data) => {
       this.setState({
         imgUri: data["uri"],
       });
-      this.uploadImage()
+      switch (Platform.OS) {
+        case 'ios':
+          break;
+        case 'android':
+          if (this.hasAndroidStoragePermission()) {
+            CameraRoll.save(this.state.imgUri);
+          }
+          break;
+        default:
+          break;
+      }
+      // this.uploadImage()
     })
   }
 
