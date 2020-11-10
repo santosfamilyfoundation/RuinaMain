@@ -3,14 +3,32 @@ import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { Linking, TextInput, StyleSheet, Alert, View } from 'react-native';
 import {TopNavigation, Card, CardHeader, Text, Button} from '@ui-kitten/components';
+import { MaterialDialog } from 'react-native-material-dialog';
+import { material } from "react-native-typography";
 import Axios from "axios";
+import NetInfoAPI from "../utils/NetAPI"
 
 
 export class ReportToDatabase extends Component{
     constructor(props) {
       super(props);
+      this.state = {
+        sendDatabaseVisible: false,
+        sendDatabaseFailedVisible: false,
+      };
     }
     async sendHttpRequest(){
+      const net = new NetInfoAPI();
+      let netStatus = await net.checkNetOnce();
+      // net info is wraped in net.status
+      console.log(`NetInfo: ${net.status}`);
+
+      if (netStatus==false){
+        // deal with internet not connected
+        this.setState({ sendDatabaseFailedVisible: true });
+        return;
+      }
+      this.setState({ sendDatabaseVisible: true });
       const format = this.props.navigation.state.params.format
       // convert data to desired format
       var stringify_data = this.convertJson(format);
@@ -63,6 +81,36 @@ export class ReportToDatabase extends Component{
                </Button>
            </View>
         </Card>
+        <MaterialDialog
+          title={"Report saved successfully!"}
+          visible={this.state.sendDatabaseVisible}
+          onCancel={() => {
+            this.setState({ sendDatabaseVisible: false });
+          }}
+          onOk={() => {
+            this.setState({ sendDatabaseVisible: false });
+          }}
+        >
+          <Text style={material.subheading}>
+            Your crash report was successfully sent to the database.
+          </Text>
+        </MaterialDialog>
+
+        <MaterialDialog
+          title={"Failed to send report to database!"}
+          visible={this.state.sendDatabaseFailedVisible}
+          onCancel={() => {
+            this.setState({ sendDatabaseFailedVisible: false });
+          }}
+          onOk={() => {
+            this.setState({ sendDatabaseFailedVisible: false });
+          }}
+        >
+          <Text style={material.subheading}>
+            Your crash report failed to be sent to the database.
+            Please check your internet connection and try again later.
+          </Text>
+        </MaterialDialog>
 
       </SafeAreaView>
     )
