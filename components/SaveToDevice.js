@@ -5,6 +5,7 @@ import {TopNavigation, Card, CardHeader, Text, Button, Layout} from '@ui-kitten/
 import { Platform, StyleSheet, View, TextInput, Linking, PermissionsAndroid} from 'react-native';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
+import JSONconverter from '../utils/jsonConverter';
 
 class SaveToDevice extends Component {
   constructor(props) {
@@ -56,7 +57,16 @@ class SaveToDevice extends Component {
       const format = this.props.navigation.state.params.format
 
       // convert data to desired format
-      var data = this.convertJson(format);
+      const data = {
+        driver: this.props.driver.data,
+        nonmotorist: this.props.nonmotorist.data,
+        vehicle: this.props.vehicle.data,
+        passenger: this.props.passenger.data,
+        road: this.props.road.data,
+      };
+      var converter = new JSONconverter();
+      var file = converter.handleConverter(format, data);
+
 
       var device_platform = Platform.OS
       var RNFS = require('react-native-fs');
@@ -68,6 +78,7 @@ class SaveToDevice extends Component {
       const path_ios = RNFS.DocumentDirectoryPath + '/' + this.state.filename + "." + format;
       const path_android = RNFS.ExternalStorageDirectoryPath + '/' + this.state.filename + "." + format;
       //const path = this.state.devicePlatform === 'ios' ? path_ios : path_android;
+      let path;
       if (this.state.devicePlatform === 'ios'){
         path = path_ios;
       } else {
@@ -77,12 +88,13 @@ class SaveToDevice extends Component {
 
       // write the file and save to Files app on device:
       try {
-        let result = await RNFS.writeFile(path, data, 'utf8');
+        let result = await RNFS.writeFile(path, file, 'utf8');
         console.log('FILE WRITTEN!');
         console.log('Data: ' + data + '\n' + 'Path: ' + path);
         this.setState({ reportSavedMessageVisible: true });
         return path;
       } catch (err) {
+        console.log("Undefinedddd");
         console.log(err.message);
         this.setState({ reportSavedFailedMessageVisible: true });
         return null;
