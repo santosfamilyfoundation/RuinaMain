@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { Linking, TextInput, StyleSheet, Alert, View } from 'react-native';
+import { TextInput, StyleSheet, Alert, View } from 'react-native';
 import {TopNavigation, Card, CardHeader, Text, Button} from '@ui-kitten/components';
 import Mailer from 'react-native-mail';
+import JSONconverter from '../utils/jsonConverter';
 
 export class EmailFinalReport extends Component {
   constructor(props) {
@@ -39,17 +40,6 @@ export class EmailFinalReport extends Component {
       return null;
     }
   }
-  // temporary function that converts the JSON into a JSON
-  // will be replaced with the JSON converter module
-  convertJson(format) {
-    const data = {
-        driver: this.props.driver.data,
-        nonmotorist: this.props.nonmotorist.data,
-        vehicle: this.props.vehicle.data,
-        passenger: this.props.passenger.data,
-    }
-    return JSON.stringify(data);
-  }
   // send email based on the inputted filename
   // leave everything else blank, except subject (subject = filename)
   async sendEmail(path, filename) {
@@ -83,12 +73,18 @@ export class EmailFinalReport extends Component {
   }
   // handles the entire email workflow
   async handleEmail() {
+    const data = {
+        driver: this.props.driver.data,
+        nonmotorist: this.props.nonmotorist.data,
+        vehicle: this.props.vehicle.data,
+        passenger: this.props.passenger.data,
+        road: this.props.road.data,
+      };
     var format = this.props.navigation.state.params.format;
-    console.log('Format: ' + format);
-    var data = this.convertJson(format);
-    console.log('Data: ' + data);
+    var converter = new JSONconverter();
+    var file = converter.handleConverter(format, data);
     // save data internally
-    var path = await this.saveDataInternal(data, this.state.filename + "." + format);
+    var path = await this.saveDataInternal(file, this.state.filename + "." + format);
     // send email
     await this.sendEmail(path, this.state.filename + "." + format);
   }

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import {TopNavigation, Card, CardHeader, Text, Button, Layout} from '@ui-kitten/components';
-import { Platform, StyleSheet, View, TextInput, Linking, PermissionsAndroid} from 'react-native';
+import {TopNavigation, Card, CardHeader, Text, Button} from '@ui-kitten/components';
+import { Platform, StyleSheet, View, TextInput, PermissionsAndroid} from 'react-native';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import JSONconverter from '../utils/jsonConverter';
@@ -54,8 +54,8 @@ class SaveToDevice extends Component {
   };
 
   async saveData() {
-      const format = this.props.navigation.state.params.format
-
+      const format = this.props.navigation.state.params.format;
+      console.log(format);
       // convert data to desired format
       const data = {
         driver: this.props.driver.data,
@@ -99,22 +99,6 @@ class SaveToDevice extends Component {
         this.setState({ reportSavedFailedMessageVisible: true });
         return null;
       }
-  }
-
-  convertJson(format) {
-    const data = {
-        driver: this.props.driver.data,
-        nonmotorist: this.props.nonmotorist.data,
-        vehicle: this.props.vehicle.data,
-        passenger: this.props.passenger.data,
-        road: this.props.road.data,
-    }
-    switch(format){
-      case 'csv':
-        break;
-      default:
-        return JSON.stringify(data);
-    }
   }
 
   render() {

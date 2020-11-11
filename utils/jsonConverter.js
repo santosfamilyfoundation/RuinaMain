@@ -22,7 +22,7 @@ export class JSONconverter extends Component {
 			case 'html':
 				return file = this.JSONtoHTML(data);
 			default:
-				error = "Looking into wrong format";
+				console.log("Error+"+format)
 		}
 	}
 
@@ -123,38 +123,26 @@ export class JSONconverter extends Component {
 
 	JSONtoHTML(jsondata) {
 		
-
-		reportHTML = '<!doctype html> <html lang="en"> <head> <meta charset="utf8"> <title> </title> </head> <body>'
+		let reportHTML = '<!doctype html> <html lang="en"> <head> <meta charset="utf8"> <title> </title> </head> <body>'
 		
 		for (let section in jsondata) {
 			reportHTML += ('<div style="float:left;padding: 1em;"><h1>' + section + '</h1>')
 			writeSection(jsondata[section])
-			// writeSection(jsondata[section])
 		}
 
 		function writeSection(category) {
-			console.log(category)
 			for (let key in category) {
 				reportHTML += ('<h2>' + category[key] + ' ' + key + '</h2>')
-				subset = category[key]
+				let subset = category[key]
 				for (let data in subset) {
-					console.log(data)
 					reportHTML += ('<h3>' + data + '</h3> <p>' + subset[data] + '</p>')
 				}
 				reportHTML += ('</div>')
 			}
 		}
-
 		reportHTML += '</body> </html>'
-
-		// replace with return reportHTML
-		var pathToWrite = `${RNFetchBlob.fs.dirs.DownloadDir}/test.html`;
-	    RNFetchBlob.fs.writeFile(pathToWrite, reportHTML, 'utf8')
-		.then(() => {
-		   console.log(`wrote file ${pathToWrite}`);
-		}).catch(err => console.error(err));
-
-
+		console.log("Converted json in csv: " + reportHTML);
+		return reportHTML
 	}
 } 
 export default JSONconverter;
