@@ -1,10 +1,10 @@
 // import exportfromJSON from 'export-from-json';
 // import PDFLib, { PDFDocument, PDFPage } from 'react-native-pdf-lib';
 // import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
-// import RNFetchBlob from 'react-native-fetch-blob';
+//import RNFetchBlob from 'react-native-fetch-blob';
 import {Component} from 'react';
 // import ReactDOM from 'react-dom';
-// import * as XLSX from 'xlsx';
+import XLSX from 'xlsx';
 
 export class JSONconverter extends Component {
 	constructor(props) {
@@ -88,36 +88,47 @@ export class JSONconverter extends Component {
 	}
 
 	JSONtoXLS(jsondata) {
-		
-		const xlsdata = [ jsondata.Driver, jsondata.Nonmotorist, jsondata.Vehicle ]
-
-		// Requires node 
+		// Requires node # Don't use this library because https://stackoverflow.com/questions/39046429/react-native-unable-to-resolve-module-fs, require manually change files in node_modules
 		// let json2xls = require('json2xls');
 		// var xlsfile = json2xls(xlsdata);
 
-	
-		const filename = 'exporttest'
-		const exportType = 'xls'
+		console.log("json data: ", jsondata);
+		
+		// build new workbook
+		const wb = XLSX.utils.book_new();
+		// create worksheet	
+		for (var key in jsondata){
+			var data = jsondata[key];
+			console.log("data: ", data);
+			let ws = XLSX.utils.json_to_sheet(data); 
+			console.log("key: ", key, ", work sheet: ", ws);
+			XLSX.utils.book_append_sheet(wb, ws, key);
+		}
+		console.log("workbook: ", wb);
 
-		const ws = XLSX.utils.json_to_sheet(xlsdata)
-		console.log(xlsdata)
-		const wb = { Sheets: { 'data': ws }, SheetNames: ['data'] };
-        const excelBuffer = XLSX.write(wb, { bookType: 'xls', type: 'binary' });
-        const fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
-        const data = new Blob([excelBuffer], {type: fileType});
+		// output workbook so it can be written to a file
+		const output = str => str;
+		const wbout = XLSX.write(wb, { type: 'binary', bookType: "xlsx" });
+		
+		// const filename = 'exporttest';
+		// const exportType = 'xls';
+		//const xlsdata = [ jsondata.driver, jsondata.nonmotorist, jsondata.vehicle ]
+		//const wb = { Sheets: { 'data': ws }, SheetNames: ['data'] };
+        //const excelBuffer = XLSX.write(wb, { bookType: 'xls', type: 'binary' });
+        // const fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+        // const data = new Blob([excelBuffer], {type: fileType});
         // console.log(typeof excelBuffer, typeof data)
-      	console.log(excelBuffer)
 
-      	//replace rest of this function with return whatever ends up being correct xls file
-        var pathToWrite = '${RNFetchBlob.fs.dirs.DownloadDir}/datatest4.xls';
+      	// //replace rest of this function with return whatever ends up being correct xls file
+        // var pathToWrite = '${RNFetchBlob.fs.dirs.DownloadDir}/datatest4.xls';
 
-        // unsure what encodings and inputted data is quite correct
+        // // unsure what encodings and inputted data is quite correct
 
-	    RNFetchBlob.fs.writeFile(pathToWrite, excelBuffer, 'utf-8')
-		.then(() => {
-		   console.log(`wrote file ${pathToWrite}`);
-		}).catch(err => console.error(err));
-
+	    // RNFetchBlob.fs.writeFile(pathToWrite, excelBuffer, 'utf-8')
+		// .then(() => {
+		//    console.log(`wrote file ${pathToWrite}`);
+		// }).catch(err => console.error(err));
+		return output(wbout);
 
 	}
 

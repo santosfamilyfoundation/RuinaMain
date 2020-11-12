@@ -29,9 +29,12 @@ export class EmailFinalReport extends Component {
     var RNFS = require('react-native-fs');
     // var path = RNFS.DocumentDirectoryPath + '/' + filename;
     var path = RNFS.ExternalDirectoryPath + '/' + filename;
+    var format = this.props.navigation.state.params.format;
+    var encoding = format === "xlsx" ? 'ascii' : 'utf8'
+
     // write the file
     try {
-        let result = await RNFS.writeFile(path, data, 'utf8');
+        let result = await RNFS.writeFile(path, data, encoding);
         console.log('FILE WRITTEN!');
         console.log(path);
         return path;

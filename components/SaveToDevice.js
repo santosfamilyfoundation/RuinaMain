@@ -66,6 +66,7 @@ class SaveToDevice extends Component {
       };
       var converter = new JSONconverter();
       var file = converter.handleConverter(format, data);
+      var encoding = format === "xlsx" ? 'ascii' : 'utf8'
 
 
       var device_platform = Platform.OS
@@ -88,7 +89,7 @@ class SaveToDevice extends Component {
 
       // write the file and save to Files app on device:
       try {
-        let result = await RNFS.writeFile(path, file, 'utf8');
+        let result = await RNFS.writeFile(path, file, encoding);
         console.log('FILE WRITTEN!');
         console.log('Data: ' + data + '\n' + 'Path: ' + path);
         this.setState({ reportSavedMessageVisible: true });
