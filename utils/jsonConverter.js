@@ -29,10 +29,10 @@ export class JSONconverter extends Component {
 	async JSONtoPDF(jsondata) {
 
 		return('PDF conversion goes here');
-		
+
 	// 	// console.log(jsondata.Driver)
  //        const driver = jsondata.Driver
-    	
+
 
 	// 	//const timesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman)
 
@@ -52,7 +52,7 @@ export class JSONconverter extends Component {
 	// 		})
 	// }
 
-		
+
  //        const pdfBytes = await pdfDoc.save()
  //        var buff = new Buffer(pdfBytes, 'base64');
 
@@ -60,14 +60,14 @@ export class JSONconverter extends Component {
 	}
 
 	JSONtoCSV(jsondata) {
-		
+
 		/*
 		table nicer with just driver,
 		reformat jsondata?
 		add processer?
 		*/
         const driver = jsondata.Driver
-    	
+
 		let converter = require('json2csv');
 
 		// let jsontocsvCallback = function (err, csv) {
@@ -80,11 +80,11 @@ export class JSONconverter extends Component {
 		// 	})
 		// 	.catch(err => console.error(err));
 		// }
-		
+
 		let convertedJson = converter.parse(jsondata);
 		console.log("Converted json in csv: " + convertedJson);
 		return convertedJson;
-	
+
 	}
 
 	JSONtoXLS(jsondata) {
@@ -92,15 +92,31 @@ export class JSONconverter extends Component {
 		// let json2xls = require('json2xls');
 		// var xlsfile = json2xls(xlsdata);
 
+		let flatten = require('flat');
+
 		console.log("json data: ", jsondata);
-		
+
 		// build new workbook
 		const wb = XLSX.utils.book_new();
-		// create worksheet	
+		// create worksheet
 		for (var key in jsondata){
 			var data = jsondata[key];
+			// flatten nested JSON into one layer
+			var flatData = flatten(
+				data,
+				{
+			    transformKey: function(key){
+						// if the key is a number, then get remove
+						if (key.match(/^[0-9]+$/) != null) {
+							return '';
+						}
+			      return key.charAt(0) + key.substring(1, key.length);
+			    }
+				}
+				);
 			console.log("data: ", data);
-			let ws = XLSX.utils.json_to_sheet(data); 
+			console.log("flattened data: ", flatData);
+			let ws = XLSX.utils.json_to_sheet([flatData]);
 			console.log("key: ", key, ", work sheet: ", ws);
 			XLSX.utils.book_append_sheet(wb, ws, key);
 		}
@@ -109,33 +125,13 @@ export class JSONconverter extends Component {
 		// output workbook so it can be written to a file
 		const output = str => str;
 		const wbout = XLSX.write(wb, { type: 'binary', bookType: "xlsx" });
-		
-		// const filename = 'exporttest';
-		// const exportType = 'xls';
-		//const xlsdata = [ jsondata.driver, jsondata.nonmotorist, jsondata.vehicle ]
-		//const wb = { Sheets: { 'data': ws }, SheetNames: ['data'] };
-        //const excelBuffer = XLSX.write(wb, { bookType: 'xls', type: 'binary' });
-        // const fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
-        // const data = new Blob([excelBuffer], {type: fileType});
-        // console.log(typeof excelBuffer, typeof data)
-
-      	// //replace rest of this function with return whatever ends up being correct xls file
-        // var pathToWrite = '${RNFetchBlob.fs.dirs.DownloadDir}/datatest4.xls';
-
-        // // unsure what encodings and inputted data is quite correct
-
-	    // RNFetchBlob.fs.writeFile(pathToWrite, excelBuffer, 'utf-8')
-		// .then(() => {
-		//    console.log(`wrote file ${pathToWrite}`);
-		// }).catch(err => console.error(err));
 		return output(wbout);
-
 	}
 
 	JSONtoHTML(jsondata) {
-		
+
 		let reportHTML = '<!doctype html> <html lang="en"> <head> <meta charset="utf8"> <title> </title> </head> <body>'
-		
+
 		for (let section in jsondata) {
 			reportHTML += ('<div style="float:left;padding: 1em;"><h1>' + section + '</h1>')
 			writeSection(jsondata[section])
@@ -155,5 +151,5 @@ export class JSONconverter extends Component {
 		console.log("Converted json in csv: " + reportHTML);
 		return reportHTML
 	}
-} 
+}
 export default JSONconverter;
