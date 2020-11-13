@@ -13,6 +13,8 @@ export class JSONconverter extends Component {
 	handleConverter(format, data) {
 		let file;
 		switch (format) {
+			case 'json':
+				return file = JSON.stringify(data);
 			case 'pdf':
 				return file = this.JSONtoPDF(data);
 			case 'csv':
@@ -66,7 +68,6 @@ export class JSONconverter extends Component {
 		reformat jsondata?
 		add processer?
 		*/
-        const driver = jsondata.Driver
 
 		let converter = require('json2csv');
 
