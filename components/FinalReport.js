@@ -53,7 +53,8 @@ class FinalReport extends Component {
             "json",
             "csv",
             "xlsx",
-            "pdf"
+            // "pdf",
+            "html"
         ];
 
         return(

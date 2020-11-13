@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import {TopNavigation, Card, CardHeader, Text, Button, Layout} from '@ui-kitten/components';
-import { Platform, StyleSheet, View, TextInput, Linking, PermissionsAndroid} from 'react-native';
+import {TopNavigation, Card, CardHeader, Text, Button} from '@ui-kitten/components';
+import { Platform, StyleSheet, View, TextInput, PermissionsAndroid} from 'react-native';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
+import JSONconverter from '../utils/jsonConverter';
 
 class SaveToDevice extends Component {
   constructor(props) {
@@ -53,10 +54,20 @@ class SaveToDevice extends Component {
   };
 
   async saveData() {
-      const format = this.props.navigation.state.params.format
-
+      const format = this.props.navigation.state.params.format;
+      console.log(format);
       // convert data to desired format
-      var data = this.convertJson(format);
+      const data = {
+        driver: this.props.driver.data,
+        nonmotorist: this.props.nonmotorist.data,
+        vehicle: this.props.vehicle.data,
+        passenger: this.props.passenger.data,
+        road: this.props.road.data,
+      };
+      var converter = new JSONconverter();
+      var file = converter.handleConverter(format, data);
+      var encoding = format === "xlsx" ? 'ascii' : 'utf8'
+
 
       var device_platform = Platform.OS
       var RNFS = require('react-native-fs');
@@ -68,6 +79,7 @@ class SaveToDevice extends Component {
       const path_ios = RNFS.DocumentDirectoryPath + '/' + this.state.filename + "." + format;
       const path_android = RNFS.ExternalStorageDirectoryPath + '/' + this.state.filename + "." + format;
       //const path = this.state.devicePlatform === 'ios' ? path_ios : path_android;
+      let path;
       if (this.state.devicePlatform === 'ios'){
         path = path_ios;
       } else {
@@ -77,7 +89,7 @@ class SaveToDevice extends Component {
 
       // write the file and save to Files app on device:
       try {
-        let result = await RNFS.writeFile(path, data, 'utf8');
+        let result = await RNFS.writeFile(path, file, encoding);
         console.log('FILE WRITTEN!');
         console.log('Data: ' + data + '\n' + 'Path: ' + path);
         this.setState({ reportSavedMessageVisible: true });
@@ -87,22 +99,6 @@ class SaveToDevice extends Component {
         this.setState({ reportSavedFailedMessageVisible: true });
         return null;
       }
-  }
-
-  convertJson(format) {
-    const data = {
-        driver: this.props.driver.data,
-        nonmotorist: this.props.nonmotorist.data,
-        vehicle: this.props.vehicle.data,
-        passenger: this.props.passenger.data,
-        road: this.props.road.data,
-    }
-    switch(format){
-      case 'csv':
-        break;
-      default:
-        return JSON.stringify(data);
-    }
   }
 
   render() {
@@ -145,7 +141,7 @@ class SaveToDevice extends Component {
           }}
         >
           <Text style={material.subheading}>
-            Your report has been succesfully saved to the "Files/My Files" app on your device inside either SDCARD or "Internal storage". 
+            Your report has been succesfully saved to the "Files/My Files" app on your device inside either SDCARD or "Internal storage".
           </Text>
         </MaterialDialog>
 
