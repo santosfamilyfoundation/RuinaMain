@@ -12,6 +12,7 @@ import { styles } from './Map.style';
 import { changeLat, changeLong } from '../../actions/MapAction';
 import { updateRoad } from '../../actions/RoadAction';
 import * as Constants from '../../constants';
+import NetInfoAPI from "../../utils/NetAPI"
 
 const { width, height } = Dimensions.get('window');
 const SCREEN_WIDTH = width;
@@ -67,7 +68,16 @@ export class Map extends Component {
   }
 
   // load map when component loads
-  componentDidMount() {
+  async componentDidMount() {
+    const net = new NetInfoAPI();
+    let netStatus = await net.checkNetOnce();
+    // net info is wraped in net.status
+    // console.log(`NetInfo: ${net.status}`);
+    if (netStatus==false){
+      // deal with internet not connected
+      this.setState({ displayFailedToLoadMessage: true, loading: false });
+      return;
+    }
     Geolocation.getCurrentPosition(
       (position) => {
         let region = {
@@ -255,7 +265,7 @@ export class Map extends Component {
               }}
             >
               <Text style={material.subheading}>
-                The map and geolocation features failed to load. Please check your connection and try again later.
+                The map and geolocation features failed to load. Please check your internet connection and try again later.
               </Text>
             </MaterialDialog>
           </SafeAreaView>
