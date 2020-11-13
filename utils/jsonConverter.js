@@ -13,6 +13,8 @@ export class JSONconverter extends Component {
 	handleConverter(format, data) {
 		let file;
 		switch (format) {
+			case 'json':
+				return file = JSON.stringify(data);
 			case 'pdf':
 				return file = this.JSONtoPDF(data);
 			case 'csv':
@@ -148,7 +150,7 @@ export class JSONconverter extends Component {
 			}
 		}
 		reportHTML += '</body> </html>'
-		console.log("Converted json in csv: " + reportHTML);
+		console.log("Converted json in html: " + reportHTML);
 		return reportHTML
 	}
 }
