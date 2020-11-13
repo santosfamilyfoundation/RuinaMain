@@ -95,7 +95,6 @@ class SaveToDevice extends Component {
         this.setState({ reportSavedMessageVisible: true });
         return path;
       } catch (err) {
-        console.log("Undefinedddd");
         console.log(err.message);
         this.setState({ reportSavedFailedMessageVisible: true });
         return null;
@@ -142,7 +141,7 @@ class SaveToDevice extends Component {
           }}
         >
           <Text style={material.subheading}>
-            Your report has been succesfully saved to the "Files/My Files" app on your device inside either SDCARD or "Internal storage". 
+            Your report has been succesfully saved to the "Files/My Files" app on your device inside either SDCARD or "Internal storage".
           </Text>
         </MaterialDialog>
 
