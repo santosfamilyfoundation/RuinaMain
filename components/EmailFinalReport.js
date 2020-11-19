@@ -1,14 +1,18 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { Linking, TextInput, StyleSheet, Alert, View } from 'react-native';
+import { TextInput, StyleSheet, Alert, View } from 'react-native';
 import {TopNavigation, Card, CardHeader, Text, Button} from '@ui-kitten/components';
+import { MaterialDialog } from 'react-native-material-dialog';
+import { material } from "react-native-typography";
 import Mailer from 'react-native-mail';
+import JSONconverter from '../utils/jsonConverter';
+import NetInfoAPI from "../utils/NetAPI"
 
 export class EmailFinalReport extends Component {
   constructor(props) {
     super(props);
-    this.state = {filename: this.getDefaultFilename()};
+    this.state = {filename: this.getDefaultFilename(), offlineStatus: false};
     this.changeFilename = this.changeFilename.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
   }
@@ -28,9 +32,12 @@ export class EmailFinalReport extends Component {
     var RNFS = require('react-native-fs');
     // var path = RNFS.DocumentDirectoryPath + '/' + filename;
     var path = RNFS.ExternalDirectoryPath + '/' + filename;
+    var format = this.props.navigation.state.params.format;
+    var encoding = format === "xlsx" ? 'ascii' : 'utf8'
+
     // write the file
     try {
-        let result = await RNFS.writeFile(path, data, 'utf8');
+        let result = await RNFS.writeFile(path, data, encoding);
         console.log('FILE WRITTEN!');
         console.log(path);
         return path;
@@ -38,17 +45,6 @@ export class EmailFinalReport extends Component {
       console.log(err.message);
       return null;
     }
-  }
-  // temporary function that converts the JSON into a JSON
-  // will be replaced with the JSON converter module
-  convertJson(format) {
-    const data = {
-        driver: this.props.driver.data,
-        nonmotorist: this.props.nonmotorist.data,
-        vehicle: this.props.vehicle.data,
-        passenger: this.props.passenger.data,
-    }
-    return JSON.stringify(data);
   }
   // send email based on the inputted filename
   // leave everything else blank, except subject (subject = filename)
@@ -83,12 +79,27 @@ export class EmailFinalReport extends Component {
   }
   // handles the entire email workflow
   async handleEmail() {
+    const net = new NetInfoAPI();
+    let netStatus = await net.checkNetOnce();
+    // net info is wraped in net.status
+    // console.log(`NetInfo: ${net.status}`);
+    if (netStatus==false){
+      // deal with internet not connected
+      this.setState({ offlineStatus: true });
+      return;
+    }
+    const data = {
+        driver: this.props.driver.data,
+        nonmotorist: this.props.nonmotorist.data,
+        vehicle: this.props.vehicle.data,
+        passenger: this.props.passenger.data,
+        road: this.props.road.data,
+      };
     var format = this.props.navigation.state.params.format;
-    console.log('Format: ' + format);
-    var data = this.convertJson(format);
-    console.log('Data: ' + data);
+    var converter = new JSONconverter();
+    var file = converter.handleConverter(format, data);
     // save data internally
-    var path = await this.saveDataInternal(data, this.state.filename + "." + format);
+    var path = await this.saveDataInternal(file, this.state.filename + "." + format);
     // send email
     await this.sendEmail(path, this.state.filename + "." + format);
   }
@@ -134,6 +145,22 @@ export class EmailFinalReport extends Component {
                </Button>
            </View>
         </Card>
+
+        <MaterialDialog
+          title={"Can't email when offline!"}
+          visible={this.state.offlineStatus}
+          onCancel={() => {
+            this.setState({ offlineStatus: false });
+          }}
+          onOk={() => {
+            this.setState({ offlineStatus: false });
+          }}
+        >
+          <Text style={material.subheading}>
+            You can not send emails while being offline.
+            Please check your internet connection and try again later.
+          </Text>
+        </MaterialDialog>
 
       </SafeAreaView>
     )

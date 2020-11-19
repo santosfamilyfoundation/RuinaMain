@@ -6,10 +6,10 @@ import 'react-native';
 import React from 'react';
 import waitUntil from "async-wait-until";
 import { shallow } from "enzyme";
+import sinon from 'sinon';
 import { ReportToDatabase } from '../components/ReportToDatabase';
 
 jest.mock("axios");
-jest.useFakeTimers(); //Add this on top of your test file.
 
 describe('ReportToDatabase Component', () => {
   let wrapper;
@@ -18,6 +18,7 @@ describe('ReportToDatabase Component', () => {
 
   beforeEach(() => {
    // pass the mock function as the BackAction prop
+   jest.useFakeTimers();
    wrapper = shallow(<ReportToDatabase BackAction={mockBackAction}/>);
   });
   it('renders as expected', () => {
@@ -26,15 +27,17 @@ describe('ReportToDatabase Component', () => {
     // expect(wrapper.sendHttpRequest).toBeDefined();//Instance is your class or component shallow instance
 
   });
-  // it('send request as expected',async () => {
-  //   const inst = wrapper.instance();
-  //   // axios.post.mockResolvedValue({code: 200, msg: "success"});
-  //   inst.sendHttpRequest()
-  //   const expectedRes = [ { code: 200, msg: "success" } ];
-  //   waitUntil(() => {
-  //     return !_.isEmpty(inst.state("dbResponse"));
-  //   }).then(() => {
-  //     expect(inst.state("dbResponse")).toEqual(expectedRes);
-  //   });
-  // });
+
+  it('send request as expected', async () => {
+    const inst = wrapper.instance();
+    var spy = sinon.spy(wrapper.instance(), 'sendHttpRequest');
+    const expectedRes = [ { code: 200, msg: "success" } ];
+    waitUntil(() => {
+      return !_.isEmpty(inst.state("dbResponse"));
+    }).then(() => {
+      expect(spy.called).toEqual(true);
+      expect(inst.state("dbResponse")).toEqual(expectedRes);
+    });
+  });
 });
+
