@@ -16,7 +16,7 @@ export class RNCamera extends React.Component {
   };
 
   takePictureAsync = async () => {
-    await timeout(2000);
+    await timeout(500);
     return {
       base64: 'base64string',
     };

@@ -2,18 +2,16 @@ import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { PermissionsAndroid, Platform, TextInput, Text, View, TouchableOpacity } from 'react-native';
 import { Button, Divider, Layout, TopNavigation, Select} from '@ui-kitten/components';
-import firebase from 'react-native-firebase';
 import { connect } from 'react-redux';
 import { photoAction } from '../../actions/PhotoAction';
 import { RNCamera } from 'react-native-camera';
 import BasicDropDown from '../dropdowns/BasicDropDown'
 import * as Constants from '../../constants';
 import { styles } from './PhotoCapture.style';
-import AsyncStorage from '@react-native-community/async-storage';
 import CameraRoll from "@react-native-community/cameraroll";
 var uuid = require('react-native-uuid');
 
-class PhotoCapture extends Component {
+export class PhotoCapture extends Component {
   state = {
     images: [],
     selectedOption: 'Other',
@@ -36,25 +34,33 @@ class PhotoCapture extends Component {
     return status === 'granted';
   }
 
-  capture() {
+  async capture() {
+    const { onTakePhoto } = this.props;
     //Calls for the screen to be captured
-    this.camera.takePictureAsync({ skipProcessing: true }).then((data) => {
-      this.setState({
-        imgUri: data["uri"],
-      });
-      switch (Platform.OS) {
-        case 'ios':
-          break;
-        case 'android':
-          if (this.hasAndroidStoragePermission()) {
-            CameraRoll.save(this.state.imgUri);
-          }
-          break;
-        default:
-          break;
-      }
-      // this.uploadImage()
-    })
+    console.log('test');
+    const data = await this.camera.takePictureAsync({ skipProcessing: true });
+    this.setState({
+      imgUri: data["uri"],
+    });
+    console.log('camera roll pls');
+    this.saveToCameraRoll(this.state.imgUri);
+  }
+
+  async saveToCameraRoll(imgUri) {
+    switch (Platform.OS) {
+      case 'ios':
+        console.log('Sadge');
+        break;
+      case 'android':
+        console.log('PagChomp');
+        if (this.hasAndroidStoragePermission()) {
+          CameraRoll.save(this.state.imgUri);
+        }
+        break;
+      default:
+        console.log('Pepega');
+        break;
+    }
   }
 
   componentDidMount() {
@@ -65,55 +71,6 @@ class PhotoCapture extends Component {
       this.mounted = false;
   }
 
-  uploadImage = () => {
-    //Upload Image to Firebase Storage (see Drive documentation for password and access to firebase account)
-    const ext = this.state.imgUri.split('.').pop(); // Extract image extension
-    const filename = `${uuid.v1()}.${ext}`; // Making a unique name
-    if(this.mounted) {
-      this.setState({ uploading: true });
-      firebase //Connect and store in firebase
-        .storage()
-        .ref(`CrashImages/${filename}`)
-        .putFile(this.state.imgUri)
-        .on(
-          firebase.storage.TaskEvent.STATE_CHANGED,
-          snapshot => {
-            let state = {};
-            state = {
-              ...state,
-              progress: (snapshot.bytesTransferred / snapshot.totalBytes) * 100 // Update the progress bar value
-            };
-            if (snapshot.state === firebase.storage.TaskState.SUCCESS) {
-              const allImages = this.state.images;
-              allImages.push(snapshot.downloadURL);
-              state = {
-                ...state,
-                uploading: false,
-                imgUri: '',
-                progress: 0,
-                images: allImages,
-                currImage: snapshot.downloadURL,
-              };
-              //Updated photo reducer
-              this.props.photoAction({image: snapshot.downloadURL, tag: this.state.selectedOption});
-              storeData = async () => {
-                try {
-                  await AsyncStorage.setItem('images', JSON.stringify(allImages))
-                } catch (e) {
-                  console.log('Photo upload error: ', e)
-                }
-              }
-            }
-            this.setState(state);
-          },
-          error => {
-            unsubscribe();
-            alert('Unable to upload');
-          }
-        );
-      };
-  };
-
   setOption = (text) => {
     //Sets what object that is tagged in photo
     this.setState({
@@ -121,61 +78,60 @@ class PhotoCapture extends Component {
     });
   }
 
-    render() {
+  render() {
+      const {photoAction, vehicle} = this.props
 
-        const {photoAction, vehicle} = this.props
+      //If there are no objects in reducers yet, the dropdown is disabled
+      const isObjDisabled = vehicle.data.length == 0 ? (true) : (false);
 
-        //If there are no objects in reducers yet, the dropdown is disabled
-        const isObjDisabled = vehicle.data.length == 0 ? (true) : (false);
+      //Map vehicles to options in dropdown
+      const objectData = vehicle.data.map((vehicle, index) => {
+          const name = "Vehicle " + (index + 1)
+          return {"text":name};
+      })
 
-        //Map vehicles to options in dropdown
-        const objectData = vehicle.data.map((vehicle, index) => {
-            const name = "Vehicle " + (index + 1)
-            return {"text":name};
-        })
+      //Adding a general crash scene option to dropdown
+      objectData.push({"text":"Crash Scene"})
 
-        //Adding a general crash scene option to dropdown
-        objectData.push({"text":"Crash Scene"})
+      const navigateResult = () => {
+        this.props.navigation.navigate('Result');
+      };
 
-        const navigateResult = () => {
-          this.props.navigation.navigate('Result');
-        };
+      //Keeping track of progress for uploading progress bar
+      const progress = this.state.progress;
+      return (
+          <SafeAreaView style={{ flex: 1 }}>
+          <TopNavigation title='Photo Capture' alignment='center' leftControl={this.props.BackAction()}/>
+            <Divider/>
+            <Layout style={styles.cameraLayout}>
+              <RNCamera
+                style={styles.cameraPreview}
+                ref={ref => (this.camera = ref)}
 
-        //Keeping track of progress for uploading progress bar
-        const progress = this.state.progress;
-
-        return (
-            <SafeAreaView style={{ flex: 1 }}>
-            <TopNavigation title='Photo Capture' alignment='center' leftControl={this.props.BackAction()}/>
-              <Divider/>
-              <Layout style={styles.cameraLayout}>
-                <RNCamera
-                  style={styles.cameraPreview}
-                  ref={cam => (this.camera = cam)}
-                >
-                </RNCamera>
-                <Layout style={styles.controlBar}>
-                    <Layout style={styles.topControlBar}>
-                    { progress < 100 && progress != 0 ?
-                        <Layout>
-                          <Text>
-                            Uploading...
-                          </Text>
-                          <View style={[styles.progressBar, { width: `${this.state.progress}%` }]}/>
-                        </Layout>
-                      :
-                        <Layout>
-                        </Layout>
-                    }
-                    </Layout>
-                  <Layout style={styles.bottomControlBar}>
-                    <BasicDropDown data={objectData} selectFunction={this.setOption} isDisabled={isObjDisabled}/>
-                    <Button style={styles.captureButton} appearance={"filled"} onPress={this.capture.bind(this)}>{"Capture"}</Button>
+              >
+              </RNCamera>
+              <Layout style={styles.controlBar}>
+                  <Layout style={styles.topControlBar}>
+                  { progress < 100 && progress != 0 ?
+                      <Layout>
+                        <Text>
+                          Uploading...
+                        </Text>
+                        <View style={[styles.progressBar, { width: `${this.state.progress}%` }]}/>
+                      </Layout>
+                    :
+                      <Layout>
+                      </Layout>
+                  }
                   </Layout>
+                <Layout style={styles.bottomControlBar}>
+                  <BasicDropDown data={objectData} selectFunction={this.setOption} isDisabled={isObjDisabled}/>
+                  <Button id="takePictureButton" style={styles.captureButton} appearance={"filled"} onPress={this.capture.bind(this)}>{"Capture"}</Button>
                 </Layout>
               </Layout>
-            </SafeAreaView>
-          );
+            </Layout>
+          </SafeAreaView>
+        );
     }
 };
 
@@ -189,5 +145,6 @@ const mapStateToProps = (state) => {
         vehicle: state.vehicleReducer,
     }
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhotoCapture);
