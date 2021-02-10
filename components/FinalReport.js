@@ -1,141 +1,107 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { Linking } from 'react-native';
 import {TopNavigation,Card, CardHeader, Text, Button} from '@ui-kitten/components';
-import Mailer from 'react-native-mail';
+import {StyleSheet, Linking, ScrollView} from 'react-native';
+import { MaterialDialog, SinglePickerMaterialDialog} from 'react-native-material-dialog';
 
 
 class FinalReport extends Component {
-    saveData = () => {
-        const data = {
-            driver: this.props.driver.data,
-            nonmotorist: this.props.nonmotorist.data,
-            vehicle: this.props.vehicle.data,
-            passenger: this.props.passenger.data,
-        }
-        // require the module
-        var RNFS = require('react-native-fs');
-        var path = RNFS.DocumentDirectoryPath + '/final_report.json';
-        // /var/mobile/Containers/Data/Application/12F7361A-BC3E-42C9-B81E-FBBBF7BA3E2C/Documents/final_report.json
+    constructor(props) {
+        super(props);
+        this.state = {
+            chooseReportFormatVisible: false,
+            chooseReportFormatSelectedItem: undefined,
+            exportAction: undefined,
+        };
+    }
 
-        // write the file
-        RNFS.writeFile(path, JSON.stringify(data), 'utf8')
-            .then((success) => {
-                console.log('FILE WRITTEN!');
-                console.log('Data: ' + JSON.stringify(data) + 'Path: ' + path);
-            })
-            .catch((err) => {
-                console.log(err.message);
-            });
-    }
-    handleEmail() {
-      console.log('Sending an email!');
-      Mailer.mail({
-        subject: 'Testing',
-        recipients: ['coverney@olin.edu'],
-        // ccRecipients: ['supportCC@example.com'],
-        // bccRecipients: ['supportBCC@example.com'],
-        body: '<b>A Bold Body</b>',
-        customChooserTitle: "This is my new title", // Android only (defaults to "Send Mail")
-        isHTML: true,
-        // attachments: [{
-        //   path: '',  // The absolute path of the file from which to read data.
-        //   type: '',   // Mime Type: jpg, png, doc, ppt, html, pdf, csv
-        //   // mimeType - use only if you want to use custom type
-        //   name: '',   // Optional: Custom filename for attachment
-        // }]
-      }, (error, event) => {
-        console.log('errror', error)
-        Alert.alert(
-          error,
-          event,
-          [
-            {text: 'Ok', onPress: () => console.log('OK: Email Error Response')},
-            {text: 'Cancel', onPress: () => console.log('CANCEL: Email Error Response')}
-          ],
-          { cancelable: true }
-        )
-      });
-    }
-    printReport () {
-      // console.log(JSON.stringify(this.props.driver.data));
-      // console.log(JSON.stringify(this.props.nonmotorist.data));
-      // console.log(JSON.stringify(this.props.vehicle.data));
-      // console.log(JSON.stringify(this.props.passenger.data));
-      // console.log(JSON.stringify(this.props.quiz.data));
-      // // console.log(JSON.stringify(this.props.photos.data));
-      // // console.log(JSON.stringify(this.props.story.data));
-      console.log(JSON.stringify(this.props.road.data));
-    }
     render(){
         const {
-            navigation,
-            driver,
-            nonmotorist,
-            vehicle,
-            passenger,
-            quiz,
-            road,
-            } = this.props
-        const VehicleHeader = () => (
-            <CardHeader title="Vehicle"/>
-        )
-        const PassengerHeader = () => (
-            <CardHeader title="Passenger"/>
-        )
-        const NonMotoristHeader = () => (
-            <CardHeader title="Non Motorist"/>
-        )
-        const DriverHeader = () => (
-            <CardHeader title="Driver"/>
-        )
-        const FeedbackHeader = () => (
-            <CardHeader title="Feedback"/>
-        )
-        const SaveDataHeader = () => (
-            <CardHeader title="SaveData" />
+            navigation
+        } = this.props
+
+        const SaveToDeviceHeader = () => (
+            <CardHeader title="Save to Local Device" />
         )
         const EmailHeader = () => (
             <CardHeader title="Email"/>
         )
-        const PrintReportHeader = () => (
-            <CardHeader title="Print Report"/>
+        const SaveToDatabaseHeader = () => (
+            <CardHeader title="Save to Database" />
         )
-        const navigateEmailFinalReport = (format) =>{
+
+        const FeedbackHeader = () => (
+            <CardHeader title="Feedback"/>
+        )
+
+        const navigateSaveToDevice = (format) => {
+            console.log('Save Report to Device!');
+            navigation.navigate('SaveToDevice', {format: format})
+        }
+
+        const navigateEmail = (format) =>{
             navigation.navigate('EmailFinalReport', {format:format})
         }
+
+        const navigateDatabase = (format) => {
+            console.log('SEND REPORT TO DATABASE!');
+            navigation.navigate('ReportToDatabase', {format:format})
+        }
+
+        const file_format_extensions = [
+            "json",
+            "csv",
+            "xlsx",
+            // "pdf",
+            "html"
+        ];
+
         return(
             <SafeAreaView style={{flex:1}}>
                 <TopNavigation title="Final Report" alignment="center" leftControl={this.props.BackAction()}/>
-                <Card header={SaveDataHeader}>
-                    <Text style={{ marginBottom: 20 }}>Press this button to save the crash report.</Text>
-                    <Button onPress={() => this.saveData()}>Save Data</Button>
-                </Card>
-                <Card header={EmailHeader}>
-                    <Text style={{ marginBottom: 20 }}>Press this button to email the crash report.</Text>
-                    <Button onPress={() => navigateEmailFinalReport('JSON')}>Email Report</Button>
-                </Card>
-                <Card header={PrintReportHeader}>
-                  <Text style={{marginBottom: 20}}>Press this button to print the crash report.</Text>
-                  <Button onPress={()=>this.printReport()}>Print Report</Button>
-                </Card>
-                <Card header={VehicleHeader}>
-                    <Text>{JSON.stringify(vehicle.data)}</Text>
-                </Card>
-                <Card header={DriverHeader}>
-                    <Text>{JSON.stringify(driver.data)}</Text>
-                </Card>
-                <Card header={PassengerHeader}>
-                    <Text>{JSON.stringify(passenger.data)}</Text>
-                </Card>
-                <Card header={NonMotoristHeader}>
-                    <Text>{JSON.stringify(nonmotorist.data)}</Text>
-                </Card>
-                <Card header={FeedbackHeader} style={{marginTop:20}}>
-                  <Text style={{marginBottom: 20}}>Tell us what you liked and what you didn't like so we can make your experience better.</Text>
-                  <Button onPress={()=>Linking.openURL('https://forms.gle/ho3cZNyoaFArNNN79')}>Submit Feedback</Button>
-                </Card>
+                <ScrollView style={{ flex: 1 }}>
+                  <Card header={SaveToDeviceHeader }>
+                      <Text style={{ marginBottom: 20 }}>Press this button to save the crash report to local device.</Text>
+                      <Button
+                          onPress={() => this.setState({ chooseReportFormatVisible: true, exportAction: navigateSaveToDevice })}>
+                          Save Report to Local Device
+                      </Button>
+
+                  </Card>
+                  <Card header={EmailHeader}>
+                      <Text style={{ marginBottom: 20 }}>Press this button to email the crash report.</Text>
+                      <Button
+                          onPress={() => this.setState({ chooseReportFormatVisible: true, exportAction: navigateEmail })}>
+                          Email Report
+                      </Button>
+                  </Card>
+                  <Card header={SaveToDatabaseHeader}>
+                      <Text style={{ marginBottom: 20 }}>Press this button to send the crash report to the database.</Text>
+                      <Button onPress={() => navigateDatabase('JSON')}>Send Report To Database</Button>
+                  </Card>
+                  <Card header={FeedbackHeader} style={{marginTop:20}}>
+                    <Text style={{marginBottom: 20}}>Tell us what you liked and what you didn't like so we can make your experience better.</Text>
+                    <Button onPress={()=>Linking.openURL('https://forms.gle/ho3cZNyoaFArNNN79')}>Submit Feedback</Button>
+                  </Card>
+
+                  <SinglePickerMaterialDialog
+                      title={"Choose report export format"}
+                      scrolled
+                      items={file_format_extensions.map((row, index) => ({ value: index, label: row }))}
+                      visible={this.state.chooseReportFormatVisible}
+                      selectedItem={this.state.chooseReportFormatSelectedItem}
+                      onCancel={() => this.setState({ chooseReportFormatVisible: false })}
+                      onOk={result => {
+                          this.setState({ chooseReportFormatSelectedItem: result.selectedItem});
+                          this.setState({ chooseReportFormatVisible: false });
+                          console.log('selected:', this.state.chooseReportFormatSelectedItem);
+                          console.log('result:', result.selectedItem);
+                          console.log('pop up window state:', this.state.chooseReportFormatVisible);
+                          this.state.exportAction(result.selectedItem.label);
+                      }}
+                  />
+                </ScrollView>
             </SafeAreaView>
         )
     }
