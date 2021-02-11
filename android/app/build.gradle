@@ -161,13 +161,6 @@ android {
             // Caution! In production, you need to generate your own keystore file.
             // see https://facebook.github.io/react-native/docs/signed-apk-android.
 //            minifyEnabled enableProguardInReleaseBuilds
-            applicationVariants.all { variant ->
-                variant.outputs.all {
-                    def currentFile = new File(outputFileName)
-                    def filename = currentFile.getName()
-                    outputFileName = "../../../../../Application/Application/build/outputs/apk/${filename}"
-                }
-            }
             minifyEnabled true
             shrinkResources true
             debuggable false
