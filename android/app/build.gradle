@@ -76,8 +76,8 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    entryFile: "index.js",
-    enableHermes: false,  // clean and rebuild if changing
+        entryFile: "index.js",
+        enableHermes: false,  // clean and rebuild if changing
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -136,21 +136,21 @@ android {
         versionName "1.0"
         multiDexEnabled true
         manifestPlaceholders = [GOOGLE_MAPS_API_KEY: "$System.env.GOOGLE_MAPS_API_KEY"]
-/*        ndk {
+        ndk {
             abiFilters "armeabi-v7a", "x86"
-        }*/
+        }
     }
     splits {
         abi {
-//            reset()
-//            enable enableSeparateBuildPerCPUArchitecture
-//            universalApk false  // If true, also generate a universal APK
-//            include "armeabi-v7a", "x86"
-
-            enable true
             reset()
-            include "armeabi-v7a", "x86"
-            universalApk false
+            enable enableSeparateBuildPerCPUArchitecture
+            universalApk false  // If true, also generate a universal APK
+            include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
+
+//            enable true
+//            reset()
+//            include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
+//            universalApk false
         }
     }
     buildTypes {
@@ -206,7 +206,7 @@ repositories {
 dependencies {
     implementation project(':react-native-uuid-generator')
     implementation (project(':react-native-camera')) {
-      exclude group: "com.google.android.gms"
+        exclude group: "com.google.android.gms"
     }
     implementation project(':@react-native-community_geolocation')
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -248,4 +248,3 @@ task copyDownloadableDepsToLibs(type: Copy) {
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
 apply plugin: 'com.google.gms.google-services'
-
