@@ -76,8 +76,8 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    entryFile: "index.js",
-    enableHermes: false,  // clean and rebuild if changing
+        entryFile: "index.js",
+        enableHermes: false,  // clean and rebuild if changing
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -136,40 +136,42 @@ android {
         versionName "1.0"
         multiDexEnabled true
         manifestPlaceholders = [GOOGLE_MAPS_API_KEY: "$System.env.GOOGLE_MAPS_API_KEY"]
-/*        ndk {
-            abiFilters "armeabi-v7a", "x86"
-        }*/
     }
     splits {
         abi {
-//            reset()
-//            enable enableSeparateBuildPerCPUArchitecture
-//            universalApk false  // If true, also generate a universal APK
-//            include "armeabi-v7a", "x86"
-
-            enable true
             reset()
-//            enableSeparateBuildPerCPUArchitecture = false
-            include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
-            universalApk false
+            enable enableSeparateBuildPerCPUArchitecture
+            universalApk false  // If true, also generate a universal APK
+            include "armeabi-v7a", "x86"
         }
     }
+    signingConfigs {
+        debug {
+//            storeFile file('debug.keystore')
+//            storePassword 'android'
+//            keyAlias 'androiddebugkey'
+//            keyPassword 'android'
+        }
+        release {
+            if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
+                storeFile file(MYAPP_UPLOAD_STORE_FILE)
+                storePassword MYAPP_UPLOAD_STORE_PASSWORD
+                keyAlias MYAPP_UPLOAD_KEY_ALIAS
+                keyPassword MYAPP_UPLOAD_KEY_PASSWORD
+            }
+        }
+    }
+
     buildTypes {
         debug {
+            signingConfig signingConfigs.release
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://facebook.github.io/react-native/docs/signed-apk-android.
-//            minifyEnabled enableProguardInReleaseBuilds
-            minifyEnabled true
-            shrinkResources true
-            debuggable false
-            jniDebuggable false
-            renderscriptDebuggable false
-            pseudoLocalesEnabled false
-            zipAlignEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-//            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
+            minifyEnabled enableProguardInReleaseBuilds
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
 
@@ -207,7 +209,7 @@ repositories {
 dependencies {
     implementation project(':react-native-uuid-generator')
     implementation (project(':react-native-camera')) {
-      exclude group: "com.google.android.gms"
+        exclude group: "com.google.android.gms"
     }
     implementation project(':@react-native-community_geolocation')
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -249,4 +251,3 @@ task copyDownloadableDepsToLibs(type: Copy) {
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
 apply plugin: 'com.google.gms.google-services'
-
