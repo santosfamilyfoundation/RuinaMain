@@ -12,14 +12,14 @@ export const CONDITIONS_ANNOUNCE = "Weather conditions are:";
 export const WIND_SPEED_ANNOUNCE = "Wind speed is:";
 export const WIND_DEG_ANNOUNCE = "Wind degree is:";
 
-export const LAT_ID = "C6-S1";
-export const LONG_ID = "C6-S2";
-export const WEATHER = "C11";
-export const VIN_ID = "V1";
-export const TIME_ID = "C3";
-export const DLICENSE_ID = "P12-S1";
-export const LICENSE_PLATE_ID = "V4";
+export const LAT_ID = "road-12";
+export const LONG_ID = "road-13";
+export const WEATHER = "road-20";
+export const VIN_ID = "vehicle-11";
+export const TIME_ID = "road-7";
+export const DLICENSE_ID = "driver-24";
+export const LICENSE_PLATE_ID = "vehicle-18";
 
-export const MAKE_ID = "V5";
-export const MODEL_ID = "V7";
-export const YEAR_ID = "V6";
+export const MAKE_ID = "vehicle-19";
+export const MODEL_ID = "vehicle-21";
+export const YEAR_ID = "vehicle-20";
