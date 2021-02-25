@@ -92,7 +92,7 @@ class QuickSurvey extends Component {
                     fieldName = "numLvhm"
                   />
                 </SafeAreaView>
-                <SafeAreaView style = {styles.questionContainer}>
+                <SafeAreaView style = {styles.qustionContainer}>
                   <NumberButtonSelector
                     title="Number of fatalities"
                     submitFunction = {changeFatality}

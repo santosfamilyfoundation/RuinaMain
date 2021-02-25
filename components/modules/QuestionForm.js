@@ -94,6 +94,16 @@ class QuestionForm extends Component {
               submitFunction={submitFunction}
             />
           )
+        case 'autoCompleteDropDown':
+          return (
+            <AutoCompleteDropDown
+              data={question}
+              key={question.id}
+              id={questionDetail.objectID}
+              reducer={reducer}
+              submitFunction={submitFunction}
+            />
+          )
         case 'openTextBox':
           return (
             <OpenTextField
@@ -158,7 +168,7 @@ class QuestionForm extends Component {
               submitFunction={submitFunction}
             />
           )
-        case 'autoCompleteDropdown':
+        case 'autoCompleteDropDown':
           return (
             <AutoCompleteDropDown
               data={question}

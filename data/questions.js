@@ -2949,7 +2949,7 @@ export const questions = {
             "numOptionsAllowed": "1",
             "question": "Person Type",
             "id": "nonmotorist-12",
-            "answerType": "dropdown",
+            "answerType": "autoCompleteDropDown",
             "display": [
                 "nonmotorist"
             ],
@@ -4624,7 +4624,7 @@ export const questions = {
             "numOptionsAllowed": "1",
             "question": "Weather Conditions",
             "id": "road-20",
-            "answerType": "advancedDropDown",
+            "answerType": "advancedOpenTextField",
             "display": [
                 "road"
             ],
@@ -5176,7 +5176,7 @@ export const questions = {
             "numOptionsAllowed": "1",
             "question": "School Bus-Related",
             "id": "setup-0",
-            "answerType": "multiButton",
+            "answerType": "autoCompleteDropDown",
             "display": [
                 "setup"
             ],
@@ -5544,7 +5544,7 @@ export const questions = {
             "numOptionsAllowed": "1",
             "question": "Special Function of Motor Vehicle in Transport",
             "id": "vehicle-26",
-            "answerType": "dropdown",
+            "answerType": "autoCompleteDropDown",
             "display": [
                 "vehicle"
             ],

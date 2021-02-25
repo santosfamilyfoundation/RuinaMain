@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Layout, Text, Card, Button, CardHeader, Icon, Autocomplete } from '@ui-kitten/components';
+import { Layout, Text, Card, Button, CardHeader, Icon, Autocomplete, AutocompleteItem } from '@ui-kitten/components';
 import { styles } from './AutoCompleteDropDown.style';
 
 
 const AutoCompleteDropDown = (props) => {
-    const [value, setValue] = React.useState('');   // value that will be stored in Redux
+    const [value, setValue] = React.useState(null);   // value that will be stored in Redux
     const [title, setTitle] = React.useState('');   // value that will be displayed to user in form field
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const {data, key, id, questionReducer, submitFunction} = props;
@@ -47,7 +47,7 @@ const AutoCompleteDropDown = (props) => {
     }
 
     const onOptionSelect = (selection) => {
-        setValue(selection.idCode);
+        setValue(selection.text);
         setTitle(selection.title);
         submitField();
     }
@@ -55,7 +55,10 @@ const AutoCompleteDropDown = (props) => {
     const searchItems = (query) => {
         setValue(query);
         setTitle(query);
-        let res = data.answerOptions.filter(item => item.title.toLowerCase().includes(query.toLowerCase()))
+        console.log(query.toLowerCase())
+//        console.log(data.answerOptions.filter(item => item.text.toLowerCase()))
+        let res = data.answerOptions.filter(item => item["text"].toLowerCase().includes(query.toLowerCase()))
+        console.log(selectionData)
         setSelectionData(res);
     }
 
@@ -94,30 +97,39 @@ const AutoCompleteDropDown = (props) => {
         return null;
     }
 
+    const renderSingleOption = (option) => {
+        return(
+            <AutocompleteItem
+              key={option.idCode}
+              title={option.text}
+            />
+        );
+    }
+    const renderOptions = () => {
+        let res = data.answerOptions.map(option => (renderSingleOption(option)));
+        return (
+            res
+        );
+    }
     return (
         <Layout key={key} style={styles.container}>
             <Card header={Header} status={status}>
                 <Layout style={styles.content}>
                     {HelperText()}
-                    <Layout style={styles.input}>
+                    <Layout style={styles.content}>
                         <Autocomplete
                             style={styles.inputField}
-                            value={title}
-                            // value={value}
-                            data={selectionData}
+                            value={value}
                             placeholder='Select your value'
-                            icon={renderClear}
-                            onIconPress={() => clearField()}
                             onChangeText={searchItems}
-                            onSelect={(e) => onOptionSelect(e)}
-                        />
-                        <Button 
-                            style={styles.submitButton} 
-                            appearance={buttonAppearance}
-                            size='medium' 
-                            icon={CheckIcon} 
-                            onPress={() => submitField()}
-                        />
+                            multiSelect={false}
+                            onIconPress={() => clearField()}
+                            onSelect={(e) => onOptionSelect(e)}>
+                            <AutocompleteItem
+                              key={1}
+                              title='Select'
+                            />
+                        </Autocomplete>
                     </Layout>
                 </Layout>
             </Card>
