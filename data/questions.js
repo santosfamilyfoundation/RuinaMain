@@ -182,7 +182,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "0",
-            "question": "Date of Birth",
+            "question": "Date of Birth Section",
             "id": "driver-3",
             "answerType": "header",
             "display": [
@@ -271,7 +271,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "0",
-            "question": "Person Type",
+            "question": "Person Type Section",
             "id": "driver-11",
             "answerType": "header",
             "display": [
@@ -1140,7 +1140,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1",
-            "question": "Test Status",
+            "question": "Test Status (1)",
             "id": "driver-39",
             "answerType": "multiButton",
             "display": [
@@ -1167,7 +1167,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1",
-            "question": "Type of Test",
+            "question": "Type of Test (1)",
             "id": "driver-40",
             "answerType": "multiButton",
             "display": [
@@ -1230,7 +1230,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1",
-            "question": "Test Status",
+            "question": "Test Status (2)",
             "id": "driver-43",
             "answerType": "multiButton",
             "display": [
@@ -1257,7 +1257,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1",
-            "question": "Type of Test",
+            "question": "Type of Test (2)",
             "id": "driver-44",
             "answerType": "multiButton",
             "display": [
@@ -1368,7 +1368,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1",
-            "question": "Test Type",
+            "question": "Test Type (1)",
             "id": "fatalityDriver-2",
             "answerType": "dropdown",
             "display": [
@@ -1427,7 +1427,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "0",
-            "question": "Test Result",
+            "question": "Test Result (1)",
             "id": "fatalityDriver-3",
             "answerType": "openTextBox",
             "display": [
@@ -1445,7 +1445,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1",
-            "question": "Test Type",
+            "question": "Test Type (2)",
             "id": "fatalityDriver-5",
             "answerType": "dropdown",
             "display": [
@@ -1484,7 +1484,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "0",
-            "question": "Test Result",
+            "question": "Test Result (2)",
             "id": "fatalityDriver-6",
             "answerType": "openTextBox",
             "display": [
@@ -1502,7 +1502,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1",
-            "question": "Test Type",
+            "question": "Test Type (1)",
             "id": "fatalityNonmotorist-1",
             "answerType": "dropdown",
             "display": [
@@ -1561,7 +1561,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "0",
-            "question": "Test Result",
+            "question": "Test Result (1)",
             "id": "fatalityNonmotorist-2",
             "answerType": "openTextBox",
             "display": [
@@ -1579,7 +1579,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1",
-            "question": "Test Type",
+            "question": "Test Type (2)",
             "id": "fatalityNonmotorist-4",
             "answerType": "dropdown",
             "display": [
@@ -1618,7 +1618,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "0",
-            "question": "Test Result",
+            "question": "Test Result (2)",
             "id": "fatalityNonmotorist-5",
             "answerType": "openTextBox",
             "display": [
@@ -2434,7 +2434,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "0",
-            "question": "Vehicle Configuration",
+            "question": "Vehicle Configuration Section",
             "id": "lvhm-34",
             "answerType": "header",
             "display": [
@@ -2849,7 +2849,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "0",
-            "question": "Date of Birth",
+            "question": "Date of Birth Section",
             "id": "nonmotorist-3",
             "answerType": "header",
             "display": [
@@ -2938,7 +2938,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "0",
-            "question": "Person Type",
+            "question": "Person Type Section",
             "id": "nonmotorist-11",
             "answerType": "header",
             "display": [
@@ -3215,7 +3215,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1",
-            "question": "Test Status",
+            "question": "Test Status (1)",
             "id": "nonmotorist-21",
             "answerType": "multiButton",
             "display": [
@@ -3242,7 +3242,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1",
-            "question": "Type of Test",
+            "question": "Type of Test (1)",
             "id": "nonmotorist-22",
             "answerType": "multiButton",
             "display": [
@@ -3305,7 +3305,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1",
-            "question": "Test Status",
+            "question": "Test Status (2)",
             "id": "nonmotorist-25",
             "answerType": "multiButton",
             "display": [
@@ -3332,7 +3332,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1",
-            "question": "Type of Test",
+            "question": "Type of Test (2)",
             "id": "nonmotorist-26",
             "answerType": "multiButton",
             "display": [
@@ -3717,7 +3717,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "0",
-            "question": "Date of Birth",
+            "question": "Date of Birth Section",
             "id": "passenger-3",
             "answerType": "header",
             "display": [
@@ -3759,7 +3759,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "0",
-            "question": "Person Type",
+            "question": "Person Type Section",
             "id": "passenger-6",
             "answerType": "header",
             "display": [
@@ -4210,7 +4210,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "0",
-            "question": "Crash Date and Time",
+            "question": "Crash Date and Time Section",
             "id": "road-6",
             "answerType": "header",
             "display": [
@@ -4584,7 +4584,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "0",
-            "question": "Source of Information",
+            "question": "Source of Information Section",
             "id": "road-17",
             "answerType": "header",
             "display": [
@@ -4873,7 +4873,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "0",
-            "question": "Relation to Junction",
+            "question": "Relation to Junction Section",
             "id": "road-24",
             "answerType": "header",
             "display": [
