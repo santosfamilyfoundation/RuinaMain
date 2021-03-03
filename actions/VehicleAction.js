@@ -5,13 +5,6 @@ export const addVehicle = numVehicle => {
     }
 }
 
-export const addLvhm = numLvhm => {
-    return {
-        type: 'ADDLVHM',
-        payload: numLvhm
-    }
-}
-
 export const updateVehicle = vehicleData => {
     return {
         type: 'UPDATEVEHICLE',

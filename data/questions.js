@@ -5174,31 +5174,27 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1",
-            "question": "School Bus-Related",
-            "id": "setup-0",
+            "question": "Ownership",
+            "id": "road-3",
             "answerType": "multiButton",
             "display": [
                 "setup"
             ],
             "answerOptions": [
                 {
-                    "text": "No",
+                    "text": "Public Property",
                     "idCode": "0"
                 },
                 {
-                    "text": "Yes, School Bus Directly Involved",
+                    "text": "Private Property",
                     "idCode": "1"
-                },
-                {
-                    "text": "Yes, School Bus Indirectly Involved",
-                    "idCode": "2"
                 }
             ]
         },
         {
             "numOptionsAllowed": "1",
-            "question": "Was the crash in a construction, mainenance, or utility work zone or was it related to activity within a work zone?",
-            "id": "setup-1",
+            "question": "Secondary Crash",
+            "id": "road-5",
             "answerType": "multiButton",
             "display": [
                 "setup"
@@ -5211,47 +5207,42 @@ export const questions = {
                 {
                     "text": "Yes",
                     "idCode": "1"
-                },
-                {
-                    "text": "Unknown",
-                    "idCode": "2"
                 }
             ]
         },
         {
-            "numOptionsAllowed": "0",
-            "question": "Number of Motor Vehicles Involved",
-            "id": "setup-2",
-            "answerType": "openTextBox",
+            "numOptionsAllowed": "1",
+            "question": "Crash Severity",
+            "id": "road-31",
+            "answerType": "multiButton",
             "display": [
                 "setup"
-            ]
-        },
-        {
-            "numOptionsAllowed": "0",
-            "question": "Number of Non-Motorists",
-            "id": "setup-3",
-            "answerType": "openTextBox",
-            "display": [
-                "setup"
-            ]
-        },
-        {
-            "numOptionsAllowed": "0",
-            "question": "Number of Fatalities",
-            "id": "setup-4",
-            "answerType": "openTextBox",
-            "display": [
-                "setup"
-            ]
-        },
-        {
-            "numOptionsAllowed": "0",
-            "question": "Number of vehicles which are large, towing trailers, or carrying hazardous materials",
-            "id": "setup-5",
-            "answerType": "openTextBox",
-            "display": [
-                "setup"
+            ],
+            "answerOptions": [
+                {
+                    "text": "Fatal Injury",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Suspected Serious Injury",
+                    "idCode": "1"
+                },
+                {
+                    "text": "Suspected Minor Injury",
+                    "idCode": "2"
+                },
+                {
+                    "text": "Possible Injury",
+                    "idCode": "3"
+                },
+                {
+                    "text": "Property Damage-Only",
+                    "idCode": "4"
+                },
+                {
+                    "text": "Unknown",
+                    "idCode": "5"
+                }
             ]
         },
         {
