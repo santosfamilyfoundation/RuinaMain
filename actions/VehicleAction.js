@@ -11,3 +11,10 @@ export const updateVehicle = vehicleData => {
         payload: vehicleData
     }
 }
+
+export const deleteVehicle = vehicleID => {
+    return {
+        type: 'DELETEVEHICLE',
+        payload: vehicleID
+    }
+}

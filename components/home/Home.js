@@ -8,46 +8,34 @@ import {questions} from '../../data/questions';
 import VehicleSection from './homeSections/VehicleSection';
 import NonMotoristSection from './homeSections/NonMotoristSection';
 import { addNonmotorist } from '../../actions/NonmotoristAction';
-/**import { addPassenger, deletePassenger } from '../../actions/PassengerAction';**/
+import { addVehicle } from '../../actions/VehicleAction';
+import { addDriver } from '../../actions/DriverAction';
 var uuid = require('react-native-uuid');
 
 class Home extends Component {
     constructor(props) {
         super(props);
 
-        // this._addPassenger = this._addPassenger.bind(this);
-        // this._deletePassenger = this._deletePassenger.bind(this);
         this._addNonmotorist = this._addNonmotorist.bind(this);
+        this._addVehicleSection = this._addVehicleSection.bind(this);
 
         this.state = {
-            // original_passengers: [],
-            // passengers: [],
-            // nonmotorists: [],
             edit: props.edit || false
         }
     }
 
-    // _addPassenger () {
-    //     let passengerID = uuid.v1();
-    //     addPassenger({id: passengerID, vehicleID: this.props.vehicle.id});
-    //     console.log(this.props.vehicle.id);
-    //     this.setState({
-    //         passengers: [...this.state.passengers, {id: passengerID, vehicleID: this.props.vehicle.id}]
-    //     })
-    // }
-    // _deletePassenger (id) {
-    //     this.props.deletePassenger({passengerID: id});
-    //     this.setState({
-    //         passengers: this.state.passengers.filter(passenger => passenger.id != id)
-    //     })
-    // }
-
+    // add nonmotorist to global state
     _addNonmotorist () {
       let nonmotoristID = uuid.v1();
       this.props.addNonmotorist({id: nonmotoristID});
-      // this.setState({
-      //     nonmotorists: [...this.state.nonmotorists, {id: nonmotoristID}]
-      // })
+    }
+
+    // add a new vehicle section to global state (vehicle and driver)
+    _addVehicleSection () {
+      let vehicleID = uuid.v1(); // Generate a v1 (time-based) id
+      let driverID = uuid.v1();
+      this.props.addVehicle({vehicleID, driverID})
+      this.props.addDriver({driverID, vehicleID})
     }
 
     filterQuestionsData = (questionType) => {
@@ -63,10 +51,10 @@ class Home extends Component {
             passenger,
             road
             } = this.props
-        // const { passengers } = this.state;
-        const operatorList = [];
+
         let roadQuestions = this.filterQuestionsData('road');
 
+        // navigate to question form
         const navigateQuestion = (form, id, type) => {
             navigation.navigate('Question', {questions: form.data, objectID: id, type})
         }
@@ -74,12 +62,9 @@ class Home extends Component {
         const RoadHeader = () => (
             <CardHeader title="Crash and Roadway" />
         );
-//        const {original_passengers} = this.state;
-//        original_passengers = { passengers }
-//        console.log(original_passengers)
 
-        const vehiclesListArr = vehicle.data.map((vehicle, index) => {
-            operatorList.push({id: vehicle.driver, type:'driver', response:[]})
+        // generate the vehicle section components based on global state
+        let vehiclesListArr = vehicle.data.map((vehicle, index) => {
             const { edit } = this.state;
             return (
                 <VehicleSection
@@ -89,13 +74,14 @@ class Home extends Component {
                     vehicle = {vehicle}
                     index = {index}
                     name = {"Vehicle"}
+                    passenger = {passenger}
                 />
             )
           }
         )
 
+        // generate nonmotorist cards based on global state
         let nonmotoristListArr = nonmotorist.data.map((nonmotorist, index) => {
-            operatorList.push({id:nonmotorist.id, type:'nonmotorist', response:[]})
             const { edit } = this.state;
             return (
                 <NonMotoristSection
@@ -107,20 +93,6 @@ class Home extends Component {
                 />
             )
         })
-
-        // let nonmotoristListArr = this.state.nonmotorists.map((nonmotorist, index) => {
-        //     operatorList.push({id:nonmotorist.id, type:'nonmotorist', response:[]})
-        //     const { edit } = this.state;
-        //     return (
-        //         <NonMotoristSection
-        //             edit = {edit}
-        //             key = {index}
-        //             navigation = {navigation}
-        //             nonmotorist = {nonmotorist}
-        //             index = {index}
-        //         />
-        //     )
-        // })
 
         const NonMotoristHeader = () => (
             <CardHeader title={`Non-motorists`} />
@@ -134,14 +106,11 @@ class Home extends Component {
             <Icon {...style} name='file-text-outline' />
         );
 
-        // const cancelIcon = (style) => (
-        //     <Icon {...style} name='log-out' />
-        // );
-
         const SaveIcon = (style) => (
             <Icon {...style} name='save-outline' />
          );
 
+        // right control buttons on navigation bar that changes depending on edit mode
         const rightControls = () => {
             const { edit } = this.state
             if (edit) {
@@ -177,39 +146,27 @@ class Home extends Component {
             }
         }
 
-        // const leftControls = () => {
-        //     const { edit } = this.state
-        //     if (edit) {
-        //         return (
-        //             <View style={styles.rightControlsContainer}>
-        //                 <Layout style={styles.rightControls}>
-        //                     <TopNavigationAction icon={cancelIcon} onPress = {() =>
-        //                     {
-        //                         this.setState({edit: false});
-        //                     }
-        //                     }/>
-        //                     <Text style={styles.rightControlsText}>Cancel</Text>
-        //                 </Layout>
-        //             </View>
-        //         )
-        //     }
-        // }
-
+        // describes the two different HOME screen states
         if (this.state.edit) {
           return(
               <SafeAreaView style={{flex:1}}>
-                  {/*<TopNavigation title='Home' alignment='center' leftControl={leftControls()} rightControls = {rightControls()}/>*/}
                   <TopNavigation title='Home' alignment='center' rightControls = {rightControls()}/>
                   <ScrollView>
                       <Card header={RoadHeader} style={styles.itemCard}>
                           <View style={styles.itemCardContent}>
-                              <Card style={styles.nonMotoristCard} onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road')}>
+                              <Card style={styles.nonMotoristCard}>
                                   <Icon name='paper-plane' width={75} height={75} />
                                   <Text style={styles.itemCardFooter} category="s1">Crash/Road</Text>
                               </Card>
                           </View>
                       </Card>
                       {vehiclesListArr}
+                      <Card key={uuid.v1()} style={styles.itemCard} >
+                          <View style={styles.addVehicleSection}>
+                              <Icon name='plus-circle' width={75} height={75} onPress= {() => this._addVehicleSection()} />
+                              <Text style={styles.addVehicleSectionFooter} category="s1">Add Vehicle Section</Text>
+                          </View>
+                      </Card>
                       <Card key={nonmotorist.id} header = {NonMotoristHeader} style={styles.itemCard} >
                           <View style={styles.itemCardContent}>
                               {nonmotoristListArr}
@@ -225,7 +182,6 @@ class Home extends Component {
         } else {
           return(
               <SafeAreaView style={{flex:1}}>
-                  {/*<TopNavigation title='Home' alignment='center' leftControl={leftControls()} rightControls = {rightControls()}/>*/}
                   <TopNavigation title='Home' alignment='center' rightControls = {rightControls()}/>
                   <ScrollView>
                       <Card header={RoadHeader} style={styles.itemCard}>
@@ -250,7 +206,9 @@ class Home extends Component {
 }
 
 const mapDispatchToProps = {
-    addNonmotorist
+    addNonmotorist,
+    addVehicle,
+    addDriver
 };
 
 const mapStateToProps = (state) => {
@@ -263,6 +221,5 @@ const mapStateToProps = (state) => {
         road: state.roadReducer,
     }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

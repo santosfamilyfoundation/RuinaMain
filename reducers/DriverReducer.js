@@ -8,11 +8,12 @@ export default function driverReducer (state=initialState, action) {
     switch (action.type) {
 
         case 'ADDDRIVER':
+            console.log("add driver " + action.payload.driverID);
             return {
                 ...state,
                 data: state.data.concat([{id: action.payload.driverID, vehicle: action.payload.vehicleID}])
             }
-            
+
         case 'UPDATEDRIVER':
             const { id, question, selection } = action.payload
             let updatedState = state.data;
@@ -26,7 +27,16 @@ export default function driverReducer (state=initialState, action) {
                 ...state,
                 data: updatedState
             }
-        
+
+        case 'DELETEDRIVER':
+            const {driverID} = action.payload
+            console.log("delete driver " + driverID);
+            updatedState = state.data;
+            return {
+                ...state,
+                data: updatedState.filter(driver => driver.id != driverID)
+            }
+
         default:
             return state;
     }
