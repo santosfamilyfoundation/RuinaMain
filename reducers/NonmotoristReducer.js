@@ -7,18 +7,26 @@ const initialState = {
 export default function nonmotoristReducer (state=initialState, action) {
     switch (action.type) {
         case 'ADDNONMOTORIST':
-            const numNonmotorist = action.payload
+            if(action.payload.constructor == Object && "id" in action.payload) {
+              console.log("add " + action.payload.id);
+              return {
+                  ...state,
+                  data: state.data.concat([{id: action.payload.id}])
+              }
+            } else {
+              const numNonmotorist = action.payload;
 
-            let nonmotoristArr = []
+              let nonmotoristArr = [];
 
-            for (let i = 0; i < numNonmotorist; i++){
-                let id = uuid.v1();
-                nonmotoristArr.push({id})
-            }
+              for (let i = 0; i < numNonmotorist; i++){
+                  let id = uuid.v1();
+                  nonmotoristArr.push({id})
+              }
 
-            return {
-                ...state,
-                data: nonmotoristArr
+              return {
+                  ...state,
+                  data: nonmotoristArr
+              }
             }
         case 'UPDATENONMOTORIST':
             const { id, question, selection } = action.payload
@@ -40,6 +48,14 @@ export default function nonmotoristReducer (state=initialState, action) {
             return {
                 ...state,
                 data: updatedState
+            }
+        case 'DELETENONMOTORIST':
+            const {nonmotoristID} = action.payload
+            console.log("delete " + nonmotoristID);
+            updatedState = state.data;
+            return {
+                ...state,
+                data: updatedState.filter(nonmotorist => nonmotorist.id != nonmotoristID)
             }
 
         default:
