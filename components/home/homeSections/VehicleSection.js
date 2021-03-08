@@ -62,16 +62,22 @@ class VehicleSection extends Component{
         let driverQuestions = this.filterQuestionsData('driver');
 
         const VehiclesHeader = () => (
-            <CardHeader title={`${name} ${index + 1}`} />
+            <CardHeader>
+             <View >
+               <Text style={styles.cardHeadertxt}>{`${name} ${index + 1}`}</Text>
+             </View>
+             </CardHeader>
         );
 
-        // would need to refine if we want to put delete vehicle section icon next to card header
-        // const VehiclesHeader = () => (
-        //     <View style={{ flexDirection: 'row' }}>
-        //       <Text category='h6' style={styles.vehicleSectionHeader}>{`${name} ${index + 1}`}</Text>
-        //       <Icon name='minus-circle' width={25} height={25} />
-        //     </View>
-        // );
+//         would need to refine if we want to put delete vehicle section icon next to card header
+         const VehiclesEditHeader = () => (
+            <CardHeader>
+             <View >
+               <Text style={styles.cardHeadertxt}>{`${name} ${index + 1}`}</Text>
+             </View>
+             <Icon name='minus-circle' width={25} height={25} onPress={() => this.setState({beforeVehicleDelete:true})}/>
+             </CardHeader>
+         );
 
         const navigateQuestion = (form, id, type) => {
             navigation.navigate('Question', {questions: form.data, objectID: id, type})
@@ -103,7 +109,7 @@ class VehicleSection extends Component{
         // describes components of a single vehicle section with two modes (edit and non edit)
         if (edit){
             return(
-                <Card key={vehicle.id} header={VehiclesHeader} style={styles.itemCard} >
+                <Card key={vehicle.id} header={VehiclesEditHeader} style={styles.itemCard} >
                     <View style={styles.itemCardContent}>
                         <Card style={styles.individualCard}>
                             <Icon name='car' width={75} height={75} style={{justifyItems:'center', alignItems:'center'}}/>
@@ -117,11 +123,6 @@ class VehicleSection extends Component{
                         <Card style={styles.individualCard} onPress= {this._addPassenger} >
                             <Icon name='person-add' width={75} height={75} />
                             <Text style={styles.itemCardFooter} category="s1">Passenger</Text>
-                        </Card>
-                        <Card style={styles.individualCard} onPress= {() => this.setState({beforeVehicleDelete:true})}>
-                          <Icon name='minus-circle' width={75} height={75} />
-                          <Text style={styles.itemCardFooter} category="s1">Delete</Text>
-                          <Text style={styles.itemCardFooter} category="s1">Section</Text>
                         </Card>
 
                         <MaterialDialog

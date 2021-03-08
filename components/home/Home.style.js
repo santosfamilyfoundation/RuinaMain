@@ -26,11 +26,15 @@ export const styles = StyleSheet.create({
         marginBottom: 15,
         alignSelf: 'center'
     },
+    cardHeadertxt:{
+        fontSize: 18,
+     },
     itemCard: {
         // height: 300,
-        width: '100%',
-        margin: 5,
+//        width: '100%',
+//        margin: 5,
         flex: 1,
+        margin: 2,
     },
     itemCardContent: {
         height:'90%',

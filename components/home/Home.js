@@ -107,12 +107,12 @@ class Home extends Component {
         );
 
         const SaveIcon = (style) => (
-            <Icon {...style} name='save-outline' />
+            <Icon {...style} name='log-out' />
          );
 
         // right control buttons on navigation bar that changes depending on edit mode
-        const rightControls = () => {
-            const { edit } = this.state
+        const rightControls = (edit) => {
+//            const { edit } = this.state
             if (edit) {
                 return (
                     <View style={styles.rightControlsContainer}>
@@ -120,7 +120,7 @@ class Home extends Component {
                             <TopNavigationAction icon={SaveIcon} onPress = {() => {
                                 this.setState({edit: false})
                             }}/>
-                            <Text style={styles.rightControlsText}>Save</Text>
+                            <Text style={styles.rightControlsText}>Finish Edit</Text>
                         </Layout>
                     </View>
                 )
@@ -139,7 +139,7 @@ class Home extends Component {
                                 this.setState({edit: true})
                            }}
                            />
-                           <Text style={styles.rightControlsText}>Edit</Text>
+                           <Text style={styles.rightControlsText}>Edit Sections</Text>
                          </Layout>
                      </View>
                  )
@@ -150,7 +150,7 @@ class Home extends Component {
         if (this.state.edit) {
           return(
               <SafeAreaView style={{flex:1}}>
-                  <TopNavigation title='Home' alignment='center' rightControls = {rightControls()}/>
+                  <TopNavigation title='Home' alignment='center' rightControls = {rightControls(this.state.edit)}/>
                   <ScrollView>
                       <Card header={RoadHeader} style={styles.itemCard}>
                           <View style={styles.itemCardContent}>
