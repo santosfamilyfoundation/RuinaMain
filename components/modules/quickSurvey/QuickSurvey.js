@@ -54,12 +54,12 @@ class QuickSurvey extends Component {
       // gets called when user clicks continue button
       const moveHome = () => {
         if (quiz.hasResponded){
-          navigation.navigate('Home');
+          navigation.navigate('Home', {edit:true});
           return
         }
         changeRespond();
         dispatchAll();
-        navigation.navigate('Home');
+        navigation.navigate('Home', {edit:true});
       }
 
       // filter out questions in questions.js with particular display
@@ -136,7 +136,7 @@ class QuickSurvey extends Component {
                 />
               </SafeAreaView>*/}
               {renderedQuestions()}
-              <SafeAreaView style = {styles.questionContainer}>
+              {/*<SafeAreaView style = {styles.questionContainer}>
                 <Card style = {styles.cardStyle}>
                     <Text style = {styles.questionText}>Photos taken?</Text>
                     <Layout style={{flexDirection: 'row'}}>
@@ -156,7 +156,7 @@ class QuickSurvey extends Component {
                       </Button>
                     </Layout>
                 </Card>
-              </SafeAreaView>
+              </SafeAreaView>*/}
             </ScrollView>
             <Button onPress = {() => moveHome()}>Continue</Button>
           </SafeAreaView>

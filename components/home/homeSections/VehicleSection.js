@@ -24,7 +24,9 @@ class VehicleSection extends Component{
         this.state = {
           beforeVehicleDelete: false,
           beforePassengerDelete: false,
+          beforeDriverDelete: false,
           passengerToDelete: '',
+          driverDeleted: false,
         }
     }
 
@@ -109,15 +111,17 @@ class VehicleSection extends Component{
                             <Icon name='car' width={75} height={75} style={{justifyItems:'center', alignItems:'center'}}/>
                             <Text style={styles.itemCardFooter} category="s1">{name}</Text>
                         </Card>
-                        <Card style={styles.individualCard}>
-                            <Icon name='person' width={75} height={75} />
-                            <Text style={styles.itemCardFooter} category="s1">Driver</Text>
-                        </Card>
-                        {passengerListArr}
+                        {!this.state.driverDeleted &&
+                          <Card style={styles.individualCard} onPress= {() => this.setState({beforeDriverDelete:true})}>
+                              <Icon name='person-remove' width={75} height={75} />
+                              <Text style={styles.itemCardFooter} category="s1">Driver</Text>
+                          </Card>
+                        }
                         <Card style={styles.individualCard} onPress= {this._addPassenger} >
                             <Icon name='person-add' width={75} height={75} />
                             <Text style={styles.itemCardFooter} category="s1">Passenger</Text>
                         </Card>
+                        {passengerListArr}
                         <Card style={styles.individualCard} onPress= {() => this.setState({beforeVehicleDelete:true})}>
                           <Icon name='minus-circle' width={75} height={75} />
                           <Text style={styles.itemCardFooter} category="s1">Delete</Text>
@@ -155,6 +159,22 @@ class VehicleSection extends Component{
                             Are you sure you want to delete this passenger?
                           </Text>
                         </MaterialDialog>
+
+                        <MaterialDialog
+                          title={"Delete Confirmation"}
+                          visible={this.state.beforeDriverDelete}
+                          onCancel={() => {
+                            this.setState({ beforeDriverDelete: false });
+                          }}
+                          onOk={() => {
+                            this.props.deleteDriver({driverID: this.props.vehicle.driver});
+                            this.setState({ beforeDriverDelete: false, driverDeleted: true });
+                          }}
+                        >
+                          <Text style={material.subheading}>
+                            Are you sure you want to delete this driver?
+                          </Text>
+                        </MaterialDialog>
                     </View>
                 </Card>
             )
@@ -166,10 +186,12 @@ class VehicleSection extends Component{
                             <Icon name='car' width={75} height={75} style={{justifyItems:'center', alignItems:'center'}}/>
                             <Text style={styles.itemCardFooter} category="s1">{name}</Text>
                         </Card>
-                        <Card style={styles.individualCard} onPress= {() => navigateQuestion(driverQuestions, vehicle.driver, 'Driver')}>
-                            <Icon name='person' width={75} height={75} />
-                            <Text style={styles.itemCardFooter} category="s1">Driver</Text>
-                        </Card>
+                        {!this.state.driverDeleted &&
+                          <Card style={styles.individualCard} onPress= {() => navigateQuestion(driverQuestions, vehicle.driver, 'Driver')}>
+                              <Icon name='person' width={75} height={75} />
+                              <Text style={styles.itemCardFooter} category="s1">Driver</Text>
+                          </Card>
+                        }
                         {passengerListArr}
                     </View>
                 </Card>
