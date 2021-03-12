@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Keyboard } from 'react-native';
+import { View, ScrollView, Keyboard, BackHandler } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { TopNavigation, TopNavigationAction, Text, Card, CardHeader, Layout, Icon } from '@ui-kitten/components';
@@ -42,9 +42,33 @@ class Home extends Component {
         return questions.data.filter(question => question.display.includes(questionType));
     }
 
+    // add event listener for when user clicks Android back button
+    componentDidMount() {
+      BackHandler.addEventListener(
+        'hardwareBackPress',
+        this.handleBackButtonPressAndroid
+      );
+    }
+
+    // remove event listener when user no longer in Home
+    componentWillUnmount() {
+      BackHandler.removeEventListener(
+        'hardwareBackPress',
+        this.handleBackButtonPressAndroid
+      );
+    }
+
+    // basically do nothing when user clicks on Android back button
+    // returning true means we have handled the event, and react-navigation's
+    // listener will not get called, thus not popping the screen
+    handleBackButtonPressAndroid = () => {
+      return true;
+    };
+
     render(){
         const {
             navigation,
+            edit,
             driver,
             nonmotorist,
             vehicle,
@@ -169,11 +193,11 @@ class Home extends Component {
                       </Card>
                       <Card key={nonmotorist.id} header = {NonMotoristHeader} style={styles.itemCard} >
                           <View style={styles.itemCardContent}>
-                              {nonmotoristListArr}
                               <Card style={styles.individualCard} onPress= {() => this._addNonmotorist()} >
                                   <Icon name='person-add' width={75} height={75} />
                                   <Text style={styles.itemCardFooter} category="s1">Non-Motorist</Text>
                               </Card>
+                              {nonmotoristListArr}
                           </View>
                       </Card>
                   </ScrollView>
