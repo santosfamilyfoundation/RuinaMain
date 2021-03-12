@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 export const styles = StyleSheet.create({
     questionText: {
         fontSize: 20,
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
         marginBottom: 10
     },
     questionContainer: {

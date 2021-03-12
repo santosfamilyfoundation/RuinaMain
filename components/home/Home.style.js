@@ -51,6 +51,18 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         margin: 10,
     },
+    // vehicleSectionHeader: {
+    //   margin: 20,
+    // },
+    addVehicleSection: {
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    addVehicleSectionFooter: {
+      textAlign:'center',
+      color: 'black',
+      margin: 10,
+    },
     nonMotoristCard:{
         height: 150,
         width: 170,
