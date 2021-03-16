@@ -7,6 +7,7 @@ import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import Axios from "axios";
 import NetInfoAPI from "../utils/NetAPI"
+import backgroundSave from '../utils/backgroundSave';
 
 
 export class ReportToDatabase extends Component{
@@ -46,6 +47,10 @@ export class ReportToDatabase extends Component{
       }).then(res => {
         console.log('Successfully sent report to database!');
         this.setState({dbResponse: res.data})
+
+        // clear background save
+        const clearBackgroundSave = new backgroundSave();
+        clearBackgroundSave.deleteCapturedState();
       });
     }
     convertJson(format) {
