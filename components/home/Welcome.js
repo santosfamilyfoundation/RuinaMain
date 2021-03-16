@@ -6,6 +6,12 @@ import { styles } from './Welcome.style';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 class Welcome extends Component {
+    constructor(props){
+      super(props);
+      this.backgroundSavedSessionExist = false;
+    }
+
+
 
     render() {
 
