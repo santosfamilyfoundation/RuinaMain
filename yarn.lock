@@ -8519,6 +8519,11 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
+vin-validator@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/vin-validator/-/vin-validator-1.0.0.tgz#1765626b8558b2402f77b6c25c7617f73cecae67"
+  integrity sha1-F2Via4VYskAvd7bCXHYX9zzsrmc=
+
 vlq@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/vlq/-/vlq-1.0.1.tgz#c003f6e7c0b4c1edd623fd6ee50bbc0d6a1de468"
