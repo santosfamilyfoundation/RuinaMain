@@ -4,16 +4,23 @@ import {Linking} from 'react-native';
 import { Button, Divider, Layout, TopNavigation, Text } from '@ui-kitten/components';
 import { styles } from './Welcome.style';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import backgroundSave from '../../utils/backgroundSave';
 
 class Welcome extends Component {
     constructor(props){
       super(props);
-      this.backgroundSavedSessionExist = false;
+      this.stateManager = new backgroundSave();
     }
 
-
-
     render() {
+
+        this.stateManager.RNFS.exists(this.stateManager.path).then((exists) => {
+          if (exists) {
+            console.log('Detect unfinished report!')
+          } else {
+            console.log('No unfinished report!')
+          }
+        })
 
         const navigateTo = (loc) => {
             this.props.navigation.navigate(loc);

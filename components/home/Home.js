@@ -83,50 +83,20 @@ class Home extends Component {
             vehicle: this.props.vehicle.data,
             passenger: this.props.passenger.data,
             road: this.props.road.data,
+            quiz: this.props.quiz,
         };
         console.log("---------------------------NEW UPDATE-----------------------------")
-        console.log("props: ------------------------------------------")
-        for (var ele in this.props) {
-            console.log(ele, ": ", this.props[ele]);
-        }
-        console.log("data: --------------------------------------------")
-        for (var d in data) {
+        // console.log("props: ------------------------------------------")
+        // for (var ele in this.props) {
+        //     console.log(ele, ": ", this.props[ele]);
+        // }
+        // console.log("data: --------------------------------------------")
+        for (let d in data) {
             console.log(d, ": ", data[d]);
         }
 
-        const captureState = new backgroundSave();
-        captureState.captureCurrentState(this.props);
-        
-        //captureState.deleteCapturedState();
-
-        // var RNFS = require('react-native-fs'); 
-        // console.log(RNFS.DocumentDirectoryPath); // /data/user/0/com.ruina/files
-        // // create a path you want to write to
-        // var path = RNFS.DocumentDirectoryPath + '/unfinished_report.json';
-
-        // // write the file
-        // RNFS.writeFile(path, this.props, 'utf8')
-        //     .then((success) => {
-        //         console.log('FILE WRITTEN!');
-        //     })
-        //     .catch((err) => {
-        //         console.log(err.message);
-        //     });
-        
-        // RNFS.unlink(path)
-        //     // spread is a method offered by bluebird to allow for more than a
-        //     // single return value of a promise. If you use `then`, you will receive
-        //     // the values inside of an array
-        //     .spread((success, path) => {
-        //         console.log('FILE DELETED', success, path);
-        //     })
-        //     // `unlink` will throw an error, if the item to unlink does not exist
-        //     .catch((err) => {
-        //         console.log(err.message);
-        //     });
-
-
-
+        // const captureState = new backgroundSave();
+        // captureState.captureCurrentState(JSON.stringify(data));
 
         let roadQuestions = this.filterQuestionsData('road');
 

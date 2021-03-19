@@ -7,12 +7,12 @@ export class backgroundSave extends Component {
         this.path = this.RNFS.DocumentDirectoryPath + '/unfinished_report.json';
     }
 
-    captureCurrentState(data){
+    async captureCurrentState(data){
         // write the file
+        //console.log("data: ", data);
         this.RNFS.writeFile(this.path, data, 'utf8')
             .then((success) => {
                 console.log('Current state saved to: ' + this.path);
-                console.log('Background save file exist: ', this.backgroundFileExist);
             })
             .catch((err) => {
                 console.log(err.message);
@@ -20,14 +20,19 @@ export class backgroundSave extends Component {
     }
 
     async deleteCapturedState(){
-        return this.RNFS.unlink(this.path)
-            .then(() => {
-                console.log('DELETED: ' + this.path);
-            })
-            // `unlink` will throw an error, if the item to unlink does not exist
-            .catch((err) => {
-                console.log("WARNING: background saved file already deleted! Message: " + err.message);
-            });
+        await this.RNFS.exists(this.path).then((exists) => {
+            if(exists){
+                this.RNFS.unlink(this.path)
+                    .then(() => {
+                        console.log('DELETED: ' + this.path);
+                    })
+                    .catch((err) => {
+                        console.log(err.message);
+                    });
+            } else {
+                console.log('WARNING: background saved file already deleted.')
+            }
+        })
     }
 }
 
