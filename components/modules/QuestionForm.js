@@ -8,6 +8,7 @@ import MultiButtonSelector from '../buttonSelectors/MultiButtonSelector';
 import AutoCompleteDropDown from '../dropdowns/AutoCompleteDropDown';
 import DropDownSingleSelect from '../dropdowns/DropDownSingleSelect';
 import OpenTextField from '../textFields/OpenTextField';
+import OpenTextFieldWithSelection from '../textFields/OpenTextFieldWithSelection';
 import AdvancedOpenTextField from '../textFields/AdvancedOpenTextField';
 import AdvancedDropDown from '../dropdowns/AdvancedDropDown';
 import DropDownMultiSelect from '../dropdowns/DropDownMultiSelect';
@@ -96,6 +97,16 @@ class QuestionForm extends Component {
         case 'openTextBox':
           return (
             <OpenTextField
+              data={question}
+              key={question.id}
+              id={questionDetail.objectID}
+              reducer={reducer}
+              submitFunction={submitFunction}
+            />
+          )
+        case 'openTextBoxWithSelection':
+          return (
+            <OpenTextFieldWithSelection
               data={question}
               key={question.id}
               id={questionDetail.objectID}

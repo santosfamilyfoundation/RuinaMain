@@ -27,7 +27,7 @@ const MultiButtonSelector = (props) => {
         setSelection(idCode);
         submitFunction({id, question: currId, selection: idCode})
     }
-    
+
     const Header = () => (
         <CardHeader title={data.question}/>
     );
@@ -61,7 +61,7 @@ const MultiButtonSelector = (props) => {
                 appearance={appearance}
                 onPress={() => submitField(option.idCode)}
             >
-                {option.idCode} {option.text}
+                {option.text}
             </Button>
         )
     }

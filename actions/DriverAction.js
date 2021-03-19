@@ -11,3 +11,10 @@ export const updateDriver = driverData => {
         payload: driverData
     }
 }
+
+export const deleteDriver = driverID => {
+    return {
+        type: 'DELETEDRIVER',
+        payload: driverID
+    }
+}
