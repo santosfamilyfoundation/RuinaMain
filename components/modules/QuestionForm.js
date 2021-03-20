@@ -22,179 +22,194 @@ import { updateRoad } from '../../actions/RoadAction';
 
 import {questions} from '../../data/questions';
 
-class QuestionForm extends Component {
+const QuestionForm = (props) => {
+  const {
+    questionDetail, 
+    updateDriver, 
+    updateNonmotorist, 
+    updatePassenger, 
+    updateVehicle,
+    updateRoad,
+    BackAction,
+    navigation
+  } = props
 
-  render() {
-    const {questionDetail, updateDriver, updateNonmotorist, updatePassenger, updateVehicle, updateRoad } = this.props
-    let reducer;
-    let submitFunction;
-    let actionType;
-    let questionsData;
-
-    const filterQuestionsData = (questionType) => {
-      return questions.data.filter(question => question.display.includes(questionType));
+  // filter question information based on section type
+  const filterQuestionsData = (questionType) => {
+    return questions.data.filter(question => question.display.includes(questionType));
+  }
+  const navigateToAdvanced = (place, props) =>{
+      navigation.navigate(place, props);
     }
 
-    switch(questionDetail.type){
-      case 'Driver':
-        reducer = "driverReducer";
-        submitFunction = updateDriver;
-        actionType = "UPDATEDRIVER";
-        questionsData = filterQuestionsData('driver');
-        break;
-      case 'Nonmotorist':
-        reducer = "nonmotoristReducer";
-        submitFunction = updateNonmotorist;
-        actionType = "UPDATENONMOTORIST";
-        questionsData = filterQuestionsData('nonmotorist');
-        break;
-      case 'Passenger':
-        reducer = "passengerReducer";
-        submitFunction = updatePassenger;
-        actionType = "UPDATEPASSENGER";
-        questionsData = filterQuestionsData("passenger");
-        break;
-      case 'Vehicle':
-        reducer = "vehicleReducer";
-        submitFunction = updateVehicle;
-        actionType = "UPDATEVEHICLE";
-        questionsData = filterQuestionsData("vehicle");
-        break;
-      case 'Road':
-        reducer = "roadReducer";
-        submitFunction = updateRoad;
-        actionType = "UPDATEROAD";
-        questionsData = filterQuestionsData("road");
-        break;
+   const questionProps = (type, res) => {
+      const PublicObj = {
+        data: res.data,
+        key:res.data.id,
+        id:res.detail.objectID,
+        reducer:res.setting.reducer,
+        submitFunction:res.setting.submitFunction,
+      }
+      // console.log('PublicObjtype', type)
+      const obj = 
+      {
+        dropdown: {
+          ...PublicObj
+        },
+        dropdownMultiSelect: {
+          ...PublicObj
+        },
+        openTextBox: {
+          ...PublicObj
+        },
+        openTextBoxWithSelection: {
+          ...PublicObj
+        },
+        advancedOpenTextBox: {
+           ...PublicObj,
+          pageChange: navigateToAdvanced,
+          importFrom: res.data.autoMethod
+        },
+        advancedDropDown: {
+          ...PublicObj,
+          pageChange: navigateToAdvanced,
+          importFrom: res.data.autoMethod
+        },
+        largeTextField: {
+           ...PublicObj
+        },
+        multiButton: {
+          ...PublicObj
+        },
+        autoCompleteDropdown: {
+          ...PublicObj
+        },
+        header: {
+          data: res.data,
+          key: res.data.id,
+        },
+      }
+      return  obj[type]
     }
-
-    const navigateToAdvanced = (place, props) =>{
-      this.props.navigation.navigate(place, props);
+  const questionData = (type) => {
+    const obj = {
+      Driver: {
+        reducer: "driverReducer",
+        submitFunction: updateDriver,
+        actionType: "UPDATEDRIVER",
+        questionsData : filterQuestionsData('driver'),
+      },
+      Nonmotorist: {
+        reducer: "nonmotoristReducer",
+        submitFunction: updateNonmotorist,
+        actionType: "UPDATENONMOTORIST",
+        questionsData : filterQuestionsData('nonmotorist'),
+      },
+      Passenger: {
+        reducer: "passengerReducer",
+        submitFunction: updatePassenger,
+        actionType: "UPDATEPASSENGER",
+        questionsData : filterQuestionsData('passenger'),
+      },
+      Vehicle: {
+        reducer: "vehicleReducer",
+        submitFunction: updateVehicle,
+        actionType: "UPDATEVEHICLE",
+        questionsData : filterQuestionsData('vehicle'),
+      },
+      Road: {
+        reducer: "roadReducer",
+        submitFunction: updateRoad,
+        actionType: "UPDATEROAD",
+        questionsData : filterQuestionsData('road'),
+      },
     }
-
-    const renderSingleQuestion = (question) => {
-      switch (question.answerType) {
+    return obj[type]
+  }
+   const renderSingleQuestion = (type, props) => { 
+      switch (type) {
         case 'dropdown':
           return (
             <DropDownSingleSelect
-              data={question}
-              key={question.id}
-              id={questionDetail.objectID}
-              reducer={reducer}
-              submitFunction={submitFunction}
+              {...props}
             />
           )
         case 'dropdownMultiSelect':
           return (
             <DropDownMultiSelect
-              data={question}
-              key={question.id}
-              id={questionDetail.objectID}
-              reducer={reducer}
-              submitFunction={submitFunction}
+              {...props}
             />
           )
         case 'openTextBox':
           return (
             <OpenTextField
-              data={question}
-              key={question.id}
-              id={questionDetail.objectID}
-              reducer={reducer}
-              submitFunction={submitFunction}
+              {...props}
             />
           )
         case 'openTextBoxWithSelection':
           return (
             <OpenTextFieldWithSelection
-              data={question}
-              key={question.id}
-              id={questionDetail.objectID}
-              reducer={reducer}
-              submitFunction={submitFunction}
+              {...props}
             />
           )
           case 'advancedOpenTextBox':
             return (
               <AdvancedOpenTextField
-                data={question}
-                key={question.id}
-                id={questionDetail.objectID}
-                reducer={reducer}
-                submitFunction={submitFunction}
-                pageChange={navigateToAdvanced}
-                importFrom={question.autoMethod}
+              {...props}
               />
             )
         case 'advancedDropDown':
           return (
             <AdvancedDropDown
-              data={question}
-              key={question.id}
-              id={questionDetail.objectID}
-              reducer={reducer}
-              submitFunction={submitFunction}
-              pageChange={navigateToAdvanced}
-              importFrom={question.autoMethod}
+              {...props}
             />
           )
         case 'largeTextField':
           return (
             <LargeTextField
-              data={question}
-              key={question.id}
-              id={questionDetail.objectID}
-              reducer={reducer}
-              submitFunction={submitFunction}
+              {...props}
             />
           )
         case 'multiButton':
           return (
             <MultiButtonSelector
-              data={question}
-              key={question.id}
-              id={questionDetail.objectID}
-              reducer={reducer}
-              submitFunction={submitFunction}
+              {...props}
             />
           )
         case 'autoCompleteDropdown':
           return (
             <AutoCompleteDropDown
-              data={question}
-              key={question.id}
-              id={questionDetail.objectID}
-              reducer={reducer}
-              submitFunction={submitFunction}
+              {...props}
             />
           )
         case 'header':
           return (
             <HeaderComponent
-              data={question}
-              key={question.id}
+              {...props}
             />
           )
       }
     }
 
-    const renderedQuestions = questionsData.map((question) => {
-      return renderSingleQuestion(question);
+    const question = questionData(questionDetail.type)
+    const dataArr = question.questionsData.map(item => item)
+    const renderedQuestions = question.questionsData.map((item) => {
+      const obj = {data:item, setting: question, detail:questionDetail}
+      return renderSingleQuestion(item.answerType, {...questionProps(item.answerType, obj), dataArr});
     });
 
-    return (
-      <SafeAreaView style={styles.container}>
-        <TopNavigation title={`${questionDetail.type} Questions`} alignment='center' leftControl={this.props.BackAction()} />
-        <Divider />
-        <ScrollView>
-          <Layout style={styles.content}>
-            {renderedQuestions}
-          </Layout>
-        </ScrollView>
-      </SafeAreaView>
-    );
-  }
-};
+  return (
+    <SafeAreaView style={styles.container}>
+      <TopNavigation title={`${questionDetail.type} Questions`} alignment='center' leftControl={BackAction()} />
+      <Divider />
+      <ScrollView>
+        <Layout style={styles.content}>
+          {renderedQuestions}
+        </Layout>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
 
 const mapDispatchToProps = {
   updateDriver,

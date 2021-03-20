@@ -12,12 +12,13 @@ import { connect } from 'react-redux';
 
 const DropDownSingleSelect = (props) => {
     const [selectedOption, setSelectedOption] = React.useState(null);
-    const {data, key, id, questionReducer, submitFunction} = props;
+    const {data, key, id, questionReducer, submitFunction, dataArr} = props;
 
     let currId = data.id;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
 
+    console.log(existingData)
     // Populate if value already exists in redux
     if(!selectedOption) {
         if(existingData != null) {
