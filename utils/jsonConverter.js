@@ -130,6 +130,21 @@ export class JSONconverter extends Component {
 		return output(wbout);
 	}
 
+	JSONtoHTML2(jsondata) {
+		function getAnswer(answerSubsetData, id) {
+			return answerSubsetData["response"][id]
+		}
+
+		function getNumSections(data) {
+		  return {
+		    "driver": data["driver"].length,
+		    "vehicle": data["vehicle"].length,
+		    "passenger": data["passenger"].length,
+		    "nonmotorist": data["nonmotorist"].length
+		  }
+		}
+	}
+
 	JSONtoHTML(jsondata) {
 
 		let reportHTML = '<!doctype html> <html lang="en"> <head> <meta charset="utf8"> <title> </title> </head> <body>'
