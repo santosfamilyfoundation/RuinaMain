@@ -14,7 +14,6 @@ export class JSONconverter extends Component {
 		let file;
 		switch (format) {
 			case 'json':
-				console.log(data);
 				return file = JSON.stringify(data);
 			case 'pdf':
 				return file = this.JSONtoPDF(data);
