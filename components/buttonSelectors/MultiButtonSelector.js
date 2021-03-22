@@ -23,9 +23,9 @@ const MultiButtonSelector = (props) => {
         }
     }
 
-    const submitField = (idCode) => {
-        setSelection(idCode);
-        submitFunction({id, question: currId, selection: idCode})
+    const submitField = (optionText) => {
+        setSelection(optionText);
+        submitFunction({id, question: currId, selection: optionText})
     }
 
     const Header = () => (
@@ -53,13 +53,13 @@ const MultiButtonSelector = (props) => {
     }
 
     const renderSingleButton = (option) => {
-        let appearance = (selection == option.idCode) ? 'filled': 'outline';
+        let appearance = (selection == option.text) ? 'filled': 'outline';
         return (
             <Button
                 key={option.idCode}
                 style={styles.answerButton}
                 appearance={appearance}
-                onPress={() => submitField(option.idCode)}
+                onPress={() => submitField(option.text)}
             >
                 {option.text}
             </Button>
