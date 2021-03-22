@@ -2,16 +2,16 @@ import { combineReducers } from 'redux';
 
 const INITIAL_STATE = {
   current: '',
-  response: []
+  response: {}
 };
 
 const storyReducer = (state = INITIAL_STATE, action) => {
+  // console.log('Action:', action);
   switch (action.type) {
     case 'WRITE':
-      return { ...state, current: action.payload }
+        return { ...state, current: action.payload}
     case 'UPDATERESPONSE':
-      const response = [ ...state.response, action.payload ]
-      return { ...state, response }
+        return { ...state, response:{...state.response, ...action.payload}}
     default:
       return state;
   }

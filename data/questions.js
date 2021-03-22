@@ -4298,12 +4298,6 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "questionDependency": [
-                {
-                    "id": "road-14",
-                    "dependencyOptionCode": "1"
-                }
-            ],
             "questionUid": "Anwspdcw",
             "helperText": "Non-Collision Harmful Events; Collision With Person, Motor Vehicle, or Non-Fixed Object; Collision with Fixed Object",
             "answerOptions": [
@@ -5635,6 +5629,11 @@ export const questions = {
                 "vehicle"
             ],
             "questionUid": "4vrmnvfC",
+            "questionDependency": [
+                {
+                    "id": "road-14",
+                    "dependencyOptionCode": "0"
+                }],
             "answerOptions": [
                 {
                     "text": "No Special Function",
