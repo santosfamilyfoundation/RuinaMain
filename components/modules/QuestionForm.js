@@ -122,54 +122,67 @@ const QuestionForm = (props) => {
         submitFunction: updateRoad,
         actionType: "UPDATEROAD",
         questionsData : filterQuestionsData('road'),
-      },
+      }
     }
-    return obj[type]
+    return type?obj[type]:obj
   }
    const renderSingleQuestion = (type, props) => { 
       switch (type) {
         case 'dropdown':
+
           return (
             <DropDownSingleSelect
               {...props}
             />
           )
+
         case 'dropdownMultiSelect':
+
           return (
             <DropDownMultiSelect
               {...props}
             />
           )
+
         case 'openTextBox':
+
           return (
             <OpenTextField
               {...props}
             />
           )
+
         case 'openTextBoxWithSelection':
+
           return (
             <OpenTextFieldWithSelection
               {...props}
             />
           )
+
           case 'advancedOpenTextBox':
+
             return (
               <AdvancedOpenTextField
               {...props}
               />
             )
+
         case 'advancedDropDown':
+
           return (
             <AdvancedDropDown
               {...props}
             />
           )
+
         case 'largeTextField':
           return (
             <LargeTextField
               {...props}
             />
           )
+
         case 'multiButton':
           return (
             <MultiButtonSelector
@@ -183,19 +196,26 @@ const QuestionForm = (props) => {
             />
           )
         case 'header':
-          return (
-            <HeaderComponent
-              {...props}
-            />
-          )
+            return (
+              <HeaderComponent
+                {...props}
+              />
+            )
       }
     }
 
     const question = questionData(questionDetail.type)
-    const dataArr = question.questionsData.map(item => item)
+    // const reducerArr = questionData()
+    // console.log('reducerArr', reducerArr)
+    // const datarArr = question.questionsData.map(item => item)
+    // const objectRef = [];
+    // const getObjectRef = () => objectRef
     const renderedQuestions = question.questionsData.map((item) => {
       const obj = {data:item, setting: question, detail:questionDetail}
-      return renderSingleQuestion(item.answerType, {...questionProps(item.answerType, obj), dataArr});
+      // const ref = React.useRef(React.createRef()) 
+      const dom = renderSingleQuestion(item.answerType, questionProps(item.answerType, obj));
+      // objectRef.push(ref)
+      return dom
     });
 
   return (
@@ -220,7 +240,9 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state) => {
-  return {};
+
+  return {
+      };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionForm);

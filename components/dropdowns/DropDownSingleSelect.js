@@ -6,19 +6,50 @@ import {
   Card,
   CardHeader
 } from '@ui-kitten/components';
+import { updateResponse } from '../../actions/StoryActions';
 import { styles } from './DropDownSingleSelect.style';
 import { connect } from 'react-redux';
 
 
 const DropDownSingleSelect = (props) => {
     const [selectedOption, setSelectedOption] = React.useState(null);
-    const {data, key, id, questionReducer, submitFunction, dataArr} = props;
+    const {data, key, id, questionReducer, submitFunction } = props;
 
+    // getRef[0].state.selectedOption
+    // props.keyprops.id
     let currId = data.id;
-    const reducerData = questionReducer.data.find(entry => entry.id == id);
+    // reducerArr["driver"].reducer
+
+    // console.log("QuestionReducer", questionReducer)
+    // console.log('getRef', getRef())
+    const reducerData = questionReducer.data.find(entry => entry.id == id); 
     let existingData = !reducerData?.response ? null : reducerData.response;
 
-    console.log(existingData)
+    updateResponse(existingData)
+    
+    console.log("props.storyReducer", props.storyReducer) 
+
+    if(existingData != null) { 
+        console.log(existingData)// currently there is data existing in the reducer 
+        if (data.questionDependency != null){
+            let tarQuesArr = data.questionDependency
+            for(let i = 0; i <tarQuesArr.length; i++){
+                // let tarUid = tarQuesArr[i].dependencyUid
+                let tarId = tarQuesArr[i].id
+                let tarOptionCode = tarQuesArr[i].dependencyOptionCode
+                if (existingData[tarId]){
+                    console.log("Exiting"+existingData[tarId])
+                    // if(existingData[tarId]== tarOptionCode){
+                    if(existingData[tarId]== tarOptionCode){
+                        console.log("Should not showing component")
+                        return null
+                    }
+                }
+            }
+
+        }
+    };
+
     // Populate if value already exists in redux
     if(!selectedOption) {
         if(existingData != null) {
@@ -69,7 +100,7 @@ const DropDownSingleSelect = (props) => {
 
 
     return (
-        <Layout key={key} style={styles.container}>
+        <Layout key={key} style={styles.container} >
             <Card header={Header} status={status}>
                 <Layout style={styles.content}>
                     {HelperText()}
@@ -85,11 +116,17 @@ const DropDownSingleSelect = (props) => {
     );
 };
 
+const mapDispatchToProps = {
+    updateResponse
+}
+
 const mapStateToProps = (state, props) => {
+    // console.log('state', state);
     const { story } = state;
+    const { reponse } = state.storyReducer
     const { reducer } = props;
     const questionReducer = state[reducer];
-    return { story, questionReducer }
+    return { story, questionReducer, reponse }
 };
 
-export default connect(mapStateToProps)(DropDownSingleSelect);
+export default connect(mapStateToProps, mapDispatchToProps)(DropDownSingleSelect);

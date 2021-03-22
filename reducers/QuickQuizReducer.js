@@ -13,6 +13,7 @@ const initialState = {
 export default function quickquizReducer (state = initialState, action) {
 switch (action.type) {
     case 'VEHICLE':
+        console.log('action.numVehicle', action.numVehicle)
         return {
             ...state,
             numVehicle: action.numVehicle
@@ -55,6 +56,7 @@ switch (action.type) {
             hasResponded: true
         }
     case 'UPDATESETUP':
+      console.log('UPDATESETUP', action.payload)
       const { question, selection } = action.payload;
       let updatedState = state.setupData;
       updatedState[question] = selection;
