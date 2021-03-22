@@ -19,6 +19,7 @@ import { updateNonmotorist } from '../../actions/NonmotoristAction';
 import { updateVehicle } from '../../actions/VehicleAction';
 import { updatePassenger } from '../../actions/PassengerAction';
 import { updateRoad } from '../../actions/RoadAction';
+import { updateResponse } from '../../actions/StoryActions';
 
 import {questions} from '../../data/questions';
 
@@ -49,6 +50,7 @@ const QuestionForm = (props) => {
         id:res.detail.objectID,
         reducer:res.setting.reducer,
         submitFunction:res.setting.submitFunction,
+        userUpdate: res.userResponse
       }
       // console.log('PublicObjtype', type)
       const obj = 
@@ -129,7 +131,6 @@ const QuestionForm = (props) => {
    const renderSingleQuestion = (type, props) => { 
       switch (type) {
         case 'dropdown':
-
           return (
             <DropDownSingleSelect
               {...props}
@@ -137,7 +138,6 @@ const QuestionForm = (props) => {
           )
 
         case 'dropdownMultiSelect':
-
           return (
             <DropDownMultiSelect
               {...props}
@@ -145,7 +145,6 @@ const QuestionForm = (props) => {
           )
 
         case 'openTextBox':
-
           return (
             <OpenTextField
               {...props}
@@ -153,7 +152,6 @@ const QuestionForm = (props) => {
           )
 
         case 'openTextBoxWithSelection':
-
           return (
             <OpenTextFieldWithSelection
               {...props}
@@ -161,7 +159,6 @@ const QuestionForm = (props) => {
           )
 
           case 'advancedOpenTextBox':
-
             return (
               <AdvancedOpenTextField
               {...props}
@@ -169,7 +166,6 @@ const QuestionForm = (props) => {
             )
 
         case 'advancedDropDown':
-
           return (
             <AdvancedDropDown
               {...props}
@@ -205,15 +201,10 @@ const QuestionForm = (props) => {
     }
 
     const question = questionData(questionDetail.type)
-    // const reducerArr = questionData()
-    // console.log('reducerArr', reducerArr)
-    // const datarArr = question.questionsData.map(item => item)
-    // const objectRef = [];
-    // const getObjectRef = () => objectRef
     const renderedQuestions = question.questionsData.map((item) => {
-      const obj = {data:item, setting: question, detail:questionDetail}
+      const obj = {data:item, setting: question, detail:questionDetail, userResponse:props.updateResponse }
       // const ref = React.useRef(React.createRef()) 
-      const dom = renderSingleQuestion(item.answerType, questionProps(item.answerType, obj));
+      const dom = renderSingleQuestion(item.answerType, questionProps(item.answerType, obj) );
       // objectRef.push(ref)
       return dom
     });
@@ -237,6 +228,7 @@ const mapDispatchToProps = {
   updateVehicle,
   updatePassenger,
   updateRoad,
+  updateResponse
 }
 
 const mapStateToProps = (state) => {

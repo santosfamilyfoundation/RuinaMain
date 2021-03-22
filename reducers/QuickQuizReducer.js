@@ -13,7 +13,6 @@ const initialState = {
 export default function quickquizReducer (state = initialState, action) {
 switch (action.type) {
     case 'VEHICLE':
-        console.log('action.numVehicle', action.numVehicle)
         return {
             ...state,
             numVehicle: action.numVehicle
