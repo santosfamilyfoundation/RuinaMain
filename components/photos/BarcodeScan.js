@@ -2,11 +2,17 @@
 import React, { PureComponent } from 'react';
 import { AppRegistry, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { RNCamera } from 'react-native-camera';
+import { updateDriver } from '../../actions/DriverAction';
+import { connect } from 'react-redux';
+import * as Constants from '../../constants';
 
 class BarcodeScan extends PureComponent {
-  state = {
-    licenseData: '',
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      licenseData: '',
+    };
+  }
 
   onGoogleVisionBarcodesDetected(scanResult) {
     // console.log('BARCODE TYPE');
@@ -19,6 +25,13 @@ class BarcodeScan extends PureComponent {
       // console.log(barcode)
       if (barcode.type === 'PDF417') {
         console.log(barcode.rawData);
+        const indexOfNumber = barcode.rawData.indexOf('DAQ');
+        const endOfNumber = barcode.rawData.indexOf('D', indexOfNumber + 1);
+        const number = barcode.rawData.substring(indexOfNumber+3, endOfNumber);
+        console.log(number);
+        const id = this.props.navigation.state.params.objectID;
+
+        this.props.updateDriver({id, question:Constants.DLICENSE_ID, selection: number})
         this.setState({
           licenseData: barcode.rawData,
         });
@@ -35,7 +48,16 @@ class BarcodeScan extends PureComponent {
     return;
   }
 
+  saveData() {
+    const id = this.props.navigation.state.params.objectID;
+  }
+
   render() {
+
+    console.log(this.props.navigation.state);
+    const {barcodeScanAction, driver} = this.props;
+    console.log(barcodeScanAction);
+
     return (
       <View style={styles.container}>
         <RNCamera
@@ -76,6 +98,7 @@ class BarcodeScan extends PureComponent {
   }
 }
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -98,5 +121,13 @@ const styles = StyleSheet.create({
   },
 });
 
+const mapDispatchToProps = {
+  updateDriver,
+}
+
+const mapStateToProps = (state) => {
+  const { barcodeDetails } = state
+  return { barcodeDetails }
+}
 // AppRegistry.registerComponent('App', () => CameraExample);
-export default BarcodeScan;
+export default connect(mapStateToProps, mapDispatchToProps)(BarcodeScan);

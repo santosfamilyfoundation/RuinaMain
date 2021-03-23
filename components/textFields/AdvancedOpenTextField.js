@@ -118,7 +118,10 @@ const AdvancedOpenTextField = (props) => {
           default:
             type = Constants.VIN;
         }
-        pageChange('Scan', {objectID:id, type:type})
+        console.log('DRIVER ID');
+        console.log(id);
+        pageChange('Scan', {objectID:id, type:type, questionId:currId,
+          questionReducer:questionReducer})
 
       }
     };
