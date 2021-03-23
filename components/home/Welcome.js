@@ -19,6 +19,7 @@ class Welcome extends Component {
               <Divider/>
               <Layout style={styles.centeredContainer}>
                 <Button style={styles.styledButton} onPress={() => navigateTo('Survey')}>Start New Report</Button>
+                <Button style={styles.styledButton} onPress={() => navigateTo('OutputPDFTest')}>Test Output PDF</Button>
               </Layout>
               <Layout style={styles.bottomBar}>
                 <TouchableOpacity onPress={()=>Linking.openURL('https://forms.gle/ho3cZNyoaFArNNN79')}><Text style={{color: 'blue'}}>Submit Feedback</Text></TouchableOpacity>

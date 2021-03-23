@@ -132,7 +132,7 @@ export class JSONconverter extends Component {
 
 	JSONtoHTML2(jsondata) {
 		function getAnswer(answerSubsetData, id) {
-			return answerSubsetData["response"][id]
+			return answerSubsetData["response"][id];
 		}
 
 		function getNumSections(data) {
@@ -141,7 +141,7 @@ export class JSONconverter extends Component {
 		    "vehicle": data["vehicle"].length,
 		    "passenger": data["passenger"].length,
 		    "nonmotorist": data["nonmotorist"].length
-		  }
+		  };
 		}
 	}
 
