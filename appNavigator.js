@@ -9,6 +9,7 @@ import { PhotoCaptureScreen } from './screens/photoCaptureScreen'
 import { SinglePhotoScreen } from './screens/singlePhotoScreen';
 import { VehicleInfoScreen } from './screens/vehicleinfoScreen';
 // import { ScanScreen } from './screens/scanScreen';
+import { BarcodeScanScreen } from './screens/barcodeScanScreen';
 import { QuickSurveyScreen } from './screens/quickSurveyScreen';
 import { HomeScreen } from './screens/homeScreen';
 import { QuestionScreen } from './screens/questionScreen';
@@ -30,7 +31,9 @@ const HomeNavigator = createStackNavigator({
   PhotoCapture: PhotoCaptureScreen,
   Vehicle: VehicleInfoScreen,
   // Scan: ScanScreen,  // uncomment for integration with Anyline
-  Scan: FeatureComingSoonScreen,
+  BarcodeScan: BarcodeScanScreen,
+  Scan: BarcodeScanScreen,
+  // Scan: FeatureComingSoonScreen,
   Survey: QuickSurveyScreen,
   Home: HomeScreen,
   Question: QuestionScreen,
