@@ -39,6 +39,14 @@ table {
 	margin:0;
 }
 
+.break-after {
+	page-break-after: always;
+}
+
+.break-before {
+	page-break-before: always;
+}
+
 
 .sig-box {
 	padding: 0.25em;
