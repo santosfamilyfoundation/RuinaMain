@@ -10,20 +10,22 @@ class Welcome extends Component {
     constructor(props){
       super(props);
       this.stateManager = new backgroundSave();
+      this.autoSavedSession = false;
     }
 
     render() {
-
         this.stateManager.RNFS.exists(this.stateManager.path).then((exists) => {
           if (exists) {
+            this.autoSavedSession = true;
             console.log('Detect unfinished report!')
           } else {
+            this.autoSavedSession = false;
             console.log('No unfinished report!')
           }
         })
 
         const navigateTo = (loc) => {
-            this.props.navigation.navigate(loc);
+          this.props.navigation.navigate(loc, {autoSavedSession: this.autoSavedSession});
           };
 
         return (
