@@ -1,7 +1,7 @@
 body {
 	padding: 0.25in;
-	width: 8.5in;
-	height: 11in;
+	width: 90%;
+	height: 100%;
 }
 
 hr {
@@ -33,6 +33,12 @@ h3 {
 	font-size: 1em;
 	margin: 0;
 }
+
+table {
+	border-collapse: collapse;
+	margin:0;
+}
+
 
 .sig-box {
 	padding: 0.25em;
@@ -84,26 +90,32 @@ h3 {
 	color: white;
 	text-align: center;
 	padding: 0.5em 0;
-	margin-top: 1em;
 }
 
 .databox {
 	border: 0.5px solid black;
 	border-top: 0;
 	padding: 0.25em;
+	background: white;
 }
 
-/*.datasection .column {
-	display: flex;
-	align-items: stretch;
-}*/
+.datasection {
+	display: table;
+	background: black;
+	margin-top: 1em;
+	align-content: center;
+}
+
+.datasection .column {
+	height: 100%;
+}
 
 .field {
 	font-weight: bold;
 }
 
 .third {
-	width: 33.3%;
+	width: 33.33%;
 }
 
 p {
