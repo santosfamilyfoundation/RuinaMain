@@ -5,6 +5,8 @@
 import {Component} from 'react';
 // import ReactDOM from 'react-dom';
 import XLSX from 'xlsx';
+import * as htmlStrings from '../utils/html_for_pdf_pages/htmlStrings'
+import {testAnswers} from '../data/testAnswers';
 
 export class JSONconverter extends Component {
 	constructor(props) {
@@ -23,6 +25,8 @@ export class JSONconverter extends Component {
 				return file = this.JSONtoXLS(data);
 			case 'html':
 				return file = this.JSONtoHTML(data);
+			case 'htmlforpdf':
+				return this.JSONtoHTML2(testAnswers);
 			default:
 				console.log("Error+"+format)
 		}
@@ -132,8 +136,11 @@ export class JSONconverter extends Component {
 
 	JSONtoHTML2(jsondata) {
 		function getAnswer(answerSubsetData, id) {
-			return answerSubsetData["response"][id];
-		}
+			if (id in answerSubsetData["response"]) {
+				return answerSubsetData["response"][id];
+			}
+			return "N/A";
+		};
 
 		function getNumSections(data) {
 		  return {
@@ -142,7 +149,47 @@ export class JSONconverter extends Component {
 		    "passenger": data["passenger"].length,
 		    "nonmotorist": data["nonmotorist"].length
 		  };
+		};
+
+		function processQuestionIds(str, answers, fillInMethod) {
+			var lines = str.split("\n");
+			var filledString = "";
+			for (var i = 0; i < lines.length; i++){
+			  // console.log(crashDataSectionLines[i]);
+			  var line = lines[i];
+			  // check if line contains "id=" if so then get the id
+			  var pos = line.indexOf("id=");
+			  if (pos > 0) {
+			    // extract the id
+			    var id = line.slice(pos+4, pos+12);
+			    var ans = getAnswer(answers, id);
+					// put ans into line and replace
+					if (fillInMethod == "datasection") {
+						line = line.slice(0, pos+14) + ans + line.slice(pos+14);
+					} else {
+						line = line.replace("###", ans);
+					}
+			  }
+				filledString += line + "\n";
+			}
+			return filledString;
 		}
+
+		function fillCoverPageHeader(str, answers, section) {
+			var numSectionsDict = getNumSections(answers);
+			var str = str.replace("# Motor Vehicles", numSectionsDict["vehicle"]+" Motor Vehicles");
+			var str = str.replace("# Non-motorists", numSectionsDict["nonmotorist"]+" Non-motorists");
+			// fill in other ids
+			return processQuestionIds(str, answers[section][0], "header");
+		}
+		// create a filled in cover page
+		filledCoverPageHeaderString = fillCoverPageHeader(htmlStrings.coverPageHeaderString, jsondata, "road");
+		// fill in cover page data sections
+		var filledCrashDataSectionString = processQuestionIds(htmlStrings.crashDataSectionString, jsondata["road"][0], "datasection");
+		// concatenate strings to form complete HTML
+		htmlString = htmlStrings.headerString + filledCoverPageHeaderString +
+										filledCrashDataSectionString + htmlStrings.tailString;
+		return htmlString;
 	}
 
 	JSONtoHTML(jsondata) {

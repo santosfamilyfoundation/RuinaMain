@@ -7,7 +7,8 @@ import { styles } from './OutputPDFTest.style';
 import Pdf from 'react-native-pdf';
 import PDFGenerator from 'rn-pdf-generator';
 
-import {coverpageString} from '../../utils/html_for_pdf_pages/coverpageString';
+import JSONconverter from '../../utils/jsonConverter';
+// import * as htmlStrings from '../../utils/html_for_pdf_pages/htmlStrings'
 
 class OutputPDFTest extends Component {
 
@@ -18,6 +19,8 @@ class OutputPDFTest extends Component {
   };
 
   generateDocument() {
+    var converter = new JSONconverter();
+    const coverpageString = converter.handleConverter('htmlforpdf', "");
     PDFGenerator.fromHTML(coverpageString, 'http://localhost')
     .then((data) => {
       console.log("got PDF data");
