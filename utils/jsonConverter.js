@@ -70,7 +70,7 @@ export class JSONconverter extends Component {
 		*/
         const driver = jsondata.Driver
 
-		let converter = require('json2csv');
+		//let converter = require('json2csv');
 
 		// let jsontocsvCallback = function (err, csv) {
     	// 	if (err) throw err;
@@ -83,9 +83,9 @@ export class JSONconverter extends Component {
 		// 	.catch(err => console.error(err));
 		// }
 
-		let convertedJson = converter.parse(jsondata);
-		console.log("Converted json in csv: " + convertedJson);
-		return convertedJson;
+		//let convertedJson = converter.parse(jsondata);
+		console.log("Converted json in csv: ");
+		return 'convertedJson';
 
 	}
 
