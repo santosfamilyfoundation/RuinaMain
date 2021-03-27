@@ -9,9 +9,9 @@ export const headerString = `
 
     <style>
       body {
-        padding: 0.25in;
-        width: 90%;
-        height: 11in;
+        padding: 0in;
+        width: 99%;
+        height: 100%;
       }
 
       hr {
@@ -47,6 +47,14 @@ export const headerString = `
       table {
         border-collapse: collapse;
         margin:0;
+      }
+
+      .break-after {
+        page-break-after: always;
+      }
+
+      .break-before {
+        page-break-before: always;
       }
 
 
@@ -154,12 +162,12 @@ export const coverPageHeaderString = `
       <h4># Motor Vehicles</h4>
       <h4># Non-motorists</h4>
       <h4 id="8dY73Yzs">Crash Severity: ###</h4>
+      <h4 id="IGD5NNyh">Reporting *Officer or Citizen*: ###</h4>
     </div>
     <div class="column right half">
       <h4 id="gNkzJih5">Crash Identifier: ###</h4>
       <h4 id="qfge7d3g">Agency Crash Identifier: ###</h4>
       <h4 id="VwPfe11r">Reporting Agency: ###</h4>
-      <h4 id="IGD5NNyh">Reporting *Officer or Citizen*: ###</h4>
       <h4 class="sig-box">signature</h4>
     </div>
   </div>
@@ -231,7 +239,7 @@ export const crashDataSectionString = `
       </div>
     </div>
   </div>
-  <div class="datasection">
+  <div class="datasection break-after">
     <div class="row boxheader">
       <h3> Crash factors and conditions</h3>
     </div>
@@ -289,11 +297,59 @@ export const crashDataSectionString = `
       </div>
     </div>
   </div>
+</div>
+`
+
+export const vehicleHeaderString = `
+  <div class="container">
+  	<div class="row break-before">
+  		<div class="column left half">
+  			<h4>Motor Vehicle #</h4>
+  			<h4># Occupants</h4>
+  		</div>
+  		<div class="column right half">
+  			<h4>Page # of ##</h4>
+  			<h4>Case Number: ######</h4>
+  		</div>
+  	</div>
+`
+
+export const vehicleDataSectionString = `
+  <div class="datasection">
+    <div class="row boxheader">
+      <h3>ownership and insurance</h3>
+    </div>
+    <div class="row">
+      <div class="column third">
+        <div class="databox">
+          <p class="field"></p>
+          <p class="fieldresponse"></p>
+        </div>
+      </div>
+      <div class="column third"></div>
+      <div class="column third"></div>
+    </div>
+  </div>
+
+  <div class="datasection break-after">
+    <div class="row boxheader">
+      <h3>Vehicle Information</h3>
+    </div>
+    <div class="row">
+      <div class="column">
+        <div class="databox">
+          <p class="field"></p>
+          <p class="fieldresponse"></p>
+        </div>
+      </div>
+      <div class="column"></div>
+      <div class="column"></div>
+    </div>
+  </div>
+  </div>
 `
 
 export const tailString = `
-  </div>
-
   </body>
   </html>
 `

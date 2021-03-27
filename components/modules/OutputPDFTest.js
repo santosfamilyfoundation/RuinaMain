@@ -6,6 +6,7 @@ import { styles } from './OutputPDFTest.style';
 
 import Pdf from 'react-native-pdf';
 import PDFGenerator from 'rn-pdf-generator';
+import RNHTMLtoPDF from 'react-native-html-to-pdf';
 
 import JSONconverter from '../../utils/jsonConverter';
 // import * as htmlStrings from '../../utils/html_for_pdf_pages/htmlStrings'
@@ -15,9 +16,11 @@ class OutputPDFTest extends Component {
   constructor(props) {
     super(props);
     this.state = { uri: '', data: '' };
-    this.generateDocument();
+    // this.generateDocument();
+    this.createPDF();
   };
 
+  // not being used right now
   generateDocument() {
     var converter = new JSONconverter();
     const coverpageString = converter.handleConverter('htmlforpdf', "");
@@ -30,6 +33,26 @@ class OutputPDFTest extends Component {
       console.log('error->', err);
     });
   };
+
+  createPDF() {
+    var converter = new JSONconverter();
+    const coverpageString = converter.handleConverter('htmlforpdf', "");
+    let options = {
+      html: coverpageString,
+      base64: true,
+      fileName: 'crash_report',
+      directory: 'Documents',
+    };
+
+    RNHTMLtoPDF.convert(options)
+    .then((data) => {
+      console.log("got PDF data");
+      this.setState({uri: data.filePath, data: data.base64});
+    })
+    .catch(err  => {
+      console.log('error->', err);
+    });
+  }
 
   // generate default filename
   getDefaultFilename() {

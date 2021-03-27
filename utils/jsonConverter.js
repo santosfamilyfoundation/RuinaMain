@@ -188,7 +188,8 @@ export class JSONconverter extends Component {
 		var filledCrashDataSectionString = processQuestionIds(htmlStrings.crashDataSectionString, jsondata["road"][0], "datasection");
 		// concatenate strings to form complete HTML
 		htmlString = htmlStrings.headerString + filledCoverPageHeaderString +
-										filledCrashDataSectionString + htmlStrings.tailString;
+										filledCrashDataSectionString + htmlStrings.vehicleHeaderString +
+										htmlStrings.vehicleDataSectionString + htmlStrings.tailString;
 		return htmlString;
 	}
 

@@ -7045,6 +7045,11 @@ react-native-gesture-handler@^1.8.0:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
+react-native-html-to-pdf@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/react-native-html-to-pdf/-/react-native-html-to-pdf-0.9.1.tgz#74caed6e4e7344ba4f8b3f49425410896b7c61be"
+  integrity sha512-aACv9A2i9A6FY5hi9zuhDSsJqea3yRpbpQu0/y1LGPk9DknE4c0CDDOI9qjEJv+wgBpS1gfQM+sezqVlZ8xtlA==
+
 react-native-iphone-x-helper@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.0.tgz#84fd13e6b89cc3aa4daa80ec514bf15cb724d86d"
