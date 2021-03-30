@@ -160,16 +160,6 @@ export const questions = {
             ]
         },
         {
-            "numOptionsAllowed": "nan",
-            "question": NaN,
-            "id": "gTl8UpQ5",
-            "answerType": NaN,
-            "display": [
-                NaN
-            ],
-            "humanReadableId": NaN
-        },
-        {
             "numOptionsAllowed": "0.0",
             "question": "First Name of Person Involved",
             "id": "reJw3rUT",
@@ -1460,16 +1450,6 @@ export const questions = {
             ]
         },
         {
-            "numOptionsAllowed": "nan",
-            "question": NaN,
-            "id": "cdAgpykz",
-            "answerType": NaN,
-            "display": [
-                NaN
-            ],
-            "humanReadableId": NaN
-        },
-        {
             "numOptionsAllowed": "1.0",
             "question": "Attempted Avoidance Maneuver",
             "id": "AREUHJ9b",
@@ -1682,16 +1662,6 @@ export const questions = {
             "humanReadableId": "fatalityDriver-6"
         },
         {
-            "numOptionsAllowed": "nan",
-            "question": NaN,
-            "id": "qM2VTkhR",
-            "answerType": NaN,
-            "display": [
-                NaN
-            ],
-            "humanReadableId": NaN
-        },
-        {
             "numOptionsAllowed": "0.0",
             "question": "Alcohol Test Type and Results",
             "id": "EgXFXXBd",
@@ -1830,16 +1800,6 @@ export const questions = {
                 "fatalityNonmotorist"
             ],
             "humanReadableId": "fatalityNonmotorist-5"
-        },
-        {
-            "numOptionsAllowed": "nan",
-            "question": NaN,
-            "id": "TTJkyuqN",
-            "answerType": NaN,
-            "display": [
-                NaN
-            ],
-            "humanReadableId": NaN
         },
         {
             "numOptionsAllowed": "0.0",
@@ -2011,16 +1971,6 @@ export const questions = {
                     "idCode": "5"
                 }
             ]
-        },
-        {
-            "numOptionsAllowed": "nan",
-            "question": NaN,
-            "id": "pQFn4Ikt",
-            "answerType": NaN,
-            "display": [
-                NaN
-            ],
-            "humanReadableId": NaN
         },
         {
             "numOptionsAllowed": "1.0",
@@ -2727,16 +2677,6 @@ export const questions = {
                 "lvhm"
             ],
             "humanReadableId": "lvhm-46"
-        },
-        {
-            "numOptionsAllowed": "nan",
-            "question": NaN,
-            "id": "dhsFA2In",
-            "answerType": NaN,
-            "display": [
-                NaN
-            ],
-            "humanReadableId": NaN
         },
         {
             "numOptionsAllowed": "0.0",
@@ -3642,16 +3582,6 @@ export const questions = {
             ]
         },
         {
-            "numOptionsAllowed": "nan",
-            "question": NaN,
-            "id": "UUfk05qh",
-            "answerType": NaN,
-            "display": [
-                NaN
-            ],
-            "humanReadableId": NaN
-        },
-        {
             "numOptionsAllowed": "0.0",
             "question": "First Name of Person Involved",
             "id": "xkXuEz84",
@@ -4097,16 +4027,6 @@ export const questions = {
                     "idCode": "4"
                 }
             ]
-        },
-        {
-            "numOptionsAllowed": "nan",
-            "question": NaN,
-            "id": "iSgEar3b",
-            "answerType": NaN,
-            "display": [
-                NaN
-            ],
-            "humanReadableId": NaN
         },
         {
             "numOptionsAllowed": "0.0",
@@ -4629,7 +4549,7 @@ export const questions = {
             "helperText": "9 character NCIC Originating Agency Identifier"
         },
         {
-            "numOptionsAllowed": "1.0",
+            "numOptionsAllowed": "2.0",
             "question": "Weather Conditions",
             "id": "u07WbEUL",
             "answerType": "advancedDropDown",
@@ -5196,16 +5116,6 @@ export const questions = {
                 "road"
             ],
             "humanReadableId": "road-36"
-        },
-        {
-            "numOptionsAllowed": "nan",
-            "question": NaN,
-            "id": "Cx4Ayx5J",
-            "answerType": NaN,
-            "display": [
-                NaN
-            ],
-            "humanReadableId": NaN
         },
         {
             "numOptionsAllowed": "1",
@@ -7230,16 +7140,6 @@ export const questions = {
                     "idCode": "7"
                 }
             ]
-        },
-        {
-            "numOptionsAllowed": "nan",
-            "question": NaN,
-            "id": "MyFxZ4xV",
-            "answerType": NaN,
-            "display": [
-                NaN
-            ],
-            "humanReadableId": NaN
         }
     ]
 }

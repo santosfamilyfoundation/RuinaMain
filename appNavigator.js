@@ -43,7 +43,7 @@ const HomeNavigator = createStackNavigator({
   InfoExchange: InfoExchangeScreen,
   SinglePhoto: SinglePhotoScreen,
   OutputPDFTest: OutputPDFTestScreen,
-  ReportToDatabase: ReportToDatabaseScreen,
+  ReportToDatabase: FeatureComingSoonScreen,
 }, {
   headerMode: 'none',
 });
