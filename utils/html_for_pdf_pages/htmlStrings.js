@@ -6,7 +6,7 @@ export const headerString = `
     <meta charset="utf-8">
 
     <title>Crash Form Cover</title>
-
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Roboto:300,400,500" rel="stylesheet">
     <style>
       body {
         padding: 0in;
@@ -32,6 +32,7 @@ export const headerString = `
       h4 {
         margin: 4px 0;
         font-family: "Droid Serif";
+        color: black;
       }
 
       h1, h3 {
@@ -51,12 +52,17 @@ export const headerString = `
 
       .break-after {
         page-break-after: always;
+        break-after: always;
+        display: block;
+        color: red;
       }
 
       .break-before {
         page-break-before: always;
+        break-before: always;
+        display: block;
+        color: green;
       }
-
 
       .sig-box {
         padding: 0.25em;
@@ -140,7 +146,6 @@ export const headerString = `
         margin: 0.25em 0;
       }
     </style>
-    <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Roboto:300,400,500" rel="stylesheet">
 
   </head>
 
@@ -151,7 +156,7 @@ export const headerString = `
 
 export const coverPageHeaderString = `
   <div class="row">
-    <h4 class="inline right"> Page 1 of ###</h4>
+    <h4 class="inline right"> Page ### of ###</h4>
     <h1 class="inline">Ruina Motor Vehicle Crash Report</h1>
 
     <hr>
@@ -304,12 +309,11 @@ export const vehicleHeaderString = `
   <div class="container">
   	<div class="row break-before">
   		<div class="column left half">
-  			<h4>Motor Vehicle #</h4>
-  			<h4># Occupants</h4>
+  			<h4>Motor Vehicle ###</h4>
+  			<h4 id="CTfb8pdV"># Occupants: ###</h4>
   		</div>
   		<div class="column right half">
-  			<h4>Page # of ##</h4>
-  			<h4>Case Number: ######</h4>
+  			<h4>Page ### of ###</h4>
   		</div>
   	</div>
 `
@@ -322,12 +326,50 @@ export const vehicleDataSectionString = `
     <div class="row">
       <div class="column third">
         <div class="databox">
-          <p class="field"></p>
-          <p class="fieldresponse"></p>
+          <p class="field">Owner's First Name</p>
+          <p class="fieldresponse" id="YyQ6jMwd"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Owner's Middle Initial</p>
+          <p class="fieldresponse" id="SulL32si"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Owner's Last Name</p>
+          <p class="fieldresponse" id="zOGjRlMJ"></p>
         </div>
       </div>
-      <div class="column third"></div>
-      <div class="column third"></div>
+      <div class="column third">
+        <div class="databox">
+          <p class="field">Insurance Company Name</p>
+          <p class="fieldresponse" id="TDkAb1u9"></p>
+        </div>
+        <div class="databox">
+          <p class="field">NAIC #</p>
+          <p class="fieldresponse" id="iWGTReJ5"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Policy #</p>
+          <p class="fieldresponse" id="RGPLYKWA"></p>
+        </div>
+      </div>
+      <div class="column third">
+        <div class="databox">
+          <p class="field">Owner's Street Address</p>
+          <p class="fieldresponse" id="ywUJNXkj"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Owner's City/Town</p>
+          <p class="fieldresponse" id="4G5ht6pl"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Owner's State</p>
+          <p class="fieldresponse" id="3g8Oxu93"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Owner's ZIP Code</p>
+          <p class="fieldresponse" id="crxPGHSm"></p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -336,14 +378,182 @@ export const vehicleDataSectionString = `
       <h3>Vehicle Information</h3>
     </div>
     <div class="row">
-      <div class="column">
+      <div class="column third">
         <div class="databox">
-          <p class="field"></p>
-          <p class="fieldresponse"></p>
+          <p class="field">Vehicle Identification Number</p>
+          <p class="fieldresponse" id="Bw7d2KTr"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Vehicle Registration Identifier</p>
+          <p class="fieldresponse" id="d7zJ5NIq"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Vehicle Registration Year</p>
+          <p class="fieldresponse" id="QoX1IOdG"></p>
+        </div>
+        <div class="databox">
+          <p class="field">License Plate Number</p>
+          <p class="fieldresponse" id="vDnyDl5t"></p>
         </div>
       </div>
-      <div class="column"></div>
-      <div class="column"></div>
+      <div class="column third">
+        <div class="databox">
+          <p class="field">Vehicle Unit Type </p>
+          <p class="fieldresponse" id="Dpk0wqnI"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Vehicle Make</p>
+          <p class="fieldresponse" id="eZglw8FV"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Vehicle Model</p>
+          <p class="fieldresponse" id="29h5OiPC"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Vehicle Model Year</p>
+          <p class="fieldresponse" id="C0rbnXHC"></p>
+        </div>
+      </div>
+      <div class="column third">
+        <div class="databox">
+          <p class="field">Body Type Category</p>
+          <p class="fieldresponse" id="MMkwgaog"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Vehicle Size</p>
+          <p class="fieldresponse" id="CynWHwxP"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Number of Trailing Units</p>
+          <p class="fieldresponse" id="ovVntlnU"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Hazardous Materials Placard?</p>
+          <p class="fieldresponse" id="sM5HGjcV"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="datasection break-before break-after">
+    <div class="row boxheader">
+      <h3>Vehicle Crash Information</h3>
+    </div>
+    <div class="row">
+      <div class="column third">
+        <div class="databox">
+          <p class="field">Posted/Statutory Speed Limit</p>
+          <p class="fieldresponse" id="wAqrAfiG"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Travel Direction Before Crash</p>
+          <p class="fieldresponse" id="CP4soemD"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Vehicle Maneuver/Action</p>
+          <p class="fieldresponse" id="DJ4YPDuQ"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Initial Point of Contact</p>
+          <p class="fieldresponse" id="4KpRmZXB"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Location of Damage Area(s)</p>
+          <p class="fieldresponse" id="lZDkbTdw"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Resulting Extent of Damage</p>
+          <p class="fieldresponse" id="a1fPOVyS"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Sequence of Events</p>
+          <p class="fieldresponse" id="N1NDCJhB"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Vehicle's Most Harmful Event</p>
+          <p class="fieldresponse" id="9WuImDSX"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Hit and Run</p>
+          <p class="fieldresponse" id="4EHCUQHM"></p>
+        </div>
+      </div>
+      <div class="column third">
+        <div class="databox">
+          <p class="field">Travel Directions</p>
+          <p class="fieldresponse" id="udnyu4F5"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Divided?</p>
+          <p class="fieldresponse" id="u5KrpsMu"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Barrier Type</p>
+          <p class="fieldresponse" id="4P4o8TWH"></p>
+        </div>
+        <div class="databox">
+          <p class="field">HOV/HOT Lanes</p>
+          <p class="fieldresponse" id="Gk088QR4"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Crash Related to HOV/HOT?</p>
+          <p class="fieldresponse" id="Uzw63nI0"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Total Through Lanes</p>
+          <p class="fieldresponse" id="FdF7XvAQ"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Total Auxiliary Lanes</p>
+          <p class="fieldresponse" id="JwQN2ENk"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Horizontal Alignment</p>
+          <p class="fieldresponse" id="UigT0ygk"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Grade</p>
+          <p class="fieldresponse" id="tFYqNzmA"></p>
+        </div>
+      </div>
+      <div class="column third">
+        <div class="databox">
+          <p class="field">Traffic Control Devices (TCDs)</p>
+          <p class="fieldresponse" id="xBm1Bisf"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Inoperative or Missing TCDs</p>
+          <p class="fieldresponse" id="YLcktHvs"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Towed Due to Disabling Damage</p>
+          <p class="fieldresponse" id="pTV8x6So"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Contributing Circumstances from Vehicle</p>
+          <p class="fieldresponse" id="PzKUFMw0"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Special Function in Transport</p>
+          <p class="fieldresponse" id="4vrmnvfC"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Emergency Motor Vehicle Use</p>
+          <p class="fieldresponse" id="CFa8RCtt"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Has Automated System(s)?</p>
+          <p class="fieldresponse" id="krQbh0po"></p>
+        </div>
+        <div class="databox">
+          <p class="field">Automated System Levels (ASLs)</p>
+          <p class="fieldresponse" id="d4OE8GnI"></p>
+        </div>
+        <div class="databox">
+          <p class="field">ASLs Engaged during Crash</p>
+          <p class="fieldresponse" id="zk6QtmkD"></p>
+        </div>
+      </div>
     </div>
   </div>
   </div>

@@ -175,21 +175,39 @@ export class JSONconverter extends Component {
 			return filledString;
 		}
 
-		function fillCoverPageHeader(str, answers, section) {
-			var numSectionsDict = getNumSections(answers);
+		function fillCoverPageHeader(str, answers, numSectionsDict, pageNum, totalNumPages) {
+			var str = str.replace("Page ### of ###", "Page "+pageNum+" of "+totalNumPages);
 			var str = str.replace("# Motor Vehicles", numSectionsDict["vehicle"]+" Motor Vehicles");
 			var str = str.replace("# Non-motorists", numSectionsDict["nonmotorist"]+" Non-motorists");
 			// fill in other ids
-			return processQuestionIds(str, answers[section][0], "header");
+			return processQuestionIds(str, answers, "header");
 		}
-		// create a filled in cover page
-		filledCoverPageHeaderString = fillCoverPageHeader(htmlStrings.coverPageHeaderString, jsondata, "road");
+
+		function fillVehiclePageHeader(str, answers, vehicleNum, pageNum, totalNumPages) {
+			var str = str.replace("Page ### of ###", "Page "+pageNum+" of "+totalNumPages);
+			var str = str.replace("Motor Vehicle ###", "Motor Vehicle  "+vehicleNum);
+			// fill in other ids
+			return processQuestionIds(str, answers, "header");
+		}
+
+		var htmlString = htmlStrings.headerString;
+		var pageNum = 1;
+		const numSectionsDict = getNumSections(jsondata);
+		const totalNumPages = 2;
+		// fill in cover page header
+		htmlString += fillCoverPageHeader(htmlStrings.coverPageHeaderString, jsondata["road"][0], numSectionsDict, pageNum, totalNumPages);
 		// fill in cover page data sections
-		var filledCrashDataSectionString = processQuestionIds(htmlStrings.crashDataSectionString, jsondata["road"][0], "datasection");
+		htmlString += processQuestionIds(htmlStrings.crashDataSectionString, jsondata["road"][0], "datasection");
+		pageNum += 1;
+		// fill in vehicle page
+		for (var i = 0; i < numSectionsDict["vehicle"]; i++) {
+			var vehicleAnswers = jsondata["vehicle"][i];
+			htmlString += fillVehiclePageHeader(htmlStrings.vehicleHeaderString, vehicleAnswers, i+1, pageNum, totalNumPages);
+			htmlString += processQuestionIds(htmlStrings.vehicleDataSectionString, vehicleAnswers, "datasection");
+			pageNum += 1;
+		}
 		// concatenate strings to form complete HTML
-		htmlString = htmlStrings.headerString + filledCoverPageHeaderString +
-										filledCrashDataSectionString + htmlStrings.vehicleHeaderString +
-										htmlStrings.vehicleDataSectionString + htmlStrings.tailString;
+		htmlString += htmlStrings.tailString;
 		return htmlString;
 	}
 
