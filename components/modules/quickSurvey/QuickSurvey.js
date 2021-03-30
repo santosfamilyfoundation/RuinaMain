@@ -22,6 +22,9 @@ import { styles } from './QuickSurvey.style';
 import { questions } from '../../../data/questions';
 import backgroundSave from '../../../utils/backgroundSave';
 
+import { MaterialDialog } from 'react-native-material-dialog';
+import { material } from "react-native-typography";
+
 
 var uuid = require('react-native-uuid');
 
@@ -31,7 +34,9 @@ class QuickSurvey extends Component {
       this.state = {
         autoSavedSession: this.props.navigation.getParam('autoSavedSession'),
         loadedAutoSave: false,
-        loading: true,
+        loadedAutoSaveSuccessMessageVisible: false,
+        loadedAutoSaveFailMessageVisible: false,
+        loading: true, //loading screen
       };
     }
 
@@ -53,14 +58,22 @@ class QuickSurvey extends Component {
             const loadedState = JSON.parse(data);
             console.log("Successfully parsed json");
             this.parseLoadedState(loadedState);
+            this.setState({ loadedAutoSaveSuccessMessageVisible: true})
           } catch(e) {
+            // catch any error while parsing the JSON
             console.log("ERROR: " + e.message);
+            this.setState({ loadedAutoSaveFailMessageVisible: true })
+            stateManager.deleteCapturedState();
           }
+          // Hide loading screen
           this.setState({ loading: false });
         })
         .catch((err) => {
+          // catch any error while reading autoSavedSession JSON from disk
+          stateManager.deleteCapturedState();
           this.setState({ autoSavedSession: false });
           this.setState({ loading: false });
+          this.setState({ loadedAutoSaveFailMessageVisible: true })
           console.log(err.message);
         })
     }
@@ -258,21 +271,44 @@ class QuickSurvey extends Component {
       }
 
       console.log("LOADING STATUS (render): ", this.state.loading);
-      if (this.state.loading) {
+      if (this.state.loading) { // showing a spinning loading wheel while trying to load autosaved session
         return (
           <SafeAreaView style={styles.spinnerView}>
             <ActivityIndicator id="loadingScreen" size="large" color="#0000ff" />
           </SafeAreaView>
         );
-      } else {
+      } else { 
         console.log("LoadedAutoSave Status after loading: ", this.state.loadedAutoSave);
+        // Successfully loaded autosaved session
         if (this.state.loadedAutoSave) {
           return (
             <SafeAreaView style={{ flex: 1 }}>
-              <Button onPress={() => moveHome()}>Continue</Button>
+              <MaterialDialog
+                title={"Successfully Loaded your Last Session!"}
+                visible={this.state.loadedAutoSaveSuccessMessageVisible}
+                cancelLabel=''
+                okLabel = 'Continue'
+                onCancel={() => {
+                  this.setState({ loadedAutoSaveSuccessMessageVisible: false });
+                  moveHome();
+                }}
+                onOk={() => {
+                  this.setState({ loadedAutoSaveSuccessMessageVisible: false });
+                  moveHome();
+                }}
+              >
+                <Text style={material.subheading}>
+                  Your last session is successfully loaded. Press Continue to edit the report.
+                </Text>
+              </MaterialDialog>
             </SafeAreaView>
           )
-        } else {
+        } 
+        // Start new report by filling out the quick survey, could be due to three possible cases: 
+        // 1) user doesnt want to load background saved session
+        // 2) no background saved session exist
+        // 3) json parsing failed
+        else {
           // render the entire quick survey
           // some questions are hardcoded right now because they don't correspond to
           // crash report questions and have special submitFunctions
@@ -332,13 +368,31 @@ class QuickSurvey extends Component {
                         No
                       </Button>
                     </Layout>
-                </Card>
-              </SafeAreaView>*/}
-            </ScrollView>
-            <Button onPress = {() => moveHome()}>Continue</Button>
-          </SafeAreaView>
-        );
-    }
+                  </Card>
+                </SafeAreaView>*/}
+              </ScrollView>
+              <Button onPress={() => moveHome()}>Continue</Button>
+
+              <MaterialDialog
+                title={"Failed to Load your Last Session!"}
+                visible={this.state.loadedAutoSaveFailMessageVisible}
+                cancelLabel=''
+                onCancel={() => {
+                  this.setState({ loadedAutoSaveFailMessageVisible: false });
+                }}
+                onOk={() => {
+                  this.setState({ loadedAutoSaveFailMessageVisible: false });
+                }}
+              >
+                <Text style={material.subheading}>
+                  An error occured while trying to load your last session. The file is corrupted. Press OK to start a new report.
+                </Text>
+              </MaterialDialog>
+            </SafeAreaView>
+          );
+        }
+      }
+    } // render
 };
 
 // all the possible actions in QuickSurvey

@@ -86,17 +86,12 @@ class Home extends Component {
             quiz: this.props.quiz,
         };
         console.log("---------------------------NEW UPDATE-----------------------------")
-        // console.log("props: ------------------------------------------")
-        // for (var ele in this.props) {
-        //     console.log(ele, ": ", this.props[ele]);
-        // }
-        // console.log("data: --------------------------------------------")
         for (let d in data) {
             console.log(d, ": ", data[d]);
         }
 
-        // const captureState = new backgroundSave();
-        // captureState.captureCurrentState(JSON.stringify(data));
+        const captureState = new backgroundSave();
+        captureState.captureCurrentState(JSON.stringify(data));
 
         let roadQuestions = this.filterQuestionsData('road');
 
