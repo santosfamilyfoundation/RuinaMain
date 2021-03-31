@@ -151,7 +151,10 @@ export class JSONconverter extends Component {
 		  };
 		};
 
-		function processQuestionIds(str, answers, fillInMethod) {
+		function processQuestionIds(str, answers, fillInMethod, pageNum=null, totalNumPages=null) {
+			if (pageNum) {
+				var str = str.replace("Page ### of ###", "Page "+pageNum+" of "+totalNumPages);
+			}
 			var lines = str.split("\n");
 			var filledString = "";
 			for (var i = 0; i < lines.length; i++){
@@ -193,7 +196,7 @@ export class JSONconverter extends Component {
 		var htmlString = htmlStrings.headerString;
 		var pageNum = 1;
 		const numSectionsDict = getNumSections(jsondata);
-		const totalNumPages = 2;
+		const totalNumPages = 1 + numSectionsDict["vehicle"]*2;
 		// fill in cover page header
 		htmlString += fillCoverPageHeader(htmlStrings.coverPageHeaderString, jsondata["road"][0], numSectionsDict, pageNum, totalNumPages);
 		// fill in cover page data sections
@@ -203,7 +206,8 @@ export class JSONconverter extends Component {
 		for (var i = 0; i < numSectionsDict["vehicle"]; i++) {
 			var vehicleAnswers = jsondata["vehicle"][i];
 			htmlString += fillVehiclePageHeader(htmlStrings.vehicleHeaderString, vehicleAnswers, i+1, pageNum, totalNumPages);
-			htmlString += processQuestionIds(htmlStrings.vehicleDataSectionString, vehicleAnswers, "datasection");
+			pageNum += 1
+			htmlString += processQuestionIds(htmlStrings.vehicleDataSectionString, vehicleAnswers, "datasection", pageNum, totalNumPages);
 			pageNum += 1;
 		}
 		// concatenate strings to form complete HTML

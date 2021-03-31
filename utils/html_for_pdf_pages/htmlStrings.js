@@ -52,16 +52,10 @@ export const headerString = `
 
       .break-after {
         page-break-after: always;
-        break-after: always;
-        display: block;
-        color: red;
       }
 
       .break-before {
         page-break-before: always;
-        break-before: always;
-        display: block;
-        color: green;
       }
 
       .sig-box {
@@ -69,9 +63,9 @@ export const headerString = `
         border: 0.5px solid black;
       }
 
-      .container {
-        display: flex;
-        flex-direction: column;
+      .page-header {
+      	display: flex;
+      	flex-direction: column;
       }
 
       .row {
@@ -125,7 +119,7 @@ export const headerString = `
 
       .datasection {
         display: table;
-        background: black;
+        background: white;
         margin-top: 1em;
         align-content: center;
       }
@@ -150,11 +144,10 @@ export const headerString = `
   </head>
 
   <body>
-
-  <div class="container">
 `
 
 export const coverPageHeaderString = `
+  <div class="page-header">
   <div class="row">
     <h4 class="inline right"> Page ### of ###</h4>
     <h1 class="inline">Ruina Motor Vehicle Crash Report</h1>
@@ -303,11 +296,12 @@ export const crashDataSectionString = `
     </div>
   </div>
 </div>
+<div class="break-after"></div>
 `
 
 export const vehicleHeaderString = `
-  <div class="container">
-  	<div class="row break-before">
+  <div class="page-header">
+  	<div class="row">
   		<div class="column left half">
   			<h4>Motor Vehicle ###</h4>
   			<h4 id="CTfb8pdV"># Occupants: ###</h4>
@@ -372,6 +366,7 @@ export const vehicleDataSectionString = `
       </div>
     </div>
   </div>
+  </div>
 
   <div class="datasection break-after">
     <div class="row boxheader">
@@ -434,129 +429,136 @@ export const vehicleDataSectionString = `
       </div>
     </div>
   </div>
-
-  <div class="datasection break-before break-after">
-    <div class="row boxheader">
-      <h3>Vehicle Crash Information</h3>
-    </div>
-    <div class="row">
-      <div class="column third">
-        <div class="databox">
-          <p class="field">Posted/Statutory Speed Limit</p>
-          <p class="fieldresponse" id="wAqrAfiG"></p>
-        </div>
-        <div class="databox">
-          <p class="field">Travel Direction Before Crash</p>
-          <p class="fieldresponse" id="CP4soemD"></p>
-        </div>
-        <div class="databox">
-          <p class="field">Vehicle Maneuver/Action</p>
-          <p class="fieldresponse" id="DJ4YPDuQ"></p>
-        </div>
-        <div class="databox">
-          <p class="field">Initial Point of Contact</p>
-          <p class="fieldresponse" id="4KpRmZXB"></p>
-        </div>
-        <div class="databox">
-          <p class="field">Location of Damage Area(s)</p>
-          <p class="fieldresponse" id="lZDkbTdw"></p>
-        </div>
-        <div class="databox">
-          <p class="field">Resulting Extent of Damage</p>
-          <p class="fieldresponse" id="a1fPOVyS"></p>
-        </div>
-        <div class="databox">
-          <p class="field">Sequence of Events</p>
-          <p class="fieldresponse" id="N1NDCJhB"></p>
-        </div>
-        <div class="databox">
-          <p class="field">Vehicle's Most Harmful Event</p>
-          <p class="fieldresponse" id="9WuImDSX"></p>
-        </div>
-        <div class="databox">
-          <p class="field">Hit and Run</p>
-          <p class="fieldresponse" id="4EHCUQHM"></p>
-        </div>
+  <div class="break-after"></div>
+  <div class="page-header">
+  	<div class="row">
+  		<div class="column right half">
+  			<h4>Page ### of ###</h4>
+  		</div>
+  	</div>
+    <div class="datasection">
+      <div class="row boxheader">
+        <h3>Vehicle Crash Information</h3>
       </div>
-      <div class="column third">
-        <div class="databox">
-          <p class="field">Travel Directions</p>
-          <p class="fieldresponse" id="udnyu4F5"></p>
+      <div class="row">
+        <div class="column third">
+          <div class="databox">
+            <p class="field">Posted/Statutory Speed Limit</p>
+            <p class="fieldresponse" id="wAqrAfiG"></p>
+          </div>
+          <div class="databox">
+            <p class="field">Travel Direction Before Crash</p>
+            <p class="fieldresponse" id="CP4soemD"></p>
+          </div>
+          <div class="databox">
+            <p class="field">Vehicle Maneuver/Action</p>
+            <p class="fieldresponse" id="DJ4YPDuQ"></p>
+          </div>
+          <div class="databox">
+            <p class="field">Initial Point of Contact</p>
+            <p class="fieldresponse" id="4KpRmZXB"></p>
+          </div>
+          <div class="databox">
+            <p class="field">Location of Damage Area(s)</p>
+            <p class="fieldresponse" id="lZDkbTdw"></p>
+          </div>
+          <div class="databox">
+            <p class="field">Resulting Extent of Damage</p>
+            <p class="fieldresponse" id="a1fPOVyS"></p>
+          </div>
+          <div class="databox">
+            <p class="field">Sequence of Events</p>
+            <p class="fieldresponse" id="N1NDCJhB"></p>
+          </div>
+          <div class="databox">
+            <p class="field">Vehicle's Most Harmful Event</p>
+            <p class="fieldresponse" id="9WuImDSX"></p>
+          </div>
+          <div class="databox">
+            <p class="field">Hit and Run</p>
+            <p class="fieldresponse" id="4EHCUQHM"></p>
+          </div>
         </div>
-        <div class="databox">
-          <p class="field">Divided?</p>
-          <p class="fieldresponse" id="u5KrpsMu"></p>
+        <div class="column third">
+          <div class="databox">
+            <p class="field">Travel Directions</p>
+            <p class="fieldresponse" id="udnyu4F5"></p>
+          </div>
+          <div class="databox">
+            <p class="field">Divided?</p>
+            <p class="fieldresponse" id="u5KrpsMu"></p>
+          </div>
+          <div class="databox">
+            <p class="field">Barrier Type</p>
+            <p class="fieldresponse" id="4P4o8TWH"></p>
+          </div>
+          <div class="databox">
+            <p class="field">HOV/HOT Lanes</p>
+            <p class="fieldresponse" id="Gk088QR4"></p>
+          </div>
+          <div class="databox">
+            <p class="field">Crash Related to HOV/HOT?</p>
+            <p class="fieldresponse" id="Uzw63nI0"></p>
+          </div>
+          <div class="databox">
+            <p class="field">Total Through Lanes</p>
+            <p class="fieldresponse" id="FdF7XvAQ"></p>
+          </div>
+          <div class="databox">
+            <p class="field">Total Auxiliary Lanes</p>
+            <p class="fieldresponse" id="JwQN2ENk"></p>
+          </div>
+          <div class="databox">
+            <p class="field">Horizontal Alignment</p>
+            <p class="fieldresponse" id="UigT0ygk"></p>
+          </div>
+          <div class="databox">
+            <p class="field">Grade</p>
+            <p class="fieldresponse" id="tFYqNzmA"></p>
+          </div>
         </div>
-        <div class="databox">
-          <p class="field">Barrier Type</p>
-          <p class="fieldresponse" id="4P4o8TWH"></p>
-        </div>
-        <div class="databox">
-          <p class="field">HOV/HOT Lanes</p>
-          <p class="fieldresponse" id="Gk088QR4"></p>
-        </div>
-        <div class="databox">
-          <p class="field">Crash Related to HOV/HOT?</p>
-          <p class="fieldresponse" id="Uzw63nI0"></p>
-        </div>
-        <div class="databox">
-          <p class="field">Total Through Lanes</p>
-          <p class="fieldresponse" id="FdF7XvAQ"></p>
-        </div>
-        <div class="databox">
-          <p class="field">Total Auxiliary Lanes</p>
-          <p class="fieldresponse" id="JwQN2ENk"></p>
-        </div>
-        <div class="databox">
-          <p class="field">Horizontal Alignment</p>
-          <p class="fieldresponse" id="UigT0ygk"></p>
-        </div>
-        <div class="databox">
-          <p class="field">Grade</p>
-          <p class="fieldresponse" id="tFYqNzmA"></p>
-        </div>
-      </div>
-      <div class="column third">
-        <div class="databox">
-          <p class="field">Traffic Control Devices (TCDs)</p>
-          <p class="fieldresponse" id="xBm1Bisf"></p>
-        </div>
-        <div class="databox">
-          <p class="field">Inoperative or Missing TCDs</p>
-          <p class="fieldresponse" id="YLcktHvs"></p>
-        </div>
-        <div class="databox">
-          <p class="field">Towed Due to Disabling Damage</p>
-          <p class="fieldresponse" id="pTV8x6So"></p>
-        </div>
-        <div class="databox">
-          <p class="field">Contributing Circumstances from Vehicle</p>
-          <p class="fieldresponse" id="PzKUFMw0"></p>
-        </div>
-        <div class="databox">
-          <p class="field">Special Function in Transport</p>
-          <p class="fieldresponse" id="4vrmnvfC"></p>
-        </div>
-        <div class="databox">
-          <p class="field">Emergency Motor Vehicle Use</p>
-          <p class="fieldresponse" id="CFa8RCtt"></p>
-        </div>
-        <div class="databox">
-          <p class="field">Has Automated System(s)?</p>
-          <p class="fieldresponse" id="krQbh0po"></p>
-        </div>
-        <div class="databox">
-          <p class="field">Automated System Levels (ASLs)</p>
-          <p class="fieldresponse" id="d4OE8GnI"></p>
-        </div>
-        <div class="databox">
-          <p class="field">ASLs Engaged during Crash</p>
-          <p class="fieldresponse" id="zk6QtmkD"></p>
+        <div class="column third">
+          <div class="databox">
+            <p class="field">Traffic Control Devices (TCDs)</p>
+            <p class="fieldresponse" id="xBm1Bisf"></p>
+          </div>
+          <div class="databox">
+            <p class="field">Inoperative or Missing TCDs</p>
+            <p class="fieldresponse" id="YLcktHvs"></p>
+          </div>
+          <div class="databox">
+            <p class="field">Towed Due to Disabling Damage</p>
+            <p class="fieldresponse" id="pTV8x6So"></p>
+          </div>
+          <div class="databox">
+            <p class="field">Contributing Circumstances from Vehicle</p>
+            <p class="fieldresponse" id="PzKUFMw0"></p>
+          </div>
+          <div class="databox">
+            <p class="field">Special Function in Transport</p>
+            <p class="fieldresponse" id="4vrmnvfC"></p>
+          </div>
+          <div class="databox">
+            <p class="field">Emergency Motor Vehicle Use</p>
+            <p class="fieldresponse" id="CFa8RCtt"></p>
+          </div>
+          <div class="databox">
+            <p class="field">Has Automated System(s)?</p>
+            <p class="fieldresponse" id="krQbh0po"></p>
+          </div>
+          <div class="databox">
+            <p class="field">Automated System Levels (ASLs)</p>
+            <p class="fieldresponse" id="d4OE8GnI"></p>
+          </div>
+          <div class="databox">
+            <p class="field">ASLs Engaged during Crash</p>
+            <p class="fieldresponse" id="zk6QtmkD"></p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  </div>
+  <div class="break-after"></div>
 `
 
 export const tailString = `
