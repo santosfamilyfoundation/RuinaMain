@@ -20,7 +20,6 @@ const DropDownMultiSelect = (props) => {
     const {data, key, id, questionReducer, submitFunction, updateResponse} = props;
 
     let currId = data.id;
-    let currUid = data.questionUid;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
 
@@ -123,7 +122,7 @@ const DropDownMultiSelect = (props) => {
         for(i = 0; i < selectedOptions.length; i++) {
             res.push(selectedOptions[i].idCode);
         }
-        updateResponse && updateResponse({id, question: currUid, selection: res})
+        updateResponse && updateResponse({id, question: currId, selection: res})
         submitFunction({id, question: currId, selection: res})
     }
 

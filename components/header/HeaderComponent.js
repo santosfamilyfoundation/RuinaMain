@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 const HeaderComponent = (props) => {
     const {data} = props;
-    let currUid = data.questionUid;
+    // let currUid = data.questionUid;
     
     if(props.response != null) { 
     if (data.questionDependency != null){

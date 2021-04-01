@@ -15,7 +15,6 @@ const DropDownSingleSelect = (props) => {
     const [selectedOption, setSelectedOption] = React.useState(null);
     const {data, key, id, questionReducer, submitFunction, updateResponse} = props;
     let currId = data.id;
-    let currUid = data.questionUid;
     const reducerData = questionReducer.data.find(entry => entry.id == id); 
     let existingData = !reducerData?.response ? null : reducerData.response;
 
@@ -72,7 +71,7 @@ const DropDownSingleSelect = (props) => {
     const submitField = (selection) => {
         setSelectedOption(selection);
         let content = selection.idCode;
-        updateResponse && updateResponse({id, question: currUid, selection: content})
+        updateResponse && updateResponse({id, question: currId, selection: content})
         submitFunction({id, question: currId, selection: content})
     }
 

@@ -12,7 +12,6 @@ const OpenTextFieldWithSelection = (props) => {
     const {data, key, id, questionReducer, submitFunction, updateResponse} = props;
 
     let currId = data.id
-    let currUid = data.questionUid;
     let status;
 
     const reducerData = questionReducer.data.find(entry => entry.id == id);
@@ -51,7 +50,7 @@ const OpenTextFieldWithSelection = (props) => {
         if(!value) {
             return;
         }
-        updateResponse && updateResponse({id, question: currUid, selection: value})
+        updateResponse && updateResponse({id, question: currId, selection: value})
         submitFunction({id, question: currId, selection: value})
         setButtonAppearance('filled');
     }

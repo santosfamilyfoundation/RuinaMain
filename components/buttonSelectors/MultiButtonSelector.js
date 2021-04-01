@@ -10,7 +10,6 @@ const MultiButtonSelector = (props) => {
     const {data, key, id, questionReducer, submitFunction, updateResponse} = props;
 
     let currId = data.id
-    let currUid = data.questionUid
     let status = 'danger';
 
     const reducerData = questionReducer.data.find(entry => entry.id == id);
@@ -43,7 +42,7 @@ const MultiButtonSelector = (props) => {
 
     const submitField = (idCode) => {
         setSelection(idCode);
-        updateResponse && updateResponse({id, question: currUid, selection: idCode})
+        updateResponse && updateResponse({id, question: currId, selection: idCode})
         submitFunction({id, question: currId, selection: idCode})
     }
 
