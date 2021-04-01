@@ -49,7 +49,7 @@ const DropDownMultiSelect = (props) => {
             if(existingData[currId] != null) {
                 let currOptions = []
                 for (i = 0; i < data.answerOptions.length; i++) {
-                    if(existingData[currId].includes(data.answerOptions[i].idCode)) {
+                    if(existingData[currId].includes(data.answerOptions[i].text)) {
                         currOptions.push(data.answerOptions[i]);
                     };
                 };
@@ -99,7 +99,7 @@ const DropDownMultiSelect = (props) => {
         } else {
             let incompleteFlag = false;
             for(i = 0; i < selectedOptions.length; i++) {
-                if(!existingData[currId].includes(selectedOptions[i].idCode)){
+                if(!existingData[currId].includes(selectedOptions[i].text)){
                     incompleteFlag = true;
                 }
             }
@@ -120,7 +120,7 @@ const DropDownMultiSelect = (props) => {
         }
         let res = [];
         for(i = 0; i < selectedOptions.length; i++) {
-            res.push(selectedOptions[i].idCode);
+            res.push(selectedOptions[i].text);
         }
         updateResponse && updateResponse({id, question: currId, selection: res})
         submitFunction({id, question: currId, selection: res})

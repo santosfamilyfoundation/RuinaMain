@@ -5,17 +5,21 @@ import { styles } from './OpenTextFieldWithSelection.style';
 import { updateResponse } from '../../actions/StoryActions';
 
 
+
 const OpenTextFieldWithSelection = (props) => {
     const [value, setValue] = React.useState('');
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const [isInvalid, setIsInvalid] = React.useState(false);
+
     const {data, key, id, questionReducer, submitFunction, updateResponse} = props;
+
 
     let currId = data.id
     let status;
 
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
+
 
     if(props.response != null) { 
         if (data.questionDependency != null){
@@ -35,6 +39,7 @@ const OpenTextFieldWithSelection = (props) => {
             }
         }
     };
+
 
     // Populate if value already exists in redux
     if(!value) {
@@ -184,12 +189,12 @@ const OpenTextFieldWithSelection = (props) => {
     );
 };
 
+
 const mapDispatchToProps = {
     updateResponse
 }
 
 const mapStateToProps = (state, props) => {
-    // const { story } = state;
     const { response } = state.storyReducer
     const { reducer } = props;
     const questionReducer = state[reducer];
@@ -197,3 +202,4 @@ const mapStateToProps = (state, props) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(OpenTextFieldWithSelection);
+

@@ -53,7 +53,6 @@ const QuestionForm = (props) => {
         submitFunction:res.setting.submitFunction,
         updateResponse:updateResponse
       }
-      // console.log('PublicObjtype', type)
       const obj = 
       {
         dropdown: {
@@ -162,7 +161,7 @@ const QuestionForm = (props) => {
               {...props}
             />
           )
-
+          
           case 'advancedOpenTextBox':
 
             return (

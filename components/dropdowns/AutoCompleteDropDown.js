@@ -10,7 +10,7 @@ const AutoCompleteDropDown = (props) => {
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const {data, key, id, questionReducer, submitFunction} = props;
     const [selectionData, setSelectionData] = React.useState(data.answerOptions);
-    
+
     let status;
     let currId = data.id;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
@@ -21,7 +21,7 @@ const AutoCompleteDropDown = (props) => {
         if(existingData != null) {
             if(existingData[currId] != null) {
                 for(i = 0; i < selectionData.length; i++) {
-                    if(selectionData[i].idCode == existingData[currId]) {
+                    if(selectionData[i].text == existingData[currId]) {
                         setValue(existingData[currId]);
                         setTitle(selectionData[i].title);
                     };
@@ -47,7 +47,7 @@ const AutoCompleteDropDown = (props) => {
     }
 
     const onOptionSelect = (selection) => {
-        setValue(selection.idCode);
+        setValue(selection.text);
         setTitle(selection.title);
         submitField();
     }
@@ -71,12 +71,12 @@ const AutoCompleteDropDown = (props) => {
     const Header = () => (
         <CardHeader title={data.question}/>
     );
-    
+
     const renderClear = (style) => (
         <Icon {...style} name='close-outline'/>
     );
 
-    
+
     if(buttonAppearance == 'outline') {
         status = 'danger'
     } else {
@@ -111,11 +111,11 @@ const AutoCompleteDropDown = (props) => {
                             onChangeText={searchItems}
                             onSelect={(e) => onOptionSelect(e)}
                         />
-                        <Button 
-                            style={styles.submitButton} 
+                        <Button
+                            style={styles.submitButton}
                             appearance={buttonAppearance}
-                            size='medium' 
-                            icon={CheckIcon} 
+                            size='medium'
+                            icon={CheckIcon}
                             onPress={() => submitField()}
                         />
                     </Layout>

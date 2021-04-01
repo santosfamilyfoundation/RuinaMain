@@ -40,10 +40,12 @@ const MultiButtonSelector = (props) => {
         }
     }
 
-    const submitField = (idCode) => {
-        setSelection(idCode);
+
+    const submitField = (optionText, idCode) => {
+        setSelection(optionText);
         updateResponse && updateResponse({id, question: currId, selection: idCode})
-        submitFunction({id, question: currId, selection: idCode})
+        submitFunction({id, question: currId, selection: optionText})
+
     }
 
     const Header = () => (
@@ -71,13 +73,13 @@ const MultiButtonSelector = (props) => {
     }
 
     const renderSingleButton = (option) => {
-        let appearance = (selection == option.idCode) ? 'filled': 'outline';
+        let appearance = (selection == option.text) ? 'filled': 'outline';
         return (
             <Button
                 key={option.idCode}
                 style={styles.answerButton}
                 appearance={appearance}
-                onPress={() => submitField(option.idCode)}
+                onPress={() => submitField(option.text, option.idCode)}
             >
                 {option.text}
             </Button>
@@ -113,10 +115,11 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state, props) => {
     const { response } = state.storyReducer
-    // const { story } = state;
     const { reducer } = props;
     const questionReducer = state[reducer];
     return { questionReducer, response}
 };
 
+
 export default connect(mapStateToProps, mapDispatchToProps)(MultiButtonSelector);
+
