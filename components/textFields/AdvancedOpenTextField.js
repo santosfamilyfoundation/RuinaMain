@@ -219,7 +219,7 @@ const AdvancedOpenTextField = (props) => {
         }
         if(invalidVin) {
           return(
-            <Text>
+            <Text style={{color:'red'}}>
               Warning: Invalid VIN
             </Text>
           )
