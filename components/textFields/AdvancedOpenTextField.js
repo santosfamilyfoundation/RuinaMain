@@ -76,6 +76,8 @@ const AdvancedOpenTextField = (props) => {
         }
     }
 
+    // checking if response length is valid
+    // currently no questions use this, but could be added in the future
     if(value.length > data.maxLength && !invalidLength) {
         setInvalidLength(true);
     } else if(invalidLength && value.length <= data.maxLength) {
