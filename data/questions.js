@@ -4479,11 +4479,6 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "questionDependency": [
-                {
-                    "id": "road-14",
-                    "dependencyOptionCode": "0"
-                }],
             "questionUid": "oRhCbvy6",
             "answerOptions": [
                 {
@@ -5629,11 +5624,6 @@ export const questions = {
                 "vehicle"
             ],
             "questionUid": "4vrmnvfC",
-            "questionDependency": [
-                {
-                    "id": "road-14",
-                    "dependencyOptionCode": "0"
-                }],
             "answerOptions": [
                 {
                     "text": "No Special Function",

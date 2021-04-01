@@ -208,11 +208,6 @@ const QuestionForm = (props) => {
     }
 
     const question = questionData(questionDetail.type)
-    // const reducerArr = questionData()
-    // console.log('reducerArr', reducerArr)
-    // const datarArr = question.questionsData.map(item => item)
-    // const objectRef = [];
-    // const getObjectRef = () => objectRef
     const renderedQuestions = question.questionsData.map((item) => {
       const obj = {data:item, setting: question, detail:questionDetail}
       // const ref = React.useRef(React.createRef()) 

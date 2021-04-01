@@ -16,6 +16,25 @@ const LargeTextField = (props) => {
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
 
+    if(props.response != null) { 
+        if (data.questionDependency != null){
+            let tarQuesArr = data.questionDependency
+            for(let i = 0; i <tarQuesArr.length; i++){ // Looping through dependent question
+                let tarUid = tarQuesArr[i].dependencyUid
+                let tarOptionCode = tarQuesArr[i].dependencyOptionCode
+                for (let j = props.response.length-1; j > 0; j--){ // Searching from the most recent changes made by user
+                    if (typeof props.response[j].selection == "array"){
+                        let resArr = props.response[j].selection.find(item => item != tarOptionCode)
+                        if (resArr.length === props.response[j].selection.length){return null}
+                    }
+                    if (props.response[j].question === tarUid && props.response[j].selection != tarOptionCode){
+                        return null
+                    }
+                }
+            }
+        }
+    };
+
     // Populate if value already exists in redux
     if(!value) {
         if(existingData != null) {

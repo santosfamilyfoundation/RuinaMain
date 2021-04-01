@@ -2,19 +2,40 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Input, Layout, Text, Card, Button, CardHeader, Icon } from '@ui-kitten/components';
 import { styles } from './OpenTextFieldWithSelection.style';
+import { updateResponse } from '../../actions/StoryActions';
 
 
 const OpenTextFieldWithSelection = (props) => {
     const [value, setValue] = React.useState('');
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const [isInvalid, setIsInvalid] = React.useState(false);
-    const {data, key, id, questionReducer, submitFunction} = props;
+    const {data, key, id, questionReducer, submitFunction, updateResponse} = props;
 
     let currId = data.id
+    let currUid = data.questionUid;
     let status;
 
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
+
+    if(props.response != null) { 
+        if (data.questionDependency != null){
+            let tarQuesArr = data.questionDependency
+            for(let i = 0; i <tarQuesArr.length; i++){ // Looping through dependent question
+                let tarUid = tarQuesArr[i].dependencyUid
+                let tarOptionCode = tarQuesArr[i].dependencyOptionCode
+                for (let j = props.response.length-1; j > 0; j--){ // Searching from the most recent changes made by user
+                    if (typeof props.response[j].selection == "array"){
+                        let resArr = props.response[j].selection.find(item => item != tarOptionCode)
+                        if (resArr.length === props.response[j].selection.length){return null}
+                    }
+                    if (props.response[j].question === tarUid && props.response[j].selection != tarOptionCode){
+                        return null
+                    }
+                }
+            }
+        }
+    };
 
     // Populate if value already exists in redux
     if(!value) {
@@ -30,6 +51,7 @@ const OpenTextFieldWithSelection = (props) => {
         if(!value) {
             return;
         }
+        updateResponse && updateResponse({id, question: currUid, selection: value})
         submitFunction({id, question: currId, selection: value})
         setButtonAppearance('filled');
     }
@@ -163,11 +185,16 @@ const OpenTextFieldWithSelection = (props) => {
     );
 };
 
+const mapDispatchToProps = {
+    updateResponse
+}
+
 const mapStateToProps = (state, props) => {
-    const { story } = state;
+    // const { story } = state;
+    const { response } = state.storyReducer
     const { reducer } = props;
     const questionReducer = state[reducer];
-    return { story, questionReducer }
+    return { questionReducer, response }
 };
 
-export default connect(mapStateToProps)(OpenTextFieldWithSelection);
+export default connect(mapStateToProps, mapDispatchToProps)(OpenTextFieldWithSelection);

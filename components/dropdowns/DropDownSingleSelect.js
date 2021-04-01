@@ -15,28 +15,26 @@ const DropDownSingleSelect = (props) => {
     const [selectedOption, setSelectedOption] = React.useState(null);
     const {data, key, id, questionReducer, submitFunction, updateResponse} = props;
     let currId = data.id;
+    let currUid = data.questionUid;
     const reducerData = questionReducer.data.find(entry => entry.id == id); 
     let existingData = !reducerData?.response ? null : reducerData.response;
 
     if(props.response != null) { 
         if (data.questionDependency != null){
             let tarQuesArr = data.questionDependency
-            for(let i = 0; i <tarQuesArr.length; i++){
-                // let tarUid = tarQuesArr[i].dependencyUid
-                let tarId = tarQuesArr[i].id
+            for(let i = 0; i <tarQuesArr.length; i++){ // Looping through dependent question
+                let tarUid = tarQuesArr[i].dependencyUid
                 let tarOptionCode = tarQuesArr[i].dependencyOptionCode
-                let matchData = props.response.find(item => item.question === tarId)
-                console.log("MatchingData", matchData)
-                if (matchData){
-                    console.log("matchData.selection"+matchData.selection)
-                    // if(existingData[tarId]== tarOptionCode){
-                    if(matchData.selection== tarOptionCode){
-                        console.log("Should not showing component")
+                for (let j = props.response.length-1; j > 0; j--){ // Searching from the most recent changes made by user
+                    if (typeof props.response[j].selection == "array"){
+                        let resArr = props.response[j].selection.find(item => item != tarOptionCode)
+                        if (resArr.length === props.response[j].selection.length){return null}
+                    }
+                    if (props.response[j].question === tarUid && props.response[j].selection != tarOptionCode){
                         return null
                     }
                 }
             }
-
         }
     };
 
@@ -74,7 +72,7 @@ const DropDownSingleSelect = (props) => {
     const submitField = (selection) => {
         setSelectedOption(selection);
         let content = selection.idCode;
-        updateResponse && updateResponse({id, question: currId, selection: content})
+        updateResponse && updateResponse({id, question: currUid, selection: content})
         submitFunction({id, question: currId, selection: content})
     }
 
