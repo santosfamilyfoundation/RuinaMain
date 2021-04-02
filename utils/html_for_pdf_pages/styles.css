@@ -100,22 +100,31 @@ table {
 	padding: 0.5em 0;
 }
 
-.databox {
+./*databox {
 	border: 0.5px solid black;
 	border-top: 0;
 	padding: 0.25em;
 	background: white;
-}
+}*/
 
 .datasection {
 	display: table;
-	background: black;
 	margin-top: 1em;
-	align-content: center;
 }
 
-.datasection .column {
-	height: 100%;
+table {
+	margin: 1em 0;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+td {
+	padding: .25em;
+	vertical-align: top;
+	width: 33.33%;
 }
 
 .field {
