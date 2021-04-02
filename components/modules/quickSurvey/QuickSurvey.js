@@ -38,39 +38,41 @@ class QuickSurvey extends Component {
         loadedAutoSaveFailMessageVisible: false,
         loading: true, //loading screen
       };
+      this.stateManager = new backgroundSave();
     }
 
     async componentDidMount(){
-      console.log("autosavedSession: ", this.state.autoSavedSession);
-      console.log("loadedautosave: ", this.state.loadedAutoSave);
+      console.log("Want to Load Autosaved Session? ", this.state.autoSavedSession);
+      console.log("Loaded Autosaved Session? ", this.state.loadedAutoSave);
       if (this.state.autoSavedSession && !this.state.loadedAutoSave) {
         await this.loadStateFromJSON();
       } else {
+        // Delete previous auto saved session if there is any, so we can save the new report
+        this.stateManager.deleteCapturedState();
         this.setState({ loading: false });
       }
     }
 
     async loadStateFromJSON() {
-      const stateManager = new backgroundSave();
-      await stateManager.RNFS.readFile(stateManager.path, 'utf8')
+      await this.stateManager.RNFS.readFile(this.stateManager.path, 'utf8')
         .then((data) => {
           try {
             const loadedState = JSON.parse(data);
-            console.log("Successfully parsed json");
+            console.log("Successfully Parsed JSON");
             this.parseLoadedState(loadedState);
             this.setState({ loadedAutoSaveSuccessMessageVisible: true})
           } catch(e) {
             // catch any error while parsing the JSON
             console.log("ERROR: " + e.message);
             this.setState({ loadedAutoSaveFailMessageVisible: true })
-            stateManager.deleteCapturedState();
+            this.stateManager.deleteCapturedState();
           }
           // Hide loading screen
           this.setState({ loading: false });
         })
         .catch((err) => {
           // catch any error while reading autoSavedSession JSON from disk
-          stateManager.deleteCapturedState();
+          this.stateManager.deleteCapturedState();
           this.setState({ autoSavedSession: false });
           this.setState({ loading: false });
           this.setState({ loadedAutoSaveFailMessageVisible: true })
@@ -80,7 +82,7 @@ class QuickSurvey extends Component {
 
     parseLoadedState(loadedState){
       for (let d in loadedState) {
-        console.log("LOADED: ", d, ": ", loadedState[d]);
+        console.log("LOADED SECTION: ", d, ": ", loadedState[d]);
       }
 
       // Parse all fields from loaded state
@@ -270,7 +272,7 @@ class QuickSurvey extends Component {
         );
       }
 
-      console.log("LOADING STATUS (render): ", this.state.loading);
+      console.log("LOADING SCREEN STATUS (render): ", this.state.loading);
       if (this.state.loading) { // showing a spinning loading wheel while trying to load autosaved session
         return (
           <SafeAreaView style={styles.spinnerView}>
@@ -278,7 +280,7 @@ class QuickSurvey extends Component {
           </SafeAreaView>
         );
       } else { 
-        console.log("LoadedAutoSave Status after loading: ", this.state.loadedAutoSave);
+        console.log("Status after trying to load autosaved session: success, ", this.state.loadedAutoSave);
         // Successfully loaded autosaved session
         if (this.state.loadedAutoSave) {
           return (
