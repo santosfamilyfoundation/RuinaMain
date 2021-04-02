@@ -124,6 +124,7 @@ table, th, td {
 td {
 	padding: .25em;
 	vertical-align: top;
+	width: 33.33%;
 }
 
 .field {
