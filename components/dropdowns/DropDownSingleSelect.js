@@ -109,8 +109,6 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state, props) => {
-    // console.log('state', state);
-    // const { story } = state;
     const { response } = state.storyReducer
     const { reducer } = props;
     const questionReducer = state[reducer];

@@ -209,9 +209,7 @@ const QuestionForm = (props) => {
     const question = questionData(questionDetail.type)
     const renderedQuestions = question.questionsData.map((item) => {
       const obj = {data:item, setting: question, detail:questionDetail}
-      // const ref = React.useRef(React.createRef()) 
       const dom = renderSingleQuestion(item.answerType, questionProps(item.answerType, obj));
-      // objectRef.push(ref)
       return dom
     });
 
