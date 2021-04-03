@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Crash Form Passenger Page</title>
+  <title>Crash Form Cover</title>
 
   <link rel="stylesheet" href="styles.css?v=1.0">
   <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Roboto:300,400,500" rel="stylesheet">
@@ -13,76 +13,85 @@
 
 <body>
 
-<div class="container">
+  <div class="container">
+    <div class="row">
+      <div class="column left half">
+        <h4>Occupant ### of Motor Vehicle ###</h4>
+        <h4 id="ra4aKktz">Occupant Type: ###</h4>
+        <h4 id="NJqVP8AH">Injury Status: ###</h4>
+      </div>
+      <div class="column right half">
+        <h4>Page ### of ###</h4>
+        <h4 id="Egrsk6Sq">Incident Responder?: ###</h4>
+      </div>
+    </div>
 
-	<div class="row">
-		<div class="column left half">
-			<h4>Motor Vehicle #</h4>
-			<h4># Occupants</h4>
-		</div>
-		<div class="column right half">
-			<h4>Page # of ##</h4>
-			<h4>Case Number: ######</h4>
-		</div>
-	</div>
+    <table>
+      <th class="boxheader" colspan="3">
+        <h3>Occupant Information</h3>
+      </th>
+      <tbody>
+        <tr>
+          <td>
+            <p class="field">Seating Position</p>
+            <p class="fieldresponse" id="wecg2msi"></p>
+          </td>
+          <td>
+            <p class="field">Restraint Systems or Motorcycle Helmet Use</p>
+            <p class="fieldresponse" id="aeZ4RkUF"></p>
+          </td>
+          <td>
+            <p class="field">Indication of Improper Use?</p>
+            <p class="fieldresponse" id="mFbnuTNP"></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="field">Air Bag Deployed?</p>
+            <p class="fieldresponse" id="ExMu8mbw"></p>
+          </td>
+          <td>
+            <p class="field">Ejection?</p>
+            <p class="fieldresponse" id="5sp9e45O"></p>
+          </td>
+          <td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-	<div class="datasection">
-		<div class="row boxheader">
-			<h3>passenger #</h3>
-		</div>
-		<div class="row">
-			<div class="column third">
-				<div class="databox">
-					<p class="fieldresponse">xkXuEz84 5IRgIan5 KB0Wiblw</p>
-					<p class="fieldresponse">n6Cp78JZ eiQbv2XM</p>
-				</div>
-			</div>
-			<div class="column twothird">
-				<div class="boxheader tight">
-					<h3>factors & conditions</h3>
-				</div>
-				<div class="column half">
-					<div class="databox">
-						<p class="field">Person Type</p>
-						<p class="fieldresponse"></p>
-					</div>
-					<div class="databox">
-						<p class="field">Incedent Responder?</p>
-						<p class="fieldresponse"></p>
-					</div>
-					<div class="databox">
-						<p class="field">Injury Status</p>
-						<p class="fieldresponse"></p>
-					</div>
-					<div class="databox">
-						<p class="field">Seating Position</p>
-						<p class="fieldresponse"></p>
-					</div>
-				</div>
-				<div class="column half">
-					<div class="databox">
-						<p class="field">Restraint Systems /  Motorcycle Helmet Use</p>
-						<p class="fieldresponse"></p>
-					</div>
-					<div class="databox">
-						<p class="field">Any Indication of Improper Use?</p>
-						<p class="fieldresponse"></p>
-					</div>
-					<div class="databox">
-						<p class="field">Air Bag Deployed</p>
-						<p class="fieldresponse"></p>
-					</div>
-					<div class="databox">
-						<p class="field">Ejection</p>
-						<p class="fieldresponse"></p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <table>
+      <th class="boxheader" colspan="3">
+        <h3>Injury Information</h3>
+      </th>
+      <tbody>
+        <tr>
+          <td>
+            <p class="field">Transport Source to First Medical Facility</p>
+            <p class="fieldresponse" id="rUHV0P0f"></p>
+          </td>
+          <td>
+            <p class="field">EMS Response Agency Identifier</p>
+            <p class="fieldresponse" id="APIIAFBl"></p>
+          </td>
+          <td>
+            <p class="field">EMS Response Run Number</p>
+            <p class="fieldresponse" id="JG0Hd2zf"></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="field">Medical Facility Receiving Patient</p>
+            <p class="fieldresponse" id="PDEPIwFO"></p>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-
-</div>
-
+  </div>
 </body>
 </html>

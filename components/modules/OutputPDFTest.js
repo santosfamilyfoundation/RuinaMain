@@ -9,7 +9,6 @@ import PDFGenerator from 'rn-pdf-generator';
 import RNHTMLtoPDF from 'react-native-html-to-pdf';
 
 import JSONconverter from '../../utils/jsonConverter';
-// import * as htmlStrings from '../../utils/html_for_pdf_pages/htmlStrings'
 
 class OutputPDFTest extends Component {
 

@@ -139,7 +139,7 @@ export class JSONconverter extends Component {
 			if (id in answerSubsetData["response"]) {
 				return answerSubsetData["response"][id];
 			}
-			return "N/A";
+			return "  ";
 		};
 
 		function getNumSections(data) {
