@@ -73,12 +73,21 @@ table {
 	text-align: right;
 }
 
+.tright {
+	text-align: right;
+}
+
 .left {
 	float: left;
 }
 
 .half {
 	width:50%;
+}
+
+.sixth {
+	width: 16.66%;
+	border:none;
 }
 
 .boxheader.tight {
@@ -119,6 +128,10 @@ table {
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
+}
+
+.contactbox th, .contactbox td {
+	border:none;
 }
 
 td {
