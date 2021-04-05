@@ -32,8 +32,8 @@ class QuickSurvey extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        autoSavedSession: this.props.navigation.getParam('autoSavedSession'),
-        loadedAutoSave: false,
+        autoSavedSession: this.props.navigation.getParam('autoSavedSession'), // should we try to load an autoSaved Report
+        loadedAutoSave: false, // if we have loaded an autoSaved Report
         loadedAutoSaveSuccessMessageVisible: false,
         loadedAutoSaveFailMessageVisible: false,
         loading: true, //loading screen
@@ -227,7 +227,7 @@ class QuickSurvey extends Component {
       // gets called when user clicks continue button
       const moveHome = () => {
         if (quiz.hasResponded){
-          navigation.navigate('Home', {edit:true});
+          navigation.navigate('Home', {edit: !this.state.loadedAutoSave});
           return
         }
         
@@ -235,7 +235,7 @@ class QuickSurvey extends Component {
         if (!this.state.loadedAutoSave) {
           dispatchAll();
         }
-        navigation.navigate('Home', {edit:true});
+        navigation.navigate('Home', { edit: !this.state.loadedAutoSave});
       }
 
       // filter out questions in questions.js with particular display
