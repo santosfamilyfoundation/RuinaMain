@@ -38,7 +38,7 @@ const AdvancedOpenTextField = (props) => {
         }
         submitFunction({id, question: currId, selection: value})
         switch(currId) {
-          case "V1":
+          case "Bw7d2KTr": // VIN question id
             if (!vinValidator.validate(value)) {
               setInvalidVin(true);
             } else {
