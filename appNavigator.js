@@ -8,7 +8,7 @@ import { WeatherScreen } from './screens/weatherScreen';
 import { PhotoCaptureScreen } from './screens/photoCaptureScreen'
 import { SinglePhotoScreen } from './screens/singlePhotoScreen';
 import { VehicleInfoScreen } from './screens/vehicleinfoScreen';
-import { ScanScreen } from './screens/scanScreen';
+// import { ScanScreen } from './screens/scanScreen';
 import { QuickSurveyScreen } from './screens/quickSurveyScreen';
 import { HomeScreen } from './screens/homeScreen';
 import { QuestionScreen } from './screens/questionScreen';
@@ -41,7 +41,7 @@ const HomeNavigator = createStackNavigator({
   SaveToDevice: SaveToDeviceScreen,
   InfoExchange: InfoExchangeScreen,
   SinglePhoto: SinglePhotoScreen,
-  ReportToDatabase: ReportToDatabaseScreen,
+  ReportToDatabase: FeatureComingSoonScreen,
 }, {
   headerMode: 'none',
 });

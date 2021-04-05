@@ -1,31 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Layout, Text, Card, Button, CardHeader, Icon, Autocomplete } from '@ui-kitten/components';
-import { styles } from './AutoCompleteDropDown.style';
+import { Input, Layout, Text, Card, Button, CardHeader, Icon } from '@ui-kitten/components';
+import { styles } from './OpenTextFieldWithSelection.style';
 
 
-const AutoCompleteDropDown = (props) => {
-    const [value, setValue] = React.useState('');   // value that will be stored in Redux
-    const [title, setTitle] = React.useState('');   // value that will be displayed to user in form field
+const OpenTextFieldWithSelection = (props) => {
+    const [value, setValue] = React.useState('');
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
+    const [isInvalid, setIsInvalid] = React.useState(false);
     const {data, key, id, questionReducer, submitFunction} = props;
-    const [selectionData, setSelectionData] = React.useState(data.answerOptions);
 
+    let currId = data.id
     let status;
-    let currId = data.id;
+
     const reducerData = questionReducer.data.find(entry => entry.id == id);
-    let existingData = !reducerData?.response ? null : reducerData.response;
+    let existingData = !reducerData?.response ? null: reducerData.response;
 
     // Populate if value already exists in redux
     if(!value) {
         if(existingData != null) {
-            if(existingData[currId] != null) {
-                for(i = 0; i < selectionData.length; i++) {
-                    if(selectionData[i].text == existingData[currId]) {
-                        setValue(existingData[currId]);
-                        setTitle(selectionData[i].title);
-                    };
-                };
+            if(existingData[currId] != null && !value) {
+                setValue(existingData[currId]);
                 setButtonAppearance('filled');
             }
         }
@@ -39,26 +34,30 @@ const AutoCompleteDropDown = (props) => {
         setButtonAppearance('filled');
     }
 
+    const onTextChange = (text) => {
+        if(!text) {
+            submitFunction({id, question: currId, selection: null})
+        }
+        setValue(text);
+    }
+
     const clearField = () => {
         setValue('');
-        setTitle('');
         submitFunction({id, question: currId, selection: null})
         setButtonAppearance('outline');
     }
 
-    const onOptionSelect = (selection) => {
-        setValue(selection.text);
-        setTitle(selection.title);
-        submitField();
-    }
+    // const onSelectOption = () => {
+    //   setValue('Uninsured');
+    //   submitFunction({id, question: currId, selection: 'Uninsured'});
+    //   setButtonAppearance('filled');
+    // }
 
-    const searchItems = (query) => {
-        setValue(query);
-        setTitle(query);
-        let res = data.answerOptions.filter(item => item.title.toLowerCase().includes(query.toLowerCase()))
-        setSelectionData(res);
+    const onSelectOneOption = (option) => {
+      setValue(option.text);
+      submitFunction({id, question: currId, selection: option.text});
+      setButtonAppearance('filled');
     }
-
 
     if(!value && buttonAppearance != 'outline') {
         setButtonAppearance('outline');
@@ -68,6 +67,13 @@ const AutoCompleteDropDown = (props) => {
         }
     }
 
+    // Input length checking
+    if(value.length > data.maxLength && !isInvalid) {
+        setIsInvalid(true);
+    } else if(isInvalid && value.length <= data.maxLength) {
+        setIsInvalid(false);
+    }
+
     const Header = () => (
         <CardHeader title={data.question}/>
     );
@@ -75,7 +81,6 @@ const AutoCompleteDropDown = (props) => {
     const renderClear = (style) => (
         <Icon {...style} name='close-outline'/>
     );
-
 
     if(buttonAppearance == 'outline') {
         status = 'danger'
@@ -94,22 +99,51 @@ const AutoCompleteDropDown = (props) => {
         return null;
     }
 
+    const ErrorMsg = () => {
+        if(isInvalid) {
+            return(
+                <Text>
+                    Too long!
+                </Text>
+            )
+        }
+        return null;
+    };
+
+    const renderSingleButton = (option) => {
+      let appearance = (value == option.text) ? 'filled': 'outline';
+      return (
+          <Button
+              key={option.idCode}
+              style={styles.answerButton}
+              appearance={appearance}
+              onPress={() => onSelectOneOption(option)}
+          >
+              {option.text}
+          </Button>
+      )
+    }
+
+    const renderButtons = () => {
+        let res = data.answerOptions.map(option => (renderSingleButton(option)));
+        return (
+            res
+        );
+    }
+
     return (
         <Layout key={key} style={styles.container}>
             <Card header={Header} status={status}>
                 <Layout style={styles.content}>
                     {HelperText()}
                     <Layout style={styles.input}>
-                        <Autocomplete
+                        <Input
                             style={styles.inputField}
-                            value={title}
-                            // value={value}
-                            data={selectionData}
-                            placeholder='Select your value'
                             icon={renderClear}
                             onIconPress={() => clearField()}
-                            onChangeText={searchItems}
-                            onSelect={(e) => onOptionSelect(e)}
+                            placeholder='Place your Text'
+                            value={value}
+                            onChangeText={onTextChange}
                         />
                         <Button
                             style={styles.submitButton}
@@ -119,6 +153,10 @@ const AutoCompleteDropDown = (props) => {
                             onPress={() => submitField()}
                         />
                     </Layout>
+                    <Layout style={styles.answers}>
+                        {renderButtons()}
+                    </Layout>
+                    {ErrorMsg()}
                 </Layout>
             </Card>
         </Layout>
@@ -132,4 +170,4 @@ const mapStateToProps = (state, props) => {
     return { story, questionReducer }
 };
 
-export default connect(mapStateToProps)(AutoCompleteDropDown);
+export default connect(mapStateToProps)(OpenTextFieldWithSelection);

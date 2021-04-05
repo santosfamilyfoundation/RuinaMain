@@ -1,26 +1,78 @@
 import React, { Component } from 'react';
+import { View } from 'react-native';
 import { styles } from '../Home.style';
 import { Text, Card, Icon } from '@ui-kitten/components';
+import { connect } from 'react-redux';
+import { MaterialDialog } from 'react-native-material-dialog';
+import { material } from "react-native-typography";
+import { deleteNonmotorist } from '../../../actions/NonmotoristAction';
 import {questions} from '../../../data/questions';
 
-export default class NonMotoristSection extends Component{
+class NonMotoristSection extends Component{
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+          beforeDelete: false,
+        }
+    }
+
     filterQuestionsData = (questionType) => {
         return questions.data.filter(question => question.display.includes(questionType));
     }
 
     render(){
-        const {navigation, nonmotorist, index, name, question} = this.props
+        const {navigation, nonmotorist, index, edit} = this.props
         let nonmotoristQuestions = this.filterQuestionsData('nonmotorist');
 
         const navigateQuestion = (form, id, type) => {
             navigation.navigate('Question', {questions: form.data, objectID: id, type})
         }
 
-        return(
-            <Card style={styles.nonMotoristCard} onPress = {() => navigateQuestion(nonmotoristQuestions, nonmotorist.id, 'Nonmotorist')}>
-                <Icon name= 'person' width={75} height={75} alignSelf= "center" />
-                <Text style={styles.itemCardFooter} category="s1">Non-Motorist {index+1}</Text>
-            </Card>
-        )
+        // describes two different nonmotorist cards (edit and non edit modes)
+        if (edit) {
+          return(
+              <View>
+                <Card style={styles.nonMotoristCard} onPress = {() => this.setState({beforeDelete:true})}>
+                    <Icon name= 'person-remove' width={75} height={75} alignSelf= "center" />
+                    <Text style={styles.itemCardFooter} category="s1">Non-Motorist {index+1}</Text>
+                </Card>
+
+                <MaterialDialog
+                  title={"Delete Confirmation"}
+                  visible={this.state.beforeDelete}
+                  onCancel={() => {
+                    this.setState({ beforeDelete: false });
+                  }}
+                  onOk={() => {
+                    this.props.deleteNonmotorist({nonmotoristID: nonmotorist.id});
+                    this.setState({ beforeDelete: false });
+                  }}
+                >
+                  <Text style={material.subheading}>
+                    Are you sure you want to delete this nonmotorist?
+                  </Text>
+                </MaterialDialog>
+              </View>
+          )
+        } else {
+          return(
+              <Card style={styles.nonMotoristCard} onPress = {() => navigateQuestion(nonmotoristQuestions, nonmotorist.id, 'Nonmotorist')}>
+                  <Icon name= 'person' width={75} height={75} alignSelf= "center" />
+                  <Text style={styles.itemCardFooter} category="s1">Non-Motorist {index+1}</Text>
+              </Card>
+          )
+        }
     }
 }
+
+const mapDispatchToProps = {
+    deleteNonmotorist
+};
+
+const mapStateToProps = (state) => {
+    return state
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NonMotoristSection);

@@ -24,7 +24,7 @@ const DropDownSingleSelect = (props) => {
             if(existingData[currId] != null) {
                 let curOption;
                 for (let i = 0; i < data.answerOptions.length; i++) {
-                    if(data.answerOptions[i].idCode == existingData[currId]) {
+                    if(data.answerOptions[i].text == existingData[currId]) {
                         curOption = {
                             idCode: existingData[currId],
                             text: data.answerOptions[i].text
@@ -51,7 +51,7 @@ const DropDownSingleSelect = (props) => {
 
     const submitField = (selection) => {
         setSelectedOption(selection);
-        let content = selection.idCode;
+        let content = selection.text;
         submitFunction({id, question: currId, selection: content})
     }
 

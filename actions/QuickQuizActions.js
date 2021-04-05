@@ -5,13 +5,6 @@ export const changeVehicle = numVehicle => {
   }
 };
 
-export const changeLvhm = numLvhm => {
-  return {
-    type:'LVHM',
-    numLvhm
-  }
-}
-
 export const changeDrivers = numDriver => {
   return {
     type: 'DRIVER',
@@ -33,6 +26,7 @@ export const changePassengers = numPassenger => {
   }
 };
 
+// might not need
 export const changeFatality = fatality => {
   return {
     type: 'FATALITY',
@@ -40,26 +34,27 @@ export const changeFatality = fatality => {
   }
 };
 
-export const changeConstruction = construction => {
+// might not need
+export const changeNonFatalInjury = nonFatalInjury => {
   return {
-    type: 'CONSTRUCTION',
-    construction
+    type: 'NONFATALINJURY',
+    nonFatalInjury
   }
-};
+}
 
-export const changeIntersection = intersection => {
+export const changePhotos = photos => {
   return {
-    type: 'INTERSECTION',
-    intersection
+    type: 'PHOTOS',
+    photos
   }
-};
+}
 
-export const changeSchoolbus = schoolbus => {
-  return {
-    type: 'SCHOOLBUS',
-    schoolbus
-  }
-};
+export const updateSetup = setupData => {
+    return {
+        type: 'UPDATESETUP',
+        payload: setupData
+    }
+}
 
 export const changeRespond = () => {
   return {
