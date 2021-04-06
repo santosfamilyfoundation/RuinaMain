@@ -44,7 +44,7 @@ const HomeNavigator = createStackNavigator({
   SaveToDevice: SaveToDeviceScreen,
   InfoExchange: InfoExchangeScreen,
   SinglePhoto: SinglePhotoScreen,
-  ReportToDatabase: ReportToDatabaseScreen,
+  ReportToDatabase: FeatureComingSoonScreen,
 }, {
   headerMode: 'none',
 });

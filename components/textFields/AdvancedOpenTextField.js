@@ -20,6 +20,26 @@ const AdvancedOpenTextField = (props) => {
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
 
+    if(props.response != null) { 
+        if (data.questionDependency != null){
+            let tarQuesArr = data.questionDependency
+            for(let i = 0; i <tarQuesArr.length; i++){ // Looping through dependent question
+                let tarUid = tarQuesArr[i].dependencyUid
+                let tarOptionCode = tarQuesArr[i].dependencyOptionCode
+                for (let j = props.response.length-1; j >= 0; j--){
+                    if (props.response[j].selection == tarOptionCode) {break}
+                    if (typeof props.response[j].selection == "array"){
+                        let resArr = props.response[j].selection.find(item => item != tarOptionCode)
+                        if (resArr.length === props.response[j].selection.length){return null}
+                    }
+                    if (props.response[j].question === tarUid && props.response[j].selection != tarOptionCode){
+                        return null
+                    }
+                }
+            }
+        }
+    };
+
     // Populate if value already exists in redux
     if(!value) {
         if(existingData != null) {
@@ -38,11 +58,9 @@ const AdvancedOpenTextField = (props) => {
         }
         submitFunction({id, question: currId, selection: value})
         switch(currId) {
-          case "V1":
-            // console.log("checking vin");
+          case "Bw7d2KTr": // VIN question id
             if (!vinValidator.validate(value)) {
               setInvalidVin(true);
-              // console.log("bad vin :(")
             } else {
               setInvalidVin(false);
             }
@@ -78,6 +96,8 @@ const AdvancedOpenTextField = (props) => {
         }
     }
 
+    // checking if response length is valid
+    // currently no questions use this, but could be added in the future
     if(value.length > data.maxLength && !invalidLength) {
         setInvalidLength(true);
     } else if(invalidLength && value.length <= data.maxLength) {
@@ -224,7 +244,7 @@ const AdvancedOpenTextField = (props) => {
         }
         if(invalidVin) {
           return(
-            <Text>
+            <Text style={{color:'red'}}>
               Warning: Invalid VIN
             </Text>
           )

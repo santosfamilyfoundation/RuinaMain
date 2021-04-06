@@ -9,9 +9,9 @@ const MultiButtonSelectorQuickSurvey = (props) => {
   const {data, quickSurveyReducer, submitFunction} = props;
 
   // when button selected, set the option and update the quick survey setupData
-  const submitField = (idCode) => {
-      setSelection(idCode);
-      submitFunction({question: data.id, selection: idCode})
+  const submitField = (optionText, idCode) => {
+      setSelection(optionText);
+      submitFunction({question: data.id, selection: optionText})
   }
 
   const Header = () => (
@@ -26,13 +26,13 @@ const MultiButtonSelectorQuickSurvey = (props) => {
   }
 
   const renderSingleButton = (option) => {
-      let appearance = (selection == option.idCode) ? 'filled': 'outline';
+      let appearance = (selection == option.text) ? 'filled': 'outline';
       return (
           <Button
               key={option.idCode}
               style={styles.answerButton}
               appearance={appearance}
-              onPress={() => submitField(option.idCode)}
+              onPress={() => submitField(option.text, option.idCode)}
           >
               {option.text}
           </Button>
