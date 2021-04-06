@@ -58,6 +58,10 @@ export const headerString = `
         page-break-before: always;
       }
 
+      .avoid-break {
+        page-break-inside: avoid;
+      }
+
       .sig-box {
         padding: 0.25em;
         border: 0.5px solid black;
@@ -83,12 +87,21 @@ export const headerString = `
         text-align: right;
       }
 
+      .tright {
+      	text-align: right;
+      }
+
       .left {
         float: left;
       }
 
       .half {
         width:50%;
+      }
+
+      .sixth {
+      	width: 16.66%;
+      	border:none;
       }
 
       .boxheader.tight {
@@ -124,6 +137,10 @@ export const headerString = `
         border-collapse: collapse;
       }
 
+      .contactbox th, .contactbox td {
+      	border:none;
+      }
+
       td {
       	padding: .25em;
       	vertical-align: top;
@@ -150,47 +167,54 @@ export const headerString = `
 
 export const coverPageHeaderString = `
   <div class="page-header">
-  <div class="row">
-    <h4 class="inline right"> Page ### of ###</h4>
-    <h1 class="inline">Ruina Motor Vehicle Crash Report</h1>
+    <div class="row">
+      <h4 class="inline right"> Page ### of ###</h4>
+      <h1 class="inline">Ruina Motor Vehicle Crash Report</h1>
 
-    <hr>
-  </div>
-
-  <div class="row">
-    <div class="column left half">
-      <h4># Motor Vehicles</h4>
-      <h4># Non-motorists</h4>
-      <h4 id="8dY73Yzs">Crash Severity: ###</h4>
-      <h4 id="IGD5NNyh">Reporting *Officer or Citizen*: ###</h4>
+      <hr>
     </div>
-    <div class="column right half">
-      <h4 id="gNkzJih5">Crash Identifier: ###</h4>
-      <h4 id="qfge7d3g">Agency Crash Identifier: ###</h4>
-      <h4 id="VwPfe11r">Reporting Agency: ###</h4>
-      <h4 class="sig-box">signature</h4>
+
+    <div class="row">
+      <div class="column left half">
+        <h4># Motor Vehicles</h4>
+        <h4># Non-motorists</h4>
+        <h4 id="8dY73Yzs">Crash Severity: ###</h4>
+        <h4 id="IGD5NNyh">Reporting *Officer or Citizen*: ###</h4>
+      </div>
+      <div class="column right half">
+        <h4 id="gNkzJih5">Crash Identifier: ###</h4>
+        <h4 id="qfge7d3g">Agency Crash Identifier: ###</h4>
+        <h4 id="VwPfe11r">Reporting Agency: ###</h4>
+        <h4 class="sig-box">signature</h4>
+      </div>
     </div>
   </div>
 `
 
 export const crashDataSectionString = `
-  <table>
+  <table class="avoid-break">
     <th class="boxheader" colspan="3">
-        <h3> Crash date, time, and location</h3>
+      <h3> Crash date, time, and location</h3>
     </th>
     <tbody>
       <tr>
-        <td>
+        <td rowspan="2">
           <p class="field">Crash Date and Time</p>
-          <p class="fieldresponse" id="FQ2cYAHj"></p>
+          <p class="fieldresponse" id="FQ2cYAHj">for visual</p>
         </td>
-        <td>
+        <td rowspan="2">
           <p class="field">Crash County</p>
           <p class="fieldresponse" id="8V2H4hT4"></p>
         </td>
         <td>
           <p class="field">Within Interchange Area</p>
           <p class="fieldresponse" id="2cnmGpDV"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Specific Location</p>
+          <p class="fieldresponse" id="OeRyvF4v"></p>
         </td>
       </tr>
       <tr>
@@ -203,8 +227,8 @@ export const crashDataSectionString = `
           <p class="fieldresponse" id="JDBENf0A"></p>
         </td>
         <td>
-          <p class="field">Specific Location</p>
-          <p class="fieldresponse" id="OeRyvF4v"></p>
+          <p class="field">Number of Approaches</p>
+          <p class="fieldresponse" id="fvIxja95"></p>
         </td>
       </tr>
       <tr>
@@ -216,29 +240,19 @@ export const crashDataSectionString = `
           <p class="field">Latitude</p>
           <p class="fieldresponse" id="Y0UeyBYf"></p>
         </td>
-        <td>
-          <p class="field">Number of Approaches</p>
-          <p class="fieldresponse" id="fvIxja95"></p>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <p class="field">Characteristics</p>
-          <p class="fieldresponse" id="zUUpOYVy"></p>
-        </td>
-        <td>
-          <p class="field">Longitude</p>
-          <p class="fieldresponse" id="eFXNchTA"></p>
-        </td>
-        <td>
+        <td class="databox">
           <p class="field">Overall Intersection Geometry</p>
           <p class="fieldresponse" id="UwUUqXFT"></p>
         </td>
       </tr>
       <tr>
-        <td>
+        <td class="databox">
+          <p class="field">Characteristics</p>
+          <p class="fieldresponse" id="zUUpOYVy"></p>
         </td>
-        <td>
+        <td class="databox">
+          <p class="field">Longitude</p>
+          <p class="fieldresponse" id="eFXNchTA"></p>
         </td>
         <td>
           <p class="field">Overall Traffic Control Device</p>
@@ -247,7 +261,7 @@ export const crashDataSectionString = `
       </tr>
     </tbody>
   </table>
-  <table>
+  <table class="avoid-break">
     <th class="boxheader" colspan="3">
         <h3> Crash factors and conditions</h3>
     </th>
@@ -281,7 +295,7 @@ export const crashDataSectionString = `
         </td>
       </tr>
       <tr>
-        <td>
+        <td rowspan="2">
           <p class="field">Location of First Harmful Event Relative to the Trafficway</p>
           <p class="fieldresponse" id="oRhCbvy6"></p>
         </td>
@@ -295,21 +309,65 @@ export const crashDataSectionString = `
         </td>
       </tr>
       <tr>
+        <td rowspan="2">
+          <p class="field">Contributing Circumstances - Roadway Environment</p>
+          <p class="fieldresponse" id="ms4OGVRF"></p>
+        </td>
+        <td>
+          <p class="field">School Bus-Related?</p>
+          <p class="fieldresponse" id="gDFQkFn9"></p>
+        </td>
+      </tr>
+      <tr>
         <td>
           <p class="field"> Manner of Crash/Collision Impact</p>
           <p class="fieldresponse" id="KXoL8mdI"></p>
         </td>
         <td>
-          <p class="field">Contributing Circumstances - Roadway Environment</p>
-          <p class="fieldresponse" id="ms4OGVRF"></p>
-        </td>
-        <td>
+          <p class="field">Construction or Work Zone Related?</p>
+          <p class="fieldresponse" id="34oHCyQs"></p>
         </td>
       </tr>
     </tbody>
   </table>
-</div>
-<div class="break-after"></div>
+  <div class="break-after"></div>
+`
+
+export const constructionDataSectionString = `
+  <div class="page-header">
+    <div class="row">
+      <div class="column right half">
+        <h4>Page ### of ###</h4>
+      </div>
+    </div>
+  </div>
+  <table class="avoid-break">
+    <th class="boxheader" colspan="3">
+      <h3>Construction Information</h3>
+    </th>
+    <tbody>
+      <tr>
+        <td rowspan="2">
+          <p class="field">Crash Location</p>
+          <p class="fieldresponse" id="H8Nc9OMd"></p>
+        </td>
+        <td rowspan="2">
+          <p class="field">Type of Work Zone</p>
+          <p class="fieldresponse" id="h6LUiplf"></p>
+        </td>
+        <td>
+          <p class="field">Workers Present?</p>
+          <p class="fieldresponse" id="3pIa77uR"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Law Enforcement Present?</p>
+          <p class="fieldresponse" id="NvS2JTFP"></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 `
 
 export const vehicleHeaderString = `
@@ -323,72 +381,43 @@ export const vehicleHeaderString = `
   			<h4>Page ### of ###</h4>
   		</div>
   	</div>
+  </div>
 `
 
 export const vehicleDataSectionString = `
-  <table>
-    <th class="boxheader" colspan="3">
-      <h3>ownership and insurance</h3>
+  <table class="avoid-break">
+    <th class="boxheader" colspan="4">
+      <h3>Ownership and Insurance</h3>
     </th>
     <tbody>
       <tr>
-        <td>
-          <p class="field">Owner's First Name</p>
-          <p class="fieldresponse" id="YyQ6jMwd"></p>
-        </td>
-        <td>
-          <p class="field">Insurance Company Name</p>
-          <p class="fieldresponse" id="TDkAb1u9"></p>
-        </td>
-        <td>
-          <p class="field">Owner's Street Address</p>
-          <p class="fieldresponse" id="ywUJNXkj"></p>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <p class="field">Owner's Middle Initial</p>
-          <p class="fieldresponse" id="SulL32si"></p>
-        </td>
-        <td>
+        <td rowspan="3" class="sixth">
+      <p><span id="YyQ6jMwd"></span> <span id="SulL32si"></span> <span id="zOGjRlMJ"></span></p>
+    </td>
+    <td rowspan="3" class="sixth">
+      <p class="tright" id="ywUJNXkj"></p>
+      <p class="tright"><span id="4G5ht6pl"></span>, <span id="3g8Oxu93"></span> <span id="crxPGHSm"></span></p>
+    </td>
+       <td rowspan="2">
+        <p class="field">Insurance Company Name</p>
+        <p class="fieldresponse" id="TDkAb1u9"></p>
+      </td>
+      <td>
           <p class="field">NAIC #</p>
           <p class="fieldresponse" id="iWGTReJ5"></p>
-        </td>
-        <td>
-          <p class="field">Owner's City/Town</p>
-          <p class="fieldresponse" id="4G5ht6pl"></p>
-        </td>
+       </td>
       </tr>
       <tr>
-        <td>
-          <p class="field">Owner's Last Name</p>
-          <p class="fieldresponse" id="zOGjRlMJ"></p>
-        </td>
-        <td>
-          <p class="field">Policy #</p>
-          <p class="fieldresponse" id="RGPLYKWA"></p>
-        </td>
-        <td>
-          <p class="field">Owner's State</p>
-          <p class="fieldresponse" id="3g8Oxu93"></p>
-        </td>
-      </tr>
-      <tr>
-        <td>
-        </td>
-        <td>
-        </td>
-        <td>
-          <p class="field">Owner's ZIP Code</p>
-          <p class="fieldresponse" id="crxPGHSm"></p>
-        </td>
+      <td>
+        <p class="field">Policy #</p>
+        <p class="fieldresponse" id="RGPLYKWA"></p>
+      </td>
       </tr>
     </tbody>
   </table>
-  </div>
-  <table>
+  <table class="avoid-break">
     <th class="boxheader" colspan="3">
-      <h3>Vehicle Information</h3>
+      <h3>Vehicle Details</h3>
     </th>
     <tbody>
       <tr>
@@ -456,140 +485,140 @@ export const vehicleDataSectionString = `
   			<h4>Page ### of ###</h4>
   		</div>
   	</div>
-    <table>
-      <th class="boxheader" colspan="3">
-        <h3>Vehicle Crash Information</h3>
-      </th>
-      <tbody>
-        <tr>
-          <td>
-            <p class="field">Posted/Statutory Speed Limit</p>
-            <p class="fieldresponse" id="wAqrAfiG"></p>
-          </td>
-          <td>
-            <p class="field">Travel Directions</p>
-            <p class="fieldresponse" id="udnyu4F5"></p>
-          </td>
-          <td>
-            <p class="field">Traffic Control Devices (TCDs)</p>
-            <p class="fieldresponse" id="xBm1Bisf"></p>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <p class="field">Travel Direction Before Crash</p>
-            <p class="fieldresponse" id="CP4soemD"></p>
-          </td>
-          <td>
-            <p class="field">Divided?</p>
-            <p class="fieldresponse" id="u5KrpsMu"></p>
-          </td>
-          <td>
-            <p class="field">Inoperative or Missing TCDs</p>
-            <p class="fieldresponse" id="YLcktHvs"></p>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <p class="field">Vehicle Maneuver/Action</p>
-            <p class="fieldresponse" id="DJ4YPDuQ"></p>
-          </td>
-          <td>
-            <p class="field">Barrier Type</p>
-            <p class="fieldresponse" id="4P4o8TWH"></p>
-          </td>
-          <td>
-            <p class="field">Towed Due to Disabling Damage</p>
-            <p class="fieldresponse" id="pTV8x6So"></p>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <p class="field">Initial Point of Contact</p>
-            <p class="fieldresponse" id="4KpRmZXB"></p>
-          </td>
-          <td>
-            <p class="field">HOV/HOT Lanes</p>
-            <p class="fieldresponse" id="Gk088QR4"></p>
-          </td>
-          <td>
-            <p class="field">Contributing Circumstances from Vehicle</p>
-            <p class="fieldresponse" id="PzKUFMw0"></p>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <p class="field">Location of Damage Area(s)</p>
-            <p class="fieldresponse" id="lZDkbTdw"></p>
-          </td>
-          <td>
-            <p class="field">Crash Related to HOV/HOT?</p>
-            <p class="fieldresponse" id="Uzw63nI0"></p>
-          </td>
-          <td>
-            <p class="field">Special Function in Transport</p>
-            <p class="fieldresponse" id="4vrmnvfC"></p>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <p class="field">Resulting Extent of Damage</p>
-            <p class="fieldresponse" id="a1fPOVyS"></p>
-          </td>
-          <td>
-            <p class="field">Total Through Lanes</p>
-            <p class="fieldresponse" id="FdF7XvAQ"></p>
-          </td>
-          <td>
-            <p class="field">Emergency Motor Vehicle Use</p>
-            <p class="fieldresponse" id="CFa8RCtt"></p>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <p class="field">Sequence of Events</p>
-            <p class="fieldresponse" id="N1NDCJhB"></p>
-          </td>
-          <td>
-            <p class="field">Total Auxiliary Lanes</p>
-            <p class="fieldresponse" id="JwQN2ENk"></p>
-          </td>
-          <td>
-            <p class="field">Has Automated System(s)?</p>
-            <p class="fieldresponse" id="krQbh0po"></p>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <p class="field">Vehicle's Most Harmful Event</p>
-            <p class="fieldresponse" id="9WuImDSX"></p>
-          </td>
-          <td>
-            <p class="field">Horizontal Alignment</p>
-            <p class="fieldresponse" id="UigT0ygk"></p>
-          </td>
-          <td>
-            <p class="field">Automated System Levels (ASLs)</p>
-            <p class="fieldresponse" id="d4OE8GnI"></p>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <p class="field">Hit and Run?</p>
-            <p class="fieldresponse" id="4EHCUQHM"></p>
-          </td>
-          <td>
-            <p class="field">Grade</p>
-            <p class="fieldresponse" id="tFYqNzmA"></p>
-          </td>
-          <td>
-            <p class="field">ASLs Engaged during Crash</p>
-            <p class="fieldresponse" id="zk6QtmkD"></p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
   </div>
+  <table class="avoid-break">
+    <th class="boxheader" colspan="3">
+      <h3>Factors and conditions</h3>
+    </th>
+    <tbody>
+      <tr>
+        <td>
+          <p class="field">Posted/Statutory Speed Limit</p>
+          <p class="fieldresponse" id="wAqrAfiG"></p>
+        </td>
+        <td>
+          <p class="field">Travel Directions</p>
+          <p class="fieldresponse" id="udnyu4F5"></p>
+        </td>
+        <td>
+          <p class="field">Traffic Control Devices (TCDs)</p>
+          <p class="fieldresponse" id="xBm1Bisf"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Travel Direction Before Crash</p>
+          <p class="fieldresponse" id="CP4soemD"></p>
+        </td>
+        <td>
+          <p class="field">Divided?</p>
+          <p class="fieldresponse" id="u5KrpsMu"></p>
+        </td>
+        <td>
+          <p class="field">Inoperative or Missing TCDs</p>
+          <p class="fieldresponse" id="YLcktHvs"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Vehicle Maneuver/Action</p>
+          <p class="fieldresponse" id="DJ4YPDuQ"></p>
+        </td>
+        <td>
+          <p class="field">Barrier Type</p>
+          <p class="fieldresponse" id="4P4o8TWH"></p>
+        </td>
+        <td>
+          <p class="field">Towed Due to Disabling Damage</p>
+          <p class="fieldresponse" id="pTV8x6So"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Initial Point of Contact</p>
+          <p class="fieldresponse" id="4KpRmZXB"></p>
+        </td>
+        <td>
+          <p class="field">HOV/HOT Lanes</p>
+          <p class="fieldresponse" id="Gk088QR4"></p>
+        </td>
+        <td>
+          <p class="field">Contributing Circumstances from Vehicle</p>
+          <p class="fieldresponse" id="PzKUFMw0"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Location of Damage Area(s)</p>
+          <p class="fieldresponse" id="lZDkbTdw"></p>
+        </td>
+        <td>
+          <p class="field">Crash Related to HOV/HOT?</p>
+          <p class="fieldresponse" id="Uzw63nI0"></p>
+        </td>
+        <td>
+          <p class="field">Special Function in Transport</p>
+          <p class="fieldresponse" id="4vrmnvfC"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Resulting Extent of Damage</p>
+          <p class="fieldresponse" id="a1fPOVyS"></p>
+        </td>
+        <td>
+          <p class="field">Total Through Lanes</p>
+          <p class="fieldresponse" id="FdF7XvAQ"></p>
+        </td>
+        <td>
+          <p class="field">Emergency Motor Vehicle Use</p>
+          <p class="fieldresponse" id="CFa8RCtt"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Sequence of Events</p>
+          <p class="fieldresponse" id="N1NDCJhB"></p>
+        </td>
+        <td>
+          <p class="field">Total Auxiliary Lanes</p>
+          <p class="fieldresponse" id="JwQN2ENk"></p>
+        </td>
+        <td>
+          <p class="field">Has Automated System(s)?</p>
+          <p class="fieldresponse" id="krQbh0po"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Vehicle's Most Harmful Event</p>
+          <p class="fieldresponse" id="9WuImDSX"></p>
+        </td>
+        <td>
+          <p class="field">Horizontal Alignment</p>
+          <p class="fieldresponse" id="UigT0ygk"></p>
+        </td>
+        <td>
+          <p class="field">Automated System Levels (ASLs)</p>
+          <p class="fieldresponse" id="d4OE8GnI"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Hit and Run?</p>
+          <p class="fieldresponse" id="4EHCUQHM"></p>
+        </td>
+        <td>
+          <p class="field">Grade</p>
+          <p class="fieldresponse" id="tFYqNzmA"></p>
+        </td>
+        <td>
+          <p class="field">ASLs Engaged during Crash</p>
+          <p class="fieldresponse" id="zk6QtmkD"></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
   <div class="break-after"></div>
 `
 

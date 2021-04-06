@@ -161,18 +161,22 @@ export class JSONconverter extends Component {
 			  // console.log(crashDataSectionLines[i]);
 			  var line = lines[i];
 			  // check if line contains "id=" if so then get the id
-			  var pos = line.indexOf("id=");
-			  if (pos > 0) {
-			    // extract the id
+				// there could be multiple ids in one line so process all of them
+				var pos = line.indexOf("id=", 0);
+				// var j = pos;
+				while (pos != -1) {
+					// extract the id
 			    var id = line.slice(pos+4, pos+12);
-			    var ans = getAnswer(answers, id);
+					var ans = getAnswer(answers, id);
 					// put ans into line and replace
 					if (fillInMethod == "datasection") {
 						line = line.slice(0, pos+14) + ans + line.slice(pos+14);
 					} else {
 						line = line.replace("###", ans);
 					}
-			  }
+					pos = line.indexOf("id=", pos+1);
+					// j = pos;
+				}
 				filledString += line + "\n";
 			}
 			return filledString;
@@ -187,7 +191,11 @@ export class JSONconverter extends Component {
 		}
 
 		function fillVehiclePageHeader(str, answers, vehicleNum, pageNum, totalNumPages) {
-			var str = str.replace("Page ### of ###", "Page "+pageNum+" of "+totalNumPages);
+			if (pageNum == -1) {
+				var str = str.replace("Page ### of ###", "");
+			} else {
+				var str = str.replace("Page ### of ###", "Page "+pageNum+" of "+totalNumPages);
+			}
 			var str = str.replace("Motor Vehicle ###", "Motor Vehicle  "+vehicleNum);
 			// fill in other ids
 			return processQuestionIds(str, answers, "header");
@@ -201,11 +209,25 @@ export class JSONconverter extends Component {
 		htmlString += fillCoverPageHeader(htmlStrings.coverPageHeaderString, jsondata["road"][0], numSectionsDict, pageNum, totalNumPages);
 		// fill in cover page data sections
 		htmlString += processQuestionIds(htmlStrings.crashDataSectionString, jsondata["road"][0], "datasection");
-		pageNum += 1;
+		// if applicable, add in construction table
+		var displayConstruction = false;
+		if (getAnswer(jsondata["road"][0], "34oHCyQs") == "Yes") {
+			pageNum += 1;
+			displayConstruction = true;
+			htmlString += processQuestionIds(htmlStrings.constructionDataSectionString, jsondata["road"][0], "datasection", pageNum, totalNumPages);
+		}
+		if (!displayConstruction) {
+			pageNum += 1;
+		}
 		// fill in vehicle page
 		for (var i = 0; i < numSectionsDict["vehicle"]; i++) {
 			var vehicleAnswers = jsondata["vehicle"][i];
-			htmlString += fillVehiclePageHeader(htmlStrings.vehicleHeaderString, vehicleAnswers, i+1, pageNum, totalNumPages);
+			if (displayConstruction) {
+				htmlString += fillVehiclePageHeader(htmlStrings.vehicleHeaderString, vehicleAnswers, i+1, -1, totalNumPages);
+				displayConstruction = false;
+			} else {
+				htmlString += fillVehiclePageHeader(htmlStrings.vehicleHeaderString, vehicleAnswers, i+1, pageNum, totalNumPages);
+			}
 			pageNum += 1
 			htmlString += processQuestionIds(htmlStrings.vehicleDataSectionString, vehicleAnswers, "datasection", pageNum, totalNumPages);
 			pageNum += 1;
