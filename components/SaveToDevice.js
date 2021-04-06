@@ -6,6 +6,7 @@ import { Platform, StyleSheet, View, TextInput, PermissionsAndroid} from 'react-
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import JSONconverter from '../utils/jsonConverter';
+import backgroundSave from '../utils/backgroundSave';
 
 class SaveToDevice extends Component {
   constructor(props) {
@@ -93,6 +94,11 @@ class SaveToDevice extends Component {
         console.log('FILE WRITTEN!');
         console.log('Data: ' + data + '\n' + 'Path: ' + path);
         this.setState({ reportSavedMessageVisible: true });
+        
+        // clear background save
+        const clearBackgroundSave = new backgroundSave();
+        var deleted = await clearBackgroundSave.deleteCapturedState();
+
         return path;
       } catch (err) {
         console.log(err.message);

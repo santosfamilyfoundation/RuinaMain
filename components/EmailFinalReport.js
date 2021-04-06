@@ -7,12 +7,16 @@ import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import Mailer from 'react-native-mail';
 import JSONconverter from '../utils/jsonConverter';
-import NetInfoAPI from "../utils/NetAPI"
+import NetInfoAPI from "../utils/NetAPI";
+import backgroundSave from '../utils/backgroundSave';
 
 export class EmailFinalReport extends Component {
   constructor(props) {
     super(props);
-    this.state = {filename: this.getDefaultFilename(), offlineStatus: false};
+    this.state = {
+      filename: this.getDefaultFilename(), 
+      offlineStatus: false,
+    };
     this.changeFilename = this.changeFilename.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
   }
@@ -40,6 +44,11 @@ export class EmailFinalReport extends Component {
         let result = await RNFS.writeFile(path, data, encoding);
         console.log('FILE WRITTEN!');
         console.log(path);
+
+        // clear background save
+        const clearBackgroundSave = new backgroundSave();
+        var deleted = await clearBackgroundSave.deleteCapturedState();
+
         return path;
     } catch(err) {
       console.log(err.message);
