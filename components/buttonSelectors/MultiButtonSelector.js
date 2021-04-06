@@ -21,7 +21,8 @@ const MultiButtonSelector = (props) => {
             for(let i = 0; i <tarQuesArr.length; i++){
                 let tarUid = tarQuesArr[i].dependencyUid
                 let tarOptionCode = tarQuesArr[i].dependencyOptionCode
-                for (let j = props.response.length-1; j > 0; j--){
+                for (let j = props.response.length-1; j >= 0; j--){
+                    if (props.response[j].selection == tarOptionCode) {break}
                     if (props.response[j].question === tarUid && props.response[j].selection != tarOptionCode){
                         return null
                     }

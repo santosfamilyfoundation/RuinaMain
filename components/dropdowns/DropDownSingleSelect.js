@@ -20,16 +20,19 @@ const DropDownSingleSelect = (props) => {
 
     if(props.response != null) { 
         if (data.questionDependency != null){
+            console.log(props.response)
             let tarQuesArr = data.questionDependency
             for(let i = 0; i <tarQuesArr.length; i++){ // Looping through dependent question
                 let tarUid = tarQuesArr[i].dependencyUid
                 let tarOptionCode = tarQuesArr[i].dependencyOptionCode
-                for (let j = props.response.length-1; j > 0; j--){ // Searching from the most recent changes made by user
+                for (let j = props.response.length-1; j >= 0; j--){ // Searching from the most recent changes made by user
+                    if (props.response[j].selection == tarOptionCode) {break}
                     if (typeof props.response[j].selection == "array"){
                         let resArr = props.response[j].selection.find(item => item != tarOptionCode)
                         if (resArr.length === props.response[j].selection.length){return null}
                     }
                     if (props.response[j].question === tarUid && props.response[j].selection != tarOptionCode){
+                        console.log("Dependent question does not display");
                         return null
                     }
                 }
