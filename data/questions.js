@@ -3642,7 +3642,7 @@ export const questions = {
             "numOptionsAllowed": "1.0",
             "question": "Crash County",
             "id": "8V2H4hT4",
-            "answerType": "advancedDropDown",
+            "answerType": "countyDropDown",
             "display": [
                 "road"
             ],
