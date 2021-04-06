@@ -12,6 +12,7 @@ export const CONDITIONS_ANNOUNCE = "Weather conditions are:";
 export const WIND_SPEED_ANNOUNCE = "Wind speed is:";
 export const WIND_DEG_ANNOUNCE = "Wind degree is:";
 
+
 export const LAT_ID = "Y0UeyBYf"; // road-12
 export const LONG_ID = "eFXNchTA"; // road-13
 export const WEATHER = "u07WbEUL"; // road-20
@@ -23,3 +24,4 @@ export const LICENSE_PLATE_ID = "vDnyDl5t"; // vehicle-18
 export const MAKE_ID = "eZglw8FV"; // vehicle-19
 export const MODEL_ID = "29h5OiPC"; // vehicle-21
 export const YEAR_ID = "C0rbnXHC"; // vehicle-20
+

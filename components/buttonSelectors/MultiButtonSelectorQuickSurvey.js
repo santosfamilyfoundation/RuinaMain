@@ -9,7 +9,7 @@ const MultiButtonSelectorQuickSurvey = (props) => {
   const {data, quickSurveyReducer, submitFunction} = props;
 
   // when button selected, set the option and update the quick survey setupData
-  const submitField = (optionText) => {
+  const submitField = (optionText, idCode) => {
       setSelection(optionText);
       submitFunction({question: data.id, selection: optionText})
   }
@@ -32,7 +32,7 @@ const MultiButtonSelectorQuickSurvey = (props) => {
               key={option.idCode}
               style={styles.answerButton}
               appearance={appearance}
-              onPress={() => submitField(option.text)}
+              onPress={() => submitField(option.text, option.idCode)}
           >
               {option.text}
           </Button>

@@ -8,6 +8,8 @@ import {
   Button,
   Icon
 } from '@ui-kitten/components';
+
+import { updateResponse } from '../../actions/StoryActions';
 import { styles } from './DropDownMultiSelect.style';
 import { connect } from 'react-redux';
 
@@ -15,11 +17,32 @@ import { connect } from 'react-redux';
 const DropDownMultiSelect = (props) => {
     const [selectedOptions, setSelectedOptions] = React.useState([]);
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
-    const {data, key, id, questionReducer, submitFunction} = props;
+    const {data, key, id, questionReducer, submitFunction, updateResponse} = props;
 
     let currId = data.id;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
+
+
+    if(props.response != null) { 
+        if (data.questionDependency != null){
+            let tarQuesArr = data.questionDependency
+            for(let i = 0; i <tarQuesArr.length; i++){ // Looping through dependent question
+                let tarUid = tarQuesArr[i].dependencyUid
+                let tarOptionCode = tarQuesArr[i].dependencyOptionCode
+                for (let j = props.response.length-1; j >= 0; j--){
+                    if (props.response[j].selection == tarOptionCode) {break}
+                    if (typeof props.response[j].selection == "array"){
+                        let resArr = props.response[j].selection.find(item => item != tarOptionCode)
+                        if (resArr.length === props.response[j].selection.length){return null}
+                    }
+                    if (props.response[j].question === tarUid && props.response[j].selection != tarOptionCode){
+                        return null
+                    }
+                }
+            }
+        }
+    };
 
     // Populate if value already exists in redux
     if(selectedOptions.length == 0) {
@@ -100,6 +123,7 @@ const DropDownMultiSelect = (props) => {
         for(i = 0; i < selectedOptions.length; i++) {
             res.push(selectedOptions[i].text);
         }
+        updateResponse && updateResponse({id, question: currId, selection: res})
         submitFunction({id, question: currId, selection: res})
     }
 
@@ -156,11 +180,17 @@ const DropDownMultiSelect = (props) => {
     );
 };
 
+const mapDispatchToProps = {
+    updateResponse
+}
+
 const mapStateToProps = (state, props) => {
-    const { story } = state;
+    // console.log('state', state);
+    // const { story } = state;
+    const { response } = state.storyReducer
     const { reducer } = props;
     const questionReducer = state[reducer];
-    return { story, questionReducer }
+    return { questionReducer, response }
 };
 
-export default connect(mapStateToProps)(DropDownMultiSelect);
+export default connect(mapStateToProps, mapDispatchToProps)(DropDownMultiSelect);
