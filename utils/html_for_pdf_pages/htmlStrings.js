@@ -622,6 +622,164 @@ export const vehicleDataSectionString = `
   <div class="break-after"></div>
 `
 
+export const driverHeaderString = `
+  <div class="page-header">
+    <div class="row">
+      <div class="column left half">
+        <h4>Driver of Motor Vehicle ###</h4>
+        <h4 id="TNNilZo2">Injury Status: ###</h4>
+      </div>
+      <div class="column right half">
+        <h4>Page ### of ###</h4>
+        <h4 id="xwtnXE2c">Incident Responder?: ###</h4>
+      </div>
+    </div>
+  </div>
+`
+
+export const driverDataSectionString = `
+  <table class="avoid-break">
+    <th class="boxheader" colspan="4">
+      <h3>Driver and License Information</h3>
+    </th>
+    <tbody>
+      <tr>
+        <td rowspan="3" class="sixth">
+      <p><span id="reJw3rUT"></span> <span id="ElI9UkWD"></span> <span id="Iv7jSfKw"></span></p>
+      <p>DOB:<span id="oMObMoQs"></span></p>
+      <p>Sex: <span id="cGeoDWm1"></span></p>
+    </td>
+    <td rowspan="3" class="sixth">
+      <p class="tright"><span id="hLG4AOsN"></span></p>
+      <p class="tright" id="bqPmjHhl"></p>
+      <p class="tright"><span id="mfUnfGGG"></span>, <span id="I5sdJ3MP"></span> <span id="g9aneW3g"></span></p>
+    </td>
+        <td>
+          <p class="field">License Type</p>
+          <p class="fieldresponse" id="swdK3ctL"></p>
+        </td>
+        <td>
+          <p class="field">Name of Jurisdiction</p>
+          <p class="fieldresponse" id="XaITnP8d"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <p class="field">License Number</p>
+            <p class="fieldresponse" id="xL5WOZpG"></p>
+        </td>
+        <td>
+          <p class="field">License Endorsements</p>
+          <p class="fieldresponse" id="qVaWWaWs"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">License Class</p>
+          <p class="fieldresponse" id="fUE3Zk9I"></p>
+        </td>
+         <td>
+          <p class="field">Commercial Driver License (CDL)?</p>
+          <p class="fieldresponse" id="16LCTlmo"></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="avoid-break">
+    <th class="boxheader" colspan="3">
+      <h3>Factors and Conditions</h3>
+    </th>
+    <tbody>
+      <tr>
+        <td>
+          <p class="field">Seating Position</p>
+          <p class="fieldresponse" id="qAJO1kQq"></p>
+        </td>
+        <td>
+          <p class="field">Speeding-Related?</p>
+          <p class="fieldresponse" id="EVbRTEnb"></p>
+        </td>
+        <td rowspan="2">
+          <p class="field">Suspected Alcohol Use?</p>
+          <p class="fieldresponse" id="9cFGpRmQ"></p>
+        </td>
+      </tr>
+      <tr>
+        <td rowspan="2">
+          <p class="field">Restraint Systems or Motorcycle Helmet Use</p>
+          <p class="fieldresponse" id="Pr9o5SM6"></p>
+        </td>
+        <td>
+          <p class="field">Actions at Time of Crash</p>
+          <p class="fieldresponse" id="qWDsDeEY"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Violation Codes</p>
+          <p class="fieldresponse" id="SJP0mZrJ"></p>
+        </td>
+        <td>
+          <p class="field">Alcohol Test Status</p>
+          <p class="fieldresponse" id="uTZ8u8an"></p>
+        </td>
+      </tr>
+      <tr>
+        <td rowspan="2">
+          <p class="field">Indication of Improper Use?</p>
+          <p class="fieldresponse" id="Vln5VkAh"></p>
+        </td>
+        <td>
+          <p class="field">Distraction Type</p>
+          <p class="fieldresponse" id="0Mat8q8u"></p>
+        </td>
+        <td>
+          <p class="field">Alcohol Test Type</p>
+          <p class="fieldresponse" id="Um6CdyUJ"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Source of Distraction</p>
+          <p class="fieldresponse" id="d3ZHeqkH"></p>
+        </td>
+        <td>
+          <p class="field">Suspected Drug Use?</p>
+          <p class="fieldresponse" id="qlTVIWWS"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Air Bag Deployed?</p>
+          <p class="fieldresponse" id="1h6r5JFf"></p>
+        </td>
+        <td>
+          <p class="field">Condition at Time of Crash</p>
+          <p class="fieldresponse" id="e0ILJxlx"></p>
+        </td>
+        <td>
+          <p class="field">Drug Test Status</p>
+          <p class="fieldresponse" id="nCXTPsU5"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Ejection?</p>
+          <p class="fieldresponse" id="4VkVRWWY"></p>
+        </td>
+        <td>
+          <p class="field">Attempted Avoidance Maneuver</p>
+          <p class="fieldresponse" id="AREUHJ9b"></p>
+        </td>
+        <td>
+          <p class="field">Drug Test Type</p>
+          <p class="fieldresponse" id="QUYxXsUT"></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+`
+
 export const tailString = `
   </body>
   </html>

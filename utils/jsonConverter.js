@@ -151,6 +151,28 @@ export class JSONconverter extends Component {
 		  };
 		};
 
+		function getVehicleSectionDict(data) {
+			var vehicleSectionDict = {};
+			// add in drivers
+			var drivers = {};
+			for (var i = 0; i < data["driver"].length; i++) {
+				drivers[data["driver"][i]["vehicle"]] = data["driver"][i];
+			}
+			vehicleSectionDict["drivers"] = drivers;
+			// add in passengers
+			var passengers = {};
+			for (var i = 0; i < data["passenger"].length; i++) {
+				var key = data["passenger"][i]["vehicle"];
+				if (key in passengers) {
+					passengers[key].push(data["passenger"][i]);
+				} else {
+					passengers[key] = [data["passenger"][i]];
+				}
+			}
+			vehicleSectionDict["passengers"] = passengers;
+			return vehicleSectionDict;
+		};
+
 		function processQuestionIds(str, answers, fillInMethod, pageNum=null, totalNumPages=null) {
 			if (pageNum) {
 				var str = str.replace("Page ### of ###", "Page "+pageNum+" of "+totalNumPages);
@@ -180,7 +202,7 @@ export class JSONconverter extends Component {
 				filledString += line + "\n";
 			}
 			return filledString;
-		}
+		};
 
 		function fillCoverPageHeader(str, answers, numSectionsDict, pageNum, totalNumPages) {
 			var str = str.replace("Page ### of ###", "Page "+pageNum+" of "+totalNumPages);
@@ -188,7 +210,7 @@ export class JSONconverter extends Component {
 			var str = str.replace("# Non-motorists", numSectionsDict["nonmotorist"]+" Non-motorists");
 			// fill in other ids
 			return processQuestionIds(str, answers, "header");
-		}
+		};
 
 		function fillVehiclePageHeader(str, answers, vehicleNum, pageNum, totalNumPages) {
 			if (pageNum == -1) {
@@ -199,7 +221,7 @@ export class JSONconverter extends Component {
 			var str = str.replace("Motor Vehicle ###", "Motor Vehicle  "+vehicleNum);
 			// fill in other ids
 			return processQuestionIds(str, answers, "header");
-		}
+		};
 
 		var htmlString = htmlStrings.headerString;
 		var pageNum = 1;
@@ -219,8 +241,10 @@ export class JSONconverter extends Component {
 		if (!displayConstruction) {
 			pageNum += 1;
 		}
-		// fill in vehicle page
+		// fill in vehicle section pages
+		vehicleSectionDict = getVehicleSectionDict(jsondata);
 		for (var i = 0; i < numSectionsDict["vehicle"]; i++) {
+			// fill out vehicle page
 			var vehicleAnswers = jsondata["vehicle"][i];
 			if (displayConstruction) {
 				htmlString += fillVehiclePageHeader(htmlStrings.vehicleHeaderString, vehicleAnswers, i+1, -1, totalNumPages);
@@ -231,6 +255,13 @@ export class JSONconverter extends Component {
 			pageNum += 1
 			htmlString += processQuestionIds(htmlStrings.vehicleDataSectionString, vehicleAnswers, "datasection", pageNum, totalNumPages);
 			pageNum += 1;
+			// // fill out driver page if applicable
+			// var hasDriver;
+			// (vehicleAnswers["id"] in vehicleSectionDict["drivers"]) ? hasDriver = true : hasDriver = false;
+			// if (hasDriver) {
+			// 	var
+			// }
+
 		}
 		// concatenate strings to form complete HTML
 		htmlString += htmlStrings.tailString;
