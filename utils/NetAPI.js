@@ -1,5 +1,6 @@
-import React, {Component} from 'react';
-import NetInfo, {NetInfoState} from "@react-native-community/netinfo"
+import {Component} from 'react';
+import NetInfo from "@react-native-community/netinfo"
+
 export class NetInfoAPI extends Component {
     constructor(props){
         super(props)

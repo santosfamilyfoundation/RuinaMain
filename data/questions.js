@@ -61,7 +61,8 @@ export const questions = {
             ],
             "humanReadableId": "driver-5",
             "helperText": "Street Address 1; Street Address 2",
-            "tooltip": "E.g. 1000 Olin Way, MA"
+            "tooltip": "E.g. 1000 Olin Way, MA",
+            "helperImg": "../image/test.jpg"
         },
         {
             "numOptionsAllowed": "0.0",

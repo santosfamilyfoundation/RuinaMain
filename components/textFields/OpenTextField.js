@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 import { Input, Layout, Text, Card, Button, Tooltip, CardHeader, Icon } from '@ui-kitten/components';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styles } from './OpenTextField.style';
+import ImageSelector from '../image/imgIndex';
 
 
 const OpenTextField = (props) => {
@@ -18,7 +18,6 @@ const OpenTextField = (props) => {
 
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
-
 
     if(props.response != null) { 
         if (data.questionDependency != null){
@@ -104,19 +103,33 @@ const OpenTextField = (props) => {
         <Icon {...style} name='checkmark-outline' />
     )
 
-
+    const HelperImg = () => {
+        if (data.helperImg != null ){
+            var img = new ImageSelector()
+            const src = img.pathHandler(data.helperImg)
+            return (
+                <View style={styles.imgContainer}>
+                    <Image source={src} style={styles.img}/>
+                </View>
+            )
+        }
+        return null
+    }
     const HelperTooltip = () => {
         if (data.helperText != null && data.tooltip != null){
             return (
-            <View style={styles.rightControlsContainer}>
+            <View style={styles.rowContainer}>
                 <Text style={styles.helperText}>{data.helperText}</Text>
-                <Layout>
-                    <View style={styles.btnContainer}>
-                        <TouchableOpacity style={styles.styledButton} activeOpacity = { .7 } onPress={() => setVisible(true)}>
-                            <Text style={styles.btnText}>i</Text>
-                        </TouchableOpacity>
-                    </View>
-               </Layout>
+                <Tooltip
+                    visible={visible}
+                    text= {data.tooltip}
+                    onBackdropPress={toggleTooltip}>
+                    <Layout style={styles.tooltipbtnContainer}>
+                        <Button tyle={styles.tooltipBtn} appearance='ghost' status='primary' icon={InfoIcon} onPress={toggleTooltip}>
+                            Info
+                        </Button>
+                    </Layout>
+                </Tooltip>
             </View>
             )
         }
@@ -125,62 +138,32 @@ const OpenTextField = (props) => {
         }
         else if (data.tooltip != null) {
             return (
-                <View style={styles.rightControlsContainer}>
-                    <Layout>
-                        <View style={styles.btnContainer}>
-                            <TouchableOpacity style={styles.styledButton} activeOpacity = { .7 } onPress={() => setVisible(true)}>
-                                <Text style={styles.btnText}>i</Text>
-                            </TouchableOpacity>
-                        </View>
-                </Layout>
-            </View>
+                <View style={styles.rowContainer}>
+                    <Tooltip
+                        visible={visible}
+                        text= {data.tooltip}
+                        onBackdropPress={toggleTooltip}>
+                        <Layout style={styles.tooltipbtnContainer}>
+                            <Button tyle={styles.tooltipBtn} appearance='ghost' status='primary' icon={InfoIcon} onPress={toggleTooltip}>
+                                Info
+                            </Button>
+                        </Layout>
+                    </Tooltip>
+                </View>
             )
         } else {
             return null;
         }
-    }
-    const HelperText = () => {
-        if(data.helperText != null) {
-            return (
-            <View style={styles.rightControlsContainer}>
-                <Text style={styles.helperText}>{data.helperText}</Text>
-                <Layout>
-                    <View style={styles.btnContainer}>
-                        <TouchableOpacity style={styles.styledButton} activeOpacity = { .7 } onPress={() => setVisible(true)}>
-                            <Text style={styles.btnText}>i</Text>
-                        </TouchableOpacity>
-                    </View>
-               </Layout>
-            </View>)
-        }
-        return null;
     }
     
     const InfoIcon = (props) => (
         <Icon {...props} name='info'/>
     );
 
-    const renderToggleButton = () => (
-        <Button onPress={() => setVisible(true)}>
-        TOGGLE TOOLTIP
-        </Button>
-    );
 
-    const toolTip = () => {
-        if(data.tooltip != null){
-            console.log("data.tooltip", data.tooltip);
-            return (
-                <Tooltip
-                    anchor={renderToggleButton()}
-                    visible={visible}
-                    accessoryLeft={InfoIcon}
-                    onBackdropPress={() => setVisible(false)}>
-                    Welcome to UI Kitten 
-                </Tooltip>
-            );
-        }
-        return null;
-    }
+    const toggleTooltip = () => {
+        setVisible(!visible);
+    };
 
     const ErrorMsg = () => {
         if(isInvalid) {
@@ -194,33 +177,34 @@ const OpenTextField = (props) => {
     };
 
     return (
-        <View style={styles.rightControlsContainer}>
-            <Layout key={key} style={styles.container}>
-                <Card header={Header} status={status}>
-                    <Layout style={styles.content}>
-                        {toolTip()}
-                        <Layout style={styles.input}>
-                            <Input
-                                style={styles.inputField}
-                                icon={renderClear}
-                                onIconPress={() => clearField()}
-                                placeholder='Place your Text'
-                                value={value}
-                                onChangeText={onTextChange}
-                            />
-                            <Button
-                                style={styles.submitButton}
-                                appearance={buttonAppearance}
-                                size='medium'
-                                icon={CheckIcon}
-                                onPress={() => submitField()}
-                            />
-                        </Layout>
-                        {ErrorMsg()}
+
+        <Layout key={key} style={styles.container}>
+            <Card header={Header} status={status}>
+                <Layout style={styles.content}>
+                    {HelperTooltip()}
+                    {HelperImg()}
+                    <Layout style={styles.input}>
+                        <Input
+                            style={styles.inputField}
+                            icon={renderClear}
+                            onIconPress={() => clearField()}
+                            placeholder='Place your Text'
+                            value={value}
+                            onChangeText={onTextChange}
+                        />
+                        <Button
+                            style={styles.submitButton}
+                            appearance={buttonAppearance}
+                            size='medium'
+                            icon={CheckIcon}
+                            onPress={() => submitField()}
+                        />
                     </Layout>
-                </Card>
-            </Layout>
-        </View>
+                    {ErrorMsg()}
+                </Layout>
+            </Card>
+        </Layout>
+
     );
 };
 
