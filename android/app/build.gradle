@@ -209,6 +209,7 @@ repositories {
 
 dependencies {
     implementation project(':react-native-uuid-generator')
+    implementation 'com.android.support:multidex:1.0.3'
     implementation (project(':react-native-camera')) {
         exclude group: "com.google.android.gms"
     }
