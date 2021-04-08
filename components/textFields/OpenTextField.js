@@ -1,10 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Input, Layout, Text, Card, Button, CardHeader, Icon } from '@ui-kitten/components';
+import { View } from 'react-native';
+import { Input, Layout, Text, Card, Button, Tooltip, CardHeader, Icon } from '@ui-kitten/components';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styles } from './OpenTextField.style';
 
 
 const OpenTextField = (props) => {
+    const [visible, setVisible] = React.useState(false);
     const [value, setValue] = React.useState('');
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const [isInvalid, setIsInvalid] = React.useState(false);
@@ -84,7 +87,7 @@ const OpenTextField = (props) => {
     }
 
     const Header = () => (
-        <CardHeader title={data.question}/>
+        <CardHeader title={data.question} />
     );
 
     const renderClear = (style) => (
@@ -101,9 +104,80 @@ const OpenTextField = (props) => {
         <Icon {...style} name='checkmark-outline' />
     )
 
-    const HelperText = () => {
-        if(data?.helperText?.length != 0) {
+
+    const HelperTooltip = () => {
+        if (data.helperText != null && data.tooltip != null){
+            return (
+            <View style={styles.rightControlsContainer}>
+                <Text style={styles.helperText}>{data.helperText}</Text>
+                <Layout>
+                    <View style={styles.btnContainer}>
+                        <TouchableOpacity style={styles.styledButton} activeOpacity = { .7 } onPress={() => setVisible(true)}>
+                            <Text style={styles.btnText}>i</Text>
+                        </TouchableOpacity>
+                    </View>
+               </Layout>
+            </View>
+            )
+        }
+        else if (data.helperText != null) {
             return (<Text style={styles.helperText}>{data.helperText}</Text>)
+        }
+        else if (data.tooltip != null) {
+            return (
+                <View style={styles.rightControlsContainer}>
+                    <Layout>
+                        <View style={styles.btnContainer}>
+                            <TouchableOpacity style={styles.styledButton} activeOpacity = { .7 } onPress={() => setVisible(true)}>
+                                <Text style={styles.btnText}>i</Text>
+                            </TouchableOpacity>
+                        </View>
+                </Layout>
+            </View>
+            )
+        } else {
+            return null;
+        }
+    }
+    const HelperText = () => {
+        if(data.helperText != null) {
+            return (
+            <View style={styles.rightControlsContainer}>
+                <Text style={styles.helperText}>{data.helperText}</Text>
+                <Layout>
+                    <View style={styles.btnContainer}>
+                        <TouchableOpacity style={styles.styledButton} activeOpacity = { .7 } onPress={() => setVisible(true)}>
+                            <Text style={styles.btnText}>i</Text>
+                        </TouchableOpacity>
+                    </View>
+               </Layout>
+            </View>)
+        }
+        return null;
+    }
+    
+    const InfoIcon = (props) => (
+        <Icon {...props} name='info'/>
+    );
+
+    const renderToggleButton = () => (
+        <Button onPress={() => setVisible(true)}>
+        TOGGLE TOOLTIP
+        </Button>
+    );
+
+    const toolTip = () => {
+        if(data.tooltip != null){
+            console.log("data.tooltip", data.tooltip);
+            return (
+                <Tooltip
+                    anchor={renderToggleButton()}
+                    visible={visible}
+                    accessoryLeft={InfoIcon}
+                    onBackdropPress={() => setVisible(false)}>
+                    Welcome to UI Kitten 
+                </Tooltip>
+            );
         }
         return null;
     }
@@ -120,31 +194,33 @@ const OpenTextField = (props) => {
     };
 
     return (
-        <Layout key={key} style={styles.container}>
-            <Card header={Header} status={status}>
-                <Layout style={styles.content}>
-                    {HelperText()}
-                    <Layout style={styles.input}>
-                        <Input
-                            style={styles.inputField}
-                            icon={renderClear}
-                            onIconPress={() => clearField()}
-                            placeholder='Place your Text'
-                            value={value}
-                            onChangeText={onTextChange}
-                        />
-                        <Button
-                            style={styles.submitButton}
-                            appearance={buttonAppearance}
-                            size='medium'
-                            icon={CheckIcon}
-                            onPress={() => submitField()}
-                        />
+        <View style={styles.rightControlsContainer}>
+            <Layout key={key} style={styles.container}>
+                <Card header={Header} status={status}>
+                    <Layout style={styles.content}>
+                        {toolTip()}
+                        <Layout style={styles.input}>
+                            <Input
+                                style={styles.inputField}
+                                icon={renderClear}
+                                onIconPress={() => clearField()}
+                                placeholder='Place your Text'
+                                value={value}
+                                onChangeText={onTextChange}
+                            />
+                            <Button
+                                style={styles.submitButton}
+                                appearance={buttonAppearance}
+                                size='medium'
+                                icon={CheckIcon}
+                                onPress={() => submitField()}
+                            />
+                        </Layout>
+                        {ErrorMsg()}
                     </Layout>
-                    {ErrorMsg()}
-                </Layout>
-            </Card>
-        </Layout>
+                </Card>
+            </Layout>
+        </View>
     );
 };
 
