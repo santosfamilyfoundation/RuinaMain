@@ -4,16 +4,18 @@ import { Input, Layout, Text, Card, Button, CardHeader, Icon, ListItem, CheckBox
 import { styles } from './AdvancedOpenTextField.style';
 import { updateRoad } from '../../actions/RoadAction';
 import * as Constants from '../../constants';
+import vinValidator from 'vin-validator';
 
-//This component is used for "advanced" tool access (map, photo, and time)
+//This component is used for "advanced" tool access (map, photo, VIN, and time)
 
 const AdvancedOpenTextField = (props) => {
     const [value, setValue] = React.useState('');
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const [advancedButtonAppearance, setAdvancedButtonAppearance] = React.useState('outline');
-    const [isInvalid, setIsInvalid] = React.useState(false);
+    const [invalidLength, setInvalidLength] = React.useState(false);
+    const [invalidVin, setInvalidVin] = React.useState(false);
     const {data, key, id, questionReducer, submitFunction, pageChange, importFrom, updateRoad} = props;
-    let currId = data.id
+    let currId = data.id;
     let status;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
@@ -55,6 +57,18 @@ const AdvancedOpenTextField = (props) => {
             return;
         }
         submitFunction({id, question: currId, selection: value})
+        switch(currId) {
+          case "Bw7d2KTr": // VIN question id
+            if (!vinValidator.validate(value)) {
+              setInvalidVin(true);
+            } else {
+              setInvalidVin(false);
+            }
+            break;
+          default:
+            break;
+        }
+        ErrorMsg();
         setButtonAppearance('filled');
     }
 
@@ -81,10 +95,13 @@ const AdvancedOpenTextField = (props) => {
             setButtonAppearance('outline');
         }
     }
-    if(value.length > data.maxLength && !isInvalid) {
-        setIsInvalid(true);
-    } else if(isInvalid && value.length <= data.maxLength) {
-        setIsInvalid(false);
+
+    // checking if response length is valid
+    // currently no questions use this, but could be added in the future
+    if(value.length > data.maxLength && !invalidLength) {
+        setInvalidLength(true);
+    } else if(invalidLength && value.length <= data.maxLength) {
+        setInvalidLength(false);
     }
 
     const onImportMapPress = () => {
@@ -215,12 +232,19 @@ const AdvancedOpenTextField = (props) => {
     }
 
     const ErrorMsg = () => {
-        if(isInvalid) {
+        if(invalidLength) {
             return(
                 <Text>
                     Too long!
                 </Text>
             )
+        }
+        if(invalidVin) {
+          return(
+            <Text style={{color:'red'}}>
+              Warning: Invalid VIN
+            </Text>
+          )
         }
         return null;
     };
