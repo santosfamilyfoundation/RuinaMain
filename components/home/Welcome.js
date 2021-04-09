@@ -7,6 +7,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import backgroundSave from '../../utils/backgroundSave';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
+import { connect } from 'react-redux';
 
 class Welcome extends Component {
     constructor(props){
@@ -37,6 +38,29 @@ class Welcome extends Component {
     }
 
     render() {
+        const {
+          navigation,
+          edit,
+          driver,
+          nonmotorist,
+          vehicle,
+          passenger,
+          road
+        } = this.props
+
+        const data = {
+          driver: this.props.driver.data,
+          nonmotorist: this.props.nonmotorist.data,
+          vehicle: this.props.vehicle.data,
+          passenger: this.props.passenger.data,
+          road: this.props.road.data,
+          quiz: this.props.quiz,
+        };
+        console.log("---------------------------Reducer Status Welcome Screen -----------------------------")
+        for (let d in data) {
+          console.log(d, ": ", data[d]);
+        }
+
         const navigateTo = (loc) => {
           this.props.navigation.navigate(loc, {autoSavedSession: this.state.autoSavedSession});
           };
@@ -88,4 +112,17 @@ class Welcome extends Component {
     }
 };
 
-export default Welcome;
+const mapStateToProps = (state) => {
+  return {
+      driver: state.driverReducer,
+      nonmotorist: state.nonmotoristReducer,
+      vehicle: state.vehicleReducer,
+      passenger: state.passengerReducer,
+      quiz: state.quickquizReducer,
+      road: state.roadReducer,
+  }
+}
+
+export default connect(mapStateToProps)(Welcome);
+
+//export default Welcome;
