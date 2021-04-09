@@ -61,6 +61,7 @@
     "rn-fetch-blob": "github:joltup/rn-fetch-blob#pull/701/head",
     "rn-pdf-generator": "^1.6.4",
     "sinon": "^9.2.1",
+    "vin-validator": "^1.0.0",
     "xlsx": "^0.16.8"
   },
   "devDependencies": {
