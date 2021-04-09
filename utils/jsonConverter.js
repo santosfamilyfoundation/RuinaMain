@@ -296,45 +296,61 @@ export class JSONconverter extends Component {
 			// pageNum += 1
 			htmlString += processQuestionIds(htmlStrings.vehicleDataSectionString, vehicleAnswers, "datasection", pageNum, totalNumPages);
 			// pageNum += 1;
-			// TODO: fill out lvhm vehicle section if applicable
-			// fill out driver page if applicable
-			var hasDriver;
-			(vehicleAnswers["id"] in vehicleSectionDict["drivers"]) ? hasDriver = true : hasDriver = false;
-			if (hasDriver) {
-				var driverAnswers = vehicleSectionDict["drivers"][vehicleAnswers["id"]];
-				htmlString += fillDriverPageHeader(htmlStrings.driverHeaderString, driverAnswers, i+1, pageNum, totalNumPages);
-				htmlString += processQuestionIds(htmlStrings.driverDataSectionString, driverAnswers, "datasection", pageNum, totalNumPages);
-				if ((getAnswer(vehicleAnswers, "ovVntlnU") != "Not Applicable") || (getAnswer(vehicleAnswers, "CynWHwxP") != "Light (10,000 lbs. or less GVWR/GCWR)") || (getAnswer(vehicleAnswers, "sM5HGjcV") != "Yes")) {
-					// display lvhm driver section
-					htmlString += processQuestionIds(htmlStrings.lvhmDriverDataSectionString, driverAnswers, "datasection", pageNum, totalNumPages);
-				}
-				if (getAnswer(driverAnswers, "TNNilZo2") != "No Apparent Injury") {
-					// display injury driver section
-					htmlString += processQuestionIds(htmlStrings.injuryDriverDataSectionString, driverAnswers, "datasection", pageNum, totalNumPages);
-				}
+			// fill out lvhm vehicle sections if applicable
+			if (getAnswer(vehicleAnswers, "ovVntlnU") != "Not Applicable") {
+				htmlString += processQuestionIds(htmlStrings.firstTrailerDataSectionString, vehicleAnswers, "datasection", pageNum, totalNumPages);
 			}
-			// fill out passenger pages if applicable
-			if (vehicleAnswers["id"] in vehicleSectionDict["passengers"]) {
-				var passengers = vehicleSectionDict["passengers"][vehicleAnswers["id"]];
-				for (var j = 0; j < passengers.length; j++) {
-					var passengerAnswers = passengers[j];
-					htmlString += fillPassengerPageHeader(htmlStrings.passengerHeaderString, passengerAnswers, j+1, i+1, hasDriver, pageNum, totalNumPages);
-					htmlString += processQuestionIds(htmlStrings.passengerDataSectionString, passengerAnswers, "datasection", pageNum, totalNumPages);
-					if (getAnswer(passengerAnswers, "NJqVP8AH") != "No Apparent Injury") {
-						htmlString += processQuestionIds(htmlStrings.injuryPassengerDataSectionString, passengerAnswers, "datasection", pageNum, totalNumPages);
-					}
-				}
+			if ((getAnswer(vehicleAnswers, "ovVntlnU") == "2") || (getAnswer(vehicleAnswers, "ovVntlnU") == "3")) {
+				htmlString += processQuestionIds(htmlStrings.secondTrailerDataSectionString, vehicleAnswers, "datasection", pageNum, totalNumPages);
 			}
+			if (getAnswer(vehicleAnswers, "ovVntlnU") == "3") {
+				htmlString += processQuestionIds(htmlStrings.thirdTrailerDataSectionString, vehicleAnswers, "datasection", pageNum, totalNumPages);
+			}
+			if ((getAnswer(vehicleAnswers, "ovVntlnU") != "Not Applicable") || (getAnswer(vehicleAnswers, "CynWHwxP") != "Light (10,000 lbs. or less GVWR/GCWR)") || (getAnswer(vehicleAnswers, "sM5HGjcV") == "Yes")) {
+				htmlString += processQuestionIds(htmlStrings.lvhmVehicleDataSectionString, vehicleAnswers, "datasection", pageNum, totalNumPages);
+			}
+			if (getAnswer(vehicleAnswers, "sM5HGjcV") == "Yes") {
+				htmlString += processQuestionIds(htmlStrings.hazardousDataSectionString, vehicleAnswers, "datasection", pageNum, totalNumPages);
+			}
+			break;
+			// // fill out driver page if applicable
+			// var hasDriver;
+			// (vehicleAnswers["id"] in vehicleSectionDict["drivers"]) ? hasDriver = true : hasDriver = false;
+			// if (hasDriver) {
+			// 	var driverAnswers = vehicleSectionDict["drivers"][vehicleAnswers["id"]];
+			// 	htmlString += fillDriverPageHeader(htmlStrings.driverHeaderString, driverAnswers, i+1, pageNum, totalNumPages);
+			// 	htmlString += processQuestionIds(htmlStrings.driverDataSectionString, driverAnswers, "datasection", pageNum, totalNumPages);
+			// 	if ((getAnswer(vehicleAnswers, "ovVntlnU") != "Not Applicable") || (getAnswer(vehicleAnswers, "CynWHwxP") != "Light (10,000 lbs. or less GVWR/GCWR)") || (getAnswer(vehicleAnswers, "sM5HGjcV") == "Yes")) {
+			// 		// display lvhm driver section
+			// 		htmlString += processQuestionIds(htmlStrings.lvhmDriverDataSectionString, driverAnswers, "datasection", pageNum, totalNumPages);
+			// 	}
+			// 	if (getAnswer(driverAnswers, "TNNilZo2") != "No Apparent Injury") {
+			// 		// display injury driver section
+			// 		htmlString += processQuestionIds(htmlStrings.injuryDriverDataSectionString, driverAnswers, "datasection", pageNum, totalNumPages);
+			// 	}
+			// }
+			// // fill out passenger pages if applicable
+			// if (vehicleAnswers["id"] in vehicleSectionDict["passengers"]) {
+			// 	var passengers = vehicleSectionDict["passengers"][vehicleAnswers["id"]];
+			// 	for (var j = 0; j < passengers.length; j++) {
+			// 		var passengerAnswers = passengers[j];
+			// 		htmlString += fillPassengerPageHeader(htmlStrings.passengerHeaderString, passengerAnswers, j+1, i+1, hasDriver, pageNum, totalNumPages);
+			// 		htmlString += processQuestionIds(htmlStrings.passengerDataSectionString, passengerAnswers, "datasection", pageNum, totalNumPages);
+			// 		if (getAnswer(passengerAnswers, "NJqVP8AH") != "No Apparent Injury") {
+			// 			htmlString += processQuestionIds(htmlStrings.injuryPassengerDataSectionString, passengerAnswers, "datasection", pageNum, totalNumPages);
+			// 		}
+			// 	}
+			// }
 		}
-		// fill out non motorist pages if applicable
-		for (var i = 0; i < numSectionsDict["nonmotorist"]; i++) {
-			var nonmotoristAnswers = jsondata["nonmotorist"][i];
-			htmlString += fillNonMotoristPageHeader(htmlStrings.nonmotoristHeaderString, nonmotoristAnswers, i+1, pageNum, totalNumPages);
-			htmlString += processQuestionIds(htmlStrings.nonmotoristDataSectionString, nonmotoristAnswers, "datasection", pageNum, totalNumPages);
-			if (getAnswer(nonmotoristAnswers, "WRishqwU") != "No Apparent Injury") {
-				htmlString += processQuestionIds(htmlStrings.injuryNonmotoristDataSectionString, nonmotoristAnswers, "datasection", pageNum, totalNumPages);
-			}
-		}
+		// // fill out non motorist pages if applicable
+		// for (var i = 0; i < numSectionsDict["nonmotorist"]; i++) {
+		// 	var nonmotoristAnswers = jsondata["nonmotorist"][i];
+		// 	htmlString += fillNonMotoristPageHeader(htmlStrings.nonmotoristHeaderString, nonmotoristAnswers, i+1, pageNum, totalNumPages);
+		// 	htmlString += processQuestionIds(htmlStrings.nonmotoristDataSectionString, nonmotoristAnswers, "datasection", pageNum, totalNumPages);
+		// 	if (getAnswer(nonmotoristAnswers, "WRishqwU") != "No Apparent Injury") {
+		// 		htmlString += processQuestionIds(htmlStrings.injuryNonmotoristDataSectionString, nonmotoristAnswers, "datasection", pageNum, totalNumPages);
+		// 	}
+		// }
 		// concatenate strings to form complete HTML
 		htmlString += htmlStrings.tailString;
 		return htmlString;
