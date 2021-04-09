@@ -128,6 +128,10 @@ export const headerString = `
         margin-top: 1em;
       }
 
+      .full-width {
+        width: 100%;
+      }
+
       table {
       	margin: 1em 0;
       }
@@ -197,27 +201,21 @@ export const crashDataSectionString = `
       <h3> Crash date, time, and location</h3>
     </th>
     <tbody>
-      <tr>
-        <td rowspan="2">
-          <p class="field">Crash Date and Time</p>
-          <p class="fieldresponse" id="FQ2cYAHj">for visual</p>
-        </td>
-        <td rowspan="2">
-          <p class="field">Crash County</p>
-          <p class="fieldresponse" id="8V2H4hT4"></p>
-        </td>
-        <td>
-          <p class="field">Within Interchange Area</p>
-          <p class="fieldresponse" id="2cnmGpDV"></p>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <p class="field">Specific Location</p>
-          <p class="fieldresponse" id="OeRyvF4v"></p>
-        </td>
-      </tr>
-      <tr>
+			<tr>
+				<td>
+					<p class="field">Crash Date and Time</p>
+					<p class="fieldresponse" id="FQ2cYAHj"></p>
+				</td>
+				<td>
+					<p class="field">Crash County</p>
+					<p class="fieldresponse" id="8V2H4hT4"></p>
+				</td>
+				<td>
+					<p class="field">Within Interchange Area</p>
+					<p class="fieldresponse" id="2cnmGpDV"></p>
+				</td>
+			</tr>
+			<tr>
         <td>
           <p class="field">Time of Roadway Clearance</p>
           <p class="fieldresponse" id="zyHP4WbS"></p>
@@ -227,8 +225,28 @@ export const crashDataSectionString = `
           <p class="fieldresponse" id="JDBENf0A"></p>
         </td>
         <td>
-          <p class="field">Number of Approaches</p>
-          <p class="fieldresponse" id="fvIxja95"></p>
+					<p class="field">Specific Location</p>
+					<p class="fieldresponse" id="OeRyvF4v"></p>
+				</td>
+			</tr>
+      <tr>
+        <td rowspan="2">
+          <p class="field">Overall Intersection Geometry</p>
+					<p class="fieldresponse" id="UwUUqXFT"></p>
+        </td>
+        <td rowspan="2">
+          <p class="field">Overall Traffic Control Device</p>
+          <p class="fieldresponse" id="Rq1LXZwZ"></p>
+        </td>
+        <td>
+          <p class="field">Latitude</p>
+          <p class="fieldresponse" id="Y0UeyBYf"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Longitude</p>
+          <p class="fieldresponse" id="eFXNchTA"></p>
         </td>
       </tr>
       <tr>
@@ -237,26 +255,12 @@ export const crashDataSectionString = `
           <p class="fieldresponse" id="pT0Wq1RO"></p>
         </td>
         <td>
-          <p class="field">Latitude</p>
-          <p class="fieldresponse" id="Y0UeyBYf"></p>
-        </td>
-        <td class="databox">
-          <p class="field">Overall Intersection Geometry</p>
-          <p class="fieldresponse" id="UwUUqXFT"></p>
-        </td>
-      </tr>
-      <tr>
-        <td class="databox">
           <p class="field">Characteristics</p>
           <p class="fieldresponse" id="zUUpOYVy"></p>
         </td>
-        <td class="databox">
-          <p class="field">Longitude</p>
-          <p class="fieldresponse" id="eFXNchTA"></p>
-        </td>
         <td>
-          <p class="field">Overall Traffic Control Device</p>
-          <p class="fieldresponse" id="Rq1LXZwZ"></p>
+          <p class="field">Number of Approaches</p>
+          <p class="fieldresponse" id="fvIxja95"></p>
         </td>
       </tr>
     </tbody>
@@ -330,18 +334,10 @@ export const crashDataSectionString = `
       </tr>
     </tbody>
   </table>
-  <div class="break-after"></div>
 `
 
 export const constructionDataSectionString = `
-  <div class="page-header">
-    <div class="row">
-      <div class="column right half">
-        <h4>Page ### of ###</h4>
-      </div>
-    </div>
-  </div>
-  <table class="avoid-break">
+  <table class="avoid-break full-width">
     <th class="boxheader" colspan="3">
       <h3>Construction Information</h3>
     </th>
@@ -385,33 +381,31 @@ export const vehicleHeaderString = `
 `
 
 export const vehicleDataSectionString = `
-  <table class="avoid-break">
+  <table class="avoid-break full-width">
     <th class="boxheader" colspan="4">
       <h3>Ownership and Insurance</h3>
     </th>
     <tbody>
       <tr>
-        <td rowspan="3" class="sixth">
-      <p><span id="YyQ6jMwd"></span> <span id="SulL32si"></span> <span id="zOGjRlMJ"></span></p>
-    </td>
-    <td rowspan="3" class="sixth">
-      <p class="tright" id="ywUJNXkj"></p>
-      <p class="tright"><span id="4G5ht6pl"></span>, <span id="3g8Oxu93"></span> <span id="crxPGHSm"></span></p>
-    </td>
+        <td rowspan="2">
+           <p><span id="YyQ6jMwd"></span> <span id="SulL32si"></span> <span id="zOGjRlMJ"></span></p>
+           <p><span id="ywUJNXkj"></span></p>
+           <p><span id="4G5ht6pl"></span>, <span id="3g8Oxu93"></span> <span id="crxPGHSm"></span></p>
+        </td>
        <td rowspan="2">
-        <p class="field">Insurance Company Name</p>
-        <p class="fieldresponse" id="TDkAb1u9"></p>
-      </td>
-      <td>
+          <p class="field">Insurance Company Name</p>
+          <p class="fieldresponse" id="TDkAb1u9"></p>
+        </td>
+        <td>
           <p class="field">NAIC #</p>
           <p class="fieldresponse" id="iWGTReJ5"></p>
-       </td>
+        </td>
       </tr>
       <tr>
-      <td>
-        <p class="field">Policy #</p>
-        <p class="fieldresponse" id="RGPLYKWA"></p>
-      </td>
+        <td>
+          <p class="field">Policy #</p>
+          <p class="fieldresponse" id="RGPLYKWA"></p>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -478,14 +472,6 @@ export const vehicleDataSectionString = `
       </tr>
     </tbody>
   </table>
-  <div class="break-after"></div>
-  <div class="page-header">
-  	<div class="row">
-  		<div class="column right half">
-  			<h4>Page ### of ###</h4>
-  		</div>
-  	</div>
-  </div>
   <table class="avoid-break">
     <th class="boxheader" colspan="3">
       <h3>Factors and conditions</h3>
@@ -619,7 +605,194 @@ export const vehicleDataSectionString = `
       </tr>
     </tbody>
   </table>
-  <div class="break-after"></div>
+`
+
+export const firstTrailerDataSectionString =`
+  <table class="avoid-break">
+    <th class="boxheader" colspan="3">
+      <h3>First Trailer Behind Tractor</h3>
+    </th>
+    <tbody>
+      <tr>
+        <td>
+          <p class="field">License Plate Number</p>
+          <p class="fieldresponse" id="egQodqJa"></p>
+        </td>
+        <td>
+          <p class="field">Make</p>
+          <p class="fieldresponse" id="qe3GTs9V"></p>
+        </td>
+        <td rowspan="2">
+          <p class="field">Total Number of Axles</p>
+          <p class="fieldresponse" id="yI9VbYC2"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">VIN</p>
+          <p class="fieldresponse" id="D0BrqlpW"></p>
+        </td>
+        <td>
+          <p class="field">Model and Year</p>
+          <p class="fieldresponse"><span id="OyEs9Xy3"></span> <span id="OhdgRwQU"></span></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+`
+
+export const secondTrailerDataSectionString =`
+  <table class="avoid-break">
+    <th class="boxheader" colspan="3">
+      <h3>Second Trailer Behind Tractor</h3>
+    </th>
+    <tbody>
+      <tr>
+        <td>
+          <p class="field">License Plate Number</p>
+          <p class="fieldresponse" id="a2qf2XjZ"></p>
+        </td>
+        <td>
+          <p class="field">Make</p>
+          <p class="fieldresponse" id="PFuQNT9x"></p>
+        </td>
+        <td rowspan="2">
+          <p class="field">Total Number of Axles</p>
+          <p class="fieldresponse" id="eXtaPPIL"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">VIN</p>
+          <p class="fieldresponse" id="yiDtkFBK"></p>
+        </td>
+        <td>
+          <p class="field">Model and Year</p>
+          <p class="fieldresponse"><span id="kmAT27e1"></span> <span id="wZKqv9NK"></span></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+`
+
+export const thirdTrailerDataSectionString =`
+  <table class="avoid-break">
+    <th class="boxheader" colspan="3">
+      <h3>Third Trailer Behind Tractor</h3>
+    </th>
+    <tbody>
+      <tr>
+        <td>
+          <p class="field">License Plate Number</p>
+          <p class="fieldresponse" id="KFEcQkVQ"></p>
+        </td>
+        <td>
+          <p class="field">Make</p>
+          <p class="fieldresponse" id="C138iqWx"></p>
+        </td>
+        <td rowspan="2">
+          <p class="field">Total Number of Axles</p>
+          <p class="fieldresponse" id="mHrVtCEz"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">VIN</p>
+          <p class="fieldresponse" id="ATwAwn30"></p>
+        </td>
+        <td>
+          <p class="field">Model and Year</p>
+          <p class="fieldresponse"><span id="WW5omAi8"></span> <span id="dbGlqpWA"></span></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+`
+
+export const lvhmVehicleDataSectionString = `
+  <table class="avoid-break">
+    <th class="boxheader" colspan="3">
+      <h3>Motor Carrier Identification</h3>
+    </th>
+    <tbody>
+      <tr>
+        <td rowspan="2">
+        <p><span id="t9IOgQh1"></span></p>
+        <p id="L2bjG9Ih"></p>
+        <p><span id="5TFzoeJL"></span>, <span id="vQBsuEeU"></span> <span id="1WeAldXJ"></span></p>
+        </td>
+        <td>
+          <p class="field">Identification Type</p>
+          <p class="fieldresponse" id="Ny3vKusE"></p>
+        </td>
+        <td>
+          <p class="field">Identification Number</p>
+          <p class="fieldresponse" id="U08PiZyq"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Country/State Code</p>
+          <p class="fieldresponse" id="cTcW0ajp"></p>
+        </td>
+        <td>
+          <p class="field"> Type of Carrier</p>
+          <p class="fieldresponse" id="wqRCni8y"></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="avoid-break">
+    <th class="boxheader" colspan="3">
+      <h3>Vehicle Configuration</h3>
+    </th>
+    <tbody>
+      <tr>
+        <td rowspan="2">
+          <p class="field">Configuration</p>
+          <p class="fieldresponse" id="QpFA5lgB"></p>
+        </td>
+        <td rowspan="2">
+          <p class="field">Special Sizing</p>
+          <p class="fieldresponse" id="IA0pYcQh"></p>
+        </td>
+        <td>
+          <p class="field">Permitted?</p>
+          <p class="fieldresponse" id="dijmQNWx"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Cargo Body Type</p>
+          <p class="fieldresponse" id="02UkfUBV"></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+`
+
+export const hazardousDataSectionString = `
+  <table class="avoid-break">
+    <th class="boxheader" colspan="3">
+      <h3>Hazardous Materials</h3>
+    </th>
+    <tbody>
+      <tr>
+        <td>
+          <p class="field">Hazardous Materials ID</p>
+          <p class="fieldresponse" id="N2Ehyq4C"></p>
+        </td>
+        <td>
+          <p class="field">Hazardous Materials Class</p>
+          <p class="fieldresponse" id="0rOcRDq2"></p>
+        </td>
+        <td>
+          <p class="field">Release of hazardous materials from a cargo compartment (e.g. trailer), cargo container (e.g. tank) or from a package?</p>
+          <p class="fieldresponse" id="A9mGeeGM"></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 `
 
 export const driverHeaderString = `
@@ -774,6 +947,297 @@ export const driverDataSectionString = `
         <td>
           <p class="field">Drug Test Type</p>
           <p class="fieldresponse" id="QUYxXsUT"></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+`
+
+export const lvhmDriverDataSectionString = `
+  <table class="avoid-break">
+    <th class="boxheader" colspan="3">
+      <h3>Large Vehicles and Hazardous Material Information</h3>
+    </th>
+    <tbody>
+      <tr>
+        <td>
+          <p class="field">CMV License Status</p>
+          <p class="fieldresponse" id="UiP7Gr7i"></p>
+        </td>
+        <td colspan="2">
+          <p class="field">Compliance with CDL Endorsement(s)</p>
+          <p class="fieldresponse" id="juLmQZEB"></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+`
+
+export const injuryDriverDataSectionString = `
+  <table class="avoid-break">
+    <th class="boxheader" colspan="3">
+      <h3>Injury Information</h3>
+    </th>
+    <tbody>
+      <tr>
+        <td rowspan="2">
+          <p class="field">Transport Source to First Medical Facility</p>
+          <p class="fieldresponse" id="vCowZjea"></p>
+        </td>
+        <td rowspan="2">
+          <p class="field">Medical Facility Receiving Patient</p>
+          <p class="fieldresponse" id="IjFlnCUa"></p>
+        </td>
+        <td>
+          <p class="field">EMS Response Agency Identifier</p>
+          <p class="fieldresponse" id="jqLkcNdf"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">EMS Response Run Number</p>
+          <p class="fieldresponse" id="RjEUrhoq"></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+`
+
+export const passengerHeaderString = `
+  <div class="page-header">
+    <div class="row">
+      <div class="column left half">
+        <h4>Occupant ### of Motor Vehicle ###</h4>
+        <h4>Type: ###</h4>
+        <h4 id="NJqVP8AH">Injury Status: ###</h4>
+      </div>
+      <div class="column right half">
+        <h4>Page ### of ###</h4>
+        <h4 id="Egrsk6Sq">Incident Responder?: ###</h4>
+      </div>
+    </div>
+  </div>
+`
+
+export const passengerDataSectionString = `
+  <table class="avoid-break">
+    <th class="boxheader" colspan="3">
+      <h3>occupant identity and crash factors</h3>
+    </th>
+    <tbody>
+      <tr>
+        <td rowspan="3" class="sixth">
+          <p><span id="xkXuEz84"></span> <span id="5IRgIan5"></span> <span id="KB0Wiblw"></span></p>
+          <p>DOB:<span id="n6Cp78JZ"></span></p>
+          <p>Sex: <span id="eiQbv2XM"></span></p>
+        </td>
+        <td rowspan="2">
+          <p class="field">Restraint Systems or Motorcycle Helmet Use</p>
+          <p class="fieldresponse" id="aeZ4RkUF"></p>
+        </td>
+         <td>
+          <p class="field">Air Bag Deployed?</p>
+          <p class="fieldresponse" id="ExMu8mbw"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Indication of Improper Use?</p>
+          <p class="fieldresponse" id="mFbnuTNP"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Seating Position</p>
+          <p class="fieldresponse" id="wecg2msi"></p>
+        </td>
+        <td>
+          <p class="field">Ejection?</p>
+          <p class="fieldresponse" id="5sp9e45O"></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+`
+
+export const injuryPassengerDataSectionString = `
+  <table class="avoid-break">
+    <th class="boxheader" colspan="3">
+      <h3>Injury Information</h3>
+    </th>
+    <tbody>
+      <tr>
+        <td rowspan="2">
+          <p class="field">Medical Facility Receiving Patient</p>
+          <p class="fieldresponse" id="PDEPIwFO"></p>
+        </td>
+        <td rowspan="2">
+          <p class="field">Transport Source to First Medical Facility</p>
+          <p class="fieldresponse" id="rUHV0P0f"></p>
+        </td>
+        <td>
+          <p class="field">EMS Response Agency Identifier</p>
+          <p class="fieldresponse" id="APIIAFBl"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">EMS Response Run Number</p>
+          <p class="fieldresponse" id="JG0Hd2zf"></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+`
+
+export const nonmotoristHeaderString = `
+  <div class="page-header">
+    <div class="row">
+      <div class="column left half">
+        <h4>Non-Motorist ###</h4>
+        <h4 id="6TkriXzZ">Type: ###</h4>
+        <h4 id="WRishqwU">Injury Status: ###</h4>
+      </div>
+      <div class="column right half">
+        <h4>Page ### of ###</h4>
+        <h4 id="MNdMxtx5">Incident Responder?: ###</h4>
+      </div>
+    </div>
+  </div>
+`
+
+export const nonmotoristDataSectionString = `
+  <table class="avoid-break">
+    <th class="boxheader" colspan="4">
+      <h3>Contact Information and Crash Involvement</h3>
+    </th>
+    <tbody>
+      <tr>
+        <td rowspan="3" class="sixth">
+          <p><span id="wgjUrZEh"></span> <span id="sv3smQdV"></span> <span id="OEKyiMLG"></span></p>
+          <p>DOB:<span id="FxZPgGC6"></span></p>
+          <p>Sex: <span id="z0RAR9nQ"></span></p>
+        </td>
+        <td rowspan="3" class="sixth">
+          <p class="tright"><span id="WHYkEvFv"></span></p>
+          <p class="tright" id="dQxO7MP5"></p>
+          <p class="tright"><span id="QmWZUbzm"></span>, <span id="AIurIT7V"></span> <span id="CwUaGdXZ"></span></p>
+        </td>
+        <td>
+          <p class="field">Motor Vehicle # that Struck Non-Motorist</p>
+          <p class="fieldresponse" id="0P7ETSzE"></p>
+        </td>
+        <td>
+          <p class="field">Origin/Destination at Time of Crash</p>
+          <p class="fieldresponse" id="G2zq94Fz"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Initial Contact Point on Non-Motorist</p>
+          <p class="fieldresponse" id="ntZC5cPW"></p>
+        </td>
+        <td>
+          <p class="field">Location at Time of Crash</p>
+          <p class="fieldresponse" id="6O3xLeXP"></p>
+        </td>
+      </tr>
+      <tr></tr>
+    </tbody>
+  </table>
+  <table class="avoid-break">
+    <th class="boxheader" colspan="3">
+      <h3>Factors and Conditions</h3>
+    </th>
+    <tbody>
+      <tr>
+        <td rowspan="2">
+          <p class="field">Condition at Time of Crash</p>
+          <p class="fieldresponse" id="u3pLOnML"></p>
+        </td>
+        <td rowspan="2">
+          <p class="field">Safety Equipment(s)</p>
+          <p class="fieldresponse" id="3Na7yzFj"></p>
+        </td>
+        <td>
+          <p class="field">Suspected Alcohol Use?</p>
+          <p class="fieldresponse" id="ski3jtpd"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Alcohol Test Status</p>
+          <p class="fieldresponse" id="eweonIMI"></p>
+        </td>
+      </tr>
+      <tr>
+        <td rowspan="2">
+          <p class="field">Action/Circumstance at Time of Crash</p>
+          <p class="fieldresponse" id="m1CAZSdr"></p>
+        </td>
+        <td rowspan="2">
+          <p class="field">Distraction Type</p>
+          <p class="fieldresponse" id="0ZnIFZ0X"></p>
+        </td>
+        <td>
+          <p class="field">Alcohol Test Type</p>
+          <p class="fieldresponse" id="mZGcJRTW"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Suspected Drug Use?</p>
+          <p class="fieldresponse" id="Qenr80I4"></p>
+        </td>
+      </tr>
+      <tr>
+        <td rowspan="2">
+          <p class="field">Contributing Circumstances from Non-Motorist</p>
+          <p class="fieldresponse" id="4D3Re10A"></p>
+        </td>
+        <td rowspan="2">
+          <p class="field">Source of Distraction</p>
+          <p class="fieldresponse" id="v1Hvf6d7"></p>
+        </td>
+        <td>
+          <p class="field">Drug Test Status</p>
+          <p class="fieldresponse" id="uqQGx3Rc"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Drug Test Type</p>
+          <p class="fieldresponse" id="cYXv5Qkz"></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+`
+
+export const injuryNonmotoristDataSectionString = `
+  <table class="avoid-break">
+    <th class="boxheader" colspan="3">
+      <h3>Injury Information</h3>
+    </th>
+    <tbody>
+      <tr>
+        <td rowspan="2">
+          <p class="field">Transport Source to First Medical Facility</p>
+          <p class="fieldresponse" id="Kb53Ie1J"></p>
+        </td>
+        <td rowspan="2">
+          <p class="field">Medical Facility Receiving Patient</p>
+          <p class="fieldresponse" id="GmOcudA0"></p>
+        </td>
+        <td>
+          <p class="field">EMS Response Agency Identifier</p>
+          <p class="fieldresponse" id="ooSKnRtS"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">EMS Response Run Number</p>
+          <p class="fieldresponse" id="kWoq6gRR"></p>
         </td>
       </tr>
     </tbody>
