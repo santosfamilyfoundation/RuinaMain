@@ -1057,6 +1057,26 @@ export const questions = {
             "humanReadableId": "driver-36",
             "questionDependency": [
                 {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
+                {
                     "dependencyUid": "sM5HGjcV",
                     "dependencyOptionCode": "1"
                 }
@@ -1072,6 +1092,26 @@ export const questions = {
             ],
             "humanReadableId": "driver-37",
             "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
                 {
                     "dependencyUid": "sM5HGjcV",
                     "dependencyOptionCode": "1"
@@ -1130,6 +1170,26 @@ export const questions = {
             ],
             "humanReadableId": "driver-38",
             "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
                 {
                     "dependencyUid": "sM5HGjcV",
                     "dependencyOptionCode": "1"
@@ -3647,7 +3707,13 @@ export const questions = {
                 "road"
             ],
             "humanReadableId": "road-11",
-            "autoMethod": "county"
+            "autoMethod": "county",
+            "questionDependency": [
+                {
+                    "dependencyUid": "Sl6ypLYA",
+                    "dependencyOptionCode": " "
+                }
+            ]
         },
         {
             "numOptionsAllowed": "0.0",
@@ -8305,6 +8371,82 @@ export const questions = {
                 {
                     "text": "Unknown",
                     "idCode": "7"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1",
+            "question": "Ownership",
+            "id": "pT0Wq1RO",
+            "answerType": "multiButton",
+            "display": [
+                "setup"
+            ],
+            "humanReadableId": "road-3",
+            "answerOptions": [
+                {
+                    "text": "Public Property",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Private Property",
+                    "idCode": "1"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1",
+            "question": "Secondary Crash",
+            "id": "A6uoXDGb",
+            "answerType": "multiButton",
+            "display": [
+                "setup"
+            ],
+            "humanReadableId": "road-5",
+            "answerOptions": [
+                {
+                    "text": "No",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Yes",
+                    "idCode": "1"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1",
+            "question": "Crash Severity",
+            "id": "8dY73Yzs",
+            "answerType": "multiButton",
+            "display": [
+                "setup"
+            ],
+            "humanReadableId": "road-31",
+            "answerOptions": [
+                {
+                    "text": "Fatal Injury",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Suspected Serious Injury",
+                    "idCode": "1"
+                },
+                {
+                    "text": "Suspected Minor Injury",
+                    "idCode": "2"
+                },
+                {
+                    "text": "Possible Injury",
+                    "idCode": "3"
+                },
+                {
+                    "text": "Property Damage-Only",
+                    "idCode": "4"
+                },
+                {
+                    "text": "Unknown",
+                    "idCode": "5"
                 }
             ]
         }
