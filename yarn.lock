@@ -7515,11 +7515,6 @@ rimraf@~2.2.6:
     base-64 "0.1.0"
     glob "7.0.6"
 
-rn-pdf-generator@^1.6.4:
-  version "1.6.4"
-  resolved "https://registry.yarnpkg.com/rn-pdf-generator/-/rn-pdf-generator-1.6.4.tgz#762b0dea4a26687849376d9c651164438ed7cc7b"
-  integrity sha512-CZGVVv7pmQoD7jjjNlmeYbu/n0jVd+D6vyZoVFtpgBfpBRZb+f+TYThDaW6/FRC239Nda3cGlLFX/ccOGzY/jA==
-
 rst-selector-parser@^2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/rst-selector-parser/-/rst-selector-parser-2.2.3.tgz#81b230ea2fcc6066c89e3472de794285d9b03d91"

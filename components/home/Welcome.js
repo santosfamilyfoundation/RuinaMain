@@ -85,7 +85,7 @@ class Welcome extends Component {
           );
 
         }
-        
+
     }
 };
 

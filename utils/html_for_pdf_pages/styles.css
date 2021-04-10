@@ -8,7 +8,7 @@ hr {
 	border-top: 0.5px solid black;
 }
 
-h1, h3 {
+h1, h3, h2 {
 	font-family: "Roboto";
 }
 
@@ -31,6 +31,12 @@ h1, h3 {
 h3 {
 	font-weight: 500;
 	font-size: 1em;
+	margin: 0;
+}
+
+h2 {
+	font-weight: 400;
+	font-size: 1.25em;
 	margin: 0;
 }
 

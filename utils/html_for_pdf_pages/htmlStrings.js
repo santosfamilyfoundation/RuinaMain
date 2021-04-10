@@ -18,7 +18,7 @@ export const headerString = `
         border-top: 0.5px solid black;
       }
 
-      h1, h3 {
+      h1, h3, h2 {
         font-family: "Roboto";
       }
 
@@ -43,6 +43,12 @@ export const headerString = `
         font-weight: 500;
         font-size: 1em;
         margin: 0;
+      }
+
+      h2 {
+      	font-weight: 400;
+      	font-size: 1.25em;
+      	margin: 0;
       }
 
       table {
@@ -172,7 +178,7 @@ export const headerString = `
 export const coverPageHeaderString = `
   <div class="page-header">
     <div class="row">
-      <h4 class="inline right"> Page ### of ###</h4>
+      <h4 class="inline right"></h4>
       <h1 class="inline">Ruina Motor Vehicle Crash Report</h1>
 
       <hr>
@@ -196,7 +202,7 @@ export const coverPageHeaderString = `
 `
 
 export const crashDataSectionString = `
-  <table class="avoid-break">
+  <table class="avoid-break full-width">
     <th class="boxheader" colspan="3">
       <h3> Crash date, time, and location</h3>
     </th>
@@ -265,7 +271,7 @@ export const crashDataSectionString = `
       </tr>
     </tbody>
   </table>
-  <table class="avoid-break">
+  <table class="avoid-break full-width">
     <th class="boxheader" colspan="3">
         <h3> Crash factors and conditions</h3>
     </th>
@@ -334,6 +340,18 @@ export const crashDataSectionString = `
       </tr>
     </tbody>
   </table>
+  <table class="avoid-break full-width">
+    <th class="boxheader" colspan="3">
+      <h3>Crash Description</h3>
+    </th>
+    <tbody>
+      <tr>
+        <td colspan="3">
+          <p class="fieldresponse" id="KxicONP1"></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 `
 
 export const constructionDataSectionString = `
@@ -369,20 +387,15 @@ export const constructionDataSectionString = `
 export const vehicleHeaderString = `
   <div class="page-header">
   	<div class="row">
-  		<div class="column left half">
-  			<h4>Motor Vehicle ###</h4>
-  			<h4 id="CTfb8pdV"># Occupants: ###</h4>
-  		</div>
-  		<div class="column right half">
-  			<h4>Page ### of ###</h4>
-  		</div>
+			<h2>Motor Vehicle ###</h2>
+      <h4 id="CTfb8pdV"># Occupants: ###</h4>
   	</div>
   </div>
 `
 
-export const vehicleDataSectionString = `
+export const vehicleDataSectionString1 = `
   <table class="avoid-break full-width">
-    <th class="boxheader" colspan="4">
+    <th class="boxheader" colspan="3">
       <h3>Ownership and Insurance</h3>
     </th>
     <tbody>
@@ -409,7 +422,7 @@ export const vehicleDataSectionString = `
       </tr>
     </tbody>
   </table>
-  <table class="avoid-break">
+  <table class="avoid-break full-width">
     <th class="boxheader" colspan="3">
       <h3>Vehicle Details</h3>
     </th>
@@ -472,7 +485,10 @@ export const vehicleDataSectionString = `
       </tr>
     </tbody>
   </table>
-  <table class="avoid-break">
+`
+
+export const vehicleDataSectionString2 = `
+  <table class="avoid-break full-width">
     <th class="boxheader" colspan="3">
       <h3>Factors and conditions</h3>
     </th>
@@ -487,46 +503,38 @@ export const vehicleDataSectionString = `
           <p class="fieldresponse" id="udnyu4F5"></p>
         </td>
         <td>
+          <p class="field">Travel Direction Before Crash</p>
+          <p class="fieldresponse" id="CP4soemD"></p>
+        </td>
+      </tr>
+      <tr>
+        <td rowspan="2">
           <p class="field">Traffic Control Devices (TCDs)</p>
           <p class="fieldresponse" id="xBm1Bisf"></p>
+        </td>
+        <td rowspan="2">
+          <p class="field">Inoperative or Missing TCDs</p>
+          <p class="fieldresponse" id="YLcktHvs"></p>
+        </td>
+        <td>
+          <p class="field">Vehicle Maneuver/Action</p>
+          <p class="fieldresponse" id="DJ4YPDuQ"></p>
         </td>
       </tr>
       <tr>
         <td>
-          <p class="field">Travel Direction Before Crash</p>
-          <p class="fieldresponse" id="CP4soemD"></p>
+          <p class="field">Barrier Type</p>
+          <p class="fieldresponse" id="4P4o8TWH"></p>
         </td>
+      </tr>
+      <tr>
         <td>
           <p class="field">Divided?</p>
           <p class="fieldresponse" id="u5KrpsMu"></p>
         </td>
         <td>
-          <p class="field">Inoperative or Missing TCDs</p>
-          <p class="fieldresponse" id="YLcktHvs"></p>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <p class="field">Vehicle Maneuver/Action</p>
-          <p class="fieldresponse" id="DJ4YPDuQ"></p>
-        </td>
-        <td>
-          <p class="field">Barrier Type</p>
-          <p class="fieldresponse" id="4P4o8TWH"></p>
-        </td>
-        <td>
           <p class="field">Towed Due to Disabling Damage</p>
           <p class="fieldresponse" id="pTV8x6So"></p>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <p class="field">Initial Point of Contact</p>
-          <p class="fieldresponse" id="4KpRmZXB"></p>
-        </td>
-        <td>
-          <p class="field">HOV/HOT Lanes</p>
-          <p class="fieldresponse" id="Gk088QR4"></p>
         </td>
         <td>
           <p class="field">Contributing Circumstances from Vehicle</p>
@@ -534,31 +542,27 @@ export const vehicleDataSectionString = `
         </td>
       </tr>
       <tr>
-        <td>
+        <td rowspan="2">
           <p class="field">Location of Damage Area(s)</p>
           <p class="fieldresponse" id="lZDkbTdw"></p>
         </td>
         <td>
-          <p class="field">Crash Related to HOV/HOT?</p>
-          <p class="fieldresponse" id="Uzw63nI0"></p>
+          <p class="field">Initial Point of Contact</p>
+          <p class="fieldresponse" id="4KpRmZXB"></p>
         </td>
-        <td>
-          <p class="field">Special Function in Transport</p>
-          <p class="fieldresponse" id="4vrmnvfC"></p>
-        </td>
-      </tr>
-      <tr>
         <td>
           <p class="field">Resulting Extent of Damage</p>
           <p class="fieldresponse" id="a1fPOVyS"></p>
         </td>
+      </tr>
+      <tr>
         <td>
-          <p class="field">Total Through Lanes</p>
-          <p class="fieldresponse" id="FdF7XvAQ"></p>
+          <p class="field">HOV/HOT Lanes</p>
+          <p class="fieldresponse" id="Gk088QR4"></p>
         </td>
         <td>
-          <p class="field">Emergency Motor Vehicle Use</p>
-          <p class="fieldresponse" id="CFa8RCtt"></p>
+          <p class="field">Crash Related to HOV/HOT?</p>
+          <p class="fieldresponse" id="Uzw63nI0"></p>
         </td>
       </tr>
       <tr>
@@ -567,12 +571,12 @@ export const vehicleDataSectionString = `
           <p class="fieldresponse" id="N1NDCJhB"></p>
         </td>
         <td>
-          <p class="field">Total Auxiliary Lanes</p>
-          <p class="fieldresponse" id="JwQN2ENk"></p>
+          <p class="field">Emergency Motor Vehicle Use</p>
+          <p class="fieldresponse" id="CFa8RCtt"></p>
         </td>
         <td>
-          <p class="field">Has Automated System(s)?</p>
-          <p class="fieldresponse" id="krQbh0po"></p>
+          <p class="field">Special Function in Transport</p>
+          <p class="fieldresponse" id="4vrmnvfC"></p>
         </td>
       </tr>
       <tr>
@@ -585,8 +589,8 @@ export const vehicleDataSectionString = `
           <p class="fieldresponse" id="UigT0ygk"></p>
         </td>
         <td>
-          <p class="field">Automated System Levels (ASLs)</p>
-          <p class="fieldresponse" id="d4OE8GnI"></p>
+          <p class="field">Total Through Lanes</p>
+          <p class="fieldresponse" id="FdF7XvAQ"></p>
         </td>
       </tr>
       <tr>
@@ -599,6 +603,20 @@ export const vehicleDataSectionString = `
           <p class="fieldresponse" id="tFYqNzmA"></p>
         </td>
         <td>
+          <p class="field">Total Auxiliary Lanes</p>
+          <p class="fieldresponse" id="JwQN2ENk"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Has Automated System(s)?</p>
+          <p class="fieldresponse" id="krQbh0po"></p>
+        </td>
+        <td>
+          <p class="field">Automated System Levels (ASLs)</p>
+          <p class="fieldresponse" id="d4OE8GnI"></p>
+        </td>
+        <td>
           <p class="field">ASLs Engaged during Crash</p>
           <p class="fieldresponse" id="zk6QtmkD"></p>
         </td>
@@ -608,7 +626,7 @@ export const vehicleDataSectionString = `
 `
 
 export const firstTrailerDataSectionString =`
-  <table class="avoid-break">
+  <table class="avoid-break full-width">
     <th class="boxheader" colspan="3">
       <h3>First Trailer Behind Tractor</h3>
     </th>
@@ -623,8 +641,8 @@ export const firstTrailerDataSectionString =`
           <p class="fieldresponse" id="qe3GTs9V"></p>
         </td>
         <td rowspan="2">
-          <p class="field">Total Number of Axles</p>
-          <p class="fieldresponse" id="yI9VbYC2"></p>
+          <p class="field">Model and Year</p>
+          <p class="fieldresponse"><span id="OyEs9Xy3"></span> <span id="OhdgRwQU"></span></p>
         </td>
       </tr>
       <tr>
@@ -633,8 +651,8 @@ export const firstTrailerDataSectionString =`
           <p class="fieldresponse" id="D0BrqlpW"></p>
         </td>
         <td>
-          <p class="field">Model and Year</p>
-          <p class="fieldresponse"><span id="OyEs9Xy3"></span> <span id="OhdgRwQU"></span></p>
+          <p class="field">Total Number of Axles</p>
+          <p class="fieldresponse" id="yI9VbYC2"></p>
         </td>
       </tr>
     </tbody>
@@ -642,7 +660,7 @@ export const firstTrailerDataSectionString =`
 `
 
 export const secondTrailerDataSectionString =`
-  <table class="avoid-break">
+  <table class="avoid-break full-width">
     <th class="boxheader" colspan="3">
       <h3>Second Trailer Behind Tractor</h3>
     </th>
@@ -657,8 +675,8 @@ export const secondTrailerDataSectionString =`
           <p class="fieldresponse" id="PFuQNT9x"></p>
         </td>
         <td rowspan="2">
-          <p class="field">Total Number of Axles</p>
-          <p class="fieldresponse" id="eXtaPPIL"></p>
+          <p class="field">Model and Year</p>
+          <p class="fieldresponse"><span id="kmAT27e1"></span> <span id="wZKqv9NK"></span></p>
         </td>
       </tr>
       <tr>
@@ -667,8 +685,8 @@ export const secondTrailerDataSectionString =`
           <p class="fieldresponse" id="yiDtkFBK"></p>
         </td>
         <td>
-          <p class="field">Model and Year</p>
-          <p class="fieldresponse"><span id="kmAT27e1"></span> <span id="wZKqv9NK"></span></p>
+          <p class="field">Total Number of Axles</p>
+          <p class="fieldresponse" id="eXtaPPIL"></p>
         </td>
       </tr>
     </tbody>
@@ -676,7 +694,7 @@ export const secondTrailerDataSectionString =`
 `
 
 export const thirdTrailerDataSectionString =`
-  <table class="avoid-break">
+  <table class="avoid-break full-width">
     <th class="boxheader" colspan="3">
       <h3>Third Trailer Behind Tractor</h3>
     </th>
@@ -691,8 +709,8 @@ export const thirdTrailerDataSectionString =`
           <p class="fieldresponse" id="C138iqWx"></p>
         </td>
         <td rowspan="2">
-          <p class="field">Total Number of Axles</p>
-          <p class="fieldresponse" id="mHrVtCEz"></p>
+          <p class="field">Model and Year</p>
+          <p class="fieldresponse"><span id="WW5omAi8"></span> <span id="dbGlqpWA"></span></p>
         </td>
       </tr>
       <tr>
@@ -701,8 +719,8 @@ export const thirdTrailerDataSectionString =`
           <p class="fieldresponse" id="ATwAwn30"></p>
         </td>
         <td>
-          <p class="field">Model and Year</p>
-          <p class="fieldresponse"><span id="WW5omAi8"></span> <span id="dbGlqpWA"></span></p>
+          <p class="field">Total Number of Axles</p>
+          <p class="fieldresponse" id="mHrVtCEz"></p>
         </td>
       </tr>
     </tbody>
@@ -710,7 +728,7 @@ export const thirdTrailerDataSectionString =`
 `
 
 export const lvhmVehicleDataSectionString = `
-  <table class="avoid-break">
+  <table class="avoid-break full-width">
     <th class="boxheader" colspan="3">
       <h3>Motor Carrier Identification</h3>
     </th>
@@ -742,7 +760,7 @@ export const lvhmVehicleDataSectionString = `
       </tr>
     </tbody>
   </table>
-  <table class="avoid-break">
+  <table class="avoid-break full-width">
     <th class="boxheader" colspan="3">
       <h3>Vehicle Configuration</h3>
     </th>
@@ -752,7 +770,7 @@ export const lvhmVehicleDataSectionString = `
           <p class="field">Configuration</p>
           <p class="fieldresponse" id="QpFA5lgB"></p>
         </td>
-        <td rowspan="2">
+        <td>
           <p class="field">Special Sizing</p>
           <p class="fieldresponse" id="IA0pYcQh"></p>
         </td>
@@ -763,6 +781,10 @@ export const lvhmVehicleDataSectionString = `
       </tr>
       <tr>
         <td>
+          <p class="field">Number of Axles on Tractor</p>
+          <p class="fieldresponse" id="SsyJwusb"></p>
+        </td>
+        <td>
           <p class="field">Cargo Body Type</p>
           <p class="fieldresponse" id="02UkfUBV"></p>
         </td>
@@ -772,7 +794,7 @@ export const lvhmVehicleDataSectionString = `
 `
 
 export const hazardousDataSectionString = `
-  <table class="avoid-break">
+  <table class="avoid-break full-width">
     <th class="boxheader" colspan="3">
       <h3>Hazardous Materials</h3>
     </th>
@@ -787,7 +809,7 @@ export const hazardousDataSectionString = `
           <p class="fieldresponse" id="0rOcRDq2"></p>
         </td>
         <td>
-          <p class="field">Release of hazardous materials from a cargo compartment (e.g. trailer), cargo container (e.g. tank) or from a package?</p>
+          <p class="field">Release of hazardous materials from a cargo compartment, container, or package?</p>
           <p class="fieldresponse" id="A9mGeeGM"></p>
         </td>
       </tr>
@@ -799,34 +821,32 @@ export const driverHeaderString = `
   <div class="page-header">
     <div class="row">
       <div class="column left half">
-        <h4>Driver of Motor Vehicle ###</h4>
+        <h2>Driver of Motor Vehicle ###</h2>
         <h4 id="TNNilZo2">Injury Status: ###</h4>
       </div>
       <div class="column right half">
-        <h4>Page ### of ###</h4>
+        <h4><br></h4>
         <h4 id="xwtnXE2c">Incident Responder?: ###</h4>
       </div>
     </div>
   </div>
 `
 
-export const driverDataSectionString = `
-  <table class="avoid-break">
-    <th class="boxheader" colspan="4">
+export const driverDataSectionString1 = `
+  <table class="avoid-break full-width">
+    <th class="boxheader" colspan="3">
       <h3>Driver and License Information</h3>
     </th>
     <tbody>
       <tr>
-        <td rowspan="3" class="sixth">
-      <p><span id="reJw3rUT"></span> <span id="ElI9UkWD"></span> <span id="Iv7jSfKw"></span></p>
-      <p>DOB:<span id="oMObMoQs"></span></p>
-      <p>Sex: <span id="cGeoDWm1"></span></p>
-    </td>
-    <td rowspan="3" class="sixth">
-      <p class="tright"><span id="hLG4AOsN"></span></p>
-      <p class="tright" id="bqPmjHhl"></p>
-      <p class="tright"><span id="mfUnfGGG"></span>, <span id="I5sdJ3MP"></span> <span id="g9aneW3g"></span></p>
-    </td>
+        <td rowspan="3">
+          <p><span id="reJw3rUT"></span> <span id="ElI9UkWD"></span> <span id="Iv7jSfKw"></span></p>
+          <p>DOB:<span id="oMObMoQs"></span></p>
+          <p>Sex: <span id="cGeoDWm1"></span></p>
+          <p><span id="hLG4AOsN"></span></p>
+          <p id="bqPmjHhl"></p>
+          <p><span id="mfUnfGGG"></span>, <span id="I5sdJ3MP"></span> <span id="g9aneW3g"></span></p>
+        </td>
         <td>
           <p class="field">License Type</p>
           <p class="fieldresponse" id="swdK3ctL"></p>
@@ -838,8 +858,8 @@ export const driverDataSectionString = `
       </tr>
       <tr>
         <td>
-            <p class="field">License Number</p>
-            <p class="fieldresponse" id="xL5WOZpG"></p>
+          <p class="field">License Number</p>
+          <p class="fieldresponse" id="xL5WOZpG"></p>
         </td>
         <td>
           <p class="field">License Endorsements</p>
@@ -858,7 +878,10 @@ export const driverDataSectionString = `
       </tr>
     </tbody>
   </table>
-  <table class="avoid-break">
+`
+
+export const driverDataSectionString2 = `
+  <table class="avoid-break full-width">
     <th class="boxheader" colspan="3">
       <h3>Factors and Conditions</h3>
     </th>
@@ -872,7 +895,7 @@ export const driverDataSectionString = `
           <p class="field">Speeding-Related?</p>
           <p class="fieldresponse" id="EVbRTEnb"></p>
         </td>
-        <td rowspan="2">
+        <td>
           <p class="field">Suspected Alcohol Use?</p>
           <p class="fieldresponse" id="9cFGpRmQ"></p>
         </td>
@@ -882,15 +905,9 @@ export const driverDataSectionString = `
           <p class="field">Restraint Systems or Motorcycle Helmet Use</p>
           <p class="fieldresponse" id="Pr9o5SM6"></p>
         </td>
-        <td>
+        <td rowspan="2">
           <p class="field">Actions at Time of Crash</p>
           <p class="fieldresponse" id="qWDsDeEY"></p>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <p class="field">Violation Codes</p>
-          <p class="fieldresponse" id="SJP0mZrJ"></p>
         </td>
         <td>
           <p class="field">Alcohol Test Status</p>
@@ -898,14 +915,6 @@ export const driverDataSectionString = `
         </td>
       </tr>
       <tr>
-        <td rowspan="2">
-          <p class="field">Indication of Improper Use?</p>
-          <p class="fieldresponse" id="Vln5VkAh"></p>
-        </td>
-        <td>
-          <p class="field">Distraction Type</p>
-          <p class="fieldresponse" id="0Mat8q8u"></p>
-        </td>
         <td>
           <p class="field">Alcohol Test Type</p>
           <p class="fieldresponse" id="Um6CdyUJ"></p>
@@ -913,8 +922,12 @@ export const driverDataSectionString = `
       </tr>
       <tr>
         <td>
-          <p class="field">Source of Distraction</p>
-          <p class="fieldresponse" id="d3ZHeqkH"></p>
+          <p class="field">Indication of Improper Use?</p>
+          <p class="fieldresponse" id="Vln5VkAh"></p>
+        </td>
+        <td>
+          <p class="field">Violation Codes</p>
+          <p class="fieldresponse" id="SJP0mZrJ"></p>
         </td>
         <td>
           <p class="field">Suspected Drug Use?</p>
@@ -922,11 +935,11 @@ export const driverDataSectionString = `
         </td>
       </tr>
       <tr>
-        <td>
+        <td rowspan="2">
           <p class="field">Air Bag Deployed?</p>
           <p class="fieldresponse" id="1h6r5JFf"></p>
         </td>
-        <td>
+        <td rowspan="2">
           <p class="field">Condition at Time of Crash</p>
           <p class="fieldresponse" id="e0ILJxlx"></p>
         </td>
@@ -937,16 +950,28 @@ export const driverDataSectionString = `
       </tr>
       <tr>
         <td>
+          <p class="field">Drug Test Type</p>
+          <p class="fieldresponse" id="QUYxXsUT"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
           <p class="field">Ejection?</p>
           <p class="fieldresponse" id="4VkVRWWY"></p>
         </td>
-        <td>
+        <td rowspan="2">
+          <p class="field">Source of Distraction</p>
+          <p class="fieldresponse" id="d3ZHeqkH"></p>
+        </td>
+        <td rowspan="2">
           <p class="field">Attempted Avoidance Maneuver</p>
           <p class="fieldresponse" id="AREUHJ9b"></p>
         </td>
+      </tr>
+      <tr>
         <td>
-          <p class="field">Drug Test Type</p>
-          <p class="fieldresponse" id="QUYxXsUT"></p>
+          <p class="field">Distraction Type</p>
+          <p class="fieldresponse" id="0Mat8q8u"></p>
         </td>
       </tr>
     </tbody>
@@ -954,7 +979,7 @@ export const driverDataSectionString = `
 `
 
 export const lvhmDriverDataSectionString = `
-  <table class="avoid-break">
+  <table class="avoid-break full-width">
     <th class="boxheader" colspan="3">
       <h3>Large Vehicles and Hazardous Material Information</h3>
     </th>
@@ -974,7 +999,7 @@ export const lvhmDriverDataSectionString = `
 `
 
 export const injuryDriverDataSectionString = `
-  <table class="avoid-break">
+  <table class="avoid-break full-width">
     <th class="boxheader" colspan="3">
       <h3>Injury Information</h3>
     </th>
@@ -1007,12 +1032,11 @@ export const passengerHeaderString = `
   <div class="page-header">
     <div class="row">
       <div class="column left half">
-        <h4>Occupant ### of Motor Vehicle ###</h4>
-        <h4>Type: ###</h4>
+        <h2>Occupant ### of Motor Vehicle ###</h2>
         <h4 id="NJqVP8AH">Injury Status: ###</h4>
       </div>
       <div class="column right half">
-        <h4>Page ### of ###</h4>
+        <h4>Type: ###</h4>
         <h4 id="Egrsk6Sq">Incident Responder?: ###</h4>
       </div>
     </div>
@@ -1020,36 +1044,34 @@ export const passengerHeaderString = `
 `
 
 export const passengerDataSectionString = `
-  <table class="avoid-break">
+  <table class="avoid-break full-width">
     <th class="boxheader" colspan="3">
       <h3>occupant identity and crash factors</h3>
     </th>
     <tbody>
       <tr>
-        <td rowspan="3" class="sixth">
+        <td>
           <p><span id="xkXuEz84"></span> <span id="5IRgIan5"></span> <span id="KB0Wiblw"></span></p>
           <p>DOB:<span id="n6Cp78JZ"></span></p>
           <p>Sex: <span id="eiQbv2XM"></span></p>
         </td>
-        <td rowspan="2">
-          <p class="field">Restraint Systems or Motorcycle Helmet Use</p>
-          <p class="fieldresponse" id="aeZ4RkUF"></p>
+        <td>
+          <p class="field">Seating Position</p>
+          <p class="fieldresponse" id="wecg2msi"></p>
         </td>
-         <td>
+        <td>
           <p class="field">Air Bag Deployed?</p>
           <p class="fieldresponse" id="ExMu8mbw"></p>
         </td>
       </tr>
       <tr>
         <td>
+          <p class="field">Restraint Systems or Motorcycle Helmet Use</p>
+          <p class="fieldresponse" id="aeZ4RkUF"></p>
+        </td>
+        <td>
           <p class="field">Indication of Improper Use?</p>
           <p class="fieldresponse" id="mFbnuTNP"></p>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <p class="field">Seating Position</p>
-          <p class="fieldresponse" id="wecg2msi"></p>
         </td>
         <td>
           <p class="field">Ejection?</p>
@@ -1061,7 +1083,7 @@ export const passengerDataSectionString = `
 `
 
 export const injuryPassengerDataSectionString = `
-  <table class="avoid-break">
+  <table class="avoid-break full-width">
     <th class="boxheader" colspan="3">
       <h3>Injury Information</h3>
     </th>
@@ -1094,12 +1116,11 @@ export const nonmotoristHeaderString = `
   <div class="page-header">
     <div class="row">
       <div class="column left half">
-        <h4>Non-Motorist ###</h4>
-        <h4 id="6TkriXzZ">Type: ###</h4>
+        <h2>Non-Motorist ###</h2>
         <h4 id="WRishqwU">Injury Status: ###</h4>
       </div>
       <div class="column right half">
-        <h4>Page ### of ###</h4>
+        <h4 id="6TkriXzZ">Type: ###</h4>
         <h4 id="MNdMxtx5">Incident Responder?: ###</h4>
       </div>
     </div>
@@ -1107,21 +1128,19 @@ export const nonmotoristHeaderString = `
 `
 
 export const nonmotoristDataSectionString = `
-  <table class="avoid-break">
-    <th class="boxheader" colspan="4">
+  <table class="avoid-break full-width">
+    <th class="boxheader" colspan="3">
       <h3>Contact Information and Crash Involvement</h3>
     </th>
     <tbody>
       <tr>
-        <td rowspan="3" class="sixth">
+        <td rowspan="2">
           <p><span id="wgjUrZEh"></span> <span id="sv3smQdV"></span> <span id="OEKyiMLG"></span></p>
           <p>DOB:<span id="FxZPgGC6"></span></p>
           <p>Sex: <span id="z0RAR9nQ"></span></p>
-        </td>
-        <td rowspan="3" class="sixth">
-          <p class="tright"><span id="WHYkEvFv"></span></p>
-          <p class="tright" id="dQxO7MP5"></p>
-          <p class="tright"><span id="QmWZUbzm"></span>, <span id="AIurIT7V"></span> <span id="CwUaGdXZ"></span></p>
+          <p><span id="WHYkEvFv"></span></p>
+          <p id="dQxO7MP5"></p>
+          <p><span id="QmWZUbzm"></span>, <span id="AIurIT7V"></span> <span id="CwUaGdXZ"></span></p>
         </td>
         <td>
           <p class="field">Motor Vehicle # that Struck Non-Motorist</p>
@@ -1142,10 +1161,9 @@ export const nonmotoristDataSectionString = `
           <p class="fieldresponse" id="6O3xLeXP"></p>
         </td>
       </tr>
-      <tr></tr>
     </tbody>
   </table>
-  <table class="avoid-break">
+  <table class="avoid-break full-width">
     <th class="boxheader" colspan="3">
       <h3>Factors and Conditions</h3>
     </th>
@@ -1215,7 +1233,7 @@ export const nonmotoristDataSectionString = `
 `
 
 export const injuryNonmotoristDataSectionString = `
-  <table class="avoid-break">
+  <table class="avoid-break full-width">
     <th class="boxheader" colspan="3">
       <h3>Injury Information</h3>
     </th>

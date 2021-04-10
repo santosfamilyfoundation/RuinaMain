@@ -5,7 +5,6 @@ import { Button, TopNavigation, Text } from '@ui-kitten/components';
 import { styles } from './OutputPDFTest.style';
 
 import Pdf from 'react-native-pdf';
-import PDFGenerator from 'rn-pdf-generator';
 import RNHTMLtoPDF from 'react-native-html-to-pdf';
 
 import JSONconverter from '../../utils/jsonConverter';
@@ -15,22 +14,7 @@ class OutputPDFTest extends Component {
   constructor(props) {
     super(props);
     this.state = { uri: '', data: '' };
-    // this.generateDocument();
     this.createPDF();
-  };
-
-  // not being used right now
-  generateDocument() {
-    var converter = new JSONconverter();
-    const coverpageString = converter.handleConverter('htmlforpdf', "");
-    PDFGenerator.fromHTML(coverpageString, 'http://localhost')
-    .then((data) => {
-      console.log("got PDF data");
-      this.setState({uri: `data:application/pdf;base64,${data}`  , data: data});
-    })
-    .catch(err  => {
-      console.log('error->', err);
-    });
   };
 
   createPDF() {
@@ -40,7 +24,6 @@ class OutputPDFTest extends Component {
       html: coverpageString,
       base64: true,
       fileName: 'crash_report',
-      directory: 'Documents',
     };
 
     RNHTMLtoPDF.convert(options)
@@ -113,12 +96,13 @@ class OutputPDFTest extends Component {
         <View style={styles.container}>
           <Pdf
               source={this.state}
+              enableRTL={true}
               onLoadComplete={(numberOfPages,filePath)=>{
                   console.log(`number of pages: ${numberOfPages}`);
               }}
-              onPageChanged={(page,numberOfPages)=>{
-                  console.log(`current page: ${page}`);
-              }}
+              // onPageChanged={(page,numberOfPages)=>{
+              //     console.log(`current page: ${page}`);
+              // }}
               onError={(error)=>{
                   console.log(error);
               }}
