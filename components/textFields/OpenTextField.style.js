@@ -1,6 +1,14 @@
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
+    backdrop: {
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    },
+    modalContent: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: 20,
+    },
     imgContainer:{
       flexDirection: 'column',
       justifyContent: 'space-around',
@@ -15,21 +23,18 @@ export const styles = StyleSheet.create({
     rowContainer:{
       flexDirection: 'row',
     },
-    tooltipbtnContainer: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-    },
-    tooltipBtn: {
-      margin: 5,
+    endRowcontainer: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end'
     },
     container: {
       width: '90%',
-      marginBottom: 10
     },
     helperText: {
       margin: 11
     },
     content: {
+      flex: 1,
       margin: 10,
     },
     input: {

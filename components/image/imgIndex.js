@@ -10,7 +10,10 @@ export class ImageSelector extends Component {
         switch (name) {
             case '../image/test.jpg': 
                 return require('../image/test.jpg');
-            // case 'b': return require('./b');
+            case '../image/trafficway_example.png':
+                return require('../image/trafficway_example.png');
+            case '../image/manner_example.png':
+                return require('../image/manner_example.png')
             // append images file here if needed
         }
     }

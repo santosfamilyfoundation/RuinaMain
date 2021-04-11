@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Input, Layout, Text, Card, Button, CardHeader, Icon, ListItem, CheckBox } from '@ui-kitten/components';
+import { Input, Layout, Text, Card, Button, Modal, CardHeader, Icon, ListItem, CheckBox } from '@ui-kitten/components';
+import { View, Image } from 'react-native';
+import ImageSelector from '../image/imgIndex';
 import { styles } from './AdvancedOpenTextField.style';
 import { updateRoad } from '../../actions/RoadAction';
 import * as Constants from '../../constants';
@@ -9,6 +11,7 @@ import vinValidator from 'vin-validator';
 //This component is used for "advanced" tool access (map, photo, VIN, and time)
 
 const AdvancedOpenTextField = (props) => {
+    const [visible, setVisible] = React.useState(false);
     const [value, setValue] = React.useState('');
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const [advancedButtonAppearance, setAdvancedButtonAppearance] = React.useState('outline');
@@ -223,13 +226,80 @@ const AdvancedOpenTextField = (props) => {
         status = 'success'
     }
 
-    const HelperText = () => {
-      //Text that shows up on questions with helper text fields
-        if(data?.helperText?.length != 0) {
+    const ModalContent = () => {
+        if (data.helperImg != null ){
+            var img = new ImageSelector()
+            const src = img.pathHandler(data.helperImg)
+            return (
+                <View style={styles.imgContainer}>
+                    <Layout style={styles.modalContent}>
+                        <Text>{data.tooltip}</Text>
+                        <Image source={src} style={styles.img}/>
+                    </Layout>
+                </View>
+            )
+        }else{
+            return(
+                <Layout style={styles.modalContent}>
+                    <Text>{data.tooltip}</Text>
+                </Layout>
+            )
+        }
+    };
+    
+    const HelperTooltip = () => {
+        if (data.helperText != null && data.tooltip != null){
+            return (
+                <Layout style={styles.container}>
+                    <View style={styles.rowContainer}>
+                        <Text style={styles.helperText}>{data.helperText}</Text>
+                        <Modal
+                            backdropStyle={styles.backdrop}
+                            visible={visible}
+                            content={ModalContent()}
+                            onBackdropPress={toggleModal}>
+                            <Button appearance='ghost' status='primary' icon={InfoIcon} onPress={toggleModal}>
+                                More Info
+                            </Button>
+                        </Modal>
+                    </View>
+                </Layout>
+            )
+        }
+        else if (data.helperText != null) {
             return (<Text style={styles.helperText}>{data.helperText}</Text>)
         }
-        return null;
+        else if (data.tooltip != null) {
+            return (
+                <View style={styles.endRowcontainer}>
+                    <Button  appearance='ghost' status='primary' icon={InfoIcon} onPress={toggleModal}>
+                        More Info
+                    </Button>
+                    <Modal backdropStyle={styles.backdrop} visible={visible}>
+                        <Card style={styles.content} disabled={true}>
+                        {ModalContent()}
+                        <Button appearance='ghost' icon={CloseIcon} onPress={() => setVisible(false)}>
+                            Dismiss
+                        </Button>
+                        </Card>
+                    </Modal>
+                </View>
+            )
+        } else {
+            return null;
+        }
     }
+    
+    const InfoIcon = (props) => (
+        <Icon {...props} name='info'/>
+    );
+    const CloseIcon = (props) => (
+        <Icon {...props} name='close-outline'/>
+    );
+
+    const toggleModal = () => {
+        setVisible(!visible);
+    };
 
     const ErrorMsg = () => {
         if(invalidLength) {
@@ -253,7 +323,7 @@ const AdvancedOpenTextField = (props) => {
         <Layout key={key} style={styles.container}>
             <Card status={status} header={CustomCardHeader}>
                 <Layout style={styles.content}>
-                    {HelperText()}
+                    {HelperTooltip()}
                     <Layout style={styles.input}>
                         <Input
                             style={styles.inputField}

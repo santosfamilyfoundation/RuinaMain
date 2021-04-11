@@ -61,7 +61,7 @@ export const questions = {
             ],
             "humanReadableId": "driver-5",
             "helperText": "Street Address 1; Street Address 2",
-            "tooltip": "E.g. 1000 Olin Way, MA",
+            "tooltip": "The street address allows FMCSA to visit carriers and conduct reviews of compliance with the Federal Motor Carrier Safety Regulations and provides a crosscheck for the correct identity of the carrier. The identification number (foundon the truck tractor", 
             "helperImg": "../image/test.jpg"
         },
         {
@@ -3314,6 +3314,7 @@ export const questions = {
             "display": [
                 "road"
             ],
+            "tooltip":"Provide type for ownership of the land where the crash occurred",
             "humanReadableId": "road-4",
             "answerOptions": [
                 {
@@ -3334,6 +3335,8 @@ export const questions = {
             "display": [
                 "road"
             ],
+            "tooltip":" identify the characteristics of the crash with respect to its location on or off a trafficway. Refer to “Figure 1: Diagram of the Trafficway” (p. 10) for examples",
+            "helperImg": "../image/trafficway_example.png",
             "humanReadableId": "road-5",
             "answerOptions": [
                 {
@@ -3940,6 +3943,9 @@ export const questions = {
             "display": [
                 "road"
             ],
+            "helperText" :"This data element refers only to crashes where the first harmful event involves a collision between two motor vehicles in transport.",
+            "tooltip" : "See “Figure 2: Manner of Collision and Associated Crash Diagrams” for a diagram of the manner of collision",
+            "helperImg" :"../image/manner_example.png",
             "humanReadableId": "road-18",
             "answerOptions": [
                 {
