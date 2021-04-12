@@ -1,9 +1,4 @@
-// import exportfromJSON from 'export-from-json';
-// import PDFLib, { PDFDocument, PDFPage } from 'react-native-pdf-lib';
-// import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
-//import RNFetchBlob from 'react-native-fetch-blob';
 import {Component} from 'react';
-// import ReactDOM from 'react-dom';
 import XLSX from 'xlsx';
 import * as htmlStrings from '../utils/html_for_pdf_pages/htmlStrings'
 import {testAnswers} from '../data/testAnswers';
@@ -17,80 +12,15 @@ export class JSONconverter extends Component {
 		switch (format) {
 			case 'json':
 				return file = JSON.stringify(data);
-			case 'pdf':
-				return file = this.JSONtoPDF(data);
-			case 'csv':
-				return file = this.JSONtoCSV(data);
 			case 'xlsx':
 				return file = this.JSONtoXLS(data);
-			case 'html':
+			case 'html': case 'pdf':
 				return file = this.JSONtoHTML(data);
-			case 'htmlforpdf':
-				return this.JSONtoHTML2(testAnswers);
+			case 'pdftest':
+				return this.JSONtoHTML(testAnswers);
 			default:
 				console.log("Error+"+format)
 		}
-	}
-
-	async JSONtoPDF(jsondata) {
-
-		return('PDF conversion goes here');
-
-	// 	// console.log(jsondata.Driver)
- //        const driver = jsondata.Driver
-
-
-	// 	//const timesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman)
-
-	// 	// const pageDrive = PDFPage.create()
-	// 	const pdfDoc = await PDFDocument.create()
-
-	// 	const driverPage = pdfDoc.addPage()
-
-
-	// 	for (let key in driver) {
-	// 		driverPage.drawText(JSON.stringify(driver[key]))
-	// 		then((success) => {
-	// 	    	console.log('text added')
-	// 		})
-	// 		.catch((err) => {
- //    			console.log('text not added' + err.message)
-	// 		})
-	// }
-
-
- //        const pdfBytes = await pdfDoc.save()
- //        var buff = new Buffer(pdfBytes, 'base64');
-
-		// console.log("Converter reached");
-	}
-
-	JSONtoCSV(jsondata) {
-
-		/*
-		table nicer with just driver,
-		reformat jsondata?
-		add processer?
-		*/
-        const driver = jsondata.Driver
-
-		//let converter = require('json2csv');
-
-		// let jsontocsvCallback = function (err, csv) {
-    	// 	if (err) throw err;
-    	// 	// replace with return csv
-    	// 	var pathToWrite = `${RNFetchBlob.fs.dirs.DownloadDir}/data.csv`;
-		//     RNFetchBlob.fs.writeFile(pathToWrite, csv, 'utf8')
-		// 	.then(() => {
-		// 	   console.log(`wrote file ${pathToWrite}`);
-		// 	})
-		// 	.catch(err => console.error(err));
-		// }
-
-		//let convertedJson = converter.parse(jsondata);
-		console.log("Converted json in csv: ");
-		return 'convertedJson';
-
 	}
 
 	JSONtoXLS(jsondata) {
@@ -134,9 +64,9 @@ export class JSONconverter extends Component {
 		return output(wbout);
 	}
 
-	JSONtoHTML2(jsondata) {
+	JSONtoHTML(jsondata) {
 		function getAnswer(answerSubsetData, id) {
-			if (id in answerSubsetData["response"]) {
+			if (("response" in answerSubsetData) && (id in answerSubsetData["response"])) {
 				if (answerSubsetData["response"][id] instanceof Array) {
 					return answerSubsetData["response"][id].join(", ")
 				}
@@ -324,28 +254,5 @@ export class JSONconverter extends Component {
 		return htmlString;
 	}
 
-	JSONtoHTML(jsondata) {
-
-		let reportHTML = '<!doctype html> <html lang="en"> <head> <meta charset="utf8"> <title> </title> </head> <body>'
-
-		for (let section in jsondata) {
-			reportHTML += ('<div style="float:left;padding: 1em;"><h1>' + section + '</h1>')
-			writeSection(jsondata[section])
-		}
-
-		function writeSection(category) {
-			for (let key in category) {
-				reportHTML += ('<h2>' + category[key] + ' ' + key + '</h2>')
-				let subset = category[key]
-				for (let data in subset) {
-					reportHTML += ('<h3>' + data + '</h3> <p>' + subset[data] + '</p>')
-				}
-				reportHTML += ('</div>')
-			}
-		}
-		reportHTML += '</body> </html>'
-		console.log("Converted json in html: " + reportHTML);
-		return reportHTML
-	}
 }
 export default JSONconverter;

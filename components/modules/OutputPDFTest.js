@@ -19,7 +19,7 @@ class OutputPDFTest extends Component {
 
   createPDF() {
     var converter = new JSONconverter();
-    const coverpageString = converter.handleConverter('htmlforpdf', "");
+    const coverpageString = converter.handleConverter('pdftest', "");
     let options = {
       html: coverpageString,
       base64: true,
