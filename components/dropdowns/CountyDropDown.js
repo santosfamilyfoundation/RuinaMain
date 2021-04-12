@@ -19,25 +19,16 @@ const CountyDropDown = (props) => {
     let countyOptions = null;
     const stateDropDownQuestionID = "Sl6ypLYA"; // need to be changed later 
 
+
     const [selectedOption, setSelectedOption] = React.useState(null);
-    const { data, key, id, questionReducer, submitFunction, updateResponse } = props;
+    const stateResponse = this.props.road.response[stateDropDownQuestionID];
+    console.log(stateResponse);
+    
+
+
     let currId = data.id;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
-
-    if (props.response != null) {
-        for (let j = props.response.length - 1; j >= 0; j--) { // Searching from the most recent changes made by user
-            if (props.response[j].selection == tarOptionCode) { break }
-            if (typeof props.response[j].selection == "array") {
-                let resArr = props.response[j].selection.find(item => item != tarOptionCode)
-                if (resArr.length === props.response[j].selection.length) { return null }
-            }
-            if (props.response[j].question === tarUid && props.response[j].selection != tarOptionCode) {
-                console.log("Dependent question does not display");
-                return null
-            }
-        }
-    }
 
     if (props.response != null) {
         if (data.questionDependency != null) {
@@ -132,11 +123,9 @@ const mapDispatchToProps = {
     updateResponse
 }
 
-const mapStateToProps = (state, props) => {
-    const { response } = state.storyReducer
-    const { reducer } = props;
-    const questionReducer = state[reducer];
-    return { questionReducer, response }
+const mapStateToProps = (state) => {
+    const road = state.roadReducer;
+    return { road }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CountyDropDown);

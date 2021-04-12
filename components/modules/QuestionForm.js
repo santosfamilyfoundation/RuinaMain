@@ -178,6 +178,13 @@ const QuestionForm = (props) => {
               {...props}
             />
           )
+        
+        case 'countyDropDown':
+          return (
+            <CountyDropDown
+              {...props}
+            />
+          )
 
         case 'largeTextField':
           return (
@@ -204,12 +211,6 @@ const QuestionForm = (props) => {
                 {...props}
               />
             )
-        case 'countyDropDown':
-              return (
-                <CountyDropDown
-                  {...props}
-                />
-              )
       }
     }
 
