@@ -7,10 +7,11 @@ const initialState = {
 export default function roadReducer (state=initialState, action) {
   switch (action.type) {
       case 'ADDROAD':
-          const setupData = action.payload
+          console.log("add road " + action.payload.roadID);
+          const setupData = action.payload.setupData
           data = []
           // add setupData from QuickSurvey to road data
-          data.push({response: setupData, id: uuid.v1()})
+          data.push({ response: setupData, id: action.payload.roadID})
           // console.log(data);
           return {
               ...state,

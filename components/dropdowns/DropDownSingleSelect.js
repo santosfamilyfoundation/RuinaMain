@@ -6,17 +6,39 @@ import {
   Card,
   CardHeader
 } from '@ui-kitten/components';
+import { updateResponse } from '../../actions/StoryActions';
 import { styles } from './DropDownSingleSelect.style';
 import { connect } from 'react-redux';
 
 
 const DropDownSingleSelect = (props) => {
     const [selectedOption, setSelectedOption] = React.useState(null);
-    const {data, key, id, questionReducer, submitFunction} = props;
-
+    const {data, key, id, questionReducer, submitFunction, updateResponse} = props;
     let currId = data.id;
-    const reducerData = questionReducer.data.find(entry => entry.id == id);
+    const reducerData = questionReducer.data.find(entry => entry.id == id); 
     let existingData = !reducerData?.response ? null : reducerData.response;
+
+    if(props.response != null) { 
+        if (data.questionDependency != null){
+            console.log(props.response)
+            let tarQuesArr = data.questionDependency
+            for(let i = 0; i <tarQuesArr.length; i++){ // Looping through dependent question
+                let tarUid = tarQuesArr[i].dependencyUid
+                let tarOptionCode = tarQuesArr[i].dependencyOptionCode
+                for (let j = props.response.length-1; j >= 0; j--){ // Searching from the most recent changes made by user
+                    if (props.response[j].selection == tarOptionCode) {break}
+                    if (typeof props.response[j].selection == "array"){
+                        let resArr = props.response[j].selection.find(item => item != tarOptionCode)
+                        if (resArr.length === props.response[j].selection.length){return null}
+                    }
+                    if (props.response[j].question === tarUid && props.response[j].selection != tarOptionCode){
+                        console.log("Dependent question does not display");
+                        return null
+                    }
+                }
+            }
+        }
+    };
 
     // Populate if value already exists in redux
     if(!selectedOption) {
@@ -51,6 +73,7 @@ const DropDownSingleSelect = (props) => {
 
     const submitField = (selection) => {
         setSelectedOption(selection);
+        updateResponse && updateResponse({id, question: currId, selection: selection.idCode})
         let content = selection.text;
         submitFunction({id, question: currId, selection: content})
     }
@@ -68,7 +91,7 @@ const DropDownSingleSelect = (props) => {
 
 
     return (
-        <Layout key={key} style={styles.container}>
+        <Layout key={key} style={styles.container} >
             <Card header={Header} status={status}>
                 <Layout style={styles.content}>
                     {HelperText()}
@@ -84,11 +107,15 @@ const DropDownSingleSelect = (props) => {
     );
 };
 
+const mapDispatchToProps = {
+    updateResponse
+}
+
 const mapStateToProps = (state, props) => {
-    const { story } = state;
+    const { response } = state.storyReducer
     const { reducer } = props;
     const questionReducer = state[reducer];
-    return { story, questionReducer }
+    return { questionReducer, response }
 };
 
-export default connect(mapStateToProps)(DropDownSingleSelect);
+export default connect(mapStateToProps, mapDispatchToProps)(DropDownSingleSelect);

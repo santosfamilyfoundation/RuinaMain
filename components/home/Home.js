@@ -11,6 +11,7 @@ import { addNonmotorist } from '../../actions/NonmotoristAction';
 import { addVehicle } from '../../actions/VehicleAction';
 import { addDriver } from '../../actions/DriverAction';
 var uuid = require('react-native-uuid');
+import backgroundSave from '../../utils/backgroundSave';
 
 class Home extends Component {
     constructor(props) {
@@ -75,6 +76,22 @@ class Home extends Component {
             passenger,
             road
             } = this.props
+        
+        const data = {
+            driver: this.props.driver.data,
+            nonmotorist: this.props.nonmotorist.data,
+            vehicle: this.props.vehicle.data,
+            passenger: this.props.passenger.data,
+            road: this.props.road.data,
+            quiz: this.props.quiz,
+        };
+        console.log("---------------------------NEW UPDATE-----------------------------")
+        for (let d in data) {
+            console.log(d, ": ", data[d]);
+        }
+
+        const captureState = new backgroundSave();
+        captureState.captureCurrentState(JSON.stringify(data));
 
         let roadQuestions = this.filterQuestionsData('road');
 

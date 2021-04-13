@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {TopNavigation,Card, CardHeader, Text, Button} from '@ui-kitten/components';
 import {StyleSheet, Linking, ScrollView} from 'react-native';
 import { MaterialDialog, SinglePickerMaterialDialog} from 'react-native-material-dialog';
-
+import * as Constants from '../constants';
 
 class FinalReport extends Component {
     constructor(props) {
@@ -48,14 +48,7 @@ class FinalReport extends Component {
             console.log('SEND REPORT TO DATABASE!');
             navigation.navigate('ReportToDatabase', {format:format})
         }
-
-        const file_format_extensions = [
-            "json",
-            "csv",
-            "xlsx",
-            // "pdf",
-            "html"
-        ];
+        const file_format_extensions = Constants.ALLOW_JSON_EXPORT ? ["json", "pdf", "html", "xlsx"] : ["pdf", "html", "xlsx"];
 
         return(
             <SafeAreaView style={{flex:1}}>

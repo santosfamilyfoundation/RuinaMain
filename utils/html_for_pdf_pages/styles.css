@@ -1,0 +1,159 @@
+body {
+	padding: 0in;
+	width: 99%;
+	height: 100%;
+}
+
+hr {
+	border-top: 0.5px solid black;
+}
+
+h1, h3, h2 {
+	font-family: "Roboto";
+}
+
+h1 {
+	font-size: 1.5em;
+	font-weight: 400;
+	margin-top: 0;
+	margin-bottom: 0.25em;
+}
+
+h4 {
+	margin: 4px 0;
+	font-family: "Droid Serif";
+}
+
+h1, h3 {
+	text-transform: uppercase;
+}
+
+h3 {
+	font-weight: 500;
+	font-size: 1em;
+	margin: 0;
+}
+
+h2 {
+	font-weight: 400;
+	font-size: 1.25em;
+	margin: 0;
+}
+
+table {
+	border-collapse: collapse;
+	margin:0;
+}
+
+.break-after {
+	page-break-after: always;
+}
+
+.break-before {
+	page-break-before: always;
+}
+
+
+.sig-box {
+	padding: 0.25em;
+	border: 0.5px solid black;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+}
+
+.row {
+	flex-direction: row;
+}
+
+.column {
+	flex-direction: column;
+	float: left;
+}
+
+.right {
+	float: right;
+	flex-grow: 1;
+	text-align: right;
+}
+
+.tright {
+	text-align: right;
+}
+
+.left {
+	float: left;
+}
+
+.half {
+	width:50%;
+}
+
+.sixth {
+	width: 16.66%;
+	border:none;
+}
+
+.boxheader.tight {
+	margin-top: 0;
+}
+
+.twothird {
+	width: 66.66%;
+}
+
+.inline {
+	display: inline-block;
+}
+
+.boxheader {
+	background-color: black;
+	color: white;
+	text-align: center;
+	padding: 0.5em 0;
+}
+
+./*databox {
+	border: 0.5px solid black;
+	border-top: 0;
+	padding: 0.25em;
+	background: white;
+}*/
+
+.datasection {
+	display: table;
+	margin-top: 1em;
+}
+
+table {
+	margin: 1em 0;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.contactbox th, .contactbox td {
+	border:none;
+}
+
+td {
+	padding: .25em;
+	vertical-align: top;
+	width: 33.33%;
+}
+
+.field {
+	font-weight: bold;
+}
+
+.third {
+	width: 33.33%;
+}
+
+p {
+	margin: 0.25em 0;
+}

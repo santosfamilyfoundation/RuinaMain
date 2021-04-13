@@ -2,165 +2,6 @@ export const questions = {
     "data": [
         {
             "numOptionsAllowed": "0.0",
-            "question": "Work Zone-Related",
-            "id": "DtJB6lqd",
-            "answerType": "header",
-            "display": [
-                "construction"
-            ],
-            "humanReadableId": "construction-0",
-            "helperText": "(Constrution/Maintenance/Utility)"
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Was the crash in a construction, mainenance, or utility work zone or was it related to activity within a work zone?",
-            "id": "34oHCyQs",
-            "answerType": "multiButton",
-            "display": [
-                "construction"
-            ],
-            "humanReadableId": "construction-1",
-            "answerOptions": [
-                {
-                    "text": "No",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Yes",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Unknown",
-                    "idCode": "2"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Location of the Crash",
-            "id": "H8Nc9OMd",
-            "answerType": "dropdown",
-            "display": [
-                "construction"
-            ],
-            "humanReadableId": "construction-2",
-            "answerOptions": [
-                {
-                    "text": "Before the First Work Zone Warning Sign",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Advance Warning Area",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Transition Area",
-                    "idCode": "2"
-                },
-                {
-                    "text": "Activity Area",
-                    "idCode": "3"
-                },
-                {
-                    "text": "Termination Area",
-                    "idCode": "4"
-                },
-                {
-                    "text": "Not Applicable/Not Within or Related to a Work Zone",
-                    "idCode": "5"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Type of Work Zone",
-            "id": "h6LUiplf",
-            "answerType": "dropdown",
-            "display": [
-                "construction"
-            ],
-            "humanReadableId": "construction-3",
-            "answerOptions": [
-                {
-                    "text": "Lane Closure",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Lane Shift/Crossover",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Work on Shoulder or Median",
-                    "idCode": "2"
-                },
-                {
-                    "text": "Intermittent or Moving Work",
-                    "idCode": "3"
-                },
-                {
-                    "text": "Other Type of Work Zone",
-                    "idCode": "4"
-                },
-                {
-                    "text": "Not Applicable/Not Within or Related to a Work Zone",
-                    "idCode": "5"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Workers Present",
-            "id": "3pIa77uR",
-            "answerType": "multiButton",
-            "display": [
-                "construction"
-            ],
-            "humanReadableId": "construction-4",
-            "answerOptions": [
-                {
-                    "text": "No",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Yes",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Not Applicable/Not Within or Related to a Work Zone",
-                    "idCode": "2"
-                },
-                {
-                    "text": "Unknown",
-                    "idCode": "3"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Law Enforcement Present",
-            "id": "NvS2JTFP",
-            "answerType": "multiButton",
-            "display": [
-                "construction"
-            ],
-            "humanReadableId": "construction-5",
-            "answerOptions": [
-                {
-                    "text": "No",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Yes",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Not Applicable/Not Within or Related to a Work Zone",
-                    "idCode": "2"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "0.0",
             "question": "First Name of Person Involved",
             "id": "reJw3rUT",
             "answerType": "openTextBox",
@@ -219,7 +60,8 @@ export const questions = {
                 "driver"
             ],
             "humanReadableId": "driver-5",
-            "helperText": "Street Address 1; Street Address 2"
+            "helperText": "Street Address 1; Street Address 2",
+            "tooltip": "E.g. 1000 Olin Way, MA"
         },
         {
             "numOptionsAllowed": "0.0",
@@ -229,7 +71,9 @@ export const questions = {
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-6"
+            "humanReadableId": "driver-6",
+            "helperText": "/image/test.jpg",
+            "tooltip": "/image/test.jpg"
         },
         {
             "numOptionsAllowed": "0.0",
@@ -239,7 +83,8 @@ export const questions = {
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-7"
+            "humanReadableId": "driver-7",
+            "helperText": "/image/test.jpg"
         },
         {
             "numOptionsAllowed": "0.0",
@@ -249,7 +94,8 @@ export const questions = {
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-8"
+            "humanReadableId": "driver-8",
+            "tooltip": "/image/test.jpg"
         },
         {
             "numOptionsAllowed": "0.0",
@@ -298,41 +144,13 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1.0",
-            "question": "Person Type",
-            "id": "sBi1NQgq",
-            "answerType": "dropdown",
-            "display": [
-                "driver"
-            ],
-            "humanReadableId": "driver-12",
-            "answerOptions": [
-                {
-                    "text": "Driver",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Passenger",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Occupant of MV Not in Transport",
-                    "idCode": "2"
-                },
-                {
-                    "text": "Unknown",
-                    "idCode": "3"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "1.0",
             "question": "Incident Responder?",
             "id": "xwtnXE2c",
             "answerType": "dropdown",
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-13",
+            "humanReadableId": "driver-12",
             "answerOptions": [
                 {
                     "text": "No",
@@ -376,7 +194,7 @@ export const questions = {
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-14",
+            "humanReadableId": "driver-13",
             "answerOptions": [
                 {
                     "text": "Fatal Injury",
@@ -401,6 +219,172 @@ export const questions = {
             ]
         },
         {
+            "numOptionsAllowed": "0.0",
+            "question": "Transported to First Medical Facility By",
+            "id": "N4korfDu",
+            "answerType": "header",
+            "display": [
+                "driver"
+            ],
+            "humanReadableId": "driver-14",
+            "questionDependency": [
+                {
+                    "dependencyUid": "TNNilZo2",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "TNNilZo2",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "TNNilZo2",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "TNNilZo2",
+                    "dependencyOptionCode": "3"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1.0",
+            "question": "Source of Transport to First Medical Facility",
+            "id": "vCowZjea",
+            "answerType": "multiButton",
+            "display": [
+                "driver"
+            ],
+            "humanReadableId": "driver-15",
+            "questionDependency": [
+                {
+                    "dependencyUid": "TNNilZo2",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "TNNilZo2",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "TNNilZo2",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "TNNilZo2",
+                    "dependencyOptionCode": "3"
+                }
+            ],
+            "answerOptions": [
+                {
+                    "text": "Not Transported",
+                    "idCode": "0"
+                },
+                {
+                    "text": "EMS Air",
+                    "idCode": "1"
+                },
+                {
+                    "text": "EMS Ground",
+                    "idCode": "2"
+                },
+                {
+                    "text": "Law Enforcement",
+                    "idCode": "3"
+                },
+                {
+                    "text": "Other",
+                    "idCode": "4"
+                },
+                {
+                    "text": "Unknown",
+                    "idCode": "5"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "EMS Response Agency Identifier",
+            "id": "jqLkcNdf",
+            "answerType": "openTextBox",
+            "display": [
+                "driver"
+            ],
+            "humanReadableId": "driver-16",
+            "questionDependency": [
+                {
+                    "dependencyUid": "TNNilZo2",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "TNNilZo2",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "TNNilZo2",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "TNNilZo2",
+                    "dependencyOptionCode": "3"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "EMS Response Run Number",
+            "id": "RjEUrhoq",
+            "answerType": "openTextBox",
+            "display": [
+                "driver"
+            ],
+            "humanReadableId": "driver-17",
+            "questionDependency": [
+                {
+                    "dependencyUid": "TNNilZo2",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "TNNilZo2",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "TNNilZo2",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "TNNilZo2",
+                    "dependencyOptionCode": "3"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Medical Facility Receiving Patient",
+            "id": "IjFlnCUa",
+            "answerType": "openTextBox",
+            "display": [
+                "driver"
+            ],
+            "humanReadableId": "driver-18",
+            "questionDependency": [
+                {
+                    "dependencyUid": "TNNilZo2",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "TNNilZo2",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "TNNilZo2",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "TNNilZo2",
+                    "dependencyOptionCode": "3"
+                }
+            ]
+        },
+        {
             "numOptionsAllowed": "2.0",
             "question": "Seating Position",
             "id": "qAJO1kQq",
@@ -408,7 +392,7 @@ export const questions = {
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-15",
+            "humanReadableId": "driver-19",
             "helperText": "(choose up to 2)",
             "answerOptions": [
                 {
@@ -489,7 +473,7 @@ export const questions = {
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-16",
+            "humanReadableId": "driver-20",
             "answerOptions": [
                 {
                     "text": "Booster Seat",
@@ -573,7 +557,7 @@ export const questions = {
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-17",
+            "humanReadableId": "driver-21",
             "answerOptions": [
                 {
                     "text": "No",
@@ -587,13 +571,13 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "4.0",
-            "question": "Air Bag Deployed",
+            "question": "Air Bag Deployed?",
             "id": "1h6r5JFf",
             "answerType": "dropdownMultiSelect",
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-18",
+            "humanReadableId": "driver-22",
             "helperText": "(choose up to 4)",
             "answerOptions": [
                 {
@@ -628,13 +612,13 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1.0",
-            "question": "Ejection",
+            "question": "Ejection?",
             "id": "4VkVRWWY",
             "answerType": "multiButton",
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-19",
+            "humanReadableId": "driver-23",
             "answerOptions": [
                 {
                     "text": "Not Ejected",
@@ -666,7 +650,7 @@ export const questions = {
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-20"
+            "humanReadableId": "driver-24"
         },
         {
             "numOptionsAllowed": "1.0",
@@ -676,7 +660,7 @@ export const questions = {
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-21",
+            "humanReadableId": "driver-25",
             "answerOptions": [
                 {
                     "text": "Not Licensed",
@@ -724,7 +708,7 @@ export const questions = {
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-22",
+            "humanReadableId": "driver-26",
             "helperText": "Provide the specific State, Province or Nation indicated on the Driver's License (see Appendix E: ANSI State FIPS and USPS Codes or Appendix F: ISO 3166-2 Codes for Canada and Mexico)"
         },
         {
@@ -735,7 +719,7 @@ export const questions = {
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-23"
+            "humanReadableId": "driver-27"
         },
         {
             "numOptionsAllowed": "0.0",
@@ -745,7 +729,7 @@ export const questions = {
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-24",
+            "humanReadableId": "driver-28",
             "autoMethod": "driverIDCamera"
         },
         {
@@ -756,7 +740,7 @@ export const questions = {
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-25",
+            "humanReadableId": "driver-29",
             "answerOptions": [
                 {
                     "text": "None",
@@ -790,13 +774,13 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1.0",
-            "question": "Commercial Driver License (CDL)",
+            "question": "Commercial Driver License (CDL)?",
             "id": "16LCTlmo",
             "answerType": "dropdown",
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-26",
+            "humanReadableId": "driver-30",
             "answerOptions": [
                 {
                     "text": "No",
@@ -816,7 +800,7 @@ export const questions = {
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-27",
+            "humanReadableId": "driver-31",
             "answerOptions": [
                 {
                     "text": "None/Not Applicable",
@@ -854,13 +838,13 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1.0",
-            "question": "Speeding-Related",
+            "question": "Speeding-Related?",
             "id": "EVbRTEnb",
             "answerType": "multiButton",
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-28",
+            "humanReadableId": "driver-32",
             "answerOptions": [
                 {
                     "text": "No",
@@ -892,7 +876,7 @@ export const questions = {
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-29",
+            "humanReadableId": "driver-33",
             "helperText": "(choose up to 4)",
             "answerOptions": [
                 {
@@ -981,473 +965,8 @@ export const questions = {
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-30",
+            "humanReadableId": "driver-34",
             "helperText": "(choose up to 2)"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "CMV License Status and Compliance with CDL Endorsements",
-            "id": "fWq06Row",
-            "answerType": "header",
-            "display": [
-                "driver"
-            ],
-            "humanReadableId": "driver-31",
-            "questionDependency": [
-                {
-                    "dependencyUid": "sM5HGjcV",
-                    "dependencyOptionCode": "1"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "CMV License Status",
-            "id": "UiP7Gr7i",
-            "answerType": "dropdown",
-            "display": [
-                "driver"
-            ],
-            "humanReadableId": "driver-32",
-            "questionDependency": [
-                {
-                    "dependencyUid": "sM5HGjcV",
-                    "dependencyOptionCode": "1"
-                }
-            ],
-            "answerOptions": [
-                {
-                    "text": "No CDL",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Canceled or Denied",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Disqualified",
-                    "idCode": "2"
-                },
-                {
-                    "text": "Expired",
-                    "idCode": "3"
-                },
-                {
-                    "text": "Revoked",
-                    "idCode": "4"
-                },
-                {
-                    "text": "Suspended",
-                    "idCode": "5"
-                },
-                {
-                    "text": "Learner's Permit",
-                    "idCode": "6"
-                },
-                {
-                    "text": "Valid",
-                    "idCode": "7"
-                },
-                {
-                    "text": "Other - Not Valid",
-                    "idCode": "8"
-                },
-                {
-                    "text": "Unknown License Status",
-                    "idCode": "9"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Compliance with CDL Endorsement(s)",
-            "id": "juLmQZEB",
-            "answerType": "dropdown",
-            "display": [
-                "driver"
-            ],
-            "humanReadableId": "driver-33",
-            "questionDependency": [
-                {
-                    "dependencyUid": "sM5HGjcV",
-                    "dependencyOptionCode": "1"
-                }
-            ],
-            "answerOptions": [
-                {
-                    "text": "No Endorsement(s) Required for the Vehicle",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Endorsement(s) Required, Complied With",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Endorsement(s) Required, Not Complied With",
-                    "idCode": "2"
-                },
-                {
-                    "text": "Endorsement(s) Required, Compliance Unknown",
-                    "idCode": "3"
-                },
-                {
-                    "text": "Unknown if Required",
-                    "idCode": "4"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Driver License Restrictions",
-            "id": "k8twbwIb",
-            "answerType": "header",
-            "display": [
-                "driver"
-            ],
-            "humanReadableId": "driver-34"
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Alcohol Interlock Present?",
-            "id": "0J5Uv3oL",
-            "answerType": "dropdown",
-            "display": [
-                "driver"
-            ],
-            "humanReadableId": "driver-35",
-            "answerOptions": [
-                {
-                    "text": "No",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Yes",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Unknown",
-                    "idCode": "2"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Distracted By",
-            "id": "lUTQ3LEq",
-            "answerType": "header",
-            "display": [
-                "driver"
-            ],
-            "humanReadableId": "driver-36"
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Action",
-            "id": "0Mat8q8u",
-            "answerType": "multiButton",
-            "display": [
-                "driver"
-            ],
-            "humanReadableId": "driver-37",
-            "answerOptions": [
-                {
-                    "text": "Not Distracted",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Talking/listening",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Manually Operating (texting, dialing, playing game, etc.)",
-                    "idCode": "2"
-                },
-                {
-                    "text": "Other Action (looking away from task, etc.)",
-                    "idCode": "3"
-                },
-                {
-                    "text": "Unknown",
-                    "idCode": "4"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Source",
-            "id": "d3ZHeqkH",
-            "answerType": "dropdown",
-            "display": [
-                "driver"
-            ],
-            "humanReadableId": "driver-38",
-            "answerOptions": [
-                {
-                    "text": "Not Applicable (Not Distracted)",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Hands-Free Mobile Phone",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Hand-Held Mobile Phone",
-                    "idCode": "2"
-                },
-                {
-                    "text": "Other Electronic Device",
-                    "idCode": "3"
-                },
-                {
-                    "text": "Vehicle-Integrated Device",
-                    "idCode": "4"
-                },
-                {
-                    "text": "Passenger/Other Non-Motorist",
-                    "idCode": "5"
-                },
-                {
-                    "text": "External (to vehicle/non-motorist area)",
-                    "idCode": "6"
-                },
-                {
-                    "text": "Other Distraction (animal, food, grooming)",
-                    "idCode": "7"
-                },
-                {
-                    "text": "Unknown",
-                    "idCode": "8"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "2.0",
-            "question": "Condition at Time of the Crash",
-            "id": "e0ILJxlx",
-            "answerType": "dropdownMultiSelect",
-            "display": [
-                "driver"
-            ],
-            "humanReadableId": "driver-39",
-            "helperText": "(choose up to 2)",
-            "answerOptions": [
-                {
-                    "text": "Not Applicable",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Asleep or Fatigued",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Emotional (depressed, angry, disturbed, etc.)",
-                    "idCode": "2"
-                },
-                {
-                    "text": "Ill (sick), Fainted",
-                    "idCode": "3"
-                },
-                {
-                    "text": "Physically Impaired",
-                    "idCode": "4"
-                },
-                {
-                    "text": "Under the Influence of Medications/Drugs/Alcohol",
-                    "idCode": "5"
-                },
-                {
-                    "text": "Other",
-                    "idCode": "6"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Law Enforcement Suspects Alcohol Use",
-            "id": "9cFGpRmQ",
-            "answerType": "multiButton",
-            "display": [
-                "driver"
-            ],
-            "humanReadableId": "driver-40",
-            "answerOptions": [
-                {
-                    "text": "No",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Yes",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Unknown",
-                    "idCode": "2"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Alcohol Test",
-            "id": "bSmmCoMw",
-            "answerType": "header",
-            "display": [
-                "driver"
-            ],
-            "humanReadableId": "driver-41"
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Test Status (1)",
-            "id": "uTZ8u8an",
-            "answerType": "multiButton",
-            "display": [
-                "driver"
-            ],
-            "humanReadableId": "driver-42",
-            "answerOptions": [
-                {
-                    "text": "Test Not Given",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Test Given",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Test Refused",
-                    "idCode": "2"
-                },
-                {
-                    "text": "Unknown if Tested",
-                    "idCode": "3"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Type of Test (1)",
-            "id": "Um6CdyUJ",
-            "answerType": "multiButton",
-            "display": [
-                "driver"
-            ],
-            "humanReadableId": "driver-43",
-            "answerOptions": [
-                {
-                    "text": "Not Applicable (Test Not Given)",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Blood",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Breath",
-                    "idCode": "2"
-                },
-                {
-                    "text": "Urine",
-                    "idCode": "3"
-                },
-                {
-                    "text": "Other",
-                    "idCode": "4"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Law Enforcement Suspects Drug Use",
-            "id": "qlTVIWWS",
-            "answerType": "multiButton",
-            "display": [
-                "driver"
-            ],
-            "humanReadableId": "driver-44",
-            "answerOptions": [
-                {
-                    "text": "No",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Yes",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Unknown",
-                    "idCode": "2"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Drug Test",
-            "id": "pn39hf9z",
-            "answerType": "header",
-            "display": [
-                "driver"
-            ],
-            "humanReadableId": "driver-45"
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Test Status (2)",
-            "id": "nCXTPsU5",
-            "answerType": "multiButton",
-            "display": [
-                "driver"
-            ],
-            "humanReadableId": "driver-46",
-            "answerOptions": [
-                {
-                    "text": "Test Not Given",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Test Given",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Test Refused",
-                    "idCode": "2"
-                },
-                {
-                    "text": "Unknown if Tested",
-                    "idCode": "3"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Type of Test (2)",
-            "id": "QUYxXsUT",
-            "answerType": "multiButton",
-            "display": [
-                "driver"
-            ],
-            "humanReadableId": "driver-47",
-            "answerOptions": [
-                {
-                    "text": "Not Applicable (Test Not Given)",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Blood",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Saliva",
-                    "idCode": "2"
-                },
-                {
-                    "text": "Urine",
-                    "idCode": "3"
-                },
-                {
-                    "text": "Other",
-                    "idCode": "4"
-                }
-            ]
         },
         {
             "numOptionsAllowed": "1.0",
@@ -1455,9 +974,15 @@ export const questions = {
             "id": "AREUHJ9b",
             "answerType": "dropdown",
             "display": [
-                "fatalityDriver"
+                "driver"
             ],
-            "humanReadableId": "fatalityDriver-0",
+            "humanReadableId": "driver-35",
+            "questionDependency": [
+                {
+                    "dependencyUid": "8dY73Yzs",
+                    "dependencyOptionCode": "0"
+                }
+            ],
             "answerOptions": [
                 {
                     "text": "No Driver Present/Unknown if Driver Present",
@@ -1523,1092 +1048,334 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "0.0",
-            "question": "Alcohol Test Type and Results",
-            "id": "X6MBRrKg",
+            "question": "CMV License Status and Compliance with CDL Endorsements",
+            "id": "fWq06Row",
             "answerType": "header",
             "display": [
-                "fatalityDriver"
+                "driver"
             ],
-            "humanReadableId": "fatalityDriver-1"
+            "humanReadableId": "driver-36",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "sM5HGjcV",
+                    "dependencyOptionCode": "1"
+                }
+            ]
         },
         {
             "numOptionsAllowed": "1.0",
-            "question": "Test Type (1)",
-            "id": "bRosiXHL",
+            "question": "CMV License Status",
+            "id": "UiP7Gr7i",
             "answerType": "dropdown",
             "display": [
-                "fatalityDriver"
+                "driver"
             ],
-            "humanReadableId": "fatalityDriver-2",
+            "humanReadableId": "driver-37",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "sM5HGjcV",
+                    "dependencyOptionCode": "1"
+                }
+            ],
             "answerOptions": [
                 {
-                    "text": "Test Not Given",
+                    "text": "No CDL",
                     "idCode": "0"
                 },
                 {
-                    "text": "Breath Test (AC)",
+                    "text": "Canceled or Denied",
                     "idCode": "1"
                 },
                 {
-                    "text": "Blood",
+                    "text": "Disqualified",
                     "idCode": "2"
                 },
                 {
-                    "text": "Blood Clot",
+                    "text": "Expired",
                     "idCode": "3"
                 },
                 {
-                    "text": "Blood Plasma/Serum",
+                    "text": "Revoked",
                     "idCode": "4"
                 },
                 {
-                    "text": "Liver",
+                    "text": "Suspended",
                     "idCode": "5"
                 },
                 {
-                    "text": "Preliminary Breath Test (PBT)",
+                    "text": "Learner's Permit",
                     "idCode": "6"
                 },
                 {
-                    "text": "Unknown if Tested",
+                    "text": "Valid",
                     "idCode": "7"
                 },
                 {
-                    "text": "Urine",
+                    "text": "Other - Not Valid",
                     "idCode": "8"
                 },
                 {
-                    "text": "Vitreous",
+                    "text": "Unknown License Status",
                     "idCode": "9"
-                },
-                {
-                    "text": "Other Test Type",
-                    "idCode": "10"
-                },
-                {
-                    "text": "Unknown Test Type",
-                    "idCode": "11"
                 }
             ]
         },
         {
-            "numOptionsAllowed": "0.0",
-            "question": "Test Result (1)",
-            "id": "WWlvZvhY",
-            "answerType": "openTextBox",
-            "display": [
-                "fatalityDriver"
-            ],
-            "humanReadableId": "fatalityDriver-3"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Drug Test Type and Results",
-            "id": "ZWPewmLv",
-            "answerType": "header",
-            "display": [
-                "fatalityDriver"
-            ],
-            "humanReadableId": "fatalityDriver-4"
-        },
-        {
             "numOptionsAllowed": "1.0",
-            "question": "Test Type (2)",
-            "id": "xkKQDLkH",
+            "question": "Compliance with CDL Endorsement(s)",
+            "id": "juLmQZEB",
             "answerType": "dropdown",
             "display": [
-                "fatalityDriver"
+                "driver"
             ],
-            "humanReadableId": "fatalityDriver-5",
+            "humanReadableId": "driver-38",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "sM5HGjcV",
+                    "dependencyOptionCode": "1"
+                }
+            ],
             "answerOptions": [
                 {
-                    "text": "Test Not Given",
+                    "text": "No Endorsement(s) Required for the Vehicle",
                     "idCode": "0"
                 },
                 {
-                    "text": "Blood",
+                    "text": "Endorsement(s) Required, Complied With",
                     "idCode": "1"
                 },
                 {
-                    "text": "Both Blood and Urine",
+                    "text": "Endorsement(s) Required, Not Complied With",
                     "idCode": "2"
                 },
                 {
-                    "text": "Unknown Test Type",
+                    "text": "Endorsement(s) Required, Compliance Unknown",
                     "idCode": "3"
                 },
                 {
-                    "text": "Urine",
+                    "text": "Unknown if Required",
                     "idCode": "4"
-                },
-                {
-                    "text": "Other Test Type",
-                    "idCode": "5"
-                },
-                {
-                    "text": "Unknown if Tested",
-                    "idCode": "6"
                 }
             ]
         },
         {
             "numOptionsAllowed": "0.0",
-            "question": "Test Result (2)",
-            "id": "TCffIwK1",
-            "answerType": "openTextBox",
-            "display": [
-                "fatalityDriver"
-            ],
-            "humanReadableId": "fatalityDriver-6"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Alcohol Test Type and Results",
-            "id": "EgXFXXBd",
+            "question": "Distracted By",
+            "id": "lUTQ3LEq",
             "answerType": "header",
             "display": [
-                "fatalityNonmotorist"
+                "driver"
             ],
-            "humanReadableId": "fatalityNonmotorist-0"
+            "humanReadableId": "driver-39"
         },
         {
             "numOptionsAllowed": "1.0",
-            "question": "Test Type (1)",
-            "id": "ll1h0j43",
-            "answerType": "dropdown",
-            "display": [
-                "fatalityNonmotorist"
-            ],
-            "humanReadableId": "fatalityNonmotorist-1",
-            "answerOptions": [
-                {
-                    "text": "Test Not Given",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Breath Test (AC)",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Blood",
-                    "idCode": "2"
-                },
-                {
-                    "text": "Blood Clot",
-                    "idCode": "3"
-                },
-                {
-                    "text": "Blood Plasma/Serum",
-                    "idCode": "4"
-                },
-                {
-                    "text": "Liver",
-                    "idCode": "5"
-                },
-                {
-                    "text": "Preliminary Breath Test (PBT)",
-                    "idCode": "6"
-                },
-                {
-                    "text": "Unknown if Tested",
-                    "idCode": "7"
-                },
-                {
-                    "text": "Urine",
-                    "idCode": "8"
-                },
-                {
-                    "text": "Vitreous",
-                    "idCode": "9"
-                },
-                {
-                    "text": "Other Test Type",
-                    "idCode": "10"
-                },
-                {
-                    "text": "Unknown Test Type",
-                    "idCode": "11"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Test Result (1)",
-            "id": "lFtbKdqU",
-            "answerType": "openTextBox",
-            "display": [
-                "fatalityNonmotorist"
-            ],
-            "humanReadableId": "fatalityNonmotorist-2"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Drug Test Type and Results",
-            "id": "WEjiliz3",
-            "answerType": "header",
-            "display": [
-                "fatalityNonmotorist"
-            ],
-            "humanReadableId": "fatalityNonmotorist-3"
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Test Type (2)",
-            "id": "jYQ45ggC",
-            "answerType": "dropdown",
-            "display": [
-                "fatalityNonmotorist"
-            ],
-            "humanReadableId": "fatalityNonmotorist-4",
-            "answerOptions": [
-                {
-                    "text": "Test Not Given",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Blood",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Both Blood and Urine",
-                    "idCode": "2"
-                },
-                {
-                    "text": "Unknown Test Type",
-                    "idCode": "3"
-                },
-                {
-                    "text": "Urine",
-                    "idCode": "4"
-                },
-                {
-                    "text": "Other Test Type",
-                    "idCode": "5"
-                },
-                {
-                    "text": "Unknown if Tested",
-                    "idCode": "6"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Test Result (2)",
-            "id": "8FVdHQjL",
-            "answerType": "openTextBox",
-            "display": [
-                "fatalityNonmotorist"
-            ],
-            "humanReadableId": "fatalityNonmotorist-5"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Transported to First Medical Facility By",
-            "id": "N4korfDu",
-            "answerType": "header",
-            "display": [
-                "injured"
-            ],
-            "humanReadableId": "injured-0"
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Source of Transport to First Medical Facility",
-            "id": "vCowZjea",
+            "question": "Action",
+            "id": "0Mat8q8u",
             "answerType": "multiButton",
             "display": [
-                "injured"
+                "driver"
             ],
-            "humanReadableId": "injured-1",
+            "humanReadableId": "driver-40",
             "answerOptions": [
                 {
-                    "text": "Not Transported",
+                    "text": "Not Distracted",
                     "idCode": "0"
                 },
                 {
-                    "text": "EMS Air",
+                    "text": "Talking/listening",
                     "idCode": "1"
                 },
                 {
-                    "text": "EMS Ground",
+                    "text": "Manually Operating (texting, dialing, playing game, etc.)",
                     "idCode": "2"
                 },
                 {
-                    "text": "Law Enforcement",
+                    "text": "Other Action (looking away from task, etc.)",
                     "idCode": "3"
-                },
-                {
-                    "text": "Other",
-                    "idCode": "4"
                 },
                 {
                     "text": "Unknown",
-                    "idCode": "5"
+                    "idCode": "4"
                 }
             ]
         },
         {
-            "numOptionsAllowed": "0.0",
-            "question": "EMS Response Agency Idenitifier",
-            "id": "jqLkcNdf",
-            "answerType": "openTextBox",
-            "display": [
-                "injured"
-            ],
-            "humanReadableId": "injured-2"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "EMS Response Run Number",
-            "id": "RjEUrhoq",
-            "answerType": "openTextBox",
-            "display": [
-                "injured"
-            ],
-            "humanReadableId": "injured-3"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Medical Facility Recieving Patient",
-            "id": "IjFlnCUa",
-            "answerType": "openTextBox",
-            "display": [
-                "injured"
-            ],
-            "humanReadableId": "injured-4"
-        },
-        {
             "numOptionsAllowed": "1.0",
-            "question": "Injury Area",
-            "id": "7bsRWrol",
+            "question": "Source",
+            "id": "d3ZHeqkH",
             "answerType": "dropdown",
             "display": [
-                "injured"
+                "driver"
             ],
-            "humanReadableId": "injured-5",
+            "humanReadableId": "driver-41",
+            "questionDependency": [
+                {
+                    "dependencyUid": "0Mat8q8u",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "0Mat8q8u",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "0Mat8q8u",
+                    "dependencyOptionCode": "3"
+                },
+                {
+                    "dependencyUid": "0Mat8q8u",
+                    "dependencyOptionCode": "4"
+                }
+            ],
             "answerOptions": [
                 {
-                    "text": "Head",
+                    "text": "Not Applicable (Not Distracted)",
                     "idCode": "0"
                 },
                 {
-                    "text": "Face",
+                    "text": "Hands-Free Mobile Phone",
                     "idCode": "1"
                 },
                 {
-                    "text": "Neck",
+                    "text": "Hand-Held Mobile Phone",
                     "idCode": "2"
                 },
                 {
-                    "text": "Upper Extremity",
+                    "text": "Other Electronic Device",
                     "idCode": "3"
                 },
                 {
-                    "text": "Thorax (chest)",
+                    "text": "Vehicle-Integrated Device",
                     "idCode": "4"
                 },
                 {
-                    "text": "Spine",
+                    "text": "Passenger/Other Non-Motorist",
                     "idCode": "5"
                 },
                 {
-                    "text": "Abdomen and Pelvis",
+                    "text": "External (to vehicle/non-motorist area)",
                     "idCode": "6"
                 },
                 {
-                    "text": "Lower Extremity",
+                    "text": "Other Distraction (animal, food, grooming)",
                     "idCode": "7"
                 },
                 {
-                    "text": "Unspecified",
+                    "text": "Unknown",
                     "idCode": "8"
                 }
             ]
         },
         {
-            "numOptionsAllowed": "0.0",
-            "question": "Injury Diagnosis",
-            "id": "cI2r5cCr",
-            "answerType": "largeTextField",
+            "numOptionsAllowed": "2.0",
+            "question": "Condition at Time of the Crash",
+            "id": "e0ILJxlx",
+            "answerType": "dropdownMultiSelect",
             "display": [
-                "injured"
+                "driver"
             ],
-            "humanReadableId": "injured-6",
-            "helperText": "Description of the injury according to data elements included in teh files being linked such as the body areas and types of injuries listed on the crash and EMS records and/or the ICD-10 codes listed on the hospital discharge records."
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Injury Severity",
-            "id": "2P9l1jv6",
-            "answerType": "multiButton",
-            "display": [
-                "injured"
-            ],
-            "humanReadableId": "injured-7",
+            "humanReadableId": "driver-42",
+            "helperText": "(choose up to 2)",
             "answerOptions": [
-                {
-                    "text": "Fatal",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Serious",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Moderate",
-                    "idCode": "2"
-                },
-                {
-                    "text": "Minor",
-                    "idCode": "3"
-                },
-                {
-                    "text": "No Injury",
-                    "idCode": "4"
-                },
-                {
-                    "text": "Unknown",
-                    "idCode": "5"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Number of Trailing Units",
-            "id": "v2hKXrLM",
-            "answerType": "multiButton",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-0",
-            "helperText": "Note: GVWR is used for single-unit trucks and other body types. GCWR is used for combination trucks or any vehicle with a trailing unit",
-            "answerOptions": [
-                {
-                    "text": "Not Applicable (vehicle with no trailing units)",
-                    "idCode": "0"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Trailer License Plate Number",
-            "id": "JYbuzQwR",
-            "answerType": "header",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-1"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "First Trailer Behind Tractor",
-            "id": "egQodqJa",
-            "answerType": "advancedOpenTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-2",
-            "helperText": "License Plate 1",
-            "autoMethod": "plateCamera"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Second Trailer Behind Tractor",
-            "id": "a2qf2XjZ",
-            "answerType": "advancedOpenTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-3",
-            "helperText": "License Plate 2",
-            "autoMethod": "plateCamera"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Third Trailer Behind Tractor",
-            "id": "KFEcQkVQ",
-            "answerType": "advancedOpenTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-4",
-            "helperText": "License Plate 3",
-            "autoMethod": "plateCamera"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Trailer VIN(s)",
-            "id": "r8SG1obE",
-            "answerType": "header",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-5"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "First Trailer Behind Tractor",
-            "id": "D0BrqlpW",
-            "answerType": "openTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-6",
-            "helperText": "VIN 1"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Second Trailer Behind Tractor",
-            "id": "yiDtkFBK",
-            "answerType": "openTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-7",
-            "helperText": "VIN 2"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Third Trailer Behind Tractor",
-            "id": "ATwAwn30",
-            "answerType": "openTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-8",
-            "helperText": "VIN 3"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Trailer Make(s)",
-            "id": "M67RP5ZC",
-            "answerType": "header",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-9"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "First Trailer Behind Tractor",
-            "id": "qe3GTs9V",
-            "answerType": "openTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-10",
-            "helperText": "Make 1"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Second Trailer Behind Tractor",
-            "id": "PFuQNT9x",
-            "answerType": "openTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-11",
-            "helperText": "Make 2"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Third Trailer Behind Tractor",
-            "id": "C138iqWx",
-            "answerType": "openTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-12",
-            "helperText": "Make 3"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Trailer Model(s)",
-            "id": "kyWnHF0v",
-            "answerType": "header",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-13"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "First Trailer Behind Tractor",
-            "id": "OyEs9Xy3",
-            "answerType": "openTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-14",
-            "helperText": "Model 1"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Second Trailer Behind Tractor",
-            "id": "kmAT27e1",
-            "answerType": "openTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-15",
-            "helperText": "Model 2"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Third Trailer Behind Tractor",
-            "id": "WW5omAi8",
-            "answerType": "openTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-16",
-            "helperText": "Model 3"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Trailer Model Year(s)",
-            "id": "IfLkv5RE",
-            "answerType": "header",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-17"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "First Trailer Behind Tractor",
-            "id": "OhdgRwQU",
-            "answerType": "openTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-18",
-            "helperText": "Year 1"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Second Trailer Behind Tractor",
-            "id": "wZKqv9NK",
-            "answerType": "openTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-19",
-            "helperText": "Year 2"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Third Trailer Behind Tractor",
-            "id": "dbGlqpWA",
-            "answerType": "openTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-20",
-            "helperText": "Year 3"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Motor Carrier Identification",
-            "id": "rzg1l9RU",
-            "answerType": "header",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-21"
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Identification Type",
-            "id": "Ny3vKusE",
-            "answerType": "multiButton",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-22",
-            "answerOptions": [
-                {
-                    "text": "US DOT Number",
-                    "idCode": "0"
-                },
-                {
-                    "text": "State Number",
-                    "idCode": "1"
-                },
                 {
                     "text": "Not Applicable",
-                    "idCode": "2"
-                },
-                {
-                    "text": "Unknown/Unable to Determine",
-                    "idCode": "3"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Country/State Code",
-            "id": "cTcW0ajp",
-            "answerType": "openTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-23",
-            "helperText": "Non-US Country Code (e.g. Mexico or Canada) US State Code"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Identification Number",
-            "id": "U08PiZyq",
-            "answerType": "openTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-24",
-            "helperText": "US DOT Number - up to 7 digits If not a US DOT Number, include State issued Identification Number and State"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "First Name of Motor Carrier",
-            "id": "t9IOgQh1",
-            "answerType": "openTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-25",
-            "helperText": "Motor Carrier Name"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Middle Initial of Motor Carrier",
-            "id": "HO4rWVdw",
-            "answerType": "openTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-26"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Last Name of Motor Carrier",
-            "id": "LckFZxhl",
-            "answerType": "openTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-27"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Motor Carrier Street Address",
-            "id": "L2bjG9Ih",
-            "answerType": "openTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-28",
-            "helperText": "Street Address 1; Street Address 2"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Motor Carrier City/Town",
-            "id": "5TFzoeJL",
-            "answerType": "openTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-29"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Motor Carrier State",
-            "id": "vQBsuEeU",
-            "answerType": "openTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-30"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Motor Carrier ZIP Code",
-            "id": "1WeAldXJ",
-            "answerType": "openTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-31"
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Type of Carrier",
-            "id": "wqRCni8y",
-            "answerType": "multiButton",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-32",
-            "answerOptions": [
-                {
-                    "text": "Interstate Carrier",
                     "idCode": "0"
                 },
                 {
-                    "text": "Intrastate Carrier",
+                    "text": "Asleep or Fatigued",
                     "idCode": "1"
                 },
                 {
-                    "text": "Not in Commerce/Government",
+                    "text": "Emotional (depressed, angry, disturbed, etc.)",
                     "idCode": "2"
                 },
                 {
-                    "text": "Not in Commerce/Other Truck or Bus",
-                    "idCode": "3"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Vehicle Configuration Section",
-            "id": "J4nocKLZ",
-            "answerType": "header",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-33"
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Vehicle Configuration",
-            "id": "QpFA5lgB",
-            "answerType": "dropdown",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-34",
-            "answerOptions": [
-                {
-                    "text": "Vehicle 10,000 lbs. or less placarded for hazardous materials",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Bus/Large Van (seats for 9-15 occupants, including driver)",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Bus (seats more than 15 occupants, including driver)",
-                    "idCode": "2"
-                },
-                {
-                    "text": "Single-Unit Truck (2-axle and GVWR > 10,000 lbs.)",
+                    "text": "Ill (sick), Fainted",
                     "idCode": "3"
                 },
                 {
-                    "text": "Single-Unit Truck (3 or more axles)",
+                    "text": "Physically Impaired",
                     "idCode": "4"
                 },
                 {
-                    "text": "Truck Pulling Trailer(s)",
+                    "text": "Under the Influence of Medications/Drugs/Alcohol",
                     "idCode": "5"
-                },
-                {
-                    "text": "Truck Tractor (Bobtail)",
-                    "idCode": "6"
-                },
-                {
-                    "text": "Truck Tractor/Semi-Trailer",
-                    "idCode": "7"
-                },
-                {
-                    "text": "Truck Tractor/Double",
-                    "idCode": "8"
-                },
-                {
-                    "text": "Truck Tractor/Triple",
-                    "idCode": "9"
-                },
-                {
-                    "text": "Truck More Than 10,000 lbs., cannot classify",
-                    "idCode": "10"
-                },
-                {
-                    "text": "Unknown",
-                    "idCode": "11"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Special Sizing",
-            "id": "IA0pYcQh",
-            "answerType": "multiButton",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-35",
-            "helperText": "(choose up to 4)",
-            "answerOptions": [
-                {
-                    "text": "No special sizing",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Over-height",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Over-length",
-                    "idCode": "2"
-                },
-                {
-                    "text": "Over-weight",
-                    "idCode": "3"
-                },
-                {
-                    "text": "Over-width",
-                    "idCode": "4"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Permitted?",
-            "id": "dijmQNWx",
-            "answerType": "multiButton",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-36",
-            "answerOptions": [
-                {
-                    "text": "Non-Permitted Load",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Permitted Load",
-                    "idCode": "1"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Cargo Body Type",
-            "id": "02UkfUBV",
-            "answerType": "dropdown",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-37",
-            "answerOptions": [
-                {
-                    "text": "No Cargo Body (bobtail, light MV with hazardous materials [HM] placard, etc.)",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Bus",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Auto Transporter",
-                    "idCode": "2"
-                },
-                {
-                    "text": "Cargo Tank",
-                    "idCode": "3"
-                },
-                {
-                    "text": "Concrete Mixer",
-                    "idCode": "4"
-                },
-                {
-                    "text": "Dump",
-                    "idCode": "5"
-                },
-                {
-                    "text": "Flatbed",
-                    "idCode": "6"
-                },
-                {
-                    "text": "Garbage/Refuse",
-                    "idCode": "7"
-                },
-                {
-                    "text": "Grain/Chips/Gravel",
-                    "idCode": "8"
-                },
-                {
-                    "text": "Intermodal Container Chassis",
-                    "idCode": "9"
-                },
-                {
-                    "text": "Log",
-                    "idCode": "10"
-                },
-                {
-                    "text": "Pole-Trailer",
-                    "idCode": "11"
-                },
-                {
-                    "text": "Van/Enclosed Box",
-                    "idCode": "12"
-                },
-                {
-                    "text": "Vehicle Towing Another Vehicle",
-                    "idCode": "13"
-                },
-                {
-                    "text": "Not Applicable (MV 10,000 lbs. or less, not displaying HM placard)",
-                    "idCode": "14"
                 },
                 {
                     "text": "Other",
-                    "idCode": "15"
-                },
-                {
-                    "text": "Unknown",
-                    "idCode": "16"
+                    "idCode": "6"
                 }
             ]
         },
         {
-            "numOptionsAllowed": "0.0",
-            "question": "Hazardous Materials (Cargo Only)",
-            "id": "nMSSxpSP",
-            "answerType": "header",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-38"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Hazardous Materials ID",
-            "id": "N2Ehyq4C",
-            "answerType": "openTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-39"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Hazardous Materials Class",
-            "id": "0rOcRDq2",
-            "answerType": "openTextBox",
-            "display": [
-                "lvhm"
-            ],
-            "humanReadableId": "lvhm-40"
-        },
-        {
             "numOptionsAllowed": "1.0",
-            "question": "Release of hazardous materials from a cargo compartment (e.g. trailer), cargo container (e.g. tank) or from a package?",
-            "id": "A9mGeeGM",
+            "question": "Law Enforcement Suspects Alcohol Use",
+            "id": "9cFGpRmQ",
             "answerType": "multiButton",
             "display": [
-                "lvhm"
+                "driver"
             ],
-            "humanReadableId": "lvhm-41",
+            "humanReadableId": "driver-43",
             "answerOptions": [
                 {
                     "text": "No",
@@ -2619,64 +1386,210 @@ export const questions = {
                     "idCode": "1"
                 },
                 {
-                    "text": "Not Applicable",
+                    "text": "Unknown",
                     "idCode": "2"
-                },
-                {
-                    "text": "Unknown if Released",
-                    "idCode": "3"
                 }
             ]
         },
         {
             "numOptionsAllowed": "0.0",
-            "question": "Total Number of Axles",
-            "id": "pXkp77Gw",
+            "question": "Alcohol Test",
+            "id": "bSmmCoMw",
             "answerType": "header",
             "display": [
-                "lvhm"
+                "driver"
             ],
-            "humanReadableId": "lvhm-42"
+            "humanReadableId": "driver-44",
+            "questionDependency": [
+                {
+                    "dependencyUid": "9cFGpRmQ",
+                    "dependencyOptionCode": "1"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1.0",
+            "question": "Test Status",
+            "id": "uTZ8u8an",
+            "answerType": "multiButton",
+            "display": [
+                "driver"
+            ],
+            "humanReadableId": "driver-45",
+            "questionDependency": [
+                {
+                    "dependencyUid": "9cFGpRmQ",
+                    "dependencyOptionCode": "1"
+                }
+            ],
+            "answerOptions": [
+                {
+                    "text": "Test Not Given",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Test Given",
+                    "idCode": "1"
+                },
+                {
+                    "text": "Test Refused",
+                    "idCode": "2"
+                },
+                {
+                    "text": "Unknown if Tested",
+                    "idCode": "3"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1.0",
+            "question": "Type of Test",
+            "id": "Um6CdyUJ",
+            "answerType": "multiButton",
+            "display": [
+                "driver"
+            ],
+            "humanReadableId": "driver-46",
+            "questionDependency": [
+                {
+                    "dependencyUid": "9cFGpRmQ",
+                    "dependencyOptionCode": "1"
+                }
+            ],
+            "answerOptions": [
+                {
+                    "text": "Not Applicable (Test Not Given)",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Blood",
+                    "idCode": "1"
+                },
+                {
+                    "text": "Breath",
+                    "idCode": "2"
+                },
+                {
+                    "text": "Urine",
+                    "idCode": "3"
+                },
+                {
+                    "text": "Other",
+                    "idCode": "4"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1.0",
+            "question": "Law Enforcement Suspects Drug Use",
+            "id": "qlTVIWWS",
+            "answerType": "multiButton",
+            "display": [
+                "driver"
+            ],
+            "humanReadableId": "driver-47",
+            "answerOptions": [
+                {
+                    "text": "No",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Yes",
+                    "idCode": "1"
+                },
+                {
+                    "text": "Unknown",
+                    "idCode": "2"
+                }
+            ]
         },
         {
             "numOptionsAllowed": "0.0",
-            "question": "Truck Tractor",
-            "id": "SsyJwusb",
-            "answerType": "openTextBox",
+            "question": "Drug Test",
+            "id": "pn39hf9z",
+            "answerType": "header",
             "display": [
-                "lvhm"
+                "driver"
             ],
-            "humanReadableId": "lvhm-43"
+            "humanReadableId": "driver-48",
+            "questionDependency": [
+                {
+                    "dependencyUid": "qlTVIWWS",
+                    "dependencyOptionCode": "1"
+                }
+            ]
         },
         {
-            "numOptionsAllowed": "0.0",
-            "question": "First Trailer Behind Tractor",
-            "id": "yI9VbYC2",
-            "answerType": "openTextBox",
+            "numOptionsAllowed": "1.0",
+            "question": "Test Status",
+            "id": "nCXTPsU5",
+            "answerType": "multiButton",
             "display": [
-                "lvhm"
+                "driver"
             ],
-            "humanReadableId": "lvhm-44"
+            "humanReadableId": "driver-49",
+            "questionDependency": [
+                {
+                    "dependencyUid": "qlTVIWWS",
+                    "dependencyOptionCode": "1"
+                }
+            ],
+            "answerOptions": [
+                {
+                    "text": "Test Not Given",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Test Given",
+                    "idCode": "1"
+                },
+                {
+                    "text": "Test Refused",
+                    "idCode": "2"
+                },
+                {
+                    "text": "Unknown if Tested",
+                    "idCode": "3"
+                }
+            ]
         },
         {
-            "numOptionsAllowed": "0.0",
-            "question": "Second Trailer Behind Tractor",
-            "id": "eXtaPPIL",
-            "answerType": "openTextBox",
+            "numOptionsAllowed": "1.0",
+            "question": "Type of Test",
+            "id": "QUYxXsUT",
+            "answerType": "multiButton",
             "display": [
-                "lvhm"
+                "driver"
             ],
-            "humanReadableId": "lvhm-45"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Third Trailer Behind Tractor",
-            "id": "mHrVtCEz",
-            "answerType": "openTextBox",
-            "display": [
-                "lvhm"
+            "humanReadableId": "driver-50",
+            "questionDependency": [
+                {
+                    "dependencyUid": "qlTVIWWS",
+                    "dependencyOptionCode": "1"
+                }
             ],
-            "humanReadableId": "lvhm-46"
+            "answerOptions": [
+                {
+                    "text": "Not Applicable (Test Not Given)",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Blood",
+                    "idCode": "1"
+                },
+                {
+                    "text": "Saliva",
+                    "idCode": "2"
+                },
+                {
+                    "text": "Urine",
+                    "idCode": "3"
+                },
+                {
+                    "text": "Other",
+                    "idCode": "4"
+                }
+            ]
         },
         {
             "numOptionsAllowed": "0.0",
@@ -2929,13 +1842,179 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "0.0",
+            "question": "Transported to First Medical Facility By",
+            "id": "0yuO9rxr",
+            "answerType": "header",
+            "display": [
+                "nonmotorist"
+            ],
+            "humanReadableId": "nonmotorist-15",
+            "questionDependency": [
+                {
+                    "dependencyUid": "WRishqwU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "WRishqwU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "WRishqwU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "WRishqwU",
+                    "dependencyOptionCode": "3"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1.0",
+            "question": "Source of Transport to First Medical Facility",
+            "id": "Kb53Ie1J",
+            "answerType": "multiButton",
+            "display": [
+                "nonmotorist"
+            ],
+            "humanReadableId": "nonmotorist-16",
+            "questionDependency": [
+                {
+                    "dependencyUid": "WRishqwU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "WRishqwU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "WRishqwU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "WRishqwU",
+                    "dependencyOptionCode": "3"
+                }
+            ],
+            "answerOptions": [
+                {
+                    "text": "Not Transported",
+                    "idCode": "0"
+                },
+                {
+                    "text": "EMS Air",
+                    "idCode": "1"
+                },
+                {
+                    "text": "EMS Ground",
+                    "idCode": "2"
+                },
+                {
+                    "text": "Law Enforcement",
+                    "idCode": "3"
+                },
+                {
+                    "text": "Other",
+                    "idCode": "4"
+                },
+                {
+                    "text": "Unknown",
+                    "idCode": "5"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "EMS Response Agency Identifier",
+            "id": "ooSKnRtS",
+            "answerType": "openTextBox",
+            "display": [
+                "nonmotorist"
+            ],
+            "humanReadableId": "nonmotorist-17",
+            "questionDependency": [
+                {
+                    "dependencyUid": "WRishqwU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "WRishqwU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "WRishqwU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "WRishqwU",
+                    "dependencyOptionCode": "3"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "EMS Response Run Number",
+            "id": "kWoq6gRR",
+            "answerType": "openTextBox",
+            "display": [
+                "nonmotorist"
+            ],
+            "humanReadableId": "nonmotorist-18",
+            "questionDependency": [
+                {
+                    "dependencyUid": "WRishqwU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "WRishqwU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "WRishqwU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "WRishqwU",
+                    "dependencyOptionCode": "3"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Medical Facility Receiving Patient",
+            "id": "GmOcudA0",
+            "answerType": "openTextBox",
+            "display": [
+                "nonmotorist"
+            ],
+            "humanReadableId": "nonmotorist-19",
+            "questionDependency": [
+                {
+                    "dependencyUid": "WRishqwU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "WRishqwU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "WRishqwU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "WRishqwU",
+                    "dependencyOptionCode": "3"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
             "question": "Distracted By",
             "id": "qNaBDuaT",
             "answerType": "header",
             "display": [
                 "nonmotorist"
             ],
-            "humanReadableId": "nonmotorist-15"
+            "humanReadableId": "nonmotorist-20"
         },
         {
             "numOptionsAllowed": "1.0",
@@ -2945,7 +2024,7 @@ export const questions = {
             "display": [
                 "nonmotorist"
             ],
-            "humanReadableId": "nonmotorist-16",
+            "humanReadableId": "nonmotorist-21",
             "answerOptions": [
                 {
                     "text": "Not Distracted",
@@ -2977,7 +2056,25 @@ export const questions = {
             "display": [
                 "nonmotorist"
             ],
-            "humanReadableId": "nonmotorist-17",
+            "humanReadableId": "nonmotorist-22",
+            "questionDependency": [
+                {
+                    "dependencyUid": "0ZnIFZ0X",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "0ZnIFZ0X",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "0ZnIFZ0X",
+                    "dependencyOptionCode": "3"
+                },
+                {
+                    "dependencyUid": "0ZnIFZ0X",
+                    "dependencyOptionCode": "4"
+                }
+            ],
             "answerOptions": [
                 {
                     "text": "Not Applicable (Not Distracted)",
@@ -3025,7 +2122,7 @@ export const questions = {
             "display": [
                 "nonmotorist"
             ],
-            "humanReadableId": "nonmotorist-18",
+            "humanReadableId": "nonmotorist-23",
             "helperText": "(choose up to 2)",
             "answerOptions": [
                 {
@@ -3066,7 +2163,7 @@ export const questions = {
             "display": [
                 "nonmotorist"
             ],
-            "humanReadableId": "nonmotorist-19",
+            "humanReadableId": "nonmotorist-24",
             "answerOptions": [
                 {
                     "text": "No",
@@ -3090,17 +2187,29 @@ export const questions = {
             "display": [
                 "nonmotorist"
             ],
-            "humanReadableId": "nonmotorist-20"
+            "humanReadableId": "nonmotorist-25",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ski3jtpd",
+                    "dependencyOptionCode": "1"
+                }
+            ]
         },
         {
             "numOptionsAllowed": "1.0",
-            "question": "Test Status (1)",
+            "question": "Test Status",
             "id": "eweonIMI",
             "answerType": "multiButton",
             "display": [
                 "nonmotorist"
             ],
-            "humanReadableId": "nonmotorist-21",
+            "humanReadableId": "nonmotorist-26",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ski3jtpd",
+                    "dependencyOptionCode": "1"
+                }
+            ],
             "answerOptions": [
                 {
                     "text": "Test Not Given",
@@ -3122,13 +2231,19 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1.0",
-            "question": "Type of Test (1)",
+            "question": "Type of Test",
             "id": "mZGcJRTW",
             "answerType": "multiButton",
             "display": [
                 "nonmotorist"
             ],
-            "humanReadableId": "nonmotorist-22",
+            "humanReadableId": "nonmotorist-27",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ski3jtpd",
+                    "dependencyOptionCode": "1"
+                }
+            ],
             "answerOptions": [
                 {
                     "text": "Not Applicable (Test Not Given)",
@@ -3160,7 +2275,7 @@ export const questions = {
             "display": [
                 "nonmotorist"
             ],
-            "humanReadableId": "nonmotorist-23",
+            "humanReadableId": "nonmotorist-28",
             "answerOptions": [
                 {
                     "text": "No",
@@ -3184,17 +2299,29 @@ export const questions = {
             "display": [
                 "nonmotorist"
             ],
-            "humanReadableId": "nonmotorist-24"
+            "humanReadableId": "nonmotorist-29",
+            "questionDependency": [
+                {
+                    "dependencyUid": "Qenr80I4",
+                    "dependencyOptionCode": "1"
+                }
+            ]
         },
         {
             "numOptionsAllowed": "1.0",
-            "question": "Test Status (2)",
+            "question": "Test Status",
             "id": "uqQGx3Rc",
             "answerType": "multiButton",
             "display": [
                 "nonmotorist"
             ],
-            "humanReadableId": "nonmotorist-25",
+            "humanReadableId": "nonmotorist-30",
+            "questionDependency": [
+                {
+                    "dependencyUid": "Qenr80I4",
+                    "dependencyOptionCode": "1"
+                }
+            ],
             "answerOptions": [
                 {
                     "text": "Test Not Given",
@@ -3216,13 +2343,19 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1.0",
-            "question": "Type of Test (2)",
+            "question": "Type of Test",
             "id": "cYXv5Qkz",
             "answerType": "multiButton",
             "display": [
                 "nonmotorist"
             ],
-            "humanReadableId": "nonmotorist-26",
+            "humanReadableId": "nonmotorist-31",
+            "questionDependency": [
+                {
+                    "dependencyUid": "Qenr80I4",
+                    "dependencyOptionCode": "1"
+                }
+            ],
             "answerOptions": [
                 {
                     "text": "Not Applicable (Test Not Given)",
@@ -3254,7 +2387,7 @@ export const questions = {
             "display": [
                 "nonmotorist"
             ],
-            "humanReadableId": "nonmotorist-27",
+            "humanReadableId": "nonmotorist-32",
             "helperText": "(e.g. '2' for Vehicle 2)"
         },
         {
@@ -3265,7 +2398,7 @@ export const questions = {
             "display": [
                 "nonmotorist"
             ],
-            "humanReadableId": "nonmotorist-28"
+            "humanReadableId": "nonmotorist-33"
         },
         {
             "numOptionsAllowed": "1.0",
@@ -3275,7 +2408,7 @@ export const questions = {
             "display": [
                 "nonmotorist"
             ],
-            "humanReadableId": "nonmotorist-29",
+            "humanReadableId": "nonmotorist-34",
             "answerOptions": [
                 {
                     "text": "None",
@@ -3331,7 +2464,7 @@ export const questions = {
             "display": [
                 "nonmotorist"
             ],
-            "humanReadableId": "nonmotorist-30",
+            "humanReadableId": "nonmotorist-35",
             "answerOptions": [
                 {
                     "text": "Going to or from School (K-12)",
@@ -3359,7 +2492,7 @@ export const questions = {
             "display": [
                 "nonmotorist"
             ],
-            "humanReadableId": "nonmotorist-31",
+            "humanReadableId": "nonmotorist-36",
             "helperText": "(choose up to 2)",
             "answerOptions": [
                 {
@@ -3424,7 +2557,7 @@ export const questions = {
             "display": [
                 "nonmotorist"
             ],
-            "humanReadableId": "nonmotorist-32",
+            "humanReadableId": "nonmotorist-37",
             "answerOptions": [
                 {
                     "text": "Intersection - Marked Crosswalk",
@@ -3512,7 +2645,7 @@ export const questions = {
             "display": [
                 "nonmotorist"
             ],
-            "humanReadableId": "nonmotorist-33",
+            "humanReadableId": "nonmotorist-38",
             "helperText": "(choose up to 5)",
             "answerOptions": [
                 {
@@ -3557,7 +2690,7 @@ export const questions = {
             "display": [
                 "nonmotorist"
             ],
-            "humanReadableId": "nonmotorist-34",
+            "humanReadableId": "nonmotorist-39",
             "answerOptions": [
                 {
                     "text": "Right",
@@ -3668,41 +2801,13 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1.0",
-            "question": "Person Type",
-            "id": "ra4aKktz",
-            "answerType": "dropdown",
-            "display": [
-                "passenger"
-            ],
-            "humanReadableId": "passenger-7",
-            "answerOptions": [
-                {
-                    "text": "Driver",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Passenger",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Occupant of MV Not in Transport",
-                    "idCode": "2"
-                },
-                {
-                    "text": "Unknown",
-                    "idCode": "3"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "1.0",
             "question": "Incident Responder?",
             "id": "Egrsk6Sq",
             "answerType": "dropdown",
             "display": [
                 "passenger"
             ],
-            "humanReadableId": "passenger-8",
+            "humanReadableId": "passenger-7",
             "answerOptions": [
                 {
                     "text": "No",
@@ -3746,7 +2851,7 @@ export const questions = {
             "display": [
                 "passenger"
             ],
-            "humanReadableId": "passenger-9",
+            "humanReadableId": "passenger-8",
             "answerOptions": [
                 {
                     "text": "Fatal Injury",
@@ -3771,6 +2876,172 @@ export const questions = {
             ]
         },
         {
+            "numOptionsAllowed": "0.0",
+            "question": "Transported to First Medical Facility By",
+            "id": "9jb9tSFj",
+            "answerType": "header",
+            "display": [
+                "passenger"
+            ],
+            "humanReadableId": "passenger-9",
+            "questionDependency": [
+                {
+                    "dependencyUid": "NJqVP8AH",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "NJqVP8AH",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "NJqVP8AH",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "NJqVP8AH",
+                    "dependencyOptionCode": "3"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1.0",
+            "question": "Source of Transport to First Medical Facility",
+            "id": "rUHV0P0f",
+            "answerType": "multiButton",
+            "display": [
+                "passenger"
+            ],
+            "humanReadableId": "passenger-10",
+            "questionDependency": [
+                {
+                    "dependencyUid": "NJqVP8AH",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "NJqVP8AH",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "NJqVP8AH",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "NJqVP8AH",
+                    "dependencyOptionCode": "3"
+                }
+            ],
+            "answerOptions": [
+                {
+                    "text": "Not Transported",
+                    "idCode": "0"
+                },
+                {
+                    "text": "EMS Air",
+                    "idCode": "1"
+                },
+                {
+                    "text": "EMS Ground",
+                    "idCode": "2"
+                },
+                {
+                    "text": "Law Enforcement",
+                    "idCode": "3"
+                },
+                {
+                    "text": "Other",
+                    "idCode": "4"
+                },
+                {
+                    "text": "Unknown",
+                    "idCode": "5"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "EMS Response Agency Identifier",
+            "id": "APIIAFBl",
+            "answerType": "openTextBox",
+            "display": [
+                "passenger"
+            ],
+            "humanReadableId": "passenger-11",
+            "questionDependency": [
+                {
+                    "dependencyUid": "NJqVP8AH",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "NJqVP8AH",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "NJqVP8AH",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "NJqVP8AH",
+                    "dependencyOptionCode": "3"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "EMS Response Run Number",
+            "id": "JG0Hd2zf",
+            "answerType": "openTextBox",
+            "display": [
+                "passenger"
+            ],
+            "humanReadableId": "passenger-12",
+            "questionDependency": [
+                {
+                    "dependencyUid": "NJqVP8AH",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "NJqVP8AH",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "NJqVP8AH",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "NJqVP8AH",
+                    "dependencyOptionCode": "3"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Medical Facility Receiving Patient",
+            "id": "PDEPIwFO",
+            "answerType": "openTextBox",
+            "display": [
+                "passenger"
+            ],
+            "humanReadableId": "passenger-13",
+            "questionDependency": [
+                {
+                    "dependencyUid": "NJqVP8AH",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "NJqVP8AH",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "NJqVP8AH",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "NJqVP8AH",
+                    "dependencyOptionCode": "3"
+                }
+            ]
+        },
+        {
             "numOptionsAllowed": "2.0",
             "question": "Seating Position",
             "id": "wecg2msi",
@@ -3778,7 +3049,7 @@ export const questions = {
             "display": [
                 "passenger"
             ],
-            "humanReadableId": "passenger-10",
+            "humanReadableId": "passenger-14",
             "helperText": "(choose up to 2)",
             "answerOptions": [
                 {
@@ -3859,7 +3130,7 @@ export const questions = {
             "display": [
                 "passenger"
             ],
-            "humanReadableId": "passenger-11",
+            "humanReadableId": "passenger-15",
             "answerOptions": [
                 {
                     "text": "Booster Seat",
@@ -3943,7 +3214,7 @@ export const questions = {
             "display": [
                 "passenger"
             ],
-            "humanReadableId": "passenger-12",
+            "humanReadableId": "passenger-16",
             "answerOptions": [
                 {
                     "text": "No",
@@ -3957,13 +3228,13 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "4.0",
-            "question": "Air Bag Deployed",
+            "question": "Air Bag Deployed?",
             "id": "ExMu8mbw",
             "answerType": "dropdownMultiSelect",
             "display": [
                 "passenger"
             ],
-            "humanReadableId": "passenger-13",
+            "humanReadableId": "passenger-17",
             "helperText": "(choose up to 4)",
             "answerOptions": [
                 {
@@ -3998,13 +3269,13 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1.0",
-            "question": "Ejection",
+            "question": "Ejection?",
             "id": "5sp9e45O",
             "answerType": "multiButton",
             "display": [
                 "passenger"
             ],
-            "humanReadableId": "passenger-14",
+            "humanReadableId": "passenger-18",
             "answerOptions": [
                 {
                     "text": "Not Ejected",
@@ -4049,6 +3320,42 @@ export const questions = {
             "humanReadableId": "road-1"
         },
         {
+            "numOptionsAllowed": "1.0",
+            "question": "Crash Severity",
+            "id": "8dY73Yzs",
+            "answerType": "multiButton",
+            "display": [
+                "road"
+            ],
+            "humanReadableId": "road-2",
+            "answerOptions": [
+                {
+                    "text": "Fatal Injury",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Suspected Serious Injury",
+                    "idCode": "1"
+                },
+                {
+                    "text": "Suspected Minor Injury",
+                    "idCode": "2"
+                },
+                {
+                    "text": "Possible Injury",
+                    "idCode": "3"
+                },
+                {
+                    "text": "Property Damage-Only",
+                    "idCode": "4"
+                },
+                {
+                    "text": "Unknown",
+                    "idCode": "5"
+                }
+            ]
+        },
+        {
             "numOptionsAllowed": "0.0",
             "question": "Crash Classification",
             "id": "E79ZNLXO",
@@ -4056,7 +3363,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-2"
+            "humanReadableId": "road-3"
         },
         {
             "numOptionsAllowed": "1.0",
@@ -4066,7 +3373,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-3",
+            "humanReadableId": "road-4",
             "answerOptions": [
                 {
                     "text": "Public Property",
@@ -4086,7 +3393,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-4",
+            "humanReadableId": "road-5",
             "answerOptions": [
                 {
                     "text": "Trafficway, On Road",
@@ -4110,7 +3417,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-5",
+            "humanReadableId": "road-6",
             "answerOptions": [
                 {
                     "text": "No",
@@ -4130,7 +3437,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-6"
+            "humanReadableId": "road-7"
         },
         {
             "numOptionsAllowed": "0.0",
@@ -4140,7 +3447,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-7",
+            "humanReadableId": "road-8",
             "helperText": "(YYYYMMDDHHMM)",
             "autoMethod": "time"
         },
@@ -4152,18 +3459,261 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-8",
+            "humanReadableId": "road-9",
             "helperText": "(HHMM)"
         },
         {
-            "numOptionsAllowed": "0.0",
-            "question": "Crash County",
-            "id": "8V2H4hT4",
-            "answerType": "openTextBox",
+            "numOptionsAllowed": "1.0",
+            "question": "Crash State",
+            "id": "Sl6ypLYA",
+            "answerType": "dropdown",
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-9"
+            "humanReadableId": "road-10",
+            "answerOptions": [
+                {
+                    "text": "Alabama",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Alaska",
+                    "idCode": "1"
+                },
+                {
+                    "text": "American Samoa",
+                    "idCode": "2"
+                },
+                {
+                    "text": "Arizona",
+                    "idCode": "3"
+                },
+                {
+                    "text": "Arkansas",
+                    "idCode": "4"
+                },
+                {
+                    "text": "California",
+                    "idCode": "5"
+                },
+                {
+                    "text": "Colorado",
+                    "idCode": "6"
+                },
+                {
+                    "text": "Commonwealth of the Northern Mariana Islands",
+                    "idCode": "7"
+                },
+                {
+                    "text": "Connecticut",
+                    "idCode": "8"
+                },
+                {
+                    "text": "Delaware",
+                    "idCode": "9"
+                },
+                {
+                    "text": "District of Columbia",
+                    "idCode": "10"
+                },
+                {
+                    "text": "Florida",
+                    "idCode": "11"
+                },
+                {
+                    "text": "Georgia",
+                    "idCode": "12"
+                },
+                {
+                    "text": "Guam",
+                    "idCode": "13"
+                },
+                {
+                    "text": "Hawaii",
+                    "idCode": "14"
+                },
+                {
+                    "text": "Idaho",
+                    "idCode": "15"
+                },
+                {
+                    "text": "Illinois",
+                    "idCode": "16"
+                },
+                {
+                    "text": "Indiana",
+                    "idCode": "17"
+                },
+                {
+                    "text": "Iowa",
+                    "idCode": "18"
+                },
+                {
+                    "text": "Kansas",
+                    "idCode": "19"
+                },
+                {
+                    "text": "Kentucky",
+                    "idCode": "20"
+                },
+                {
+                    "text": "Louisiana",
+                    "idCode": "21"
+                },
+                {
+                    "text": "Maine",
+                    "idCode": "22"
+                },
+                {
+                    "text": "Maryland",
+                    "idCode": "23"
+                },
+                {
+                    "text": "Massachusetts",
+                    "idCode": "24"
+                },
+                {
+                    "text": "Michigan",
+                    "idCode": "25"
+                },
+                {
+                    "text": "Minnesota",
+                    "idCode": "26"
+                },
+                {
+                    "text": "Mississippi",
+                    "idCode": "27"
+                },
+                {
+                    "text": "Missouri",
+                    "idCode": "28"
+                },
+                {
+                    "text": "Montana",
+                    "idCode": "29"
+                },
+                {
+                    "text": "Nebraska",
+                    "idCode": "30"
+                },
+                {
+                    "text": "Nevada",
+                    "idCode": "31"
+                },
+                {
+                    "text": "New Hampshire",
+                    "idCode": "32"
+                },
+                {
+                    "text": "New Jersey",
+                    "idCode": "33"
+                },
+                {
+                    "text": "New Mexico",
+                    "idCode": "34"
+                },
+                {
+                    "text": "New York",
+                    "idCode": "35"
+                },
+                {
+                    "text": "North Carolina",
+                    "idCode": "36"
+                },
+                {
+                    "text": "North Dakota",
+                    "idCode": "37"
+                },
+                {
+                    "text": "Ohio",
+                    "idCode": "38"
+                },
+                {
+                    "text": "Oklahoma",
+                    "idCode": "39"
+                },
+                {
+                    "text": "Oregon",
+                    "idCode": "40"
+                },
+                {
+                    "text": "Pennsylvania",
+                    "idCode": "41"
+                },
+                {
+                    "text": "Puerto Rico",
+                    "idCode": "42"
+                },
+                {
+                    "text": "Rhode Island",
+                    "idCode": "43"
+                },
+                {
+                    "text": "South Carolina",
+                    "idCode": "44"
+                },
+                {
+                    "text": "South Dakota",
+                    "idCode": "45"
+                },
+                {
+                    "text": "Tennessee",
+                    "idCode": "46"
+                },
+                {
+                    "text": "Texas",
+                    "idCode": "47"
+                },
+                {
+                    "text": "United States Virgin Islands",
+                    "idCode": "48"
+                },
+                {
+                    "text": "Utah",
+                    "idCode": "49"
+                },
+                {
+                    "text": "Vermont",
+                    "idCode": "50"
+                },
+                {
+                    "text": "Virginia",
+                    "idCode": "51"
+                },
+                {
+                    "text": "Washington",
+                    "idCode": "52"
+                },
+                {
+                    "text": "West Virginia",
+                    "idCode": "53"
+                },
+                {
+                    "text": "Wisconsin",
+                    "idCode": "54"
+                },
+                {
+                    "text": "Wyoming",
+                    "idCode": "55"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1.0",
+            "question": "Crash County",
+            "id": "8V2H4hT4",
+            "answerType": "countyDropDown",
+            "display": [
+                "road"
+            ],
+            "humanReadableId": "road-11",
+            "autoMethod": "county",
+            "questionDependency": [
+                {
+                    "dependencyUid": "Sl6ypLYA",
+                    "dependencyOptionCode": " "
+                }
+            ]
         },
         {
             "numOptionsAllowed": "0.0",
@@ -4173,7 +3723,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-10",
+            "humanReadableId": "road-12",
             "helperText": "(Political Jurisdiction)"
         },
         {
@@ -4184,7 +3734,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-11"
+            "humanReadableId": "road-13"
         },
         {
             "numOptionsAllowed": "0.0",
@@ -4194,7 +3744,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-12",
+            "humanReadableId": "road-14",
             "helperText": "(degrees.minutes.seconds + compass direction)",
             "autoMethod": "map"
         },
@@ -4206,7 +3756,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-13",
+            "humanReadableId": "road-15",
             "helperText": "(degrees.minutes.seconds + compass direction)",
             "autoMethod": "map"
         },
@@ -4218,7 +3768,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-14",
+            "humanReadableId": "road-16",
             "helperText": "Non-Collision Harmful Events; Collision With Person, Motor Vehicle, or Non-Fixed Object; Collision with Fixed Object",
             "answerOptions": [
                 {
@@ -4399,7 +3949,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-15",
+            "humanReadableId": "road-17",
             "answerOptions": [
                 {
                     "text": "Gore",
@@ -4455,7 +4005,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-16",
+            "humanReadableId": "road-18",
             "answerOptions": [
                 {
                     "text": "Not a Collision between Two Motor Vehicles In-transport",
@@ -4515,7 +4065,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-17"
+            "humanReadableId": "road-19"
         },
         {
             "numOptionsAllowed": "1.0",
@@ -4525,7 +4075,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-18",
+            "humanReadableId": "road-20",
             "answerOptions": [
                 {
                     "text": "Law Enforcement Agency",
@@ -4545,7 +4095,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-19",
+            "humanReadableId": "road-21",
             "helperText": "9 character NCIC Originating Agency Identifier"
         },
         {
@@ -4556,7 +4106,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-20",
+            "humanReadableId": "road-22",
             "helperText": "(choose up to 2)",
             "autoMethod": "weather",
             "answerOptions": [
@@ -4618,7 +4168,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-21",
+            "humanReadableId": "road-23",
             "answerOptions": [
                 {
                     "text": "Daylight",
@@ -4658,7 +4208,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-22",
+            "humanReadableId": "road-24",
             "answerOptions": [
                 {
                     "text": "Dry",
@@ -4714,7 +4264,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-23",
+            "humanReadableId": "road-25",
             "helperText": "(choose up to 2)",
             "answerOptions": [
                 {
@@ -4811,7 +4361,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-24"
+            "humanReadableId": "road-26"
         },
         {
             "numOptionsAllowed": "1.0",
@@ -4821,7 +4371,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-25",
+            "humanReadableId": "road-27",
             "answerOptions": [
                 {
                     "text": "No",
@@ -4845,7 +4395,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-26",
+            "humanReadableId": "road-28",
             "answerOptions": [
                 {
                     "text": "Not an Interchange Area",
@@ -4905,7 +4455,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-27"
+            "humanReadableId": "road-29"
         },
         {
             "numOptionsAllowed": "1.0",
@@ -4915,7 +4465,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-28",
+            "humanReadableId": "road-30",
             "answerOptions": [
                 {
                     "text": "Not an Intersection",
@@ -4947,7 +4497,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-29",
+            "humanReadableId": "road-31",
             "answerOptions": [
                 {
                     "text": "Angled/Skewed",
@@ -4975,7 +4525,7 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-30",
+            "humanReadableId": "road-32",
             "answerOptions": [
                 {
                     "text": "Signalized",
@@ -5005,54 +4555,8 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1.0",
-            "question": "Crash Severity",
-            "id": "8dY73Yzs",
-            "answerType": "multiButton",
-            "display": [
-                "road"
-            ],
-            "humanReadableId": "road-31",
-            "answerOptions": [
-                {
-                    "text": "Fatal Injury",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Suspected Serious Injury",
-                    "idCode": "1"
-                },
-                {
-                    "text": "Suspected Minor Injury",
-                    "idCode": "2"
-                },
-                {
-                    "text": "Possible Injury",
-                    "idCode": "3"
-                },
-                {
-                    "text": "Property Damage-Only",
-                    "idCode": "4"
-                },
-                {
-                    "text": "Unknown",
-                    "idCode": "5"
-                }
-            ]
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Number of Non-Fatally Injured Persons",
-            "id": "PPxIpVat",
-            "answerType": "openTextBox",
-            "display": [
-                "road"
-            ],
-            "humanReadableId": "road-32"
-        },
-        {
-            "numOptionsAllowed": "1.0",
-            "question": "Alcohol Involvement",
-            "id": "8pdkF3He",
+            "question": "School Bus-Related?",
+            "id": "gDFQkFn9",
             "answerType": "multiButton",
             "display": [
                 "road"
@@ -5064,19 +4568,19 @@ export const questions = {
                     "idCode": "0"
                 },
                 {
-                    "text": "Yes",
+                    "text": "Yes, School Bus Directly Involved",
                     "idCode": "1"
                 },
                 {
-                    "text": "Unknown",
+                    "text": "Yes, School Bus Indirectly Involved",
                     "idCode": "2"
                 }
             ]
         },
         {
             "numOptionsAllowed": "1.0",
-            "question": "Drug Involvement",
-            "id": "tJhmN6cf",
+            "question": "Was the crash in a construction, maintenance, or utility work zone or was it related to activity within a work zone?",
+            "id": "34oHCyQs",
             "answerType": "multiButton",
             "display": [
                 "road"
@@ -5099,53 +4603,120 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "0.0",
-            "question": "Crash Description",
-            "id": "KxicONP1",
-            "answerType": "largeTextField",
+            "question": "Work Zone-Related",
+            "id": "DtJB6lqd",
+            "answerType": "header",
             "display": [
                 "road"
             ],
-            "humanReadableId": "road-35"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Crash Diagram",
-            "id": "Irw1bO5M",
-            "answerType": "largeTextField",
-            "display": [
-                "road"
-            ],
-            "humanReadableId": "road-36"
-        },
-        {
-            "numOptionsAllowed": "1",
-            "question": "Ownership",
-            "id": "pT0Wq1RO",
-            "answerType": "multiButton",
-            "display": [
-                "setup"
-            ],
-            "humanReadableId": "road-3",
-            "answerOptions": [
+            "humanReadableId": "road-35",
+            "helperText": "(Constrution/Maintenance/Utility)",
+            "questionDependency": [
                 {
-                    "text": "Public Property",
-                    "idCode": "0"
-                },
-                {
-                    "text": "Private Property",
-                    "idCode": "1"
+                    "dependencyUid": "34oHCyQs",
+                    "dependencyOptionCode": "1"
                 }
             ]
         },
         {
-            "numOptionsAllowed": "1",
-            "question": "Secondary Crash",
-            "id": "A6uoXDGb",
+            "numOptionsAllowed": "1.0",
+            "question": "Location of the Crash",
+            "id": "H8Nc9OMd",
+            "answerType": "dropdown",
+            "display": [
+                "road"
+            ],
+            "humanReadableId": "road-36",
+            "questionDependency": [
+                {
+                    "dependencyUid": "34oHCyQs",
+                    "dependencyOptionCode": "1"
+                }
+            ],
+            "answerOptions": [
+                {
+                    "text": "Before the First Work Zone Warning Sign",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Advance Warning Area",
+                    "idCode": "1"
+                },
+                {
+                    "text": "Transition Area",
+                    "idCode": "2"
+                },
+                {
+                    "text": "Activity Area",
+                    "idCode": "3"
+                },
+                {
+                    "text": "Termination Area",
+                    "idCode": "4"
+                },
+                {
+                    "text": "Not Applicable/Not Within or Related to a Work Zone",
+                    "idCode": "5"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1.0",
+            "question": "Type of Work Zone",
+            "id": "h6LUiplf",
+            "answerType": "dropdown",
+            "display": [
+                "road"
+            ],
+            "humanReadableId": "road-37",
+            "questionDependency": [
+                {
+                    "dependencyUid": "34oHCyQs",
+                    "dependencyOptionCode": "1"
+                }
+            ],
+            "answerOptions": [
+                {
+                    "text": "Lane Closure",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Lane Shift/Crossover",
+                    "idCode": "1"
+                },
+                {
+                    "text": "Work on Shoulder or Median",
+                    "idCode": "2"
+                },
+                {
+                    "text": "Intermittent or Moving Work",
+                    "idCode": "3"
+                },
+                {
+                    "text": "Other Type of Work Zone",
+                    "idCode": "4"
+                },
+                {
+                    "text": "Not Applicable/Not Within or Related to a Work Zone",
+                    "idCode": "5"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1.0",
+            "question": "Workers Present?",
+            "id": "3pIa77uR",
             "answerType": "multiButton",
             "display": [
-                "setup"
+                "road"
             ],
-            "humanReadableId": "road-5",
+            "humanReadableId": "road-38",
+            "questionDependency": [
+                {
+                    "dependencyUid": "34oHCyQs",
+                    "dependencyOptionCode": "1"
+                }
+            ],
             "answerOptions": [
                 {
                     "text": "No",
@@ -5154,44 +4725,56 @@ export const questions = {
                 {
                     "text": "Yes",
                     "idCode": "1"
+                },
+                {
+                    "text": "Not Applicable/Not Within or Related to a Work Zone",
+                    "idCode": "2"
+                },
+                {
+                    "text": "Unknown",
+                    "idCode": "3"
                 }
             ]
         },
         {
-            "numOptionsAllowed": "1",
-            "question": "Crash Severity",
-            "id": "8dY73Yzs",
+            "numOptionsAllowed": "1.0",
+            "question": "Law Enforcement Present?",
+            "id": "NvS2JTFP",
             "answerType": "multiButton",
             "display": [
-                "setup"
+                "road"
             ],
-            "humanReadableId": "road-31",
+            "humanReadableId": "road-39",
+            "questionDependency": [
+                {
+                    "dependencyUid": "34oHCyQs",
+                    "dependencyOptionCode": "1"
+                }
+            ],
             "answerOptions": [
                 {
-                    "text": "Fatal Injury",
+                    "text": "No",
                     "idCode": "0"
                 },
                 {
-                    "text": "Suspected Serious Injury",
+                    "text": "Yes",
                     "idCode": "1"
                 },
                 {
-                    "text": "Suspected Minor Injury",
+                    "text": "Not Applicable/Not Within or Related to a Work Zone",
                     "idCode": "2"
-                },
-                {
-                    "text": "Possible Injury",
-                    "idCode": "3"
-                },
-                {
-                    "text": "Property Damage-Only",
-                    "idCode": "4"
-                },
-                {
-                    "text": "Unknown",
-                    "idCode": "5"
                 }
             ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Crash Description",
+            "id": "KxicONP1",
+            "answerType": "largeTextField",
+            "display": [
+                "road"
+            ],
+            "humanReadableId": "road-40"
         },
         {
             "numOptionsAllowed": "0.0",
@@ -5276,7 +4859,7 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1.0",
-            "question": "Insurance company name",
+            "question": "Insurance Company Name",
             "id": "TDkAb1u9",
             "answerType": "openTextBoxWithSelection",
             "display": [
@@ -5335,24 +4918,14 @@ export const questions = {
             "autoMethod": "VINCamera"
         },
         {
-            "numOptionsAllowed": "0.0",
-            "question": "Motor Vehicle Unit Type and Number",
-            "id": "n2lBuS4x",
-            "answerType": "header",
-            "display": [
-                "vehicle"
-            ],
-            "humanReadableId": "vehicle-12"
-        },
-        {
             "numOptionsAllowed": "1.0",
-            "question": "Type",
+            "question": "Motor Vehicle Unit Type ",
             "id": "Dpk0wqnI",
             "answerType": "multiButton",
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-13",
+            "humanReadableId": "vehicle-12",
             "answerOptions": [
                 {
                     "text": "Motor Vehicle in Transport",
@@ -5376,7 +4949,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-14"
+            "humanReadableId": "vehicle-13"
         },
         {
             "numOptionsAllowed": "0.0",
@@ -5386,17 +4959,8 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-15"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Zip Code",
-            "id": "76lBpEMU",
-            "answerType": "openTextBox",
-            "display": [
-                "vehicle"
-            ],
-            "humanReadableId": "vehicle-16"
+            "humanReadableId": "vehicle-14",
+            "helperText": "Might be zip code"
         },
         {
             "numOptionsAllowed": "0.0",
@@ -5406,7 +4970,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-17",
+            "humanReadableId": "vehicle-15",
             "helperText": "Year of Motor Vehicle Registration (YYYY)"
         },
         {
@@ -5417,7 +4981,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-18",
+            "humanReadableId": "vehicle-16",
             "autoMethod": "plateCamera"
         },
         {
@@ -5428,18 +4992,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-19"
-        },
-        {
-            "numOptionsAllowed": "0.0",
-            "question": "Motor Vehicle Model Year",
-            "id": "C0rbnXHC",
-            "answerType": "openTextBox",
-            "display": [
-                "vehicle"
-            ],
-            "humanReadableId": "vehicle-20",
-            "helperText": "(YYYY)"
+            "humanReadableId": "vehicle-17"
         },
         {
             "numOptionsAllowed": "0.0",
@@ -5449,7 +5002,18 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-21"
+            "humanReadableId": "vehicle-18"
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Motor Vehicle Model Year",
+            "id": "C0rbnXHC",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-19",
+            "helperText": "(YYYY)"
         },
         {
             "numOptionsAllowed": "0.0",
@@ -5459,7 +5023,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-22"
+            "humanReadableId": "vehicle-20"
         },
         {
             "numOptionsAllowed": "0.0",
@@ -5469,7 +5033,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-23"
+            "humanReadableId": "vehicle-21"
         },
         {
             "numOptionsAllowed": "1.0",
@@ -5479,7 +5043,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-24",
+            "humanReadableId": "vehicle-22",
             "answerOptions": [
                 {
                     "text": "Light (10,000 lbs. or less GVWR/GCWR)",
@@ -5497,13 +5061,42 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1.0",
+            "question": "Number of Trailing Units",
+            "id": "ovVntlnU",
+            "answerType": "multiButton",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-23",
+            "helperText": "Note: GVWR is used for single-unit trucks and other body types. GCWR is used for combination trucks or any vehicle with a trailing unit",
+            "answerOptions": [
+                {
+                    "text": "1",
+                    "idCode": "0"
+                },
+                {
+                    "text": "2",
+                    "idCode": "1"
+                },
+                {
+                    "text": "3",
+                    "idCode": "2"
+                },
+                {
+                    "text": "Not Applicable",
+                    "idCode": "3"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1.0",
             "question": "Did this motor vehicle display a hazardous materials (HM) placard?",
             "id": "sM5HGjcV",
             "answerType": "multiButton",
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-25",
+            "humanReadableId": "vehicle-24",
             "answerOptions": [
                 {
                     "text": "No",
@@ -5523,7 +5116,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-26"
+            "humanReadableId": "vehicle-25"
         },
         {
             "numOptionsAllowed": "1.0",
@@ -5533,7 +5126,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-27",
+            "humanReadableId": "vehicle-26",
             "answerOptions": [
                 {
                     "text": "No Special Function",
@@ -5649,7 +5242,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-28",
+            "humanReadableId": "vehicle-27",
             "answerOptions": [
                 {
                     "text": "Not Applicable",
@@ -5685,7 +5278,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-29"
+            "humanReadableId": "vehicle-28"
         },
         {
             "numOptionsAllowed": "1.0",
@@ -5695,7 +5288,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-30",
+            "humanReadableId": "vehicle-29",
             "answerOptions": [
                 {
                     "text": "Not on Roadway",
@@ -5731,7 +5324,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-31"
+            "humanReadableId": "vehicle-30"
         },
         {
             "numOptionsAllowed": "1.0",
@@ -5741,7 +5334,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-32",
+            "humanReadableId": "vehicle-31",
             "answerOptions": [
                 {
                     "text": "One-Way",
@@ -5761,7 +5354,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-33",
+            "humanReadableId": "vehicle-32",
             "answerOptions": [
                 {
                     "text": "Not Divided",
@@ -5797,7 +5390,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-34",
+            "humanReadableId": "vehicle-33",
             "answerOptions": [
                 {
                     "text": "No Barrier",
@@ -5833,7 +5426,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-35",
+            "humanReadableId": "vehicle-34",
             "answerOptions": [
                 {
                     "text": "None present",
@@ -5857,7 +5450,17 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-36",
+            "humanReadableId": "vehicle-35",
+            "questionDependency": [
+                {
+                    "dependencyUid": "Gk088QR4",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "Gk088QR4",
+                    "dependencyOptionCode": "2"
+                }
+            ],
             "answerOptions": [
                 {
                     "text": "No",
@@ -5877,7 +5480,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-37"
+            "humanReadableId": "vehicle-36"
         },
         {
             "numOptionsAllowed": "0.0",
@@ -5887,7 +5490,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-38",
+            "humanReadableId": "vehicle-37",
             "helperText": "If trafficway is divided, total only lanes in vehicle's direction"
         },
         {
@@ -5898,7 +5501,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-39",
+            "humanReadableId": "vehicle-38",
             "helperText": "If trafficway is divided, total only lanes in vehicle's direction"
         },
         {
@@ -5909,7 +5512,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-40"
+            "humanReadableId": "vehicle-39"
         },
         {
             "numOptionsAllowed": "1.0",
@@ -5919,7 +5522,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-41",
+            "humanReadableId": "vehicle-40",
             "answerOptions": [
                 {
                     "text": "Straight",
@@ -5943,7 +5546,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-42",
+            "humanReadableId": "vehicle-41",
             "answerOptions": [
                 {
                     "text": "Level",
@@ -5975,7 +5578,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-43"
+            "humanReadableId": "vehicle-42"
         },
         {
             "numOptionsAllowed": "4.0",
@@ -5985,7 +5588,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-44",
+            "humanReadableId": "vehicle-43",
             "helperText": "(choose up to 4)",
             "answerOptions": [
                 {
@@ -6110,8 +5713,118 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-45",
+            "humanReadableId": "vehicle-44",
             "helperText": "(choose up to 4)",
+            "questionDependency": [
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "3"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "4"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "5"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "6"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "7"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "8"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "9"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "10"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "11"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "12"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "13"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "14"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "15"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "16"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "17"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "18"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "19"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "20"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "21"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "22"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "23"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "24"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "25"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "26"
+                },
+                {
+                    "dependencyUid": "xBm1Bisf",
+                    "dependencyOptionCode": "27"
+                }
+            ],
             "answerOptions": [
                 {
                     "text": "None inoperative or missing",
@@ -6235,7 +5948,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-46",
+            "humanReadableId": "vehicle-45",
             "answerOptions": [
                 {
                     "text": "Movements Essentially Straight Ahead",
@@ -6307,7 +6020,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-47"
+            "humanReadableId": "vehicle-46"
         },
         {
             "numOptionsAllowed": "1.0",
@@ -6317,7 +6030,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-48",
+            "humanReadableId": "vehicle-47",
             "answerOptions": [
                 {
                     "text": "Non-Collision",
@@ -6401,8 +6114,78 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-49",
+            "humanReadableId": "vehicle-48",
             "helperText": "(choose up to 13)",
+            "questionDependency": [
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "3"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "4"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "5"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "6"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "7"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "8"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "9"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "10"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "11"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "12"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "13"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "14"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "15"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "16"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "17"
+                }
+            ],
             "answerOptions": [
                 {
                     "text": "(Clock Position) 1",
@@ -6482,7 +6265,77 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-50",
+            "humanReadableId": "vehicle-49",
+            "questionDependency": [
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "3"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "4"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "5"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "6"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "7"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "8"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "9"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "10"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "11"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "12"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "13"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "14"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "15"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "16"
+                },
+                {
+                    "dependencyUid": "4KpRmZXB",
+                    "dependencyOptionCode": "17"
+                }
+            ],
             "answerOptions": [
                 {
                     "text": "No Damage",
@@ -6514,7 +6367,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-51",
+            "humanReadableId": "vehicle-50",
             "helperText": "(choose up to 4)",
             "answerOptions": [
                 {
@@ -6731,7 +6584,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-52",
+            "humanReadableId": "vehicle-51",
             "answerOptions": [
                 {
                     "text": "Cargo/Equipment Loss or Shift",
@@ -6907,7 +6760,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-53",
+            "humanReadableId": "vehicle-52",
             "answerOptions": [
                 {
                     "text": "No, Did Not Leave Scene",
@@ -6927,7 +6780,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-54",
+            "humanReadableId": "vehicle-53",
             "answerOptions": [
                 {
                     "text": "Not towed",
@@ -6951,7 +6804,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-55",
+            "humanReadableId": "vehicle-54",
             "answerOptions": [
                 {
                     "text": "None",
@@ -7021,13 +6874,1381 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "0.0",
+            "question": "Trailer License Plate Number",
+            "id": "JYbuzQwR",
+            "answerType": "header",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-55",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "First Trailer Behind Tractor",
+            "id": "egQodqJa",
+            "answerType": "advancedOpenTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-56",
+            "helperText": "License Plate 1",
+            "autoMethod": "plateCamera",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Second Trailer Behind Tractor",
+            "id": "a2qf2XjZ",
+            "answerType": "advancedOpenTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-57",
+            "helperText": "License Plate 2",
+            "autoMethod": "plateCamera",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Third Trailer Behind Tractor",
+            "id": "KFEcQkVQ",
+            "answerType": "advancedOpenTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-58",
+            "helperText": "License Plate 3",
+            "autoMethod": "plateCamera",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Trailer VIN(s)",
+            "id": "r8SG1obE",
+            "answerType": "header",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-59",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "First Trailer Behind Tractor",
+            "id": "D0BrqlpW",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-60",
+            "helperText": "VIN 1",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Second Trailer Behind Tractor",
+            "id": "yiDtkFBK",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-61",
+            "helperText": "VIN 2",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Third Trailer Behind Tractor",
+            "id": "ATwAwn30",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-62",
+            "helperText": "VIN 3",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Trailer Make(s)",
+            "id": "M67RP5ZC",
+            "answerType": "header",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-63",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "First Trailer Behind Tractor",
+            "id": "qe3GTs9V",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-64",
+            "helperText": "Make 1",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Second Trailer Behind Tractor",
+            "id": "PFuQNT9x",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-65",
+            "helperText": "Make 2",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Third Trailer Behind Tractor",
+            "id": "C138iqWx",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-66",
+            "helperText": "Make 3",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Trailer Model(s)",
+            "id": "kyWnHF0v",
+            "answerType": "header",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-67",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "First Trailer Behind Tractor",
+            "id": "OyEs9Xy3",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-68",
+            "helperText": "Model 1",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Second Trailer Behind Tractor",
+            "id": "kmAT27e1",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-69",
+            "helperText": "Model 2",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Third Trailer Behind Tractor",
+            "id": "WW5omAi8",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-70",
+            "helperText": "Model 3",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Trailer Model Year(s)",
+            "id": "IfLkv5RE",
+            "answerType": "header",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-71",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "First Trailer Behind Tractor",
+            "id": "OhdgRwQU",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-72",
+            "helperText": "Year 1",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Second Trailer Behind Tractor",
+            "id": "wZKqv9NK",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-73",
+            "helperText": "Year 2",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Third Trailer Behind Tractor",
+            "id": "dbGlqpWA",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-74",
+            "helperText": "Year 3",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Total Number of Axles",
+            "id": "pXkp77Gw",
+            "answerType": "header",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-75",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "sM5HGjcV",
+                    "dependencyOptionCode": "1"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Truck Tractor",
+            "id": "SsyJwusb",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-76",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "sM5HGjcV",
+                    "dependencyOptionCode": "1"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "First Trailer Behind Tractor",
+            "id": "yI9VbYC2",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-77",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Second Trailer Behind Tractor",
+            "id": "eXtaPPIL",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-78",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Third Trailer Behind Tractor",
+            "id": "mHrVtCEz",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-79",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Motor Carrier Identification",
+            "id": "rzg1l9RU",
+            "answerType": "header",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-80",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "sM5HGjcV",
+                    "dependencyOptionCode": "1"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1.0",
+            "question": "Identification Type",
+            "id": "Ny3vKusE",
+            "answerType": "multiButton",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-81",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "sM5HGjcV",
+                    "dependencyOptionCode": "1"
+                }
+            ],
+            "answerOptions": [
+                {
+                    "text": "US DOT Number",
+                    "idCode": "0"
+                },
+                {
+                    "text": "State Number",
+                    "idCode": "1"
+                },
+                {
+                    "text": "Not Applicable",
+                    "idCode": "2"
+                },
+                {
+                    "text": "Unknown/Unable to Determine",
+                    "idCode": "3"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Country/State Code",
+            "id": "cTcW0ajp",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-82",
+            "helperText": "Non-US Country Code (e.g. Mexico or Canada) US State Code",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "sM5HGjcV",
+                    "dependencyOptionCode": "1"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Identification Number",
+            "id": "U08PiZyq",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-83",
+            "helperText": "US DOT Number - up to 7 digits If not a US DOT Number, include State issued Identification Number and State",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "sM5HGjcV",
+                    "dependencyOptionCode": "1"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Motor Carrier Name",
+            "id": "t9IOgQh1",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-84",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "sM5HGjcV",
+                    "dependencyOptionCode": "1"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Motor Carrier Street Address",
+            "id": "L2bjG9Ih",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-85",
+            "helperText": "Street Address 1; Street Address 2",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "sM5HGjcV",
+                    "dependencyOptionCode": "1"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Motor Carrier City/Town",
+            "id": "5TFzoeJL",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-86",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "sM5HGjcV",
+                    "dependencyOptionCode": "1"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Motor Carrier State",
+            "id": "vQBsuEeU",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-87",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "sM5HGjcV",
+                    "dependencyOptionCode": "1"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Motor Carrier ZIP Code",
+            "id": "1WeAldXJ",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-88",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "sM5HGjcV",
+                    "dependencyOptionCode": "1"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1.0",
+            "question": "Type of Carrier",
+            "id": "wqRCni8y",
+            "answerType": "multiButton",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-89",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "sM5HGjcV",
+                    "dependencyOptionCode": "1"
+                }
+            ],
+            "answerOptions": [
+                {
+                    "text": "Interstate Carrier",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Intrastate Carrier",
+                    "idCode": "1"
+                },
+                {
+                    "text": "Not in Commerce/Government",
+                    "idCode": "2"
+                },
+                {
+                    "text": "Not in Commerce/Other Truck or Bus",
+                    "idCode": "3"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Vehicle Configuration Section",
+            "id": "J4nocKLZ",
+            "answerType": "header",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-90",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "sM5HGjcV",
+                    "dependencyOptionCode": "1"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1.0",
+            "question": "Vehicle Configuration",
+            "id": "QpFA5lgB",
+            "answerType": "dropdown",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-91",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "sM5HGjcV",
+                    "dependencyOptionCode": "1"
+                }
+            ],
+            "answerOptions": [
+                {
+                    "text": "Vehicle 10,000 lbs. or less placarded for hazardous materials",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Bus/Large Van (seats for 9-15 occupants, including driver)",
+                    "idCode": "1"
+                },
+                {
+                    "text": "Bus (seats more than 15 occupants, including driver)",
+                    "idCode": "2"
+                },
+                {
+                    "text": "Single-Unit Truck (2-axle and GVWR > 10,000 lbs.)",
+                    "idCode": "3"
+                },
+                {
+                    "text": "Single-Unit Truck (3 or more axles)",
+                    "idCode": "4"
+                },
+                {
+                    "text": "Truck Pulling Trailer(s)",
+                    "idCode": "5"
+                },
+                {
+                    "text": "Truck Tractor (Bobtail)",
+                    "idCode": "6"
+                },
+                {
+                    "text": "Truck Tractor/Semi-Trailer",
+                    "idCode": "7"
+                },
+                {
+                    "text": "Truck Tractor/Double",
+                    "idCode": "8"
+                },
+                {
+                    "text": "Truck Tractor/Triple",
+                    "idCode": "9"
+                },
+                {
+                    "text": "Truck More Than 10,000 lbs., cannot classify",
+                    "idCode": "10"
+                },
+                {
+                    "text": "Unknown",
+                    "idCode": "11"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1.0",
+            "question": "Special Sizing",
+            "id": "IA0pYcQh",
+            "answerType": "multiButton",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-92",
+            "helperText": "(choose up to 4)",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "sM5HGjcV",
+                    "dependencyOptionCode": "1"
+                }
+            ],
+            "answerOptions": [
+                {
+                    "text": "No special sizing",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Over-height",
+                    "idCode": "1"
+                },
+                {
+                    "text": "Over-length",
+                    "idCode": "2"
+                },
+                {
+                    "text": "Over-weight",
+                    "idCode": "3"
+                },
+                {
+                    "text": "Over-width",
+                    "idCode": "4"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1.0",
+            "question": "Permitted?",
+            "id": "dijmQNWx",
+            "answerType": "multiButton",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-93",
+            "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "sM5HGjcV",
+                    "dependencyOptionCode": "1"
+                }
+            ],
+            "answerOptions": [
+                {
+                    "text": "Non-Permitted Load",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Permitted Load",
+                    "idCode": "1"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1.0",
+            "question": "Cargo Body Type",
+            "id": "02UkfUBV",
+            "answerType": "dropdown",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-94",
+            "questionDependency": [
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                }
+            ],
+            "answerOptions": [
+                {
+                    "text": "No Cargo Body (bobtail, light MV with hazardous materials [HM] placard, etc.)",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Bus",
+                    "idCode": "1"
+                },
+                {
+                    "text": "Auto Transporter",
+                    "idCode": "2"
+                },
+                {
+                    "text": "Cargo Tank",
+                    "idCode": "3"
+                },
+                {
+                    "text": "Concrete Mixer",
+                    "idCode": "4"
+                },
+                {
+                    "text": "Dump",
+                    "idCode": "5"
+                },
+                {
+                    "text": "Flatbed",
+                    "idCode": "6"
+                },
+                {
+                    "text": "Garbage/Refuse",
+                    "idCode": "7"
+                },
+                {
+                    "text": "Grain/Chips/Gravel",
+                    "idCode": "8"
+                },
+                {
+                    "text": "Intermodal Container Chassis",
+                    "idCode": "9"
+                },
+                {
+                    "text": "Log",
+                    "idCode": "10"
+                },
+                {
+                    "text": "Pole-Trailer",
+                    "idCode": "11"
+                },
+                {
+                    "text": "Van/Enclosed Box",
+                    "idCode": "12"
+                },
+                {
+                    "text": "Vehicle Towing Another Vehicle",
+                    "idCode": "13"
+                },
+                {
+                    "text": "Not Applicable (MV 10,000 lbs. or less, not displaying HM placard)",
+                    "idCode": "14"
+                },
+                {
+                    "text": "Other",
+                    "idCode": "15"
+                },
+                {
+                    "text": "Unknown",
+                    "idCode": "16"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Hazardous Materials (Cargo Only)",
+            "id": "nMSSxpSP",
+            "answerType": "header",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-95",
+            "questionDependency": [
+                {
+                    "dependencyUid": "sM5HGjcV",
+                    "dependencyOptionCode": "1"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Hazardous Materials ID",
+            "id": "N2Ehyq4C",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-96",
+            "questionDependency": [
+                {
+                    "dependencyUid": "sM5HGjcV",
+                    "dependencyOptionCode": "1"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
+            "question": "Hazardous Materials Class",
+            "id": "0rOcRDq2",
+            "answerType": "openTextBox",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-97",
+            "questionDependency": [
+                {
+                    "dependencyUid": "sM5HGjcV",
+                    "dependencyOptionCode": "1"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1.0",
+            "question": "Release of hazardous materials from a cargo compartment (e.g. trailer), cargo container (e.g. tank) or from a package?",
+            "id": "A9mGeeGM",
+            "answerType": "multiButton",
+            "display": [
+                "vehicle"
+            ],
+            "humanReadableId": "vehicle-98",
+            "questionDependency": [
+                {
+                    "dependencyUid": "sM5HGjcV",
+                    "dependencyOptionCode": "1"
+                }
+            ],
+            "answerOptions": [
+                {
+                    "text": "No",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Yes",
+                    "idCode": "1"
+                },
+                {
+                    "text": "Not Applicable",
+                    "idCode": "2"
+                },
+                {
+                    "text": "Unknown if Released",
+                    "idCode": "3"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "0.0",
             "question": "Motor Vehicle Automated Driving System(s)",
             "id": "QA0BSYIz",
             "answerType": "header",
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-56"
+            "humanReadableId": "vehicle-99"
         },
         {
             "numOptionsAllowed": "1.0",
@@ -7037,7 +8258,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-57",
+            "humanReadableId": "vehicle-100",
             "answerOptions": [
                 {
                     "text": "No",
@@ -7055,13 +8276,19 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1.0",
-            "question": "Automated System Levels In Vehicle",
+            "question": "Automated System Levels in Vehicle",
             "id": "d4OE8GnI",
             "answerType": "dropdown",
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-58",
+            "humanReadableId": "vehicle-101",
+            "questionDependency": [
+                {
+                    "dependencyUid": "krQbh0po",
+                    "dependencyOptionCode": "1"
+                }
+            ],
             "answerOptions": [
                 {
                     "text": "No Automation",
@@ -7099,13 +8326,19 @@ export const questions = {
         },
         {
             "numOptionsAllowed": "1.0",
-            "question": "Automated Systems Levels Engaged at Time of Crash",
+            "question": "Automated System Levels Engaged at Time of Crash",
             "id": "zk6QtmkD",
             "answerType": "multiButton",
             "display": [
                 "vehicle"
             ],
-            "humanReadableId": "vehicle-59",
+            "humanReadableId": "vehicle-102",
+            "questionDependency": [
+                {
+                    "dependencyUid": "krQbh0po",
+                    "dependencyOptionCode": "1"
+                }
+            ],
             "answerOptions": [
                 {
                     "text": "No Automation",
@@ -7138,6 +8371,82 @@ export const questions = {
                 {
                     "text": "Unknown",
                     "idCode": "7"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1",
+            "question": "Ownership",
+            "id": "pT0Wq1RO",
+            "answerType": "multiButton",
+            "display": [
+                "setup"
+            ],
+            "humanReadableId": "road-3",
+            "answerOptions": [
+                {
+                    "text": "Public Property",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Private Property",
+                    "idCode": "1"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1",
+            "question": "Secondary Crash",
+            "id": "A6uoXDGb",
+            "answerType": "multiButton",
+            "display": [
+                "setup"
+            ],
+            "humanReadableId": "road-5",
+            "answerOptions": [
+                {
+                    "text": "No",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Yes",
+                    "idCode": "1"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1",
+            "question": "Crash Severity",
+            "id": "8dY73Yzs",
+            "answerType": "multiButton",
+            "display": [
+                "setup"
+            ],
+            "humanReadableId": "road-31",
+            "answerOptions": [
+                {
+                    "text": "Fatal Injury",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Suspected Serious Injury",
+                    "idCode": "1"
+                },
+                {
+                    "text": "Suspected Minor Injury",
+                    "idCode": "2"
+                },
+                {
+                    "text": "Possible Injury",
+                    "idCode": "3"
+                },
+                {
+                    "text": "Property Damage-Only",
+                    "idCode": "4"
+                },
+                {
+                    "text": "Unknown",
+                    "idCode": "5"
                 }
             ]
         }
