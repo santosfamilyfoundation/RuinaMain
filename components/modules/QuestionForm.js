@@ -25,10 +25,10 @@ import {questions} from '../../data/questions';
 
 const QuestionForm = (props) => {
   const {
-    questionDetail, 
-    updateDriver, 
-    updateNonmotorist, 
-    updatePassenger, 
+    questionDetail,
+    updateDriver,
+    updateNonmotorist,
+    updatePassenger,
     updateVehicle,
     updateRoad,
     BackAction,
@@ -53,7 +53,7 @@ const QuestionForm = (props) => {
         submitFunction:res.setting.submitFunction,
         updateResponse:updateResponse
       }
-      const obj = 
+      const obj =
       {
         dropdown: {
           ...PublicObj
@@ -128,7 +128,7 @@ const QuestionForm = (props) => {
     }
     return type?obj[type]:obj
   }
-   const renderSingleQuestion = (type, props) => { 
+   const renderSingleQuestion = (type, props) => {
       switch (type) {
         case 'dropdown':
 
@@ -161,7 +161,7 @@ const QuestionForm = (props) => {
               {...props}
             />
           )
-          
+
           case 'advancedOpenTextBox':
 
             return (
@@ -215,7 +215,7 @@ const QuestionForm = (props) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <TopNavigation title={`${questionDetail.type} Questions`} alignment='center' leftControl={BackAction()} />
+      <TopNavigation title={`Questions on ${questionDetail.name}`} alignment='center' leftControl={BackAction()} />
       <Divider />
       <ScrollView>
         <Layout style={styles.content}>

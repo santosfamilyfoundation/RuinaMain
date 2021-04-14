@@ -26,8 +26,9 @@ class NonMotoristSection extends Component{
         const {navigation, nonmotorist, index, edit} = this.props
         let nonmotoristQuestions = this.filterQuestionsData('nonmotorist');
 
-        const navigateQuestion = (form, id, type) => {
-            navigation.navigate('Question', {questions: form.data, objectID: id, type})
+        const navigateQuestion = (form, id, type, idx) => {
+          var name = type + ' ' + idx;
+          navigation.navigate('Question', {questions: form.data, objectID: id, type, name})
         }
 
         // describes two different nonmotorist cards (edit and non edit modes)
@@ -58,7 +59,7 @@ class NonMotoristSection extends Component{
           )
         } else {
           return(
-              <Card style={styles.nonMotoristCard} onPress = {() => navigateQuestion(nonmotoristQuestions, nonmotorist.id, 'Nonmotorist')}>
+              <Card style={styles.nonMotoristCard} onPress = {() => navigateQuestion(nonmotoristQuestions, nonmotorist.id, 'Nonmotorist', (index+1))}>
                   <Icon name= 'person' width={75} height={75} alignSelf= "center" />
                   <Text style={styles.itemCardFooter} category="s1">Non-Motorist {index+1}</Text>
               </Card>

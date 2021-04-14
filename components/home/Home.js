@@ -76,7 +76,7 @@ class Home extends Component {
             passenger,
             road
             } = this.props
-        
+
         const data = {
             driver: this.props.driver.data,
             nonmotorist: this.props.nonmotorist.data,
@@ -96,8 +96,8 @@ class Home extends Component {
         let roadQuestions = this.filterQuestionsData('road');
 
         // navigate to question form
-        const navigateQuestion = (form, id, type) => {
-            navigation.navigate('Question', {questions: form.data, objectID: id, type})
+        const navigateQuestion = (form, id, type, name) => {
+            navigation.navigate('Question', {questions: form.data, objectID: id, type, name})
         }
 
         const RoadHeader = () => (
@@ -227,7 +227,7 @@ class Home extends Component {
                   <ScrollView>
                       <Card header={RoadHeader} style={styles.itemCard}>
                           <View style={styles.itemCardContent}>
-                              <Card style={styles.nonMotoristCard} onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road')}>
+                              <Card style={styles.nonMotoristCard} onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road', 'Crash/Road')}>
                                   <Icon name='paper-plane' width={75} height={75} />
                                   <Text style={styles.itemCardFooter} category="s1">Crash/Road</Text>
                               </Card>
