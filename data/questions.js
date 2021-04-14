@@ -3943,8 +3943,8 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "helperText" :"This data element refers only to crashes where the first harmful event involves a collision between two motor vehicles in transport.",
-            "tooltip" : "See “Figure 2: Manner of Collision and Associated Crash Diagrams” for a diagram of the manner of collision",
+            "helperText" :"This question refers only to crashes where the first harmful event involves a collision between two motor vehicles.",
+            "tooltip" : "The figure below displays a diagram of the manner of collision.",
             "helperImg" :"../image/manner_example.png",
             "humanReadableId": "road-18",
             "answerOptions": [
@@ -5971,6 +5971,8 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
+            "helperText":"Provide the approximate contact point on this vehicle associated with this vehicle’s initial harmful event.",
+            "helperImg":"../image/initial_contact.png",
             "humanReadableId": "vehicle-47",
             "answerOptions": [
                 {

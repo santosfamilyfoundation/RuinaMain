@@ -125,19 +125,19 @@ const OpenTextField = (props) => {
     };
     
     const HelperTooltip = () => {
-        if (data.helperText != null && data.tooltip != null){
+        if (data.helperText != null && (data.tooltip != null||data.helperImg!=null)){
             return (
                 <Layout style={styles.container}>
                     <View style={styles.rowContainer}>
                         <Text style={styles.helperText}>{data.helperText}</Text>
                         <Button appearance='ghost' status='primary' icon={InfoIcon} onPress={toggleModal}>
-                            More Info
+                            Info
                         </Button>
                         <Modal backdropStyle={styles.backdrop} visible={visible}>
                             <Card style={styles.content} disabled={true}>
                             {ModalContent()}
                             <Button appearance='ghost' icon={CloseIcon} onPress={() => setVisible(false)}>
-                                Dismiss
+                                Close
                             </Button>
                             </Card>
                         </Modal>
@@ -148,11 +148,11 @@ const OpenTextField = (props) => {
         else if (data.helperText != null) {
             return (<Text style={styles.helperText}>{data.helperText}</Text>)
         }
-        else if (data.tooltip != null) {
+        else if (data.tooltip != null || data.helperImg != null) {
             return (
                 <View style={styles.endRowcontainer}>
                     <Button  appearance='ghost' status='primary' icon={InfoIcon} onPress={toggleModal}>
-                        More Info
+                        Info
                     </Button>
                     <Modal backdropStyle={styles.backdrop} visible={visible}>
                         <Card style={styles.content} disabled={true}>

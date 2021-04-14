@@ -8,12 +8,10 @@ export class ImageSelector extends Component {
     // require does not accept variables, so it's been wraped within switch cases
     pathHandler = (name) => {
         switch (name) {
-            case '../image/test.jpg': 
-                return require('../image/test.jpg');
-            case '../image/trafficway_example.png':
-                return require('../image/trafficway_example.png');
             case '../image/manner_example.png':
-                return require('../image/manner_example.png')
+                return require('../image/manner_example.png');
+            case '../image/initial_contact.png':
+                return require('../image/initial_contact.png')
             // append images file here if needed
         }
     }

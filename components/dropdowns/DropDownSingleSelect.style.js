@@ -11,25 +11,29 @@ export const styles = StyleSheet.create({
     },
     imgContainer:{
       flexDirection: 'column',
-      justifyContent: 'space-around',
       alignItems: 'center',
       textAlign: 'center'
     },
     img:{
       resizeMode: 'center', 
-      width: 400, 
-      height: 450
+      width: 300,
+      height: 300
     },
     rowContainer:{
-      flexWrap: "wrap",
+      flexWrap: 'wrap',
       flexDirection: 'row',
+    },
+    endRowcontainer: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end'
     },
     container: {
       width: '90%',
       marginBottom: 10
     },
     helperText: {
-      margin: 11
+      margin: 8,
+      flexShrink:1
     },
     inputField: {
       maxWidth: 500,
