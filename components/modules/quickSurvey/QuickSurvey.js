@@ -205,7 +205,7 @@ class QuickSurvey extends Component {
         updateRoad,
         updatePassenger,
       } = this.props;
-      
+
       // contains the state from the QuickQuizReducer
       const quiz = this.props.quiz;
 
@@ -230,7 +230,7 @@ class QuickSurvey extends Component {
           navigation.navigate('Home', {edit: !this.state.loadedAutoSave});
           return
         }
-        
+
         changeRespond();
         if (!this.state.loadedAutoSave) {
           dispatchAll();
@@ -279,7 +279,7 @@ class QuickSurvey extends Component {
             <ActivityIndicator id="loadingScreen" size="large" color="#0000ff" />
           </SafeAreaView>
         );
-      } else { 
+      } else {
         console.log("Status after trying to load autosaved session: success, ", this.state.loadedAutoSave);
         // Successfully loaded autosaved session
         if (this.state.loadedAutoSave) {
@@ -305,8 +305,8 @@ class QuickSurvey extends Component {
               </MaterialDialog>
             </SafeAreaView>
           )
-        } 
-        // Start new report by filling out the quick survey, could be due to three possible cases: 
+        }
+        // Start new report by filling out the quick survey, could be due to three possible cases:
         // 1) user doesnt want to load background saved session
         // 2) no background saved session exist
         // 3) json parsing failed

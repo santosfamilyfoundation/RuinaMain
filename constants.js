@@ -25,3 +25,4 @@ export const MAKE_ID = "eZglw8FV"; // vehicle-19
 export const MODEL_ID = "29h5OiPC"; // vehicle-21
 export const YEAR_ID = "C0rbnXHC"; // vehicle-20
 
+export const ALLOW_JSON_EXPORT = false;
