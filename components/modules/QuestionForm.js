@@ -78,6 +78,9 @@ const QuestionForm = (props) => {
           pageChange: navigateToAdvanced,
           importFrom: res.data.autoMethod
         },
+        countyDropDown: {
+          ...PublicObj
+        },
         largeTextField: {
            ...PublicObj
         },
