@@ -89,7 +89,7 @@ const CountyDropDown = (props) => {
             "text": "Please select a state..."
         }]
     }
-    console.log("State: ", existingDataState, ", County: ", countyOptions);
+    //console.log("State: ", existingDataState, ", County: ", countyOptions);
 
     const submitField = (selection) => {
         setSelectedOption(selection);
