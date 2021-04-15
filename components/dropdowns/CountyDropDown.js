@@ -17,36 +17,16 @@ const CountyDropDown = (props) => {
     // node data/parseStateCounty.js in the root directory of the project
     // json is a dictionary where the keys are the states and US territories; values are each of its corresponding counties
     const countiesByStates = require('../../data/stateCountyMapping.json');
-    const stateDropDownQuestionID = "Sl6ypLYA"; // need to be changed later
+   
     
     const [selectedOption, setSelectedOption] = React.useState(null);
     const { data, key, id, questionReducer, submitFunction, updateResponse, deleteRoadSingleResponse } = props;
     let currId = data.id;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
+
+    const stateDropDownQuestionID = data.questionDependency[0].dependencyUid;
     let existingDataState = existingData ? existingData[stateDropDownQuestionID] : null;
-    
-    // if (props.response != null) {
-    //     if (data.questionDependency != null) {
-    //         console.log(props.response)
-    //         let tarQuesArr = data.questionDependency
-    //         for (let i = 0; i < tarQuesArr.length; i++) { // Looping through dependent question
-    //             let tarUid = tarQuesArr[i].dependencyUid
-    //             let tarOptionCode = tarQuesArr[i].dependencyOptionCode
-    //             for (let j = props.response.length - 1; j >= 0; j--) { // Searching from the most recent changes made by user
-    //                 if (props.response[j].selection == tarOptionCode) { break }
-    //                 if (typeof props.response[j].selection == "array") {
-    //                     let resArr = props.response[j].selection.find(item => item != tarOptionCode)
-    //                     if (resArr.length === props.response[j].selection.length) { return null }
-    //                 }
-    //                 if (props.response[j].question === tarUid && props.response[j].selection != tarOptionCode) {
-    //                     console.log("Dependent question does not display");
-    //                     return null
-    //                 }
-    //             }
-    //         }
-    //     }
-    // };
 
     // Populate if value already exists in redux
     if (!selectedOption) {
@@ -76,12 +56,12 @@ const CountyDropDown = (props) => {
             if (!correspondingCounties.includes(selectedCounty)) {
                 console.log("delete mismatch county");
                 setSelectedOption(null);
-                deleteRoadSingleResponse({ id: id, question: currId });
+                //deleteRoadSingleResponse({ id: id, question: currId });
                   
             }
         } else {
             setSelectedOption(null);
-            deleteRoadSingleResponse({ id: id, question: currId });
+            //deleteRoadSingleResponse({ id: id, question: currId });
         }
     }
 
