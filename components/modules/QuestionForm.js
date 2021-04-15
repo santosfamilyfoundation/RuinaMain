@@ -25,10 +25,10 @@ import {questions} from '../../data/questions';
 
 const QuestionForm = (props) => {
   const {
-    questionDetail, 
-    updateDriver, 
-    updateNonmotorist, 
-    updatePassenger, 
+    questionDetail,
+    updateDriver,
+    updateNonmotorist,
+    updatePassenger,
     updateVehicle,
     updateRoad,
     BackAction,
@@ -49,11 +49,12 @@ const QuestionForm = (props) => {
         data: res.data,
         key:res.data.id,
         id:res.detail.objectID,
+        dependencyID:res.detail.dependencyID,
         reducer:res.setting.reducer,
         submitFunction:res.setting.submitFunction,
         updateResponse:updateResponse
       }
-      const obj = 
+      const obj =
       {
         dropdown: {
           ...PublicObj
@@ -128,7 +129,7 @@ const QuestionForm = (props) => {
     }
     return type?obj[type]:obj
   }
-   const renderSingleQuestion = (type, props) => { 
+   const renderSingleQuestion = (type, props) => {
       switch (type) {
         case 'dropdown':
 
@@ -161,7 +162,7 @@ const QuestionForm = (props) => {
               {...props}
             />
           )
-          
+
           case 'advancedOpenTextBox':
 
             return (
