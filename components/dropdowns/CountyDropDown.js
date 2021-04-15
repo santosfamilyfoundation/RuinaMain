@@ -9,6 +9,7 @@ import {
 import { updateResponse } from '../../actions/StoryActions';
 import { styles } from './DropDownSingleSelect.style';
 import { connect } from 'react-redux';
+import { deleteRoadSingleResponse } from '../../actions/RoadAction';
 
 
 const CountyDropDown = (props) => {
@@ -18,15 +19,13 @@ const CountyDropDown = (props) => {
     const countiesByStates = require('../../data/stateCountyMapping.json');
     const stateDropDownQuestionID = "Sl6ypLYA"; // need to be changed later
     
-    const countySelectRef = React.createRef();
     const [selectedOption, setSelectedOption] = React.useState(null);
-    const { data, key, id, questionReducer, submitFunction, updateResponse } = props;
+    const { data, key, id, questionReducer, submitFunction, updateResponse, deleteRoadSingleResponse } = props;
     let currId = data.id;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
-
-    const existingDataState = existingData[stateDropDownQuestionID];
-
+    let existingDataState = existingData ? existingData[stateDropDownQuestionID] : null;
+    
     // if (props.response != null) {
     //     if (data.questionDependency != null) {
     //         console.log(props.response)
@@ -51,22 +50,40 @@ const CountyDropDown = (props) => {
 
     // Populate if value already exists in redux
     if (!selectedOption) {
+        console.log("selected option: ", selectedOption);
         if (existingData != null) {
-            if (existingData[currId] != null && existingDataState != null) {
-                let curOption;
-                for (let i = 0; i < countiesByStates[existingDataState].length; i++) {
-                    if (countiesByStates[existingDataState][i] == existingData[currId]) {
-                        curOption = {
-                            text: existingData[currId]
-                        };
-                    };
-                };
-                if (curOption != null) {
-                    setSelectedOption(curOption);
+            if (existingData[currId] != null) {
+                if (existingDataState != null) {
+                    const correspondingCounties = countiesByStates[existingDataState];
+                    if (correspondingCounties.includes(existingData[currId])) {
+                        let curOption = {text: existingData[currId]};
+                        setSelectedOption(curOption);
+                    } else {
+                        console.log("delete mismatch county");
+                        deleteRoadSingleResponse({ id: id, question: currId });
+                    }
+                } else {
+                    deleteRoadSingleResponse({ id: id, question: currId});
                 }
             };
         };
-    };
+    } 
+    // Check if user update state selection
+    else {
+        let selectedCounty = selectedOption.text;
+        if (existingDataState != null) {
+            const correspondingCounties = countiesByStates[existingDataState];
+            if (!correspondingCounties.includes(selectedCounty)) {
+                console.log("delete mismatch county");
+                setSelectedOption(null);
+                deleteRoadSingleResponse({ id: id, question: currId });
+                  
+            }
+        } else {
+            setSelectedOption(null);
+            deleteRoadSingleResponse({ id: id, question: currId });
+        }
+    }
 
     let status;
     if (!existingData) {
@@ -74,8 +91,19 @@ const CountyDropDown = (props) => {
     } else {
         if (!existingData[currId]) {
             status = 'danger';
-        } else {
-            status = 'success';
+        } 
+        // if state question is not filled out
+        else if (!existingDataState) { 
+            status = 'danger';
+        } // if both state and county questions are filled out
+        else {
+            // when county selection falls under/is included in the state selection's county list
+            // This is for the scenario when user changes state answer after filling out county question
+            if (countiesByStates[existingDataState].includes(existingData[currId])){
+                status = 'success';
+            } else {
+                status = 'danger';
+            }
         }
     }
 
@@ -129,11 +157,12 @@ const CountyDropDown = (props) => {
 };
 
 const mapDispatchToProps = {
-    updateResponse
+    updateResponse,
+    deleteRoadSingleResponse
 }
 
 const mapStateToProps = (state, props) => {
-    const { response } = state.storyReducer
+    const { response } = state.storyReducer;
     const { reducer } = props;
     const questionReducer = state[reducer];
     return { questionReducer, response }
