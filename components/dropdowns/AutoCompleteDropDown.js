@@ -2,13 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Layout, Text, Card, Button, CardHeader, Icon, Autocomplete } from '@ui-kitten/components';
 import { styles } from './AutoCompleteDropDown.style';
+import { dependencyParser } from '../../utils/dependencyHelper';
 
 
 const AutoCompleteDropDown = (props) => {
     const [value, setValue] = React.useState('');   // value that will be stored in Redux
     const [title, setTitle] = React.useState('');   // value that will be displayed to user in form field
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
-    const {data, key, id, questionReducer, submitFunction} = props;
+    const {data, key, id, questionReducer, submitFunction, updateResponse, dependencyID} = props;
     const [selectionData, setSelectionData] = React.useState(data.answerOptions);
 
     let status;
@@ -34,6 +35,12 @@ const AutoCompleteDropDown = (props) => {
     const submitField = () => {
         if(!value) {
             return;
+        }
+        if (dependencyID!=null){
+            const vehicleID = dependencyID[1] // Get vehicle id to identify different vehicles
+            updateResponse && updateResponse({id, question: currId, selection: value, vehicleID: vehicleID})
+        } else{
+            updateResponse && updateResponse({id, question: currId, selection: value})
         }
         submitFunction({id, question: currId, selection: value})
         setButtonAppearance('filled');
@@ -93,8 +100,9 @@ const AutoCompleteDropDown = (props) => {
         }
         return null;
     }
-
-    return (
+    var renderComponent = dependencyParser(props.response, data, dependencyID)
+    if (renderComponent){
+        return(
         <Layout key={key} style={styles.container}>
             <Card header={Header} status={status}>
                 <Layout style={styles.content}>
@@ -122,14 +130,17 @@ const AutoCompleteDropDown = (props) => {
                 </Layout>
             </Card>
         </Layout>
-    );
+        )
+    }else{
+        return null
+    }
 };
 
 const mapStateToProps = (state, props) => {
-    const { story } = state;
+    const { response } = state.storyReducer
     const { reducer } = props;
     const questionReducer = state[reducer];
-    return { story, questionReducer }
+    return {questionReducer, response }
 };
 
 export default connect(mapStateToProps)(AutoCompleteDropDown);

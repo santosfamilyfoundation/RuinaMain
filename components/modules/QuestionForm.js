@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
 import { Divider, Layout, TopNavigation } from '@ui-kitten/components';
@@ -89,7 +89,7 @@ const QuestionForm = (props) => {
         },
         header: {
           data: res.data,
-          key: res.data.id,
+          dependencyID:res.detail.dependencyID,
         },
       }
       return  obj[type]
@@ -132,7 +132,6 @@ const QuestionForm = (props) => {
    const renderSingleQuestion = (type, props) => {
       switch (type) {
         case 'dropdown':
-
           return (
             <DropDownSingleSelect
               {...props}

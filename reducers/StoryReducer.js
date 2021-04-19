@@ -10,6 +10,7 @@ const storyReducer = (state = INITIAL_STATE, action) => {
     case 'WRITE':
       return { ...state, current: action.payload }
     case 'UPDATERESPONSE':
+      console.log("Action.payload", action.payload);
       const response = [ ...state.response, action.payload ]
       return { ...state, response }
     default:

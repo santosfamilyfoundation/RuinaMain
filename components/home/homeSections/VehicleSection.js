@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { addPassenger, deletePassenger } from '../../../actions/PassengerAction';
 import { deleteVehicle } from '../../../actions/VehicleAction';
 import { deleteDriver } from '../../../actions/DriverAction';
-import {questions} from '../../../data/questions';
+import { questions } from '../../../data/questions';
 
 var uuid = require('react-native-uuid');
 
@@ -94,7 +94,7 @@ class VehicleSection extends Component{
                   )
                 } else {
                   return (
-                      <Card key={index} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger', [roadID, passenger.id, passenger.vehicle])}>
+                      <Card key={index} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger', [roadID, passenger.vehicle, passenger.id])}>
                           <Icon name='person' width={75} height={75} />
                           <Text style={styles.itemCardFooter} category="s1">Passenger {i}</Text>
                       </Card>
@@ -111,7 +111,7 @@ class VehicleSection extends Component{
                   )
                 } else {
                   return (
-                      <Card key={index} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger', [roadID, passenger.id, passenger.vehicle])}>
+                      <Card key={index} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger', [roadID, passenger.vehicle, passenger.id])}>
                           <Icon name='person' width={75} height={75} />
                           <Text style={styles.itemCardFooter} category="s1">Occupant {i}</Text>
                       </Card>
@@ -214,7 +214,7 @@ class VehicleSection extends Component{
                             <Text style={styles.itemCardFooter} category="s1">{name}</Text>
                         </Card>
                         {!this.state.driverDeleted &&
-                          <Card style={styles.individualCard} onPress= {() => navigateQuestion(driverQuestions, vehicle.driver, 'Driver', [roadID, vehicle.id, vehicle.driver])}>
+                          <Card style={styles.individualCard} onPress= {() => navigateQuestion(driverQuestions, vehicle.driver, 'Driver', [roadID, vehicle.id])}>
                               <Icon name='person' width={75} height={75} />
                               <Text style={styles.itemCardFooter} category="s1">Driver</Text>
                           </Card>
