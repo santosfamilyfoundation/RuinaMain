@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
     Layout,
     Select,
@@ -17,9 +17,9 @@ const CountyDropDown = (props) => {
     // node data/parseStateCounty.js in the root directory of the project
     // json is a dictionary where the keys are the states and US territories; values are each of its corresponding counties
     const countiesByStates = require('../../data/stateCountyMapping.json');
-   
     
     const [selectedOption, setSelectedOption] = React.useState(null);
+    const [deleteCountyFromState, setDeleteCountyFromState] = React.useState(false);
     const { data, key, id, questionReducer, submitFunction, updateResponse, deleteRoadSingleResponse } = props;
     let currId = data.id;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
@@ -29,8 +29,8 @@ const CountyDropDown = (props) => {
     let existingDataState = existingData ? existingData[stateDropDownQuestionID] : null;
 
     // Populate if value already exists in redux
+    console.log("selected option: ", selectedOption);
     if (!selectedOption) {
-        console.log("selected option: ", selectedOption);
         if (existingData != null) {
             if (existingData[currId] != null) {
                 if (existingDataState != null) {
@@ -38,15 +38,10 @@ const CountyDropDown = (props) => {
                     if (correspondingCounties.includes(existingData[currId])) {
                         let curOption = {text: existingData[currId]};
                         setSelectedOption(curOption);
-                    } else {
-                        console.log("delete mismatch county");
-                        deleteRoadSingleResponse({ id: id, question: currId });
-                    }
-                } else {
-                    deleteRoadSingleResponse({ id: id, question: currId});
-                }
-            };
-        };
+                    } 
+                } 
+            }
+        }
     } 
     // Check if user update state selection
     else {
@@ -54,16 +49,27 @@ const CountyDropDown = (props) => {
         if (existingDataState != null) {
             const correspondingCounties = countiesByStates[existingDataState];
             if (!correspondingCounties.includes(selectedCounty)) {
-                console.log("delete mismatch county");
+                console.log("selected option NOT NULL 1: delete mismatch county");
                 setSelectedOption(null);
-                //deleteRoadSingleResponse({ id: id, question: currId });
+                console.log("set selected option to null");
+                setDeleteCountyFromState(true);
+                console.log("set use effect to true");
                   
             }
         } else {
+            // If user tries to select "Please select a state..." option in County dropdown without selecting a state
             setSelectedOption(null);
-            //deleteRoadSingleResponse({ id: id, question: currId });
+            setDeleteCountyFromState(true);
         }
     }
+
+    useEffect(() => {
+        if (deleteCountyFromState) {
+            console.log("use effect delete!");
+            deleteRoadSingleResponse({ id: id, question: currId });
+            setDeleteCountyFromState(false);
+        }
+    })
 
     let status;
     if (!existingData) {
@@ -96,8 +102,7 @@ const CountyDropDown = (props) => {
         countyOptions = [{
             "text": "Please select a state..."
         }]
-    }
-    //console.log("State: ", existingDataState, ", County: ", countyOptions);
+    }    
 
     const submitField = (selection) => {
         setSelectedOption(selection);
