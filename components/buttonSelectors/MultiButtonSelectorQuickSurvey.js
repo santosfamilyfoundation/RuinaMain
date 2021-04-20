@@ -13,11 +13,22 @@ const MultiButtonSelectorQuickSurvey = (props) => {
   // when button selected, set the option and update the quick survey setupData
   const submitField = (optionText, idCode) => {
       setSelection(optionText);
-      if (dependencyID!=null){
-            const vehicleID = dependencyID[1] // Get vehicle id to identify different vehicles
-            updateResponse && updateResponse({id, question: currId, selection: idCode, vehicleID: vehicleID})
-        } else{
+        if (dependencyID==null || dependencyID.length == 1){
             updateResponse && updateResponse({id, question: currId, selection: idCode})
+        }else{
+            let vehicleID = dependencyID[1]
+            switch (dependencyID.length) {
+                case 2:
+                    updateResponse && updateResponse({id, question: currId, selection: idCode, vehicleID: vehicleID})
+                    break;
+                case 3:
+                    let passengerID = dependencyID[2]
+                    updateResponse && updateResponse({id, question: currId, selection: idCode, vehicleID: vehicleID, passengerID: passengerID})
+                case 4:
+                    updateResponse && updateResponse({id, question: currId, selection: idCode, vehicleID: vehicleID, nonmotoristID: dependencyID[3]})
+                default:
+                    break;
+            }
         }
       submitFunction({question: data.id, selection: optionText})
   }

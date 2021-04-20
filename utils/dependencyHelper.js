@@ -8,7 +8,7 @@ export function dependencyParser(response, data, dependencyID) {
             let tarUid = tarQuesArr[i].dependencyUid
             let tarOptionCode = tarQuesArr[i].dependencyOptionCode
             var findResponse
-            for (let j = response.length-1; j >=0; j --){
+            for (let j = response.length-1; j >= 0; j--){
                 if (dependencyID!=undefined && response[j].vehicleID!=undefined){
                     let tarVehicle = dependencyID[1]
                     switch (dependencyID.length) {
@@ -20,6 +20,12 @@ export function dependencyParser(response, data, dependencyID) {
                             let tarPassenger = dependencyID[2] 
                             if (response[j].question == tarUid && response[j].vehicleID == tarVehicle && response[j].passengerID == tarPassenger){
                                 findResponse = response[j]}
+                            break;
+                        case 4:
+                            let tarNonmotorrist = dependencyID[3]
+                            if (response[j].question == tarUid && response[j].nonmotoristID == tarNonmotorrist){
+                                findResponse = response[j]}
+                            break;
                         default:
                             break;
                     }

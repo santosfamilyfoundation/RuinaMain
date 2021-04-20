@@ -28,7 +28,7 @@ const MultiButtonSelector = (props) => {
 
     const submitField = (optionText, idCode) => {
         setSelection(optionText);
-        if (dependencyID==null){
+        if (dependencyID==null || dependencyID.length == 1){
             updateResponse && updateResponse({id, question: currId, selection: idCode})
         }else{
             let vehicleID = dependencyID[1]
@@ -39,21 +39,13 @@ const MultiButtonSelector = (props) => {
                 case 3:
                     let passengerID = dependencyID[2]
                     updateResponse && updateResponse({id, question: currId, selection: idCode, vehicleID: vehicleID, passengerID: passengerID})
+                case 4:
+                    updateResponse && updateResponse({id, question: currId, selection: idCode, vehicleID: vehicleID, nonmotoristID: dependencyID[3]})
                 default:
                     break;
             }
         }
         submitFunction({id, question: currId, selection: optionText})
-
-        // if (dependencyID!=null){
-        //     const vehicleID = dependencyID[1] // Get vehicle id to identify different vehicles
-        //     // const passengerID = dependencyID[2]
-        //     updateResponse && updateResponse({id, question: currId, selection: idCode, vehicleID: vehicleID})
-        // } else{
-        //     updateResponse && updateResponse({id, question: currId, selection: idCode})
-        // }
-        // submitFunction({id, question: currId, selection: optionText})
-
     }
 
     const Header = () => (

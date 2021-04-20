@@ -107,11 +107,22 @@ const DropDownMultiSelect = (props) => {
             resId.push(selectedOptions[i].idCode);
         }
         
-        if (dependencyID!=null){
-            const vehicleID = dependencyID[1] // Get vehicle id to identify different vehicles
-            updateResponse && updateResponse({id, question: currId, selection: resId, vehicleID: vehicleID})
-        } else{
+        if (dependencyID==null || dependencyID.length == 1){
             updateResponse && updateResponse({id, question: currId, selection: resId})
+        }else{
+            let vehicleID = dependencyID[1]
+            switch (dependencyID.length) {
+                case 2:
+                    updateResponse && updateResponse({id, question: currId, selection: resId, vehicleID: vehicleID})
+                    break;
+                case 3:
+                    let passengerID = dependencyID[2]
+                    updateResponse && updateResponse({id, question: currId, selection: resId, vehicleID: vehicleID, passengerID: passengerID})
+                case 4:
+                    updateResponse && updateResponse({id, question: currId, selection: resId, vehicleID: vehicleID, nonmotoristID: dependencyID[3]})
+                default:
+                    break;
+            }
         }
         submitFunction({id, question: currId, selection: res})
     }

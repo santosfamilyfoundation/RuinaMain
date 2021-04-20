@@ -27,7 +27,7 @@ class NonMotoristSection extends Component{
         let nonmotoristQuestions = this.filterQuestionsData('nonmotorist');
 
         const navigateQuestion = (form, id, type) => {
-            navigation.navigate('Question', {questions: form.data, objectID: id, type, dependencyID: [id]})
+            navigation.navigate('Question', {questions: form.data, objectID: id, type, dependencyID: [0, 0, 0, id]})
         }
 
         // describes two different nonmotorist cards (edit and non edit modes)

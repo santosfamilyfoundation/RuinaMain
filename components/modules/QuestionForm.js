@@ -47,7 +47,7 @@ const QuestionForm = (props) => {
    const questionProps = (type, res) => {
       const PublicObj = {
         data: res.data,
-        key:res.data.id,
+        key: res.data.id,
         id:res.detail.objectID,
         dependencyID:res.detail.dependencyID,
         reducer:res.setting.reducer,
