@@ -29,31 +29,36 @@ const CountyDropDown = (props) => {
     let existingDataState = existingData ? existingData[stateDropDownQuestionID] : null;
 
     // Populate if value already exists in redux
-    console.log("selected option: ", selectedOption);
+    // If no selected answer in UI for county question
     if (!selectedOption) {
+        // Road section isn't null
         if (existingData != null) {
+            // Road section county response isn't null
             if (existingData[currId] != null) {
+                // Road section state response isn't null
                 if (existingDataState != null) {
+                    // Check if county answer in redux is part of the list of counties under
+                    // the state answer in redux
                     const correspondingCounties = countiesByStates[existingDataState];
                     if (correspondingCounties.includes(existingData[currId])) {
                         let curOption = {text: existingData[currId]};
                         setSelectedOption(curOption);
-                    } 
-                } 
+                    }
+                }
             }
         }
     } 
-    // Check if user update state selection
+    // Check if user has updated state selection
     else {
         let selectedCounty = selectedOption.text;
+        // If user has filled out the state question
         if (existingDataState != null) {
             const correspondingCounties = countiesByStates[existingDataState];
             if (!correspondingCounties.includes(selectedCounty)) {
-                console.log("selected option NOT NULL 1: delete mismatch county");
+                // set county selected option to null
                 setSelectedOption(null);
-                console.log("set selected option to null");
+                // delete county answer from redux state
                 setDeleteCountyFromState(true);
-                console.log("set use effect to true");
                   
             }
         } else {
@@ -63,9 +68,9 @@ const CountyDropDown = (props) => {
         }
     }
 
+    // Gets called after each render
     useEffect(() => {
         if (deleteCountyFromState) {
-            console.log("use effect delete!");
             deleteRoadSingleResponse({ id: id, question: currId });
             setDeleteCountyFromState(false);
         }
