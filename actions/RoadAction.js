@@ -11,3 +11,9 @@ export const addRoad = data => {
         payload: data
     }
 }
+
+export const resetRoad = () => {
+    return {
+        type: 'RESETROAD'
+    }
+}

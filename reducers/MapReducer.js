@@ -23,6 +23,12 @@ const mapReducer = (state = INITIAL_STATE, action) => {
           ...state,
           markers: action.payload,
         }
+    case 'RESETMAP':
+        console.log("RESET MAP!");
+        state = INITIAL_STATE;
+        return {
+          ...state,
+        }
     default:
       return state;
   }

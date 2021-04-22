@@ -12,6 +12,12 @@ const storyReducer = (state = INITIAL_STATE, action) => {
     case 'UPDATERESPONSE':
       const response = [ ...state.response, action.payload ]
       return { ...state, response }
+    case 'RESETSTORY':
+      console.log("RESET ROAD!");
+      state = INITIAL_STATE;
+      return {
+        ...state,
+      }
     default:
       return state;
   }

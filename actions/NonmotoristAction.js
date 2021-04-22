@@ -18,3 +18,9 @@ export const deleteNonmotorist = nonmotoristID => {
         payload: nonmotoristID
     }
 }
+
+export const resetNonmotorist = () => {
+    return {
+        type: 'RESETNONMOTORIST'
+    }
+}

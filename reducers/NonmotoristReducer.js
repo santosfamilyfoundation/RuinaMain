@@ -59,6 +59,13 @@ export default function nonmotoristReducer (state=initialState, action) {
                 ...state,
                 data: updatedState.filter(nonmotorist => nonmotorist.id != nonmotoristID)
             }
+        
+        case 'RESETNONMOTORIST':
+            console.log("RESET NONMOTORIST!");
+            state = initialState;
+            return {
+                ...state,
+            }
 
         default:
             return state;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { combineReducers } from 'redux';
 import { SafeAreaView} from 'react-navigation';
 import { Linking, ActivityIndicator} from 'react-native';
 import { Button, Divider, Layout, TopNavigation, Text } from '@ui-kitten/components';
@@ -9,6 +10,16 @@ import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import { connect } from 'react-redux';
 
+import { resetDriver } from '../../actions/DriverAction';
+import { resetNonmotorist } from '../../actions/NonmotoristAction';
+import { resetPassenger } from '../../actions/PassengerAction';
+import { resetVehicle } from '../../actions/VehicleAction';
+import { resetRoad } from '../../actions/RoadAction';
+import { resetQuiz } from '../../actions/QuickQuizActions';
+import { resetMap } from '../../actions/MapAction';
+import { resetStory } from '../../actions/StoryActions';
+import { resetPhoto } from '../../actions/PhotoAction';
+
 class Welcome extends Component {
     constructor(props){
       super(props);
@@ -18,9 +29,18 @@ class Welcome extends Component {
         autoSavedSession: false,
         autoSavedSessionDialogBoxVisible: false,
       };
-    }
+    } 
 
     async componentDidMount() {
+      this.props.resetDriver();
+      this.props.resetNonmotorist();
+      this.props.resetPassenger();
+      this.props.resetRoad();
+      this.props.resetVehicle();
+      this.props.resetQuiz();
+      this.props.resetStory();
+      this.props.resetMap();
+      this.props.resetPhoto();
       await this.checkAutoSavedSession();
       this.setState({ loading: false });
     }
@@ -38,16 +58,6 @@ class Welcome extends Component {
     }
 
     render() {
-        const {
-          navigation,
-          edit,
-          driver,
-          nonmotorist,
-          vehicle,
-          passenger,
-          road
-        } = this.props
-
         const data = {
           driver: this.props.driver.data,
           nonmotorist: this.props.nonmotorist.data,
@@ -112,7 +122,19 @@ class Welcome extends Component {
     }
 };
 
-const mapStateToProps = (state) => {
+const mapDispatchToProps = {
+  resetDriver,
+  resetNonmotorist,
+  resetPassenger,
+  resetVehicle,
+  resetRoad,
+  resetQuiz,
+  resetStory,
+  resetMap,
+  resetPhoto,
+}
+
+const mapStateToProps = (state, action) => {
   return {
       driver: state.driverReducer,
       nonmotorist: state.nonmotoristReducer,
@@ -123,6 +145,6 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Welcome);
+export default connect(mapStateToProps, mapDispatchToProps)(Welcome);
 
 //export default Welcome;

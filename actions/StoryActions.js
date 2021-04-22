@@ -11,3 +11,9 @@ export const updateResponse = (response) => {
     payload: response
   }
 }
+
+export const resetStory = () => {
+  return {
+    type: 'RESETSTORY'
+  }
+}
