@@ -71,9 +71,7 @@ export const questions = {
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-6",
-            "helperText": "/image/test.jpg",
-            "tooltip": "/image/test.jpg"
+            "humanReadableId": "driver-6"
         },
         {
             "numOptionsAllowed": "0.0",
@@ -83,8 +81,7 @@ export const questions = {
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-7",
-            "helperText": "/image/test.jpg"
+            "humanReadableId": "driver-7"
         },
         {
             "numOptionsAllowed": "0.0",
@@ -94,8 +91,7 @@ export const questions = {
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-8",
-            "tooltip": "/image/test.jpg"
+            "humanReadableId": "driver-8"
         },
         {
             "numOptionsAllowed": "0.0",
@@ -958,15 +954,14 @@ export const questions = {
             ]
         },
         {
-            "numOptionsAllowed": "2.0",
+            "numOptionsAllowed": "0.0",
             "question": "Violation Codes",
             "id": "SJP0mZrJ",
             "answerType": "openTextBox",
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-34",
-            "helperText": "(choose up to 2)"
+            "humanReadableId": "driver-34"
         },
         {
             "numOptionsAllowed": "1.0",
@@ -3374,6 +3369,7 @@ export const questions = {
                 "road"
             ],
             "humanReadableId": "road-4",
+            "helperText": "Provide type for ownership of the land where the crash occurred",
             "answerOptions": [
                 {
                     "text": "Public Property",
@@ -4006,6 +4002,9 @@ export const questions = {
                 "road"
             ],
             "humanReadableId": "road-18",
+            "helperText": "This question refers only to crashes where the first harmful event involves a collision between two motor vehicles.",
+            "tooltip": "The figure below displays a diagram of the manner of collision.",
+            "helperImg": "../image/manner_example.png",
             "answerOptions": [
                 {
                     "text": "Not a Collision between Two Motor Vehicles In-transport",
@@ -6031,6 +6030,8 @@ export const questions = {
                 "vehicle"
             ],
             "humanReadableId": "vehicle-47",
+            "helperText": "Provide the approximate contact point on this vehicle associated with this vehicle’s initial harmful event.",
+            "helperImg": "../image/initial_contact.png",
             "answerOptions": [
                 {
                     "text": "Non-Collision",
