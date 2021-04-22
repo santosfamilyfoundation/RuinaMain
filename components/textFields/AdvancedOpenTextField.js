@@ -20,7 +20,7 @@ const AdvancedOpenTextField = (props) => {
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
 
-    if(props.response != null) { 
+    if(props.response != null) {
         if (data.questionDependency != null){
             let tarQuesArr = data.questionDependency
             for(let i = 0; i <tarQuesArr.length; i++){ // Looping through dependent question
@@ -150,12 +150,13 @@ const AdvancedOpenTextField = (props) => {
         setAdvancedButtonAppearance("outline");
       }else{
         setAdvancedButtonAppearance("filled")
-        var date = new Date().getDate(); //Current Date
-        var month = new Date().getMonth() + 1; //Current Month
-        var year = new Date().getFullYear(); //Current Year
-        var hours = new Date().getHours(); //Current Hours
-        var min = new Date().getMinutes(); //Current Minutes
-        let fullDate = year.toString() + month.toString() + date.toString() + hours.toString() + min.toString();
+        let now = new Date();
+        let year = now.getFullYear() * 100000000;
+        let month = (now.getMonth() + 1) * 1000000;
+        let date = now.getDate() * 10000;
+        let hours = now.getHours() * 100;
+        let min = now.getMinutes();
+        let fullDate = (year + month + date + hours + min).toString();;
         updateRoad({id, question:data.id, selection: fullDate });
       }
     };
