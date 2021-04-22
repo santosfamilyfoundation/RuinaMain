@@ -14,18 +14,18 @@ const MultiButtonSelectorQuickSurvey = (props) => {
   const submitField = (optionText, idCode) => {
       setSelection(optionText);
         if (dependencyID==null || dependencyID.length == 1){
-            updateResponse && updateResponse({id, question: currId, selection: idCode})
+            updateResponse && updateResponse({question: currId, selection: idCode})
         }else{
             let vehicleID = dependencyID[1]
             switch (dependencyID.length) {
                 case 2:
-                    updateResponse && updateResponse({id, question: currId, selection: idCode, vehicleID: vehicleID})
+                    updateResponse && updateResponse({question: currId, selection: idCode, vehicleID: vehicleID})
                     break;
                 case 3:
                     let passengerID = dependencyID[2]
-                    updateResponse && updateResponse({id, question: currId, selection: idCode, vehicleID: vehicleID, passengerID: passengerID})
+                    updateResponse && updateResponse({question: currId, selection: idCode, vehicleID: vehicleID, passengerID: passengerID})
                 case 4:
-                    updateResponse && updateResponse({id, question: currId, selection: idCode, vehicleID: vehicleID, nonmotoristID: dependencyID[3]})
+                    updateResponse && updateResponse({question: currId, selection: idCode, vehicleID: vehicleID, nonmotoristID: dependencyID[3]})
                 default:
                     break;
             }
