@@ -18,3 +18,9 @@ export const deletePassenger = passengerID => {
         payload: passengerID
     }
 }
+
+export const resetPassenger = () => {
+    return {
+        type: 'RESETPASSENGER'
+    }
+}

@@ -5,6 +5,7 @@ import ImageSelector from '../image/imgIndex';
 import { Input, Layout, Text, Card, Modal, Button, CardHeader, Icon } from '@ui-kitten/components';
 import { styles } from './OpenTextFieldWithSelection.style';
 import { updateResponse } from '../../actions/StoryActions';
+import { dependencyParser } from '../../utils/dependencyHelper';
 
 
 
@@ -14,7 +15,7 @@ const OpenTextFieldWithSelection = (props) => {
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const [isInvalid, setIsInvalid] = React.useState(false);
 
-    const {data, key, id, questionReducer, submitFunction, updateResponse} = props;
+    const {data, key, id, questionReducer, submitFunction, updateResponse, dependencyID} = props;
 
 
     let currId = data.id
@@ -22,28 +23,6 @@ const OpenTextFieldWithSelection = (props) => {
 
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
-
-
-    if(props.response != null) { 
-        if (data.questionDependency != null){
-            let tarQuesArr = data.questionDependency
-            for(let i = 0; i <tarQuesArr.length; i++){ // Looping through dependent question
-                let tarUid = tarQuesArr[i].dependencyUid
-                let tarOptionCode = tarQuesArr[i].dependencyOptionCode
-                for (let j = props.response.length-1; j >= 0; j--){
-                    if (props.response[j].selection == tarOptionCode) {break}
-                    if (typeof props.response[j].selection == "array"){
-                        let resArr = props.response[j].selection.find(item => item != tarOptionCode)
-                        if (resArr.length === props.response[j].selection.length){return null}
-                    }
-                    if (props.response[j].question === tarUid && props.response[j].selection != tarOptionCode){
-                        return null
-                    }
-                }
-            }
-        }
-    };
-
 
     // Populate if value already exists in redux
     if(!value) {
@@ -58,6 +37,12 @@ const OpenTextFieldWithSelection = (props) => {
     const submitField = () => {
         if(!value) {
             return;
+        }
+        if (dependencyID!=null){
+            const vehicleID = dependencyID[1] // Get vehicle id to identify different vehicles
+            updateResponse && updateResponse({id, question: currId, selection: value, vehicleID: vehicleID})
+        } else{
+            updateResponse && updateResponse({id, question: currId, selection: value})
         }
         updateResponse && updateResponse({id, question: currId, selection: value})
         submitFunction({id, question: currId, selection: value})
@@ -230,36 +215,41 @@ const OpenTextFieldWithSelection = (props) => {
         );
     }
 
-    return (
-        <Layout key={key} style={styles.container}>
-            <Card header={Header} status={status}>
-                <Layout style={styles.content}>
-                    {HelperTooltip()}
-                    <Layout style={styles.input}>
-                        <Input
-                            style={styles.inputField}
-                            icon={renderClear}
-                            onIconPress={() => clearField()}
-                            placeholder='Place your Text'
-                            value={value}
-                            onChangeText={onTextChange}
-                        />
-                        <Button
-                            style={styles.submitButton}
-                            appearance={buttonAppearance}
-                            size='medium'
-                            icon={CheckIcon}
-                            onPress={() => submitField()}
-                        />
+    var renderComponent = dependencyParser(props.response, data, dependencyID)
+    if (renderComponent){
+        return(
+            <Layout key={key} style={styles.container}>
+                <Card header={Header} status={status}>
+                    <Layout style={styles.content}>
+                        {HelperTooltip()}
+                        <Layout style={styles.input}>
+                            <Input
+                                style={styles.inputField}
+                                icon={renderClear}
+                                onIconPress={() => clearField()}
+                                placeholder='Place your Text'
+                                value={value}
+                                onChangeText={onTextChange}
+                            />
+                            <Button
+                                style={styles.submitButton}
+                                appearance={buttonAppearance}
+                                size='medium'
+                                icon={CheckIcon}
+                                onPress={() => submitField()}
+                            />
+                        </Layout>
+                        <Layout style={styles.answers}>
+                            {renderButtons()}
+                        </Layout>
+                        {ErrorMsg()}
                     </Layout>
-                    <Layout style={styles.answers}>
-                        {renderButtons()}
-                    </Layout>
-                    {ErrorMsg()}
-                </Layout>
-            </Card>
-        </Layout>
-    );
+                </Card>
+            </Layout>
+        )
+    }else{
+        return null
+    }
 };
 
 

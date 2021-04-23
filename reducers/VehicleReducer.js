@@ -38,6 +38,13 @@ export default function vehicleReducer (state=initialState, action) {
                 ...state,
                 data: updatedState.filter(vehicle => vehicle.id != vehicleID)
             }
+
+        case 'RESETVEHICLE':
+            console.log("RESET VEHICLE!");
+            state = initialState;
+            return {
+                ...state,
+            }
             
         default:
             return state;

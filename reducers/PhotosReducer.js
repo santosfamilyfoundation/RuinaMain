@@ -19,6 +19,12 @@ const photosReducer = (state = INITIAL_STATE, action) => {
         imagesObj[action.data.tag] = [action.data.image];
       }
       return { ...state, images: imagesObj}
+    case 'RESETPHOTO':
+      console.log("RESET PHOTO!");
+      state = INITIAL_STATE;
+      return {
+        ...state,
+      }
     default:
       return state;
   }

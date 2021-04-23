@@ -72,9 +72,7 @@ export const questions = {
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-6",
-            "helperText": "/image/test.jpg",
-            "tooltip": "/image/test.jpg"
+            "humanReadableId": "driver-6"
         },
         {
             "numOptionsAllowed": "0.0",
@@ -84,8 +82,7 @@ export const questions = {
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-7",
-            "helperText": "/image/test.jpg"
+            "humanReadableId": "driver-7"
         },
         {
             "numOptionsAllowed": "0.0",
@@ -95,8 +92,7 @@ export const questions = {
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-8",
-            "tooltip": "/image/test.jpg"
+            "humanReadableId": "driver-8"
         },
         {
             "numOptionsAllowed": "0.0",
@@ -959,15 +955,14 @@ export const questions = {
             ]
         },
         {
-            "numOptionsAllowed": "2.0",
+            "numOptionsAllowed": "0.0",
             "question": "Violation Codes",
             "id": "SJP0mZrJ",
             "answerType": "openTextBox",
             "display": [
                 "driver"
             ],
-            "humanReadableId": "driver-34",
-            "helperText": "(choose up to 2)"
+            "humanReadableId": "driver-34"
         },
         {
             "numOptionsAllowed": "1.0",
@@ -1058,6 +1053,26 @@ export const questions = {
             "humanReadableId": "driver-36",
             "questionDependency": [
                 {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
+                {
                     "dependencyUid": "sM5HGjcV",
                     "dependencyOptionCode": "1"
                 }
@@ -1073,6 +1088,26 @@ export const questions = {
             ],
             "humanReadableId": "driver-37",
             "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
                 {
                     "dependencyUid": "sM5HGjcV",
                     "dependencyOptionCode": "1"
@@ -1131,6 +1166,26 @@ export const questions = {
             ],
             "humanReadableId": "driver-38",
             "questionDependency": [
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "0"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "ovVntlnU",
+                    "dependencyOptionCode": "2"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "1"
+                },
+                {
+                    "dependencyUid": "CynWHwxP",
+                    "dependencyOptionCode": "2"
+                },
                 {
                     "dependencyUid": "sM5HGjcV",
                     "dependencyOptionCode": "1"
@@ -3316,6 +3371,7 @@ export const questions = {
             ],
             "tooltip":"Provide type for ownership of the land where the crash occurred",
             "humanReadableId": "road-4",
+            "helperText": "Provide type for ownership of the land where the crash occurred",
             "answerOptions": [
                 {
                     "text": "Public Property",
@@ -3651,7 +3707,13 @@ export const questions = {
                 "road"
             ],
             "humanReadableId": "road-11",
-            "autoMethod": "county"
+            "autoMethod": "county",
+            "questionDependency": [
+                {
+                    "dependencyUid": "Sl6ypLYA",
+                    "dependencyOptionCode": " "
+                }
+            ]
         },
         {
             "numOptionsAllowed": "0.0",
@@ -3947,6 +4009,9 @@ export const questions = {
             "tooltip" : "The figure below displays a diagram of the manner of collision.",
             "helperImg" :"../image/manner_example.png",
             "humanReadableId": "road-18",
+            "helperText": "This question refers only to crashes where the first harmful event involves a collision between two motor vehicles.",
+            "tooltip": "The figure below displays a diagram of the manner of collision.",
+            "helperImg": "../image/manner_example.png",
             "answerOptions": [
                 {
                     "text": "Not a Collision between Two Motor Vehicles In-transport",
@@ -5974,6 +6039,8 @@ export const questions = {
             "helperText":"Provide the approximate contact point on this vehicle associated with this vehicle’s initial harmful event.",
             "helperImg":"../image/initial_contact.png",
             "humanReadableId": "vehicle-47",
+            "helperText": "Provide the approximate contact point on this vehicle associated with this vehicle’s initial harmful event.",
+            "helperImg": "../image/initial_contact.png",
             "answerOptions": [
                 {
                     "text": "Non-Collision",
@@ -8314,6 +8381,82 @@ export const questions = {
                 {
                     "text": "Unknown",
                     "idCode": "7"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1",
+            "question": "Ownership",
+            "id": "pT0Wq1RO",
+            "answerType": "multiButton",
+            "display": [
+                "setup"
+            ],
+            "humanReadableId": "road-3",
+            "answerOptions": [
+                {
+                    "text": "Public Property",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Private Property",
+                    "idCode": "1"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1",
+            "question": "Secondary Crash",
+            "id": "A6uoXDGb",
+            "answerType": "multiButton",
+            "display": [
+                "setup"
+            ],
+            "humanReadableId": "road-5",
+            "answerOptions": [
+                {
+                    "text": "No",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Yes",
+                    "idCode": "1"
+                }
+            ]
+        },
+        {
+            "numOptionsAllowed": "1",
+            "question": "Crash Severity",
+            "id": "8dY73Yzs",
+            "answerType": "multiButton",
+            "display": [
+                "setup"
+            ],
+            "humanReadableId": "road-31",
+            "answerOptions": [
+                {
+                    "text": "Fatal Injury",
+                    "idCode": "0"
+                },
+                {
+                    "text": "Suspected Serious Injury",
+                    "idCode": "1"
+                },
+                {
+                    "text": "Suspected Minor Injury",
+                    "idCode": "2"
+                },
+                {
+                    "text": "Possible Injury",
+                    "idCode": "3"
+                },
+                {
+                    "text": "Property Damage-Only",
+                    "idCode": "4"
+                },
+                {
+                    "text": "Unknown",
+                    "idCode": "5"
                 }
             ]
         }

@@ -11,7 +11,8 @@ import { View } from 'react-native';
 const NumberButtonSelector = (props) => {
     const [visible, setVisible] = React.useState(false);
     const [selection, setSelection] = React.useState('');
-    const {title, submitFunction, genericReducer, fieldName} = props;
+    const {title, data, id, submitFunction, genericReducer, fieldName, updateResponse, dependencyID} = props;
+    // let currId = data.id
 
     // if(genericReducer[fieldName] != null & selection != genericReducer[fieldName]) {
     //     setSelection(genericReducer[fieldName]);
@@ -19,6 +20,12 @@ const NumberButtonSelector = (props) => {
 
     const submitField = (val) => {
         setSelection(val);
+        if (dependencyID!=null){
+            const vehicleID = dependencyID[1] // Get vehicle id to identify different vehicles
+            updateResponse && updateResponse({id, question: currId, selection: val, vehicleID: vehicleID})
+        } else{
+            updateResponse && updateResponse({id, question: currId, selection: val})
+        }
         submitFunction(val);
     }
 

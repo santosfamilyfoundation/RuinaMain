@@ -26,6 +26,12 @@ export default function roadReducer (state=initialState, action) {
           ...state,
           data: updatedState
         }
+      case 'RESETROAD':
+          console.log("RESET ROAD!");
+          state = initialState;
+          return {
+              ...state,
+          }
         default:
             return state;
     }

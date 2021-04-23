@@ -4,6 +4,7 @@ import { View, Image } from 'react-native';
 import ImageSelector from '../image/imgIndex';
 import { Layout, Text, Card, Button, Modal, CardHeader, Icon, Autocomplete } from '@ui-kitten/components';
 import { styles } from './AutoCompleteDropDown.style';
+import { dependencyParser } from '../../utils/dependencyHelper';
 
 
 const AutoCompleteDropDown = (props) => {
@@ -11,7 +12,7 @@ const AutoCompleteDropDown = (props) => {
     const [value, setValue] = React.useState('');   // value that will be stored in Redux
     const [title, setTitle] = React.useState('');   // value that will be displayed to user in form field
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
-    const {data, key, id, questionReducer, submitFunction} = props;
+    const {data, key, id, questionReducer, submitFunction, updateResponse, dependencyID} = props;
     const [selectionData, setSelectionData] = React.useState(data.answerOptions);
 
     let status;
@@ -37,6 +38,23 @@ const AutoCompleteDropDown = (props) => {
     const submitField = () => {
         if(!value) {
             return;
+        }
+        if (dependencyID==null || dependencyID.length == 1){
+            updateResponse && updateResponse({id, question: currId, selection: value})
+        }else{
+            let vehicleID = dependencyID[1]
+            switch (dependencyID.length) {
+                case 2:
+                    updateResponse && updateResponse({id, question: currId, selection: value, vehicleID: vehicleID})
+                    break;
+                case 3:
+                    let passengerID = dependencyID[2]
+                    updateResponse && updateResponse({id, question: currId, selection: value, vehicleID: vehicleID, passengerID: passengerID})
+                case 4:
+                    updateResponse && updateResponse({id, question: currId, selection: value, vehicleID: vehicleID, nonmotoristID: dependencyID[3]})
+                default:
+                    break;
+            }
         }
         submitFunction({id, question: currId, selection: value})
         setButtonAppearance('filled');
@@ -167,7 +185,9 @@ const AutoCompleteDropDown = (props) => {
         setVisible(!visible);
     };
 
-    return (
+    var renderComponent = dependencyParser(props.response, data, dependencyID)
+    if (renderComponent){
+        return(
         <Layout key={key} style={styles.container}>
             <Card header={Header} status={status}>
                 <Layout style={styles.content}>
@@ -195,14 +215,17 @@ const AutoCompleteDropDown = (props) => {
                 </Layout>
             </Card>
         </Layout>
-    );
+        )
+    }else{
+        return null
+    }
 };
 
 const mapStateToProps = (state, props) => {
-    const { story } = state;
+    const { response } = state.storyReducer
     const { reducer } = props;
     const questionReducer = state[reducer];
-    return { story, questionReducer }
+    return {questionReducer, response }
 };
 
 export default connect(mapStateToProps)(AutoCompleteDropDown);

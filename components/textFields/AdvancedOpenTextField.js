@@ -7,6 +7,7 @@ import { styles } from './AdvancedOpenTextField.style';
 import { updateRoad } from '../../actions/RoadAction';
 import * as Constants from '../../constants';
 import vinValidator from 'vin-validator';
+import { dependencyParser } from '../../utils/dependencyHelper';
 
 //This component is used for "advanced" tool access (map, photo, VIN, and time)
 
@@ -17,31 +18,11 @@ const AdvancedOpenTextField = (props) => {
     const [advancedButtonAppearance, setAdvancedButtonAppearance] = React.useState('outline');
     const [invalidLength, setInvalidLength] = React.useState(false);
     const [invalidVin, setInvalidVin] = React.useState(false);
-    const {data, key, id, questionReducer, submitFunction, pageChange, importFrom, updateRoad} = props;
+    const {data, key, id, questionReducer, submitFunction, pageChange, importFrom, updateRoad, dependencyID} = props;
     let currId = data.id;
     let status;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
-
-    if(props.response != null) { 
-        if (data.questionDependency != null){
-            let tarQuesArr = data.questionDependency
-            for(let i = 0; i <tarQuesArr.length; i++){ // Looping through dependent question
-                let tarUid = tarQuesArr[i].dependencyUid
-                let tarOptionCode = tarQuesArr[i].dependencyOptionCode
-                for (let j = props.response.length-1; j >= 0; j--){
-                    if (props.response[j].selection == tarOptionCode) {break}
-                    if (typeof props.response[j].selection == "array"){
-                        let resArr = props.response[j].selection.find(item => item != tarOptionCode)
-                        if (resArr.length === props.response[j].selection.length){return null}
-                    }
-                    if (props.response[j].question === tarUid && props.response[j].selection != tarOptionCode){
-                        return null
-                    }
-                }
-            }
-        }
-    };
 
     // Populate if value already exists in redux
     if(!value) {
@@ -321,33 +302,39 @@ const AdvancedOpenTextField = (props) => {
         return null;
     };
 
-    return (
-        <Layout key={key} style={styles.container}>
-            <Card status={status} header={CustomCardHeader}>
-                <Layout style={styles.content}>
-                    {HelperTooltip()}
-                    <Layout style={styles.input}>
-                        <Input
-                            style={styles.inputField}
-                            icon={renderClear}
-                            onIconPress={() => clearField()}
-                            placeholder='Place your Text'
-                            value={value}
-                            onChangeText={onTextChange}
-                        />
-                        <Button
-                            style={styles.submitButton}
-                            appearance={buttonAppearance}
-                            size='medium'
-                            icon={CheckIcon}
-                            onPress={() => submitField()}
-                        />
+    var renderComponent = dependencyParser(props.response, data, dependencyID)
+    if (renderComponent){
+        return(
+            <Layout key={key} style={styles.container}>
+                <Card status={status} header={CustomCardHeader}>
+                    <Layout style={styles.content}>
+                        {HelperTooltip()}
+                        <Layout style={styles.input}>
+                            <Input
+                                style={styles.inputField}
+                                icon={renderClear}
+                                onIconPress={() => clearField()}
+                                placeholder='Place your Text'
+                                value={value}
+                                onChangeText={onTextChange}
+                            />
+                            <Button
+                                style={styles.submitButton}
+                                appearance={buttonAppearance}
+                                size='medium'
+                                icon={CheckIcon}
+                                onPress={() => submitField()}
+                            />
+                        </Layout>
+                        {ErrorMsg()}
                     </Layout>
-                    {ErrorMsg()}
-                </Layout>
-            </Card>
-        </Layout>
-    );
+                </Card>
+            </Layout>
+        )
+    }else{
+        return null
+    }
+    
 };
 
 const mapDispatchToProps = {
@@ -355,10 +342,10 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state, props) => {
-    const { story } = state;
+    const { response } = state.storyReducer
     const { reducer } = props;
     const questionReducer = state[reducer];
-    return { story, questionReducer }
+    return { questionReducer, response}
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdvancedOpenTextField);

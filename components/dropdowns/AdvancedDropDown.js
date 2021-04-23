@@ -25,7 +25,7 @@ const AdvancedDropDown = (props) => {
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const [toggleWeatherHelper, setToggleWeatherHelper] = React.useState(false);
     const [advancedButtonAppearance, setAdvancedButtonAppearance] = React.useState('outline');
-    const {data, key, id, questionReducer, submitFunction, pageChange, importFrom} = props;
+    const {data, key, id, questionReducer, submitFunction, pageChange, importFrom, updateResponse, dependencyID} = props;
     const [isLoading, setIsLoading] = React.useState(true);
     const [temp, setTemp] = React.useState("");
     const [conditions, setConditions] = React.useState("");

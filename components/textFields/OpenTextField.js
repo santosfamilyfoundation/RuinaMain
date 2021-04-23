@@ -4,6 +4,7 @@ import { View, Image } from 'react-native';
 import { Input, Layout, Text, Card, Button, Modal, CardHeader, Icon} from '@ui-kitten/components';
 import ImageSelector from '../image/imgIndex';
 import { styles } from './OpenTextField.style';
+import { dependencyParser } from '../../utils/dependencyHelper';
 
 
 const OpenTextField = (props) => {
@@ -11,7 +12,7 @@ const OpenTextField = (props) => {
     const [value, setValue] = React.useState('');
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const [isInvalid, setIsInvalid] = React.useState(false);
-    const {data, key, id, questionReducer, submitFunction} = props;
+    const {data, key, id, questionReducer, submitFunction, dependencyID} = props;
 
     let currId = data.id
     let status;
@@ -19,25 +20,6 @@ const OpenTextField = (props) => {
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
 
-    if(props.response != null) { 
-        if (data.questionDependency != null){
-            let tarQuesArr = data.questionDependency
-            for(let i = 0; i <tarQuesArr.length; i++){ // Looping through dependent question
-                let tarUid = tarQuesArr[i].dependencyUid
-                let tarOptionCode = tarQuesArr[i].dependencyOptionCode
-                for (let j = props.response.length-1; j >= 0; j--){
-                    if (props.response[j].selection == tarOptionCode) {break}
-                    if (typeof props.response[j].selection == "array"){
-                        let resArr = props.response[j].selection.find(item => item != tarOptionCode)
-                        if (resArr.length === props.response[j].selection.length){return null}
-                    }
-                    if (props.response[j].question === tarUid && props.response[j].selection != tarOptionCode){
-                        return null
-                    }
-                }
-            }
-        }
-    };
 
     // Populate if value already exists in redux
     if(!value) {
@@ -191,8 +173,9 @@ const OpenTextField = (props) => {
         }
         return null;
     };
-
-    return (
+    var renderComponent = dependencyParser(props.response, data, dependencyID)
+    if (renderComponent){
+        return(
         <Layout key={key} style={styles.container}>
             <Card header={Header} status={status}>
                 <Layout style={styles.content}>
@@ -218,14 +201,17 @@ const OpenTextField = (props) => {
                 </Layout>
             </Card>
         </Layout>
-    );
+        )
+    }else{
+        return null
+    }
 };
 
 const mapStateToProps = (state, props) => {
-    const { story } = state;
+    const { response } = state.storyReducer
     const { reducer } = props;
     const questionReducer = state[reducer];
-    return { story, questionReducer }
+    return { questionReducer, response}
 };
 
 export default connect(mapStateToProps)(OpenTextField);

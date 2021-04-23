@@ -10,7 +10,7 @@ export default function passengerReducer (state=initialState, action) {
             console.log("add passenger " + action.payload.id);
             return {
                 ...state,
-                data: state.data.concat([{id: action.payload.id, vehicle: action.payload.vehicleID}])
+                data: state.data.concat([{id: action.payload.id, vehicle: action.payload.vehicleID, driver: action.payload.driverID}])
             }
         case 'UPDATEPASSENGER':
             const { id, question, selection } = action.payload
@@ -32,6 +32,12 @@ export default function passengerReducer (state=initialState, action) {
             return {
                 ...state,
                 data: updatedState.filter(passenger => passenger.id != passengerID)
+            }
+        case 'RESETPASSENGER':
+            console.log("RESET PASSENGER!");
+            state = initialState;
+            return {
+                ...state,
             }
         default:
             return state;

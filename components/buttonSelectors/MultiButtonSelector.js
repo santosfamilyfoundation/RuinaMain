@@ -5,35 +5,19 @@ import { Layout, Text, Card, Button, Modal, CardHeader, Icon } from '@ui-kitten/
 import ImageSelector from '../image/imgIndex';
 import { updateResponse } from '../../actions/StoryActions';
 import { styles } from './MultiButtonSelector.style';
+import { dependencyParser } from '../../utils/dependencyHelper';
 
 
 const MultiButtonSelector = (props) => {
     const [visible, setVisible] = React.useState(false);
     const [selection, setSelection] = React.useState(null);
-    const {data, key, id, questionReducer, submitFunction, updateResponse} = props;
+    const {data, key, id, questionReducer, submitFunction, updateResponse, dependencyID} = props;
 
     let currId = data.id
     let status = 'danger';
 
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
-
-    if(props.response != null) { 
-        if (data.questionDependency != null){
-            let tarQuesArr = data.questionDependency
-            for(let i = 0; i <tarQuesArr.length; i++){
-                let tarUid = tarQuesArr[i].dependencyUid
-                let tarOptionCode = tarQuesArr[i].dependencyOptionCode
-                for (let j = props.response.length-1; j >= 0; j--){
-                    if (props.response[j].selection == tarOptionCode) {break}
-                    if (props.response[j].question === tarUid && props.response[j].selection != tarOptionCode){
-                        return null
-                    }
-                }
-            }
-
-        }
-    };
 
     // Populate if value already exists in redux
     if(!selection) {
@@ -47,9 +31,24 @@ const MultiButtonSelector = (props) => {
 
     const submitField = (optionText, idCode) => {
         setSelection(optionText);
-        updateResponse && updateResponse({id, question: currId, selection: idCode})
+        if (dependencyID==null || dependencyID.length == 1){
+            updateResponse && updateResponse({id, question: currId, selection: idCode})
+        }else{
+            let vehicleID = dependencyID[1]
+            switch (dependencyID.length) {
+                case 2:
+                    updateResponse && updateResponse({id, question: currId, selection: idCode, vehicleID: vehicleID})
+                    break;
+                case 3:
+                    let passengerID = dependencyID[2]
+                    updateResponse && updateResponse({id, question: currId, selection: idCode, vehicleID: vehicleID, passengerID: passengerID})
+                case 4:
+                    updateResponse && updateResponse({id, question: currId, selection: idCode, vehicleID: vehicleID, nonmotoristID: dependencyID[3]})
+                default:
+                    break;
+            }
+        }
         submitFunction({id, question: currId, selection: optionText})
-
     }
 
     const Header = () => (
@@ -167,20 +166,25 @@ const MultiButtonSelector = (props) => {
         );
     }
 
-    return (
-        <Layout key={key} style={styles.container}>
-            <Card header={Header} status={status}>
-                <Layout style={styles.content}>
-                    {HelperTooltip()}
-                    <Layout style={styles.input}>
-                        <Layout style={styles.answers}>
-                            {renderButtons()}
+    var renderComponent = dependencyParser(props.response, data, dependencyID)
+    if (renderComponent){
+        return(
+            <Layout key={key} style={styles.container}>
+                <Card header={Header} status={status}>
+                    <Layout style={styles.content}>
+                        {HelperTooltip()}
+                        <Layout style={styles.input}>
+                            <Layout style={styles.answers}>
+                                {renderButtons()}
+                            </Layout>
                         </Layout>
                     </Layout>
-                </Layout>
-            </Card>
-        </Layout>
-    );
+                </Card>
+            </Layout>
+        )
+    }else{
+        return null
+    }
 };
 
 const mapDispatchToProps = {

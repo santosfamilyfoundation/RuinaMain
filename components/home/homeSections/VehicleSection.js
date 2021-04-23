@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { addPassenger, deletePassenger } from '../../../actions/PassengerAction';
 import { deleteVehicle } from '../../../actions/VehicleAction';
 import { deleteDriver } from '../../../actions/DriverAction';
-import {questions} from '../../../data/questions';
+import { questions } from '../../../data/questions';
 
 var uuid = require('react-native-uuid');
 
@@ -37,7 +37,7 @@ class VehicleSection extends Component{
     // add passenger to global state
     _addPassenger () {
         let passengerID = uuid.v1();
-        this.props.addPassenger({id: passengerID, vehicleID: this.props.vehicle.id});
+        this.props.addPassenger({id: passengerID, vehicleID: this.props.vehicle.id, driverID: this.props.vehicle.driver});
     }
 
     // delete passenger from global state
@@ -58,7 +58,7 @@ class VehicleSection extends Component{
     }
 
     render(){
-        const {navigation, vehicle, index, name, edit, passenger} = this.props
+        const {navigation, vehicle, index, name, edit, passenger, roadID} = this.props
         let vehicleQuestions = this.filterQuestionsData('vehicle');
         let passengerQuestions = this.filterQuestionsData('passenger');
         let driverQuestions = this.filterQuestionsData('driver');
@@ -75,29 +75,48 @@ class VehicleSection extends Component{
         //     </View>
         // );
 
-        const navigateQuestion = (form, id, type) => {
-            navigation.navigate('Question', {questions: form.data, objectID: id, type})
+        const navigateQuestion = (form, id, type, ids) => {
+            navigation.navigate('Question', {questions: form.data, objectID: id, type, dependencyID: ids})
         }
 
         // create passengers associated with vehicle section in two modes (edit and non edit)
         let i = 0;
         let passengerListArr = passenger.data.map((passenger, index) => {
             if (passenger.vehicle == vehicle.id) {
-              i = i + 1;
-              if (edit) {
-                return (
-                    <Card key={index} style={styles.individualCard} onPress= {() => this.setState({beforePassengerDelete:true, passengerToDelete:passenger.id})}>
-                        <Icon name='person-remove' width={75} height={75} />
-                        <Text style={styles.itemCardFooter} category="s1">Passenger {i}</Text>
-                    </Card>
-                )
+              if (!this.state.driverDeleted) {
+                i = i + 1;
+                if (edit) {
+                  return (
+                      <Card key={index} style={styles.individualCard} onPress= {() => this.setState({beforePassengerDelete:true, passengerToDelete:passenger.id})}>
+                          <Icon name='person-remove' width={75} height={75} />
+                          <Text style={styles.itemCardFooter} category="s1">Passenger {i}</Text>
+                      </Card>
+                  )
+                } else {
+                  return (
+                      <Card key={index} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger', [roadID, passenger.vehicle, passenger.id])}>
+                          <Icon name='person' width={75} height={75} />
+                          <Text style={styles.itemCardFooter} category="s1">Passenger {i}</Text>
+                      </Card>
+                  )
+                }
               } else {
-                return (
-                    <Card key={index} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger')}>
-                        <Icon name='person' width={75} height={75} />
-                        <Text style={styles.itemCardFooter} category="s1">Passenger {i}</Text>
-                    </Card>
-                )
+                i = i + 1;
+                if (edit) {
+                  return (
+                      <Card key={index} style={styles.individualCard} onPress= {() => this.setState({beforePassengerDelete:true, passengerToDelete:passenger.id})}>
+                          <Icon name='person-remove' width={75} height={75} />
+                          <Text style={styles.itemCardFooter} category="s1">Occupant {i}</Text>
+                      </Card>
+                  )
+                } else {
+                  return (
+                      <Card key={index} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger', [roadID, passenger.vehicle, passenger.id])}>
+                          <Icon name='person' width={75} height={75} />
+                          <Text style={styles.itemCardFooter} category="s1">Occupant {i}</Text>
+                      </Card>
+                  )
+                }
               }
             }
         });
@@ -117,10 +136,18 @@ class VehicleSection extends Component{
                               <Text style={styles.itemCardFooter} category="s1">Driver</Text>
                           </Card>
                         }
-                        <Card style={styles.individualCard} onPress= {this._addPassenger} >
+                        {!this.state.driverDeleted &&
+                          <Card style={styles.individualCard} onPress= {this._addPassenger} >
                             <Icon name='person-add' width={75} height={75} />
                             <Text style={styles.itemCardFooter} category="s1">Passenger</Text>
-                        </Card>
+                          </Card>
+                        }
+                        {this.state.driverDeleted &&
+                          <Card style={styles.individualCard} onPress= {this._addPassenger} >
+                            <Icon name='person-add' width={75} height={75} />
+                            <Text style={styles.itemCardFooter} category="s1">Occupant</Text>
+                          </Card>
+                        }
                         {passengerListArr}
                         <Card style={styles.individualCard} onPress= {() => this.setState({beforeVehicleDelete:true})}>
                           <Icon name='minus-circle' width={75} height={75} />
@@ -156,7 +183,7 @@ class VehicleSection extends Component{
                           }}
                         >
                           <Text style={material.subheading}>
-                            Are you sure you want to delete this passenger?
+                            Are you sure you want to delete this passenger/occupant?
                           </Text>
                         </MaterialDialog>
 
@@ -182,12 +209,12 @@ class VehicleSection extends Component{
             return(
                 <Card key={vehicle.id} header={VehiclesHeader} style={styles.itemCard} >
                     <View style={styles.itemCardContent}>
-                        <Card style={styles.individualCard} onPress= {() => navigateQuestion(vehicleQuestions, vehicle.id, 'Vehicle')}>
+                        <Card style={styles.individualCard} onPress= {() => navigateQuestion(vehicleQuestions, vehicle.id, 'Vehicle', [roadID, vehicle.id])}>
                             <Icon name='car' width={75} height={75} style={{justifyItems:'center', alignItems:'center'}}/>
                             <Text style={styles.itemCardFooter} category="s1">{name}</Text>
                         </Card>
                         {!this.state.driverDeleted &&
-                          <Card style={styles.individualCard} onPress= {() => navigateQuestion(driverQuestions, vehicle.driver, 'Driver')}>
+                          <Card style={styles.individualCard} onPress= {() => navigateQuestion(driverQuestions, vehicle.driver, 'Driver', [roadID, vehicle.id])}>
                               <Icon name='person' width={75} height={75} />
                               <Text style={styles.itemCardFooter} category="s1">Driver</Text>
                           </Card>

@@ -15,38 +15,18 @@ import ImageSelector from '../image/imgIndex';
 import { updateResponse } from '../../actions/StoryActions';
 import { styles } from './DropDownMultiSelect.style';
 import { connect } from 'react-redux';
+import { dependencyParser } from '../../utils/dependencyHelper';
 
 
 const DropDownMultiSelect = (props) => {
     const [visible, setVisible] = React.useState(false);
     const [selectedOptions, setSelectedOptions] = React.useState([]);
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
-    const {data, key, id, questionReducer, submitFunction, updateResponse} = props;
+    const {data, key, id, questionReducer, submitFunction, updateResponse, dependencyID} = props;
 
     let currId = data.id;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
-
-
-    if(props.response != null) { 
-        if (data.questionDependency != null){
-            let tarQuesArr = data.questionDependency
-            for(let i = 0; i <tarQuesArr.length; i++){ // Looping through dependent question
-                let tarUid = tarQuesArr[i].dependencyUid
-                let tarOptionCode = tarQuesArr[i].dependencyOptionCode
-                for (let j = props.response.length-1; j >= 0; j--){
-                    if (props.response[j].selection == tarOptionCode) {break}
-                    if (typeof props.response[j].selection == "array"){
-                        let resArr = props.response[j].selection.find(item => item != tarOptionCode)
-                        if (resArr.length === props.response[j].selection.length){return null}
-                    }
-                    if (props.response[j].question === tarUid && props.response[j].selection != tarOptionCode){
-                        return null
-                    }
-                }
-            }
-        }
-    };
 
     // Populate if value already exists in redux
     if(selectedOptions.length == 0) {
@@ -67,13 +47,13 @@ const DropDownMultiSelect = (props) => {
 
     // Disable/enable if numOptionsAllowed reached
     if(selectedOptions.length == data.numOptionsAllowed) {
-        for(i = 0; i < data.answerOptions.length; i++) {
+        for(let i = 0; i < data.answerOptions.length; i++) {
             if(!selectedOptions.includes(data.answerOptions[i])) {
                 data.answerOptions[i].disabled = true;
             };
         };
     } else {
-        for(i = 0; i < data.answerOptions.length; i++) {
+        for(let i = 0; i < data.answerOptions.length; i++) {
             if(!selectedOptions.includes(data.answerOptions[i])) {
                 data.answerOptions[i].disabled = false;
             };
@@ -103,7 +83,7 @@ const DropDownMultiSelect = (props) => {
             setIncomplete();
         } else {
             let incompleteFlag = false;
-            for(i = 0; i < selectedOptions.length; i++) {
+            for(let i = 0; i < selectedOptions.length; i++) {
                 if(!existingData[currId].includes(selectedOptions[i].text)){
                     incompleteFlag = true;
                 }
@@ -118,7 +98,6 @@ const DropDownMultiSelect = (props) => {
             }
         }
     }
-
     const submitField = () => {
         if(selectedOptions.length == 0) {
             return;
@@ -127,7 +106,28 @@ const DropDownMultiSelect = (props) => {
         for(i = 0; i < selectedOptions.length; i++) {
             res.push(selectedOptions[i].text);
         }
-        updateResponse && updateResponse({id, question: currId, selection: res})
+        let resId = []
+        for(i = 0; i < selectedOptions.length; i++) {
+            resId.push(selectedOptions[i].idCode);
+        }
+        
+        if (dependencyID==null || dependencyID.length == 1){
+            updateResponse && updateResponse({id, question: currId, selection: resId})
+        }else{
+            let vehicleID = dependencyID[1]
+            switch (dependencyID.length) {
+                case 2:
+                    updateResponse && updateResponse({id, question: currId, selection: resId, vehicleID: vehicleID})
+                    break;
+                case 3:
+                    let passengerID = dependencyID[2]
+                    updateResponse && updateResponse({id, question: currId, selection: resId, vehicleID: vehicleID, passengerID: passengerID})
+                case 4:
+                    updateResponse && updateResponse({id, question: currId, selection: resId, vehicleID: vehicleID, nonmotoristID: dependencyID[3]})
+                default:
+                    break;
+            }
+        }
         submitFunction({id, question: currId, selection: res})
     }
 
@@ -226,32 +226,43 @@ const DropDownMultiSelect = (props) => {
     const CheckIcon = (style) => (
         <Icon {...style} name='checkmark-outline' />
     )
-
-    return (
-        <Layout key={key} style={styles.container}>
-            <Card header={Header} status={status}>
-                <Layout style={styles.content}>
-                    {HelperTooltip()}
-                    <Layout style={styles.input}>
-                        <Select
-                            style={styles.inputField}
-                            data={data.answerOptions}
-                            selectedOption={selectedOptions}
-                            multiSelect={true}
-                            onSelect={addOption}
-                        />
-                        <Button
-                            style={styles.submitButton}
-                            appearance={buttonAppearance}
-                            size='medium'
-                            icon={CheckIcon}
-                            onPress={() => submitField()}
-                        />
+    
+    const checkOptionCode = (entry, target) => {
+        status = 'success'
+        if(buttonAppearance != 'filled') {
+            setButtonAppearance('filled');
+        };
+    }
+    var renderComponent = dependencyParser(props.response, data, dependencyID)
+    if (renderComponent){
+        return(
+            <Layout key={key} style={styles.container}>
+                <Card header={Header} status={status}>
+                    <Layout style={styles.content}>
+                        {HelperTooltip()}
+                        <Layout style={styles.input}>
+                            <Select
+                                style={styles.inputField}
+                                data={data.answerOptions}
+                                selectedOption={selectedOptions}
+                                multiSelect={true}
+                                onSelect={addOption}
+                            />
+                            <Button
+                                style={styles.submitButton}
+                                appearance={buttonAppearance}
+                                size='medium'
+                                icon={CheckIcon}
+                                onPress={() => submitField()}
+                            />
+                        </Layout>
                     </Layout>
-                </Layout>
-            </Card>
-        </Layout>
-    );
+                </Card>
+            </Layout>
+        )
+    }else{
+        return null
+    }
 };
 
 const mapDispatchToProps = {
@@ -259,8 +270,6 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state, props) => {
-    // console.log('state', state);
-    // const { story } = state;
     const { response } = state.storyReducer
     const { reducer } = props;
     const questionReducer = state[reducer];

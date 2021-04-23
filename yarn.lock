@@ -1473,6 +1473,16 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-5.9.10.tgz#97d3a9fa62a3a4838ec7a6ec91cfec5a26e365b6"
   integrity sha512-1NPlBA2Hu/KWc3EnQcDRPRX0x8Dg9tuQlQQVWVQjlg+u+PjCq7ANEtbikOFKp5yQqfF8tqzU5+84/IfDO8zpiA==
 
+"@react-native-community/progress-bar-android@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@react-native-community/progress-bar-android/-/progress-bar-android-1.0.4.tgz#2601353b23a7ad76a59e5b0981e0b08c39902708"
+  integrity sha512-O7UCpXDXlpxIx2eusj6bc8noJ5KyXZjnad0NQig9myq6iV4D9uGVziSj6J2v46dTnMd9iTX60szBu1LvsUO6rg==
+
+"@react-native-community/progress-view@^1.0.3", "@react-native-community/progress-view@^1.2.4":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@react-native-community/progress-view/-/progress-view-1.2.4.tgz#2293e8a683144a788a926e0ed19cbc5eb9c1192f"
+  integrity sha512-NTraRANHf51S1hXePh1CZTn35LmkHJYi1en0fTWIoFbuGOEGIYg3/Vpm6ccqigQt9+Np3l7Qu/WfAEqjOn6udQ==
+
 "@react-navigation/core@^3.7.9":
   version "3.7.9"
   resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-3.7.9.tgz#3f7ba0fcb6c8d74a77a057382af198d84c7c4e3b"
@@ -2933,6 +2943,11 @@ cross-spawn@^7.0.0:
     path-key "^3.1.0"
     shebang-command "^2.0.0"
     which "^2.0.1"
+
+crypto-js@^3.2.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-3.3.0.tgz#846dd1cce2f68aacfa156c8578f926a609b7976b"
+  integrity sha512-DIT51nX0dCfKltpRiXV+/TVZq+Qq2NgF4644+K7Ttnla7zEzqc+kjJyiB96BHNyUTBxyjzRcZYpUdZa+QAqi6Q==
 
 css-select@^2.0.2:
   version "2.1.0"
@@ -5401,7 +5416,7 @@ json-stringify-safe@~5.0.1:
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
   integrity sha1-Epai1Y/UXxmg9s4B1lcB4sc1tus=
 
-json2csv@^5.0.4:
+json2csv@^5.0.6:
   version "5.0.6"
   resolved "https://registry.yarnpkg.com/json2csv/-/json2csv-5.0.6.tgz#590e0e1b9579e59baa53bda0c0d840f4d8009687"
   integrity sha512-0/4Lv6IenJV0qj2oBdgPIAmFiKKnh8qh7bmLFJ+/ZZHLjSeiL3fKKGX3UryvKPbxFbhV+JcYo9KUC19GJ/Z/4A==
@@ -7009,6 +7024,11 @@ react-native-gesture-handler@^1.8.0:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
+react-native-html-to-pdf@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/react-native-html-to-pdf/-/react-native-html-to-pdf-0.9.1.tgz#74caed6e4e7344ba4f8b3f49425410896b7c61be"
+  integrity sha512-aACv9A2i9A6FY5hi9zuhDSsJqea3yRpbpQu0/y1LGPk9DknE4c0CDDOI9qjEJv+wgBpS1gfQM+sezqVlZ8xtlA==
+
 react-native-iphone-x-helper@^1.3.0:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz#20c603e9a0e765fd6f97396638bdeb0e5a60b010"
@@ -7037,6 +7057,16 @@ react-native-material-dialog@^0.7.7:
     prop-types "^15.5.10"
     react-native-typography "^1.0.3"
     react-native-vector-icons "^4.2.0"
+
+react-native-pdf@^6.3.0:
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-pdf/-/react-native-pdf-6.3.0.tgz#17bf7381904ae3a45d4800679c744d3e02457c60"
+  integrity sha512-iT2GTRw6tMoCO4vRYKwIyXnhQ+XPW8trK+YlbMpsnF8dx2n7ssSdcutuIDnDvZ/fM3CqKJizVSQMWbyOd4O2+w==
+  dependencies:
+    "@react-native-community/progress-bar-android" "^1.0.4"
+    "@react-native-community/progress-view" "^1.0.3"
+    crypto-js "^3.2.0"
+    prop-types "^15.7.2"
 
 react-native-reanimated@^1.13.1:
   version "1.13.2"
@@ -7478,10 +7508,9 @@ rimraf@~2.2.6:
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.2.8.tgz#e439be2aaee327321952730f99a8929e4fc50582"
   integrity sha1-5Dm+Kq7jJzIZUnMPmaiSnk/FBYI=
 
-rn-fetch-blob@^0.12.0:
+"rn-fetch-blob@github:joltup/rn-fetch-blob#pull/701/head":
   version "0.12.0"
-  resolved "https://registry.yarnpkg.com/rn-fetch-blob/-/rn-fetch-blob-0.12.0.tgz#ec610d2f9b3f1065556b58ab9c106eeb256f3cba"
-  integrity sha512-+QnR7AsJ14zqpVVUbzbtAjq0iI8c9tCg49tIoKO2ezjzRunN7YL6zFSFSWZm6d+mE/l9r+OeDM3jmb2tBb2WbA==
+  resolved "https://codeload.github.com/joltup/rn-fetch-blob/tar.gz/7926c9d56b0f1df3459b9dd6efb0438122245e59"
   dependencies:
     base-64 "0.1.0"
     glob "7.0.6"

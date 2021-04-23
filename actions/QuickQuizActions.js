@@ -61,3 +61,9 @@ export const changeRespond = () => {
     type: 'RESPOND'
   }
 }
+
+export const resetQuiz = () => {
+  return {
+    type: 'RESETQUIZ'
+  }
+}

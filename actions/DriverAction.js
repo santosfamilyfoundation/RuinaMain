@@ -18,3 +18,9 @@ export const deleteDriver = driverID => {
         payload: driverID
     }
 }
+
+export const resetDriver = () => {
+    return {
+        type: 'RESETDRIVER'
+    }
+}

@@ -4,6 +4,7 @@ import { View, Image } from 'react-native';
 import ImageSelector from '../image/imgIndex';
 import { Input, Layout, Text, Card, Button, Modal, CardHeader, Icon } from '@ui-kitten/components';
 import { styles } from './LargeTextField.style';
+import { dependencyParser } from '../../utils/dependencyHelper';
 
 
 const LargeTextField = (props) => {
@@ -11,7 +12,7 @@ const LargeTextField = (props) => {
     const [visible, setVisible] = React.useState(false);
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const [isInvalid, setIsInvalid] = React.useState(false);
-    const {data, key, id, questionReducer, submitFunction} = props;
+    const {data, key, id, questionReducer, submitFunction, dependencyID} = props;
 
     let currId = data.id
     let status;
@@ -189,8 +190,10 @@ const LargeTextField = (props) => {
         }
         return null;
     };
-
-    return (
+    
+    var renderComponent = dependencyParser(props.response, data, dependencyID)
+    if (renderComponent){
+        return(
         <Layout key={key} style={styles.container}>
             <Card header={Header} status={status}>
                 <Layout style={styles.content}>
@@ -218,7 +221,10 @@ const LargeTextField = (props) => {
                 </Layout>
             </Card>
         </Layout>
-    );
+        )
+    }else{
+        return null
+    }
 };
 
 const mapStateToProps = (state, props) => {

@@ -18,3 +18,9 @@ export const updateMarkers = req => {
         payload: req,
     }
 };
+
+export const resetMap = () => {
+    return {
+        type: 'RESETMAP',
+    }
+};
