@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
 import { Divider, Layout, TopNavigation } from '@ui-kitten/components';
@@ -25,10 +25,10 @@ import {questions} from '../../data/questions';
 
 const QuestionForm = (props) => {
   const {
-    questionDetail, 
-    updateDriver, 
-    updateNonmotorist, 
-    updatePassenger, 
+    questionDetail,
+    updateDriver,
+    updateNonmotorist,
+    updatePassenger,
     updateVehicle,
     updateRoad,
     BackAction,
@@ -47,13 +47,14 @@ const QuestionForm = (props) => {
    const questionProps = (type, res) => {
       const PublicObj = {
         data: res.data,
-        key:res.data.id,
+        key: res.data.id,
         id:res.detail.objectID,
+        dependencyID:res.detail.dependencyID,
         reducer:res.setting.reducer,
         submitFunction:res.setting.submitFunction,
         updateResponse:updateResponse
       }
-      const obj = 
+      const obj =
       {
         dropdown: {
           ...PublicObj
@@ -88,7 +89,7 @@ const QuestionForm = (props) => {
         },
         header: {
           data: res.data,
-          key: res.data.id,
+          dependencyID:res.detail.dependencyID,
         },
       }
       return  obj[type]
@@ -128,10 +129,9 @@ const QuestionForm = (props) => {
     }
     return type?obj[type]:obj
   }
-   const renderSingleQuestion = (type, props) => { 
+   const renderSingleQuestion = (type, props) => {
       switch (type) {
         case 'dropdown':
-
           return (
             <DropDownSingleSelect
               {...props}
@@ -161,7 +161,7 @@ const QuestionForm = (props) => {
               {...props}
             />
           )
-          
+
           case 'advancedOpenTextBox':
 
             return (

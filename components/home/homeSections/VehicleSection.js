@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { addPassenger, deletePassenger } from '../../../actions/PassengerAction';
 import { deleteVehicle } from '../../../actions/VehicleAction';
 import { deleteDriver } from '../../../actions/DriverAction';
-import {questions} from '../../../data/questions';
+import { questions } from '../../../data/questions';
 
 var uuid = require('react-native-uuid');
 
@@ -58,7 +58,7 @@ class VehicleSection extends Component{
     }
 
     render(){
-        const {navigation, vehicle, index, name, edit, passenger} = this.props
+        const {navigation, vehicle, index, name, edit, passenger, roadID} = this.props
         let vehicleQuestions = this.filterQuestionsData('vehicle');
         let passengerQuestions = this.filterQuestionsData('passenger');
         let driverQuestions = this.filterQuestionsData('driver');
@@ -75,8 +75,8 @@ class VehicleSection extends Component{
         //     </View>
         // );
 
-        const navigateQuestion = (form, id, type) => {
-            navigation.navigate('Question', {questions: form.data, objectID: id, type})
+        const navigateQuestion = (form, id, type, ids) => {
+            navigation.navigate('Question', {questions: form.data, objectID: id, type, dependencyID: ids})
         }
 
         // create passengers associated with vehicle section in two modes (edit and non edit)
@@ -94,7 +94,7 @@ class VehicleSection extends Component{
                   )
                 } else {
                   return (
-                      <Card key={index} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger')}>
+                      <Card key={index} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger', [roadID, passenger.vehicle, passenger.id])}>
                           <Icon name='person' width={75} height={75} />
                           <Text style={styles.itemCardFooter} category="s1">Passenger {i}</Text>
                       </Card>
@@ -111,7 +111,7 @@ class VehicleSection extends Component{
                   )
                 } else {
                   return (
-                      <Card key={index} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger')}>
+                      <Card key={index} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger', [roadID, passenger.vehicle, passenger.id])}>
                           <Icon name='person' width={75} height={75} />
                           <Text style={styles.itemCardFooter} category="s1">Occupant {i}</Text>
                       </Card>
@@ -209,12 +209,12 @@ class VehicleSection extends Component{
             return(
                 <Card key={vehicle.id} header={VehiclesHeader} style={styles.itemCard} >
                     <View style={styles.itemCardContent}>
-                        <Card style={styles.individualCard} onPress= {() => navigateQuestion(vehicleQuestions, vehicle.id, 'Vehicle')}>
+                        <Card style={styles.individualCard} onPress= {() => navigateQuestion(vehicleQuestions, vehicle.id, 'Vehicle', [roadID, vehicle.id])}>
                             <Icon name='car' width={75} height={75} style={{justifyItems:'center', alignItems:'center'}}/>
                             <Text style={styles.itemCardFooter} category="s1">{name}</Text>
                         </Card>
                         {!this.state.driverDeleted &&
-                          <Card style={styles.individualCard} onPress= {() => navigateQuestion(driverQuestions, vehicle.driver, 'Driver')}>
+                          <Card style={styles.individualCard} onPress= {() => navigateQuestion(driverQuestions, vehicle.driver, 'Driver', [roadID, vehicle.id])}>
                               <Icon name='person' width={75} height={75} />
                               <Text style={styles.itemCardFooter} category="s1">Driver</Text>
                           </Card>
