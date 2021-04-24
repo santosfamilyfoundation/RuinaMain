@@ -12,6 +12,7 @@ import OpenTextFieldWithSelection from '../textFields/OpenTextFieldWithSelection
 import AdvancedOpenTextField from '../textFields/AdvancedOpenTextField';
 import AdvancedDropDown from '../dropdowns/AdvancedDropDown';
 import DropDownMultiSelect from '../dropdowns/DropDownMultiSelect';
+import CountyDropDown from '../dropdowns/CountyDropDown';
 import LargeTextField from '../textFields/LargeTextField';
 import HeaderComponent from '../header/HeaderComponent';
 import { updateDriver } from '../../actions/DriverAction';
@@ -77,6 +78,9 @@ const QuestionForm = (props) => {
           ...PublicObj,
           pageChange: navigateToAdvanced,
           importFrom: res.data.autoMethod
+        },
+        countyDropDown: {
+          ...PublicObj
         },
         largeTextField: {
            ...PublicObj
@@ -174,6 +178,13 @@ const QuestionForm = (props) => {
 
           return (
             <AdvancedDropDown
+              {...props}
+            />
+          )
+        
+        case 'countyDropDown':
+          return (
+            <CountyDropDown
               {...props}
             />
           )
