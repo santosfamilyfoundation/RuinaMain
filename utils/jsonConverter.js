@@ -2,6 +2,7 @@ import {Component} from 'react';
 import XLSX from 'xlsx';
 import * as htmlStrings from '../utils/html_for_pdf_pages/htmlStrings'
 import {testAnswers} from '../data/testAnswers';
+import {questions} from '../data/questions';
 
 export class JSONconverter extends Component {
 	constructor(props) {
@@ -18,46 +19,169 @@ export class JSONconverter extends Component {
 				return file = this.JSONtoHTML(data);
 			case 'pdftest':
 				return this.JSONtoHTML(testAnswers);
+			case 'xlsxtest':
+				return this.JSONtoXLS(testAnswers);
 			default:
 				console.log("Error+"+format)
 		}
 	}
 
 	JSONtoXLS(jsondata) {
-		// Requires node # Don't use this library because https://stackoverflow.com/questions/39046429/react-native-unable-to-resolve-module-fs, require manually change files in node_modules
-		// let json2xls = require('json2xls');
-		// var xlsfile = json2xls(xlsdata);
+		function getQuestion(questionUid) {
+			var queryResult = questions.data.filter(question => question.id == questionUid);
+			return queryResult[0].question
+		};
 
-		let flatten = require('flat');
+		function populateCrashSheet(data) {
+			// initial row
+			var ws = XLSX.utils.json_to_sheet([{ A: "question", B: "answer"}],
+				{header: ["A", "B"], skipHeader: true});
+			// gather crash questions and answers
+			var rows = [];
+			if (!("response" in data["road"][0])) {
+				return ws;
+			}
+			for (var key in data["road"][0]["response"]) {
+				var question = getQuestion(key);
+				var answer = data["road"][0]["response"][key];
+				if (answer instanceof Array) {
+					answer = answer.join(", ");
+				}
+				rows.push({A: question, B: answer});
+			}
+			// write data starting at A2
+			XLSX.utils.sheet_add_json(ws, rows, {skipHeader: true, origin: "A2"});
+			return ws;
+		};
 
-		console.log("json data: ", jsondata);
+		function populateVehicleSheet(data) {
+			// initial row
+			var ws = XLSX.utils.json_to_sheet([{ A: "vehicle number", B: "question", C: "answer"}],
+				{header: ["A", "B", "C"], skipHeader: true});
+			// gather vehicle questions and answers
+			var rows = [];
+			var vehicleNumDict = {}; // key is id and value is number
+			// iterate through each vehicle
+			for (var i = 0; i < data["vehicle"].length; i++) {
+				var vehicleData = data["vehicle"][i];
+				vehicleNumDict[vehicleData["id"]] = i+1;
+				if ("response" in vehicleData) {
+					for (var key in vehicleData["response"]) {
+						var question = getQuestion(key);
+						var answer = vehicleData["response"][key];
+						if (answer instanceof Array) {
+							answer = answer.join(", ");
+						}
+						rows.push({A: i+1, B: question, C: answer});
+					}
+				}
+			}
+			// write data starting at A2
+			XLSX.utils.sheet_add_json(ws, rows, {skipHeader: true, origin: "A2"});
+			return [ws, vehicleNumDict];
+		}
 
+		function populateDriverSheet(data, vehicleNumDict){
+			// initial row
+			var ws = XLSX.utils.json_to_sheet([{ A: "vehicle number", B: "question", C: "answer"}],
+				{header: ["A", "B", "C"], skipHeader: true});
+			// gather driver questions and answers
+			var rows = [];
+			// iterate through each driver
+			for (var i = 0; i < data["driver"].length; i++) {
+				var driverData = data["driver"][i];
+				var vehicleNum = vehicleNumDict[driverData["vehicle"]];
+				if ("response" in driverData) {
+					for (var key in driverData["response"]) {
+						var question = getQuestion(key);
+						var answer = driverData["response"][key];
+						if (answer instanceof Array) {
+							answer = answer.join(", ");
+						}
+						rows.push({A: vehicleNum, B: question, C: answer});
+					}
+				}
+			}
+			// write data starting at A2
+			XLSX.utils.sheet_add_json(ws, rows, {skipHeader: true, origin: "A2"});
+			return ws;
+		}
+
+		function populatePassengerSheet(data, vehicleNumDict){
+			// initial row
+			var ws = XLSX.utils.json_to_sheet([{ A: "vehicle number", B: "passenger number", C: "question", D: "answer"}],
+				{header: ["A", "B", "C", "D"], skipHeader: true});
+			// gather passenger questions and answers
+			var rows = [];
+			var passengerNumDict = {};
+			// iterate through each passenger
+			for (var i = 0; i < data["passenger"].length; i++) {
+				var passengerData = data["passenger"][i];
+				var vehicleNum = vehicleNumDict[passengerData["vehicle"]];
+				if (passengerData["vehicle"] in passengerNumDict) {
+					var passengerNum = passengerNumDict[passengerData["vehicle"]].length + 1;
+					passengerNumDict[passengerData["vehicle"]].push(passengerData["id"]);
+				} else {
+					var passengerNum = 1;
+					passengerNumDict[passengerData["vehicle"]] = [passengerData["id"]];
+				}
+				if ("response" in passengerData) {
+					for (var key in passengerData["response"]) {
+						var question = getQuestion(key);
+						var answer = passengerData["response"][key];
+						if (answer instanceof Array) {
+							answer = answer.join(", ");
+						}
+						rows.push({A: vehicleNum, B:passengerNum, C: question, D: answer});
+					}
+				}
+			}
+			// write data starting at A2
+			XLSX.utils.sheet_add_json(ws, rows, {skipHeader: true, origin: "A2"});
+			return ws;
+		}
+
+		function populateNonmotoristSheet(data) {
+			// initial row
+			var ws = XLSX.utils.json_to_sheet([{ A: "nonmotorist number", B: "question", C: "answer"}],
+				{header: ["A", "B", "C"], skipHeader: true});
+			// gather vehicle questions and answers
+			var rows = [];
+			// iterate through each vehicle
+			for (var i = 0; i < data["nonmotorist"].length; i++) {
+				var nonmotoristData = data["nonmotorist"][i];
+				if ("response" in nonmotoristData) {
+					for (var key in nonmotoristData["response"]) {
+						var question = getQuestion(key);
+						var answer = nonmotoristData["response"][key];
+						if (answer instanceof Array) {
+							answer = answer.join(", ");
+						}
+						rows.push({A: i+1, B: question, C: answer});
+					}
+				}
+			}
+			// write data starting at A2
+			XLSX.utils.sheet_add_json(ws, rows, {skipHeader: true, origin: "A2"});
+			return ws;
+		}
 		// build new workbook
 		const wb = XLSX.utils.book_new();
-		// create worksheet
-		for (var key in jsondata){
-			var data = jsondata[key];
-			// flatten nested JSON into one layer
-			var flatData = flatten(
-				data,
-				{
-			    transformKey: function(key){
-						// if the key is a number, then get remove
-						if (key.match(/^[0-9]+$/) != null) {
-							return '';
-						}
-			      return key.charAt(0) + key.substring(1, key.length);
-			    }
-				}
-				);
-			console.log("data: ", data);
-			console.log("flattened data: ", flatData);
-			let ws = XLSX.utils.json_to_sheet([flatData]);
-			console.log("key: ", key, ", work sheet: ", ws);
-			XLSX.utils.book_append_sheet(wb, ws, key);
-		}
-		console.log("workbook: ", wb);
-
+		// create the crash sheet
+		const crashWS = populateCrashSheet(jsondata);
+		XLSX.utils.book_append_sheet(wb, crashWS, "road");
+		// create the vehicle sheet
+		const [vehicleWS, vehicleNumDict] = populateVehicleSheet(jsondata);
+		XLSX.utils.book_append_sheet(wb, vehicleWS, "vehicle");
+		// create the driver sheet
+		const driverWS = populateDriverSheet(jsondata, vehicleNumDict);
+		XLSX.utils.book_append_sheet(wb, driverWS, "driver");
+		// create the passenger sheet
+		const passengerWS = populatePassengerSheet(jsondata, vehicleNumDict);
+		XLSX.utils.book_append_sheet(wb, passengerWS, "passenger");
+		// create the nonmotorist sheet
+		const nonmotoristWS = populateNonmotoristSheet(jsondata);
+		XLSX.utils.book_append_sheet(wb, nonmotoristWS, "nonmotorist");
 		// output workbook so it can be written to a file
 		const output = str => str;
 		const wbout = XLSX.write(wb, { type: 'binary', bookType: "xlsx" });
@@ -115,7 +239,6 @@ export class JSONconverter extends Component {
 			  // check if line contains "id=" if so then get the id
 				// there could be multiple ids in one line so process all of them
 				var pos = line.indexOf("id=", 0);
-				// var j = pos;
 				while (pos != -1) {
 					// extract the id
 			    var id = line.slice(pos+4, pos+12);
@@ -127,7 +250,6 @@ export class JSONconverter extends Component {
 						line = line.replace("###", ans);
 					}
 					pos = line.indexOf("id=", pos+1);
-					// j = pos;
 				}
 				filledString += line + "\n";
 			}
@@ -169,6 +291,7 @@ export class JSONconverter extends Component {
 			// fill in other ids
 			return processQuestionIds(str, answers, "header");
 		}
+
 		var htmlString = htmlStrings.headerString;
 		const numSectionsDict = getNumSections(jsondata);
 		// fill in cover page header

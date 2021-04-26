@@ -10,7 +10,7 @@ export default function passengerReducer (state=initialState, action) {
             console.log("add passenger " + action.payload.id);
             return {
                 ...state,
-                data: state.data.concat([{id: action.payload.id, vehicle: action.payload.vehicleID, driver: action.payload.driverID}])
+                data: state.data.concat([{id: action.payload.id, vehicle: action.payload.vehicleID}])
             }
         case 'UPDATEPASSENGER':
             const { id, question, selection } = action.payload
