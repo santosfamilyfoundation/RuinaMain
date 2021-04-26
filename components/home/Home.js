@@ -142,15 +142,15 @@ class Home extends Component {
         );
 
         const editIcon = (style) => (
-            <Icon {...style} name='edit-2-outline' />
+            <Icon {...style} name='edit-2' fill="white" />
         );
 
         const finalReportIcon = (style) => (
-            <Icon {...style} name='file-text-outline' />
+            <Icon {...style} name='file-text' fill="white" />
         );
 
         const SaveIcon = (style) => (
-            <Icon {...style} name='save-outline' />
+            <Icon {...style} name='save' fill="white" float="left" />
          );
 
         // right control buttons on navigation bar that changes depending on edit mode
@@ -198,23 +198,23 @@ class Home extends Component {
                       <Card header={RoadHeader} style={styles.itemCard}>
                           <View style={styles.itemCardContent}>
                               <Card style={styles.nonMotoristCard}>
-                                  <Icon name='paper-plane' width={75} height={75} />
-                                  <Text style={styles.itemCardFooter} category="s1">Crash/Road</Text>
+                                  <Icon name='paper-plane' opacity={0.5} width={75} height={75} />
+                                  <Text style={styles.itemCardFooter} opacity={0.5} category="s1">Crash/Road</Text>
                               </Card>
                           </View>
                       </Card>
                       {vehiclesListArr}
                       <Card key={uuid.v1()} style={styles.itemCard} >
                           <View style={styles.addVehicleSection}>
-                              <Icon name='plus-circle' width={75} height={75} onPress= {() => this._addVehicleSection()} />
-                              <Text style={styles.addVehicleSectionFooter} category="s1">Add Vehicle Section</Text>
+                              <Icon name='plus-circle' width={75} height={75} fill='white' float='left' onPress= {() => this._addVehicleSection()} />
+                              <Text style={styles.addVehicleSectionFooter} category="s1" float='left'>Add Vehicle Section</Text>
                           </View>
                       </Card>
                       <Card key={nonmotorist.id} header = {NonMotoristHeader} style={styles.itemCard} >
                           <View style={styles.itemCardContent}>
-                              <Card style={styles.individualCard} onPress= {() => this._addNonmotorist()} >
-                                  <Icon name='person-add' width={75} height={75} />
-                                  <Text style={styles.itemCardFooter} category="s1">Non-Motorist</Text>
+                              <Card style={styles.individualCardAdd} onPress= {() => this._addNonmotorist()} >
+                                  <Icon name='person-add' width={75} height={75} float alignSelf= "center" fill='white'/>
+                                  <Text style={styles.itemCardFooterEdit} category="s1">Add Non-Motorist</Text>
                               </Card>
                               {nonmotoristListArr}
                           </View>

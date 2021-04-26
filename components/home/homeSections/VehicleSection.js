@@ -94,9 +94,9 @@ class VehicleSection extends Component{
             if (!this.state.driverDeleted) {
               if (edit) {
                 return (
-                    <Card key={idx} style={styles.individualCard} onPress= {() => this.setState({beforePassengerDelete:true, passengerToDelete:passenger.id})}>
-                        <Icon name='person-remove' width={75} height={75} />
-                        <Text style={styles.itemCardFooter} category="s1">Passenger {idx+1}</Text>
+                    <Card key={idx} style={styles.individualCardRemove} onPress= {() => this.setState({beforePassengerDelete:true, passengerToDelete:passenger.id})}>
+                        <Icon name='person-remove' width={75} height={75} float alignSelf= "center" fill='white' />
+                        <Text style={styles.itemCardFooterEdit} category="s1">Remove Passenger {idx+1}</Text>
                     </Card>
                 )
               } else {
@@ -110,9 +110,9 @@ class VehicleSection extends Component{
             } else {
               if (edit) {
                 return (
-                    <Card key={idx} style={styles.individualCard} onPress= {() => this.setState({beforePassengerDelete:true, passengerToDelete:passenger.id})}>
-                        <Icon name='person-remove' width={75} height={75} />
-                        <Text style={styles.itemCardFooter} category="s1">Occupant {idx+1}</Text>
+                    <Card key={idx} style={styles.individualCardRemove} onPress= {() => this.setState({beforePassengerDelete:true, passengerToDelete:passenger.id})}>
+                        <Icon name='person-remove' width={75} height={75} float alignSelf= "center" fill="white" />
+                        <Text style={styles.itemCardFooterEdit} category="s1">Remove Occupant {idx+1}</Text>
                     </Card>
                 )
               } else {
@@ -132,32 +132,33 @@ class VehicleSection extends Component{
                 <Card key={vehicle.id} header={VehiclesHeader} style={styles.itemCard} >
                     <View style={styles.itemCardContent}>
                         <Card style={styles.individualCard}>
-                            <Icon name='car' width={75} height={75} style={{justifyItems:'center', alignItems:'center'}}/>
+                            <Icon name='car' opacity={0.5} width={75} height={75} style={{justifyItems:'center', alignItems:'center'}}/>
                             <Text style={styles.itemCardFooter} category="s1">{name}</Text>
                         </Card>
                         {!this.state.driverDeleted &&
-                          <Card style={styles.individualCard} onPress= {() => this.setState({beforeDriverDelete:true})}>
-                              <Icon name='person-remove' width={75} height={75} />
-                              <Text style={styles.itemCardFooter} category="s1">Driver</Text>
+                          <Card style={styles.individualCardRemove} onPress= {() => this.setState({beforeDriverDelete:true})}>
+                              <Icon name='person-remove' width={75} height={75} float alignSelf= "center" fill='white'/>
+                              <Text style={styles.itemCardFooterEdit} category="s1">Remove Driver</Text>
                           </Card>
                         }
                         {!this.state.driverDeleted &&
-                          <Card style={styles.individualCard} onPress= {this._addPassenger} >
-                            <Icon name='person-add' width={75} height={75} />
-                            <Text style={styles.itemCardFooter} category="s1">Passenger</Text>
+                          <Card style={styles.individualCardAdd} onPress= {this._addPassenger} >
+                            <Icon name='person-add' width={75} height={75} float alignSelf= "center" fill='white'/>
+                            <Text style={styles.itemCardFooterEdit} category="s1">Add Passenger</Text>
                           </Card>
                         }
                         {this.state.driverDeleted &&
-                          <Card style={styles.individualCard} onPress= {this._addPassenger} >
-                            <Icon name='person-add' width={75} height={75} />
-                            <Text style={styles.itemCardFooter} category="s1">Occupant</Text>
+                          <Card style={styles.individualCardAdd} onPress= {this._addPassenger} >
+                            <Icon name='person-add' width={75} height={75} float alignSelf= "center" fill='white'/>
+                            <Text style={styles.itemCardFooterEdit} category="s1">Add Occupant</Text>
                           </Card>
                         }
                         {passengerListArr}
-                        <Card style={styles.individualCard} onPress= {() => this.setState({beforeVehicleDelete:true})}>
-                          <Icon name='minus-circle' width={75} height={75} />
-                          <Text style={styles.itemCardFooter} category="s1">Delete</Text>
-                          <Text style={styles.itemCardFooter} category="s1">Section</Text>
+                        <Card style={styles.vehicleRemove} float onPress= {() => this.setState({beforeVehicleDelete:true})}>
+                        <View style={styles.vehicleRemove}>
+                          <Icon name='minus-circle' width={75} height={75} fill='white'  />
+                          <Text style={styles.itemCardFooterEditVehicle} float category="s1">Delete Vehicle {index+1}</Text>
+                        </View>
                         </Card>
 
                         <MaterialDialog
