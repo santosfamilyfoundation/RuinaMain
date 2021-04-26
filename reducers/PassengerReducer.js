@@ -33,6 +33,12 @@ export default function passengerReducer (state=initialState, action) {
                 ...state,
                 data: updatedState.filter(passenger => passenger.id != passengerID)
             }
+        case 'RESETPASSENGER':
+            console.log("RESET PASSENGER!");
+            state = initialState;
+            return {
+                ...state,
+            }
         default:
             return state;
     }

@@ -4,6 +4,7 @@ import { TextInput, Text, StyleSheet, ScrollView, ActivityIndicator } from 'reac
 import { Button, ButtonGroup, Layout, TopNavigation, Card, Input } from '@ui-kitten/components';
 import { connect } from 'react-redux';
 import { changeVehicle, changeDrivers, changeNonmotorists, changePassengers, changeFatality, changeNonFatalInjury, changeRespond, changePhotos, updateSetup } from '../../../actions/QuickQuizActions';
+import { updateResponse } from '../../../actions/StoryActions';
 import { addVehicle } from '../../../actions/VehicleAction';
 import { addNonmotorist } from '../../../actions/NonmotoristAction';
 import { addDriver } from '../../../actions/DriverAction';
@@ -198,6 +199,7 @@ class QuickSurvey extends Component {
         addDriver,
         addRoad,
         addPassenger,
+        updateResponse,
         updateSetup,
         updateVehicle,
         updateNonmotorist,
@@ -205,7 +207,7 @@ class QuickSurvey extends Component {
         updateRoad,
         updatePassenger,
       } = this.props;
-
+      
       // contains the state from the QuickQuizReducer
       const quiz = this.props.quiz;
 
@@ -230,7 +232,7 @@ class QuickSurvey extends Component {
           navigation.navigate('Home', {edit: !this.state.loadedAutoSave});
           return
         }
-
+        
         changeRespond();
         if (!this.state.loadedAutoSave) {
           dispatchAll();
@@ -245,6 +247,13 @@ class QuickSurvey extends Component {
 
       let questionsData = filterQuestionsData('setup');
 
+    const submitField = () => {
+        console.log("Question", question);
+        // updateResponse && updateResponse({id, question: currId, selection: idCode})
+        updateSetup
+        updateResponse
+    }
+      
       // render a single setup question
       // note that right now we only render multiButton questions
       // if more questions of different types were to be added to the setup tab, then
@@ -258,6 +267,7 @@ class QuickSurvey extends Component {
                   data={question}
                   reducer={"quickquizReducer"}
                   submitFunction={updateSetup}
+                  updateResponse={updateResponse}
                 />
               </SafeAreaView>
             )
@@ -279,7 +289,7 @@ class QuickSurvey extends Component {
             <ActivityIndicator id="loadingScreen" size="large" color="#0000ff" />
           </SafeAreaView>
         );
-      } else {
+      } else { 
         console.log("Status after trying to load autosaved session: success, ", this.state.loadedAutoSave);
         // Successfully loaded autosaved session
         if (this.state.loadedAutoSave) {
@@ -305,8 +315,8 @@ class QuickSurvey extends Component {
               </MaterialDialog>
             </SafeAreaView>
           )
-        }
-        // Start new report by filling out the quick survey, could be due to three possible cases:
+        } 
+        // Start new report by filling out the quick survey, could be due to three possible cases: 
         // 1) user doesnt want to load background saved session
         // 2) no background saved session exist
         // 3) json parsing failed
@@ -412,6 +422,7 @@ const mapDispatchToProps = {
   addDriver,
   addRoad,
   addPassenger,
+  updateResponse,
   updateSetup,
   updateVehicle,
   updateNonmotorist,
@@ -424,8 +435,9 @@ const mapDispatchToProps = {
 // helps component get updated state if updated by other components
 const mapStateToProps = (state) => {
   const quiz = state.quickquizReducer
+  const { response } = state.storyReducer
   const passenger = state.passengerReducer;
-  return { quiz, passenger }
+  return { quiz, passenger, response }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuickSurvey);

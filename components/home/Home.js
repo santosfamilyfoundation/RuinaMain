@@ -97,7 +97,7 @@ class Home extends Component {
 
         // navigate to question form
         const navigateQuestion = (form, id, type, name) => {
-            navigation.navigate('Question', {questions: form.data, objectID: id, type, name})
+            navigation.navigate('Question', {questions: form.data, objectID: id, type, name, dependencyID:[id]})
         }
 
         const RoadHeader = () => (
@@ -116,6 +116,7 @@ class Home extends Component {
                     index = {index}
                     name = {"Vehicle"}
                     passenger = {passenger}
+                    roadID = {road.data[0].id}
                 />
             )
           }
@@ -131,6 +132,7 @@ class Home extends Component {
                     navigation = {navigation}
                     nonmotorist = {nonmotorist}
                     index = {index}
+                    roadID = {road.data[0].id}
                 />
             )
         })

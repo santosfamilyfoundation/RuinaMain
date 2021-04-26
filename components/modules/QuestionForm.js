@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
 import { Divider, Layout, TopNavigation } from '@ui-kitten/components';
@@ -12,6 +12,7 @@ import OpenTextFieldWithSelection from '../textFields/OpenTextFieldWithSelection
 import AdvancedOpenTextField from '../textFields/AdvancedOpenTextField';
 import AdvancedDropDown from '../dropdowns/AdvancedDropDown';
 import DropDownMultiSelect from '../dropdowns/DropDownMultiSelect';
+import CountyDropDown from '../dropdowns/CountyDropDown';
 import LargeTextField from '../textFields/LargeTextField';
 import HeaderComponent from '../header/HeaderComponent';
 import { updateDriver } from '../../actions/DriverAction';
@@ -47,8 +48,9 @@ const QuestionForm = (props) => {
    const questionProps = (type, res) => {
       const PublicObj = {
         data: res.data,
-        key:res.data.id,
+        key: res.data.id,
         id:res.detail.objectID,
+        dependencyID:res.detail.dependencyID,
         reducer:res.setting.reducer,
         submitFunction:res.setting.submitFunction,
         updateResponse:updateResponse
@@ -77,6 +79,9 @@ const QuestionForm = (props) => {
           pageChange: navigateToAdvanced,
           importFrom: res.data.autoMethod
         },
+        countyDropDown: {
+          ...PublicObj
+        },
         largeTextField: {
            ...PublicObj
         },
@@ -88,7 +93,7 @@ const QuestionForm = (props) => {
         },
         header: {
           data: res.data,
-          key: res.data.id,
+          dependencyID:res.detail.dependencyID,
         },
       }
       return  obj[type]
@@ -131,7 +136,6 @@ const QuestionForm = (props) => {
    const renderSingleQuestion = (type, props) => {
       switch (type) {
         case 'dropdown':
-
           return (
             <DropDownSingleSelect
               {...props}
@@ -174,6 +178,13 @@ const QuestionForm = (props) => {
 
           return (
             <AdvancedDropDown
+              {...props}
+            />
+          )
+        
+        case 'countyDropDown':
+          return (
+            <CountyDropDown
               {...props}
             />
           )

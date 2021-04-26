@@ -63,6 +63,14 @@ switch (action.type) {
           ...state,
           setupData: updatedState
       }
+
+    case 'RESETQUIZ':
+        console.log("RESET QUIZ!");
+        state = initialState;
+        return {
+            ...state,
+            setupData: {}
+        }
     default:
       return state
     }
