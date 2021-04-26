@@ -35,9 +35,9 @@ class NonMotoristSection extends Component{
         if (edit) {
           return(
               <View>
-                <Card style={styles.nonMotoristCard} onPress = {() => this.setState({beforeDelete:true})}>
-                    <Icon name= 'person-remove' width={75} height={75} alignSelf= "center" />
-                    <Text style={styles.itemCardFooter} category="s1">Non-Motorist {index+1}</Text>
+                <Card style={styles.nonMotoristCardRemove} onPress = {() => this.setState({beforeDelete:true})}>
+                    <Icon name= 'person-remove' width={75} height={75} float alignSelf= "center" fill="white"/>
+                    <Text style={styles.itemCardFooterEdit} category="s1">Remove Non-Motorist {index+1}</Text>
                 </Card>
 
                 <MaterialDialog
