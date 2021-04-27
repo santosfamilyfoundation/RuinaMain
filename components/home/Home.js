@@ -85,10 +85,10 @@ class Home extends Component {
             road: this.props.road.data,
             quiz: this.props.quiz,
         };
-        console.log("---------------------------NEW UPDATE-----------------------------")
-        for (let d in data) {
-            console.log(d, ": ", data[d]);
-        }
+        // console.log("---------------------------NEW UPDATE-----------------------------")
+        // for (let d in data) {
+        //     console.log(d, ": ", data[d]);
+        // }
 
         const captureState = new backgroundSave();
         captureState.captureCurrentState(JSON.stringify(data));
