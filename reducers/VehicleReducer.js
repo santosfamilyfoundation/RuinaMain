@@ -13,7 +13,7 @@ export default function vehicleReducer (state=initialState, action) {
             return {
                 ...state,
                 c20: state.c20 + 1,
-                data: state.data.concat([{hazardous: null, id:action.payload.vehicleID, driver: action.payload.driverID}])
+                data: state.data.concat([{id:action.payload.vehicleID, driver: action.payload.driverID}])
             }
 
         case 'UPDATEVEHICLE':
@@ -45,7 +45,7 @@ export default function vehicleReducer (state=initialState, action) {
             return {
                 ...state,
             }
-            
+
         default:
             return state;
     }

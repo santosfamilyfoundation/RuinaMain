@@ -226,7 +226,7 @@ const QuestionForm = (props) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <TopNavigation title={`${questionDetail.type} Questions`} alignment='center' leftControl={BackAction()} />
+      <TopNavigation title={`Questions on ${questionDetail.name}`} alignment='center' leftControl={BackAction()} />
       <Divider />
       <ScrollView>
         <Layout style={styles.content}>
