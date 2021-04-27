@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { combineReducers } from 'redux';
 import { SafeAreaView} from 'react-navigation';
-import { Linking, ActivityIndicator} from 'react-native';
+import { Linking, ActivityIndicator, View } from 'react-native';
 import { Button, Divider, Layout, TopNavigation, Text } from '@ui-kitten/components';
 import { styles } from './Welcome.style';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -30,7 +30,7 @@ class Welcome extends Component {
         autoSavedSession: false,
         autoSavedSessionDialogBoxVisible: false,
       };
-    } 
+    }
 
     async componentDidMount() {
       this.props.resetDriver();
@@ -87,13 +87,17 @@ class Welcome extends Component {
               <TopNavigation title='Welcome' alignment='center' />
               <Divider />
               <Layout style={styles.centeredContainer}>
-                <Button style={styles.styledButton} onPress={() => navigateTo('Survey')}>Start New Report</Button>
+                <View style={styles.btnContainer}>
+                  <TouchableOpacity style={styles.styledButton} activeOpacity = { .7 } onPress={() => navigateTo('Survey')}>
+                      <Text style={styles.btnText}>Start New Report</Text>
+                  </TouchableOpacity>
+                </View>
                 {this.state.displayOutputTest && <Button style={styles.styledButton} onPress={() => navigateTo('OutputPDFTest')}>Test Output PDF</Button>}
               </Layout>
               <Layout style={styles.bottomBar}>
                 <TouchableOpacity onPress={() => Linking.openURL('https://forms.gle/ho3cZNyoaFArNNN79')}><Text style={{ color: 'blue' }}>Submit Feedback</Text></TouchableOpacity>
                 <Text style={styles.bottomBarText}>
-                  {"Built by students at Olin College of Engineering 2020"}
+                  {"Built by students at Olin College of Engineering 2020-2021"}
                 </Text>
               </Layout>
 

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Keyboard, BackHandler } from 'react-native';
+import { View, ScrollView, Keyboard, BackHandler, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { TopNavigation, TopNavigationAction, Text, Card, CardHeader, Layout, Icon } from '@ui-kitten/components';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styles } from './Home.style';
 import {questions} from '../../data/questions';
 import VehicleSection from './homeSections/VehicleSection';
@@ -160,10 +161,12 @@ class Home extends Component {
                 return (
                     <View style={styles.rightControlsContainer}>
                         <Layout style={styles.rightControls}>
-                            <TopNavigationAction icon={SaveIcon} onPress = {() => {
-                                this.setState({edit: false})
-                            }}/>
-                            <Text style={styles.rightControlsText}>Save</Text>
+                            <Pressable style={styles.rightControls} onPress = {() => {
+                              this.setState({edit: false})
+                            }}>
+                              <TopNavigationAction icon={SaveIcon}/>
+                              <Text style={styles.rightControlsText}>Confirm Changes</Text>
+                            </Pressable>
                         </Layout>
                     </View>
                 )
@@ -171,18 +174,22 @@ class Home extends Component {
                 return (
                     <View style={styles.rightControlsContainer}>
                          <Layout style={styles.rightControls}>
-                           <TopNavigationAction icon={finalReportIcon} onPress = {() =>
+                           <Pressable style={styles.rightControls} onPress = {() =>
                            {navigation.navigate('FinalReport')}
-                           }/>
-                           <Text style={styles.rightControlsText}>Export</Text>
+                           }>
+                             <TopNavigationAction icon={finalReportIcon}/>
+                             <Text style={styles.rightControlsText}>Export</Text>
+                           </Pressable>
                          </Layout>
-                         <Layout style={styles.rightControls}>
-                           <TopNavigationAction icon={editIcon}
-                           onPress = {() =>{
-                                this.setState({edit: true})
-                           }}
-                           />
-                           <Text style={styles.rightControlsText}>Edit</Text>
+                         <Layout
+                          style={styles.rightControls}
+                          >
+                            <Pressable style={styles.rightControls} onPress = {() => {
+                              this.setState({edit: true})
+                            }}>
+                             <TopNavigationAction icon={editIcon}/>
+                             <Text style={styles.rightControlsText}>Edit Sections</Text>
+                           </Pressable>
                          </Layout>
                      </View>
                  )
@@ -193,7 +200,7 @@ class Home extends Component {
         if (this.state.edit) {
           return(
               <SafeAreaView style={{flex:1}}>
-                  <TopNavigation title='Home' alignment='center' rightControls = {rightControls()}/>
+                  <TopNavigation alignment='center' rightControls = {rightControls()}/>
                   <ScrollView>
                       <Card header={RoadHeader} style={styles.itemCard}>
                           <View style={styles.itemCardContent}>
@@ -225,7 +232,7 @@ class Home extends Component {
         } else {
           return(
               <SafeAreaView style={{flex:1}}>
-                  <TopNavigation title='Home' alignment='center' rightControls = {rightControls()}/>
+                  <TopNavigation alignment='center' rightControls = {rightControls()}/>
                   <ScrollView>
                       <Card header={RoadHeader} style={styles.itemCard}>
                           <View style={styles.itemCardContent}>

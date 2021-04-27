@@ -131,7 +131,6 @@ export const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
       padding: 5,
-      paddingRight: 20,
       marginRight: 20,
     },
     rightControlsText:{
