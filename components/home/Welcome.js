@@ -59,18 +59,19 @@ class Welcome extends Component {
     }
 
     render() {
-        const data = {
-          driver: this.props.driver.data,
-          nonmotorist: this.props.nonmotorist.data,
-          vehicle: this.props.vehicle.data,
-          passenger: this.props.passenger.data,
-          road: this.props.road.data,
-          quiz: this.props.quiz,
-        };
-        console.log("---------------------------Reducer Status Welcome Screen -----------------------------")
-        for (let d in data) {
-          console.log(d, ": ", data[d]);
-        }
+        // logging hard reset of Redux store
+        // const data = {
+        //   driver: this.props.driver.data,
+        //   nonmotorist: this.props.nonmotorist.data,
+        //   vehicle: this.props.vehicle.data,
+        //   passenger: this.props.passenger.data,
+        //   road: this.props.road.data,
+        //   quiz: this.props.quiz,
+        // };
+        // console.log("---------------------------Reducer Status Welcome Screen -----------------------------")
+        // for (let d in data) {
+        //   console.log(d, ": ", data[d]);
+        // }
 
         const navigateTo = (loc) => {
           this.props.navigation.navigate(loc, {autoSavedSession: this.state.autoSavedSession});
