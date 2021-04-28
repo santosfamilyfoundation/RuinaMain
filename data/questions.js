@@ -61,8 +61,7 @@ export const questions = {
             ],
             "humanReadableId": "driver-5",
             "helperText": "Street Address 1; Street Address 2",
-            "tooltip": "The street address allows FMCSA to visit carriers and conduct reviews of compliance with the Federal Motor Carrier Safety Regulations and provides a crosscheck for the correct identity of the carrier. The identification number (foundon the truck tractor", 
-            "helperImg": "../image/test.jpg"
+            "tooltip": "E.g. 1000 Olin Way, MA"
         },
         {
             "numOptionsAllowed": "0.0",
@@ -3369,7 +3368,6 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "tooltip":"Provide type for ownership of the land where the crash occurred",
             "humanReadableId": "road-4",
             "helperText": "Provide type for ownership of the land where the crash occurred",
             "answerOptions": [
@@ -3391,8 +3389,6 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "tooltip":" identify the characteristics of the crash with respect to its location on or off a trafficway. Refer to “Figure 1: Diagram of the Trafficway” (p. 10) for examples",
-            "helperImg": "../image/trafficway_example.png",
             "humanReadableId": "road-5",
             "answerOptions": [
                 {
@@ -4005,9 +4001,6 @@ export const questions = {
             "display": [
                 "road"
             ],
-            "helperText" :"This question refers only to crashes where the first harmful event involves a collision between two motor vehicles.",
-            "tooltip" : "The figure below displays a diagram of the manner of collision.",
-            "helperImg" :"../image/manner_example.png",
             "humanReadableId": "road-18",
             "helperText": "This question refers only to crashes where the first harmful event involves a collision between two motor vehicles.",
             "tooltip": "The figure below displays a diagram of the manner of collision.",
@@ -6036,8 +6029,6 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
-            "helperText":"Provide the approximate contact point on this vehicle associated with this vehicle’s initial harmful event.",
-            "helperImg":"../image/initial_contact.png",
             "humanReadableId": "vehicle-47",
             "helperText": "Provide the approximate contact point on this vehicle associated with this vehicle’s initial harmful event.",
             "helperImg": "../image/initial_contact.png",
