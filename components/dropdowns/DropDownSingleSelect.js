@@ -4,14 +4,20 @@ import {
   Select,
   Text,
   Card,
-  CardHeader
+  CardHeader,
+  Modal,
+  Icon,
+  Button
 } from '@ui-kitten/components';
+import { View, Image } from 'react-native';
+import ImageSelector from '../image/imgIndex';
 import { updateResponse } from '../../actions/StoryActions';
 import { styles } from './DropDownSingleSelect.style';
 import { connect } from 'react-redux';
 import { dependencyParser } from '../../utils/dependencyHelper';
 
 const DropDownSingleSelect = (props) => {
+    const [visible, setVisible] = React.useState(false);
     const [selectedOption, setSelectedOption] = React.useState(null);
     const {data, key, id, questionReducer, submitFunction, updateResponse, dependencyID} = props;
     let currId = data.id;
@@ -75,19 +81,91 @@ const DropDownSingleSelect = (props) => {
         <CardHeader title={data.question}/>
       );
 
-    const HelperText = () => {
-        if(data?.helperText?.length != 0) {
+    const ModalContent = () => {
+        if (data.helperImg != null ){
+            var img = new ImageSelector()
+            const src = img.pathHandler(data.helperImg)
+            return (
+                <View style={styles.imgContainer}>
+                    <Layout style={styles.modalContent}>
+                        <Text>{data.tooltip}</Text>
+                        <Image source={src} style={styles.img}/>
+                    </Layout>
+                </View>
+            )
+        }else{
+            return(
+                <Layout style={styles.modalContent}>
+                    <Text>{data.tooltip}</Text>
+                </Layout>
+            )
+        }
+    };
+    
+    const HelperTooltip = () => {
+        if (data.helperText != null && (data.tooltip != null||data.helperImg!=null)){
+            return (
+                <Layout style={styles.container}>
+                    <View style={styles.rowContainer}>
+                        <Text style={styles.helperText}>{data.helperText}</Text>
+                        <Button appearance='ghost' status='primary' icon={InfoIcon} onPress={toggleModal}>
+                            Info
+                        </Button>
+                        <Modal backdropStyle={styles.backdrop} visible={visible}>
+                            <Card style={styles.content} disabled={true}>
+                            {ModalContent()}
+                            <Button appearance='ghost' icon={CloseIcon} onPress={() => setVisible(false)}>
+                                Close
+                            </Button>
+                            </Card>
+                        </Modal>
+                    </View>
+                </Layout>
+            )
+        }
+        else if (data.helperText != null) {
             return (<Text style={styles.helperText}>{data.helperText}</Text>)
         }
-        return null;
+        else if (data.tooltip != null || data.helperImg != null) {
+            return (
+                <View style={styles.endRowcontainer}>
+                    <Button  appearance='ghost' status='primary' icon={InfoIcon} onPress={toggleModal}>
+                        Info
+                    </Button>
+                    <Modal backdropStyle={styles.backdrop} visible={visible}>
+                        <Card style={styles.content} disabled={true}>
+                        {ModalContent()}
+                        <Button appearance='ghost' icon={CloseIcon} onPress={() => setVisible(false)}>
+                            Dismiss
+                        </Button>
+                        </Card>
+                    </Modal>
+                </View>
+            )
+        } else {
+            return null;
+        }
     }
+
+    
+    const InfoIcon = (props) => (
+        <Icon {...props} name='info'/>
+    );
+    const CloseIcon = (props) => (
+        <Icon {...props} name='close-outline'/>
+    );
+
+    const toggleModal = () => {
+        setVisible(!visible);
+    };
+
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
             <Layout key={key} style={styles.container} >
                 <Card header={Header} status={status}>
                     <Layout style={styles.content}>
-                        {HelperText()}
+                        {HelperTooltip()}
                         <Select
                             data={data.answerOptions}
                             selectedOption={selectedOption}
