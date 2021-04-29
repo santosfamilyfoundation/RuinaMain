@@ -36,3 +36,5 @@ export const SEX_ID = "cGeoDWm1"; // driver-10
 export const DLICENSE_ID = "xL5WOZpG"; // driver-24
 export const DLICENSE_CLASS_ID = "fUE3Zk9I"; // driver-25
 export const DLICENSE_ENDORSEMENTS_ID = "qVaWWaWs"; // driver-27
+
+export const ALLOW_JSON_EXPORT = false;

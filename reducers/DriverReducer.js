@@ -36,6 +36,14 @@ export default function driverReducer (state=initialState, action) {
                 ...state,
                 data: updatedState.filter(driver => driver.id != driverID)
             }
+        
+        case 'RESETDRIVER':
+            console.log("RESET DRIVER!");
+            state = initialState;
+            return {
+                ...state,
+            }
+
 
         default:
             return state;

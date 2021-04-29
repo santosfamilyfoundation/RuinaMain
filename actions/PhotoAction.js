@@ -4,3 +4,9 @@ export const photoAction = data => (
       data,
     }
   );
+
+export const resetPhoto = () => {
+  return {
+    type: 'RESETPHOTO'
+  }
+}

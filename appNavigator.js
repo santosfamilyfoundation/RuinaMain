@@ -21,6 +21,7 @@ import { EmailFinalReportScreen } from './screens/emailFinalReportScreen';
 import { SaveToDeviceScreen } from './screens/saveToDeviceScreen';
 import { FeatureComingSoonScreen } from './screens/featureComingSoonScreen';
 import { ReportToDatabaseScreen } from './screens/ReportToDatabaseScreen';
+import { OutputPDFTestScreen } from './screens/outputPDFTestScreen';
 
 const HomeNavigator = createStackNavigator({
   Welcome: WelcomeScreen,
@@ -44,6 +45,7 @@ const HomeNavigator = createStackNavigator({
   SaveToDevice: SaveToDeviceScreen,
   InfoExchange: InfoExchangeScreen,
   SinglePhoto: SinglePhotoScreen,
+  OutputPDFTest: OutputPDFTestScreen,
   ReportToDatabase: FeatureComingSoonScreen,
 }, {
   headerMode: 'none',

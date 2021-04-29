@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Keyboard, BackHandler } from 'react-native';
+import { View, ScrollView, Keyboard, BackHandler, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { TopNavigation, TopNavigationAction, Text, Card, CardHeader, Layout, Icon } from '@ui-kitten/components';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styles } from './Home.style';
 import {questions} from '../../data/questions';
 import VehicleSection from './homeSections/VehicleSection';
@@ -76,7 +77,7 @@ class Home extends Component {
             passenger,
             road
             } = this.props
-        
+
         const data = {
             driver: this.props.driver.data,
             nonmotorist: this.props.nonmotorist.data,
@@ -85,10 +86,10 @@ class Home extends Component {
             road: this.props.road.data,
             quiz: this.props.quiz,
         };
-        console.log("---------------------------NEW UPDATE-----------------------------")
-        for (let d in data) {
-            console.log(d, ": ", data[d]);
-        }
+        // console.log("---------------------------NEW UPDATE-----------------------------")
+        // for (let d in data) {
+        //     console.log(d, ": ", data[d]);
+        // }
 
         const captureState = new backgroundSave();
         captureState.captureCurrentState(JSON.stringify(data));
@@ -96,8 +97,8 @@ class Home extends Component {
         let roadQuestions = this.filterQuestionsData('road');
 
         // navigate to question form
-        const navigateQuestion = (form, id, type) => {
-            navigation.navigate('Question', {questions: form.data, objectID: id, type})
+        const navigateQuestion = (form, id, type, name) => {
+            navigation.navigate('Question', {questions: form.data, objectID: id, type, name, dependencyID:[id]})
         }
 
         const RoadHeader = () => (
@@ -116,6 +117,7 @@ class Home extends Component {
                     index = {index}
                     name = {"Vehicle"}
                     passenger = {passenger}
+                    roadID = {road.data[0].id}
                 />
             )
           }
@@ -131,6 +133,7 @@ class Home extends Component {
                     navigation = {navigation}
                     nonmotorist = {nonmotorist}
                     index = {index}
+                    roadID = {road.data[0].id}
                 />
             )
         })
@@ -140,15 +143,15 @@ class Home extends Component {
         );
 
         const editIcon = (style) => (
-            <Icon {...style} name='edit-2-outline' />
+            <Icon {...style} name='edit-2' fill="white" />
         );
 
         const finalReportIcon = (style) => (
-            <Icon {...style} name='file-text-outline' />
+            <Icon {...style} name='file-text' fill="white" />
         );
 
         const SaveIcon = (style) => (
-            <Icon {...style} name='save-outline' />
+            <Icon {...style} name='save' fill="white" float="left" />
          );
 
         // right control buttons on navigation bar that changes depending on edit mode
@@ -158,10 +161,12 @@ class Home extends Component {
                 return (
                     <View style={styles.rightControlsContainer}>
                         <Layout style={styles.rightControls}>
-                            <TopNavigationAction icon={SaveIcon} onPress = {() => {
-                                this.setState({edit: false})
-                            }}/>
-                            <Text style={styles.rightControlsText}>Save</Text>
+                            <Pressable style={styles.rightControls} onPress = {() => {
+                              this.setState({edit: false})
+                            }}>
+                              <TopNavigationAction icon={SaveIcon}/>
+                              <Text style={styles.rightControlsText}>Confirm Changes</Text>
+                            </Pressable>
                         </Layout>
                     </View>
                 )
@@ -169,18 +174,22 @@ class Home extends Component {
                 return (
                     <View style={styles.rightControlsContainer}>
                          <Layout style={styles.rightControls}>
-                           <TopNavigationAction icon={finalReportIcon} onPress = {() =>
+                           <Pressable style={styles.rightControls} onPress = {() =>
                            {navigation.navigate('FinalReport')}
-                           }/>
-                           <Text style={styles.rightControlsText}>Export</Text>
+                           }>
+                             <TopNavigationAction icon={finalReportIcon}/>
+                             <Text style={styles.rightControlsText}>Export</Text>
+                           </Pressable>
                          </Layout>
-                         <Layout style={styles.rightControls}>
-                           <TopNavigationAction icon={editIcon}
-                           onPress = {() =>{
-                                this.setState({edit: true})
-                           }}
-                           />
-                           <Text style={styles.rightControlsText}>Edit</Text>
+                         <Layout
+                          style={styles.rightControls}
+                          >
+                            <Pressable style={styles.rightControls} onPress = {() => {
+                              this.setState({edit: true})
+                            }}>
+                             <TopNavigationAction icon={editIcon}/>
+                             <Text style={styles.rightControlsText}>Edit Sections</Text>
+                           </Pressable>
                          </Layout>
                      </View>
                  )
@@ -191,28 +200,28 @@ class Home extends Component {
         if (this.state.edit) {
           return(
               <SafeAreaView style={{flex:1}}>
-                  <TopNavigation title='Home' alignment='center' rightControls = {rightControls()}/>
+                  <TopNavigation alignment='center' rightControls = {rightControls()}/>
                   <ScrollView>
                       <Card header={RoadHeader} style={styles.itemCard}>
                           <View style={styles.itemCardContent}>
                               <Card style={styles.nonMotoristCard}>
-                                  <Icon name='paper-plane' width={75} height={75} />
-                                  <Text style={styles.itemCardFooter} category="s1">Crash/Road</Text>
+                                  <Icon name='paper-plane' opacity={0.5} width={75} height={75} />
+                                  <Text style={styles.itemCardFooter} opacity={0.5} category="s1">Crash/Road</Text>
                               </Card>
                           </View>
                       </Card>
                       {vehiclesListArr}
                       <Card key={uuid.v1()} style={styles.itemCard} >
                           <View style={styles.addVehicleSection}>
-                              <Icon name='plus-circle' width={75} height={75} onPress= {() => this._addVehicleSection()} />
-                              <Text style={styles.addVehicleSectionFooter} category="s1">Add Vehicle Section</Text>
+                              <Icon name='plus-circle' width={75} height={75} fill='white' float='left' onPress= {() => this._addVehicleSection()} />
+                              <Text style={styles.addVehicleSectionFooter} category="s1" float='left'>Add Vehicle Section</Text>
                           </View>
                       </Card>
                       <Card key={nonmotorist.id} header = {NonMotoristHeader} style={styles.itemCard} >
                           <View style={styles.itemCardContent}>
-                              <Card style={styles.individualCard} onPress= {() => this._addNonmotorist()} >
-                                  <Icon name='person-add' width={75} height={75} />
-                                  <Text style={styles.itemCardFooter} category="s1">Non-Motorist</Text>
+                              <Card style={styles.individualCardAdd} onPress= {() => this._addNonmotorist()} >
+                                  <Icon name='person-add' width={75} height={75} float alignSelf= "center" fill='white'/>
+                                  <Text style={styles.itemCardFooterEdit} category="s1">Add Non-Motorist</Text>
                               </Card>
                               {nonmotoristListArr}
                           </View>
@@ -223,11 +232,11 @@ class Home extends Component {
         } else {
           return(
               <SafeAreaView style={{flex:1}}>
-                  <TopNavigation title='Home' alignment='center' rightControls = {rightControls()}/>
+                  <TopNavigation alignment='center' rightControls = {rightControls()}/>
                   <ScrollView>
                       <Card header={RoadHeader} style={styles.itemCard}>
                           <View style={styles.itemCardContent}>
-                              <Card style={styles.nonMotoristCard} onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road')}>
+                              <Card style={styles.nonMotoristCard} onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road', 'Crash/Road')}>
                                   <Icon name='paper-plane' width={75} height={75} />
                                   <Text style={styles.itemCardFooter} category="s1">Crash/Road</Text>
                               </Card>
