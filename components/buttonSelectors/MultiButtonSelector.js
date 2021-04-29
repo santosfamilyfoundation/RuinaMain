@@ -15,7 +15,7 @@ const MultiButtonSelector = (props) => {
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
 
-    if(props.response != null) { 
+    if(props.response != null) {
         if (data.questionDependency != null){
             let tarQuesArr = data.questionDependency
             for(let i = 0; i <tarQuesArr.length; i++){
@@ -74,7 +74,7 @@ const MultiButtonSelector = (props) => {
     }
 
     const renderSingleButton = (option) => {
-        let appearance = (selection == option.text) ? 'filled': 'outline';
+        let appearance = (selection == option.idCode) ? 'filled': 'outline';
         return (
             <Button
                 key={option.idCode}
@@ -123,4 +123,3 @@ const mapStateToProps = (state, props) => {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(MultiButtonSelector);
-
