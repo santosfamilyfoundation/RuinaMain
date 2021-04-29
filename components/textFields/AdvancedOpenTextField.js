@@ -20,7 +20,7 @@ const AdvancedOpenTextField = (props) => {
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
 
-    if(props.response != null) { 
+    if(props.response != null) {
         if (data.questionDependency != null){
             let tarQuesArr = data.questionDependency
             for(let i = 0; i <tarQuesArr.length; i++){ // Looping through dependent question
@@ -138,8 +138,6 @@ const AdvancedOpenTextField = (props) => {
           default:
             type = Constants.VIN;
         }
-        console.log('DRIVER ID');
-        console.log(id);
         pageChange('Scan', {objectID:id, type:type, questionId:currId,
           questionReducer:questionReducer})
 

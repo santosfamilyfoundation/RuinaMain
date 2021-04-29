@@ -22,7 +22,6 @@ class BarcodeScan extends PureComponent {
         var elements = {};
         for (var element of splitData) {
           element = element.trim();
-          console.log(element);
           if (element.includes('ANSI') || element.includes('AAMV')) { // handle first line of DL output where one field is hidden
             const cutElement = element.substring(element.indexOf('DL')+2); // remove string before first instance of DL
             const indexOfData = cutElement.substring(cutElement).indexOf('DL') + 2; // find second instance of DL in element
@@ -32,7 +31,6 @@ class BarcodeScan extends PureComponent {
             elements[element.substring(0, 3)] = element.substring(3);
           }
         }
-        console.log(elements)
         const id = this.props.navigation.state.params.objectID;
         if ("DAC" in elements) { // add first name
           this.props.updateDriver({id, question:Constants.FIRST_NAME_ID, selection: elements["DAC"]});
@@ -62,7 +60,6 @@ class BarcodeScan extends PureComponent {
           if (zip.substring(zip.length - 4) == '0000') { // if last four digits are unknown, ignore them
             zip = zip.substring(0, zip.length-4);
           }
-          console.log(zip)
           this.props.updateDriver({id, question:Constants.ZIP_CODE_ID, selection: zip});
         }
         if ("DBC" in elements) { // add sex
@@ -143,9 +140,7 @@ class BarcodeScan extends PureComponent {
 
   render() {
 
-    console.log(this.props.navigation.state);
     const {barcodeScanAction, driver} = this.props;
-    console.log(barcodeScanAction);
 
     return (
       <View style={styles.container}>
