@@ -88,7 +88,7 @@ const MultiButtonSelector = (props) => {
             )
         }
     };
-    
+
     const HelperTooltip = () => {
             if (data.helperText != null && (data.tooltip != null||data.helperImg!=null)){
                 return (
@@ -133,7 +133,7 @@ const MultiButtonSelector = (props) => {
                 return null;
             }
         }
-    
+
     const InfoIcon = (props) => (
         <Icon {...props} name='info'/>
     );
@@ -146,7 +146,7 @@ const MultiButtonSelector = (props) => {
     };
 
     const renderSingleButton = (option) => {
-        let appearance = (selection == option.text) ? 'filled': 'outline';
+        let appearance = (selection == option.idCode) ? 'filled': 'outline';
         return (
             <Button
                 key={option.idCode}
@@ -200,4 +200,3 @@ const mapStateToProps = (state, props) => {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(MultiButtonSelector);
-

@@ -122,7 +122,8 @@ const AdvancedOpenTextField = (props) => {
           default:
             type = Constants.VIN;
         }
-        pageChange('Scan', {objectID:id, type:type})
+        pageChange('Scan', {objectID:id, type:type, questionId:currId,
+          questionReducer:questionReducer})
 
       }
     };
@@ -228,7 +229,7 @@ const AdvancedOpenTextField = (props) => {
             )
         }
     };
-    
+
         const HelperTooltip = () => {
         if (data.helperText != null && (data.tooltip != null||data.helperImg!=null)){
             return (
@@ -273,7 +274,7 @@ const AdvancedOpenTextField = (props) => {
             return null;
         }
     }
-    
+
     const InfoIcon = (props) => (
         <Icon {...props} name='info'/>
     );
