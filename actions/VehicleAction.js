@@ -18,3 +18,9 @@ export const deleteVehicle = vehicleID => {
         payload: vehicleID
     }
 }
+
+export const resetVehicle = () => {
+    return {
+        type: 'RESETVEHICLE'
+    }
+}

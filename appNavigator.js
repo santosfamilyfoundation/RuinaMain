@@ -9,6 +9,7 @@ import { PhotoCaptureScreen } from './screens/photoCaptureScreen'
 import { SinglePhotoScreen } from './screens/singlePhotoScreen';
 import { VehicleInfoScreen } from './screens/vehicleinfoScreen';
 // import { ScanScreen } from './screens/scanScreen';
+import { BarcodeScanScreen } from './screens/barcodeScanScreen';
 import { QuickSurveyScreen } from './screens/quickSurveyScreen';
 import { HomeScreen } from './screens/homeScreen';
 import { QuestionScreen } from './screens/questionScreen';
@@ -20,6 +21,7 @@ import { EmailFinalReportScreen } from './screens/emailFinalReportScreen';
 import { SaveToDeviceScreen } from './screens/saveToDeviceScreen';
 import { FeatureComingSoonScreen } from './screens/featureComingSoonScreen';
 import { ReportToDatabaseScreen } from './screens/ReportToDatabaseScreen';
+import { OutputPDFTestScreen } from './screens/outputPDFTestScreen';
 
 const HomeNavigator = createStackNavigator({
   Welcome: WelcomeScreen,
@@ -30,7 +32,9 @@ const HomeNavigator = createStackNavigator({
   PhotoCapture: PhotoCaptureScreen,
   Vehicle: VehicleInfoScreen,
   // Scan: ScanScreen,  // uncomment for integration with Anyline
-  Scan: FeatureComingSoonScreen,
+  BarcodeScan: BarcodeScanScreen,
+  Scan: BarcodeScanScreen,
+  // Scan: FeatureComingSoonScreen,
   Survey: QuickSurveyScreen,
   Home: HomeScreen,
   Question: QuestionScreen,
@@ -41,6 +45,7 @@ const HomeNavigator = createStackNavigator({
   SaveToDevice: SaveToDeviceScreen,
   InfoExchange: InfoExchangeScreen,
   SinglePhoto: SinglePhotoScreen,
+  OutputPDFTest: OutputPDFTestScreen,
   ReportToDatabase: FeatureComingSoonScreen,
 }, {
   headerMode: 'none',

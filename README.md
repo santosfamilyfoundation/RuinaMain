@@ -53,4 +53,27 @@ Reliable crash data is essential to improving traffic safety. As part of a senio
     yarn add sinon enzyme enzyme-adapter-react-16 --dev
     npm install -g jest-cli
     ```
-    Run tests via `jest <input test filename>` 
+    Run tests via `jest <input test filename>`
+
+
+## Build Error Troubleshooting
+Some weird issues encountered from running `npx react-native run-android`
+1. ```
+   Error: spawn ./gradlew EACCES
+   at Process.ChildProcess._handle.onexit (internal/child_process.js:267:19)
+   ```
+   Solution: in root directory, run
+   ```
+   chmod 755 android/gradlew
+   ```
+   For more info, check this [post](https://stackoverflow.com/questions/54541734/spawnsync-gradlew-eacces-error-when-running-react-native-project-on-emulator-u).
+2. ```
+   Execution failed for task ':app:installDebug'.
+   > java.util.concurrent.ExecutionException: com.android.builder.testing.api.DeviceException: com.android.ddmlib.InstallException: INSTALL_FAILED_VERSION_DOWNGRADE
+   ```
+   Solution: in root directory run
+
+   ```
+   adb uninstall com.ruina
+   ```
+   For more info, check this [post](https://github.com/ionic-team/ionic-cli/issues/278).

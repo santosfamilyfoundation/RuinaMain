@@ -1,19 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Input, Layout, Text, Card, Button, CardHeader, Icon, ListItem, CheckBox } from '@ui-kitten/components';
+import { Input, Layout, Text, Card, Button, Modal, CardHeader, Icon, ListItem, CheckBox } from '@ui-kitten/components';
+import { View, Image } from 'react-native';
+import ImageSelector from '../image/imgIndex';
 import { styles } from './AdvancedOpenTextField.style';
 import { updateRoad } from '../../actions/RoadAction';
 import * as Constants from '../../constants';
+import vinValidator from 'vin-validator';
+import { dependencyParser } from '../../utils/dependencyHelper';
 
-//This component is used for "advanced" tool access (map, photo, and time)
+//This component is used for "advanced" tool access (map, photo, VIN, and time)
 
 const AdvancedOpenTextField = (props) => {
+    const [visible, setVisible] = React.useState(false);
     const [value, setValue] = React.useState('');
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const [advancedButtonAppearance, setAdvancedButtonAppearance] = React.useState('outline');
-    const [isInvalid, setIsInvalid] = React.useState(false);
-    const {data, key, id, questionReducer, submitFunction, pageChange, importFrom, updateRoad} = props;
-    let currId = data.id
+    const [invalidLength, setInvalidLength] = React.useState(false);
+    const [invalidVin, setInvalidVin] = React.useState(false);
+    const {data, key, id, questionReducer, submitFunction, pageChange, importFrom, updateRoad, dependencyID} = props;
+    let currId = data.id;
     let status;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
@@ -35,6 +41,18 @@ const AdvancedOpenTextField = (props) => {
             return;
         }
         submitFunction({id, question: currId, selection: value})
+        switch(currId) {
+          case "Bw7d2KTr": // VIN question id
+            if (!vinValidator.validate(value)) {
+              setInvalidVin(true);
+            } else {
+              setInvalidVin(false);
+            }
+            break;
+          default:
+            break;
+        }
+        ErrorMsg();
         setButtonAppearance('filled');
     }
 
@@ -61,10 +79,13 @@ const AdvancedOpenTextField = (props) => {
             setButtonAppearance('outline');
         }
     }
-    if(value.length > data.maxLength && !isInvalid) {
-        setIsInvalid(true);
-    } else if(isInvalid && value.length <= data.maxLength) {
-        setIsInvalid(false);
+
+    // checking if response length is valid
+    // currently no questions use this, but could be added in the future
+    if(value.length > data.maxLength && !invalidLength) {
+        setInvalidLength(true);
+    } else if(invalidLength && value.length <= data.maxLength) {
+        setInvalidLength(false);
     }
 
     const onImportMapPress = () => {
@@ -101,7 +122,8 @@ const AdvancedOpenTextField = (props) => {
           default:
             type = Constants.VIN;
         }
-        pageChange('Scan', {objectID:id, type:type})
+        pageChange('Scan', {objectID:id, type:type, questionId:currId,
+          questionReducer:questionReducer})
 
       }
     };
@@ -113,12 +135,13 @@ const AdvancedOpenTextField = (props) => {
         setAdvancedButtonAppearance("outline");
       }else{
         setAdvancedButtonAppearance("filled")
-        var date = new Date().getDate(); //Current Date
-        var month = new Date().getMonth() + 1; //Current Month
-        var year = new Date().getFullYear(); //Current Year
-        var hours = new Date().getHours(); //Current Hours
-        var min = new Date().getMinutes(); //Current Minutes
-        let fullDate = year.toString() + month.toString() + date.toString() + hours.toString() + min.toString();
+        let now = new Date();
+        let year = now.getFullYear() * 100000000;
+        let month = (now.getMonth() + 1) * 1000000;
+        let date = now.getDate() * 10000;
+        let hours = now.getHours() * 100;
+        let min = now.getMinutes();
+        let fullDate = (year + month + date + hours + min).toString();;
         updateRoad({id, question:data.id, selection: fullDate });
       }
     };
@@ -186,52 +209,134 @@ const AdvancedOpenTextField = (props) => {
         status = 'success'
     }
 
-    const HelperText = () => {
-      //Text that shows up on questions with helper text fields
-        if(data?.helperText?.length != 0) {
+    const ModalContent = () => {
+        if (data.helperImg != null ){
+            var img = new ImageSelector()
+            const src = img.pathHandler(data.helperImg)
+            return (
+                <View style={styles.imgContainer}>
+                    <Layout style={styles.modalContent}>
+                        <Text>{data.tooltip}</Text>
+                        <Image source={src} style={styles.img}/>
+                    </Layout>
+                </View>
+            )
+        }else{
+            return(
+                <Layout style={styles.modalContent}>
+                    <Text>{data.tooltip}</Text>
+                </Layout>
+            )
+        }
+    };
+
+        const HelperTooltip = () => {
+        if (data.helperText != null && (data.tooltip != null||data.helperImg!=null)){
+            return (
+                <Layout style={styles.container}>
+                    <View style={styles.rowContainer}>
+                        <Text style={styles.helperText}>{data.helperText}</Text>
+                        <Button appearance='ghost' status='primary' icon={InfoIcon} onPress={toggleModal}>
+                            Info
+                        </Button>
+                        <Modal backdropStyle={styles.backdrop} visible={visible}>
+                            <Card style={styles.content} disabled={true}>
+                            {ModalContent()}
+                            <Button appearance='ghost' icon={CloseIcon} onPress={() => setVisible(false)}>
+                                Close
+                            </Button>
+                            </Card>
+                        </Modal>
+                    </View>
+                </Layout>
+            )
+        }
+        else if (data.helperText != null) {
             return (<Text style={styles.helperText}>{data.helperText}</Text>)
         }
-        return null;
+        else if (data.tooltip != null || data.helperImg != null) {
+            return (
+                <View style={styles.endRowcontainer}>
+                    <Button  appearance='ghost' status='primary' icon={InfoIcon} onPress={toggleModal}>
+                        Info
+                    </Button>
+                    <Modal backdropStyle={styles.backdrop} visible={visible}>
+                        <Card style={styles.content} disabled={true}>
+                        {ModalContent()}
+                        <Button appearance='ghost' icon={CloseIcon} onPress={() => setVisible(false)}>
+                            Dismiss
+                        </Button>
+                        </Card>
+                    </Modal>
+                </View>
+            )
+        } else {
+            return null;
+        }
     }
 
+    const InfoIcon = (props) => (
+        <Icon {...props} name='info'/>
+    );
+    const CloseIcon = (props) => (
+        <Icon {...props} name='close-outline'/>
+    );
+
+    const toggleModal = () => {
+        setVisible(!visible);
+    };
+
     const ErrorMsg = () => {
-        if(isInvalid) {
+        if(invalidLength) {
             return(
                 <Text>
                     Too long!
                 </Text>
             )
         }
+        if(invalidVin) {
+          return(
+            <Text style={{color:'red'}}>
+              Warning: Invalid VIN
+            </Text>
+          )
+        }
         return null;
     };
 
-    return (
-        <Layout key={key} style={styles.container}>
-            <Card status={status} header={CustomCardHeader}>
-                <Layout style={styles.content}>
-                    {HelperText()}
-                    <Layout style={styles.input}>
-                        <Input
-                            style={styles.inputField}
-                            icon={renderClear}
-                            onIconPress={() => clearField()}
-                            placeholder='Place your Text'
-                            value={value}
-                            onChangeText={onTextChange}
-                        />
-                        <Button
-                            style={styles.submitButton}
-                            appearance={buttonAppearance}
-                            size='medium'
-                            icon={CheckIcon}
-                            onPress={() => submitField()}
-                        />
+    var renderComponent = dependencyParser(props.response, data, dependencyID)
+    if (renderComponent){
+        return(
+            <Layout key={key} style={styles.container}>
+                <Card status={status} header={CustomCardHeader}>
+                    <Layout style={styles.content}>
+                        {HelperTooltip()}
+                        <Layout style={styles.input}>
+                            <Input
+                                style={styles.inputField}
+                                icon={renderClear}
+                                onIconPress={() => clearField()}
+                                placeholder='Place your Text'
+                                value={value}
+                                onChangeText={onTextChange}
+                            />
+                            <Button
+                                style={styles.submitButton}
+                                appearance={buttonAppearance}
+                                size='medium'
+                                icon={CheckIcon}
+                                onPress={() => submitField()}
+                            />
+                        </Layout>
+                        {ErrorMsg()}
                     </Layout>
-                    {ErrorMsg()}
-                </Layout>
-            </Card>
-        </Layout>
-    );
+                </Card>
+            </Layout>
+        )
+    }else{
+        return null
+    }
+
 };
 
 const mapDispatchToProps = {
@@ -239,10 +344,10 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state, props) => {
-    const { story } = state;
+    const { response } = state.storyReducer
     const { reducer } = props;
     const questionReducer = state[reducer];
-    return { story, questionReducer }
+    return { questionReducer, response}
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdvancedOpenTextField);

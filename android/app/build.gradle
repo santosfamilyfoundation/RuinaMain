@@ -132,13 +132,22 @@ android {
         missingDimensionStrategy 'react-native-camera', 'general'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 25
+        versionName "2.0"
         multiDexEnabled true
         manifestPlaceholders = [GOOGLE_MAPS_API_KEY: "$System.env.GOOGLE_MAPS_API_KEY"]
+/*        ndk {
+            abiFilters "armeabi-v7a", "x86"
+        }*/
     }
     splits {
         abi {
+//            reset()
+//            enable enableSeparateBuildPerCPUArchitecture
+//            universalApk false  // If true, also generate a universal APK
+//            include "armeabi-v7a", "x86"
+
+            enable true
             reset()
             enable enableSeparateBuildPerCPUArchitecture
             universalApk false  // If true, also generate a universal APK
@@ -178,9 +187,11 @@ android {
 
     packagingOptions {
         pickFirst 'lib/x86/libc++_shared.so'
+        pickFirst 'lib/x86_64/libjsc.so'
+        pickFirst 'lib/arm64-v8a/libjsc.so'
+        pickFirst 'lib/arm64-v8a/libc++_shared.so'
         pickFirst 'lib/x86_64/libc++_shared.so'
         pickFirst 'lib/armeabi-v7a/libc++_shared.so'
-        pickFirst 'lib/arm64-v8a/libc++_shared.so'
     }
 
     // applicationVariants are e.g. debug, release
@@ -209,6 +220,7 @@ repositories {
 
 dependencies {
     implementation project(':react-native-uuid-generator')
+    implementation 'com.android.support:multidex:1.0.3'
     implementation (project(':react-native-camera')) {
         exclude group: "com.google.android.gms"
     }

@@ -23,20 +23,21 @@ class NonMotoristSection extends Component{
     }
 
     render(){
-        const {navigation, nonmotorist, index, edit} = this.props
+        const {navigation, nonmotorist, index, edit, roadID} = this.props
         let nonmotoristQuestions = this.filterQuestionsData('nonmotorist');
 
-        const navigateQuestion = (form, id, type) => {
-            navigation.navigate('Question', {questions: form.data, objectID: id, type})
+        const navigateQuestion = (form, id, type, idx) => {
+          var name = type + ' ' + idx;
+          navigation.navigate('Question', {questions: form.data, objectID: id, type, name, dependencyID: [0, 0, 0, id]})
         }
 
         // describes two different nonmotorist cards (edit and non edit modes)
         if (edit) {
           return(
               <View>
-                <Card style={styles.nonMotoristCard} onPress = {() => this.setState({beforeDelete:true})}>
-                    <Icon name= 'person-remove' width={75} height={75} alignSelf= "center" />
-                    <Text style={styles.itemCardFooter} category="s1">Non-Motorist {index+1}</Text>
+                <Card style={styles.nonMotoristCardRemove} onPress = {() => this.setState({beforeDelete:true})}>
+                    <Icon name= 'person-remove' width={75} height={75} float alignSelf= "center" fill="white"/>
+                    <Text style={styles.itemCardFooterEdit} category="s1">Remove Non-Motorist {index+1}</Text>
                 </Card>
 
                 <MaterialDialog
@@ -58,7 +59,7 @@ class NonMotoristSection extends Component{
           )
         } else {
           return(
-              <Card style={styles.nonMotoristCard} onPress = {() => navigateQuestion(nonmotoristQuestions, nonmotorist.id, 'Nonmotorist')}>
+              <Card style={styles.nonMotoristCard} onPress = {() => navigateQuestion(nonmotoristQuestions, nonmotorist.id, 'Nonmotorist', (index+1))}>
                   <Icon name= 'person' width={75} height={75} alignSelf= "center" />
                   <Text style={styles.itemCardFooter} category="s1">Non-Motorist {index+1}</Text>
               </Card>

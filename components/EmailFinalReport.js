@@ -1,21 +1,55 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { TextInput, StyleSheet, Alert, View } from 'react-native';
+import { TextInput, StyleSheet, Alert, View, Dimensions } from 'react-native';
 import {TopNavigation, Card, CardHeader, Text, Button} from '@ui-kitten/components';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import Mailer from 'react-native-mail';
 import JSONconverter from '../utils/jsonConverter';
-import NetInfoAPI from "../utils/NetAPI"
+import NetInfoAPI from "../utils/NetAPI";
+import Pdf from 'react-native-pdf';
+import RNHTMLtoPDF from 'react-native-html-to-pdf';
+import backgroundSave from '../utils/backgroundSave';
 
 export class EmailFinalReport extends Component {
   constructor(props) {
     super(props);
-    this.state = {filename: this.getDefaultFilename(), offlineStatus: false};
+    this.state = {
+      filename: this.getDefaultFilename(),
+      offlineStatus: false,
+      uri: '',
+      data: '',
+      format: '',
+      encoding: '',
+      isPDF: false,
+    };
     this.changeFilename = this.changeFilename.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
   }
+
+  componentDidMount() {
+      const format = this.props.navigation.state.params.format;
+      console.log(format);
+      // convert data to desired format
+      const data = {
+        driver: this.props.driver.data,
+        nonmotorist: this.props.nonmotorist.data,
+        vehicle: this.props.vehicle.data,
+        passenger: this.props.passenger.data,
+        road: this.props.road.data,
+      };
+      if (format === "pdf") {
+        this.setState({encoding:'base64', format:format});
+        this.createPDF(data);
+      } else {
+        var converter = new JSONconverter();
+        var file = converter.handleConverter(format, data);
+        var encoding = format === "xlsx" ? 'ascii' : 'utf8';
+        this.setState({data: file, encoding: encoding, format:format});
+      }
+    }
+
   // generate default filename
   getDefaultFilename() {
     var date = new Date();
@@ -23,26 +57,49 @@ export class EmailFinalReport extends Component {
     var localDate = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
     return "Crash Report " + localDate + " at " + localTime;
   }
+
   // update the filename
   changeFilename(text) {
     this.setState({filename: text});
   }
+
+  // generate html and convert it into a PDF
+  async createPDF(data) {
+    var converter = new JSONconverter();
+    // const htmlString = converter.handleConverter('pdftest', "");
+    const htmlString = converter.handleConverter('pdf', data);
+    let options = {
+      html: htmlString,
+      base64: true,
+      fileName: 'crash_report',
+    };
+    try {
+      const data = await RNHTMLtoPDF.convert(options);
+      console.log("got PDF data");
+      this.setState({uri: data.filePath, data: data.base64, isPDF:true});
+    } catch (error) {
+      console.log('error->', error);
+    }
+  }
+
   // save data as file inside app in order send email with attachment
-  async saveDataInternal(data, filename) {
+  async saveDataInternal(filename) {
     var RNFS = require('react-native-fs');
     // var path = RNFS.DocumentDirectoryPath + '/' + filename;
     var path = RNFS.ExternalDirectoryPath + '/' + filename;
-    var format = this.props.navigation.state.params.format;
-    var encoding = format === "xlsx" ? 'ascii' : 'utf8'
 
     // write the file
     try {
-        let result = await RNFS.writeFile(path, data, encoding);
+        let result = await RNFS.writeFile(path, this.state.data, this.state.encoding);
         console.log('FILE WRITTEN!');
         console.log(path);
+
+        // clear background save
+        const clearBackgroundSave = new backgroundSave();
+        var deleted = await clearBackgroundSave.deleteCapturedState();
         return path;
-    } catch(err) {
-      console.log(err.message);
+    } catch(error) {
+      console.log(error.message);
       return null;
     }
   }
@@ -88,20 +145,10 @@ export class EmailFinalReport extends Component {
       this.setState({ offlineStatus: true });
       return;
     }
-    const data = {
-        driver: this.props.driver.data,
-        nonmotorist: this.props.nonmotorist.data,
-        vehicle: this.props.vehicle.data,
-        passenger: this.props.passenger.data,
-        road: this.props.road.data,
-      };
-    var format = this.props.navigation.state.params.format;
-    var converter = new JSONconverter();
-    var file = converter.handleConverter(format, data);
     // save data internally
-    var path = await this.saveDataInternal(file, this.state.filename + "." + format);
+    var path = await this.saveDataInternal(this.state.filename + "." + this.state.format);
     // send email
-    await this.sendEmail(path, this.state.filename + "." + format);
+    await this.sendEmail(path, this.state.filename + "." + this.state.format);
   }
   // required method that creates components of email screen
   render() {
@@ -121,7 +168,6 @@ export class EmailFinalReport extends Component {
     //   </View>
     // )
 
-    // TODO: we could add a file preview feature
     return(
       <SafeAreaView style={{flex:1}}>
         <TopNavigation id="emailNavBar" title="Email Crash Report" alignment="center" leftControl={this.props.BackAction()}/>
@@ -134,17 +180,28 @@ export class EmailFinalReport extends Component {
                defaultValue = {this.state.filename}
                onChangeText = {this.changeFilename}
                />
-
-           <View style={[styles.footerContainer]}>
-               <Button
-                 id="sendButton"
-                 style={styles.footerControl}
-                 size='small'
-                 onPress={() => this.handleEmail()}>
-                 Send
-               </Button>
-           </View>
         </Card>
+
+        {this.state.isPDF &&
+          <View style={styles.container}>
+            <Pdf
+                source={this.state}
+                enableRTL={true}
+                onLoadComplete={(numberOfPages,filePath)=>{
+                    console.log(`number of pages: ${numberOfPages}`);
+                }}
+                onError={(error)=>{
+                    console.log(error);
+                }}
+                style={styles.pdf}/>
+          </View>
+        }
+
+        <Button
+          size='medium'
+          onPress={() => this.handleEmail()}>
+          Send Report
+        </Button>
 
         <MaterialDialog
           title={"Can't email when offline!"}
@@ -178,6 +235,12 @@ const mapStateToProps = (state) => {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginTop: 25,
+  },
   topContainer: {
    flexDirection: 'row',
    justifyContent: 'space-between',
@@ -194,6 +257,10 @@ const styles = StyleSheet.create({
    marginHorizontal: 5,
    marginTop: 20,
   },
+  pdf: {
+    flex: 1,
+    width: Dimensions.get('window').width,
+  }
 })
 
 export default connect(mapStateToProps)(EmailFinalReport)
