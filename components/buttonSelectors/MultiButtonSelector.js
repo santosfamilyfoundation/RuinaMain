@@ -146,7 +146,7 @@ const MultiButtonSelector = (props) => {
     };
 
     const renderSingleButton = (option) => {
-        let appearance = (selection == option.idCode) ? 'filled': 'outline';
+        let appearance = (selection == option.text) ? 'filled': 'outline';
         return (
             <Button
                 key={option.idCode}
