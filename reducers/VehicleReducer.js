@@ -9,16 +9,13 @@ const initialState = {
 export default function vehicleReducer (state=initialState, action) {
     switch (action.type) {
         case 'ADDVEHICLE':
+            console.log("add vehicle " + action.payload.vehicleID);
             return {
                 ...state,
                 c20: state.c20 + 1,
-                data: state.data.concat([{hazardous: null, id:action.payload.vehicleID, driver: action.payload.driverID}])
+                data: state.data.concat([{id:action.payload.vehicleID, driver: action.payload.driverID}])
             }
-        case 'ADDLVHM':
-            return {
-                ...state,
-                data: state.data.concat([{hazardous: true, id:action.payload.vehicleID, driver: action.payload.driverID}])
-            }
+
         case 'UPDATEVEHICLE':
             const { id, question, selection } = action.payload
             let updatedState = state.data;
@@ -31,6 +28,22 @@ export default function vehicleReducer (state=initialState, action) {
             return {
                 ...state,
                 data: updatedState
+            }
+
+        case 'DELETEVEHICLE':
+            const {vehicleID} = action.payload
+            console.log("delete vehicle " + vehicleID);
+            updatedState = state.data;
+            return {
+                ...state,
+                data: updatedState.filter(vehicle => vehicle.id != vehicleID)
+            }
+
+        case 'RESETVEHICLE':
+            console.log("RESET VEHICLE!");
+            state = initialState;
+            return {
+                ...state,
             }
 
         default:

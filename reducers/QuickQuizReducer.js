@@ -3,25 +3,19 @@ const initialState = {
     numDriver: '',
     numNonmotorist:'',
     numPassenger:'',
-    numLvhm: '',
     fatality: false,
-    construction: false,
-    intersection: false,
-    schoolbus: false,
+    nonFatalInjury: false,
+    photos: false,
+    setupData: {},
     hasResponded: false
   }
-  
+
 export default function quickquizReducer (state = initialState, action) {
 switch (action.type) {
     case 'VEHICLE':
         return {
             ...state,
             numVehicle: action.numVehicle
-        }
-    case 'LVHM':
-        return {
-            ...state,
-            numLvhm: action.numLvhm
         }
     case 'DRIVER':
         return {
@@ -38,32 +32,46 @@ switch (action.type) {
             ...state,
             numPassenger: action.numPassenger
         }
+    // might not need
     case 'FATALITY':
         return {
             ...state,
             fatality: action.fatality
         }
-    case 'CONSTRUCTION':
-        return {
-            ...state,
-            construction: action.construction
-        }
-    case 'INTERSECTION':
-        return {
-            ...state,
-            intersection: action.intersection
-        }
-    case 'SCHOOLBUS':
-        return {
-            ...state,
-            schoolbus: action.schoolbus
-        }
+    // might not need
+    case 'NONFATALINJURY':
+      return {
+        ...state,
+        nonFatalInjury: action.nonFatalInjury
+      }
+    case 'PHOTOS':
+      return {
+        ...state,
+        photos: action.photos
+      }
     case 'RESPOND':
         return {
             ...state,
             hasResponded: true
         }
+    case 'UPDATESETUP':
+      const { question, selection } = action.payload;
+      let updatedState = state.setupData;
+      updatedState[question] = selection;
+      // console.log(updatedState);
+      return {
+          ...state,
+          setupData: updatedState
+      }
+
+    case 'RESETQUIZ':
+        console.log("RESET QUIZ!");
+        state = initialState;
+        return {
+            ...state,
+            setupData: {}
+        }
     default:
-    return state
-}
+      return state
+    }
 }

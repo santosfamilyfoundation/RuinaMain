@@ -44,6 +44,15 @@ export const styles = StyleSheet.create({
         textAlign:'center',
         color: 'black'
     },
+    itemCardFooterEdit: {
+        textAlign:'center',
+        color: 'white'
+    },
+    itemCardFooterEditVehicle: {
+        textAlign:'left',
+        color: 'white',
+        marginLeft: 10,
+    },
     individualCard: {
         height: 150,
         width: 170,
@@ -51,22 +60,81 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         margin: 10,
     },
+    individualCardAdd: {
+        height: 150,
+        width: 170,
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 10,
+        backgroundColor:'#3467ff'
+    },
+    individualCardRemove: {
+        height: 150,
+        width: 170,
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 10,
+        backgroundColor: '#ef8837',
+    },
+    vehicleRemove: {
+        margin: 10,
+        width: '97.5%',
+        display: 'flex',
+        flexDirection: 'row',
+        backgroundColor: '#ef8837',
+        alignItems: 'center',
+    },
+    addVehicleSection: {
+      alignItems: 'center',
+      backgroundColor:'#3467ff',
+      display:'flex',
+      flexDirection:'row',
+      padding: 25,
+      paddingLeft: 35,
+      margin: 10,
+    },
+    addVehicleSectionFooter: {
+      textAlign:'left',
+      color: 'white',
+      margin: 10,
+    },
     nonMotoristCard:{
         height: 150,
         width: 170,
         alignItems: 'center',
         justifyContent: 'center',
-        margin: 10
+        margin: 10,
+    },
+    nonMotoristCardAdd:{
+        height: 150,
+        width: 170,
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 10,
+        backgroundColor:'#3467ff',
+    },
+    nonMotoristCardRemove:{
+        height: 150,
+        width: 170,
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 10,
+        backgroundColor:'#ef8837'
     },
     rightControlsContainer:{
       flexDirection: 'row',
     },
     rightControls:{
-      flexDirection: 'column',
+      backgroundColor:'black',
+      borderRadius: 10,
+      flexDirection: 'row',
       alignItems: 'center',
-      padding: 5
+      justifyContent: 'center',
+      padding: 5,
+      marginRight: 20,
     },
     rightControlsText:{
-      fontSize: 10,
+      fontSize: 16,
+      color: 'white',
     },
 })

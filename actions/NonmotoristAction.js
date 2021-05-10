@@ -11,3 +11,16 @@ export const updateNonmotorist = nonmotoristData => {
         payload: nonmotoristData
     }
 }
+
+export const deleteNonmotorist = nonmotoristID => {
+    return {
+        type: 'DELETENONMOTORIST',
+        payload: nonmotoristID
+    }
+}
+
+export const resetNonmotorist = () => {
+    return {
+        type: 'RESETNONMOTORIST'
+    }
+}
