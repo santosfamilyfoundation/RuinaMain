@@ -53,7 +53,7 @@ Reliable crash data is essential to improving traffic safety. As part of a senio
     yarn add sinon enzyme enzyme-adapter-react-16 --dev
     npm install -g jest-cli
     ```
-    Run tests via `jest <input test filename>` 
+    Run tests via `jest <input test filename>`
 
 
 ## Build Error Troubleshooting
@@ -77,6 +77,3 @@ Some weird issues encountered from running `npx react-native run-android`
    adb uninstall com.ruina
    ```
    For more info, check this [post](https://github.com/ionic-team/ionic-cli/issues/278).
-
-
-

@@ -136,9 +136,18 @@ android {
         versionName "2.0"
         multiDexEnabled true
         manifestPlaceholders = [GOOGLE_MAPS_API_KEY: "$System.env.GOOGLE_MAPS_API_KEY"]
+/*        ndk {
+            abiFilters "armeabi-v7a", "x86"
+        }*/
     }
     splits {
         abi {
+//            reset()
+//            enable enableSeparateBuildPerCPUArchitecture
+//            universalApk false  // If true, also generate a universal APK
+//            include "armeabi-v7a", "x86"
+
+            enable true
             reset()
             enable enableSeparateBuildPerCPUArchitecture
             universalApk false  // If true, also generate a universal APK
