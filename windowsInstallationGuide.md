@@ -6,6 +6,7 @@ Follow the instructions described below if you want to setup `RuinaMain` using W
   * Make sure to select Android 9 (Pie) and Android SDK Platform 28 instead of the new versions. This can be done by following the green highlight portion in [this](https://docs.google.com/document/d/1Jq3eBB1jNj5tPj4pSyWM1NAS5JwnqvRIsML5aK6KDPE/edit?usp=sharing) google document
   * We recommend using [nvm-windows](https://github.com/coreybutler/nvm-windows) to install Node.js, so you can easily install multiple versions and switch between them. Install the latest Node.js version via `nvm install latest [arch]`. Don't forget to actually pick a Node.js version once you install it via `nvm use <version> [arch]`. Confirm you have Node.js installed by typing `node --version` in the command prompt
   * Since we use Gradle 5.5, as of now, you should install JDK version 11. You can download the Windows zip file for JDK 11 [here](https://jdk.java.net/java-se-ri/11). Extract the zip folder into `C:\Program Files\Java\` and then add `C:\Program Files\Java\jdk-11` to the System `Path` variable. To easily switch between different JDK version, I would recommend following [this tutorial](https://www.happycoders.eu/java/how-to-switch-multiple-java-versions-windows/). Confirm you have JDK installed by typing `java -version` in the command prompt    
+  * In case you need to install Gradle, you can do that [here](https://gradle.org/install/)
 
   ![image](imagesMD/reactTutorial.PNG)
 
