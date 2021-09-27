@@ -7,45 +7,80 @@
 Reliable crash data is essential to improving traffic safety. As part of a senior Capstone project at Olin College of Engineering, we have identified many holes in the current processes via user interviews and analysis of the crash data ecosystem. We chose a solution that we believed provided our team with the best opportunity for impact: improving crash data collection at the crash scene. Our solution, Ruina, is a mobile toolkit that provides police officers with an extensive set of tools allowing them to more accurately document a crash digitally and in a higher resolution manner. This toolkit manifested itself in a cross platform mobile application where officers could digitally document a crash using a tablet. Runia uses many technology features in mobile devices that aid officers in their ability to do their job such as the extensive sensor suite, camera, and internet connectivity. Ruina supports advanced camera and scanning features, aspects of location and scene diagramming, and full MMUCC compliance. The result of our semester of work is found in this repository as a proof of concept mobile application.
 
 ## Getting started
+
+# Linux
+
+Installation:
+
+1. Install [Node.js](https://nodejs.org/en/download/)
+2. Install Openjdk 8
+    ```
+    sudo apt-get install openjdk-8-jdk
+    ```
+3. Download [Android Studio](https://developer.android.com/studio)
+    - Follow [official installation instructions](https://developer.android.com/studio/install)
+4. Clone repository
+5. Navigate to `RuniaMain/android/`
+    - Add new file, `local.properties`
+    - Add `sdk.dir = home/{username}/Android/Sdk` to file
+6. Navigate to `File/Project Structure/Project`
+    - Check the default of Project SDK
+    - If none, set to Android API 31 Platform (or the latest version)
+7. Install `android-tools-adb`
+    ```
+    sudo apt-get install android-tools-adb
+    ```
+8. Install KVM for VM acceleration
+    ```
+    sudo apt-get install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
+    ```
+9. Install emulator via AVD Manager
+
+Running the app:
+1. `yarn`
+2. Open a new terminal and run `npm start`
+3. Open a new tab or terminal and run `npx react-native run-android`
+
+General Instructions:
 1. Clone repo
 2. Navigate to branch or create new branch
-    - New features should be on a new branch with the name `feat/{FEATURE_NAME}`
-    - Fixes should be on a new branch with the name `fix/{FIX_NAME}`
+    - New features should be on a new branch with the name `feat/{username}/{FEATURE_NAME}`
+    - Fixes should be on a new branch with the name `fix/{username}{FIX_NAME}`
 3. `Cd` into repo
 4. Install/update all `node_modules` (if `yarn` is not recognized as a command then run `npm install -g yarn` or `brew install yarn` on a Mac)
     ```
-    $ rm -rf node_modules/ && yarn install
+    rm -rf node_modules/ && yarn install
     ```
 5. Rebuild cocaopods
     ```
-    $ cd ios/
-    $ pod install
-    $ cd ..
+    cd ios/
+    pod install
+    cd ..
     ```
 6. Start simulator
     * For Android: either start an emulator from Android Studio or connect a device through usb, then run
     ```
-    $ npx react-native run-android
+    npx react-native run-android
     ```
     * For ios:
     ```
-    $ npx react-native run-ios
+    npx react-native run-ios
     ```
     or to run on iPad
     ```
-    $ npm run iPad
+    npm run iPad
     ```
     You can also specify simulator device:
     ```
-    $ npx react-native run-ios --simulator="{SIMULATOR_NAME}"
+    npx react-native run-ios --simulator="{SIMULATOR_NAME}"
     ```
     You can list which ios devices you have available using this command:
     ```
-    $ xcrun simctl list devices
+    xcrun simctl list devices
     ```
 7. To launch Metro server CLI tool if it does not show up (Mac)
     ```
-    $ /path-to-this-repo/RuinaMain/node_modules/react-native/scripts/launchPackager.command
+    /path-to-this-repo/RuinaMain/node_modules/react-native/scripts/launchPackager.command
     ```
 8. Additional documentation can be found at [Installation Instructions](https://docs.google.com/document/d/1Jq3eBB1jNj5tPj4pSyWM1NAS5JwnqvRIsML5aK6KDPE/edit?usp=sharing)
 9. To run the jest tests for the first time, you need to add a few packages via
