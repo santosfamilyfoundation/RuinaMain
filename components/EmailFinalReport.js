@@ -153,7 +153,7 @@ export class EmailFinalReport extends Component {
   // required method that creates components of email screen
   render() {
     const FilenameHeader = () => (
-        <CardHeader title="Please input report filename"/>
+        <CardHeader title="Edit filename below."/>
     )
 
     // const FilenameFooter = (props) => (
