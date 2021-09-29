@@ -143,7 +143,7 @@ componentDidMount() {
 
   render() {
     const saveReportHeader = () => (
-      <CardHeader title="Please input report filename" />
+      <CardHeader title="Edit filename below." />
     )
 
     return(
