@@ -35,6 +35,8 @@ export const styles = StyleSheet.create({
       alignItems: 'center',
     },
     bottomBarText:{
-      color: '#A9A9A9',
+      color: '#5b5b5b',
+      fontSize: 10,
+      textAlign: 'center'
     },
   });
