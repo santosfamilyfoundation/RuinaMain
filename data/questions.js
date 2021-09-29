@@ -705,7 +705,8 @@ export const questions = {
                 "driver"
             ],
             "humanReadableId": "driver-26",
-            "helperText": "Provide the specific State, Province or Nation indicated on the Driver's License (see Appendix E: ANSI State FIPS and USPS Codes or Appendix F: ISO 3166-2 Codes for Canada and Mexico)"
+            "helperText": "Provide the specific State, Province or Nation indicated on the Driver's License0",
+            "tooltip": "See Appendix E: ANSI State FIPS and USPS Codes or Appendix F: ISO 3166-2 Codes for Canada and Mexico"
         },
         {
             "numOptionsAllowed": "0.0",
