@@ -79,21 +79,21 @@ class FinalReport extends Component {
                   </Card>
 
                   <SinglePickerMaterialDialog
-                      title={"Choose report export format"}
-                      scrolled
-                      items={file_format_extensions.map((row, index) => ({ value: index, label: row }))}
-                      visible={this.state.chooseReportFormatVisible}
-                      selectedItem={this.state.chooseReportFormatSelectedItem}
-                      onCancel={() => this.setState({ chooseReportFormatVisible: false })}
-                      onOk={result => {
-                          this.setState({ chooseReportFormatSelectedItem: result.selectedItem});
-                          this.setState({ chooseReportFormatVisible: false });
-                          console.log('selected:', this.state.chooseReportFormatSelectedItem);
-                          console.log('result:', result.selectedItem);
-                          console.log('pop up window state:', this.state.chooseReportFormatVisible);
-                          this.state.exportAction(result.selectedItem.label);
-                      }}
-                  />
+                        title={"Choose report export format"}
+                        scrolled
+                        items={file_format_extensions.map((row, index) => ({ value: index, label: "." + row }))}
+                        visible={this.state.chooseReportFormatVisible}
+                        selectedItem={this.state.chooseReportFormatSelectedItem}
+                        onCancel={() => this.setState({ chooseReportFormatVisible: false })}
+                        onOk={result => {
+                            this.setState({ chooseReportFormatSelectedItem: result.selectedItem});
+                            this.setState({ chooseReportFormatVisible: false });
+                            console.log('selected:', this.state.chooseReportFormatSelectedItem);
+                            console.log('result:', result.selectedItem);
+                            console.log('pop up window state:', this.state.chooseReportFormatVisible);
+                            this.state.exportAction(result.selectedItem.label.substring(1));
+                        }}
+                    />
                 </ScrollView>
             </SafeAreaView>
         )
