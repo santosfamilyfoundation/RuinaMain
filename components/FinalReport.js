@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import {TopNavigation,Card, CardHeader, Text, Button} from '@ui-kitten/components';
-import {StyleSheet, Linking, ScrollView} from 'react-native';
+import { TopNavigation,Card, CardHeader, Text, Button } from '@ui-kitten/components';
+import { StyleSheet, Linking, ScrollView, PermissionsAndroid } from 'react-native';
 import { MaterialDialog, SinglePickerMaterialDialog} from 'react-native-material-dialog';
 import * as Constants from '../constants';
 
@@ -14,7 +14,31 @@ class FinalReport extends Component {
             chooseReportFormatSelectedItem: undefined,
             exportAction: undefined,
         };
+        this.requestExternalStoragePermission();
     }
+
+    requestExternalStoragePermission = async () => {
+        try {
+          const granted = await PermissionsAndroid.request(
+            PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+            {
+              title: "Android External Storage Permission",
+              message:
+                "Ruina needs access to your external storage to save the report ",
+              buttonNeutral: "Ask Me Later",
+              buttonNegative: "Cancel",
+              buttonPositive: "OK"
+            }
+          );
+          if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+            console.log("You can use external storage");
+          } else {
+            console.log("external permission denied");
+          }
+        } catch (err) {
+          console.warn(err);
+        }
+      };
 
     render(){
         const {
