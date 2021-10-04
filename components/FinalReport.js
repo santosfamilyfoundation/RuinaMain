@@ -44,10 +44,10 @@ class FinalReport extends Component {
             navigation.navigate('EmailFinalReport', {format:format})
         }
 
-        const navigateDatabase = (format) => {
-            console.log('SEND REPORT TO DATABASE!');
-            navigation.navigate('ReportToDatabase', {format:format})
-        }
+//        const navigateDatabase = (format) => {
+//            console.log('SEND REPORT TO DATABASE!');
+//            navigation.navigate('ReportToDatabase', {format:format})
+//        }
         const file_format_extensions = Constants.ALLOW_JSON_EXPORT ? ["json", "pdf", "html", "xlsx"] : ["pdf", "html", "xlsx"];
 
         return(
@@ -70,8 +70,8 @@ class FinalReport extends Component {
                       </Button>
                   </Card>
                   <Card header={SaveToDatabaseHeader}>
-                      <Text style={{ marginBottom: 20 }}>Press this button to send the crash report to the database.</Text>
-                      <Button onPress={() => navigateDatabase('JSON')}>Send Report To Database</Button>
+                      <Text style={{ marginBottom: 20 }}>FEATURE COMING SOON</Text>
+                      <Button onPress={() => navigateDatabase('JSON')} disabled>Send Report To Database</Button>
                   </Card>
                   <Card header={FeedbackHeader} style={{marginTop:20}}>
                     <Text style={{marginBottom: 20}}>Tell us what you liked and what you didn't like so we can make your experience better.</Text>
