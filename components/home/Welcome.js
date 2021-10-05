@@ -42,24 +42,24 @@ class Welcome extends Component {
       this.props.resetStory();
       this.props.resetMap();
       this.props.resetPhoto();
-      await this.checkAutoSavedSession();
+      await this.stateManager.getFilePaths();
+      console.log(this.stateManager.filePaths);
+      this.checkAutoSavedSession();
       this.setState({ loading: false });
     }
 
-    async checkAutoSavedSession(){
-      this.stateManager.RNFS.exists(this.stateManager.path).then((exists) => {
-        if (exists) {
-          this.setState({autoSavedSession : true, autoSavedSessionDialogBoxVisible : true});
-          console.log('Detect unfinished report!')
+    checkAutoSavedSession(){
+        if (this.stateManager.filePaths != null) {
+            this.setState({autoSavedSession : true, autoSavedSessionDialogBoxVisible : true});
+            console.log('Detect unfinished reports!');
         } else {
-          this.setState({ autoSavedSession: false, autoSavedSessionDialogBoxVisible: false });
-          console.log('No unfinished report!')
+            this.setState({ autoSavedSession: false, autoSavedSessionDialogBoxVisible: false });
+            console.log('No unfinished report!');
         }
-      })
     }
 
     render() {
-        // logging hard reset of Redux store
+        // logging hard reset of Rx store
         // const data = {
         //   driver: this.props.driver.data,
         //   nonmotorist: this.props.nonmotorist.data,

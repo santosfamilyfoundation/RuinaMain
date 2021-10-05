@@ -19,7 +19,6 @@ export class backgroundSave extends Component {
                 }
             }
         });
-        console.log(this.filePaths);
     }
 
     async captureCurrentState(data){
