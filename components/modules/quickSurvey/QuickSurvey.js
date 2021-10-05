@@ -65,8 +65,8 @@ class QuickSurvey extends Component {
           } catch(e) {
             // catch any error while parsing the JSON
             console.log("ERROR: " + e.message);
-            this.setState({ loadedAutoSaveFailMessageVisible: true })
-            this.stateManager.deleteCapturedState();
+//            this.setState({ loadedAutoSaveFailMessageVisible: true })
+//            this.stateManager.deleteCapturedState();
           }
           // Hide loading screen
           this.setState({ loading: false });
@@ -76,7 +76,7 @@ class QuickSurvey extends Component {
           this.stateManager.deleteCapturedState();
           this.setState({ autoSavedSession: false });
           this.setState({ loading: false });
-          this.setState({ loadedAutoSaveFailMessageVisible: true })
+//          this.setState({ loadedAutoSaveFailMessageVisible: true })
           console.log(err.message);
         })
     }

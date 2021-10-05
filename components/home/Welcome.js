@@ -6,7 +6,7 @@ import { Button, Divider, Layout, TopNavigation, Text } from '@ui-kitten/compone
 import { styles } from './Welcome.style';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import backgroundSave from '../../utils/backgroundSave';
-import { MaterialDialog } from 'react-native-material-dialog';
+import { MaterialDialog, SinglePickerMaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import { connect } from 'react-redux';
 
@@ -29,6 +29,9 @@ class Welcome extends Component {
         displayOutputTest: false,
         autoSavedSession: false,
         autoSavedSessionDialogBoxVisible: false,
+        filePickerDialogBoxVisible: false,
+        filePathSelected: false,
+        selectedFile: undefined
       };
     }
 
@@ -112,6 +115,7 @@ class Welcome extends Component {
                 }}
                 onOk={() => {
                   this.setState({ autoSavedSession: true, autoSavedSessionDialogBoxVisible: false });
+                  this.setState({ filePickerDialogBoxVisible: true })
                   navigateTo('Survey');
                 }}
               >
@@ -119,6 +123,22 @@ class Welcome extends Component {
                   Your last session was interrupted unexpectedly. Would you like to resume from where you left off?
                 </Text>
               </MaterialDialog>
+
+              <SinglePickerMaterialDialog
+                    title={"Choose the unfinished report you want to continue"}
+                    scrolled
+                    items={this.stateManager.filePaths.map((row, index) => ({ value: index, label: row}))}
+                    visible={this.state.filePickerDialogBoxVisible}
+                    selectedItem = {this.stateManager.path}
+                    onCancel = {() => this.setState({ filePickerDialogBoxVisible: false })}
+                    onOk = { result => {
+                            this.setState({ filePathSelected: true })
+                            this.setState({ filePickerDialogBoxVisible: false })
+                            console.log('result:', this.stateManager.path);
+                            console.log('pop up window state:', this.state.filePickerDialogBoxVisible);
+                        }}
+
+              />
 
 
             </SafeAreaView>
