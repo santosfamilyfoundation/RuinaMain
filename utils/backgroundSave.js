@@ -37,8 +37,9 @@ export class backgroundSave extends Component {
     getSavePath() {
         var date = new Date();
         var localDate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+        var localTime = date.toLocaleTimeString().replace(/\W/g, '.');
         var randomString = Math.random().toString(36).substring(2, 15);
-        var savePath = this.RNFS.DocumentDirectoryPath + '/CrashReport'+localDate+randomString+'.json';
+        var savePath = this.RNFS.DocumentDirectoryPath + '/CrashReport'+localDate+"-"+localTime+'.json';
         return savePath;
     }
 
