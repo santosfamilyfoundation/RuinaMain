@@ -25,13 +25,22 @@ export class backgroundSave extends Component {
     async captureCurrentState(data){
         // write the file
         //console.log("data: ", data);
-        this.RNFS.writeFile(this.path, data, 'utf8')
+        var savePath = this.getSavePath();
+        this.RNFS.writeFile(savePath, data, 'utf8')
             .then((success) => {
-                console.log('Current state saved to: ' + this.path);
+                console.log('Current state saved to: ' + savePath);
             })
             .catch((err) => {
                 console.log(err.message);
             });
+    }
+
+    getSavePath() {
+        var date = new Date();
+        var localDate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+        var randomString = Math.random().toString(36).substring(2, 15);
+        var savePath = this.RNFS.DocumentDirectoryPath + '/CrashReport'+localDate+randomString+'.json';
+        return savePath;
     }
 
     async deleteCapturedState(){
