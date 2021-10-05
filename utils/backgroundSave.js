@@ -7,6 +7,19 @@ export class backgroundSave extends Component {
         var localDate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
         this.RNFS = require('react-native-fs');
         this.path = this.RNFS.DocumentDirectoryPath + '/CrashReport'+localDate+'.json';
+        this.filePaths = [];
+        this.getFilePaths();
+    }
+
+    async getFilePaths() {
+        await this.RNFS.readdir(this.RNFS.DocumentDirectoryPath).then( files => {
+            for (const file of files) {
+                if (file.includes('CrashReport') && file.includes('.json')) {
+                    this.filePaths.push(file);
+                }
+            }
+        });
+        console.log(this.filePaths);
     }
 
     async captureCurrentState(data){
