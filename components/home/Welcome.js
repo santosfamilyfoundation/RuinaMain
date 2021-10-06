@@ -129,13 +129,16 @@ class Welcome extends Component {
                     scrolled
                     items={this.stateManager.filePaths.map((row, index) => ({ value: index, label: row}))}
                     visible={this.state.filePickerDialogBoxVisible}
-                    selectedItem = {this.stateManager.path}
+                    selectedItem = {this.state.selectedFile}
                     onCancel = {() => this.setState({ filePickerDialogBoxVisible: false })}
                     onOk = { result => {
-                            this.setState({ filePathSelected: true })
-                            this.setState({ filePickerDialogBoxVisible: false })
-                            console.log('result:', this.stateManager.path);
+                            this.setState({ filePathSelected: true });
+                            this.setState({ filePickerDialogBoxVisible: false });
+                            this.setState({ selectedFile: result.selectedItem });
+                            this.stateManager.path = result.selectedItem.label;
                             console.log('pop up window state:', this.state.filePickerDialogBoxVisible);
+                            console.log('selected item:', result.selectedItem.label);
+                            console.log('state manager path:', this.stateManager.path);
                         }}
 
               />
