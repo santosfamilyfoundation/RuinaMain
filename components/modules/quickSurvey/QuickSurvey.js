@@ -49,7 +49,7 @@ class QuickSurvey extends Component {
         await this.loadStateFromJSON();
       } else {
         // Delete previous auto saved session if there is any, so we can save the new report
-        this.stateManager.deleteCapturedState();
+//        this.stateManager.deleteCapturedState();
         this.setState({ loading: false });
       }
     }
@@ -66,14 +66,14 @@ class QuickSurvey extends Component {
             // catch any error while parsing the JSON
             console.log("ERROR: " + e.message);
             this.setState({ loadedAutoSaveFailMessageVisible: true })
-            this.stateManager.deleteCapturedState();
+//            this.stateManager.deleteCapturedState();
           }
           // Hide loading screen
           this.setState({ loading: false });
         })
         .catch((err) => {
           // catch any error while reading autoSavedSession JSON from disk
-          this.stateManager.deleteCapturedState();
+//          this.stateManager.deleteCapturedState();
           this.setState({ autoSavedSession: false });
           this.setState({ loading: false });
           this.setState({ loadedAutoSaveFailMessageVisible: true })
