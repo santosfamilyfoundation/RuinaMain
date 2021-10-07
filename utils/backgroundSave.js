@@ -1,14 +1,13 @@
-import { Component } from 'react';
-
-export class backgroundSave extends Component {
-    constructor(props) {
-        super(props);
+export class backgroundSave {
+    constructor(filePath) {
         var date = new Date();
         var localDate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
         this.RNFS = require('react-native-fs');
-        this.path = this.RNFS.DocumentDirectoryPath + '/CrashReport'+localDate+'.json';
+        this.path = this.RNFS.DocumentDirectoryPath + "/" + filePath;
         this.filePaths = [];
         this.getFilePaths();
+        console.log('filePath given to backgroundSave object:', filePath);
+        console.log("this.path:", this.path);
     }
 
     async getFilePaths() {

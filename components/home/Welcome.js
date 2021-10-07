@@ -23,7 +23,7 @@ import { resetPhoto } from '../../actions/PhotoAction';
 class Welcome extends Component {
     constructor(props){
       super(props);
-      this.stateManager = new backgroundSave();
+      this.stateManager = new backgroundSave("");
       this.state = {
         loading: true,
         displayOutputTest: false,
@@ -31,7 +31,7 @@ class Welcome extends Component {
         autoSavedSessionDialogBoxVisible: false,
         filePickerDialogBoxVisible: false,
         filePathSelected: false,
-        selectedFile: undefined
+        selectedFile: {label: "", value: ""}
       };
     }
 
@@ -46,7 +46,6 @@ class Welcome extends Component {
       this.props.resetMap();
       this.props.resetPhoto();
       await this.stateManager.getFilePaths();
-      console.log(this.stateManager.filePaths);
       this.checkAutoSavedSession();
       this.setState({ loading: false });
     }
@@ -77,7 +76,7 @@ class Welcome extends Component {
         // }
 
         const navigateTo = (loc) => {
-          this.props.navigation.navigate(loc, {autoSavedSession: this.state.autoSavedSession});
+          this.props.navigation.navigate(loc, {autoSavedSession: this.state.autoSavedSession, selectedFile: this.state.selectedFile});
           };
         if (this.state.loading) {
           return (
@@ -116,7 +115,6 @@ class Welcome extends Component {
                 onOk={() => {
                   this.setState({ autoSavedSession: true, autoSavedSessionDialogBoxVisible: false });
                   this.setState({ filePickerDialogBoxVisible: true })
-                  navigateTo('Survey');
                 }}
               >
                 <Text style={material.subheading}>
@@ -135,10 +133,14 @@ class Welcome extends Component {
                             this.setState({ filePathSelected: true });
                             this.setState({ filePickerDialogBoxVisible: false });
                             this.setState({ selectedFile: result.selectedItem });
+                            this.setState({ autoSavedSession: true });
                             this.stateManager.path = result.selectedItem.label;
-                            console.log('pop up window state:', this.state.filePickerDialogBoxVisible);
-                            console.log('selected item:', result.selectedItem.label);
+                            console.log("Selected item from material dialog:", result.selectedItem);
+//                            console.log('pop up window state:', this.state.filePickerDialogBoxVisible);
                             console.log('state manager path:', this.stateManager.path);
+//                            console.log('state selected file:', this.selectedFile);
+                            this.props.navigation.navigate('Survey', {autoSavedSession: true, selectedFile: result.selectedItem});
+//                            navigateTo('Survey');
                         }}
 
               />

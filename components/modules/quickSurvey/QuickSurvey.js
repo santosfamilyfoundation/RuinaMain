@@ -38,23 +38,28 @@ class QuickSurvey extends Component {
         loadedAutoSaveSuccessMessageVisible: false,
         loadedAutoSaveFailMessageVisible: false,
         loading: true, //loading screen
+        autosavedFilePath: this.props.navigation.getParam('selectedFile')
       };
-      this.stateManager = new backgroundSave();
+      console.log("SelectedFile parameter passed to QuickSurvey:", this.props.navigation.getParam('selectedFile'));
+//      this.stateManager = new backgroundSave("");
     }
 
     async componentDidMount(){
-      console.log("Want to Load Autosaved Session? ", this.state.autoSavedSession);
-      console.log("Loaded Autosaved Session? ", this.state.loadedAutoSave);
+        this.stateManager = new backgroundSave(this.state.autosavedFilePath.label);
+//      console.log("Want to Load Autosaved Session? ", this.state.autoSavedSession);
+//      console.log("Already loaded Autosaved Session? ", this.state.loadedAutoSave);
+      console.log("State manager path in Quick Survey: ", this.stateManager.path);
       if (this.state.autoSavedSession && !this.state.loadedAutoSave) {
         await this.loadStateFromJSON();
       } else {
         // Delete previous auto saved session if there is any, so we can save the new report
-        this.stateManager.deleteCapturedState();
+//        this.stateManager.deleteCapturedState();
         this.setState({ loading: false });
       }
     }
 
     async loadStateFromJSON() {
+    console.log("Loading State from JSON");
       await this.stateManager.RNFS.readFile(this.stateManager.path, 'utf8')
         .then((data) => {
           try {
@@ -73,7 +78,7 @@ class QuickSurvey extends Component {
         })
         .catch((err) => {
           // catch any error while reading autoSavedSession JSON from disk
-          this.stateManager.deleteCapturedState();
+//          this.stateManager.deleteCapturedState();
           this.setState({ autoSavedSession: false });
           this.setState({ loading: false });
 //          this.setState({ loadedAutoSaveFailMessageVisible: true })
