@@ -23,7 +23,7 @@ import { resetPhoto } from '../../actions/PhotoAction';
 class Welcome extends Component {
     constructor(props){
       super(props);
-      this.stateManager = new backgroundSave("");
+      this.stateManager = new backgroundSave("", false);
       this.state = {
         loading: true,
         displayOutputTest: false,
@@ -113,8 +113,9 @@ class Welcome extends Component {
                   this.setState({ autoSavedSession: false, autoSavedSessionDialogBoxVisible: false });
                 }}
                 onOk={() => {
-                  this.setState({ autoSavedSession: true, autoSavedSessionDialogBoxVisible: false });
-                  this.setState({ filePickerDialogBoxVisible: true })
+                  this.setState({ autoSavedSession: true,
+                                  autoSavedSessionDialogBoxVisible: false,
+                                  filePickerDialogBoxVisible: true });
                 }}
               >
                 <Text style={material.subheading}>
@@ -130,17 +131,13 @@ class Welcome extends Component {
                     selectedItem = {this.state.selectedFile}
                     onCancel = {() => this.setState({ filePickerDialogBoxVisible: false })}
                     onOk = { result => {
-                            this.setState({ filePathSelected: true });
-                            this.setState({ filePickerDialogBoxVisible: false });
-                            this.setState({ selectedFile: result.selectedItem });
-                            this.setState({ autoSavedSession: true });
-                            this.stateManager.path = result.selectedItem.label;
+                            this.setState({ filePathSelected: true,
+                                            filePickerDialogBoxVisible: false,
+                                            selectedFile: result.selectedItem,
+                                            autoSavedSession: true });
+
                             console.log("Selected item from material dialog:", result.selectedItem);
-//                            console.log('pop up window state:', this.state.filePickerDialogBoxVisible);
-                            console.log('state manager path:', this.stateManager.path);
-//                            console.log('state selected file:', this.selectedFile);
                             this.props.navigation.navigate('Survey', {autoSavedSession: true, selectedFile: result.selectedItem});
-//                            navigateTo('Survey');
                         }}
 
               />

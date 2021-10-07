@@ -22,9 +22,15 @@ class Home extends Component {
         this._addVehicleSection = this._addVehicleSection.bind(this);
 
         this.state = {
-            edit: props.edit || false
+            edit: props.edit || false,
+            filePath: this.props.navigation.getParam('filePath'),
+            openOldFile: this.props.navigation.getParam('openOldFile')
         }
+
+        console.log("File Path in Home screen:", this.props.navigation.getParam('filePath'))
+        console.log("Open old file in Home screen:", this.props.navigation.getParam('openOldFile'));
     }
+
 
     // add nonmotorist to global state
     _addNonmotorist () {
@@ -91,7 +97,9 @@ class Home extends Component {
         //     console.log(d, ": ", data[d]);
         // }
 
-        const captureState = new backgroundSave();
+        console.log("this.state.filePath:", this.state.filePath);
+        console.log("this.state.openOldFile:", this.state.openOldFile);
+        const captureState = new backgroundSave(this.state.filePath, this.state.openOldFile);
         captureState.captureCurrentState(JSON.stringify(data));
 
         let roadQuestions = this.filterQuestionsData('road');

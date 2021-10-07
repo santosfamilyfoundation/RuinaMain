@@ -1,13 +1,23 @@
 export class backgroundSave {
-    constructor(filePath) {
-        var date = new Date();
-        var localDate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+    constructor(filePath, openOldFile) {
+        console.log('filePath given to backgroundSave object:', filePath);
+        console.log("Value of openOldFile:", openOldFile);
+
         this.RNFS = require('react-native-fs');
-        this.path = this.RNFS.DocumentDirectoryPath + "/" + filePath;
+
+        this.filePath = filePath;
+        this.openOldFile = openOldFile;
+        this.path = "";
+        if (openOldFile) {
+            this.path = this.RNFS.DocumentDirectoryPath + "/" + filePath;
+        } else {
+            this.path = this.getSavePath();
+        }
+        console.log("this.path:", this.path);
+
         this.filePaths = [];
         this.getFilePaths();
-        console.log('filePath given to backgroundSave object:', filePath);
-        console.log("this.path:", this.path);
+
     }
 
     async getFilePaths() {
@@ -23,10 +33,9 @@ export class backgroundSave {
     async captureCurrentState(data){
         // write the file
         //console.log("data: ", data);
-        var savePath = this.getSavePath();
-        this.RNFS.writeFile(savePath, data, 'utf8')
+        this.RNFS.writeFile(this.path, data, 'utf8')
             .then((success) => {
-                console.log('Current state saved to: ' + savePath);
+                console.log('Current state saved to: ' + this.path);
             })
             .catch((err) => {
                 console.log(err.message);
@@ -48,6 +57,7 @@ export class backgroundSave {
                 this.RNFS.unlink(this.path)
                     .then(() => {
                         console.log('DELETED: ' + this.path);
+                        this.filePaths.delete(this.path);
                     })
                     .catch((err) => {
                         console.log(err.message);

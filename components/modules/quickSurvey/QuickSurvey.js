@@ -41,13 +41,14 @@ class QuickSurvey extends Component {
         autosavedFilePath: this.props.navigation.getParam('selectedFile')
       };
       console.log("SelectedFile parameter passed to QuickSurvey:", this.props.navigation.getParam('selectedFile'));
+      this.stateManager = undefined;
 //      this.stateManager = new backgroundSave("");
     }
 
     async componentDidMount(){
-        this.stateManager = new backgroundSave(this.state.autosavedFilePath.label);
-//      console.log("Want to Load Autosaved Session? ", this.state.autoSavedSession);
-//      console.log("Already loaded Autosaved Session? ", this.state.loadedAutoSave);
+        console.log("autosavedFilePath:", this.state.autosavedFilePath);
+        console.log("autosavedFileSession:", this.state.autoSavedSession);
+        this.stateManager = new backgroundSave(this.state.autosavedFilePath.label, this.state.autoSavedSession);
       console.log("State manager path in Quick Survey: ", this.stateManager.path);
       if (this.state.autoSavedSession && !this.state.loadedAutoSave) {
         await this.loadStateFromJSON();
@@ -234,7 +235,9 @@ class QuickSurvey extends Component {
       // gets called when user clicks continue button
       const moveHome = () => {
         if (quiz.hasResponded){
-          navigation.navigate('Home', {edit: !this.state.loadedAutoSave});
+          navigation.navigate('Home', {edit: !this.state.loadedAutoSave,
+                                       filePath: this.stateManager.filePath,
+                                       openOldFile: this.stateManager.openOldFile});
           return
         }
         
@@ -242,7 +245,9 @@ class QuickSurvey extends Component {
         if (!this.state.loadedAutoSave) {
           dispatchAll();
         }
-        navigation.navigate('Home', { edit: !this.state.loadedAutoSave});
+        navigation.navigate('Home', { edit: !this.state.loadedAutoSave,
+                                      filePath: this.stateManager.filePath,
+                                      openOldFile: this.stateManager.openOldFile});
       }
 
       // filter out questions in questions.js with particular display
@@ -287,7 +292,7 @@ class QuickSurvey extends Component {
         );
       }
 
-      console.log("LOADING SCREEN STATUS (render): ", this.state.loading);
+//      console.log("LOADING SCREEN STATUS (render): ", this.state.loading);
       if (this.state.loading) { // showing a spinning loading wheel while trying to load autosaved session
         return (
           <SafeAreaView style={styles.spinnerView}>
