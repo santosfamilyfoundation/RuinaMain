@@ -85,7 +85,7 @@ class Welcome extends Component {
         } else {
           return (
             <SafeAreaView style={{ flex: 1 }}>
-              <TopNavigation title='Welcome' alignment='center' />
+              <TopNavigation title='RUINA' alignment='center' />
               <Divider />
               <Layout style={styles.centeredContainer}>
                 <View style={styles.btnContainer}>
@@ -98,7 +98,7 @@ class Welcome extends Component {
               <Layout style={styles.bottomBar}>
                 <TouchableOpacity onPress={() => Linking.openURL('https://forms.gle/ho3cZNyoaFArNNN79')}><Text style={{ color: 'blue' }}>Submit Feedback</Text></TouchableOpacity>
                 <Text style={styles.bottomBarText}>
-                  {"Built by students at Olin College of Engineering 2020-2021"}
+                  {"Built by students at Olin College of Engineering in partnership with the Volpe Center and Santos Family Foundation"}
                 </Text>
               </Layout>
 

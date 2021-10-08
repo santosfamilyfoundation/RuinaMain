@@ -3,8 +3,10 @@ import { Component } from 'react';
 export class backgroundSave extends Component {
     constructor(props) {
         super(props);
-        this.RNFS = require('react-native-fs'); 
-        this.path = this.RNFS.DocumentDirectoryPath + '/unfinished_report.json';
+        var date = new Date();
+        var localDate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+        this.RNFS = require('react-native-fs');
+        this.path = this.RNFS.DocumentDirectoryPath + '/CrashReport'+localDate+'.json';
     }
 
     async captureCurrentState(data){
