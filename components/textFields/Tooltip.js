@@ -5,6 +5,17 @@ import { styles } from './Tooltip.style';
 import { Input, Layout, Text, Card, Button, Modal, CardHeader, Icon } from '@ui-kitten/components';
 
 const TooltipView = (props) => {
+    const [visible, setVisible] = React.useState(false);
+    const InfoIcon = (props) => (
+        // <Image source={require('../image/test.jpg')} style={styles.img}/>
+        <Icon {...props} name='info'/>
+    )
+        const CloseIcon = (style) => (
+            <Icon {...style} name='close-outline'/>
+        );
+            const toggleModal = () => {
+                setVisible(!visible);
+            };
             const {data} = props
             const ModalContent = (props) => {
                     if (data.helperImg != null ){
