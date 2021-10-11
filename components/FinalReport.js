@@ -94,8 +94,9 @@ class FinalReport extends Component {
                   <Card header={EmailHeader}>
                       <Text style={{ marginBottom: 20 }}>Press this button to email the crash report.</Text>
                       <Button
-                          onPress={() => this.setState({ chooseReportFormatVisible: true, exportAction: navigateEmail })}>
-                          Email Report
+                        onPress={() => this.setState({ chooseReportFormatVisible: true, exportAction: navigateEmail })}
+                        disabled={!this.state.filePermissionsGranted}>
+                            Email Report
                       </Button>
                   </Card>
                   <Card header={SaveToDatabaseHeader}>
@@ -104,7 +105,8 @@ class FinalReport extends Component {
                   </Card>
                   <Card header={FeedbackHeader} style={{marginTop:20}}>
                     <Text style={{marginBottom: 20}}>Tell us what you liked and what you didn't like so we can make your experience better.</Text>
-                    <Button onPress={()=>Linking.openURL('https://forms.gle/ho3cZNyoaFArNNN79')}>Submit Feedback</Button>
+                    <Button onPress={()=>Linking.openURL('https://forms.gle/ho3cZNyoaFArNNN79')}
+                    disabled={!this.state.filePermissionsGranted}>Submit Feedback</Button>
                   </Card>
 
                   <SinglePickerMaterialDialog
