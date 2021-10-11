@@ -5,15 +5,19 @@ export class backgroundSave {
 
         this.RNFS = require('react-native-fs');
 
-        this.filePath = filePath;
+//        this.filePath = filePath;
         this.openOldFile = openOldFile;
         this.path = "";
         if (openOldFile) {
-            this.path = this.RNFS.DocumentDirectoryPath + "/" + filePath;
+            if (filePath.includes(this.RNFS.DocumentDirectoryPath)) {
+                this.path = filePath;
+            } else {
+                this.path = this.RNFS.DocumentDirectoryPath + "/" + filePath;
+            }
         } else {
             this.path = this.getSavePath();
         }
-        console.log("this.path:", this.path);
+        console.log("this.path in backgroundSave object:", this.path);
 
         this.filePaths = [];
         this.getFilePaths();

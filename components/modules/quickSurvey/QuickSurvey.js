@@ -234,10 +234,11 @@ class QuickSurvey extends Component {
 
       // gets called when user clicks continue button
       const moveHome = () => {
+        console.log('filepath being sent to home screen:', this.stateManager.path);
         if (quiz.hasResponded){
-          navigation.navigate('Home', {edit: !this.state.loadedAutoSave,
-                                       filePath: this.stateManager.filePath,
-                                       openOldFile: this.stateManager.openOldFile});
+          this.props.navigation.navigate('Home', {edit: !this.state.loadedAutoSave,
+                                       filePath: this.stateManager.path,
+                                       openOldFile: true});
           return
         }
         
@@ -245,9 +246,9 @@ class QuickSurvey extends Component {
         if (!this.state.loadedAutoSave) {
           dispatchAll();
         }
-        navigation.navigate('Home', { edit: !this.state.loadedAutoSave,
-                                      filePath: this.stateManager.filePath,
-                                      openOldFile: this.stateManager.openOldFile});
+        this.props.navigation.navigate('Home', { edit: !this.state.loadedAutoSave,
+                                      filePath: this.stateManager.path,
+                                      openOldFile: true});
       }
 
       // filter out questions in questions.js with particular display

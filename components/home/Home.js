@@ -27,6 +27,7 @@ class Home extends Component {
             openOldFile: this.props.navigation.getParam('openOldFile')
         }
 
+        console.log(this.props.navigation);
         console.log("File Path in Home screen:", this.props.navigation.getParam('filePath'))
         console.log("Open old file in Home screen:", this.props.navigation.getParam('openOldFile'));
     }
