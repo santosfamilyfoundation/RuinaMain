@@ -13,6 +13,8 @@ class FinalReport extends Component {
             chooseReportFormatVisible: false,
             chooseReportFormatSelectedItem: undefined,
             exportAction: undefined,
+            filePermissionsGranted: false,
+            filePermissionsErrorMessageVisible: false
         };
         this.requestExternalStoragePermission();
     }
@@ -32,8 +34,11 @@ class FinalReport extends Component {
           );
           if (granted === PermissionsAndroid.RESULTS.GRANTED) {
             console.log("You can use external storage");
+            this.setState({ filePermissionsGranted: true });
           } else {
             console.log("external permission denied");
+            this.setState({ filePermissionsGranted: false });
+            this.setState({ filePermissionsErrorMessageVisible: true });
           }
         } catch (err) {
           console.warn(err);
@@ -106,7 +111,7 @@ class FinalReport extends Component {
                         title={"Choose report export format"}
                         scrolled
                         items={file_format_extensions.map((row, index) => ({ value: index, label: "." + row }))}
-                        visible={this.state.chooseReportFormatVisible}
+                        visible={this.state.chooseReportFormatVisible && this.state.filePermissionsGranted}
                         selectedItem={this.state.chooseReportFormatSelectedItem}
                         onCancel={() => this.setState({ chooseReportFormatVisible: false })}
                         onOk={result => {
