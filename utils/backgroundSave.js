@@ -5,7 +5,6 @@ export class backgroundSave {
 
         this.RNFS = require('react-native-fs');
 
-//        this.filePath = filePath;
         this.openOldFile = openOldFile;
         this.path = "";
         if (openOldFile) {
