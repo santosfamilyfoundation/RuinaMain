@@ -229,7 +229,7 @@ class QuickSurvey extends Component {
       // gets called when user clicks continue button
       const moveHome = () => {
         if (quiz.hasResponded){
-          navigation.navigate('Home', {edit: !this.state.loadedAutoSave});
+          navigation.navigate('Home', {edit: false});
           return
         }
         
@@ -237,7 +237,7 @@ class QuickSurvey extends Component {
         if (!this.state.loadedAutoSave) {
           dispatchAll();
         }
-        navigation.navigate('Home', { edit: !this.state.loadedAutoSave});
+        navigation.navigate('Home', { edit: false});
       }
 
       // filter out questions in questions.js with particular display
