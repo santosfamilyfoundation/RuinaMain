@@ -4774,6 +4774,7 @@ export const questions = {
             "display": [
                 "road"
             ],
+            "tooltip": "Test successful",
             "humanReadableId": "road-40"
         },
         {
@@ -4882,6 +4883,7 @@ export const questions = {
                 "vehicle"
             ],
             "humanReadableId": "vehicle-9",
+            "tooltip": "OpenTextBoxWithSelection working!",
             "answerOptions": [
                 {
                     "text": "Unknown",
@@ -4915,7 +4917,8 @@ export const questions = {
             ],
             "humanReadableId": "vehicle-11",
             "helperText": "(VIN)",
-            "autoMethod": "VINCamera"
+            "autoMethod": "VINCamera",
+            "tooltip": "Advanced Text Box Working!"
         },
         {
             "numOptionsAllowed": "1.0",
@@ -4992,6 +4995,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
+            "tooltip": "OpenTextField working!",
             "humanReadableId": "vehicle-17"
         },
         {

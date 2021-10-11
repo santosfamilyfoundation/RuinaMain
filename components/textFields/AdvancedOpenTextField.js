@@ -8,6 +8,7 @@ import { updateRoad } from '../../actions/RoadAction';
 import * as Constants from '../../constants';
 import vinValidator from 'vin-validator';
 import { dependencyParser } from '../../utils/dependencyHelper';
+import TooltipView from './Tooltip.js';
 
 //This component is used for "advanced" tool access (map, photo, VIN, and time)
 
@@ -233,43 +234,16 @@ const AdvancedOpenTextField = (props) => {
         const HelperTooltip = () => {
         if (data.helperText != null && (data.tooltip != null||data.helperImg!=null)){
             return (
-                <Layout style={styles.container}>
-                    <View style={styles.rowContainer}>
-                        <Text style={styles.helperText}>{data.helperText}</Text>
-                        <Button appearance='ghost' status='primary' icon={InfoIcon} onPress={toggleModal}>
-                            Info
-                        </Button>
-                        <Modal backdropStyle={styles.backdrop} visible={visible}>
-                            <Card style={styles.content} disabled={true}>
-                            {ModalContent()}
-                            <Button appearance='ghost' icon={CloseIcon} onPress={() => setVisible(false)}>
-                                Close
-                            </Button>
-                            </Card>
-                        </Modal>
-                    </View>
-                </Layout>
-            )
+                            <TooltipView data={data} />
+                        )
         }
         else if (data.helperText != null) {
             return (<Text style={styles.helperText}>{data.helperText}</Text>)
         }
         else if (data.tooltip != null || data.helperImg != null) {
             return (
-                <View style={styles.endRowcontainer}>
-                    <Button  appearance='ghost' status='primary' icon={InfoIcon} onPress={toggleModal}>
-                        Info
-                    </Button>
-                    <Modal backdropStyle={styles.backdrop} visible={visible}>
-                        <Card style={styles.content} disabled={true}>
-                        {ModalContent()}
-                        <Button appearance='ghost' icon={CloseIcon} onPress={() => setVisible(false)}>
-                            Dismiss
-                        </Button>
-                        </Card>
-                    </Modal>
-                </View>
-            )
+                            <TooltipView data={data} />
+                        )
         } else {
             return null;
         }

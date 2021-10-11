@@ -6,7 +6,7 @@ import { Input, Layout, Text, Card, Modal, Button, CardHeader, Icon } from '@ui-
 import { styles } from './OpenTextFieldWithSelection.style';
 import { updateResponse } from '../../actions/StoryActions';
 import { dependencyParser } from '../../utils/dependencyHelper';
-
+import TooltipView from './Tooltip.js';
 
 
 const OpenTextFieldWithSelection = (props) => {
@@ -131,43 +131,16 @@ const OpenTextFieldWithSelection = (props) => {
         const HelperTooltip = () => {
         if (data.helperText != null && (data.tooltip != null||data.helperImg!=null)){
             return (
-                <Layout style={styles.container}>
-                    <View style={styles.rowContainer}>
-                        <Text style={styles.helperText}>{data.helperText}</Text>
-                        <Button appearance='ghost' status='primary' icon={InfoIcon} onPress={toggleModal}>
-                            Info
-                        </Button>
-                        <Modal backdropStyle={styles.backdrop} visible={visible}>
-                            <Card style={styles.content} disabled={true}>
-                            {ModalContent()}
-                            <Button appearance='ghost' icon={CloseIcon} onPress={() => setVisible(false)}>
-                                Close
-                            </Button>
-                            </Card>
-                        </Modal>
-                    </View>
-                </Layout>
-            )
+                            <TooltipView data={data} />
+                        )
         }
         else if (data.helperText != null) {
             return (<Text style={styles.helperText}>{data.helperText}</Text>)
         }
         else if (data.tooltip != null || data.helperImg != null) {
             return (
-                <View style={styles.endRowcontainer}>
-                    <Button  appearance='ghost' status='primary' icon={InfoIcon} onPress={toggleModal}>
-                        Info
-                    </Button>
-                    <Modal backdropStyle={styles.backdrop} visible={visible}>
-                        <Card style={styles.content} disabled={true}>
-                        {ModalContent()}
-                        <Button appearance='ghost' icon={CloseIcon} onPress={() => setVisible(false)}>
-                            Dismiss
-                        </Button>
-                        </Card>
-                    </Modal>
-                </View>
-            )
+                            <TooltipView data={data} />
+                        )
         } else {
             return null;
         }
