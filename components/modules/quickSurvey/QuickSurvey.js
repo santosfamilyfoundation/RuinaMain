@@ -46,9 +46,9 @@ class QuickSurvey extends Component {
     }
 
     async componentDidMount(){
-        console.log("autosavedFilePath:", this.state.autosavedFilePath);
-        console.log("autosavedFileSession:", this.state.autoSavedSession);
-        this.stateManager = new backgroundSave(this.state.autosavedFilePath.label, this.state.autoSavedSession);
+      console.log("autosavedFilePath:", this.state.autosavedFilePath);
+      console.log("autosavedFileSession:", this.state.autoSavedSession);
+      this.stateManager = new backgroundSave(this.state.autosavedFilePath.label, this.state.autoSavedSession);
       console.log("State manager path in Quick Survey: ", this.stateManager.path);
       if (this.state.autoSavedSession && !this.state.loadedAutoSave) {
         await this.loadStateFromJSON();
