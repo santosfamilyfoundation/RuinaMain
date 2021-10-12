@@ -17,6 +17,7 @@ import { updatePassenger } from '../../../actions/PassengerAction';
 import { updateRoad } from '../../../actions/RoadAction';
 
 import NumberButtonSelector from '../../buttonSelectors/NumberButtonSelector';
+import NoZeroNumberButtonSelector from '../../buttonSelectors/NoZeroNumberButtonSelector';
 import MultiButtonSelectorQuickSurvey from '../../buttonSelectors/MultiButtonSelectorQuickSurvey';
 import { styles } from './QuickSurvey.style';
 
@@ -329,7 +330,7 @@ class QuickSurvey extends Component {
               <TopNavigation title='Quick Survey' alignment='center' leftControl={this.props.BackAction()} />
               <ScrollView style={{ flex: 1 }}>
                 <SafeAreaView style={styles.questionContainer}>
-                  <NumberButtonSelector
+                  <NoZeroNumberButtonSelector
                     title="Number of vehicles involved"
                     submitFunction={changeVehicle}
                     reducerName="quickquizReducer"
