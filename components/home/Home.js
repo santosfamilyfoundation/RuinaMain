@@ -173,6 +173,15 @@ class Home extends Component {
             } else {
                 return (
                     <View style={styles.rightControlsContainer}>
+                        <Layout style={styles.rightControls}>
+                            <Pressable style={styles.rightControls} onPress = {() => {
+                              this.setState({edit: true})
+                            }}>
+                             <TopNavigationAction icon={editIcon}/>
+                             <Text style={styles.rightControlsText}>Edit Sections</Text>
+                           </Pressable>
+                         </Layout>
+
                          <Layout style={styles.rightControls}>
                            <Pressable style={styles.rightControls} onPress = {() =>
                            {navigation.navigate('FinalReport')}
@@ -181,16 +190,7 @@ class Home extends Component {
                              <Text style={styles.rightControlsText}>Export</Text>
                            </Pressable>
                          </Layout>
-                         <Layout
-                          style={styles.rightControls}
-                          >
-                            <Pressable style={styles.rightControls} onPress = {() => {
-                              this.setState({edit: true})
-                            }}>
-                             <TopNavigationAction icon={editIcon}/>
-                             <Text style={styles.rightControlsText}>Edit Sections</Text>
-                           </Pressable>
-                         </Layout>
+
                      </View>
                  )
             }
