@@ -1,24 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, Text, Layout, Card, CardHeader, Input } from '@ui-kitten/components';
+import { Button, Text, HStack, Input } from 'native-base';
 import { genericWriteAction } from '../../actions/GenericAction';
 import {styles} from './NumberButtonSelector.style'
 import { ScrollView } from 'react-native-gesture-handler';
 import { View } from 'react-native';
-
-
+import QuickSurveyCard from '../QuickSurveyCard';
 
 const NumberButtonSelector = (props) => {
     const [visible, setVisible] = React.useState(false);
     const [selection, setSelection] = React.useState('');
-    const {title, data, id, submitFunction, genericReducer, fieldName, updateResponse, dependencyID} = props;
-    // let currId = data.id
-
-    // if(genericReducer[fieldName] != null & selection != genericReducer[fieldName]) {
-    //     setSelection(genericReducer[fieldName]);
-    // }
+    const {title, data, id, submitFunction, genericReducer, fieldName, updateResponse, dependencyID, startRange, endRange} = props;
 
     const submitField = (val) => {
+        val = int(val);
         setSelection(val);
         if (dependencyID!=null){
             const vehicleID = dependencyID[1] // Get vehicle id to identify different vehicles
@@ -29,89 +24,29 @@ const NumberButtonSelector = (props) => {
         submitFunction(val);
     }
 
-    const ModalContent = () => {
-        if (data.helperImg != null ){
-            var img = new ImageSelector()
-            const src = img.pathHandler(data.helperImg)
-            return (
-                <View style={styles.imgContainer}>
-                    <Layout style={styles.modalContent}>
-                        <Text>{data.tooltip}</Text>
-                        <Image source={src} style={styles.img}/>
-                    </Layout>
-                </View>
-            )
-        }else{
-            return(
-                <Layout style={styles.modalContent}>
-                    <Text>{data.tooltip}</Text>
-                </Layout>
-            )
-        }
-    };
-    
-        const HelperTooltip = () => {
-        if (data.helperText != null && (data.tooltip != null||data.helperImg!=null)){
-            return (
-                <Layout style={styles.container}>
-                    <View style={styles.rowContainer}>
-                        <Text style={styles.helperText}>{data.helperText}</Text>
-                        <Button appearance='ghost' status='primary' icon={InfoIcon} onPress={toggleModal}>
-                            Info
-                        </Button>
-                        <Modal backdropStyle={styles.backdrop} visible={visible}>
-                            <Card style={styles.content} disabled={true}>
-                            {ModalContent()}
-                            <Button appearance='ghost' icon={CloseIcon} onPress={() => setVisible(false)}>
-                                Close
-                            </Button>
-                            </Card>
-                        </Modal>
-                    </View>
-                </Layout>
-            )
-        }
-        else if (data.helperText != null) {
-            return (<Text style={styles.helperText}>{data.helperText}</Text>)
-        }
-        else if (data.tooltip != null || data.helperImg != null) {
-            return (
-                <View style={styles.endRowcontainer}>
-                    <Button  appearance='ghost' status='primary' icon={InfoIcon} onPress={toggleModal}>
-                        Info
-                    </Button>
-                    <Modal backdropStyle={styles.backdrop} visible={visible}>
-                        <Card style={styles.content} disabled={true}>
-                        {ModalContent()}
-                        <Button appearance='ghost' icon={CloseIcon} onPress={() => setVisible(false)}>
-                            Dismiss
-                        </Button>
-                        </Card>
-                    </Modal>
-                </View>
-            )
-        } else {
-            return null;
-        }
+    const renderSingleButton = (num) => {
+        return (
+            <Button onPress={() => submitField(num)} size={10}>{num}</Button>
+        )
     }
-    
-    const InfoIcon = (props) => (
-        <Icon {...props} name='info'/>
-    );
-    const CloseIcon = (props) => (
-        <Icon {...props} name='close-outline'/>
-    );
 
-    const toggleModal = () => {
-        setVisible(!visible);
-    };
-
-    const Header = () => (
-        <CardHeader title={title}/>
-    );
+    const renderButtons = () => {
+        let buttons = [];
+        for (let i = startRange; i <= endRange; i++) {
+            let button = renderSingleButton(i);
+            buttons.push(button);
+        }
+        return(
+            <HStack space={4}>
+            {buttons}
+            <Input placeholder = "other" onChangeText = {submitField} size="md"/>
+            </HStack>
+        )
+    }
 
     return (
-        <Card header={Header}>
+        <QuickSurveyCard title={title} content={renderButtons()}/>
+        /*<Card header={Header}>
             <View style={{flex: 1, flexDirection:"row"}}>
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={true} contentContainerStyle={styles.container}>
                     <View style={styles.buttonSection}>
@@ -132,7 +67,7 @@ const NumberButtonSelector = (props) => {
                     </View>
                 </ScrollView>
             </View>
-        </Card>
+        </Card>*/
     )
 }
 

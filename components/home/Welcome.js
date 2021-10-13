@@ -46,7 +46,7 @@ class Welcome extends Component {
       this.props.resetMap();
       this.props.resetPhoto();
       await this.stateManager.getFilePaths();
-      this.checkAutoSavedSession();
+//      this.checkAutoSavedSession();
       this.setState({ loading: false });
     }
 

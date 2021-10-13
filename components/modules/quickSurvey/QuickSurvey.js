@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { TextInput, Text, StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
-import { Button, ButtonGroup, Layout, TopNavigation, Card, Input } from '@ui-kitten/components';
+import { Button, Heading, Divider } from 'native-base';
 import { connect } from 'react-redux';
 import { changeVehicle, changeDrivers, changeNonmotorists, changePassengers, changeFatality, changeNonFatalInjury, changeRespond, changePhotos, updateSetup } from '../../../actions/QuickQuizActions';
 import { updateResponse } from '../../../actions/StoryActions';
@@ -193,6 +193,127 @@ class QuickSurvey extends Component {
     }
 
     render() {
+       const {
+         navigation,
+         changeRespond,
+         changeVehicle,
+         changeNonmotorists,
+         changeFatality,
+         changeNonFatalInjury,
+         changePhotos,
+         addVehicle,
+         addNonmotorist,
+         addDriver,
+         addRoad,
+         addPassenger,
+         updateResponse,
+         updateSetup,
+         updateVehicle,
+         updateNonmotorist,
+         updateDriver,
+         updateRoad,
+         updatePassenger,
+       } = this.props;
+
+      // contains the state from the QuickQuizReducer
+      const quiz = this.props.quiz;
+
+      // gets called from moveHome
+      const dispatchAll = () => {
+        // add as many nonmotorists as user inputs
+        addNonmotorist(quiz.numNonmotorist);
+        // add road with pre-populated questions from setup questions in questions.js
+        addRoad({ setupData: quiz["setupData"], roadID: uuid.v1()});
+        // connect vehicles with drivers
+        for (let i = 0; i < (quiz.numVehicle); i++){
+            let vehicleID = uuid.v1(); // Generate a v1 (time-based) id
+            let driverID = uuid.v1();
+            addVehicle({vehicleID, driverID})
+            addDriver({driverID, vehicleID})
+        }
+      }
+
+      // gets called when user clicks continue button
+      const moveHome = () => {
+        console.log('filepath being sent to home screen:', this.stateManager.path);
+        if (quiz.hasResponded){
+          this.props.navigation.navigate('Home', {edit: false,
+                                       filePath: this.stateManager.path,
+                                       openOldFile: true});
+          return
+        }
+
+        changeRespond();
+        if (!this.state.loadedAutoSave) {
+          dispatchAll();
+        }
+        this.props.navigation.navigate('Home', { edit: false,
+                                      filePath: this.stateManager.path,
+                                      openOldFile: true});
+      }
+
+    // filter out questions in questions.js with particular display
+    const filterQuestionsData = (questionType) => {
+        return questions.data.filter(question => question.display.includes(questionType));
+    }
+
+    let questionsData = filterQuestionsData('setup');
+
+    const submitField = () => {
+            console.log("Question", question);
+            // updateResponse && updateResponse({id, question: currId, selection: idCode})
+            updateSetup
+            updateResponse
+        }
+
+          // render a single setup question
+          // note that right now we only render multiButton questions
+          // if more questions of different types were to be added to the setup tab, then
+          // we would need to create new quick survey components for them and render them here
+          const renderSingleQuestion = (question) => {
+            switch (question.answerType) {
+              case 'multiButton':
+                return (
+                  <SafeAreaView key={question.id} style = {styles.questionContainer}>
+                    <MultiButtonSelectorQuickSurvey
+                      data={question}
+                      reducer={"quickquizReducer"}
+                      submitFunction={updateSetup}
+                      updateResponse={updateResponse}
+                    />
+                  </SafeAreaView>
+                )
+            }
+          }
+
+        const renderedQuestions = () => {
+        let res = questionsData.map((question => (renderSingleQuestion(question))));
+        return (
+          res
+        );
+      }
+    return(
+      <React.Fragment>
+        <Heading textAlign="center">QUICK SURVEY</Heading>
+       <Divider/>
+       {renderedQuestions()}
+       <SafeAreaView style={styles.questionContainer}>
+        <NumberButtonSelector
+                title="Number of vehicles involved"
+                submitFunction={changeVehicle}
+                reducerName="quickquizReducer"
+                fieldName="numVehicle"
+                startRange={1}
+                endRange={5}
+        />
+       </SafeAreaView>
+
+      </React.Fragment>
+
+    )
+    }
+
+    /*render() {
       const {navigation,
         changeRespond,
         changeVehicle,
@@ -370,9 +491,9 @@ class QuickSurvey extends Component {
                   reducerName = "quickquizReducer"
                   fieldName = "nonFatalInjury"
                 />
-              </SafeAreaView>*/}
+              </SafeAreaView>
               {renderedQuestions()}
-              {/*<SafeAreaView style = {styles.questionContainer}>
+              /*<SafeAreaView style = {styles.questionContainer}>
                 <Card style = {styles.cardStyle}>
                     <Text style = {styles.questionText}>Photos taken?</Text>
                     <Layout style={{flexDirection: 'row'}}>
@@ -392,7 +513,7 @@ class QuickSurvey extends Component {
                       </Button>
                     </Layout>
                   </Card>
-                </SafeAreaView>*/}
+                </SafeAreaView>
               </ScrollView>
               <Button onPress={() => moveHome()}>Continue</Button>
 
@@ -415,7 +536,7 @@ class QuickSurvey extends Component {
           );
         }
       }
-    } // render
+    } // render */
 };
 
 // all the possible actions in QuickSurvey
