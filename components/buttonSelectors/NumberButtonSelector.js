@@ -16,9 +16,6 @@ const NumberButtonSelector = (props) => {
     let currId = data.id
     let status = 'danger'
 
-    // if(genericReducer[fieldName] != null & selection != genericReducer[fieldName]) {
-    //     setSelection(genericReducer[fieldName]);
-    // }
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
 
@@ -168,13 +165,10 @@ const NumberButtonSelector = (props) => {
 }
 
 const mapDispatchToProps = {
-//    genericWriteAction
     updateResponse
 }
 
 const mapStateToProps = (state, props) => {
-//    const genericReducer = state[props.reducerName]
-//    return { genericReducer }
     const { response } = state.storyReducer
     const { reducer } = props;
     const questionReducer = state[reducer];
