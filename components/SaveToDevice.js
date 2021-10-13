@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import {TopNavigation, Card, CardHeader, Text, Button} from '@ui-kitten/components';
-import { Platform, StyleSheet, View, TextInput, PermissionsAndroid, Dimensions } from 'react-native';
+import { Platform, StyleSheet, View, TextInput, Dimensions } from 'react-native';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import Pdf from 'react-native-pdf';
@@ -79,29 +79,6 @@ componentDidMount() {
     this.setState({ filename: text });
   }
 
-  requestExternalStoragePermission = async () => {
-    try {
-      const granted = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-        {
-          title: "Android External Storage Permission",
-          message:
-            "Ruina needs access to your external storage to save the report ",
-          buttonNeutral: "Ask Me Later",
-          buttonNegative: "Cancel",
-          buttonPositive: "OK"
-        }
-      );
-      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        console.log("You can use external storage");
-      } else {
-        console.log("external permission denied");
-      }
-    } catch (err) {
-      console.warn(err);
-    }
-  };
-
   async saveData() {
       const format = this.props.navigation.state.params.format;
       var device_platform = Platform.OS
@@ -119,7 +96,6 @@ componentDidMount() {
         path = path_ios;
       } else {
         path = path_android;
-        this.requestExternalStoragePermission();
       }
 
       // write the file and save to Files app on device:
