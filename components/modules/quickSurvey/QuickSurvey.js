@@ -38,23 +38,29 @@ class QuickSurvey extends Component {
         loadedAutoSaveSuccessMessageVisible: false,
         loadedAutoSaveFailMessageVisible: false,
         loading: true, //loading screen
+        autosavedFilePath: this.props.navigation.getParam('selectedFile')
       };
-      this.stateManager = new backgroundSave();
+      console.log("SelectedFile parameter passed to QuickSurvey:", this.props.navigation.getParam('selectedFile'));
+      this.stateManager = undefined;
+//      this.stateManager = new backgroundSave("");
     }
 
     async componentDidMount(){
-      console.log("Want to Load Autosaved Session? ", this.state.autoSavedSession);
-      console.log("Loaded Autosaved Session? ", this.state.loadedAutoSave);
+      console.log("autosavedFilePath:", this.state.autosavedFilePath);
+      console.log("autosavedFileSession:", this.state.autoSavedSession);
+      this.stateManager = new backgroundSave(this.state.autosavedFilePath.label, this.state.autoSavedSession);
+      console.log("State manager path in Quick Survey: ", this.stateManager.path);
       if (this.state.autoSavedSession && !this.state.loadedAutoSave) {
         await this.loadStateFromJSON();
       } else {
         // Delete previous auto saved session if there is any, so we can save the new report
-        this.stateManager.deleteCapturedState();
+//        this.stateManager.deleteCapturedState();
         this.setState({ loading: false });
       }
     }
 
     async loadStateFromJSON() {
+    console.log("Loading State from JSON");
       await this.stateManager.RNFS.readFile(this.stateManager.path, 'utf8')
         .then((data) => {
           try {
@@ -65,18 +71,18 @@ class QuickSurvey extends Component {
           } catch(e) {
             // catch any error while parsing the JSON
             console.log("ERROR: " + e.message);
-            this.setState({ loadedAutoSaveFailMessageVisible: true })
-            this.stateManager.deleteCapturedState();
+//            this.setState({ loadedAutoSaveFailMessageVisible: true })
+//            this.stateManager.deleteCapturedState();
           }
           // Hide loading screen
           this.setState({ loading: false });
         })
         .catch((err) => {
           // catch any error while reading autoSavedSession JSON from disk
-          this.stateManager.deleteCapturedState();
+//          this.stateManager.deleteCapturedState();
           this.setState({ autoSavedSession: false });
           this.setState({ loading: false });
-          this.setState({ loadedAutoSaveFailMessageVisible: true })
+//          this.setState({ loadedAutoSaveFailMessageVisible: true })
           console.log(err.message);
         })
     }
@@ -228,8 +234,11 @@ class QuickSurvey extends Component {
 
       // gets called when user clicks continue button
       const moveHome = () => {
+        console.log('filepath being sent to home screen:', this.stateManager.path);
         if (quiz.hasResponded){
-          navigation.navigate('Home', {edit: false});
+          this.props.navigation.navigate('Home', {edit: false,
+                                       filePath: this.stateManager.path,
+                                       openOldFile: true});
           return
         }
         
@@ -237,7 +246,9 @@ class QuickSurvey extends Component {
         if (!this.state.loadedAutoSave) {
           dispatchAll();
         }
-        navigation.navigate('Home', { edit: false});
+        this.props.navigation.navigate('Home', { edit: false,
+                                      filePath: this.stateManager.path,
+                                      openOldFile: true});
       }
 
       // filter out questions in questions.js with particular display
@@ -282,7 +293,7 @@ class QuickSurvey extends Component {
         );
       }
 
-      console.log("LOADING SCREEN STATUS (render): ", this.state.loading);
+//      console.log("LOADING SCREEN STATUS (render): ", this.state.loading);
       if (this.state.loading) { // showing a spinning loading wheel while trying to load autosaved session
         return (
           <SafeAreaView style={styles.spinnerView}>
