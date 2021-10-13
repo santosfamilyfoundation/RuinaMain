@@ -236,7 +236,7 @@ class QuickSurvey extends Component {
       const moveHome = () => {
         console.log('filepath being sent to home screen:', this.stateManager.path);
         if (quiz.hasResponded){
-          this.props.navigation.navigate('Home', {edit: !this.state.loadedAutoSave,
+          this.props.navigation.navigate('Home', {edit: false,
                                        filePath: this.stateManager.path,
                                        openOldFile: true});
           return
@@ -246,7 +246,7 @@ class QuickSurvey extends Component {
         if (!this.state.loadedAutoSave) {
           dispatchAll();
         }
-        this.props.navigation.navigate('Home', { edit: !this.state.loadedAutoSave,
+        this.props.navigation.navigate('Home', { edit: false,
                                       filePath: this.stateManager.path,
                                       openOldFile: true});
       }

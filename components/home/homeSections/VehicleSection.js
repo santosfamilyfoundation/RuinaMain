@@ -131,10 +131,6 @@ class VehicleSection extends Component{
             return(
                 <Card key={vehicle.id} header={VehiclesHeader} style={styles.itemCard} >
                     <View style={styles.itemCardContent}>
-                        <Card style={styles.individualCard}>
-                            <Icon name='car' opacity={0.5} width={75} height={75} style={{justifyItems:'center', alignItems:'center'}}/>
-                            <Text style={styles.itemCardFooter} category="s1">{name}</Text>
-                        </Card>
                         {!this.state.driverDeleted &&
                           <Card style={styles.individualCardRemove} onPress= {() => this.setState({beforeDriverDelete:true})}>
                               <Icon name='person-remove' width={75} height={75} float alignSelf= "center" fill='white'/>
