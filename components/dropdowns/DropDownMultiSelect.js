@@ -248,12 +248,12 @@ const DropDownMultiSelect = (props) => {
                                 multiSelect={true}
                                 onSelect={addOption}
                             />
-                            <Button
-                                style={styles.submitButton}
-                                appearance={buttonAppearance}
-                                size='medium'
-                                icon={CheckIcon}
-                                onPress={() => submitField()}
+                            <Image
+//                                style={styles.submitButton}
+//                                appearance={buttonAppearance}
+//                                size='medium'
+//                                icon={CheckIcon}
+//                                onPress={() => submitField()}
                             />
                         </Layout>
                     </Layout>

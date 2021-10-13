@@ -100,9 +100,9 @@ const LargeTextField = (props) => {
         status = 'success'
     }
 
-    const CheckIcon = (style) => (
-        <Icon {...style} name='checkmark-outline' />
-    )
+//    const CheckIcon = (style) => (
+//        <Icon {...style} name='checkmark-outline' />
+//    )
 
     const ModalContent = () => {
         if (data.helperImg != null ){
@@ -208,13 +208,13 @@ const LargeTextField = (props) => {
                             placeholder='Place your Text'
                             value={value}
                             onChangeText={onTextChange}
-                        />
-                        <Button 
-                            style={styles.submitButton} 
-                            appearance={buttonAppearance}
-                            size='medium' 
-                            icon={CheckIcon} 
-                            onPress={() => submitField()}
+                            />
+                        <Image
+//                            style={styles.submitButton}
+//                            appearance={buttonAppearance}
+//                            size='medium'
+//                            icon={CheckIcon}
+//                            onPress={() => submitField()}
                         />
                     </Layout>
                     {ErrorMsg()}
