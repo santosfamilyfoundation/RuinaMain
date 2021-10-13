@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { combineReducers } from 'redux';
-import { SafeAreaView} from 'react-navigation';
-import { Linking, ActivityIndicator, View } from 'react-native';
-import { Button, Divider, Layout, TopNavigation, Text } from '@ui-kitten/components';
+import { SafeAreaView } from 'react-navigation';
+import { Linking, ActivityIndicator, Text } from 'react-native';
+import { Button, Divider, Container, Heading, VStack, Center, View, Spinner, Pressable } from 'native-base';
 import { styles } from './Welcome.style';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import backgroundSave from '../../utils/backgroundSave';
@@ -61,69 +61,35 @@ class Welcome extends Component {
     }
 
     render() {
-        // logging hard reset of Rx store
-        // const data = {
-        //   driver: this.props.driver.data,
-        //   nonmotorist: this.props.nonmotorist.data,
-        //   vehicle: this.props.vehicle.data,
-        //   passenger: this.props.passenger.data,
-        //   road: this.props.road.data,
-        //   quiz: this.props.quiz,
-        // };
-        // console.log("---------------------------Reducer Status Welcome Screen -----------------------------")
-        // for (let d in data) {
-        //   console.log(d, ": ", data[d]);
-        // }
-
         const navigateTo = (loc) => {
-          this.props.navigation.navigate(loc, {autoSavedSession: this.state.autoSavedSession, selectedFile: this.state.selectedFile});
-          };
-        if (this.state.loading) {
-          return (
-            <SafeAreaView style={styles.spinnerView}>
-              <ActivityIndicator id="loadingScreen" size="large" color="#0000ff" />
-            </SafeAreaView>
-          );
-        } else {
-          return (
-            <SafeAreaView style={{ flex: 1 }}>
-              <TopNavigation title='RUINA' alignment='center' />
-              <Divider />
-              <Layout style={styles.centeredContainer}>
-                <View style={styles.btnContainer}>
-                  <TouchableOpacity style={styles.styledButton} activeOpacity = { .7 } onPress={() => navigateTo('Survey')}>
-                      <Text style={styles.btnText}>Start New Report</Text>
-                  </TouchableOpacity>
-                </View>
-                {this.state.displayOutputTest && <Button style={styles.styledButton} onPress={() => navigateTo('OutputPDFTest')}>Test Output PDF</Button>}
-              </Layout>
-              <Layout style={styles.bottomBar}>
-                <TouchableOpacity onPress={() => Linking.openURL('https://forms.gle/ho3cZNyoaFArNNN79')}><Text style={{ color: 'blue' }}>Submit Feedback</Text></TouchableOpacity>
-                <Text style={styles.bottomBarText}>
-                  {"Built by students at Olin College of Engineering in partnership with the Volpe Center and Santos Family Foundation"}
-                </Text>
-              </Layout>
+           this.props.navigation.navigate(loc, {autoSavedSession: this.state.autoSavedSession, selectedFile: this.state.selectedFile});
+         };
+         if (this.state.loading) {
+           return (
+             <SafeAreaView style={styles.spinnerView}>
+               <Spinner accessibilityLabel="Loading App"/>
+             </SafeAreaView>
+            );}
+         else {
+            return (
+            <React.Fragment>
+                <Heading textAlign="center">RUINA</Heading>
+                <Divider my="2"/>
+                <Center flex={1} px="3">
+                    <VStack alignItems="center">
+                         <TouchableOpacity style={styles.styledButton} activeOpacity = { .7 } onPress={() => navigateTo('Survey')}>
+                               <Text style={styles.btnText}>Start New Report</Text>
+                         </TouchableOpacity>
+                    </VStack>
+                </Center>
+                <VStack alignItems="center">
+                    <TouchableOpacity onPress={() => Linking.openURL('https://forms.gle/ho3cZNyoaFArNNN79')}><Text style={{ color: 'blue' }}>Submit Feedback</Text></TouchableOpacity>
+                        <Text textAlign="center">
+                          {"Built by students at Olin College of Engineering in partnership with the Volpe Center and Santos Family Foundation"}
+                        </Text>
+                 </VStack>
 
-              <MaterialDialog
-                title={"Resume Unfinished Session?"}
-                visible={this.state.autoSavedSessionDialogBoxVisible}
-                okLabel='YES'
-                cancelLabel = 'NO'
-                onCancel={() => {
-                  this.setState({ autoSavedSession: false, autoSavedSessionDialogBoxVisible: false });
-                }}
-                onOk={() => {
-                  this.setState({ autoSavedSession: true,
-                                  autoSavedSessionDialogBoxVisible: false,
-                                  filePickerDialogBoxVisible: true });
-                }}
-              >
-                <Text style={material.subheading}>
-                  Your last session was interrupted unexpectedly. Would you like to resume from where you left off?
-                </Text>
-              </MaterialDialog>
-
-              <SinglePickerMaterialDialog
+                 <SinglePickerMaterialDialog
                     title={"Choose the unfinished report you want to continue"}
                     scrolled
                     items={this.stateManager.filePaths.map((row, index) => ({ value: index, label: row}))}
@@ -140,14 +106,10 @@ class Welcome extends Component {
                             this.props.navigation.navigate('Survey', {autoSavedSession: true, selectedFile: result.selectedItem});
                         }}
 
-              />
-
-
-            </SafeAreaView>
-          );
-
-        }
-
+                />
+            </React.Fragment>
+            )
+         }
     }
 };
 
