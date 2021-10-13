@@ -7,6 +7,8 @@ export const styles = StyleSheet.create({
     modalContent: {
       padding: 24,
       alignItems: 'center',
+      width: 500,
+      height: 500
     },
     imgContainer:{
       flexDirection: 'column',

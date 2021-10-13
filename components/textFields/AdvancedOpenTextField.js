@@ -8,7 +8,7 @@ import { updateRoad } from '../../actions/RoadAction';
 import * as Constants from '../../constants';
 import vinValidator from 'vin-validator';
 import { dependencyParser } from '../../utils/dependencyHelper';
-import TooltipView from './Tooltip.js';
+import TooltipView from '../Tooltip.js';
 
 //This component is used for "advanced" tool access (map, photo, VIN, and time)
 
@@ -231,22 +231,22 @@ const AdvancedOpenTextField = (props) => {
         }
     };
 
-        const HelperTooltip = () => {
-        if (data.helperText != null && (data.tooltip != null||data.helperImg!=null)){
-            return (
-                            <TooltipView data={data} />
-                        )
-        }
-        else if (data.helperText != null) {
-            return (<Text style={styles.helperText}>{data.helperText}</Text>)
-        }
-        else if (data.tooltip != null || data.helperImg != null) {
-            return (
-                            <TooltipView data={data} />
-                        )
-        } else {
-            return null;
-        }
+     const HelperTooltip = () => {
+            if (data.helperText != null && (data.tooltip != null||data.helperImg!=null)){
+                return (
+                    <TooltipView data={data} />
+                )
+            }
+            else if (data.helperText != null) {
+                return (<Text style={styles.helperText}>{data.helperText}</Text>)
+            }
+            else if (data.tooltip != null || data.helperImg != null) {
+                return (
+                    <TooltipView data={data} />
+                )
+            } else {
+                return null;
+            }
     }
 
     const InfoIcon = (props) => (

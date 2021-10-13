@@ -5,7 +5,7 @@ import ImageSelector from '../image/imgIndex';
 import { Input, Layout, Text, Card, Button, Modal, CardHeader, Icon } from '@ui-kitten/components';
 import { styles } from './LargeTextField.style';
 import { dependencyParser } from '../../utils/dependencyHelper';
-import TooltipView from './Tooltip.js';
+import TooltipView from '../Tooltip.js';
 
 
 const LargeTextField = (props) => {
@@ -108,45 +108,12 @@ const LargeTextField = (props) => {
     const CloseIcon = (style) => {
     <Icon {...style} name='checkmark-outline' />
     }
-
-    const ModalContent = () => {
-        if (data.helperImg != null ){
-            var img = new ImageSelector()
-            const src = img.pathHandler(data.helperImg)
-            return (
-                <View style={styles.imgContainer}>
-                    <Layout style={styles.modalContent}>
-                        <Text>{data.tooltip}</Text>
-                        <Image source={src} style={styles.img}/>
-                    </Layout>
-                </View>
-            )
-        }else{
-            return(
-                <Layout style={styles.modalContent}>
-                    <Text>{data.tooltip}</Text>
-                </Layout>
-            )
-        }
-    };
     
         const HelperTooltip = () => {
-        if (data.helperText != null && (data.tooltip != null||data.helperImg!=null)){
-            return (
-                <TooltipView data={data} />
-            )
-        }
-        else if (data.helperText != null) {
-            return (<Text style={styles.helperText}>{data.helperText}</Text>)
-        }
-        else if (data.tooltip != null || data.helperImg != null) {
-            return (
-                <TooltipView data={data} />
-            )
-        } else {
-            return null;
-        }
-    }
+                     return (
+                                 <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
+                             )
+                 }
     
     const InfoIcon = (props) => (
         // <Image source={require('../image/test.jpg')} style={styles.img}/>
