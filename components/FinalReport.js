@@ -86,7 +86,8 @@ class FinalReport extends Component {
                   <Card header={SaveToDeviceHeader }>
                       <Text style={{ marginBottom: 20 }}>Press this button to save the crash report to local device.</Text>
                       <Button
-                          onPress={() => this.setState({ chooseReportFormatVisible: true, exportAction: navigateSaveToDevice })}>
+                          onPress={() => this.setState({ chooseReportFormatVisible: true, exportAction: navigateSaveToDevice })}
+                          disabled={!this.state.filePermissionsGranted}>
                           Save Report to Local Device
                       </Button>
 
@@ -105,8 +106,7 @@ class FinalReport extends Component {
                   </Card>
                   <Card header={FeedbackHeader} style={{marginTop:20}}>
                     <Text style={{marginBottom: 20}}>Tell us what you liked and what you didn't like so we can make your experience better.</Text>
-                    <Button onPress={()=>Linking.openURL('https://forms.gle/ho3cZNyoaFArNNN79')}
-                    disabled={!this.state.filePermissionsGranted}>Submit Feedback</Button>
+                    <Button onPress={()=>Linking.openURL('https://forms.gle/ho3cZNyoaFArNNN79')}>Submit Feedback</Button>
                   </Card>
 
                   <SinglePickerMaterialDialog
