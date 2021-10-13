@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { TextInput, Text, StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
-import { Button, Heading, Divider } from 'native-base';
+import { Button, Heading, Divider, VStack } from 'native-base';
 import { connect } from 'react-redux';
 import { changeVehicle, changeDrivers, changeNonmotorists, changePassengers, changeFatality, changeNonFatalInjury, changeRespond, changePhotos, updateSetup } from '../../../actions/QuickQuizActions';
 import { updateResponse } from '../../../actions/StoryActions';
@@ -296,18 +296,32 @@ class QuickSurvey extends Component {
       <React.Fragment>
         <Heading textAlign="center">QUICK SURVEY</Heading>
        <Divider/>
-       {renderedQuestions()}
-       <SafeAreaView style={styles.questionContainer}>
-        <NumberButtonSelector
-                title="Number of vehicles involved"
-                submitFunction={changeVehicle}
-                reducerName="quickquizReducer"
-                fieldName="numVehicle"
-                startRange={1}
-                endRange={5}
-        />
-       </SafeAreaView>
-
+       <ScrollView>
+           <VStack>
+               <SafeAreaView style={styles.questionContainer}>
+                <NumberButtonSelector
+                        title="Number of vehicles involved"
+                        submitFunction={changeVehicle}
+                        reducerName="quickquizReducer"
+                        fieldName="numVehicle"
+                        startRange={1}
+                        endRange={5}
+                />
+               </SafeAreaView>
+               <SafeAreaView style={styles.questionContainer}>
+                  <NumberButtonSelector
+                            title="Number of non-motorists involved"
+                            submitFunction={changeNonmotorists}
+                            reducerName="quickquizReducer"
+                            fieldName="numNonmotorist"
+                            startRange={0}
+                            endRange={5}
+                  />
+               </SafeAreaView>
+               {renderedQuestions()}
+           </VStack>
+       </ScrollView>
+       <Button onPress={() => moveHome()}>Continue</Button>
       </React.Fragment>
 
     )
