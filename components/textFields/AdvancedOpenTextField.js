@@ -168,7 +168,7 @@ const AdvancedOpenTextField = (props) => {
         <Icon {...style} name='close-outline'/>
     );
 
-    const RenderHeaderIcon = () => {
+    const RenderIcon = () => {
         switch(importFrom) {
             case "map":
                 return (
@@ -193,11 +193,10 @@ const AdvancedOpenTextField = (props) => {
         }
     }
 
-    const CustomCardHeader = () => {
+    const CardHeader = () => {
         return (
             <CardHeader
                 title={data.question}
-                accessory={RenderHeaderIcon}
             />
         )
     }
@@ -308,7 +307,7 @@ const AdvancedOpenTextField = (props) => {
     if (renderComponent){
         return(
             <Layout key={key} style={styles.container}>
-                <Card status={status} header={CustomCardHeader}>
+                <Card status={status} header={CardHeader}>
                     <Layout style={styles.content}>
                         {HelperTooltip()}
                         <Layout style={styles.input}>
@@ -320,13 +319,7 @@ const AdvancedOpenTextField = (props) => {
                                 value={value}
                                 onChangeText={onTextChange}
                             />
-                            <Button
-                                style={styles.submitButton}
-                                appearance={buttonAppearance}
-                                size='medium'
-                                icon={CheckIcon}
-                                onPress={() => submitField()}
-                            />
+                            {RenderIcon()}
                         </Layout>
                         {ErrorMsg()}
                     </Layout>
