@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import {TopNavigation, Card, CardHeader, Text, Button} from '@ui-kitten/components';
+import { Button, Heading, Divider, Text, Box, Input, VStack, HStack, IconButton, Icon, ArrowBackIcon } from 'native-base';
+//import {TopNavigation, Card, CardHeader, Text, Button} from '@ui-kitten/components';
 import { Platform, StyleSheet, View, TextInput, Dimensions } from 'react-native';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
@@ -9,12 +10,13 @@ import Pdf from 'react-native-pdf';
 import RNHTMLtoPDF from 'react-native-html-to-pdf';
 import JSONconverter from '../utils/jsonConverter';
 import backgroundSave from '../utils/backgroundSave';
+import { createPDF, getDefaultFilename } from '../utils/helperFunctions'
 
 class SaveToDevice extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filename: this.getDefaultFilename(),
+      filename: getDefaultFilename(),
       devicePlatform: Platform.OS,
       reportSavedMessageVisible: false,
       reportSavedFailedMessageVisible: false,
@@ -38,7 +40,7 @@ componentDidMount() {
     };
     if (format === "pdf") {
       this.setState({encoding:'base64'});
-      this.createPDF(data);
+      createPDF(data);
     } else {
       var converter = new JSONconverter();
       var file = converter.handleConverter(format, data);
@@ -47,32 +49,24 @@ componentDidMount() {
     }
   }
 
-  // generate default filename
-  getDefaultFilename() {
-    var date = new Date();
-    var localTime = date.toLocaleTimeString().replace(/\W/g, '.');
-    var localDate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-    return "Crash Report " + localDate + " at " + localTime;
-  }
-
   // generate html and convert it into a PDF
-  async createPDF(data) {
-    var converter = new JSONconverter();
-    // const htmlString = converter.handleConverter('pdftest', "");
-    const htmlString = converter.handleConverter('pdf', data);
-    let options = {
-      html: htmlString,
-      base64: true,
-      fileName: 'crash_report',
-    };
-    try {
-      const data = await RNHTMLtoPDF.convert(options);
-      console.log("got PDF data");
-      this.setState({uri: data.filePath, data: data.base64, isPDF:true});
-    } catch (error) {
-      console.log('error->', error);
-    }
-  }
+//  async createPDF(data) {
+//    var converter = new JSONconverter();
+//    // const htmlString = converter.handleConverter('pdftest', "");
+//    const htmlString = converter.handleConverter('pdf', data);
+//    let options = {
+//      html: htmlString,
+//      base64: true,
+//      fileName: 'crash_report',
+//    };
+//    try {
+//      const data = await RNHTMLtoPDF.convert(options);
+//      console.log("got PDF data");
+//      this.setState({uri: data.filePath, data: data.base64, isPDF:true});
+//    } catch (error) {
+//      console.log('error->', error);
+//    }
+//  }
 
   // update filename based on user input
   setUserInputFilename = (text) => {
@@ -118,24 +112,25 @@ componentDidMount() {
   }
 
   render() {
-    const saveReportHeader = () => (
-      <CardHeader title="Edit filename below." />
-    )
-
     return(
-      <SafeAreaView style={{flex:1}}>
-        <TopNavigation title="Save Crash Report To Files" alignment="center" leftControl={this.props.BackAction()}/>
-
-        <Card id="SaveReport" header={saveReportHeader}>
-          <TextInput id="userInputFilename"
-            style={styles.input}
-            underlineColorAndroid="transparent"
-            autoCapitalize="none"
-            defaultValue={this.state.filename}
-            onChangeText={this.setUserInputFilename}
-          />
-        </Card>
-
+        <>
+        <HStack>
+            <IconButton
+             icon={<Icon as={ArrowBackIcon} name="arrow-back"/>}
+             onPress={()=>this.props.navigation.goBack()}
+            />
+            <Heading textAlign="center">Save Crash Report To Files</Heading>
+        </HStack>
+        <VStack>
+            <Box>
+                <Heading size="md">Edit Filename below.</Heading>
+                <Divider/>
+                <TextInput id="userInputFilename"
+                  value={this.state.filename}
+                  onChangeText={this.setUserInputFilename}
+                />
+            </Box>
+        </VStack>
         {this.state.isPDF &&
           <View style={styles.container}>
             <Pdf
@@ -150,13 +145,9 @@ componentDidMount() {
                 style={styles.pdf}/>
           </View>
         }
-
-        <Button
-          size='medium'
-          onPress={() => this.saveData()}>
+        <Button onPress={() => this.saveData()}>
           Save Report
         </Button>
-
         <MaterialDialog
           title={"Your Report is saved successfully!"}
           visible={this.state.reportSavedMessageVisible}
@@ -182,12 +173,79 @@ componentDidMount() {
             this.setState({ reportSavedFailedMessageVisible: false });
           }}
         >
-          <Text style={material.subheading}>
+          <Text>
             Your report did not save successfully. Please try again later.
           </Text>
         </MaterialDialog>
-      </SafeAreaView>
+        </>
     )
+//
+//    return(
+//      <SafeAreaView style={{flex:1}}>
+//        <TopNavigation title="Save Crash Report To Files" alignment="center" leftControl={this.props.BackAction()}/>
+//
+//        <Card id="SaveReport" header={saveReportHeader}>
+//          <TextInput id="userInputFilename"
+//            style={styles.input}
+//            underlineColorAndroid="transparent"
+//            autoCapitalize="none"
+//            defaultValue={this.state.filename}
+//            onChangeText={this.setUserInputFilename}
+//          />
+//        </Card>
+//
+//        {this.state.isPDF &&
+//          <View style={styles.container}>
+//            <Pdf
+//                source={this.state}
+//                enableRTL={true}
+//                onLoadComplete={(numberOfPages,filePath)=>{
+//                    console.log(`number of pages: ${numberOfPages}`);
+//                }}
+//                onError={(error)=>{
+//                    console.log(error);
+//                }}
+//                style={styles.pdf}/>
+//          </View>
+//        }
+//
+//        <Button
+//          size='medium'
+//          onPress={() => this.saveData()}>
+//          Save Report
+//        </Button>
+//
+//        <MaterialDialog
+//          title={"Your Report is saved successfully!"}
+//          visible={this.state.reportSavedMessageVisible}
+//          onCancel={() => {
+//            this.setState({ reportSavedMessageVisible: false });
+//          }}
+//          onOk={() => {
+//            this.setState({ reportSavedMessageVisible: false });
+//          }}
+//        >
+//          <Text style={material.subheading}>
+//            Your report has been succesfully saved to the "Files/My Files" app on your device inside either SDCARD or "Internal storage".
+//          </Text>
+//        </MaterialDialog>
+//
+//        <MaterialDialog
+//          title={"Fail to save your report!"}
+//          visible={this.state.reportSavedFailedMessageVisible}
+//          onCancel={() => {
+//            this.setState({ reportSavedFailedMessageVisible: false });
+//          }}
+//          onOk={() => {
+//            this.setState({ reportSavedFailedMessageVisible: false });
+//          }}
+//        >
+//          <Text style={material.subheading}>
+//            Your report did not save successfully. Please try again later.
+//          </Text>
+//        </MaterialDialog>
+//      </SafeAreaView>
+//    )
   }
 }
 
