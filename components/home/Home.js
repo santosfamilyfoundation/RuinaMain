@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, ScrollView, Keyboard, BackHandler, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { TopNavigation, TopNavigationAction, Text, Card, CardHeader, Layout, Icon } from '@ui-kitten/components';
+import { Box, Text, Divider, VStack } from 'native-base';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styles } from './Home.style';
 import {questions} from '../../data/questions';
@@ -13,6 +13,7 @@ import { addVehicle } from '../../actions/VehicleAction';
 import { addDriver } from '../../actions/DriverAction';
 var uuid = require('react-native-uuid');
 import backgroundSave from '../../utils/backgroundSave';
+import QuickSurveyCard from '../QuickSurveyCard';
 
 class Home extends Component {
     constructor(props) {
@@ -75,6 +76,7 @@ class Home extends Component {
     };
 
     render(){
+
         const {
             navigation,
             edit,
@@ -83,7 +85,7 @@ class Home extends Component {
             vehicle,
             passenger,
             road
-            } = this.props
+        } = this.props;
 
         const data = {
             driver: this.props.driver.data,
@@ -93,26 +95,17 @@ class Home extends Component {
             road: this.props.road.data,
             quiz: this.props.quiz,
         };
-        // console.log("---------------------------NEW UPDATE-----------------------------")
-        // for (let d in data) {
-        //     console.log(d, ": ", data[d]);
-        // }
 
-        console.log("this.state.filePath:", this.state.filePath);
-        console.log("this.state.openOldFile:", this.state.openOldFile);
+        console.log("this.state.filePath in home screen:", this.state.filePath);
+        console.log("this.state.openOldFile value:", this.state.openOldFile);
         const captureState = new backgroundSave(this.state.filePath, this.state.openOldFile);
-        captureState.captureCurrentState(JSON.stringify(data));
 
         let roadQuestions = this.filterQuestionsData('road');
 
         // navigate to question form
         const navigateQuestion = (form, id, type, name) => {
-            navigation.navigate('Question', {questions: form.data, objectID: id, type, name, dependencyID:[id]})
+            navigation.navigate('Question', {questions: form.data, objectID: id, type, name, dependencyID:[id]});
         }
-
-        const RoadHeader = () => (
-            <CardHeader title="Crash and Roadway" />
-        );
 
         // generate the vehicle section components based on global state
         let vehiclesListArr = vehicle.data.map((vehicle, index) => {
@@ -128,11 +121,10 @@ class Home extends Component {
                     passenger = {passenger}
                     roadID = {road.data[0].id}
                 />
-            )
-          }
-        )
+            );
+        });
 
-        // generate nonmotorist cards based on global state
+        // generate nonmotorist sections
         let nonmotoristListArr = nonmotorist.data.map((nonmotorist, index) => {
             const { edit } = this.state;
             return (
@@ -145,7 +137,90 @@ class Home extends Component {
                     roadID = {road.data[0].id}
                 />
             )
-        })
+        });
+
+        const rightControls = () => {
+            const {edit} = true;
+            if (edit) {
+                return(
+                <View>
+                    <Box>
+                        <Pressable style={styles.rightControls} onPress={() => {
+                            this.setState({edit: false})
+                        }}>
+                            <TopNavigationAction icon={SaveIcon}/>
+                            <Text style={styles.rightControlsText}>Confirm Changes</Text>
+                        </Pressable>
+                    </Box>
+                </View>
+                );
+            } else {
+                return(
+                <View>
+                    <Box>
+                        <Pressable style={styles.rightControls} onPress={() => {
+                            navigation.navigate('FinalReport')
+                        }}>
+                            <TopNavigationAction icon={FinalReportIcon}/>
+                            <Text style={styles.rightControlText}>Export</Text>
+                        </Pressable>
+                    </Box>
+                    <Box>
+                        <Pressable style={styles.rightControls} onPress={() => {
+                            this.setState({edit: true})
+                        }}>
+                           <TopNavigationAction icon={editIcon}/>
+                           <Text style={styles.rightControlsText}>Edit Sections</Text>
+                        </Pressable>
+                    </Box>
+                </View>
+                );
+            }
+        }
+
+        const crashRoadSection = () => {
+            return(
+                <View>
+                    <Box>
+                        <Text>Crash/Road</Text>
+                    </Box>
+                </View>
+            );
+        }
+
+        this.state.edit = true;
+        if (this.state.edit) {
+            return(
+                <SafeAreaView style={{flex:1}}>
+                    <VStack>
+                        <Box>
+                            {rightControls}
+                        </Box>
+                        <ScrollView>
+                            <QuickSurveyCard title="Crash and Roadway" content={crashRoadSection()}/>
+                            <Divider/>
+                            {vehiclesListArr}
+                            <Divider/>
+                            {nonmotoristListArr}
+                        </ScrollView>
+                    </VStack>
+                </SafeAreaView>
+            );
+        }
+       else return(
+        <React.Fragment>
+            {rightControls}
+            {vehiclesListArr}
+            <Divider/>
+            {nonmotoristListArr}
+        </React.Fragment>
+        )
+
+    }
+ /*
+        const RoadHeader = () => (
+            <CardHeader title="Crash and Roadway" />
+        );
 
         const NonMotoristHeader = () => (
             <CardHeader title={`Non-motorists`} />
@@ -162,48 +237,6 @@ class Home extends Component {
         const SaveIcon = (style) => (
             <Icon {...style} name='save' fill="white" float="left" />
          );
-
-        // right control buttons on navigation bar that changes depending on edit mode
-        const rightControls = () => {
-            const { edit } = this.state
-            if (edit) {
-                return (
-                    <View style={styles.rightControlsContainer}>
-                        <Layout style={styles.rightControls}>
-                            <Pressable style={styles.rightControls} onPress = {() => {
-                              this.setState({edit: false})
-                            }}>
-                              <TopNavigationAction icon={SaveIcon}/>
-                              <Text style={styles.rightControlsText}>Confirm Changes</Text>
-                            </Pressable>
-                        </Layout>
-                    </View>
-                )
-            } else {
-                return (
-                    <View style={styles.rightControlsContainer}>
-                         <Layout style={styles.rightControls}>
-                           <Pressable style={styles.rightControls} onPress = {() =>
-                           {navigation.navigate('FinalReport')}
-                           }>
-                             <TopNavigationAction icon={finalReportIcon}/>
-                             <Text style={styles.rightControlsText}>Export</Text>
-                           </Pressable>
-                         </Layout>
-                         <Layout
-                          style={styles.rightControls}
-                          >
-                            <Pressable style={styles.rightControls} onPress = {() => {
-                              this.setState({edit: true})
-                            }}>
-                             <TopNavigationAction icon={editIcon}/>
-                             <Text style={styles.rightControlsText}>Edit Sections</Text>
-                           </Pressable>
-                         </Layout>
-                     </View>
-                 )
-            }
-        }
 
         // describes the two different HOME screen states
         if (this.state.edit) {
@@ -261,7 +294,7 @@ class Home extends Component {
               </SafeAreaView>
           )
         }
-    }
+    } */
 }
 
 const mapDispatchToProps = {

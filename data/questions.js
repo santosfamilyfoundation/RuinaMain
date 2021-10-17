@@ -5496,7 +5496,7 @@ export const questions = {
             "numOptionsAllowed": "0.0",
             "question": "Enter the total auxiliary lanes",
             "id": "JwQN2ENk",
-            "answerType": "openTextBox",
+            "answerType": "numberButton",
             "display": [
                 "vehicle"
             ],
