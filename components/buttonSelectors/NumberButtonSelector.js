@@ -13,7 +13,7 @@ const NumberButtonSelector = (props) => {
     const {title, data, id, submitFunction, genericReducer, fieldName, updateResponse, dependencyID, startRange, endRange} = props;
 
     const submitField = (val) => {
-        val = int(val);
+        val = parseInt(val);
         setSelection(val);
         if (dependencyID!=null){
             const vehicleID = dependencyID[1] // Get vehicle id to identify different vehicles
