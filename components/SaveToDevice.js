@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { Button, Heading, Divider, Text, Box, Input, VStack, HStack, IconButton, Icon, ArrowBackIcon } from 'native-base';
-//import {TopNavigation, Card, CardHeader, Text, Button} from '@ui-kitten/components';
+import { Button, Heading, Divider, Text, Box, Input, VStack } from 'native-base';
 import { Platform, StyleSheet, View, TextInput, Dimensions } from 'react-native';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
@@ -11,6 +10,7 @@ import RNHTMLtoPDF from 'react-native-html-to-pdf';
 import JSONconverter from '../utils/jsonConverter';
 import backgroundSave from '../utils/backgroundSave';
 import { createPDF, getDefaultFilename } from '../utils/helperFunctions'
+import TopNavigation from './TopNavigation'
 
 class SaveToDevice extends Component {
   constructor(props) {
@@ -114,13 +114,7 @@ componentDidMount() {
   render() {
     return(
         <>
-        <HStack>
-            <IconButton
-             icon={<Icon as={ArrowBackIcon} name="arrow-back"/>}
-             onPress={()=>this.props.navigation.goBack()}
-            />
-            <Heading textAlign="center">Save Crash Report To Files</Heading>
-        </HStack>
+        <TopNavigation title="Save Crash Report to Files" backButton navigation={this.props.navigation} />
         <VStack>
             <Box>
                 <Heading size="md">Edit Filename below.</Heading>
