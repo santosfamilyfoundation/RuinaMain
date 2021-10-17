@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { styles } from '../Home.style';
-import { View, Pressable } from 'react-native';
-import { Text, Box, Icon, Heading, VStack } from 'native-base';
-//import { Text, Card, CardHeader, Icon } from '@ui-kitten/components';
+import { View} from 'react-native';
+import { Text, Card, CardHeader, Icon } from '@ui-kitten/components';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import { connect } from 'react-redux';
@@ -10,7 +9,6 @@ import { addPassenger, deletePassenger } from '../../../actions/PassengerAction'
 import { deleteVehicle } from '../../../actions/VehicleAction';
 import { deleteDriver } from '../../../actions/DriverAction';
 import { questions } from '../../../data/questions';
-import QuickSurveyCard from '../../QuickSurveyCard';
 
 var uuid = require('react-native-uuid');
 
@@ -65,9 +63,9 @@ class VehicleSection extends Component{
         let passengerQuestions = this.filterQuestionsData('passenger');
         let driverQuestions = this.filterQuestionsData('driver');
 
-       /* const VehiclesHeader = () => (
+        const VehiclesHeader = () => (
             <CardHeader title={`${name} ${index + 1}`} />
-        ); */
+        );
 
         // would need to refine if we want to put delete vehicle section icon next to card header
         // const VehiclesHeader = () => (
@@ -93,58 +91,36 @@ class VehicleSection extends Component{
 
         // create passengers associated with vehicle section in two modes (edit and non edit)
         let passengerListArr = passenger.data.filter(passenger => passenger.vehicle == vehicle.id).map((passenger, idx) => {
-            console.log("idx", idx);
             if (!this.state.driverDeleted) {
               if (edit) {
                 return (
-                    <Pressable onPress={() => this.setState({beforePassengerDelete: true, passengerToDelete: passenger.id})}>
-                        <Box bg="#528cf2">
-                            <Text>Remove Passenger {idx + 1}</Text>
-                        </Box>
-                    </Pressable>
-                    /*<Card key={idx} style={styles.individualCardRemove} onPress= {() => this.setState({beforePassengerDelete:true, passengerToDelete:passenger.id})}>
+                    <Card key={idx} style={styles.individualCardRemove} onPress= {() => this.setState({beforePassengerDelete:true, passengerToDelete:passenger.id})}>
                         <Icon name='person-remove' width={75} height={75} float alignSelf= "center" fill='white' />
                         <Text style={styles.itemCardFooterEdit} category="s1">Remove Passenger {idx+1}</Text>
-                    </Card>*/
+                    </Card>
                 )
               } else {
                 return (
-                    <Pressable onPress={() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger', (index + 1), (idx + 1), [roadID, passenger.vehicle, passenger.id])}>
-                        <Box bg="#528cf2">
-                            <Text>Passenger {idx + 1}</Text>
-                        </Box>
-                    </Pressable>
-                    /*<Card key={idx} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}>
+                    <Card key={idx} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}>
                         <Icon name='person' width={75} height={75} />
                         <Text style={styles.itemCardFooter} category="s1">Passenger {idx+1}</Text>
-                    </Card>*/
+                    </Card>
                 )
               }
             } else {
               if (edit) {
                 return (
-                    <Pressable onPress={() => this.setState({beforePassengerDelete: true, passengerToDelete: passenger.id})}>
-                        <Box bg='#528cf2'>
-                            <Text>Remove Occupant {idx + 1}</Text>
-                        </Box>
-                    </Pressable>
-                    /*<Card key={idx} style={styles.individualCardRemove} onPress= {() => this.setState({beforePassengerDelete:true, passengerToDelete:passenger.id})}>
+                    <Card key={idx} style={styles.individualCardRemove} onPress= {() => this.setState({beforePassengerDelete:true, passengerToDelete:passenger.id})}>
                         <Icon name='person-remove' width={75} height={75} float alignSelf= "center" fill="white" />
                         <Text style={styles.itemCardFooterEdit} category="s1">Remove Occupant {idx+1}</Text>
-                    </Card>*/
+                    </Card>
                 )
               } else {
                 return (
-                    <Pressable onPress = {() => navigateQuestion(passengerQuestions, passenger.id, 'Occupant', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}>
-                        <Box bg='#528cf2'>
-                            //<Icon name='person' width={75} height={75} />
-                            <Text>Occupant {idx+1}</Text>
-                        </Box>
-                    </Pressable>
-                    /*<Card key={idx} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Occupant', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}>
+                    <Card key={idx} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Occupant', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}>
                         <Icon name='person' width={75} height={75} />
                         <Text style={styles.itemCardFooter} category="s1">Occupant {idx+1}</Text>
-                    </Card>*/
+                    </Card>
                 )
               }
             }
@@ -153,67 +129,7 @@ class VehicleSection extends Component{
         // describes components of a single vehicle section with two modes (edit and non edit)
         if (edit){
             return(
-                <Box>
-                    <VStack>
-                        <Heading>{`${name} ${index + 1}`}</Heading>
-                        {!this.state.driverDeleted &&
-                         <Pressable onPress={() => this.setState({beforeDriverDelete: true})}>
-                             <Box bg='#528cf2'>
-                                <Text>Remove Driver</Text>
-                             </Box>
-                         </Pressable>
-                        }
-                        {!this.state.driverDeleted &&
-                        <Pressable onPress={this._addPassenger}>
-                            <Box>
-                                <Text>Add Passenger</Text>
-                            </Box>
-                        </Pressable>
-                        }
-                        {this.state.driverDeleted &&
-                        <Pressable onPress={this._addPassenger}>
-                            <Box>
-                                <Text>Add Occupant</Text>
-                            </Box>
-                        </Pressable>
-                        }
-                        {passengerListArr}
-                        <Pressable onPress= {() => this.setState({beforeVehicleDelete:true})}>
-                            <Box>
-                                <Text>Remove Vehicle {index + 1}</Text>
-                            </Box>
-                        </Pressable>
-                        <MaterialDialog
-                         title={"Delete Confirmation"}
-                         visible={this.state.beforeVehicleDelete}
-                         onCancel={() => {
-                            this.setState({ beforeVehicleDelete: false });
-                          }}
-                          onOk={() => {
-                            this._deleteVehicleSection(this.props.vehicle);
-                            this.setState({ beforeVehicleDelete: false });
-                         }}>
-                            <Text style={material.subheading}>
-                                Are you sure you want to delete this vehicle section?
-                            </Text>
-                          </MaterialDialog>
-                          <MaterialDialog
-                            title={"Delete Confirmation"}
-                            visible={this.state.beforeDriverDelete}
-                            onCancel={() => {
-                                this.setState({ beforeDriverDelete: false });
-                            }}
-                            onOk={() => {
-                                this.props.deleteDriver({driverID: this.props.vehicle.driver});
-                                this.setState({ beforeDriverDelete: false, driverDeleted: true });
-                             }}>
-                                <Text style={material.subheading}>
-                                    Are you sure you want to delete this driver?
-                                </Text>
-                           </MaterialDialog>
-                    </VStack>
-                </Box>
-                /*<Card key={vehicle.id} header={VehiclesHeader} style={styles.itemCard} >
+                <Card key={vehicle.id} header={VehiclesHeader} style={styles.itemCard} >
                     <View style={styles.itemCardContent}>
                         {!this.state.driverDeleted &&
                           <Card style={styles.individualCardRemove} onPress= {() => this.setState({beforeDriverDelete:true})}>
@@ -289,28 +205,11 @@ class VehicleSection extends Component{
                           </Text>
                         </MaterialDialog>
                     </View>
-                </Card>*/
+                </Card>
             )
         } else{
             return(
-                 <Box>
-                    <VStack>
-                        <Heading>{`${name} ${index + 1}`}</Heading>
-                        <Pressable onPress= {() => navigateQuestion(vehicleQuestions, vehicle.id, 'Vehicle', (index+1), 0, [roadID, vehicle.id])}>
-                            <Box>
-                                <Text>{name}</Text>
-                            </Box>
-                        </Pressable>
-                        {!this.state.driverDeleted &&
-                        <Pressable onPress={() => navigateQuestion(driverQuestions, vehicle.id, 'Vehicle', (index+1), 0, [roadID, vehicle.id])}>
-                            <Box>
-                                <Text>Driver</Text>
-                            </Box>
-                        </Pressable>
-                        }
-                    </VStack>
-                 </Box>
-                /*<Card key={vehicle.id} header={VehiclesHeader} style={styles.itemCard} >
+                <Card key={vehicle.id} header={VehiclesHeader} style={styles.itemCard} >
                     <View style={styles.itemCardContent}>
                         <Card style={styles.individualCard} onPress= {() => navigateQuestion(vehicleQuestions, vehicle.id, 'Vehicle', (index+1), 0, [roadID, vehicle.id])}>
                             <Icon name='car' width={75} height={75} style={{justifyItems:'center', alignItems:'center'}}/>
@@ -324,7 +223,7 @@ class VehicleSection extends Component{
                         }
                         {passengerListArr}
                     </View>
-                </Card>*/
+                </Card>
             )
         }
 
