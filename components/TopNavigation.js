@@ -1,6 +1,5 @@
 import React from 'react';
 import { HStack, Divider, Heading, Icon, IconButton, ArrowBackIcon } from 'native-base';
-import BackArrowButton from './BackArrowButton';
 
 const TopNavigation = (props) => {
     const { title, backButton, navigation } = props
@@ -12,7 +11,7 @@ const TopNavigation = (props) => {
          <HStack>
             {backButton ?
                 <IconButton
-                 icon={<Icon as={ArrowBackIcon} name="arrow-back"/>}
+                 icon={<ArrowBackIcon name="arrow-back"/>}
                  onPress={()=>{navigation.goBack()}}
                 />
                 : null
