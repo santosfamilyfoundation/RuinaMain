@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { styles } from '../Home.style';
-import { Text, Card, Icon } from '@ui-kitten/components';
+//import { Text, Card, Icon } from '@ui-kitten/components';
+import { Box } from 'native-base';
 import { connect } from 'react-redux';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import { deleteNonmotorist } from '../../../actions/NonmotoristAction';
 import {questions} from '../../../data/questions';
+import Section from '../../Section'
+import IconButton from '../../IconButton'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
 class NonMotoristSection extends Component{
 
@@ -34,11 +38,8 @@ class NonMotoristSection extends Component{
         // describes two different nonmotorist cards (edit and non edit modes)
         if (edit) {
           return(
-              <View>
-                <Card style={styles.nonMotoristCardRemove} onPress = {() => this.setState({beforeDelete:true})}>
-                    <Icon name= 'person-remove' width={75} height={75} float alignSelf= "center" fill="white"/>
-                    <Text style={styles.itemCardFooterEdit} category="s1">Remove Non-Motorist {index+1}</Text>
-                </Card>
+              <Box>
+                <IconButton onPress = {() => this.setState({beforeDelete:true})} text={`Remove Non-Motorist ${index+1}`} icon={<Icon name='person-remove-alt-1' size={50}/>}/>
 
                 <MaterialDialog
                   title={"Delete Confirmation"}
@@ -55,14 +56,17 @@ class NonMotoristSection extends Component{
                     Are you sure you want to delete this nonmotorist?
                   </Text>
                 </MaterialDialog>
-              </View>
+              </Box>
           )
         } else {
           return(
-              <Card style={styles.nonMotoristCard} onPress = {() => navigateQuestion(nonmotoristQuestions, nonmotorist.id, 'Nonmotorist', (index+1))}>
-                  <Icon name= 'person' width={75} height={75} alignSelf= "center" />
-                  <Text style={styles.itemCardFooter} category="s1">Non-Motorist {index+1}</Text>
-              </Card>
+          <Box>
+              <IconButton
+                onPress = {() => navigateQuestion(nonmotoristQuestions, nonmotorist.id, 'Nonmotorist', (index+1))}
+                text={`Non-Motorist ${index+1}`}
+                icon = {<Icon name='person' size={50}/>}
+              />
+          </Box>
           )
         }
     }

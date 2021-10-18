@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { TextInput, Text, StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
-import { Button, Heading, Divider, VStack } from 'native-base';
+import { Button, Heading, Divider, VStack, Center } from 'native-base';
 import { connect } from 'react-redux';
 import { changeVehicle, changeDrivers, changeNonmotorists, changePassengers, changeFatality, changeNonFatalInjury, changeRespond, changePhotos, updateSetup } from '../../../actions/QuickQuizActions';
 import { updateResponse } from '../../../actions/StoryActions';
@@ -18,6 +18,7 @@ import { updateRoad } from '../../../actions/RoadAction';
 
 import NumberButtonSelector from '../../buttonSelectors/NumberButtonSelector';
 import MultiButtonSelectorQuickSurvey from '../../buttonSelectors/MultiButtonSelectorQuickSurvey';
+import TopNavigation from '../../TopNavigation';
 import { styles } from './QuickSurvey.style';
 
 import { questions } from '../../../data/questions';
@@ -294,8 +295,7 @@ class QuickSurvey extends Component {
       }
     return(
       <React.Fragment>
-        <Heading textAlign="center">QUICK SURVEY</Heading>
-       <Divider/>
+       <Center><TopNavigation title="QUICK SURVEY" navigation={this.props.navigation}/></Center>
        <ScrollView>
            <VStack>
                <SafeAreaView style={styles.questionContainer}>

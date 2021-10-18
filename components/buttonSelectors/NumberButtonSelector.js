@@ -5,7 +5,7 @@ import { genericWriteAction } from '../../actions/GenericAction';
 import {styles} from './NumberButtonSelector.style'
 import { ScrollView } from 'react-native-gesture-handler';
 import { View } from 'react-native';
-import QuickSurveyCard from '../QuickSurveyCard';
+import Section from '../Section';
 
 const NumberButtonSelector = (props) => {
     const [visible, setVisible] = React.useState(false);
@@ -13,7 +13,7 @@ const NumberButtonSelector = (props) => {
     const {title, data, id, submitFunction, genericReducer, fieldName, updateResponse, dependencyID, startRange, endRange} = props;
 
     const submitField = (val) => {
-        val = int(val);
+        val = parseInt(val);
         setSelection(val);
         if (dependencyID!=null){
             const vehicleID = dependencyID[1] // Get vehicle id to identify different vehicles
@@ -51,7 +51,9 @@ const NumberButtonSelector = (props) => {
     }
 
     return (
-        <QuickSurveyCard title={title} content={renderButtons()}/>
+        <Section title={title}>
+            {renderButtons()}
+        </Section>
     )
 }
 

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { View, ScrollView, Keyboard, BackHandler, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { TopNavigation, TopNavigationAction, Text, Card, CardHeader, Layout, Icon } from '@ui-kitten/components';
+import { Heading, Divider, VStack, HStack } from 'native-base';
+//import { TopNavigation, TopNavigationAction, Text, Card, CardHeader, Layout, Icon } from '@ui-kitten/components';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styles } from './Home.style';
 import {questions} from '../../data/questions';
@@ -13,6 +14,9 @@ import { addVehicle } from '../../actions/VehicleAction';
 import { addDriver } from '../../actions/DriverAction';
 var uuid = require('react-native-uuid');
 import backgroundSave from '../../utils/backgroundSave';
+import Section from '../Section';
+import IconButton from '../IconButton';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 class Home extends Component {
     constructor(props) {
@@ -93,10 +97,6 @@ class Home extends Component {
             road: this.props.road.data,
             quiz: this.props.quiz,
         };
-        // console.log("---------------------------NEW UPDATE-----------------------------")
-        // for (let d in data) {
-        //     console.log(d, ": ", data[d]);
-        // }
 
         console.log("this.state.filePath:", this.state.filePath);
         console.log("this.state.openOldFile:", this.state.openOldFile);
@@ -111,7 +111,11 @@ class Home extends Component {
         }
 
         const RoadHeader = () => (
-            <CardHeader title="Crash and Roadway" />
+            <VStack>
+                <Heading>Crash and Road Way</Heading>
+                <Divider/>
+            </VStack>
+//            <CardHeader title="Crash and Roadway" />
         );
 
         // generate the vehicle section components based on global state
@@ -134,6 +138,40 @@ class Home extends Component {
 
         // generate nonmotorist cards based on global state
         let nonmotoristListArr = nonmotorist.data.map((nonmotorist, index) => {
+            const { edit } = this.state;
+            return (
+                <NonMotoristSection
+                    edit = {edit}
+                    key = {index}
+                    navigation = {navigation}
+                    nonmotorist = {nonmotorist}
+                    index = {index}
+                    roadID = {road.data[0].id}
+                />
+            )
+        })
+
+        return(
+            <React.Fragment>
+                <Section title='Crash and Road Way'>
+                    <HStack>
+                        <IconButton text='Crash and Road'
+                         onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road', 'Crash/Road')}
+                         icon={<Icon name='edit-road' size={50}/>}
+                        />
+                    </HStack>
+                </Section>
+                {vehiclesListArr}
+                <Section title='Non-motorists'>
+                    <HStack>
+                        {nonmotoristListArr}
+                    </HStack>
+                </Section>
+            </React.Fragment>
+        );
+
+        // generate nonmotorist cards based on global state
+        /*let nonmotoristListArr = nonmotorist.data.map((nonmotorist, index) => {
             const { edit } = this.state;
             return (
                 <NonMotoristSection
@@ -260,7 +298,7 @@ class Home extends Component {
                   </ScrollView>
               </SafeAreaView>
           )
-        }
+        } */
     }
 }
 

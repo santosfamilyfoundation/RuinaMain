@@ -9,6 +9,7 @@ import backgroundSave from '../../utils/backgroundSave';
 import { MaterialDialog, SinglePickerMaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import { connect } from 'react-redux';
+import TopNavigation from '../TopNavigation';
 
 import { resetDriver } from '../../actions/DriverAction';
 import { resetNonmotorist } from '../../actions/NonmotoristAction';
@@ -73,8 +74,7 @@ class Welcome extends Component {
          else {
             return (
             <React.Fragment>
-                <Heading textAlign="center">RUINA</Heading>
-                <Divider my="2"/>
+                <Center><TopNavigation title="RUINA" navigation = {this.props.navigation}/></Center>
                 <Center flex={1} px="3">
                     <VStack alignItems="center">
                          <TouchableOpacity style={styles.styledButton} activeOpacity = { .7 } onPress={() => navigateTo('Survey')}>

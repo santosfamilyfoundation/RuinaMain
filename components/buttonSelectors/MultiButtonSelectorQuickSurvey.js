@@ -5,7 +5,7 @@ import { Button, VStack, HStack } from 'native-base';
 import ImageSelector from '../image/imgIndex';
 import { styles } from './MultiButtonSelectorQuickSurvey.style';
 import { dependencyParser } from '../../utils/dependencyHelper';
-import QuickSurveyCard from '../QuickSurveyCard.js';
+import Section from '../Section';
 
 const MultiButtonSelectorQuickSurvey = (props) => {
   const [visible, setVisible] = React.useState(false);
@@ -75,7 +75,9 @@ const MultiButtonSelectorQuickSurvey = (props) => {
     if (renderComponent){
         return(
         <React.Fragment>
-            <QuickSurveyCard title={data.question} content={renderButtons()}/>
+            <Section title={data.question}>
+                {renderButtons()}
+            </Section>
         </React.Fragment>
        /* <Layout key={data.id} style={styles.container}>
             <Card header={Header}>

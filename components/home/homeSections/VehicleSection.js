@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { styles } from '../Home.style';
 import { View} from 'react-native';
-import { Text, Card, CardHeader, Icon } from '@ui-kitten/components';
+import IconButton from '../../IconButton';
+import { Box, Heading, Divider, VStack, HStack } from 'native-base';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+//import { Text, Card, CardHeader, Icon } from '@ui-kitten/components';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import { connect } from 'react-redux';
@@ -9,6 +12,7 @@ import { addPassenger, deletePassenger } from '../../../actions/PassengerAction'
 import { deleteVehicle } from '../../../actions/VehicleAction';
 import { deleteDriver } from '../../../actions/DriverAction';
 import { questions } from '../../../data/questions';
+import Section from '../../Section'
 
 var uuid = require('react-native-uuid');
 
@@ -63,10 +67,6 @@ class VehicleSection extends Component{
         let passengerQuestions = this.filterQuestionsData('passenger');
         let driverQuestions = this.filterQuestionsData('driver');
 
-        const VehiclesHeader = () => (
-            <CardHeader title={`${name} ${index + 1}`} />
-        );
-
         // would need to refine if we want to put delete vehicle section icon next to card header
         // const VehiclesHeader = () => (
         //     <View style={{ flexDirection: 'row' }}>
@@ -94,33 +94,53 @@ class VehicleSection extends Component{
             if (!this.state.driverDeleted) {
               if (edit) {
                 return (
-                    <Card key={idx} style={styles.individualCardRemove} onPress= {() => this.setState({beforePassengerDelete:true, passengerToDelete:passenger.id})}>
+                    <IconButton text={`Remove Passenger ${idx + 1}`}
+                    onPress={() => this.setState({
+                    beforePassengerDelete: true,
+                    passengerToDelete: passenger.id
+                    })}
+                    icon={<Icon name="person-remove-alt-1" size={50}/>}/>
+ /*                   <Card key={idx} style={styles.individualCardRemove} onPress= {() => this.setState({beforePassengerDelete:true, passengerToDelete:passenger.id})}>
                         <Icon name='person-remove' width={75} height={75} float alignSelf= "center" fill='white' />
                         <Text style={styles.itemCardFooterEdit} category="s1">Remove Passenger {idx+1}</Text>
-                    </Card>
+                    </Card> */
                 )
               } else {
                 return (
-                    <Card key={idx} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}>
+                <IconButton text={`Passenger ${idx + 1}`}
+                onPress={() =>
+                    navigateQuestion(passengerQuestions, passenger.id,
+                    'Passenger', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}
+                icon={<Icon name="person-add-alt-1" size={50}/>}/>
+                   /* <Card key={idx} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}>
                         <Icon name='person' width={75} height={75} />
                         <Text style={styles.itemCardFooter} category="s1">Passenger {idx+1}</Text>
-                    </Card>
+                    </Card> */
                 )
               }
             } else {
               if (edit) {
                 return (
-                    <Card key={idx} style={styles.individualCardRemove} onPress= {() => this.setState({beforePassengerDelete:true, passengerToDelete:passenger.id})}>
+                  <IconButton text={`Remove Occupant ${idx + 1}`}
+                  onPress={() => this.setState({
+                  beforePassengerDelete: true,
+                  passengerToDelete: passenger.id})
+                  }
+                  icon={<Icon name="person-remove-alt-1" size={50}/>}/>
+                   /* <Card key={idx} style={styles.individualCardRemove} onPress= {() => this.setState({beforePassengerDelete:true, passengerToDelete:passenger.id})}>
                         <Icon name='person-remove' width={75} height={75} float alignSelf= "center" fill="white" />
                         <Text style={styles.itemCardFooterEdit} category="s1">Remove Occupant {idx+1}</Text>
-                    </Card>
+                    </Card> */
                 )
               } else {
                 return (
-                    <Card key={idx} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Occupant', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}>
+                    <IconButton text={`Occupant ${idx + 1}`}
+                    onPress={() => navigateQuestion(passengerQuestions, passenger.id, 'Occupant', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}
+                    icon={<Icon name="person" size={50}/>}/>
+                   /* <Card key={idx} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Occupant', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}>
                         <Icon name='person' width={75} height={75} />
                         <Text style={styles.itemCardFooter} category="s1">Occupant {idx+1}</Text>
-                    </Card>
+                    </Card> */
                 )
               }
             }
@@ -129,7 +149,16 @@ class VehicleSection extends Component{
         // describes components of a single vehicle section with two modes (edit and non edit)
         if (edit){
             return(
-                <Card key={vehicle.id} header={VehiclesHeader} style={styles.itemCard} >
+                <Section title={`${name} ${index + 1}`}>
+                    <HStack>
+                        {!this.state.driverDeleted && <IconButton onPress={() => this.setState({beforeDriverDelete: true})}
+                            text="Remove Driver" icon={<Icon name="person-remove-alt-1" size={50}/>}/>}
+                        {!this.state.driverDeleted && <IconButton onPress = {this._addPassenger} text="Add Passenger" icon={<Icon name="person-add-alt-1" size={50}/>}/>}
+                        {this.state.driverDeleted && <IconButton onPress = {this._addPassenger} text="Add Occupant" icon={<Icon name="person-add-alt-1" size={50}/>}/>}
+                        {passengerListArr}
+                    </HStack>
+                </Section>
+               /* <Card key={vehicle.id} header={VehiclesHeader} style={styles.itemCard} >
                     <View style={styles.itemCardContent}>
                         {!this.state.driverDeleted &&
                           <Card style={styles.individualCardRemove} onPress= {() => this.setState({beforeDriverDelete:true})}>
@@ -138,7 +167,7 @@ class VehicleSection extends Component{
                           </Card>
                         }
                         {!this.state.driverDeleted &&
-                          <Card style={styles.individualCardAdd} onPress= {this._addPassenger} >
+                          <Card style={styles.individualCardAdd} onPress= {this._addPassenger}>
                             <Icon name='person-add' width={75} height={75} float alignSelf= "center" fill='white'/>
                             <Text style={styles.itemCardFooterEdit} category="s1">Add Passenger</Text>
                           </Card>
@@ -205,11 +234,21 @@ class VehicleSection extends Component{
                           </Text>
                         </MaterialDialog>
                     </View>
-                </Card>
+                </Card> */
             )
         } else{
             return(
-                <Card key={vehicle.id} header={VehiclesHeader} style={styles.itemCard} >
+                <Section title={`${name} ${index + 1}`}>
+                    <HStack>
+                        <IconButton
+                         onPress = {() => navigateQuestion(vehicleQuestions, vehicle.id, 'Vehicle', (index+1), 0, [roadID, vehicle.id])}
+                         text={name}
+                         icon={<Icon name='local-taxi' size={50}/>}
+                         />
+                        {!this.state.driverDeleted && <IconButton onPress={styles.individualCard} onPress= {() => navigateQuestion(driverQuestions, vehicle.driver, 'Driver', (index+1), 0, [roadID, vehicle.id])} text="Driver" icon={<Icon name='person' size={50}/>}/>}
+                    </HStack>
+                </Section>
+               /* <Card key={vehicle.id} header={VehiclesHeader} style={styles.itemCard} >
                     <View style={styles.itemCardContent}>
                         <Card style={styles.individualCard} onPress= {() => navigateQuestion(vehicleQuestions, vehicle.id, 'Vehicle', (index+1), 0, [roadID, vehicle.id])}>
                             <Icon name='car' width={75} height={75} style={{justifyItems:'center', alignItems:'center'}}/>
@@ -223,7 +262,7 @@ class VehicleSection extends Component{
                         }
                         {passengerListArr}
                     </View>
-                </Card>
+                </Card> */
             )
         }
 

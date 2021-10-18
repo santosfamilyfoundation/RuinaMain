@@ -5,7 +5,7 @@ import { VStack, Button, Heading, Divider, Center, Icon, IconButton, ArrowBackIc
 import { StyleSheet, Linking, ScrollView, PermissionsAndroid } from 'react-native';
 import { MaterialDialog, SinglePickerMaterialDialog} from 'react-native-material-dialog';
 import * as Constants from '../constants';
-import FinalReportCard from './FinalReportCard';
+import Section from './Section';
 import TopNavigation from './TopNavigation';
 
 class FinalReport extends Component {
@@ -85,26 +85,22 @@ class FinalReport extends Component {
             <TopNavigation title='Final Report' backButton navigation={this.props.navigation}/>
             <Center>
                 <VStack space={8}>
-                    <FinalReportCard
-                     title='Save to Local Device'
-                     message='Press this button to save the crash report to local device.'
-                     button={cardButton('Save Report to Local Device', navigateSaveToDevice)}
-                    />
-                    <FinalReportCard
-                     title='Email'
-                     message='Press this button to email the crash report.'
-                     button={cardButton('Email Report', navigateEmail)}
-                    />
-                    <FinalReportCard
-                     title='Save to Database'
-                     message='FEATURE COMING SOON'
-                     button={cardButton('Save Report to Database', navigateDatabase, true)}
-                    />
-                    <FinalReportCard
-                     title='Feedback'
-                     message='Tell us what you liked and what you did not like so we can make your experience better.'
-                     button={feedbackButton()}
-                    />
+                    <Section title='Save to Local Device'>
+                     <Text>Press this button to save the crash report to local device.</Text>
+                     {cardButton('Save Report to Local Device', navigateSaveToDevice)}
+                    </Section>
+                    <Section title='Email'>
+                     <Text>Press this button to email the crash report.</Text>
+                     {cardButton('Email Report', navigateEmail)}
+                    </Section>
+                    <Section title='Save to Database'>
+                     <Text>FEATURE COMING SOON</Text>
+                     {cardButton('Save Report to Database', navigateDatabase, true)}
+                    </Section>
+                    <Section title='Feedback'>
+                     <Text>Tell us what you liked and what you did not like so we can make your experience better.</Text>
+                     {feedbackButton()}
+                    </Section>
                 </VStack>
             </Center>
               <SinglePickerMaterialDialog
