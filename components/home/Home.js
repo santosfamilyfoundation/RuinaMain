@@ -17,6 +17,7 @@ import backgroundSave from '../../utils/backgroundSave';
 import Section from '../Section';
 import IconButton from '../IconButton';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import TopNavigation from '../TopNavigation';
 
 class Home extends Component {
     constructor(props) {
@@ -179,9 +180,18 @@ class Home extends Component {
             );
         }
 
-        const crashRoadSection = () => {
-            return(
-                <Section title='Crash and Roadway'>
+        return(
+            <React.Fragment>
+                <TopNavigation>
+                    {this.state.edit ?
+                        <IconButton text="Confirm Changes" onPress={() => {this.setState({edit: false})}} icon={<Icon name='save' size={25}/>}/> :
+                        <>
+                           <IconButton text="Edit Sections" onPress={() => {this.setState({edit: true})}} icon={<Icon name='edit' size={25}/>}/>
+                           <IconButton text="Export" onPress={() => {navigation.navigate('FinalReport')}} icon={<Icon name='send' size={25}/>}/>
+                        </>
+                    }
+                </TopNavigation>
+                <Section title='Crash and Road Way'>
                     <HStack>
                         <IconButton text='Crash and Road'
                             onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road', 'Crash/Road')}
