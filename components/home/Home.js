@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, ScrollView, Keyboard, BackHandler, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { Heading, Divider, VStack, HStack } from 'native-base';
+import { Heading, Divider, VStack, HStack, Box, Text } from 'native-base';
 //import { TopNavigation, TopNavigationAction, Text, Card, CardHeader, Layout, Icon } from '@ui-kitten/components';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styles } from './Home.style';
@@ -151,154 +151,90 @@ class Home extends Component {
             )
         })
 
-        return(
-            <React.Fragment>
-                <Section title='Crash and Road Way'>
+        const rightControls = () => {
+            const { edit } = this.state;
+            return(
+            <View>
+                <HStack>
+                {this.state.edit &&
+                    <IconButton text="Confirm Changes"
+                        onPress = {() => { this.setState({ edit: false })}}
+                        icon = {<Icon name="save" size={50}/>}
+                    />
+                }
+                {!this.state.edit &&
+                    <>
+                    <IconButton text="Edit Sections"
+                        onPress = {() => { this.setState({ edit: true }) }}
+                        icon = {<Icon name="edit" size={50}/>}
+                    />
+                    <IconButton text="Export Report"
+                        onPress = {() => { navigation.navigate('FinalReport') }}
+                        icon = {<Icon name="assignment" size={50}/>}
+                    />
+                   </>
+                }
+                </HStack>
+            </View>
+            );
+        }
+
+        const crashRoadSection = () => {
+            return(
+                <Section title='Crash and Roadway'>
                     <HStack>
                         <IconButton text='Crash and Road'
-                         onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road', 'Crash/Road')}
-                         icon={<Icon name='edit-road' size={50}/>}
+                            onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road', 'Crash/Road')}
+                            icon={<Icon name='edit-road' size={50}/>}
                         />
                     </HStack>
                 </Section>
-                {vehiclesListArr}
-                <Section title='Non-motorists'>
-                    <HStack>
-                        {nonmotoristListArr}
-                    </HStack>
-                </Section>
-            </React.Fragment>
-        );
-
-        // generate nonmotorist cards based on global state
-        /*let nonmotoristListArr = nonmotorist.data.map((nonmotorist, index) => {
-            const { edit } = this.state;
-            return (
-                <NonMotoristSection
-                    edit = {edit}
-                    key = {index}
-                    navigation = {navigation}
-                    nonmotorist = {nonmotorist}
-                    index = {index}
-                    roadID = {road.data[0].id}
-                />
-            )
-        })
-
-        const NonMotoristHeader = () => (
-            <CardHeader title={`Non-motorists`} />
-        );
-
-        const editIcon = (style) => (
-            <Icon {...style} name='edit-2' fill="white" />
-        );
-
-        const finalReportIcon = (style) => (
-            <Icon {...style} name='file-text' fill="white" />
-        );
-
-        const SaveIcon = (style) => (
-            <Icon {...style} name='save' fill="white" float="left" />
-         );
-
-        // right control buttons on navigation bar that changes depending on edit mode
-        const rightControls = () => {
-            const { edit } = this.state
-            if (edit) {
-                return (
-                    <View style={styles.rightControlsContainer}>
-                        <Layout style={styles.rightControls}>
-                            <Pressable style={styles.rightControls} onPress = {() => {
-                              this.setState({edit: false})
-                            }}>
-                              <TopNavigationAction icon={SaveIcon}/>
-                              <Text style={styles.rightControlsText}>Confirm Changes</Text>
-                            </Pressable>
-                        </Layout>
-                    </View>
-                )
-            } else {
-                return (
-                    <View style={styles.rightControlsContainer}>
-                         <Layout style={styles.rightControls}>
-                           <Pressable style={styles.rightControls} onPress = {() =>
-                           {navigation.navigate('FinalReport')}
-                           }>
-                             <TopNavigationAction icon={finalReportIcon}/>
-                             <Text style={styles.rightControlsText}>Export</Text>
-                           </Pressable>
-                         </Layout>
-                         <Layout
-                          style={styles.rightControls}
-                          >
-                            <Pressable style={styles.rightControls} onPress = {() => {
-                              this.setState({edit: true})
-                            }}>
-                             <TopNavigationAction icon={editIcon}/>
-                             <Text style={styles.rightControlsText}>Edit Sections</Text>
-                           </Pressable>
-                         </Layout>
-                     </View>
-                 )
-            }
+            );
         }
 
-        // describes the two different HOME screen states
-        if (this.state.edit) {
-          return(
-              <SafeAreaView style={{flex:1}}>
-                  <TopNavigation alignment='center' rightControls = {rightControls()}/>
-                  <ScrollView>
-                      <Card header={RoadHeader} style={styles.itemCard}>
-                          <View style={styles.itemCardContent}>
-                              <Card style={styles.nonMotoristCard}>
-                                  <Icon name='paper-plane' opacity={0.5} width={75} height={75} />
-                                  <Text style={styles.itemCardFooter} opacity={0.5} category="s1">Crash/Road</Text>
-                              </Card>
-                          </View>
-                      </Card>
-                      {vehiclesListArr}
-                      <Card key={uuid.v1()} style={styles.itemCard} >
-                          <View style={styles.addVehicleSection}>
-                              <Icon name='plus-circle' width={75} height={75} fill='white' float='left' onPress= {() => this._addVehicleSection()} />
-                              <Text style={styles.addVehicleSectionFooter} category="s1" float='left'>Add Vehicle Section</Text>
-                          </View>
-                      </Card>
-                      <Card key={nonmotorist.id} header = {NonMotoristHeader} style={styles.itemCard} >
-                          <View style={styles.itemCardContent}>
-                              <Card style={styles.individualCardAdd} onPress= {() => this._addNonmotorist()} >
-                                  <Icon name='person-add' width={75} height={75} float alignSelf= "center" fill='white'/>
-                                  <Text style={styles.itemCardFooterEdit} category="s1">Add Non-Motorist</Text>
-                              </Card>
-                              {nonmotoristListArr}
-                          </View>
-                      </Card>
-                  </ScrollView>
-              </SafeAreaView>
-          )
-        } else {
-          return(
-              <SafeAreaView style={{flex:1}}>
-                  <TopNavigation alignment='center' rightControls = {rightControls()}/>
-                  <ScrollView>
-                      <Card header={RoadHeader} style={styles.itemCard}>
-                          <View style={styles.itemCardContent}>
-                              <Card style={styles.nonMotoristCard} onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road', 'Crash/Road')}>
-                                  <Icon name='paper-plane' width={75} height={75} />
-                                  <Text style={styles.itemCardFooter} category="s1">Crash/Road</Text>
-                              </Card>
-                          </View>
-                      </Card>
-                      {vehiclesListArr}
-                      <Card key={nonmotorist.id} header = {NonMotoristHeader} style={styles.itemCard} >
-                          <View style={styles.itemCardContent}>
-                              {nonmotoristListArr}
-                          </View>
-                      </Card>
-                  </ScrollView>
-              </SafeAreaView>
-          )
-        } */
+        return(
+            <VStack>
+                {rightControls()}
+                <ScrollView>
+                    <Section title="Crash and Roadway">
+                        {this.state.edit ?
+                        <Box>
+                            <HStack>
+                                <Icon name="edit-road" size={50}/>
+                                <Text>Crash/Road</Text>
+                            </HStack>
+                        </Box> :
+                        <HStack>
+                            <IconButton text="Crash/Road"
+                            onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road', 'Crash/Road')}
+                            icon = {<Icon name="edit-road" size={50}/>}/>
+                        </HStack>
+                        }
+                    </Section>
+                    <VStack>
+                        {vehiclesListArr}
+                        {this.state.edit &&
+                        <IconButton text="Add Vehicle"
+                            onPress = {() => this._addVehicleSection()}
+                                icon = {<Icon name="local-taxi" size={50}/>}
+                        />
+                        }
+                    </VStack>
+                    <VStack>
+                        <Section title='Non-motorists'>
+                            <HStack>
+                                {nonmotoristListArr}
+                            </HStack>
+                        </Section>
+                        {this.state.edit &&
+                        <IconButton text="Add Non-Motorist"
+                            onPress = {() => this._addNonmotorist()}
+                            icon = {<Icon name="person-add" size={50}/>}
+                        />}
+                    </VStack>
+                </ScrollView>
+            </VStack>
+        );
     }
 }
 

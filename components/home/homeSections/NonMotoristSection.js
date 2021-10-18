@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { styles } from '../Home.style';
 //import { Text, Card, Icon } from '@ui-kitten/components';
-import { Box } from 'native-base';
+import { Box, Text } from 'native-base';
 import { connect } from 'react-redux';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
