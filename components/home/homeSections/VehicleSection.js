@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { styles } from '../Home.style';
 import { View} from 'react-native';
 import IconButton from '../../IconButton';
-import { Box, Heading, Divider, VStack, HStack } from 'native-base';
+import { Box, Heading, Divider, VStack, HStack, Text } from 'native-base';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 //import { Text, Card, CardHeader, Icon } from '@ui-kitten/components';
 import { MaterialDialog } from 'react-native-material-dialog';
@@ -149,15 +149,62 @@ class VehicleSection extends Component{
         // describes components of a single vehicle section with two modes (edit and non edit)
         if (edit){
             return(
-                <Section title={`${name} ${index + 1}`}>
-                    <HStack>
-                        {!this.state.driverDeleted && <IconButton onPress={() => this.setState({beforeDriverDelete: true})}
-                            text="Remove Driver" icon={<Icon name="person-remove-alt-1" size={50}/>}/>}
-                        {!this.state.driverDeleted && <IconButton onPress = {this._addPassenger} text="Add Passenger" icon={<Icon name="person-add-alt-1" size={50}/>}/>}
-                        {this.state.driverDeleted && <IconButton onPress = {this._addPassenger} text="Add Occupant" icon={<Icon name="person-add-alt-1" size={50}/>}/>}
-                        {passengerListArr}
-                    </HStack>
-                </Section>
+                <>
+                    <Section title={`${name} ${index + 1}`}>
+                        <HStack>
+                            {!this.state.driverDeleted && <IconButton onPress={() => this.setState({beforeDriverDelete: true})}
+                                text="Remove Driver" icon={<Icon name="person-remove-alt-1" size={50}/>}/>}
+                            {!this.state.driverDeleted && <IconButton onPress = {this._addPassenger} text="Add Passenger" icon={<Icon name="person-add-alt-1" size={50}/>}/>}
+                            {this.state.driverDeleted && <IconButton onPress = {this._addPassenger} text="Add Occupant" icon={<Icon name="person-add-alt-1" size={50}/>}/>}
+                            {passengerListArr}
+                        </HStack>
+                    </Section>
+
+                     <MaterialDialog
+                        title={"Delete Confirmation"}
+                        visible={this.state.beforeVehicleDelete}
+                        onCancel={() => {
+                            this.setState({ beforeVehicleDelete: false });
+                        }}
+                        onOk={() => {
+                            this._deleteVehicleSection(this.props.vehicle);
+                            this.setState({ beforeVehicleDelete: false });
+                        }}>
+                            <Text style={material.subheading}>
+                                Are you sure you want to delete this vehicle section?
+                            </Text>
+                     </MaterialDialog>
+
+                     <MaterialDialog
+                        title={"Delete Confirmation"}
+                        visible={this.state.beforePassengerDelete}
+                        onCancel={() => {
+                            this.setState({ beforePassengerDelete: false });
+                        }}
+                        onOk={() => {
+                            this._deletePassenger(this.state.passengerToDelete);
+                            this.setState({ beforePassengerDelete: false });
+                        }}>
+                            <Text style={material.subheading}>
+                                Are you sure you want to delete this passenger/occupant?
+                            </Text>
+                     </MaterialDialog>
+
+                     <MaterialDialog
+                        title={"Delete Confirmation"}
+                        visible={this.state.beforeDriverDelete}
+                        onCancel={() => {
+                            this.setState({ beforeDriverDelete: false });
+                        }}
+                        onOk={() => {
+                            this.props.deleteDriver({driverID: this.props.vehicle.driver});
+                            this.setState({ beforeDriverDelete: false, driverDeleted: true });
+                        }}>
+                            <Text style={material.subheading}>
+                                Are you sure you want to delete this driver?
+                            </Text>
+                     </MaterialDialog>
+                 </>
                /* <Card key={vehicle.id} header={VehiclesHeader} style={styles.itemCard} >
                     <View style={styles.itemCardContent}>
                         {!this.state.driverDeleted &&
@@ -185,54 +232,6 @@ class VehicleSection extends Component{
                           <Text style={styles.itemCardFooterEditVehicle} float category="s1">Delete Vehicle {index+1}</Text>
                         </View>
                         </Card>
-
-                        <MaterialDialog
-                          title={"Delete Confirmation"}
-                          visible={this.state.beforeVehicleDelete}
-                          onCancel={() => {
-                            this.setState({ beforeVehicleDelete: false });
-                          }}
-                          onOk={() => {
-                            this._deleteVehicleSection(this.props.vehicle);
-                            this.setState({ beforeVehicleDelete: false });
-                          }}
-                        >
-                          <Text style={material.subheading}>
-                            Are you sure you want to delete this vehicle section?
-                          </Text>
-                        </MaterialDialog>
-
-                        <MaterialDialog
-                          title={"Delete Confirmation"}
-                          visible={this.state.beforePassengerDelete}
-                          onCancel={() => {
-                            this.setState({ beforePassengerDelete: false });
-                          }}
-                          onOk={() => {
-                            this._deletePassenger(this.state.passengerToDelete);
-                            this.setState({ beforePassengerDelete: false });
-                          }}
-                        >
-                          <Text style={material.subheading}>
-                            Are you sure you want to delete this passenger/occupant?
-                          </Text>
-                        </MaterialDialog>
-
-                        <MaterialDialog
-                          title={"Delete Confirmation"}
-                          visible={this.state.beforeDriverDelete}
-                          onCancel={() => {
-                            this.setState({ beforeDriverDelete: false });
-                          }}
-                          onOk={() => {
-                            this.props.deleteDriver({driverID: this.props.vehicle.driver});
-                            this.setState({ beforeDriverDelete: false, driverDeleted: true });
-                          }}
-                        >
-                          <Text style={material.subheading}>
-                            Are you sure you want to delete this driver?
-                          </Text>
-                        </MaterialDialog>
                     </View>
                 </Card> */
             )

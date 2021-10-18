@@ -1,5 +1,6 @@
 import React from 'react';
-import { Layout, Text } from '@ui-kitten/components';
+import { Box, Text, VStack } from 'native-base';
+//import { Layout, Text } from '@ui-kitten/components';
 import { styles } from './HeaderComponent.style'
 import { connect } from 'react-redux';
 import { dependencyParser } from '../../utils/dependencyHelper';
@@ -9,10 +10,16 @@ const HeaderComponent = (props) => {
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
-            <Layout style={styles.container}>
+            <Box>
+                <VStack>
+                    <Text>{data.question}</Text>
+                    <Text>{data.helperText}</Text>
+                </VStack>
+            </Box>
+           /* <Layout style={styles.container}>
                 <Text category='h5'>{data.question}</Text>
                 <Text category='s1'>{data?.helperText}</Text>
-            </Layout>
+            </Layout> */
         )
     }else{
         return null
