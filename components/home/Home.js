@@ -181,28 +181,6 @@ class Home extends Component {
         }
 
         return(
-            <React.Fragment>
-                <TopNavigation>
-                    {this.state.edit ?
-                        <IconButton text="Confirm Changes" onPress={() => {this.setState({edit: false})}} icon={<Icon name='save' size={25}/>}/> :
-                        <>
-                           <IconButton text="Edit Sections" onPress={() => {this.setState({edit: true})}} icon={<Icon name='edit' size={25}/>}/>
-                           <IconButton text="Export" onPress={() => {navigation.navigate('FinalReport')}} icon={<Icon name='send' size={25}/>}/>
-                        </>
-                    }
-                </TopNavigation>
-                <Section title='Crash and Road Way'>
-                    <HStack>
-                        <IconButton text='Crash and Road'
-                            onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road', 'Crash/Road')}
-                            icon={<Icon name='edit-road' size={50}/>}
-                        />
-                    </HStack>
-                </Section>
-            );
-        }
-
-        return(
             <VStack>
                 {rightControls()}
                 <ScrollView>
