@@ -100,10 +100,6 @@ const LargeTextField = (props) => {
         status = 'success'
     }
 
-//    const CheckIcon = (style) => (
-//        <Icon {...style} name='checkmark-outline' />
-//    )
-
     const ModalContent = () => {
         if (data.helperImg != null ){
             var img = new ImageSelector()
@@ -210,11 +206,6 @@ const LargeTextField = (props) => {
                             onChangeText={onTextChange}
                             />
                         <Image
-//                            style={styles.submitButton}
-//                            appearance={buttonAppearance}
-//                            size='medium'
-//                            icon={CheckIcon}
-//                            onPress={() => submitField()}
                         />
                     </Layout>
                     {ErrorMsg()}

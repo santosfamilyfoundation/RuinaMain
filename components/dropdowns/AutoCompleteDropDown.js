@@ -205,11 +205,6 @@ const AutoCompleteDropDown = (props) => {
                             onSelect={(e) => onOptionSelect(e)}
                         />
                         <Image
-//                            style={styles.submitButton}
-//                            appearance={buttonAppearance}
-//                            size='medium'
-//                            icon={CheckIcon}
-//                            onPress={() => submitField()}
                         />
                     </Layout>
                 </Layout>

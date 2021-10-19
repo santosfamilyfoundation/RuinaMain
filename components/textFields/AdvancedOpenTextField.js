@@ -321,11 +321,6 @@ const AdvancedOpenTextField = (props) => {
                                 onChangeText={onTextChange}
                             />
                             <Image
-//                                style={styles.submitButton}
-//                                appearance={buttonAppearance}
-//                                size='medium'
-//                                icon={CheckIcon}
-//                                onPress={() => submitField()}
                             />
                         </Layout>
                         {ErrorMsg()}

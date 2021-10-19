@@ -328,11 +328,6 @@ const AdvancedDropDown = (props) => {
                             onSelect={addOption}
                         />
                         <Image
-//                            style={styles.submitButton}
-//                            appearance={buttonAppearance}
-//                            size='medium'
-//                            icon={CheckIcon}
-//                            onPress={() => submitField()}
                         />
                     </Layout>
                 </Layout>
