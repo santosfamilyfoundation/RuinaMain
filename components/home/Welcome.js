@@ -6,7 +6,7 @@ import { Button, Divider, Layout, TopNavigation, Text } from '@ui-kitten/compone
 import { styles } from './Welcome.style';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import backgroundSave from '../../utils/backgroundSave';
-import { MaterialDialog } from 'react-native-material-dialog';
+import { MaterialDialog, SinglePickerMaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import { connect } from 'react-redux';
 
@@ -23,12 +23,15 @@ import { resetPhoto } from '../../actions/PhotoAction';
 class Welcome extends Component {
     constructor(props){
       super(props);
-      this.stateManager = new backgroundSave();
+      this.stateManager = new backgroundSave("", false);
       this.state = {
         loading: true,
         displayOutputTest: false,
         autoSavedSession: false,
         autoSavedSessionDialogBoxVisible: false,
+        filePickerDialogBoxVisible: false,
+        filePathSelected: false,
+        selectedFile: {label: "", value: ""}
       };
     }
 
@@ -42,24 +45,23 @@ class Welcome extends Component {
       this.props.resetStory();
       this.props.resetMap();
       this.props.resetPhoto();
-      await this.checkAutoSavedSession();
+      await this.stateManager.getFilePaths();
+      this.checkAutoSavedSession();
       this.setState({ loading: false });
     }
 
-    async checkAutoSavedSession(){
-      this.stateManager.RNFS.exists(this.stateManager.path).then((exists) => {
-        if (exists) {
-          this.setState({autoSavedSession : true, autoSavedSessionDialogBoxVisible : true});
-          console.log('Detect unfinished report!')
+    checkAutoSavedSession(){
+        if (this.stateManager.filePaths != null) {
+            this.setState({autoSavedSession : true, autoSavedSessionDialogBoxVisible : true});
+            console.log('Detect unfinished reports!');
         } else {
-          this.setState({ autoSavedSession: false, autoSavedSessionDialogBoxVisible: false });
-          console.log('No unfinished report!')
+            this.setState({ autoSavedSession: false, autoSavedSessionDialogBoxVisible: false });
+            console.log('No unfinished report!');
         }
-      })
     }
 
     render() {
-        // logging hard reset of Redux store
+        // logging hard reset of Rx store
         // const data = {
         //   driver: this.props.driver.data,
         //   nonmotorist: this.props.nonmotorist.data,
@@ -74,7 +76,7 @@ class Welcome extends Component {
         // }
 
         const navigateTo = (loc) => {
-          this.props.navigation.navigate(loc, {autoSavedSession: this.state.autoSavedSession});
+          this.props.navigation.navigate(loc, {autoSavedSession: this.state.autoSavedSession, selectedFile: this.state.selectedFile});
           };
         if (this.state.loading) {
           return (
@@ -111,14 +113,34 @@ class Welcome extends Component {
                   this.setState({ autoSavedSession: false, autoSavedSessionDialogBoxVisible: false });
                 }}
                 onOk={() => {
-                  this.setState({ autoSavedSession: true, autoSavedSessionDialogBoxVisible: false });
-                  navigateTo('Survey');
+                  this.setState({ autoSavedSession: true,
+                                  autoSavedSessionDialogBoxVisible: false,
+                                  filePickerDialogBoxVisible: true });
                 }}
               >
                 <Text style={material.subheading}>
                   Your last session was interrupted unexpectedly. Would you like to resume from where you left off?
                 </Text>
               </MaterialDialog>
+
+              <SinglePickerMaterialDialog
+                    title={"Choose the unfinished report you want to continue"}
+                    scrolled
+                    items={this.stateManager.filePaths.map((row, index) => ({ value: index, label: row}))}
+                    visible={this.state.filePickerDialogBoxVisible}
+                    selectedItem = {this.state.selectedFile}
+                    onCancel = {() => this.setState({ filePickerDialogBoxVisible: false })}
+                    onOk = { result => {
+                            this.setState({ filePathSelected: true,
+                                            filePickerDialogBoxVisible: false,
+                                            selectedFile: result.selectedItem,
+                                            autoSavedSession: true });
+
+                            console.log("Selected item from material dialog:", result.selectedItem);
+                            this.props.navigation.navigate('Survey', {autoSavedSession: true, selectedFile: result.selectedItem});
+                        }}
+
+              />
 
 
             </SafeAreaView>
