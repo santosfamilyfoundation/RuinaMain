@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import {TopNavigation, Card, CardHeader, Text, Button} from '@ui-kitten/components';
-import { Platform, StyleSheet, View, TextInput, PermissionsAndroid, Dimensions } from 'react-native';
+import { Platform, StyleSheet, View, TextInput, Dimensions } from 'react-native';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import Pdf from 'react-native-pdf';
@@ -18,9 +18,9 @@ class SaveToDevice extends Component {
       devicePlatform: Platform.OS,
       reportSavedMessageVisible: false,
       reportSavedFailedMessageVisible: false,
-      uri: '',
-      data: '',
-      encoding: '',
+      uri: [],
+      data: [],
+      encoding: [],
       isPDF: false,
     };
   }
@@ -29,21 +29,30 @@ componentDidMount() {
     const format = this.props.navigation.state.params.format;
     console.log(format);
     // convert data to desired format
-    const data = {
+    const export_data = {
       driver: this.props.driver.data,
       nonmotorist: this.props.nonmotorist.data,
       vehicle: this.props.vehicle.data,
       passenger: this.props.passenger.data,
       road: this.props.road.data,
     };
-    if (format === "pdf") {
-      this.setState({encoding:'base64'});
-      this.createPDF(data);
-    } else {
-      var converter = new JSONconverter();
-      var file = converter.handleConverter(format, data);
-      var encoding = format === "xlsx" ? 'ascii' : 'utf8';
-      this.setState({data: file, encoding: encoding});
+    for (let i = 0; i < format.length; i++){
+        if (format[i] === "pdf") {
+          this.state.encoding.push('base64');
+          this.createPDF(export_data);
+        } else {
+          var converter = new JSONconverter();
+          var file = converter.handleConverter(format[i], export_data);
+          var encode = format[i] === "xlsx" ? 'ascii' : 'utf8';
+          console.log('encode for html', encode);
+          console.log('HTML FILE', typeof(file));
+          this.state.data.push(file);
+
+          console.log('data html', typeof(data[0]));
+
+          this.state.encoding.push(encode);
+//          this.setState({data: this.state.data.push(file), encoding: this.state.encoding.push(encode)});
+        }
     }
   }
 
@@ -56,19 +65,24 @@ componentDidMount() {
   }
 
   // generate html and convert it into a PDF
-  async createPDF(data) {
+  async createPDF(export_data) {
     var converter = new JSONconverter();
     // const htmlString = converter.handleConverter('pdftest', "");
-    const htmlString = converter.handleConverter('pdf', data);
+    const htmlString = converter.handleConverter('pdf', export_data);
     let options = {
       html: htmlString,
       base64: true,
       fileName: 'crash_report',
     };
     try {
-      const data = await RNHTMLtoPDF.convert(options);
+      const pdf_data = await RNHTMLtoPDF.convert(options);
       console.log("got PDF data");
-      this.setState({uri: data.filePath, data: data.base64, isPDF:true});
+//      let updated_data = [pdf_data.base64];
+      this.state.uri.push(pdf_data.filePath);
+      this.state.data.push(pdf_data.base64);
+      this.setState({isPDF:true});
+      console.log("what is uri",this.state.uri)
+      console.log("Type of data",typeof(this.state.data))
     } catch (error) {
       console.log('error->', error);
     }
@@ -79,29 +93,6 @@ componentDidMount() {
     this.setState({ filename: text });
   }
 
-  requestExternalStoragePermission = async () => {
-    try {
-      const granted = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-        {
-          title: "Android External Storage Permission",
-          message:
-            "Ruina needs access to your external storage to save the report ",
-          buttonNeutral: "Ask Me Later",
-          buttonNegative: "Cancel",
-          buttonPositive: "OK"
-        }
-      );
-      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        console.log("You can use external storage");
-      } else {
-        console.log("external permission denied");
-      }
-    } catch (err) {
-      console.warn(err);
-    }
-  };
-
   async saveData() {
       const format = this.props.navigation.state.params.format;
       var device_platform = Platform.OS
@@ -111,34 +102,38 @@ componentDidMount() {
       // for andorid: externalDirectoryPath: /storage/emulated/0/Android/data/com.ruina/files
       // for android: externalStorageDirectoryPath: /storage/emulated/0
       // for ios: DocumentDirectoryPath: /var/mobile/Containers/Data/Application/12F7361A-BC3E-42C9-B81E-FBBBF7BA3E2C/Documents
-      const path_ios = RNFS.DocumentDirectoryPath + '/' + this.state.filename + "." + format;
-      const path_android = RNFS.ExternalStorageDirectoryPath + '/' + this.state.filename + "." + format;
+      var path_ios = RNFS.DocumentDirectoryPath + '/' + this.state.filename;
+      var path_android = RNFS.ExternalStorageDirectoryPath + '/' + this.state.filename;
       //const path = this.state.devicePlatform === 'ios' ? path_ios : path_android;
       let path;
       if (this.state.devicePlatform === 'ios'){
         path = path_ios;
       } else {
         path = path_android;
-        this.requestExternalStoragePermission();
       }
-
+      for (let i = 0; i < format.length; i++){
       // write the file and save to Files app on device:
-      try {
-        let result = await RNFS.writeFile(path, this.state.data, this.state.encoding);
-        console.log('FILE WRITTEN!');
-        console.log('Data: ' + data + '\n' + 'Path: ' + path);
-        this.setState({ reportSavedMessageVisible: true });
+          try {
+            var filepath = path  + "." + format[i]
+            let result = await RNFS.writeFile(filepath, this.state.data[i], this.state.encoding[i]);
+            console.log('FILE WRITTEN!');
+            console.log('Data: ' + data[i] + '\n' + 'Path: ' + filepath);
+            this.setState({ reportSavedMessageVisible: true });
 
-        // clear background save
-        const clearBackgroundSave = new backgroundSave();
-        var deleted = await clearBackgroundSave.deleteCapturedState();
+            // clear background save
+            const clearBackgroundSave = new backgroundSave();
+            var deleted = await clearBackgroundSave.deleteCapturedState();
 
-        return path;
-      } catch (err) {
-        console.log(err.message);
-        this.setState({ reportSavedFailedMessageVisible: true });
-        return null;
+//            return path;
+          } catch (err) {
+            console.log("message is here: ",err.message);
+            this.setState({ reportSavedFailedMessageVisible: true });
+            console.log("failed with", format[i]);
+//            return null;
+          }
+
       }
+      return path;
   }
 
   render() {

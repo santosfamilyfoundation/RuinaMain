@@ -3,7 +3,7 @@ import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import {TopNavigation,Card, CardHeader, Text, Button} from '@ui-kitten/components';
 import {StyleSheet, Linking, ScrollView} from 'react-native';
-import { MaterialDialog, SinglePickerMaterialDialog} from 'react-native-material-dialog';
+import { MaterialDialog, SinglePickerMaterialDialog, MultiPickerMaterialDialog} from 'react-native-material-dialog';
 import * as Constants from '../constants';
 
 class FinalReport extends Component {
@@ -36,7 +36,7 @@ class FinalReport extends Component {
         )
 
         const navigateSaveToDevice = (format) => {
-            console.log('Save Report to Device!');
+            console.log('Save Report to Device!', format);
             navigation.navigate('SaveToDevice', {format: format})
         }
 
@@ -78,20 +78,26 @@ class FinalReport extends Component {
                     <Button onPress={()=>Linking.openURL('https://forms.gle/ho3cZNyoaFArNNN79')}>Submit Feedback</Button>
                   </Card>
 
-                  <SinglePickerMaterialDialog
+                  <MultiPickerMaterialDialog
                         title={"Choose report export format"}
                         scrolled
                         items={file_format_extensions.map((row, index) => ({ value: index, label: "." + row }))}
                         visible={this.state.chooseReportFormatVisible}
-                        selectedItem={this.state.chooseReportFormatSelectedItem}
+                        selectedItem={this.state.multiPickerSelectedItems}
                         onCancel={() => this.setState({ chooseReportFormatVisible: false })}
                         onOk={result => {
-                            this.setState({ chooseReportFormatSelectedItem: result.selectedItem});
-                            this.setState({ chooseReportFormatVisible: false });
-                            console.log('selected:', this.state.chooseReportFormatSelectedItem);
-                            console.log('result:', result.selectedItem);
+                            this.setState({chooseReportFormatSelectedItem: result.selectedItems});
+                            console.log('chooseReportFormatSelectedItem:', this.state.chooseReportFormatSelectedItem);
+                            this.setState({chooseReportFormatVisible: false });
+                            console.log('result:', result.selectedItems);
                             console.log('pop up window state:', this.state.chooseReportFormatVisible);
-                            this.state.exportAction(result.selectedItem.label.substring(1));
+                            var export_types = []
+                            for(let i = 0; i < result.selectedItems.length; i++){
+                                export_types.push(result.selectedItems[i].label.substring(1))
+                            }
+                            console.log('export_types:', export_types);
+                            this.state.exportAction(export_types);
+                            console.log('exportAction', this.state.exportAction)
                         }}
                     />
                 </ScrollView>
