@@ -16,7 +16,7 @@ import { updateVehicle } from '../../../actions/VehicleAction';
 import { updatePassenger } from '../../../actions/PassengerAction';
 import { updateRoad } from '../../../actions/RoadAction';
 
-import NumberButtonSelector from '../../buttonSelectors/NumberButtonSelector';
+import NumberButtonSelectorQuickSurvey from '../../buttonSelectors/NumberButtonSelectorQuickSurvey';
 import MultiButtonSelectorQuickSurvey from '../../buttonSelectors/MultiButtonSelectorQuickSurvey';
 import TopNavigation from '../../TopNavigation';
 import { styles } from './QuickSurvey.style';
@@ -475,7 +475,7 @@ class QuickSurvey extends Component {
               <TopNavigation title='Quick Survey' alignment='center' leftControl={this.props.BackAction()} />
               <ScrollView style={{ flex: 1 }}>
                 <SafeAreaView style={styles.questionContainer}>
-                  <NumberButtonSelector
+                  <NumberButtonSelectorQuickSurvey
                     title="Number of vehicles involved"
                     submitFunction={changeVehicle}
                     reducerName="quickquizReducer"
@@ -483,7 +483,7 @@ class QuickSurvey extends Component {
                   />
                 </SafeAreaView>
                 <SafeAreaView style={styles.questionContainer}>
-                  <NumberButtonSelector
+                  <NumberButtonSelectorQuickSurvey
                     title="Number of non-motorists involved"
                     submitFunction={changeNonmotorists}
                     reducerName="quickquizReducer"
@@ -491,7 +491,7 @@ class QuickSurvey extends Component {
                   />
                 </SafeAreaView>
                 {/*<SafeAreaView style = {styles.questionContainer}>
-                <NumberButtonSelector
+                <NumberButtonSelectorQuickSurvey
                   title="Number of fatalities"
                   submitFunction = {changeFatality}
                   reducerName = "quickquizReducer"
@@ -499,7 +499,7 @@ class QuickSurvey extends Component {
                 />
               </SafeAreaView>
               <SafeAreaView style = {styles.questionContainer}>
-                <NumberButtonSelector
+                <NumberButtonSelectorQuickSurvey
                   title="Number of non-fatal injuries"
                   submitFunction = {changeNonFatalInjury}
                   reducerName = "quickquizReducer"
