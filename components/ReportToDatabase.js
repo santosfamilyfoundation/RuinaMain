@@ -2,12 +2,15 @@ import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { Linking, TextInput, StyleSheet, Alert, View } from 'react-native';
-import {TopNavigation, Card, CardHeader, Text, Button} from '@ui-kitten/components';
+//import {Card, CardHeader, Text, Button} from '@ui-kitten/components';
+import { Button } from 'native-base';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import Axios from "axios";
 import NetInfoAPI from "../utils/NetAPI"
 import backgroundSave from '../utils/backgroundSave';
+import TopNavigation from './TopNavigation';
+import Section from './Section';
 
 
 export class ReportToDatabase extends Component{
@@ -74,7 +77,11 @@ export class ReportToDatabase extends Component{
     )
     return(
       <SafeAreaView style={{flex:1}}>
-        <TopNavigation id="emailNavBar" title="Send Report To Database" alignment="center" leftControl={this.props.BackAction()}/>
+        <TopNavigation title='Send Report to Database' backButton navigation={this.props.navigation} />
+        <Section title='Do you want to send crash report to our database?'>
+            <Button id='sendButton' onPress={() => this.sendHttpRequest()}>Send</Button>
+        </Section>
+/*        <TopNavigation id="emailNavBar" title="Send Report To Database" alignment="center" leftControl={this.props.BackAction()}/>
 
         <Card id="filenameInput" header={FilenameHeader}>
            <View style={[styles.footerContainer]}>
@@ -86,7 +93,7 @@ export class ReportToDatabase extends Component{
                  Send
                </Button>
            </View>
-        </Card>
+        </Card> */
         <MaterialDialog
           title={"Report saved successfully!"}
           visible={this.state.sendDatabaseVisible}
