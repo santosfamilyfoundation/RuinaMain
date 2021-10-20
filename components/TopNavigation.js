@@ -1,6 +1,5 @@
 import React from 'react';
-import { HStack, Divider, Heading } from 'native-base';
-import Icon from 'react-native-vector-icons'
+import { HStack, Divider, Heading, Icon, IconButton, ArrowBackIcon } from 'native-base';
 
 const TopNavigation = (props) => {
     const { title, backButton, navigation } = props
@@ -10,7 +9,7 @@ const TopNavigation = (props) => {
          <HStack>
             {backButton ?
                 <IconButton
-                 icon={<Icon name="arrow-back" size={25}/>}
+                 icon={<ArrowBackIcon name="arrow-back"/>}
                  onPress={()=>{navigation.goBack()}}
                 />
                 : null
