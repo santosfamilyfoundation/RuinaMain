@@ -1,22 +1,11 @@
 import React from 'react';
-import {
-  Layout,
-  Select,
-  Text,
-  Card,
-  CardHeader,
-  Button,
-  Modal,
-  Icon
-} from '@ui-kitten/components';
-
-import { View, Image } from 'react-native';
-import ImageSelector from '../image/imgIndex';
+import MultiSelect from 'react-native-multiple-select';
 import { updateResponse } from '../../actions/StoryActions';
 import { styles } from './DropDownMultiSelect.style';
 import { connect } from 'react-redux';
 import { dependencyParser } from '../../utils/dependencyHelper';
-import TooltipView from '../Tooltip.js';
+import TooltipView from '../Tooltip';
+import Section from '../Section';
 
 
 const DropDownMultiSelect = (props) => {
@@ -177,29 +166,38 @@ const DropDownMultiSelect = (props) => {
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
-            <Layout key={key} style={styles.container}>
-                <Card header={Header} status={status}>
-                    <Layout style={styles.content}>
-                        {HelperTooltip()}
-                        <Layout style={styles.input}>
-                            <Select
-                                style={styles.inputField}
-                                data={data.answerOptions}
-                                selectedOption={selectedOptions}
-                                multiSelect={true}
-                                onSelect={addOption}
-                            />
-                            <Button
-                                style={styles.submitButton}
-                                appearance={buttonAppearance}
-                                size='medium'
-                                icon={CheckIcon}
-                                onPress={() => submitField()}
-                            />
-                        </Layout>
-                    </Layout>
-                </Card>
-            </Layout>
+            <Section key={key} title={data.question}>
+                {HelperTooltip()}
+                <MultiSelect
+                    selectedItems={selectedOption}
+                    onSelectedItemsChange={(e) => submitField(e)}
+                    items={data.answerOptions}
+                    uniqueKey={data.question.humanReadableId}
+                />
+            </Section>
+//            <Layout key={key} style={styles.container}>
+//                <Card header={Header} status={status}>
+//                    <Layout style={styles.content}>
+//                        {HelperTooltip()}
+//                        <Layout style={styles.input}>
+//                            <Select
+//                                style={styles.inputField}
+//                                data={data.answerOptions}
+//                                selectedOption={selectedOptions}
+//                                multiSelect={true}
+//                                onSelect={addOption}
+//                            />
+//                            <Button
+//                                style={styles.submitButton}
+//                                appearance={buttonAppearance}
+//                                size='medium'
+//                                icon={CheckIcon}
+//                                onPress={() => submitField()}
+//                            />
+//                        </Layout>
+//                    </Layout>
+//                </Card>
+//            </Layout>
         )
     }else{
         return null

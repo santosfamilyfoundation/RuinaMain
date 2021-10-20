@@ -1,5 +1,5 @@
 import React from 'react';
-import { Select } from 'native-base';
+import MultiSelect from 'react-native-multiple-select';
 import { updateResponse } from '../../actions/StoryActions';
 import { styles } from './DropDownSingleSelect.style';
 import { connect } from 'react-redux';
@@ -63,25 +63,18 @@ const DropDownSingleSelect = (props) => {
         )
     }
 
-    const items = () => {
-        let itemsArr = [];
-        for (item in data.answerOptions) {
-            itemsArr.push(<Select.Item label={item.text} value={item.idCode} />)
-        }
-        return itemsArr;
-    }
-
     let renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
             <Section key={key} title={data.question}>
                 {HelperTooltip()}
-                <Select
-                    selectedValue={selectedOption}
-                    onSelect={(e) => submitField(e)}
-                >
-                    {items()}
-                </Select>
+                <MultiSelect
+                    selectedItems={selectedOption}
+                    onSelectedItemsChange={(e) => submitField(e)}
+                    single={true}
+                    items={data.answerOptions}
+                    uniqueKey={data.question.humanReadableId}
+                />
             </Section>
         )
     }else{
