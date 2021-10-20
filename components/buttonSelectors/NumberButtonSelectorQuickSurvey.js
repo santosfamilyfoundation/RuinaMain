@@ -10,10 +10,10 @@ import Section from '../Section';
 
 
 
-const NumberButtonSelector = (props) => {
+const NumberButtonSelectorQuickSurvey = (props) => {
     const [visible, setVisible] = React.useState(false);
     const [selection, setSelection] = React.useState('');
-    const {title, data, id, submitFunction, genericReducer, fieldName, updateResponse, dependencyID} = props;
+    const {title, data, id, submitFunction, genericReducer, fieldName, updateResponse, dependencyID, startRange, endRange} = props;
     // let currId = data.id
 
     // if(genericReducer[fieldName] != null & selection != genericReducer[fieldName]) {
@@ -73,4 +73,4 @@ const mapStateToProps = (state, props) => {
     return { genericReducer }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NumberButtonSelector);
+export default connect(mapStateToProps, mapDispatchToProps)(NumberButtonSelectorQuickSurvey);
