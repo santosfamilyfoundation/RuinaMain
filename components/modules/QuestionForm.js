@@ -5,6 +5,7 @@ import { Divider, Layout, TopNavigation } from '@ui-kitten/components';
 import { styles } from '../../containers/AutoComponentContainer.style';
 import { ScrollView } from 'react-native-gesture-handler';
 import MultiButtonSelector from '../buttonSelectors/MultiButtonSelector';
+import NumberButtonSelector from '../buttonSelectors/NumberButtonSelector';
 import AutoCompleteDropDown from '../dropdowns/AutoCompleteDropDown';
 import DropDownSingleSelect from '../dropdowns/DropDownSingleSelect';
 import OpenTextField from '../textFields/OpenTextField';
@@ -86,6 +87,9 @@ const QuestionForm = (props) => {
            ...PublicObj
         },
         multiButton: {
+          ...PublicObj
+        },
+        numberButton: {
           ...PublicObj
         },
         autoCompleteDropdown: {
@@ -200,6 +204,12 @@ const QuestionForm = (props) => {
           return (
             <MultiButtonSelector
               {...props}
+            />
+          )
+        case 'numberButton':
+          return (
+            <NumberButtonSelector
+                {...props}
             />
           )
         case 'autoCompleteDropdown':

@@ -33,6 +33,17 @@ export const styles = StyleSheet.create({
     helperText: {
       margin: 11
     },
+    content: {
+      margin: 10,
+    },
+    input: {
+      marginBottom: 10,
+      height: 'auto',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      flex: 1,
+      flexWrap: 'wrap',
+    },
     questionInput: {
         flex: 2,
         paddingLeft: 10
