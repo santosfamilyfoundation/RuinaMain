@@ -159,6 +159,8 @@ const DropDownSingleSelect = (props) => {
         setVisible(!visible);
     };
 
+
+
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
@@ -167,11 +169,11 @@ const DropDownSingleSelect = (props) => {
                     <Layout style={styles.content}>
                         {HelperTooltip()}
                         <Select
-                            data={data.answerOptions}
-                            selectedOption={selectedOption}
+                            selectedValue={selectedOption}
                             multiSelect={false}
                             onSelect={(e) => submitField(e)}
-                        />
+                        >
+                        </Select>
                     </Layout>
                 </Card>
             </Layout>
