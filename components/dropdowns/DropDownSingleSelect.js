@@ -1,21 +1,11 @@
 import React from 'react';
-import {
-  Layout,
-  Select,
-  Text,
-  Card,
-  CardHeader,
-  Modal,
-  Icon,
-  Button
-} from '@ui-kitten/components';
-import { View, Image } from 'react-native';
-import ImageSelector from '../image/imgIndex';
+import { Select } from 'native-base';
 import { updateResponse } from '../../actions/StoryActions';
 import { styles } from './DropDownSingleSelect.style';
 import { connect } from 'react-redux';
 import { dependencyParser } from '../../utils/dependencyHelper';
-import TooltipView from '../Tooltip.js';
+import TooltipView from '../Tooltip';
+import Section from '../Section';
 
 const DropDownSingleSelect = (props) => {
     const [visible, setVisible] = React.useState(false);
@@ -44,17 +34,6 @@ const DropDownSingleSelect = (props) => {
         };
     };
 
-    let status;
-    if(!existingData) {
-        status = 'danger'
-    } else {
-        if(!existingData[currId]) {
-            status = 'danger';
-        } else {
-            status = 'success';
-        }
-    }
-
     const submitField = (selection) => {
         setSelectedOption(selection);
         if (dependencyID==null || dependencyID.length == 1){
@@ -78,46 +57,32 @@ const DropDownSingleSelect = (props) => {
         submitFunction({id, question: currId, selection: content})
     }
 
-    const Header = () => (
-        <CardHeader title={data.question}/>
-      );
-
     const HelperTooltip = () => {
-             return (
-                         <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
-                     )
-         }
+        return (
+             <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
+        )
+    }
 
-    
-    const InfoIcon = (props) => (
-        <Icon {...props} name='info'/>
-    );
-    const CloseIcon = (props) => (
-        <Icon {...props} name='close-outline'/>
-    );
+    const items = () => {
+        let itemsArr = [];
+        for (item in data.answerOptions) {
+            itemsArr.push(<Select.Item label={item.text} value={item.idCode} />)
+        }
+        return itemsArr;
+    }
 
-    const toggleModal = () => {
-        setVisible(!visible);
-    };
-
-
-
-    var renderComponent = dependencyParser(props.response, data, dependencyID)
+    let renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
-            <Layout key={key} style={styles.container} >
-                <Card header={Header} status={status}>
-                    <Layout style={styles.content}>
-                        {HelperTooltip()}
-                        <Select
-                            selectedValue={selectedOption}
-                            multiSelect={false}
-                            onSelect={(e) => submitField(e)}
-                        >
-                        </Select>
-                    </Layout>
-                </Card>
-            </Layout>
+            <Section key={key} title={data.question}>
+                {HelperTooltip()}
+                <Select
+                    selectedValue={selectedOption}
+                    onSelect={(e) => submitField(e)}
+                >
+                    {items()}
+                </Select>
+            </Section>
         )
     }else{
         return null
