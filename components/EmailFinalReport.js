@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { TextInput, StyleSheet, Alert, View, Dimensions } from 'react-native';
-import {TopNavigation, Card, CardHeader, Text, Button} from '@ui-kitten/components';
+import { Input, Button } from 'native-base';
+//import {TopNavigation, Card, CardHeader, Text, Button} from '@ui-kitten/components';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import Mailer from 'react-native-mail';
@@ -11,6 +12,8 @@ import NetInfoAPI from "../utils/NetAPI";
 import Pdf from 'react-native-pdf';
 import RNHTMLtoPDF from 'react-native-html-to-pdf';
 import backgroundSave from '../utils/backgroundSave';
+import TopNavigation from './TopNavigation';
+import Section from './Section';
 
 export class EmailFinalReport extends Component {
   constructor(props) {
@@ -152,27 +155,16 @@ export class EmailFinalReport extends Component {
   }
   // required method that creates components of email screen
   render() {
-    const FilenameHeader = () => (
-        <CardHeader title="Edit filename below."/>
-    )
-
-    // const FilenameFooter = (props) => (
-    //   <View {...props} style={[styles.footerContainer]}>
-    //     <Button
-    //       id="sendButton"
-    //       style={styles.footerControl}
-    //       size='small'
-    //       onPress={() => this.handleEmail()}>
-    //       Send
-    //     </Button>
-    //   </View>
-    // )
-
     return(
       <SafeAreaView style={{flex:1}}>
-        <TopNavigation id="emailNavBar" title="Email Crash Report" alignment="center" leftControl={this.props.BackAction()}/>
-
-        <Card id="filenameInput" header={FilenameHeader}>
+        <TopNavigation id="emailNavBar" title="Email Crash Report" backButton navigation={this.props.navigation}/>
+        <Section title="Edit filename below.">
+            <Input
+                defaultValue = {this.state.filename}
+                onChangeText = {this.changeFilename}
+            />
+        </Section>
+/*        <Card id="filenameInput" header={FilenameHeader}>
             <TextInput id="filenameTextInput"
                style = {styles.input}
                underlineColorAndroid = "transparent"
@@ -180,7 +172,7 @@ export class EmailFinalReport extends Component {
                defaultValue = {this.state.filename}
                onChangeText = {this.changeFilename}
                />
-        </Card>
+        </Card> */
 
         {this.state.isPDF &&
           <View style={styles.container}>
@@ -198,7 +190,6 @@ export class EmailFinalReport extends Component {
         }
 
         <Button
-          size='medium'
           onPress={() => this.handleEmail()}>
           Send Report
         </Button>
