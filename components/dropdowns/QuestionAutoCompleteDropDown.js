@@ -2,13 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View, Image } from 'react-native';
 import ImageSelector from '../image/imgIndex';
-import { Layout, Text, Card, Button, Modal, CardHeader, Icon, Autocomplete } from '@ui-kitten/components';
+import { AutocompleteDropdown } from 'react-native-autocomplete-dropdown'
+import { Box, VStack, Text, IconButton } from 'native-base';
 import { styles } from './AutoCompleteDropDown.style';
 import { dependencyParser } from '../../utils/dependencyHelper';
-import TooltipView from '../Tooltip.js';
+import TooltipView from '../Tooltip';
+import Section from '../Section';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-
-const AutoCompleteDropDown = (props) => {
+const QuestionAutoCompleteDropDown = (props) => {
     const [visible, setVisible] = React.useState(false);
     const [value, setValue] = React.useState('');   // value that will be stored in Redux
     const [title, setTitle] = React.useState('');   // value that will be displayed to user in form field
@@ -58,14 +60,14 @@ const AutoCompleteDropDown = (props) => {
             }
         }
         submitFunction({id, question: currId, selection: value})
-        setButtonAppearance('filled');
+//        setButtonAppearance('filled');
     }
 
     const clearField = () => {
         setValue('');
         setTitle('');
         submitFunction({id, question: currId, selection: null})
-        setButtonAppearance('outline');
+//        setButtonAppearance('outline');
     }
 
     const onOptionSelect = (selection) => {
@@ -90,12 +92,12 @@ const AutoCompleteDropDown = (props) => {
         }
     }
 
-    const Header = () => (
+    /*const Header = () => (
         <CardHeader title={data.question}/>
-    );
+    );*/
 
     const renderClear = (style) => (
-        <Icon {...style} name='close-outline'/>
+        <Icon name='clear'/>
     );
 
 
@@ -105,17 +107,17 @@ const AutoCompleteDropDown = (props) => {
         status = 'success'
     }
 
-    const CheckIcon = (style) => (
+    /*const CheckIcon = (style) => (
         <Icon {...style} name='checkmark-outline' />
-    )
+    )*/
     
-        const HelperTooltip = () => {
-                return (
-                            <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
-                        )
-            }
+    const HelperTooltip = () => {
+        return (
+            <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
+        )
+    }
     
-    const InfoIcon = (props) => (
+    /*const InfoIcon = (props) => (
         <Icon {...props} name='info'/>
     );
     const CloseIcon = (props) => (
@@ -124,12 +126,29 @@ const AutoCompleteDropDown = (props) => {
 
     const toggleModal = () => {
         setVisible(!visible);
-    };
+    };*/
 
     var renderComponent = dependencyParser(props.response, data, dependencyID)
-    if (renderComponent){
+    if (renderComponent) {
         return(
-        <Layout key={key} style={styles.container}>
+        <Box>
+            <Section title={data.question}>
+                <VStack>
+                    {HelperTooltip()}
+                    <AutocompleteDropdown
+                    initialValue = "Select your value"
+                    dataSet = {selectionData}
+                    onChangeText = {searchItems}
+                    onSelectItem = {(e) => onOptionSelect(e)}
+                    showClear = {true}
+                    showChevron = {false}
+                    ClearIconComponent = {renderClear()}
+                    />
+                    <IconButton icon={CheckIcon} onPress={() => submitField()}
+                </VStack>
+            </Section>
+        </Box>
+        /*<Layout key={key} style={styles.container}>
             <Card header={Header} status={status}>
                 <Layout style={styles.content}>
                     {HelperTooltip()}
@@ -155,7 +174,7 @@ const AutoCompleteDropDown = (props) => {
                     </Layout>
                 </Layout>
             </Card>
-        </Layout>
+        </Layout>*/
         )
     }else{
         return null
@@ -169,4 +188,4 @@ const mapStateToProps = (state, props) => {
     return {questionReducer, response }
 };
 
-export default connect(mapStateToProps)(AutoCompleteDropDown);
+export default connect(mapStateToProps)(QuestionAutoCompleteDropDown);

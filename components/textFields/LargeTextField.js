@@ -2,10 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View, Image } from 'react-native';
 import ImageSelector from '../image/imgIndex';
-import { Input, Layout, Text, Card, Button, Modal, CardHeader, Icon } from '@ui-kitten/components';
+import Section from '../Section';
+import { TextArea, Box, Text, Icon, VStack } from 'native-base';
+//import { Input, Layout, Text, Card, Button, Modal, CardHeader, Icon } from '@ui-kitten/components';
 import { styles } from './LargeTextField.style';
 import { dependencyParser } from '../../utils/dependencyHelper';
-import TooltipView from '../Tooltip.js';
+import TooltipView from '../Tooltip';
 
 
 const LargeTextField = (props) => {
@@ -86,9 +88,9 @@ const LargeTextField = (props) => {
         setIsInvalid(false);
     }
 
-    const Header = () => (
+   /* const Header = () => (
         <CardHeader title={data.question}/>
-    );
+    );*/
     
     const renderClear = (style) => (
         <Icon {...style} name='close-outline'/>
@@ -109,13 +111,13 @@ const LargeTextField = (props) => {
     <Icon {...style} name='checkmark-outline' />
     }
     
-        const HelperTooltip = () => {
-                     return (
-                                 <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
-                             )
-                 }
+   const HelperTooltip = () => {
+    return (
+        <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
+    )
+    }
     
-    const InfoIcon = (props) => (
+    /*const InfoIcon = (props) => (
         // <Image source={require('../image/test.jpg')} style={styles.img}/>
         <Icon {...props} name='info'/>
     );
@@ -123,7 +125,7 @@ const LargeTextField = (props) => {
 
     const toggleModal = () => {
         setVisible(!visible);
-    };
+    };*/
 
     const ErrorMsg = () => {
         if(isInvalid) {
@@ -139,7 +141,19 @@ const LargeTextField = (props) => {
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
-        <Layout key={key} style={styles.container}>
+        <Box>
+            <Section title={data.question}>
+                <VStack>
+                    {HelperTooltip()}
+                    <TextArea
+                        placeholder="Place your text"
+                        value={value}
+                        onChangeText={onTextChange}/>
+                    <IconButton icon={CheckIcon} onPress={() => submitField()}/>
+                </VStack>
+            </Section>
+        </Box>
+        /*<Layout key={key} style={styles.container}>
             <Card header={Header} status={status}>
                 <Layout style={styles.content}>
                     {HelperTooltip()}
@@ -165,7 +179,7 @@ const LargeTextField = (props) => {
                     {ErrorMsg()}
                 </Layout>
             </Card>
-        </Layout>
+        </Layout>*/
         )
     }else{
         return null

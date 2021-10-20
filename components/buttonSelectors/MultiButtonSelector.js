@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { View, Image } from 'react-native';
-import { Layout, Text, Card, Button, Modal, CardHeader, Icon } from '@ui-kitten/components';
+import { Box, Text } from 'native-base';
+import Section from '../Section';
+//import { Layout, Text, Card, Button, Modal, CardHeader, Icon } from '@ui-kitten/components';
 import ImageSelector from '../image/imgIndex';
 import { updateResponse } from '../../actions/StoryActions';
 import { styles } from './MultiButtonSelector.style';
 import TooltipView from '../Tooltip.js';
 import { dependencyParser } from '../../utils/dependencyHelper';
-
 
 const MultiButtonSelector = (props) => {
     const [visible, setVisible] = React.useState(false);
@@ -52,9 +53,9 @@ const MultiButtonSelector = (props) => {
         submitFunction({id, question: currId, selection: optionText})
     }
 
-    const Header = () => (
+    /*const Header = () => (
         <CardHeader title={data.question}/>
-    );
+    );*/
 
     if(!existingData) {
         status = 'danger'
@@ -69,29 +70,30 @@ const MultiButtonSelector = (props) => {
     }
 
     const HelperTooltip = () => {
-            return (
-                        <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
-                    )
-        }
+        return (
+            <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
+        )
+    }
 
-    const InfoIcon = (props) => (
+   /* const InfoIcon = (props) => (
         <Icon {...props} name='info'/>
     );
+
     const CloseIcon = (props) => (
         <Icon {...props} name='close-outline'/>
     );
 
     const toggleModal = () => {
         setVisible(!visible);
-    };
+    };*/
 
     const renderSingleButton = (option) => {
         let appearance = (selection == option.text) ? 'filled': 'outline';
         return (
             <Button
-                key={option.idCode}
+                /*key={option.idCode}
                 style={styles.answerButton}
-                appearance={appearance}
+                appearance={appearance}*/
                 onPress={() => submitField(option.text, option.idCode)}
             >
                 {option.text}
@@ -109,7 +111,15 @@ const MultiButtonSelector = (props) => {
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
-            <Layout key={key} style={styles.container}>
+            <Box>
+                <Section title={data.question}>
+                    <VStack>
+                    {HelperTooltip()}
+                    {renderButtons()}
+                    </VStack>
+                </Section>
+            </Box>
+            /*<Layout key={key} style={styles.container}>
                 <Card header={Header} status={status}>
                     <Layout style={styles.content}>
                         {HelperTooltip()}
@@ -120,7 +130,7 @@ const MultiButtonSelector = (props) => {
                         </Layout>
                     </Layout>
                 </Card>
-            </Layout>
+            </Layout>*/
         )
     }else{
         return null

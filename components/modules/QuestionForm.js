@@ -6,7 +6,7 @@ import { styles } from '../../containers/AutoComponentContainer.style';
 import { ScrollView } from 'react-native-gesture-handler';
 import MultiButtonSelector from '../buttonSelectors/MultiButtonSelector';
 import NumberButtonSelector from '../buttonSelectors/NumberButtonSelector';
-import AutoCompleteDropDown from '../dropdowns/AutoCompleteDropDown';
+import QuestionAutoCompleteDropDown from '../dropdowns/QuestionAutoCompleteDropDown';
 import DropDownSingleSelect from '../dropdowns/DropDownSingleSelect';
 import OpenTextField from '../textFields/OpenTextField';
 import OpenTextFieldWithSelection from '../textFields/OpenTextFieldWithSelection';
@@ -214,7 +214,7 @@ const QuestionForm = (props) => {
           )
         case 'autoCompleteDropdown':
           return (
-            <AutoCompleteDropDown
+            <QuestionAutoCompleteDropDown
               {...props}
             />
           )
