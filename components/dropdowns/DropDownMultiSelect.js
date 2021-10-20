@@ -248,8 +248,6 @@ const DropDownMultiSelect = (props) => {
                                 multiSelect={true}
                                 onSelect={addOption}
                             />
-                            <Image
-                            />
                         </Layout>
                     </Layout>
                 </Card>

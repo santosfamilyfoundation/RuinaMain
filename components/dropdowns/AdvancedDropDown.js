@@ -327,8 +327,6 @@ const AdvancedDropDown = (props) => {
                             multiSelect={true}
                             onSelect={addOption}
                         />
-                        <Image
-                        />
                     </Layout>
                 </Layout>
             </Card>

@@ -205,8 +205,6 @@ const LargeTextField = (props) => {
                             value={value}
                             onChangeText={onTextChange}
                             />
-                        <Image
-                        />
                     </Layout>
                     {ErrorMsg()}
                 </Layout>

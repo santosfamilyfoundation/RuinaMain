@@ -189,8 +189,7 @@ const OpenTextField = (props) => {
                             value={value}
                             onChangeText={onTextChange}
                         />
-                        <Image
-                        />
+
                     </Layout>
                     {ErrorMsg()}
                 </Layout>

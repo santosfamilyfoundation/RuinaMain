@@ -231,8 +231,6 @@ const OpenTextFieldWithSelection = (props) => {
                                 value={value}
                                 onChangeText={onTextChange}
                             />
-                            <Image
-                            />
                         </Layout>
                         <Layout style={styles.answers}>
                             {renderButtons()}

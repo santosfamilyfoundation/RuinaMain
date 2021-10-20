@@ -320,8 +320,6 @@ const AdvancedOpenTextField = (props) => {
                                 value={value}
                                 onChangeText={onTextChange}
                             />
-                            <Image
-                            />
                         </Layout>
                         {ErrorMsg()}
                     </Layout>

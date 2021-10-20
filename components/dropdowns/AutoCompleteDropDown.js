@@ -204,8 +204,6 @@ const AutoCompleteDropDown = (props) => {
                             onChangeText={searchItems}
                             onSelect={(e) => onOptionSelect(e)}
                         />
-                        <Image
-                        />
                     </Layout>
                 </Layout>
             </Card>
