@@ -100,6 +100,7 @@ const LargeTextField = (props) => {
     } else {
         status = 'success'
     }
+
     
         const HelperTooltip = () => {
                      return (
@@ -145,7 +146,11 @@ const LargeTextField = (props) => {
                             placeholder='Place your Text'
                             value={value}
                             onChangeText={onTextChange}
+<<<<<<< HEAD
                         />
+=======
+                         />
+>>>>>>> 01d34edf98e4bb4b24e3a08a766e48d5dbc1ba12
                     </Layout>
                     {ErrorMsg()}
                 </Layout>
