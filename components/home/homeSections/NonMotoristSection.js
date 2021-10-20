@@ -60,7 +60,7 @@ class NonMotoristSection extends Component{
         } else {
           return(
               <Card style={styles.nonMotoristCard} onPress = {() => navigateQuestion(nonmotoristQuestions, nonmotorist.id, 'Nonmotorist', (index+1))}>
-                  <Icon name= 'person' width={75} height={75} alignSelf= "center" />
+                  <Icon name= 'person' width={75} height={75} alignSelf= "center" fill='black'/>
                   <Text style={styles.itemCardFooter} category="s1">Non-Motorist {index+1}</Text>
               </Card>
           )

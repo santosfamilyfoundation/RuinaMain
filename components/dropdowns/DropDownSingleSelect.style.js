@@ -7,17 +7,21 @@ export const styles = StyleSheet.create({
     modalContent: {
       padding: 24,
       alignItems: 'center',
-      alignContent: 'center'
+      alignContent: 'center',
+      width: '75%',
+      height: 600
     },
     imgContainer:{
+      marginTop: 10,
       flexDirection: 'column',
       alignItems: 'center',
-      textAlign: 'center'
+      textAlign: 'center',
     },
     img:{
-      resizeMode: 'center', 
-      width: 300,
-      height: 300
+    marginTop: 30,
+//      resizeMode: 'center',
+      width: 500,
+      height: 500
     },
     rowContainer:{
       flexWrap: 'wrap',
@@ -32,13 +36,14 @@ export const styles = StyleSheet.create({
       marginBottom: 10
     },
     helperText: {
-      margin: 8,
+      margin: 1,
       flexShrink:1
     },
     inputField: {
       maxWidth: 500,
     },
-    headingText: {},
+    headingText: {
+    },
     content: {
       margin: 10,
     }

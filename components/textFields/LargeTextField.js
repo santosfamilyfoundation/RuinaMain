@@ -5,6 +5,7 @@ import ImageSelector from '../image/imgIndex';
 import { Input, Layout, Text, Card, Button, Modal, CardHeader, Icon } from '@ui-kitten/components';
 import { styles } from './LargeTextField.style';
 import { dependencyParser } from '../../utils/dependencyHelper';
+import TooltipView from '../Tooltip.js';
 
 
 const LargeTextField = (props) => {
@@ -99,72 +100,12 @@ const LargeTextField = (props) => {
     } else {
         status = 'success'
     }
-
-    const ModalContent = () => {
-        if (data.helperImg != null ){
-            var img = new ImageSelector()
-            const src = img.pathHandler(data.helperImg)
-            return (
-                <View style={styles.imgContainer}>
-                    <Layout style={styles.modalContent}>
-                        <Text>{data.tooltip}</Text>
-                        <Image source={src} style={styles.img}/>
-                    </Layout>
-                </View>
-            )
-        }else{
-            return(
-                <Layout style={styles.modalContent}>
-                    <Text>{data.tooltip}</Text>
-                </Layout>
-            )
-        }
-    };
     
         const HelperTooltip = () => {
-        if (data.helperText != null && (data.tooltip != null||data.helperImg!=null)){
-            return (
-                <Layout style={styles.container}>
-                    <View style={styles.rowContainer}>
-                        <Text style={styles.helperText}>{data.helperText}</Text>
-                        <Button appearance='ghost' status='primary' icon={InfoIcon} onPress={toggleModal}>
-                            Info
-                        </Button>
-                        <Modal backdropStyle={styles.backdrop} visible={visible}>
-                            <Card style={styles.content} disabled={true}>
-                            {ModalContent()}
-                            <Button appearance='ghost' icon={CloseIcon} onPress={() => setVisible(false)}>
-                                Close
-                            </Button>
-                            </Card>
-                        </Modal>
-                    </View>
-                </Layout>
-            )
-        }
-        else if (data.helperText != null) {
-            return (<Text style={styles.helperText}>{data.helperText}</Text>)
-        }
-        else if (data.tooltip != null || data.helperImg != null) {
-            return (
-                <View style={styles.endRowcontainer}>
-                    <Button  appearance='ghost' status='primary' icon={InfoIcon} onPress={toggleModal}>
-                        Info
-                    </Button>
-                    <Modal backdropStyle={styles.backdrop} visible={visible}>
-                        <Card style={styles.content} disabled={true}>
-                        {ModalContent()}
-                        <Button appearance='ghost' icon={CloseIcon} onPress={() => setVisible(false)}>
-                            Dismiss
-                        </Button>
-                        </Card>
-                    </Modal>
-                </View>
-            )
-        } else {
-            return null;
-        }
-    }
+                     return (
+                                 <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
+                             )
+                 }
     
     const InfoIcon = (props) => (
         // <Image source={require('../image/test.jpg')} style={styles.img}/>
@@ -204,7 +145,7 @@ const LargeTextField = (props) => {
                             placeholder='Place your Text'
                             value={value}
                             onChangeText={onTextChange}
-                            />
+                        />
                     </Layout>
                     {ErrorMsg()}
                 </Layout>

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import {TopNavigation,Card, CardHeader, Text, Button} from '@ui-kitten/components';
-import {StyleSheet, Linking, ScrollView} from 'react-native';
+import { TopNavigation,Card, CardHeader, Text, Button } from '@ui-kitten/components';
+import { StyleSheet, Linking, ScrollView, PermissionsAndroid } from 'react-native';
 import { MaterialDialog, SinglePickerMaterialDialog} from 'react-native-material-dialog';
 import * as Constants from '../constants';
 
@@ -13,8 +13,37 @@ class FinalReport extends Component {
             chooseReportFormatVisible: false,
             chooseReportFormatSelectedItem: undefined,
             exportAction: undefined,
+            filePermissionsGranted: false,
+            filePermissionsErrorMessageVisible: false
         };
+        this.requestExternalStoragePermission();
     }
+
+    requestExternalStoragePermission = async () => {
+        try {
+          const granted = await PermissionsAndroid.request(
+            PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+            {
+              title: "Android External Storage Permission",
+              message:
+                "Ruina needs access to your external storage to save the report ",
+              buttonNeutral: "Ask Me Later",
+              buttonNegative: "Cancel",
+              buttonPositive: "OK"
+            }
+          );
+          if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+            console.log("You can use external storage");
+            this.setState({ filePermissionsGranted: true });
+          } else {
+            console.log("external permission denied");
+            this.setState({ filePermissionsGranted: false });
+            this.setState({ filePermissionsErrorMessageVisible: true });
+          }
+        } catch (err) {
+          console.warn(err);
+        }
+      };
 
     render(){
         const {
@@ -57,7 +86,8 @@ class FinalReport extends Component {
                   <Card header={SaveToDeviceHeader }>
                       <Text style={{ marginBottom: 20 }}>Press this button to save the crash report to local device.</Text>
                       <Button
-                          onPress={() => this.setState({ chooseReportFormatVisible: true, exportAction: navigateSaveToDevice })}>
+                          onPress={() => this.setState({ chooseReportFormatVisible: true, exportAction: navigateSaveToDevice })}
+                          disabled={!this.state.filePermissionsGranted}>
                           Save Report to Local Device
                       </Button>
 
@@ -65,8 +95,9 @@ class FinalReport extends Component {
                   <Card header={EmailHeader}>
                       <Text style={{ marginBottom: 20 }}>Press this button to email the crash report.</Text>
                       <Button
-                          onPress={() => this.setState({ chooseReportFormatVisible: true, exportAction: navigateEmail })}>
-                          Email Report
+                        onPress={() => this.setState({ chooseReportFormatVisible: true, exportAction: navigateEmail })}
+                        disabled={!this.state.filePermissionsGranted}>
+                            Email Report
                       </Button>
                   </Card>
                   <Card header={SaveToDatabaseHeader}>
@@ -82,7 +113,7 @@ class FinalReport extends Component {
                         title={"Choose report export format"}
                         scrolled
                         items={file_format_extensions.map((row, index) => ({ value: index, label: "." + row }))}
-                        visible={this.state.chooseReportFormatVisible}
+                        visible={this.state.chooseReportFormatVisible && this.state.filePermissionsGranted}
                         selectedItem={this.state.chooseReportFormatSelectedItem}
                         onCancel={() => this.setState({ chooseReportFormatVisible: false })}
                         onOk={result => {
