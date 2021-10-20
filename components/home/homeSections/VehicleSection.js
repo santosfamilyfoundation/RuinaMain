@@ -107,7 +107,7 @@ class VehicleSection extends Component{
                 )
               } else {
                 return (
-                <IconButton text={`Passenger ${idx + 1}`}
+              <IconButton text={`Passenger ${idx + 1}`}
                 onPress={() =>
                     navigateQuestion(passengerQuestions, passenger.id,
                     'Passenger', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}
@@ -252,12 +252,12 @@ class VehicleSection extends Component{
                /* <Card key={vehicle.id} header={VehiclesHeader} style={styles.itemCard} >
                     <View style={styles.itemCardContent}>
                         <Card style={styles.individualCard} onPress= {() => navigateQuestion(vehicleQuestions, vehicle.id, 'Vehicle', (index+1), 0, [roadID, vehicle.id])}>
-                            <Icon name='car' width={75} height={75} style={{justifyItems:'center', alignItems:'center'}}/>
+                            <Icon name='car' width={75} height={75} style={{justifyItems:'center', alignItems:'center'}} fill='black'/>
                             <Text style={styles.itemCardFooter} category="s1">{name}</Text>
                         </Card>
                         {!this.state.driverDeleted &&
                           <Card style={styles.individualCard} onPress= {() => navigateQuestion(driverQuestions, vehicle.driver, 'Driver', (index+1), 0, [roadID, vehicle.id])}>
-                              <Icon name='person' width={75} height={75} />
+                              <Icon name='person' width={75} height={75} fill='black'/>
                               <Text style={styles.itemCardFooter} category="s1">Driver</Text>
                           </Card>
                         }

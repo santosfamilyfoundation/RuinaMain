@@ -4,6 +4,7 @@ import { View, Image } from 'react-native';
 import { Button, VStack, HStack } from 'native-base';
 import ImageSelector from '../image/imgIndex';
 import { styles } from './MultiButtonSelectorQuickSurvey.style';
+import TooltipView from '../Tooltip.js';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import Section from '../Section';
 

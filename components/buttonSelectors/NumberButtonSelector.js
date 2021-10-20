@@ -4,6 +4,7 @@ import { Button, Text, HStack, Input } from 'native-base';
 import { genericWriteAction } from '../../actions/GenericAction';
 import {styles} from './NumberButtonSelector.style'
 import { ScrollView } from 'react-native-gesture-handler';
+import TooltipView from '../Tooltip.js';
 import { View } from 'react-native';
 import Section from '../Section';
 
