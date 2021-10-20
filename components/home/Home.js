@@ -214,7 +214,7 @@ class Home extends Component {
                       <Card header={RoadHeader} style={styles.itemCard}>
                           <View style={styles.itemCardContent}>
                               <Card style={styles.nonMotoristCard}>
-                                  <Icon name='paper-plane' opacity={0.5} width={75} height={75} />
+                                  <Icon name='paper-plane' opacity={0.5} width={75} height={75} fill='black'/>
                                   <Text style={styles.itemCardFooter} opacity={0.5} category="s1">Crash/Road</Text>
                               </Card>
                           </View>
@@ -246,7 +246,7 @@ class Home extends Component {
                       <Card header={RoadHeader} style={styles.itemCard}>
                           <View style={styles.itemCardContent}>
                               <Card style={styles.nonMotoristCard} onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road', 'Crash/Road')}>
-                                  <Icon name='paper-plane' width={75} height={75} />
+                                  <Icon name='paper-plane' width={75} height={75} fill='black'/>
                                   <Text style={styles.itemCardFooter} category="s1">Crash/Road</Text>
                               </Card>
                           </View>
