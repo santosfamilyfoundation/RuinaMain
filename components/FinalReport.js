@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { VStack, Button, Heading, Divider, Center, Icon, IconButton, ArrowBackIcon, HStack} from 'native-base'
+import { VStack, Button, Heading, Divider, Center, Text} from 'native-base'
 import { StyleSheet, Linking, ScrollView, PermissionsAndroid } from 'react-native';
 import { MaterialDialog, SinglePickerMaterialDialog} from 'react-native-material-dialog';
 import * as Constants from '../constants';
