@@ -9,7 +9,7 @@ import DropDownSingleSelect from '../components/dropdowns/DropDownSingleSelect';
 import OpenTextField from '../components/textFields/OpenTextField';
 import DropDownMultiSelect from '../components/dropdowns/DropDownMultiSelect';
 import LargeTextField from '../components/textFields/LargeTextField';
-
+import NumberButtonSelector from '../components/buttonSelectors/NumberButtonSelector';
 import {questions} from '../data/questions';
 
 class AutoComponentContainer extends Component {
@@ -60,6 +60,13 @@ class AutoComponentContainer extends Component {
         case 'autoCompleteDropdown':
           return (
             <AutoCompleteDropDown
+              data={question}
+              key={question.id}
+            />
+          )
+        case 'numberButton':
+          return (
+            <NumberButtonSelector
               data={question}
               key={question.id}
             />

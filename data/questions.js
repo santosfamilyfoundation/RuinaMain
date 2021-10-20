@@ -705,7 +705,8 @@ export const questions = {
                 "driver"
             ],
             "humanReadableId": "driver-26",
-            "helperText": "Provide the specific State, Province or Nation indicated on the Driver's License (see Appendix E: ANSI State FIPS and USPS Codes or Appendix F: ISO 3166-2 Codes for Canada and Mexico)"
+            "helperText": "Provide the specific State, Province or Nation indicated on the Driver's License0",
+            "tooltip": "See Appendix E: ANSI State FIPS and USPS Codes or Appendix F: ISO 3166-2 Codes for Canada and Mexico"
         },
         {
             "numOptionsAllowed": "0.0",
@@ -4773,6 +4774,7 @@ export const questions = {
             "display": [
                 "road"
             ],
+            "tooltip": "Test successful",
             "humanReadableId": "road-40"
         },
         {
@@ -4881,6 +4883,7 @@ export const questions = {
                 "vehicle"
             ],
             "humanReadableId": "vehicle-9",
+            "tooltip": "OpenTextBoxWithSelection working!",
             "answerOptions": [
                 {
                     "text": "Unknown",
@@ -4914,7 +4917,8 @@ export const questions = {
             ],
             "humanReadableId": "vehicle-11",
             "helperText": "(VIN)",
-            "autoMethod": "VINCamera"
+            "autoMethod": "VINCamera",
+            "tooltip": "Advanced Text Box Working!"
         },
         {
             "numOptionsAllowed": "1.0",
@@ -4991,6 +4995,7 @@ export const questions = {
             "display": [
                 "vehicle"
             ],
+            "tooltip": "OpenTextField working!",
             "humanReadableId": "vehicle-17"
         },
         {
