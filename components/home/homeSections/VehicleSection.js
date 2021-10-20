@@ -111,7 +111,7 @@ class VehicleSection extends Component{
                 onPress={() =>
                     navigateQuestion(passengerQuestions, passenger.id,
                     'Passenger', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}
-                icon={<Icon name="person-add-alt-1" size={50}/>}/>
+                icon={<Icon name="person" size={50}/>}/>
                    /* <Card key={idx} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}>
                         <Icon name='person' width={75} height={75} />
                         <Text style={styles.itemCardFooter} category="s1">Passenger {idx+1}</Text>
@@ -244,7 +244,9 @@ class VehicleSection extends Component{
                          text={name}
                          icon={<Icon name='local-taxi' size={50}/>}
                          />
-                        {!this.state.driverDeleted && <IconButton onPress={styles.individualCard} onPress= {() => navigateQuestion(driverQuestions, vehicle.driver, 'Driver', (index+1), 0, [roadID, vehicle.id])} text="Driver" icon={<Icon name='person' size={50}/>}/>}
+                        {!this.state.driverDeleted &&
+                        <IconButton onPress={styles.individualCard} onPress= {() => navigateQuestion(driverQuestions, vehicle.driver, 'Driver', (index+1), 0, [roadID, vehicle.id])} text="Driver" icon={<Icon name='person' size={50}/>}/>}
+                        {passengerListArr}
                     </HStack>
                 </Section>
                /* <Card key={vehicle.id} header={VehiclesHeader} style={styles.itemCard} >
