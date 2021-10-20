@@ -1,33 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-<<<<<<< HEAD
-import { Button, Text, HStack, Input } from 'native-base';
-import { genericWriteAction } from '../../actions/GenericAction';
-=======
-import { Button, Text, Layout, Card, CardHeader, Input } from '@ui-kitten/components';
-//import { genericWriteAction } from '../../actions/GenericAction';
->>>>>>> origin/master
+import { Button, Text, Input, HStack } from 'native-base';
 import {styles} from './NumberButtonSelector.style'
 import { ScrollView } from 'react-native-gesture-handler';
 import TooltipView from '../Tooltip.js';
 import { View } from 'react-native';
-<<<<<<< HEAD
-import Section from '../Section';
-=======
 import { updateResponse } from '../../actions/StoryActions';
+import Section from '../Section';
 
->>>>>>> origin/master
 
 const NumberButtonSelector = (props) => {
-    const [visible, setVisible] = React.useState(false);
     const [selection, setSelection] = React.useState('');
-<<<<<<< HEAD
-    const {title, data, id, submitFunction, genericReducer, fieldName, updateResponse, dependencyID, startRange, endRange} = props;
-=======
     const {data, id, submitFunction, questionReducer, fieldName, updateResponse, dependencyID} = props;
 
     let currId = data.id
-    let status = 'danger'
 
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
@@ -40,10 +26,8 @@ const NumberButtonSelector = (props) => {
             }
         }
     }
->>>>>>> origin/master
 
     const submitField = (val) => {
-        val = parseInt(val);
         setSelection(val);
         if (dependencyID!=null){
             const vehicleID = dependencyID[1] // Get vehicle id to identify different vehicles
@@ -54,48 +38,32 @@ const NumberButtonSelector = (props) => {
         submitFunction({id, question: currId, selection: val});
     }
 
-    if(!existingData) {
-        status = 'danger'
-    } else {
-        if(!existingData[currId]) {
-            status = 'danger';
-        } else if(existingData[currId] != selection) {
-            status = 'danger'
-        } else {
-            status = 'success'
-        }
-    }
-
-    const renderSingleButton = (num) => {
+    const HelperTooltip = () => {
         return (
-            <Button onPress={() => submitField(num)} size={10}>{num}</Button>
-        )
-    }
-
-    const renderButtons = () => {
-        let buttons = [];
-        for (let i = startRange; i <= endRange; i++) {
-            console.log(i);
-            let button;
-            if (i == 0) {
-                button = renderSingleButton("None");
-            } else {
-                button = renderSingleButton(i);
-            }
-            buttons.push(button);
-        }
-        return(
-            <HStack space={4}>
-            {buttons}
-            <Input placeholder = "other" onChangeText = {submitField} size="md"/>
-            </HStack>
+            <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
         )
     }
 
     return (
-        <Section title={title}>
-            {renderButtons()}
-        </Section>
+            <Section title={data.question}>
+                {HelperTooltip()}
+                <ScrollView horizontal={true} showsHorizontalScrollIndicator={true} contentContainerStyle={styles.container}>
+                    <HStack>
+                        <Button onPress={() => submitField('0')}>None</Button>
+                        <Button onPress={() => submitField('1')}>1</Button>
+                        <Button onPress={() => submitField('2')}>2</Button>
+                        <Button onPress={() => submitField('3')}>3</Button>
+                        <Button onPress={() => submitField('4')}>4</Button>
+                        <Button onPress={() => submitField('5')}>5</Button>
+                        <Input
+                            placeholder = "Other"
+                            onChangeText = {submitField}
+                            value = {(selection > 5) ? selection:''}
+                            size="md"
+                        />
+                    </HStack>
+                </ScrollView>
+            </Section>
     )
 }
 
