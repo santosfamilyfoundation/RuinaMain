@@ -16,7 +16,7 @@ const LargeTextField = (props) => {
     const {data, key, id, questionReducer, submitFunction, dependencyID} = props;
 
     let currId = data.id
-    let status = 'danger';
+    let status = 'danger'
 
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
@@ -40,7 +40,6 @@ const LargeTextField = (props) => {
             }
         }
     };
-
     // Populate if value already exists in redux
     if(!value) {
         if(existingData != null) {
@@ -56,28 +55,29 @@ const LargeTextField = (props) => {
             return;
         }
         submitFunction({id, question: currId, selection: value})
-        console.log('test log')
-        console.log(value.length)
-        console.log(data.maxLength)
-        console.log(isInvalid)
         if(value.length > 300) {
-                                console.log('it is actually going here')
-                                 status = 'danger'
-                                 status = true
-                            } else if(value.length <= 300) {
-                                setButtonAppearance('filled');
-                                console.log('It should turn to success')
-                                status = 'success'
-                            }
-                        if(!value && buttonAppearance != 'outline') {
-                                setButtonAppearance('outline');
-                                status = 'danger'
-                            } else if(existingData != null) {
-                                if(value != existingData[currId] && buttonAppearance != 'outline') {
-                                    setButtonAppearance('outline');
-                                    status = 'danger'
-                                }
-                            }
+            console.log('it is actually going here')
+             status = 'danger'
+             setButtonAppearance('outline')
+        } else if(value.length <= 300) {
+            setButtonAppearance('filled');
+            console.log('It should turn to success')
+            status = 'success'
+            console.log(status)
+            return status
+        }
+        if(!value && buttonAppearance != 'outline') {
+            console.log('whoops this is also happening')
+            setButtonAppearance('outline');
+            status = 'danger'
+        } else if(existingData != null) {
+        console.log('whoops this is also happening 2')
+            if(value != existingData[currId] && buttonAppearance != 'outline') {
+                console.log('whoops this is also happening 3')
+                setButtonAppearance('outline');
+                status = 'danger'
+            }
+        }
     }
             const onTextChange = (text) => {
                 status = 'danger'
