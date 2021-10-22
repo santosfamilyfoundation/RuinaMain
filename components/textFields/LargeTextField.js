@@ -16,7 +16,7 @@ const LargeTextField = (props) => {
     const {data, key, id, questionReducer, submitFunction, dependencyID} = props;
 
     let currId = data.id
-    let status;
+    let status = 'danger';
 
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
@@ -56,34 +56,43 @@ const LargeTextField = (props) => {
             return;
         }
         submitFunction({id, question: currId, selection: value})
-        setButtonAppearance('filled');
+        console.log('test log')
+        console.log(value.length)
+        console.log(data.maxLength)
+        console.log(isInvalid)
+        if(value.length > 300) {
+                                console.log('it is actually going here')
+                                 status = 'danger'
+                                 status = true
+                            } else if(value.length <= 300) {
+                                setButtonAppearance('filled');
+                                console.log('It should turn to success')
+                                status = 'success'
+                            }
+                        if(!value && buttonAppearance != 'outline') {
+                                setButtonAppearance('outline');
+                                status = 'danger'
+                            } else if(existingData != null) {
+                                if(value != existingData[currId] && buttonAppearance != 'outline') {
+                                    setButtonAppearance('outline');
+                                    status = 'danger'
+                                }
+                            }
     }
-
-    const onTextChange = (text) => {
-        if(!text) {
-            submitFunction({id, question: currId, selection: null})
-        }
-        setValue(text);
-    }
+            const onTextChange = (text) => {
+                status = 'danger'
+                if(!text) {
+                    submitFunction({id, question: currId, selection: null})
+                }
+                setValue(text);
+                {submitField()}
+            }
 
     const clearField = () => {
+        console.log('is it even reaching here')
         setValue('');
         submitFunction({id, question: currId, selection: null})
         setButtonAppearance('outline');
-    }
-
-    if(!value && buttonAppearance != 'outline') {
-        setButtonAppearance('outline');
-    } else if(existingData != null) {
-        if(value != existingData[currId] && buttonAppearance != 'outline') {
-            setButtonAppearance('outline');
-        }
-    }
-
-    if(value.length > data.maxLength && !isInvalid) {
-        setIsInvalid(true);
-    } else if(isInvalid && value.length <= data.maxLength) {
-        setIsInvalid(false);
     }
 
     const Header = () => (
@@ -93,13 +102,6 @@ const LargeTextField = (props) => {
     const renderClear = (style) => (
         <Icon {...style} name='close-outline'/>
     );
-
-    
-    if(buttonAppearance == 'outline') {
-        status = 'danger'
-    } else {
-        status = 'success'
-    }
 
     const CheckIcon = (style) => (
         <Icon {...style} name='checkmark-outline' />
