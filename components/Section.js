@@ -17,9 +17,11 @@ const Section = (props) => {
                 </VStack>
                 </FormControl>
                 :
-                <Heading>{title}</Heading>
-                <Divider/>
-                {props.children}
+                <>
+                    <Heading>{title}</Heading>
+                    <Divider/>
+                    {props.children}
+                </>
             }
         </Box>
     );
