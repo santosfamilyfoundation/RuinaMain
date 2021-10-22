@@ -9,7 +9,6 @@ import Section from '../Section';
 
 
 const DropDownMultiSelect = (props) => {
-    const [visible, setVisible] = React.useState(false);
     const [selectedOptions, setSelectedOptions] = React.useState([]);
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const {data, key, id, questionReducer, submitFunction, updateResponse, dependencyID} = props;
@@ -131,27 +130,12 @@ const DropDownMultiSelect = (props) => {
         }
         setSelectedOptions(options);
     }
-
-    const Header = () => (
-        <CardHeader title={data.question}/>
-      );
     
-        const HelperTooltip = () => {
-                return (
-                            <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
-                        )
-            }
-    
-    const InfoIcon = (props) => (
-        <Icon {...props} name='info'/>
-    );
-    const CloseIcon = (props) => (
-        <Icon {...props} name='close-outline'/>
-    );
-
-    const toggleModal = () => {
-        setVisible(!visible);
-    };
+    const HelperTooltip = () => {
+        return (
+            <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
+        )
+    }
 
     const CheckIcon = (style) => (
         <Icon {...style} name='checkmark-outline' />
@@ -166,7 +150,12 @@ const DropDownMultiSelect = (props) => {
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
-            <Section key={key} title={data.question}>
+            <Section
+                key={key}
+                title={data.question}
+                isForm
+                helperText={data.helperText}
+            >
                 {HelperTooltip()}
                 <MultiSelect
                     selectedItems={selectedOption}
@@ -175,29 +164,6 @@ const DropDownMultiSelect = (props) => {
                     uniqueKey={data.question.humanReadableId}
                 />
             </Section>
-//            <Layout key={key} style={styles.container}>
-//                <Card header={Header} status={status}>
-//                    <Layout style={styles.content}>
-//                        {HelperTooltip()}
-//                        <Layout style={styles.input}>
-//                            <Select
-//                                style={styles.inputField}
-//                                data={data.answerOptions}
-//                                selectedOption={selectedOptions}
-//                                multiSelect={true}
-//                                onSelect={addOption}
-//                            />
-//                            <Button
-//                                style={styles.submitButton}
-//                                appearance={buttonAppearance}
-//                                size='medium'
-//                                icon={CheckIcon}
-//                                onPress={() => submitField()}
-//                            />
-//                        </Layout>
-//                    </Layout>
-//                </Card>
-//            </Layout>
         )
     }else{
         return null

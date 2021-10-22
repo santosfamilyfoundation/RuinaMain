@@ -8,7 +8,6 @@ import TooltipView from '../Tooltip';
 import Section from '../Section';
 
 const DropDownSingleSelect = (props) => {
-    const [visible, setVisible] = React.useState(false);
     const [selectedOption, setSelectedOption] = React.useState(null);
     const {data, key, id, questionReducer, submitFunction, updateResponse, dependencyID} = props;
     let currId = data.id;
@@ -59,14 +58,19 @@ const DropDownSingleSelect = (props) => {
 
     const HelperTooltip = () => {
         return (
-             <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
+             <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
         )
     }
 
     let renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
-            <Section key={key} title={data.question}>
+            <Section
+                key={key}
+                title={data.question}
+                isForm
+                helperText={data.helperText}
+            >
                 {HelperTooltip()}
                 <MultiSelect
                     selectedItems={selectedOption}
