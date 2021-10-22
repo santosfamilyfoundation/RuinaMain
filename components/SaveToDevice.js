@@ -38,7 +38,7 @@ componentDidMount() {
     };
     for (let i = 0; i < format.length; i++){
         if (format[i] === "pdf") {
-          this.state.encoding.push('base64');
+          this.state.encoding.push('html');
           this.createPDF(export_data);
         } else {
           var converter = new JSONconverter();
@@ -79,12 +79,12 @@ componentDidMount() {
       console.log("got PDF data");
 //      let updated_data = [pdf_data.base64];
       this.state.uri.push(pdf_data.filePath);
-      this.state.data.push(pdf_data.base64);
-      this.setState({isPDF:true});
-      console.log("what is uri",this.state.uri)
-      console.log("Type of data",typeof(this.state.data))
+      this.state.data.push(pdf_data.html);
+      this.state.isPDF= true;
+      console.log("what is uri",this.state.uri[0])
+      console.log("Type of encoding",typeof(this.state.encoding[0]))
     } catch (error) {
-      console.log('error->', error);
+      console.log('this is the odf converter error->', error);
     }
   }
 
@@ -111,28 +111,32 @@ componentDidMount() {
       } else {
         path = path_android;
       }
+      var result;
       for (let i = 0; i < format.length; i++){
       // write the file and save to Files app on device:
           try {
             var filepath = path  + "." + format[i]
-            let result = await RNFS.writeFile(filepath, this.state.data[i], this.state.encoding[i]);
+            console.log('data and encoding', this.state.data[i].length, this.state.encoding);
+            result = await RNFS.writeFile(filepath, this.state.data[i], this.state.encoding[i]);
             console.log('FILE WRITTEN!');
-            console.log('Data: ' + data[i] + '\n' + 'Path: ' + filepath);
+            console.log('Data: ' + this.state.data[i].length + '\n' + 'Path: ' + filepath);
             this.setState({ reportSavedMessageVisible: true });
 
-            // clear background save
-            const clearBackgroundSave = new backgroundSave();
-            var deleted = await clearBackgroundSave.deleteCapturedState();
 
 //            return path;
           } catch (err) {
             console.log("message is here: ",err.message);
+            console.log("at loop ", i);
             this.setState({ reportSavedFailedMessageVisible: true });
-            console.log("failed with", format[i]);
+            console.log("failed with", this.state.format[i]);
 //            return null;
           }
 
       }
+      // clear background save
+      const clearBackgroundSave = new backgroundSave();
+      var deleted = await clearBackgroundSave.deleteCapturedState();
+
       return path;
   }
 
@@ -158,7 +162,14 @@ componentDidMount() {
         {this.state.isPDF &&
           <View style={styles.container}>
             <Pdf
-                source={this.state}
+                source={      this.state.filename,
+                              this.state.devicePlatform,
+                              this.state.reportSavedMessageVisible,
+                              this.state.reportSavedFailedMessageVisible,
+                              this.state.uri[0],
+                              this.state.data[0],
+                              this.state.encoding[0],
+                              this.state.isPDF}
                 enableRTL={true}
                 onLoadComplete={(numberOfPages,filePath)=>{
                     console.log(`number of pages: ${numberOfPages}`);
