@@ -1,27 +1,26 @@
 import React from 'react';
-import {
-  Layout,
-  Select,
-  Text,
-  Card,
-  CardHeader,
-  Button,
-  Icon,
-  Modal
-} from '@ui-kitten/components';
+//import {
+//  Layout,
+//  Select,
+//  Text,
+//  Card,
+//  CardHeader,
+//  Button,
+//  Icon,
+//  Modal
+//} from '@ui-kitten/components';
+import { Text, Button, VStack } from 'native-base';
 import { styles } from './AdvancedDropDown.style';
 import { connect } from 'react-redux';
-import { View, Image } from 'react-native';
-import ImageSelector from '../image/imgIndex';
 import Geolocation from '@react-native-community/geolocation';
 import { API_KEY } from '../../utils/WeatherAPIKey';
 import * as Constants from '../../constants';
-import TooltipView from '../Tooltip.js';
+import TooltipView from '../Tooltip';
+import Section from '../Section';
 
 //This component is used for "advanced" tool access with drop downs (weather)
 
 const AdvancedDropDown = (props) => {
-    const [visible, setVisible] = React.useState(false);
     const [selectedOptions, setSelectedOptions] = React.useState([]);
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const [toggleWeatherHelper, setToggleWeatherHelper] = React.useState(false);
@@ -163,37 +162,22 @@ const AdvancedDropDown = (props) => {
         }
         setSelectedOptions(options);
     }
-
-    const Header = () => (
-        <CardHeader title={data.question}/>
-      );
     
-        const HelperTooltip = () => {
-                return (
-                            <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
-                        )
-            }
-    
-    const InfoIcon = (props) => (
-        <Icon {...props} name='info'/>
-    );
-    const CloseIcon = (props) => (
-        <Icon {...props} name='close-outline'/>
-    );
+    const HelperTooltip = () => {
+        return (
+            <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
+        )
+    }
 
-    const toggleModal = () => {
-        setVisible(!visible);
-    };
-
-    //Icons from Eva Icons: https://akveo.github.io/eva-icons/#/
-
-    const CheckIcon = (style) => (
-        <Icon {...style} name='checkmark-outline' />
-    );
-
-    const WeatherIcon = (style) => (
-        <Icon {...style} name='sun-outline' />
-    );
+//    //Icons from Eva Icons: https://akveo.github.io/eva-icons/#/
+//
+//    const CheckIcon = (style) => (
+//        <Icon {...style} name='checkmark-outline' />
+//    );
+//
+//    const WeatherIcon = (style) => (
+//        <Icon {...style} name='sun-outline' />
+//    );
 
     const onImportWeatherPress = () => {
       //Shows the user weather helper data
@@ -215,12 +199,12 @@ const AdvancedDropDown = (props) => {
         }
     }
 
-    const CustomCardHeader = () => (
-      <CardHeader
-          title={data.question}
-          accessory={RenderHeaderIcon}
-      />
-    );
+//    const CustomCardHeader = () => (
+//      <CardHeader
+//          title={data.question}
+//          accessory={RenderHeaderIcon}
+//      />
+//    );
 
     const WeatherHelper = () => {
       if(toggleWeatherHelper){
@@ -230,7 +214,7 @@ const AdvancedDropDown = (props) => {
           isLoading ?
               (<Text>Fetching The Weather</Text>) :
               (
-                <Layout style={styles.weatherCard}>
+                <VStack>
                   <Text style={{margin: 8, fontWeight: 'bold',}}>
                     {Constants.TEMP_ANNOUNCE_NAME} {place}
                   </Text>
@@ -246,7 +230,7 @@ const AdvancedDropDown = (props) => {
                   <Text style={{margin: 8, fontWeight: 'bold',}}>
                     {Constants.WIND_DEG_ANNOUNCE} {degree}
                   </Text>
-                </Layout>
+                </VStack>
               )
 
         );
@@ -255,30 +239,29 @@ const AdvancedDropDown = (props) => {
 
 
     return (
-        <Layout key={key} style={styles.container}>
-            <Card header={CustomCardHeader} status={status}>
-                <Layout style={styles.content}>
-                    {WeatherHelper()}
-                    {HelperTooltip()}
-                    <Layout style={styles.input}>
-                        <Select
-                            style={styles.inputField}
-                            data={data.answerOptions}
-                            selectedOption={selectedOptions}
-                            multiSelect={true}
-                            onSelect={addOption}
-                        />
-                        <Button
-                            style={styles.submitButton}
-                            appearance={buttonAppearance}
-                            size='medium'
-                            icon={CheckIcon}
-                            onPress={() => submitField()}
-                        />
-                    </Layout>
-                </Layout>
-            </Card>
-        </Layout>
+        <Section
+            key={key}
+            title={data.question}
+            isForm
+            helperText={data.helperText}
+        >
+            {WeatherHelper()}
+            {HelperTooltip()}
+            <Select
+                style={styles.inputField}
+                data={data.answerOptions}
+                selectedOption={selectedOptions}
+                multiSelect={true}
+                onSelect={addOption}
+            />
+            /*<Button
+                style={styles.submitButton}
+                appearance={buttonAppearance}
+                size='medium'
+                icon={CheckIcon}
+                onPress={() => submitField()}
+                    />*/
+        </Section>
     );
 };
 
