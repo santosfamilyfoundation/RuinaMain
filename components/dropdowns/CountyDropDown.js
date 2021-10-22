@@ -10,6 +10,8 @@ import { updateResponse } from '../../actions/StoryActions';
 import { styles } from './DropDownSingleSelect.style';
 import { connect } from 'react-redux';
 import { deleteRoadSingleResponse } from '../../actions/RoadAction';
+import Section from '../Section';
+import MultiSelect from 'react-native-multiple-select';
 
 
 const CountyDropDown = (props) => {
@@ -116,10 +118,6 @@ const CountyDropDown = (props) => {
         submitFunction({ id, question: currId, selection: content })
     }
 
-    const Header = () => (
-        <CardHeader title={data.question} />
-    );
-
     const HelperText = () => {
         if (data?.helperText?.length != 0) {
             return (<Text style={styles.helperText}>{data.helperText}</Text>)
@@ -129,20 +127,22 @@ const CountyDropDown = (props) => {
 
 
     return (
-        <Layout key={key} style={styles.container} >
-            <Card header={Header} status={status}>
-                <Layout style={styles.content}>
-                    {HelperText()}
-                    <Select
-                        placeholder='Select County'
-                        data={countyOptions}
-                        selectedOption={selectedOption}
-                        multiSelect={false}
-                        onSelect={(e) => submitField(e)}
-                    />
-                </Layout>
-            </Card>
-        </Layout>
+        <Section
+            key={key}
+            title={data.question}
+            isForm
+            helperText={data.helperText}
+        >
+            {HelperTooltip()}
+            <MultiSelect
+                placeholder='Select County'
+                selectedItems={selectedOption}
+                onSelectedItemsChange={(e) => submitField(e)}
+                single={true}
+                items={countyOptions}
+                uniqueKey={data.question.humanReadableId}
+            />
+        </Section>
     );
 };
 
