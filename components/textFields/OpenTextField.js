@@ -1,15 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { View, Image } from 'react-native';
-import { Input, Layout, Text, Card, Button, Modal, CardHeader, Icon} from '@ui-kitten/components';
-import ImageSelector from '../image/imgIndex';
+import { Input, Button, VStack, IconButton, CloseIcon } from 'native-base';
+//import { Input, Layout, Text, Card, Button, Modal, CardHeader, Icon} from '@ui-kitten/components';
 import { styles } from './OpenTextField.style';
 import { dependencyParser } from '../../utils/dependencyHelper';
-import TooltipView from '../Tooltip.js';
+import TooltipView from '../Tooltip';
+import Section from '../Section';
 
 
 const OpenTextField = (props) => {
-    const [visible, setVisible] = React.useState(false);
     const [value, setValue] = React.useState('');
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const [isInvalid, setIsInvalid] = React.useState(false);
@@ -68,14 +67,6 @@ const OpenTextField = (props) => {
         setIsInvalid(false);
     }
 
-    const Header = () => (
-        <CardHeader title={data.question} />
-    );
-
-    const renderClear = (style) => (
-        <Icon {...style} name='close-outline'/>
-    );
-
     if(buttonAppearance == 'outline') {
         status = 'danger'
     } else {
@@ -88,34 +79,10 @@ const OpenTextField = (props) => {
 
     
     const HelperTooltip = () => {
-        if (data.helperText != null && (data.tooltip != null||data.helperImg!=null)){
-            return (
-                            <TooltipView data={data} />
-                        )
-        }
-        else if (data.helperText != null) {
-            return (<Text style={styles.helperText}>{data.helperText}</Text>)
-        }
-        else if (data.tooltip != null || data.helperImg != null) {
-            return (
-                            <TooltipView data={data} />
-                        )
-        } else {
-            return null;
-        }
+        return (
+            <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
+        )
     }
-    
-    const InfoIcon = (props) => (
-        <Icon {...props} name='info'/>
-    );
-    const CloseIcon = (props) => (
-        <Icon {...props} name='close-outline'/>
-    );
-
-    const toggleModal = () => {
-        setVisible(!visible);
-    };
-
 
     const ErrorMsg = () => {
         if(isInvalid) {
@@ -130,31 +97,25 @@ const OpenTextField = (props) => {
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
-        <Layout key={key} style={styles.container}>
-            <Card header={Header} status={status}>
-                <Layout style={styles.content}>
+        <Section key={key} title={data.question}>
+                <VStack>
                     {HelperTooltip()}
-                    <Layout style={styles.input}>
-                        <Input
-                            style={styles.inputField}
-                            icon={renderClear}
-                            onIconPress={() => clearField()}
-                            placeholder='Place your Text'
-                            value={value}
-                            onChangeText={onTextChange}
-                        />
-                        <Button
-                            style={styles.submitButton}
-                            appearance={buttonAppearance}
-                            size='medium'
-                            icon={CheckIcon}
-                            onPress={() => submitField()}
-                        />
-                    </Layout>
+                    <Input
+                        isInvalid{isInvalid}
+                        style={styles.inputField}
+                        placeholder='Place your Text'
+                        value={value}
+                        onChange={onTextChange}
+                        InputRightElement={
+                            <IconButton
+                                icon={<CloseIcon name='close'/>}
+                                onPress={clearField()}
+                            />
+                        }
+                    />
                     {ErrorMsg()}
-                </Layout>
-            </Card>
-        </Layout>
+                </VStack>
+        </Section>
         )
     }else{
         return null
