@@ -108,7 +108,7 @@ const OpenTextFieldWithSelection = (props) => {
     
     const HelperTooltip = () => {
         return (
-            <TooltipViewtoolTip={data.tooltip} helperImg={data.helperImg}/>
+            <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
         )
     }
 
@@ -165,7 +165,7 @@ const OpenTextFieldWithSelection = (props) => {
                 />*/
                 <HStack>
                     {renderButtons()}
-                <HStack>
+                </HStack>
             </Section>
         )
     }else{
