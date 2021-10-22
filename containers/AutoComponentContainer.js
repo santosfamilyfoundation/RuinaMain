@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-navigation';
 import { styles } from './AutoComponentContainer.style';
 import { ScrollView } from 'react-native-gesture-handler';
 import MultiButtonSelector from '../components/buttonSelectors/MultiButtonSelector';
-import AutoCompleteDropDown from '../components/dropdowns/AutoCompleteDropDown';
+import QuestionAutoCompleteDropDown from '../components/dropdowns/QuestionAutoCompleteDropDown';
 import DropDownSingleSelect from '../components/dropdowns/DropDownSingleSelect';
 import OpenTextField from '../components/textFields/OpenTextField';
 import DropDownMultiSelect from '../components/dropdowns/DropDownMultiSelect';
@@ -59,13 +59,13 @@ class AutoComponentContainer extends Component {
               key={question.id}
             />
           )
-//        case 'autoCompleteDropdown':
-//          return (
-//            <AutoCompleteDropDown
-//              data={question}
-//              key={question.id}
-//            />
-//          )
+        case 'autoCompleteDropdown':
+          return (
+            <QuestionAutoCompleteDropDown
+              data={question}
+              key={question.id}
+            />
+          )
       }
     }
 
