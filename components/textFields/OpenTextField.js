@@ -73,48 +73,50 @@ const OpenTextField = (props) => {
         status = 'success'
     }
 
-    const CheckIcon = (style) => (
-        <Icon {...style} name='checkmark-outline' />
-    )
+//    const CheckIcon = (style) => (
+//        <Icon {...style} name='checkmark-outline' />
+//    )
 
     
     const HelperTooltip = () => {
         return (
-            <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
+            <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
         )
     }
 
-    const ErrorMsg = () => {
-        if(isInvalid) {
-            return(
-                <Text>
-                    Too long!
-                </Text>
-            )
-        }
-        return null;
-    };
+//    const ErrorMsg = () => {
+//        if(isInvalid) {
+//            return(
+//                <Text>
+//                    Too long!
+//                </Text>
+//            )
+//        }
+//        return null;
+//    };
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
-        <Section key={key} title={data.question}>
-                <VStack>
-                    {HelperTooltip()}
-                    <Input
-                        isInvalid{isInvalid}
-                        style={styles.inputField}
-                        placeholder='Place your Text'
-                        value={value}
-                        onChange={onTextChange}
-                        InputRightElement={
-                            <IconButton
-                                icon={<CloseIcon name='close'/>}
-                                onPress={clearField()}
-                            />
-                        }
+        <Section
+            key={key}
+            title={data.question}
+            isForm
+            helperText={data.helperText}>
+            errorMessage={'Maximum Character Input Exceeded'}
+            isInvalid={isInvalid}
+        >
+            {HelperTooltip()}
+            <Input
+                placeholder='Place your Text'
+                value={value}
+                onChange={onTextChange}
+                InputRightElement={
+                    <IconButton
+                        icon={<CloseIcon name='close'/>}
+                        onPress={clearField()}
                     />
-                    {ErrorMsg()}
-                </VStack>
+                }
+            />
         </Section>
         )
     }else{

@@ -1,16 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { View, Image } from 'react-native';
-import ImageSelector from '../image/imgIndex';
-import { Input, Layout, Text, Card, Modal, Button, CardHeader, Icon } from '@ui-kitten/components';
+import { Input, Button } from 'native-base';
+//import { Input, Layout, Text, Card, Modal, Button, CardHeader, Icon } from '@ui-kitten/components';
 import { styles } from './OpenTextFieldWithSelection.style';
 import { updateResponse } from '../../actions/StoryActions';
 import { dependencyParser } from '../../utils/dependencyHelper';
-import TooltipView from '../Tooltip.js';
+import TooltipView from '../Tooltip';
+import Section from '../Section';
 
 
 const OpenTextFieldWithSelection = (props) => {
-    const [visible, setVisible] = React.useState(false);
     const [value, setValue] = React.useState('');
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const [isInvalid, setIsInvalid] = React.useState(false);
@@ -88,14 +87,14 @@ const OpenTextFieldWithSelection = (props) => {
     } else if(isInvalid && value.length <= data.maxLength) {
         setIsInvalid(false);
     }
+//
+//    const Header = () => (
+//        <CardHeader title={data.question}/>
+//    );
 
-    const Header = () => (
-        <CardHeader title={data.question}/>
-    );
-
-    const renderClear = (style) => (
-        <Icon {...style} name='close-outline'/>
-    );
+//    const renderClear = (style) => (
+//        <Icon {...style} name='close-outline'/>
+//    );
 
     if(buttonAppearance == 'outline') {
         status = 'danger'
@@ -103,36 +102,15 @@ const OpenTextFieldWithSelection = (props) => {
         status = 'success'
     }
 
-    const CheckIcon = (style) => (
-        <Icon {...style} name='checkmark-outline' />
-    )
+//    const CheckIcon = (style) => (
+//        <Icon {...style} name='checkmark-outline' />
+//    )
     
-        const HelperTooltip = () => {
-                return (
-                            <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
-                        )
-            }
-    
-    const InfoIcon = (props) => (
-        // <Image source={require('../image/test.jpg')} style={styles.img}/>
-        <Icon {...props} name='info'/>
-    );
-
-
-    const toggleModal = () => {
-        setVisible(!visible);
-    };
-
-    const ErrorMsg = () => {
-        if(isInvalid) {
-            return(
-                <Text>
-                    Too long!
-                </Text>
-            )
-        }
-        return null;
-    };
+    const HelperTooltip = () => {
+        return (
+            <TooltipViewtoolTip={data.tooltip} helperImg={data.helperImg}/>
+        )
+    }
 
     const renderSingleButton = (option) => {
       let appearance = (value == option.text) ? 'filled': 'outline';
@@ -140,7 +118,7 @@ const OpenTextFieldWithSelection = (props) => {
           <Button
               key={option.idCode}
               style={styles.answerButton}
-              appearance={appearance}
+              /*appearance={appearance}*/
               onPress={() => onSelectOneOption(option)}
           >
               {option.text}
@@ -158,34 +136,37 @@ const OpenTextFieldWithSelection = (props) => {
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
-            <Layout key={key} style={styles.container}>
-                <Card header={Header} status={status}>
-                    <Layout style={styles.content}>
-                        {HelperTooltip()}
-                        <Layout style={styles.input}>
-                            <Input
-                                style={styles.inputField}
-                                icon={renderClear}
-                                onIconPress={() => clearField()}
-                                placeholder='Place your Text'
-                                value={value}
-                                onChangeText={onTextChange}
-                            />
-                            <Button
-                                style={styles.submitButton}
-                                appearance={buttonAppearance}
-                                size='medium'
-                                icon={CheckIcon}
-                                onPress={() => submitField()}
-                            />
-                        </Layout>
-                        <Layout style={styles.answers}>
-                            {renderButtons()}
-                        </Layout>
-                        {ErrorMsg()}
-                    </Layout>
-                </Card>
-            </Layout>
+            <Section
+                key={key}
+                title={data.question}
+                isForm
+                helperText={data.helperText}
+                errorMessage={`Maximum Character Limit: ${data.maxLength}`}
+                isInvalid={isInvalid}
+            >
+                {HelperTooltip()}
+                <Input
+                    placeholder='Place your Text'
+                    value={value}
+                    onChange={onTextChange}
+                    InputRightElement={
+                        <IconButton
+                            icon={<CloseIcon name='close'/>}
+                            onPress={clearField()}
+                        />
+                    }
+                />
+                /*<Button
+                    style={styles.submitButton}
+                    appearance={buttonAppearance}
+                    size='medium'
+                    icon={CheckIcon}
+                    onPress={() => submitField()}
+                />*/
+                <HStack>
+                    {renderButtons()}
+                <HStack>
+            </Section>
         )
     }else{
         return null
