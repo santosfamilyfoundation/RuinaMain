@@ -144,7 +144,7 @@ const QuestionAutoCompleteDropDown = (props) => {
                     showChevron = {false}
                     ClearIconComponent = {renderClear()}
                     />
-                    <IconButton icon={CheckIcon} onPress={() => submitField()} />
+                    <IconButton icon={CheckIcon} onPress={() => submitField()}/>
                 </VStack>
             </Section>
         </Box>
