@@ -1,11 +1,12 @@
 import React from 'react';
 import MultiSelect from 'react-native-multiple-select';
+import { View, Image } from 'react-native';
+import ImageSelector from '../image/imgIndex';
 import { updateResponse } from '../../actions/StoryActions';
 import { styles } from './DropDownSingleSelect.style';
 import { connect } from 'react-redux';
 import { dependencyParser } from '../../utils/dependencyHelper';
-import TooltipView from '../Tooltip';
-import Section from '../Section';
+import TooltipView from '../Tooltip.js';
 
 const DropDownSingleSelect = (props) => {
     const [selectedOption, setSelectedOption] = React.useState(null);
@@ -33,6 +34,17 @@ const DropDownSingleSelect = (props) => {
         };
     };
 
+    let status;
+    if(!existingData) {
+        status = 'danger'
+    } else {
+        if(!existingData[currId]) {
+            status = 'danger';
+        } else {
+            status = 'success';
+        }
+    }
+
     const submitField = (selection) => {
         setSelectedOption(selection);
         if (dependencyID==null || dependencyID.length == 1){
@@ -56,7 +68,12 @@ const DropDownSingleSelect = (props) => {
         submitFunction({id, question: currId, selection: content})
     }
 
+    const Header = () => (
+        <CardHeader title={data.question}/>
+      );
+
     const HelperTooltip = () => {
+<<<<<<< HEAD
         return (
              <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
         )
@@ -80,6 +97,41 @@ const DropDownSingleSelect = (props) => {
                     uniqueKey={data.question.humanReadableId}
                 />
             </Section>
+=======
+             return (
+                         <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
+                     )
+         }
+
+    
+    const InfoIcon = (props) => (
+        <Icon {...props} name='info'/>
+    );
+    const CloseIcon = (props) => (
+        <Icon {...props} name='close-outline'/>
+    );
+
+    const toggleModal = () => {
+        setVisible(!visible);
+    };
+
+    var renderComponent = dependencyParser(props.response, data, dependencyID)
+    if (renderComponent){
+        return(
+            <Layout key={key} style={styles.container} >
+                <Card header={Header} status={status}>
+                    <Layout style={styles.content}>
+                        {HelperTooltip()}
+                        <Select
+                            data={data.answerOptions}
+                            selectedOption={selectedOption}
+                            multiSelect={false}
+                            onSelect={(e) => submitField(e)}
+                        />
+                    </Layout>
+                </Card>
+            </Layout>
+>>>>>>> parent of 9bfac030... Merge branch 'feat/native-base' of github.com:santosfamilyfoundation/RuinaMain into feat/native-base
         )
     }else{
         return null
