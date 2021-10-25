@@ -10,9 +10,22 @@ import { NativeBaseProvider, Center } from 'native-base';
 const store = configureStore()
 
 const App = () => (
+  const theme = extendTheme({
+    components: {
+        Box: {
+            .section: {
+                baseStyle: {
+                    rounded: 'md',
+                    bg: 'light.300'
+                }
+            }
+        }
+    }
+  })
+
   <React.Fragment>
     <IconRegistry icons={EvaIconsPack}/>
-    <NativeBaseProvider>
+    <NativeBaseProvider theme={theme}>
       <Provider store = { store }>
         <AppNavigator/>
       </Provider>
