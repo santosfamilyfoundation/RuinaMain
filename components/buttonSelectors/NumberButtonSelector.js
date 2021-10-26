@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Text, Input, HStack } from 'native-base';
-import {styles} from './NumberButtonSelectorQuickSurvey.style'
+import {styles} from './NumberButtonSelector.style'
 import { ScrollView } from 'react-native-gesture-handler';
 import { View } from 'react-native';
 import { updateResponse } from '../../actions/StoryActions';
