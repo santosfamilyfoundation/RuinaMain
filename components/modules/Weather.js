@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
-import { Divider, Layout, Text, TopNavigation } from '@ui-kitten/components';
+import { Text, Heading, VStack } from 'native-base'
 import Geolocation from '@react-native-community/geolocation';
 import { API_KEY } from '../../utils/WeatherAPIKey';
+import TopNavigation from '../TopNavigation';
 
 export default class Weather extends Component {
     state = {
@@ -44,10 +45,9 @@ export default class Weather extends Component {
         const { isLoading } = this.state;
         return (
             <SafeAreaView style={{ flex: 1 }}>
-                <TopNavigation title='Weather' alignment='center' leftControl={this.props.BackAction()}/>
-                <Divider/>
-                <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                    <Text category='h1'>This is the Weather Screen.</Text>
+                <TopNavigation title='Weather' backButton navigation={this.props.navigation}/>
+                <VStack>
+                    <Heading textAlign='center'>This is the Weather Screen.</Heading>
                     {isLoading ?
                         (<Text>Fetching The Weather</Text>) :
                         (
@@ -58,7 +58,7 @@ export default class Weather extends Component {
 
                         )
                     }
-                </Layout>
+                </VStack>
             </SafeAreaView>
         )
     }
