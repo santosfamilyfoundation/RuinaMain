@@ -73,7 +73,6 @@ const DropDownSingleSelect = (props) => {
       );
 
     const HelperTooltip = () => {
-<<<<<<< HEAD
         return (
              <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
         )
@@ -97,41 +96,6 @@ const DropDownSingleSelect = (props) => {
                     uniqueKey={data.question.humanReadableId}
                 />
             </Section>
-=======
-             return (
-                         <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
-                     )
-         }
-
-    
-    const InfoIcon = (props) => (
-        <Icon {...props} name='info'/>
-    );
-    const CloseIcon = (props) => (
-        <Icon {...props} name='close-outline'/>
-    );
-
-    const toggleModal = () => {
-        setVisible(!visible);
-    };
-
-    var renderComponent = dependencyParser(props.response, data, dependencyID)
-    if (renderComponent){
-        return(
-            <Layout key={key} style={styles.container} >
-                <Card header={Header} status={status}>
-                    <Layout style={styles.content}>
-                        {HelperTooltip()}
-                        <Select
-                            data={data.answerOptions}
-                            selectedOption={selectedOption}
-                            multiSelect={false}
-                            onSelect={(e) => submitField(e)}
-                        />
-                    </Layout>
-                </Card>
-            </Layout>
->>>>>>> parent of 9bfac030... Merge branch 'feat/native-base' of github.com:santosfamilyfoundation/RuinaMain into feat/native-base
         )
     }else{
         return null

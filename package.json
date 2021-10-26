@@ -47,6 +47,7 @@
     "react-native-maps": "0.27.1",
     "react-native-masked-view": "^0.2.0",
     "react-native-material-dialog": "^0.7.7",
+    "react-native-multiple-select": "^0.5.7",
     "react-native-pdf": "^6.3.0",
     "react-native-reanimated": "^2.2.3",
     "react-native-safe-area-context": "^3.3.2",

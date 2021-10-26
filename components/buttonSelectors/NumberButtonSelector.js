@@ -1,30 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-<<<<<<< HEAD
 import { Button, Text, HStack, Input } from 'native-base';
 import { genericWriteAction } from '../../actions/GenericAction';
-=======
-import { Button, Text, Layout, Card, CardHeader, Input } from '@ui-kitten/components';
 //import { genericWriteAction } from '../../actions/GenericAction';
->>>>>>> origin/master
 import {styles} from './NumberButtonSelector.style'
 import { ScrollView } from 'react-native-gesture-handler';
 import TooltipView from '../Tooltip.js';
 import { View } from 'react-native';
-<<<<<<< HEAD
 import Section from '../Section';
-=======
 import { updateResponse } from '../../actions/StoryActions';
-
->>>>>>> origin/master
 
 const NumberButtonSelector = (props) => {
     const [visible, setVisible] = React.useState(false);
     const [selection, setSelection] = React.useState('');
-<<<<<<< HEAD
     const {title, data, id, submitFunction, genericReducer, fieldName, updateResponse, dependencyID, startRange, endRange} = props;
-=======
-    const {data, id, submitFunction, questionReducer, fieldName, updateResponse, dependencyID} = props;
 
     let currId = data.id
     let status = 'danger'
@@ -40,7 +29,6 @@ const NumberButtonSelector = (props) => {
             }
         }
     }
->>>>>>> origin/master
 
     const submitField = (val) => {
         val = parseInt(val);
