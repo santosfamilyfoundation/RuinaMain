@@ -111,14 +111,6 @@ class Home extends Component {
             navigation.navigate('Question', {questions: form.data, objectID: id, type, name, dependencyID:[id]})
         }
 
-        const RoadHeader = () => (
-            <VStack>
-                <Heading>Crash and Road Way</Heading>
-                <Divider/>
-            </VStack>
-//            <CardHeader title="Crash and Roadway" />
-        );
-
         // generate the vehicle section components based on global state
         let vehiclesListArr = vehicle.data.map((vehicle, index) => {
             const { edit } = this.state;
@@ -204,7 +196,7 @@ class Home extends Component {
                         {this.state.edit &&
                         <IconButton text="Add Vehicle"
                             onPress = {() => this._addVehicleSection()}
-                                icon = {<Icon name="local-taxi" size={50}/>}
+                            icon = {<Icon name="local-taxi" size={50}/>}
                         />
                         }
                     </VStack>
