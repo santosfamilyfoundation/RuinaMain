@@ -1,11 +1,4 @@
 import React, { useEffect } from 'react';
-import {
-    Layout,
-    Select,
-    Text,
-    Card,
-    CardHeader
-} from '@ui-kitten/components';
 import { updateResponse } from '../../actions/StoryActions';
 import { styles } from './DropDownSingleSelect.style';
 import { connect } from 'react-redux';
@@ -118,12 +111,12 @@ const CountyDropDown = (props) => {
         submitFunction({ id, question: currId, selection: content })
     }
 
-    const HelperText = () => {
-        if (data?.helperText?.length != 0) {
-            return (<Text style={styles.helperText}>{data.helperText}</Text>)
-        }
-        return null;
-    }
+//    const HelperText = () => {
+//        if (data?.helperText?.length != 0) {
+//            return (<Text style={styles.helperText}>{data.helperText}</Text>)
+//        }
+//        return null;
+//    }
 
 
     return (

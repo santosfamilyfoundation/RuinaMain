@@ -1,7 +1,5 @@
 import React from 'react';
 import MultiSelect from 'react-native-multiple-select';
-import { View, Image } from 'react-native';
-import ImageSelector from '../image/imgIndex';
 import { updateResponse } from '../../actions/StoryActions';
 import { styles } from './DropDownSingleSelect.style';
 import { connect } from 'react-redux';
