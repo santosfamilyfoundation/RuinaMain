@@ -299,7 +299,7 @@ class QuickSurvey extends Component {
        <ScrollView>
            <VStack>
                <SafeAreaView style={styles.questionContainer}>
-                <NumberButtonSelectorQuickSurvey
+                <NumberButtonSelector
                         title="Number of vehicles involved"
                         submitFunction={changeVehicle}
                         reducerName="quickquizReducer"
@@ -309,7 +309,7 @@ class QuickSurvey extends Component {
                 />
                </SafeAreaView>
                <SafeAreaView style={styles.questionContainer}>
-                  <NumberButtonSelectorQuickSurvey
+                  <NumberButtonSelector
                             title="Number of non-motorists involved"
                             submitFunction={changeNonmotorists}
                             reducerName="quickquizReducer"

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
-//import { Text, Divider, Layout, TopNavigation, CardHeader, Card } from '@ui-kitten/components';
+import { Text, Divider, Layout, TopNavigation, CardHeader, Card } from '@ui-kitten/components';
 import { styles } from './AutoComponentContainer.style';
 import { ScrollView } from 'react-native-gesture-handler';
 import MultiButtonSelector from '../components/buttonSelectors/MultiButtonSelector';
@@ -9,9 +9,7 @@ import DropDownSingleSelect from '../components/dropdowns/DropDownSingleSelect';
 import OpenTextField from '../components/textFields/OpenTextField';
 import DropDownMultiSelect from '../components/dropdowns/DropDownMultiSelect';
 import LargeTextField from '../components/textFields/LargeTextField';
-import Section from '../components/Section';
-import TopNavigation from '../components/TopNavigation';
-
+import NumberButtonSelector from '../components/buttonSelectors/NumberButtonSelector';
 import {questions} from '../data/questions';
 
 class AutoComponentContainer extends Component {
@@ -66,17 +64,29 @@ class AutoComponentContainer extends Component {
               key={question.id}
             />
           )
+        case 'numberButton':
+          return (
+            <NumberButtonSelector
+              data={question}
+              key={question.id}
+            />
+          )
       }
     }
 
-    const renderSubQuestions = (questions) => {
+    const renderSubQuetions = (questions) => {
       const renderedQuestions = questions.subquestions.map(question => (
         renderSingleQuestion(question)
       ));
+      const Header = () => (
+        <CardHeader 
+          title={questions.question}
+        />
+      )
       return (
-        <Section key={questions.id} title={questions.question}>
+        <Card key={questions.id} header={Header} style={styles.card}>
           {renderedQuestions}
-        </Section>
+        </Card>
       );
     }  
 
@@ -84,13 +94,14 @@ class AutoComponentContainer extends Component {
       if(!question.subquestions) {
         return renderSingleQuestion(question)
       } else {
-        return renderSubQuestions(question)
+        return renderSubQuetions(question)
       }
     });
 
     return (
         <SafeAreaView style={styles.container}>
-          <TopNavigation title={this.props.title} backButton navigation={this.props.navigation}/>
+          <TopNavigation title={this.props.title} alignment='center' leftControl={this.props.BackAction()}/>
+          <Divider/>
           <ScrollView>
             <Layout style={styles.content}>
               {renderedQuestions}

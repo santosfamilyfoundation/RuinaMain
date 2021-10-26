@@ -1,11 +1,12 @@
 import React from 'react';
 import MultiSelect from 'react-native-multiple-select';
+import { View, Image } from 'react-native';
+import ImageSelector from '../image/imgIndex';
 import { updateResponse } from '../../actions/StoryActions';
 import { styles } from './DropDownSingleSelect.style';
 import { connect } from 'react-redux';
 import { dependencyParser } from '../../utils/dependencyHelper';
-import TooltipView from '../Tooltip';
-import Section from '../Section';
+import TooltipView from '../Tooltip.js';
 
 const DropDownSingleSelect = (props) => {
     const [selectedOption, setSelectedOption] = React.useState(null);
@@ -33,6 +34,17 @@ const DropDownSingleSelect = (props) => {
         };
     };
 
+    let status;
+    if(!existingData) {
+        status = 'danger'
+    } else {
+        if(!existingData[currId]) {
+            status = 'danger';
+        } else {
+            status = 'success';
+        }
+    }
+
     const submitField = (selection) => {
         setSelectedOption(selection);
         if (dependencyID==null || dependencyID.length == 1){
@@ -55,6 +67,10 @@ const DropDownSingleSelect = (props) => {
         let content = selection.text;
         submitFunction({id, question: currId, selection: content})
     }
+
+    const Header = () => (
+        <CardHeader title={data.question}/>
+      );
 
     const HelperTooltip = () => {
         return (
