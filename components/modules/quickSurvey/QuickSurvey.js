@@ -295,11 +295,11 @@ class QuickSurvey extends Component {
       }
     return(
       <React.Fragment>
-       <Center><TopNavigation title="QUICK SURVEY" navigation={this.props.navigation}/></Center>
+       <Center><TopNavigation title="QUICK SURVEY"/></Center>
        <ScrollView>
            <VStack>
                <SafeAreaView style={styles.questionContainer}>
-                <NumberButtonSelector
+                <NumberButtonSelectorQuickSurvey
                         title="Number of vehicles involved"
                         submitFunction={changeVehicle}
                         reducerName="quickquizReducer"
@@ -309,7 +309,7 @@ class QuickSurvey extends Component {
                 />
                </SafeAreaView>
                <SafeAreaView style={styles.questionContainer}>
-                  <NumberButtonSelector
+                  <NumberButtonSelectorQuickSurvey
                             title="Number of non-motorists involved"
                             submitFunction={changeNonmotorists}
                             reducerName="quickquizReducer"
