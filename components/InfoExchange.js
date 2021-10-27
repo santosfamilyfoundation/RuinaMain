@@ -3,10 +3,8 @@ import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
 import { Text } from 'native-base';
-import Section form './Section';
 import TopNavigation from './TopNavigation';
-
-
+import Section from './Section';
 
 class InfoExchange extends Component {
     render(){
