@@ -137,12 +137,12 @@ const AdvancedOpenTextField = (props) => {
       }else{
         setAdvancedButtonAppearance("filled")
         let now = new Date();
-        let year = now.getFullYear() * 100000000;
-        let month = (now.getMonth() + 1) * 1000000;
-        let date = now.getDate() * 10000;
-        let hours = now.getHours() * 100;
-        let min = now.getMinutes();
-        let fullDate = (year + month + date + hours + min).toString();;
+        let year = (now.getFullYear()).toString();
+        let month = ((now.getMonth() + 1)).toString();
+        let date = (now.getDate()).toString();
+        let hours = (now.getHours()).toString();
+        let min = (now.getMinutes()).toString();
+        let fullDate = year + "/" +  month + "/" + date + "\t" + hours + ":" + min;;
         updateRoad({id, question:data.id, selection: fullDate });
       }
     };
