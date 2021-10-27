@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { deleteRoadSingleResponse } from '../../actions/RoadAction';
 import Section from '../Section';
 import MultiSelect from 'react-native-multiple-select';
+import TooltipView from '../Tooltip';
 
 
 const CountyDropDown = (props) => {
@@ -117,6 +118,11 @@ const CountyDropDown = (props) => {
 //        }
 //        return null;
 //    }
+    const HelperTooltip = () => {
+        return (
+             <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
+        )
+    }
 
 
     return (
