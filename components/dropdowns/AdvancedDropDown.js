@@ -1,15 +1,5 @@
 import React from 'react';
-//import {
-//  Layout,
-//  Select,
-//  Text,
-//  Card,
-//  CardHeader,
-//  Button,
-//  Icon,
-//  Modal
-//} from '@ui-kitten/components';
-import { Text, Button, VStack } from 'native-base';
+import { Text, Button, VStack, HStack } from 'native-base';
 import { styles } from './AdvancedDropDown.style';
 import { connect } from 'react-redux';
 import Geolocation from '@react-native-community/geolocation';
@@ -17,6 +7,9 @@ import { API_KEY } from '../../utils/WeatherAPIKey';
 import * as Constants from '../../constants';
 import TooltipView from '../Tooltip';
 import Section from '../Section';
+import IconButton from '../IconButton';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import MultiSelect from 'react-native-multiple-select';
 
 //This component is used for "advanced" tool access with drop downs (weather)
 
@@ -169,15 +162,9 @@ const AdvancedDropDown = (props) => {
         )
     }
 
-//    //Icons from Eva Icons: https://akveo.github.io/eva-icons/#/
-//
-//    const CheckIcon = (style) => (
-//        <Icon {...style} name='checkmark-outline' />
-//    );
-//
-//    const WeatherIcon = (style) => (
-//        <Icon {...style} name='sun-outline' />
-//    );
+    const WeatherIcon = (style) => (
+        <Icon name='wb-sunny' />
+    );
 
     const onImportWeatherPress = () => {
       //Shows the user weather helper data
@@ -194,17 +181,10 @@ const AdvancedDropDown = (props) => {
         switch(importFrom) {
             case "weather":
                 return (
-                    <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={WeatherIcon} onPress={()=> onImportWeatherPress() }></Button>
+                    <IconButton icon={WeatherIcon} onPress={()=> onImportWeatherPress() }/>
                 )
         }
     }
-
-//    const CustomCardHeader = () => (
-//      <CardHeader
-//          title={data.question}
-//          accessory={RenderHeaderIcon}
-//      />
-//    );
 
     const WeatherHelper = () => {
       if(toggleWeatherHelper){
@@ -247,20 +227,16 @@ const AdvancedDropDown = (props) => {
         >
             {WeatherHelper()}
             {HelperTooltip()}
-            <Select
-                style={styles.inputField}
-                data={data.answerOptions}
-                selectedOption={selectedOptions}
-                multiSelect={true}
-                onSelect={addOption}
+            <HStack>
+            <MultiSelect
+                selectedItems={selectedOptions}
+                onSelectedItemsChange={addOption}
+                items={data.answerOptions}
+                uniqueKey={data.question.humanReadableId}
+                single={false}
             />
-            /*<Button
-                style={styles.submitButton}
-                appearance={buttonAppearance}
-                size='medium'
-                icon={CheckIcon}
-                onPress={() => submitField()}
-                    />*/
+            {RenderHeaderIcon()}
+            </HStack>
         </Section>
     );
 };
