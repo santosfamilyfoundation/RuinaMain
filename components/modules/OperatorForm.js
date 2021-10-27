@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Card, CardHeader, Layout } from '@ui-kitten/components';
+import { VStack } from 'native-base';
 import { ScrollView } from 'react-native';
 import { styles } from '../../containers/AutoComponentContainer.style';
 import OpenTextField from '../textFields/OpenTextField';
@@ -9,6 +9,7 @@ import { updateDriver } from '../../actions/DriverAction';
 import { updateNonmotorist } from '../../actions/NonmotoristAction';
 import {updateVehicle} from '../../actions/VehicleAction';
 import {questions} from '../../data/questions';
+import Section from '../Section';
 
 class OperatorForm extends Component{
     filterQuestionsData(questionType){
@@ -149,13 +150,20 @@ class OperatorForm extends Component{
 
 
         return(
-                <Card header= {() => <CardHeader title={`${typeUpperCase}: ${operator.response?.P1 || ''}`}/>} >
-                    <ScrollView>
-                        <Layout style={styles.content}>
-                            {renderQuestions()}
-                        </Layout>
-                    </ScrollView>
-                </Card>
+            <Section title={`${typeUpperCase}: ${operator.response?.P1 || ''}`}>
+                <ScrollView>
+                    <VStack>
+                        {renderQuestions()}
+                    </VStack>
+                </ScrollView>
+            </Section>
+//                <Card header= {() => <CardHeader title={`${typeUpperCase}: ${operator.response?.P1 || ''}`}/>} >
+//                    <ScrollView>
+//                        <Layout style={styles.content}>
+//                            {renderQuestions()}
+//                        </Layout>
+//                    </ScrollView>
+//                </Card>
 
         )
     }
