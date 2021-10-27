@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { Text, View } from 'react-native';
-import {TopNavigation,Card, CardHeader} from '@ui-kitten/components';
+import { View } from 'react-native';
+import { Text } from 'native-base';
+import Section form './Section';
+import TopNavigation from './TopNavigation';
+
 
 
 class InfoExchange extends Component {
@@ -12,15 +15,6 @@ class InfoExchange extends Component {
             driver,
             nonmotorist,
             } = this.props
-
-        const NonMotoristHeader = () => (
-            <CardHeader title="Non Motorists"/>
-        )
-
-        const DriverHeader = () => (
-
-            <CardHeader title="Drivers"/>
-        )
 
         let infoExchangeResultDriver = {};
         let infoExchangeResultNonmotorist = {};
@@ -62,7 +56,7 @@ class InfoExchange extends Component {
                     sex = "other"
                 }
                 renderDrivers.push(
-                    <Card key={Object.entries(infoExchangeResultDriver)[i][0]} header = {() => (<CardHeader title={Object.entries(infoExchangeResultDriver)[i][1].P1}/>)}>
+                    <Section key={Object.entries(infoExchangeResultDriver)[i][0]} title={Object.entries(infoExchangeResultDriver)[i][1].P1}>
                         <Text style={{fontSize:20}}>
                             {JSON.stringify(Object.entries(infoExchangeResultDriver)[i][1].P1) !== undefined ? "Name: "+JSON.stringify(Object.entries(infoExchangeResultDriver)[i][1].P1).slice(1,-1):""}
                         </Text>
@@ -72,7 +66,7 @@ class InfoExchange extends Component {
                         <Text style={{fontSize:20}}>
                             {sex !==undefined? "Sex: "+sex : ""}
                         </Text>
-                    </Card>
+                    </Section>
                 )
             }
         }
@@ -89,7 +83,7 @@ class InfoExchange extends Component {
                     sex = "other"
                 }
                 renderNonmotorists.push(
-                    <Card key={Object.entries(infoExchangeResultNonmotorist)[i][0]} header = {() => (<CardHeader title={Object.entries(infoExchangeResultNonmotorist)[i][1].P1}/>)}>
+                    <Section key={Object.entries(infoExchangeResultNonmotorist)[i][0]} title={Object.entries(infoExchangeResultNonmotorist)[i][1].P1}>
                         <Text style={{fontSize:20}}>
                             {JSON.stringify(Object.entries(infoExchangeResultNonmotorist)[i][1].P1) !==undefined ? "Name: "+JSON.stringify(Object.entries(infoExchangeResultNonmotorist)[i][1].P1).slice(1,-1):""}
                         </Text>
@@ -99,21 +93,20 @@ class InfoExchange extends Component {
                         <Text style={{fontSize:20}}>
                             {sex !== undefined? "Sex: "+sex : ""}
                         </Text>
-                    </Card>
+                    </Section>
                 )
             }
         }
 
         return(
             <SafeAreaView style={{flex:1}}>
-                <TopNavigation title="InfoExchange Result" alignment="center" leftControl={this.props.BackAction()}/>
-                <Card header={DriverHeader}>
+                <TopNavigation title="InfoExchange Result" backButton navigation={this.props.navigation}/>
+                <Section title='Drivers'>
                     {renderDrivers}
-                </Card>
-                <Card header={NonMotoristHeader}>
+                </Section>
+                <Section title='Non Motorists'>
                     {renderNonmotorists}
-                </Card>
-
+                </Section>
             </SafeAreaView>
         )
     }
