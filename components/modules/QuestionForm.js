@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
-import { Divider, Layout, TopNavigation } from '@ui-kitten/components';
+import { Divider, Box} from 'native-base';
 import { styles } from '../../containers/AutoComponentContainer.style';
 import { ScrollView } from 'react-native-gesture-handler';
 import MultiButtonSelector from '../buttonSelectors/MultiButtonSelector';
@@ -236,12 +236,12 @@ const QuestionForm = (props) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <TopNavigation title={`Questions on ${questionDetail.name}`} alignment='center' leftControl={BackAction()} />
+      <TopNavigation title={`Questions on ${questionDetail.name}`} backButton navigation={this.props.navigation} />
       <Divider />
       <ScrollView>
-        <Layout style={styles.content}>
+        <Box style={styles.content}>
           {renderedQuestions}
-        </Layout>
+        </Box>
       </ScrollView>
     </SafeAreaView>
   );
