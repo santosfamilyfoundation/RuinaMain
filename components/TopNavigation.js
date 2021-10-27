@@ -1,5 +1,5 @@
 import React from 'react';
-import { HStack, Divider, Heading, Icon, IconButton, ArrowBackIcon } from 'native-base';
+import { HStack, Divider, Heading, IconButton, ArrowBackIcon } from 'native-base';
 
 const TopNavigation = (props) => {
     const { title, backButton, navigation } = props
