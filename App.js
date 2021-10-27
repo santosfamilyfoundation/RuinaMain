@@ -8,18 +8,6 @@ import { NativeBaseProvider, Center, extendTheme } from 'native-base';
 const store = configureStore()
 
 const App = () => {
-//  const theme = extendTheme({
-//    components: {
-//        Box: {
-//            .section: {
-//                baseStyle: {
-//                    rounded: 'md',
-//                    bg: 'light.300'
-//                }
-//            }
-//        }
-//    }
-//  })
   return (
       <React.Fragment>
         <NativeBaseProvider>
