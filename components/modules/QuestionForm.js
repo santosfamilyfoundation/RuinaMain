@@ -22,6 +22,7 @@ import { updateVehicle } from '../../actions/VehicleAction';
 import { updatePassenger } from '../../actions/PassengerAction';
 import { updateRoad } from '../../actions/RoadAction';
 import { updateResponse } from '../../actions/StoryActions';
+import TopNavigation from '../TopNavigation';
 
 import {questions} from '../../data/questions';
 

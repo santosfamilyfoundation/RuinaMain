@@ -99,6 +99,8 @@ class Home extends Component {
             quiz: this.props.quiz,
         };
 
+        console.log("Vehicle data:", this.props.vehicle.data);
+
         console.log("this.state.filePath:", this.state.filePath);
         console.log("this.state.openOldFile:", this.state.openOldFile);
         const captureState = new backgroundSave(this.state.filePath, this.state.openOldFile);
