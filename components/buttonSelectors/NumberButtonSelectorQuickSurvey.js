@@ -40,7 +40,7 @@ const NumberButtonSelectorQuickSurvey = (props) => {
         } else{
             updateResponse && updateResponse({id, question: currId, selection: val})
         }
-        submitFunction({id, question: currId, selection: val});
+        submitFunction(val);
     }
 
     const renderSingleButton = (num) => {
@@ -52,7 +52,6 @@ const NumberButtonSelectorQuickSurvey = (props) => {
     const renderButtons = () => {
         let buttons = [];
         for (let i = startRange; i <= endRange; i++) {
-            console.log(i);
             let button;
             if (i == 0) {
                 button = renderSingleButton("None");
