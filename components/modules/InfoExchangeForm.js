@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { View, SegmentedControlIOSComponent } from 'react-native';
-import { Button, TopNavigation, TopNavigationAction, Icon } from '@ui-kitten/components';
+import { Button } from 'native-base';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
 import OperatorForm from './OperatorForm';
 import { updateDriver } from '../../actions/DriverAction';
 import { updateNonmotorist } from '../../actions/NonmotoristAction';
 import { ScrollView } from 'react-native-gesture-handler';
+import TopNavigation from '../TopNavigation';
+import IconButton from '../IconButton';
+import Icon from 'react-native-vector-icons/MaterialIcons'
+
 
 class InfoExchangeForm extends Component{
     constructor(props){
@@ -50,7 +54,11 @@ class InfoExchangeForm extends Component{
 
         return(
             <SafeAreaView style={{flex: 1}}>
-                <TopNavigation title='Info Exchange' style = {{marginBottom: 15}} alignment='center' leftControl={this.props.BackAction()} rightControls = {rightControls()}/>
+                <TopNavigation title='Info Exchange' backButton navigation={this.props.navigation}>
+                    <IconButton text={''}
+                        onPress={() => this.props.navigation.navigate('InfoExchange')}
+                        icon={<Icon name="email" size={50}/>}/>
+                </TopNavigation>
                     <ScrollView>
                         {operatorListArr}
                     </ScrollView>
