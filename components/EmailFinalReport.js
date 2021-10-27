@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { TextInput, StyleSheet, Alert, View, Dimensions } from 'react-native';
-import { Input, Button } from 'native-base';
+import { StyleSheet, Alert, View, Dimensions } from 'react-native';
+import { Input, Button, Text } from 'native-base';
 //import {TopNavigation, Card, CardHeader, Text, Button} from '@ui-kitten/components';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
@@ -164,15 +164,6 @@ export class EmailFinalReport extends Component {
                 onChangeText = {this.changeFilename}
             />
         </Section>
-/*        <Card id="filenameInput" header={FilenameHeader}>
-            <TextInput id="filenameTextInput"
-               style = {styles.input}
-               underlineColorAndroid = "transparent"
-               autoCapitalize = "none"
-               defaultValue = {this.state.filename}
-               onChangeText = {this.changeFilename}
-               />
-        </Card> */
 
         {this.state.isPDF &&
           <View style={styles.container}>
