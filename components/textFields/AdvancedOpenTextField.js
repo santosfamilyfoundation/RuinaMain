@@ -1,14 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Input, Layout, Text, Card, Button, Modal, CardHeader, Icon, ListItem, CheckBox } from '@ui-kitten/components';
-import { View, Image } from 'react-native';
-import ImageSelector from '../image/imgIndex';
+//import { Input, Layout, Text, Card, Button, Modal, CardHeader, Icon, ListItem, CheckBox } from '@ui-kitten/components';
+import { Input, Text, HStack } from 'native-base';
 import { styles } from './AdvancedOpenTextField.style';
 import { updateRoad } from '../../actions/RoadAction';
 import * as Constants from '../../constants';
 import vinValidator from 'vin-validator';
 import { dependencyParser } from '../../utils/dependencyHelper';
-import TooltipView from '../Tooltip.js';
+import TooltipView from '../Tooltip';
+import Section from '../Section';
+import IconButton from '../IconButton';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 //This component is used for "advanced" tool access (map, photo, VIN, and time)
 
@@ -161,46 +163,30 @@ const AdvancedOpenTextField = (props) => {
         <Icon {...style} name='clock-outline'  />
     );
 
-    const CheckIcon = (style) => (
-        <Icon {...style} name='checkmark-outline' />
-    );
-
-    const renderClear = (style) => (
-        <Icon {...style} name='close-outline'/>
-    );
 
     const RenderHeaderIcon = () => {
         switch(importFrom) {
             case "map":
                 return (
-                    <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={MapIcon} onPress={()=> onImportMapPress() }></Button>
+                    <IconButton icon={MapIcon} onPress={()=> onImportMapPress() } size={50}/>
                 )
             case "driverIDCamera":
                 return (
-                    <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={CameraIcon} onPress={()=> onImportCameraPress() }></Button>
+                    <IconButton icon={CameraIcon} onPress={()=> onImportCameraPress() } size={50}/>
                 )
             case "plateCamera":
                 return (
-                    <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={CameraIcon} onPress={()=> onImportCameraPress() }></Button>
+                    <IconButton icon={CameraIcon} onPress={()=> onImportCameraPress() } size={50}/>
                 )
             case "VINCamera":
                 return (
-                    <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={CameraIcon} onPress={()=> onImportCameraPress() }></Button>
+                    <IconButton icon={CameraIcon} onPress={()=> onImportCameraPress() } size={50}/>
                 )
             case "time":
                 return (
-                    <Button style={styles.importButton} appearance={advancedButtonAppearance} icon={ClockIcon} onPress={()=> onImportTimePress() }></Button>
+                    <IconButton icon={ClockIcon} onPress={()=> onImportTimePress() } size={50}/>
                 )
         }
-    }
-
-    const CustomCardHeader = () => {
-        return (
-            <CardHeader
-                title={data.question}
-                accessory={RenderHeaderIcon}
-            />
-        )
     }
 
     //Updates color status of card
@@ -210,69 +196,21 @@ const AdvancedOpenTextField = (props) => {
         status = 'success'
     }
 
-    const ModalContent = () => {
-        if (data.helperImg != null ){
-            var img = new ImageSelector()
-            const src = img.pathHandler(data.helperImg)
-            return (
-                <View style={styles.imgContainer}>
-                    <Layout style={styles.modalContent}>
-                        <Text>{data.tooltip}</Text>
-                        <Image source={src} style={styles.img}/>
-                    </Layout>
-                </View>
-            )
-        }else{
-            return(
-                <Layout style={styles.modalContent}>
-                    <Text>{data.tooltip}</Text>
-                </Layout>
-            )
-        }
-    };
-
      const HelperTooltip = () => {
-            if (data.helperText != null && (data.tooltip != null||data.helperImg!=null)){
-                return (
-                    <TooltipView data={data} />
-                )
-            }
-            else if (data.helperText != null) {
-                return (<Text style={styles.helperText}>{data.helperText}</Text>)
-            }
-            else if (data.tooltip != null || data.helperImg != null) {
-                return (
-                    <TooltipView data={data} />
-                )
-            } else {
-                return null;
-            }
+            return (
+                <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
+            )
     }
-
-    const InfoIcon = (props) => (
-        <Icon {...props} name='info'/>
-    );
-    const CloseIcon = (props) => (
-        <Icon {...props} name='close-outline'/>
-    );
-
-    const toggleModal = () => {
-        setVisible(!visible);
-    };
 
     const ErrorMsg = () => {
         if(invalidLength) {
             return(
-                <Text>
-                    Too long!
-                </Text>
+                    'Too long!'
             )
         }
         if(invalidVin) {
           return(
-            <Text style={{color:'red'}}>
-              Warning: Invalid VIN
-            </Text>
+              'Warning: Invalid VIN'
           )
         }
         return null;
@@ -281,36 +219,27 @@ const AdvancedOpenTextField = (props) => {
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
-            <Layout key={key} style={styles.container}>
-                <Card status={status} header={CustomCardHeader}>
-                    <Layout style={styles.content}>
-                        {HelperTooltip()}
-                        <Layout style={styles.input}>
-                            <Input
-                                style={styles.inputField}
-                                icon={renderClear}
-                                onIconPress={() => clearField()}
-                                placeholder='Place your Text'
-                                value={value}
-                                onChangeText={onTextChange}
-                            />
-                            <Button
-                                style={styles.submitButton}
-                                appearance={buttonAppearance}
-                                size='medium'
-                                icon={CheckIcon}
-                                onPress={() => submitField()}
-                            />
-                        </Layout>
-                        {ErrorMsg()}
-                    </Layout>
-                </Card>
-            </Layout>
+            <Section key={key}
+                title={data.question}
+                isForm
+                helperText={data.helperText}
+                errorMessage={ErrorMsg()}
+            >
+                {HelperTooltip()}
+                <HStack>
+                    <Input
+                        placeholder='Place your Text'
+                        value={value}
+                        onChange={onTextChange}
+                    />
+                    {RenderHeaderIcon()}
+                </HStack>
+            </Section>
         )
-    }else{
-        return null
     }
-
+    else {
+        return null;
+    }
 };
 
 const mapDispatchToProps = {
