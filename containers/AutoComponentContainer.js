@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
-import { Text, Divider, Layout, TopNavigation, CardHeader, Card } from '@ui-kitten/components';
+import { VStack } from 'native-base';
 import { styles } from './AutoComponentContainer.style';
 import { ScrollView } from 'react-native-gesture-handler';
 import MultiButtonSelector from '../components/buttonSelectors/MultiButtonSelector';
@@ -11,6 +11,8 @@ import DropDownMultiSelect from '../components/dropdowns/DropDownMultiSelect';
 import LargeTextField from '../components/textFields/LargeTextField';
 import NumberButtonSelector from '../components/buttonSelectors/NumberButtonSelector';
 import {questions} from '../data/questions';
+import TopNavigation from '../components/TopNavigation';
+import Section from '../components/Section'
 
 class AutoComponentContainer extends Component {
   constructor(props) {
@@ -78,15 +80,10 @@ class AutoComponentContainer extends Component {
       const renderedQuestions = questions.subquestions.map(question => (
         renderSingleQuestion(question)
       ));
-      const Header = () => (
-        <CardHeader 
-          title={questions.question}
-        />
-      )
       return (
-        <Card key={questions.id} header={Header} style={styles.card}>
+        <Section key={questions.id} title={questions.question}>
           {renderedQuestions}
-        </Card>
+        </Section>
       );
     }  
 
@@ -100,12 +97,11 @@ class AutoComponentContainer extends Component {
 
     return (
         <SafeAreaView style={styles.container}>
-          <TopNavigation title={this.props.title} alignment='center' leftControl={this.props.BackAction()}/>
-          <Divider/>
+          <TopNavigation title={this.props.title} backButton navigation={this.props.navigation}/>
           <ScrollView>
-            <Layout style={styles.content}>
+            <VStack>
               {renderedQuestions}
-            </Layout>
+            </VStack>
           </ScrollView>
         </SafeAreaView>
     );
