@@ -4,10 +4,10 @@ import { View, Image } from 'react-native';
 import ImageSelector from '../image/imgIndex';
 import Section from '../Section';
 import { TextArea, Box, Text, Icon, VStack } from 'native-base';
-//import { Input, Layout, Text, Card, Button, Modal, CardHeader, Icon } from '@ui-kitten/components';
 import { styles } from './LargeTextField.style';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
+import IconButton from '../IconButton';
 
 
 const LargeTextField = (props) => {
@@ -88,27 +88,11 @@ const LargeTextField = (props) => {
         setIsInvalid(false);
     }
 
-   /* const Header = () => (
-        <CardHeader title={data.question}/>
-    );*/
-    
-    const renderClear = (style) => (
-        <Icon {...style} name='close-outline'/>
-    );
-
     
     if(buttonAppearance == 'outline') {
         status = 'danger'
     } else {
         status = 'success'
-    }
-
-    const CheckIcon = (style) => (
-        <Icon {...style} name='checkmark-outline' />
-    )
-
-    const CloseIcon = (style) => {
-    <Icon {...style} name='checkmark-outline' />
     }
     
    const HelperTooltip = () => {
@@ -116,16 +100,6 @@ const LargeTextField = (props) => {
         <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
     )
     }
-    
-    /*const InfoIcon = (props) => (
-        // <Image source={require('../image/test.jpg')} style={styles.img}/>
-        <Icon {...props} name='info'/>
-    );
-
-
-    const toggleModal = () => {
-        setVisible(!visible);
-    };*/
 
     const ErrorMsg = () => {
         if(isInvalid) {
@@ -149,7 +123,6 @@ const LargeTextField = (props) => {
                         placeholder="Place your text"
                         value={value}
                         onChangeText={onTextChange}/>
-                    <IconButton icon={CheckIcon} onPress={() => submitField()}/>
                 </VStack>
             </Section>
         </Box>
