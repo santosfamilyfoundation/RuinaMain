@@ -158,7 +158,7 @@ const DropDownMultiSelect = (props) => {
             >
                 {HelperTooltip()}
                 <MultiSelect
-                    selectedItems={selectedOption}
+                    selectedItems={selectedOptions}
                     onSelectedItemsChange={(e) => submitField(e)}
                     items={data.answerOptions}
                     uniqueKey={data.question.humanReadableId}
