@@ -4,7 +4,8 @@ import { updateResponse } from '../../actions/StoryActions';
 import { styles } from './DropDownSingleSelect.style';
 import { connect } from 'react-redux';
 import { dependencyParser } from '../../utils/dependencyHelper';
-import TooltipView from '../Tooltip.js';
+import TooltipView from '../Tooltip';
+import Section from '../Section';
 
 const DropDownSingleSelect = (props) => {
     const [selectedOption, setSelectedOption] = React.useState(null);
