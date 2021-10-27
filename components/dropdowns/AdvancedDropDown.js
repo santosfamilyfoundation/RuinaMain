@@ -268,13 +268,6 @@ const AdvancedDropDown = (props) => {
                             multiSelect={true}
                             onSelect={addOption}
                         />
-                        <Button
-                            style={styles.submitButton}
-                            appearance={buttonAppearance}
-                            size='medium'
-                            icon={CheckIcon}
-                            onPress={() => submitField()}
-                        />
                     </Layout>
                 </Layout>
             </Card>

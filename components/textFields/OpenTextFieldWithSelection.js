@@ -171,13 +171,6 @@ const OpenTextFieldWithSelection = (props) => {
                                 value={value}
                                 onChangeText={onTextChange}
                             />
-                            <Button
-                                style={styles.submitButton}
-                                appearance={buttonAppearance}
-                                size='medium'
-                                icon={CheckIcon}
-                                onPress={() => submitField()}
-                            />
                         </Layout>
                         <Layout style={styles.answers}>
                             {renderButtons()}
