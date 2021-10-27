@@ -16,7 +16,7 @@ const LargeTextField = (props) => {
     const {data, key, id, questionReducer, submitFunction, dependencyID} = props;
 
     let currId = data.id
-    let status = 'danger'
+    let status
 
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
@@ -50,43 +50,63 @@ const LargeTextField = (props) => {
         }
     }
 
+    const debounceValidation = (func, timeout) => {
+    let timer;
+      return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => { func.apply(this, args); }, timeout);
+      };
+    }
+
+    const processChange = debounceValidation(() => validateInput());
+
+    const validateInput = () => {
+          if(value.length <= 500 && value.length != null) {
+              status = 'success'
+              setButtonAppearance('filled')
+          }
+//        if(value.length > 300) {
+//            console.log('it is actually going here')
+//             status = 'danger'
+//             setButtonAppearance('outline')
+//        } else if(value.length <= 300) {
+//            setButtonAppearance('filled');
+//            console.log('It should turn to success')
+//            status = 'success'
+//            console.log(status)
+//        }
+//        if(!value && buttonAppearance != 'outline') {
+//            console.log('whoops this is also happening')
+//            setButtonAppearance('outline');
+//            status = 'danger'
+//        } else if(existingData != null) {
+//        console.log('whoops this is also happening 2')
+//            if(value != existingData[currId] && buttonAppearance != 'outline') {
+//                console.log('whoops this is also happening 3')
+//                setButtonAppearance('outline');
+//                status = 'danger'
+//            }
+//        }
+    }
     const submitField = () => {
+        console.log(value)
         if(!value) {
             return;
         }
+        console.log('please work')
         submitFunction({id, question: currId, selection: value})
-        if(value.length > 300) {
-            console.log('it is actually going here')
-             status = 'danger'
-             setButtonAppearance('outline')
-        } else if(value.length <= 300) {
-            setButtonAppearance('filled');
-            console.log('It should turn to success')
-            status = 'success'
-            console.log(status)
-            return status
-        }
-        if(!value && buttonAppearance != 'outline') {
-            console.log('whoops this is also happening')
-            setButtonAppearance('outline');
-            status = 'danger'
-        } else if(existingData != null) {
-        console.log('whoops this is also happening 2')
-            if(value != existingData[currId] && buttonAppearance != 'outline') {
-                console.log('whoops this is also happening 3')
-                setButtonAppearance('outline');
-                status = 'danger'
-            }
-        }
+        {processChange()}
     }
-            const onTextChange = (text) => {
-                status = 'danger'
-                if(!text) {
-                    submitFunction({id, question: currId, selection: null})
-                }
-                setValue(text);
-                {submitField()}
-            }
+
+    const onTextChange = (text) => {
+        console.log(value.length)
+        status = 'danger'
+        if(!text) {
+            submitFunction({id, question: currId, selection: null})
+        }
+        setValue(text);
+        {submitField()}
+    }
 
     const clearField = () => {
         console.log('is it even reaching here')
