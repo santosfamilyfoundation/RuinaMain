@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Input, Button, VStack, IconButton, CloseIcon } from 'native-base';
-//import { Input, Layout, Text, Card, Button, Modal, CardHeader, Icon} from '@ui-kitten/components';
+import { Input, Button, VStack, IconButton, CloseIcon, Text } from 'native-base';
 import { styles } from './OpenTextField.style';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
@@ -73,53 +72,30 @@ const OpenTextField = (props) => {
         status = 'success'
     }
 
-//    const CheckIcon = (style) => (
-//        <Icon {...style} name='checkmark-outline' />
-//    )
-
     
     const HelperTooltip = () => {
         return (
             <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
         )
     }
-
-//    const ErrorMsg = () => {
-//        if(isInvalid) {
-//            return(
-//                <Text>
-//                    Too long!
-//                </Text>
-//            )
-//        }
-//        return null;
-//    };
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
-        <Section
-            key={key}
-            title={data.question}
-            isForm
-            helperText={data.helperText}>
-            errorMessage={'Maximum Character Input Exceeded'}
-            isInvalid={isInvalid}
-        >
-            {HelperTooltip()}
-            <Input
-                placeholder='Place your Text'
-                value={value}
-                onChange={onTextChange}
-                InputRightElement={
-                    <IconButton
-                        icon={<CloseIcon name='close'/>}
-                        onPress={clearField()}
-                    />
-                }
-            />
-        </Section>
+            <Section
+                key={key}
+                title={data.question}
+                isForm
+                helperText={data.helperText}
+                errorMessage='Maximum Character Input Exceeded'
+                isInvalid={isInvalid}
+            >
+                {HelperTooltip()}
+                <Input placeholder="Place your text"
+                   value={value}
+                   onChangeText={onTextChange} />
+            </Section>
         )
-    }else{
+    } else{
         return null
     }
 };
