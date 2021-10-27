@@ -80,17 +80,6 @@ const MultiButtonSelectorQuickSurvey = (props) => {
                 {renderButtons()}
             </Section>
         </React.Fragment>
-       /* <Layout key={data.id} style={styles.container}>
-            <Card header={Header}>
-                <Layout style={styles.content}>
-                    <Layout style={styles.input}>
-                        <Layout style={styles.answers}>
-                            {renderButtons()}
-                        </Layout>
-                    </Layout>
-                </Layout>
-            </Card>
-        </Layout> */
         )
     } else {
         return null
