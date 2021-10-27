@@ -36,8 +36,10 @@ const QuestionForm = (props) => {
     updateRoad,
     BackAction,
     navigation,
-    updateResponse
+    updateResponse,
   } = props
+
+  console.log(props)
 
   // filter question information based on section type
   const filterQuestionsData = (questionType) => {
@@ -234,10 +236,9 @@ const QuestionForm = (props) => {
       const dom = renderSingleQuestion(item.answerType, questionProps(item.answerType, obj));
       return dom
     });
-
   return (
     <SafeAreaView style={styles.container}>
-      <TopNavigation title={`Questions on ${questionDetail.name}`} backButton navigation={this.props.navigation} />
+      <TopNavigation title={`Questions on ${questionDetail.name}`} backButton navigation={navigation}/>
       <Divider />
       <ScrollView>
         <Box style={styles.content}>
