@@ -41,16 +41,12 @@ class QuickSurvey extends Component {
             loading: true, //loading screen
             autosavedFilePath: this.props.navigation.getParam('selectedFile')
           };
-          console.log("SelectedFile parameter passed to QuickSurvey:", this.props.navigation.getParam('selectedFile'));
           this.stateManager = undefined;
     //      this.stateManager = new backgroundSave("");
         }
 
         async componentDidMount(){
-          console.log("autosavedFilePath:", this.state.autosavedFilePath);
-          console.log("autosavedFileSession:", this.state.autoSavedSession);
           this.stateManager = new backgroundSave(this.state.autosavedFilePath.label, this.state.autoSavedSession);
-          console.log("State manager path in Quick Survey: ", this.stateManager.path);
           if (this.state.autoSavedSession && !this.state.loadedAutoSave) {
             await this.loadStateFromJSON();
           } else {
@@ -217,10 +213,12 @@ class QuickSurvey extends Component {
 
              // contains the state from the QuickQuizReducer
              const quiz = this.props.quiz;
+             console.log('quiz from reducer:', quiz);
 
              // gets called from moveHome
              const dispatchAll = () => {
                // add as many nonmotorists as user inputs
+               console.log('quiz.numNonmotorist:', quiz.numNonmotorist);
                addNonmotorist(quiz.numNonmotorist);
                // add road with pre-populated questions from setup questions in questions.js
                addRoad({ setupData: quiz["setupData"], roadID: uuid.v1()});
@@ -236,7 +234,6 @@ class QuickSurvey extends Component {
 
              // gets called when user clicks continue button
              const moveHome = () => {
-               console.log('filepath being sent to home screen:', this.stateManager.path);
                if (quiz.hasResponded){
                  this.props.navigation.navigate('Home', {edit: false,
                                               filePath: this.stateManager.path,

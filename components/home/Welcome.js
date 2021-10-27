@@ -102,7 +102,6 @@ class Welcome extends Component {
                                             selectedFile: result.selectedItem,
                                             autoSavedSession: true });
 
-                            console.log("Selected item from material dialog:", result.selectedItem);
                             this.props.navigation.navigate('Survey', {autoSavedSession: true, selectedFile: result.selectedItem});
                         }}
 

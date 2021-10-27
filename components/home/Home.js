@@ -31,10 +31,6 @@ class Home extends Component {
             filePath: this.props.navigation.getParam('filePath'),
             openOldFile: this.props.navigation.getParam('openOldFile')
         }
-
-        console.log(this.props.navigation);
-        console.log("File Path in Home screen:", this.props.navigation.getParam('filePath'))
-        console.log("Open old file in Home screen:", this.props.navigation.getParam('openOldFile'));
     }
 
 
@@ -99,10 +95,6 @@ class Home extends Component {
             quiz: this.props.quiz,
         };
 
-        console.log("Vehicle data:", this.props.vehicle.data);
-
-        console.log("this.state.filePath:", this.state.filePath);
-        console.log("this.state.openOldFile:", this.state.openOldFile);
         const captureState = new backgroundSave(this.state.filePath, this.state.openOldFile);
         captureState.captureCurrentState(JSON.stringify(data));
 

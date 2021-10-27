@@ -12,7 +12,7 @@ const NumberButtonSelectorQuickSurvey = (props) => {
     const [selection, setSelection] = React.useState('');
     const {title, data, id, submitFunction, genericReducer, fieldName, updateResponse, dependencyID, startRange, endRange} = props;
 
-//    let currId = id
+//    let currId = data.id;
 
 //    if(genericReducer[fieldName] != null & selection != genericReducer[fieldName]) {
 //        setSelection(genericReducer[fieldName]);
