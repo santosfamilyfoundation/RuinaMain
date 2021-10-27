@@ -58,54 +58,48 @@ const LargeTextField = (props) => {
       };
     }
 
-    const processChange = debounceValidation(() => validateInput());
+//    const processChange = debounceValidation((text) => validateInput(text), 10000);
 
-    const validateInput = () => {
-          if(value.length <= 500 && value.length != null) {
-              status = 'success'
+    const validateInput = (text) => {
+          console.log('this is where text goes: ', text)
+//          setValue(text)
+          console.log('this is where value goes: ', value)
+          submitFunction({id, question: currId, selection: null})
+          if(!value){
+            console.log('this sucks')
+            return;
+          }
+          if(value.length <= 500) {
+              console.log('Fuck Jack Mao')
+//              status = 'success'
               setButtonAppearance('filled')
           }
-//        if(value.length > 300) {
-//            console.log('it is actually going here')
-//             status = 'danger'
-//             setButtonAppearance('outline')
-//        } else if(value.length <= 300) {
-//            setButtonAppearance('filled');
-//            console.log('It should turn to success')
-//            status = 'success'
-//            console.log(status)
-//        }
-//        if(!value && buttonAppearance != 'outline') {
-//            console.log('whoops this is also happening')
-//            setButtonAppearance('outline');
-//            status = 'danger'
-//        } else if(existingData != null) {
-//        console.log('whoops this is also happening 2')
-//            if(value != existingData[currId] && buttonAppearance != 'outline') {
-//                console.log('whoops this is also happening 3')
-//                setButtonAppearance('outline');
-//                status = 'danger'
-//            }
-//        }
+          else{
+            console.log('made it to else')
+            status = 'danger'
+            setButtonAppearance('outline')
+          }
+
+
     }
-    const submitField = () => {
-        console.log(value)
-        if(!value) {
+    const submitField = (text) => {
+        const processChange = debounceValidation((text) => validateInput(text), 500);
+        if(!text) {
             return;
         }
         console.log('please work')
-        submitFunction({id, question: currId, selection: value})
-        {processChange()}
+        processChange(text);
     }
 
     const onTextChange = (text) => {
-        console.log(value.length)
-        status = 'danger'
+        console.log('this is text',text)
         if(!text) {
             submitFunction({id, question: currId, selection: null})
         }
+        submitField(text)
+        submitFunction({id, question: currId, selection: null})
         setValue(text);
-        {submitField()}
+        console.log('This is value: ', value)
     }
 
     const clearField = () => {
@@ -174,13 +168,13 @@ const LargeTextField = (props) => {
                             onIconPress={() => clearField()}
                             placeholder='Place your Text'
                             value={value}
-                            onChangeText={onTextChange}
+                            onChangeText={(text) => onTextChange(text)}
                         />
                         <Button 
                             style={styles.submitButton} 
                             appearance={buttonAppearance}
                             size='medium' 
-                            icon={CheckIcon} 
+                            icon={CheckIcon}
                             onPress={() => submitField()}
                         />
                     </Layout>
