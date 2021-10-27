@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { View, Image } from 'react-native';
-import { Box, Text } from 'native-base';
+import { Box, Text, VStack, Button, HStack } from 'native-base';
 import Section from '../Section';
 //import { Layout, Text, Card, Button, Modal, CardHeader, Icon } from '@ui-kitten/components';
 import ImageSelector from '../image/imgIndex';
@@ -104,7 +104,9 @@ const MultiButtonSelector = (props) => {
     const renderButtons = () => {
         let res = data.answerOptions.map(option => (renderSingleButton(option)));
         return (
-            res
+            <HStack>
+                {res}
+            </HStack>
         );
     }
 
@@ -112,25 +114,13 @@ const MultiButtonSelector = (props) => {
     if (renderComponent){
         return(
             <Box>
-                <Section title={data.question}>
+                <Section key={key} title={data.question} isForm helperText={data.helperText}>
                     <VStack>
                     {HelperTooltip()}
                     {renderButtons()}
                     </VStack>
                 </Section>
             </Box>
-            /*<Layout key={key} style={styles.container}>
-                <Card header={Header} status={status}>
-                    <Layout style={styles.content}>
-                        {HelperTooltip()}
-                        <Layout style={styles.input}>
-                            <Layout style={styles.answers}>
-                                {renderButtons()}
-                            </Layout>
-                        </Layout>
-                    </Layout>
-                </Card>
-            </Layout>*/
         )
     }else{
         return null
