@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Input, Button } from 'native-base';
-//import { Input, Layout, Text, Card, Modal, Button, CardHeader, Icon } from '@ui-kitten/components';
+import { Input, Button, HStack } from 'native-base';
 import { styles } from './OpenTextFieldWithSelection.style';
 import { updateResponse } from '../../actions/StoryActions';
 import { dependencyParser } from '../../utils/dependencyHelper';
@@ -61,12 +60,6 @@ const OpenTextFieldWithSelection = (props) => {
         setButtonAppearance('outline');
     }
 
-    // const onSelectOption = () => {
-    //   setValue('Uninsured');
-    //   submitFunction({id, question: currId, selection: 'Uninsured'});
-    //   setButtonAppearance('filled');
-    // }
-
     const onSelectOneOption = (option) => {
       setValue(option.text);
       submitFunction({id, question: currId, selection: option.text});
@@ -87,14 +80,6 @@ const OpenTextFieldWithSelection = (props) => {
     } else if(isInvalid && value.length <= data.maxLength) {
         setIsInvalid(false);
     }
-//
-//    const Header = () => (
-//        <CardHeader title={data.question}/>
-//    );
-
-//    const renderClear = (style) => (
-//        <Icon {...style} name='close-outline'/>
-//    );
 
     if(buttonAppearance == 'outline') {
         status = 'danger'
@@ -102,9 +87,6 @@ const OpenTextFieldWithSelection = (props) => {
         status = 'success'
     }
 
-//    const CheckIcon = (style) => (
-//        <Icon {...style} name='checkmark-outline' />
-//    )
     
     const HelperTooltip = () => {
         return (
@@ -118,7 +100,6 @@ const OpenTextFieldWithSelection = (props) => {
           <Button
               key={option.idCode}
               style={styles.answerButton}
-              /*appearance={appearance}*/
               onPress={() => onSelectOneOption(option)}
           >
               {option.text}
@@ -149,20 +130,7 @@ const OpenTextFieldWithSelection = (props) => {
                     placeholder='Place your Text'
                     value={value}
                     onChange={onTextChange}
-                    InputRightElement={
-                        <IconButton
-                            icon={<CloseIcon name='close'/>}
-                            onPress={clearField()}
-                        />
-                    }
                 />
-                /*<Button
-                    style={styles.submitButton}
-                    appearance={buttonAppearance}
-                    size='medium'
-                    icon={CheckIcon}
-                    onPress={() => submitField()}
-                />*/
                 <HStack>
                     {renderButtons()}
                 </HStack>
