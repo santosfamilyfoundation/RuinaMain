@@ -8,13 +8,13 @@ const Section = (props) => {
         <Box>
             {isForm ?
                 <FormControl isInvalid={props.isInvalid}>
-                <FormControl.Label bold fontSize='xl'>{title}</FormControl.Label>
-                <Divider/>
-                <VStack>
-                    <FormControl.HelperText>{props.helperText}</FormControl.HelperText>
-                    <FormControl.ErrorMessage>{props.errorMessage}</FormControl.ErrorMessage>
-                    {props.children}
-                </VStack>
+                    <FormControl.Label bold fontSize='xl'>{title}</FormControl.Label>
+                    <Divider/>
+                    <VStack>
+                        <FormControl.HelperText>{props.helperText}</FormControl.HelperText>
+                        <FormControl.ErrorMessage>{props.errorMessage}</FormControl.ErrorMessage>
+                        {props.children}
+                    </VStack>
                 </FormControl>
                 :
                 <>
