@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { View, Image } from 'react-native';
 import { styles } from './Tooltip.style';
 import ImageSelector from './image/imgIndex';
-import { Box, VStack, Input, Text, Button, Modal } from 'native-base';
+import { Box, VStack, Input, Text, Button, Modal, HStack } from 'native-base';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Section from './Section';
 import IconButton from './IconButton'
@@ -13,7 +13,7 @@ const TooltipView = (props) => {
     const [visible, setVisible] = React.useState(false);
     const[toolTipText, setToolTipText] = React.useState(toolTip ? true: false);
     const InfoIcon = (props) => (
-        <Icon name="help"/>
+        <Icon name="help" color='white' size={25}/>
     )
 
     const CloseIcon = (style) => (
@@ -51,12 +51,20 @@ const TooltipView = (props) => {
         <VStack>
             {toolTipText ?
             <>
-                <IconButton onPress={toggleModal} icon={InfoIcon} text='Have a Question'/>
-                <Modal visible={visible}>
-                    <VStack>
-                        {ModalContent()}
-                        <IconButton onPress={() => setVisible(false)} icon={CloseIcon}/>
-                    </VStack>
+                <IconButton onPress={toggleModal} icon={InfoIcon()}/>
+                <Modal isOpen={visible} onClose={() => setVisible(false)} size='lg'>
+                    <Modal.Content>
+                        <Modal.CloseButton />
+                        <Modal.Header>
+                            <HStack>
+                                <Icon name="help" size={15}/>
+                                <Text>Tooltip</Text>
+                            </HStack>
+                        </Modal.Header>
+                        <Modal.Body>
+                            {ModalContent()}
+                        </Modal.Body>
+                    </Modal.Content>
                 </Modal>
             </> : null}
         </VStack>
