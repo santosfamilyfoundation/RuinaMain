@@ -163,7 +163,7 @@ const AdvancedDropDown = (props) => {
     }
 
     const WeatherIcon = (style) => (
-        <Icon name='wb-sunny' />
+        <Icon name='wb-sunny' color='white' size={25}/>
     );
 
     const onImportWeatherPress = () => {
@@ -181,7 +181,7 @@ const AdvancedDropDown = (props) => {
         switch(importFrom) {
             case "weather":
                 return (
-                    <IconButton icon={WeatherIcon} onPress={()=> onImportWeatherPress() }/>
+                    <IconButton icon={WeatherIcon()} onPress={()=> onImportWeatherPress() }/>
                 )
         }
     }

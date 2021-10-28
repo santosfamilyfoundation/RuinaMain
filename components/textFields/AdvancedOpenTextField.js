@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-//import { Input, Layout, Text, Card, Button, Modal, CardHeader, Icon, ListItem, CheckBox } from '@ui-kitten/components';
 import { Input, Text, HStack } from 'native-base';
 import { styles } from './AdvancedOpenTextField.style';
 import { updateRoad } from '../../actions/RoadAction';
@@ -11,6 +10,7 @@ import TooltipView from '../Tooltip';
 import Section from '../Section';
 import IconButton from '../IconButton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 
 //This component is used for "advanced" tool access (map, photo, VIN, and time)
 
@@ -151,16 +151,16 @@ const AdvancedOpenTextField = (props) => {
 
     //Icons from Eva Icons: https://akveo.github.io/eva-icons/#/
 
-    const MapIcon = (style) => (
-        <Icon {...style} name='map-outline'  />
+    const MapIcon = () => (
+        <Icon name='map-outline' color='white' size={25} />
     );
 
-    const CameraIcon = (style) => (
-        <Icon {...style} name='camera-outline'  />
+    const CameraIcon = () => (
+        <Icon name='camera-outline' color='white' size={25} />
     );
 
-    const ClockIcon = (style) => (
-        <Icon {...style} name='clock-outline'  />
+    const ClockIcon = () => (
+        <Icon name='clock-outline' color='white' size={25} />
     );
 
 
@@ -168,23 +168,23 @@ const AdvancedOpenTextField = (props) => {
         switch(importFrom) {
             case "map":
                 return (
-                    <IconButton icon={MapIcon} onPress={()=> onImportMapPress() } size={50}/>
+                    <IconButton icon={MapIcon()} onPress={()=> onImportMapPress()}/>
                 )
             case "driverIDCamera":
                 return (
-                    <IconButton icon={CameraIcon} onPress={()=> onImportCameraPress() } size={50}/>
+                    <IconButton icon={CameraIcon()} onPress={()=> onImportCameraPress()}/>
                 )
             case "plateCamera":
                 return (
-                    <IconButton icon={CameraIcon} onPress={()=> onImportCameraPress() } size={50}/>
+                    <IconButton icon={CameraIcon()} onPress={()=> onImportCameraPress()}/>
                 )
             case "VINCamera":
                 return (
-                    <IconButton icon={CameraIcon} onPress={()=> onImportCameraPress() } size={50}/>
+                    <IconButton icon={CameraIcon()} onPress={()=> onImportCameraPress()}/>
                 )
             case "time":
                 return (
-                    <IconButton icon={ClockIcon} onPress={()=> onImportTimePress() } size={50}/>
+                    <IconButton icon={ClockIcon()} onPress={()=> onImportTimePress()}/>
                 )
         }
     }
@@ -205,7 +205,7 @@ const AdvancedOpenTextField = (props) => {
     const ErrorMsg = () => {
         if(invalidLength) {
             return(
-                    'Too long!'
+                'Too long!'
             )
         }
         if(invalidVin) {
