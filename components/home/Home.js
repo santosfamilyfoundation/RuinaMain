@@ -138,8 +138,6 @@ class Home extends Component {
             )
         })
 
-        console.log(nonmotoristListArr.length)
-
         const rightControls = () => {
             const { edit } = this.state;
             return(
