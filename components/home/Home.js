@@ -138,6 +138,8 @@ class Home extends Component {
             )
         })
 
+        console.log(nonmotoristListArr.length)
+
         const rightControls = () => {
             const { edit } = this.state;
             return(
@@ -194,18 +196,23 @@ class Home extends Component {
                         />
                         }
                     </VStack>
-                    <VStack>
-                        <Section title='Non-motorists'>
-                            <HStack>
-                                {nonmotoristListArr}
-                            </HStack>
-                        </Section>
-                        {this.state.edit &&
+                    {this.state.edit ?
+                    <Section title='Non-motorists'>
+                        <HStack>
+                            {nonmotoristListArr}
+                        </HStack>
                         <IconButton text="Add Non-Motorist"
                             onPress = {() => this._addNonmotorist()}
                             icon = {<Icon name="person-add" size={50}/>}
-                        />}
-                    </VStack>
+                        />
+                    </Section> :
+                    nonmotoristListArr.length ?
+                    <Section title='Non-motorists'>
+                        <HStack>
+                            {nonmotoristListArr}
+                        </HStack>
+                    </Section> : null
+                    }
                 </ScrollView>
             </VStack>
         );
