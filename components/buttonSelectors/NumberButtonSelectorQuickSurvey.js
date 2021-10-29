@@ -6,7 +6,7 @@ import {styles} from './NumberButtonSelector.style'
 import { ScrollView } from 'react-native-gesture-handler';
 import TooltipView from '../Tooltip.js';
 import { View } from 'react-native';
-import Section from '../Section';
+import QuestionSection from '../QuestionSection';
 
 const NumberButtonSelectorQuickSurvey = (props) => {
     const [selection, setSelection] = React.useState('');
@@ -69,9 +69,9 @@ const NumberButtonSelectorQuickSurvey = (props) => {
     }
 
     return (
-        <Section title={title}>
+        <QuestionSection title={title}>
             {renderButtons()}
-        </Section>
+        </QuestionSection>
     )
 }
 

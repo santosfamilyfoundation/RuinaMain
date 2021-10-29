@@ -7,7 +7,7 @@ import { Box, VStack, Text, IconButton } from 'native-base';
 import { styles } from './AutoCompleteDropDown.style';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
-import Section from '../Section';
+import QuestionSection from '../QuestionSection';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const QuestionAutoCompleteDropDown = (props) => {
@@ -132,7 +132,7 @@ const QuestionAutoCompleteDropDown = (props) => {
     if (renderComponent) {
         return(
         <Box>
-            <Section title={data.question}>
+            <QuestionSection title={data.question}>
                 <VStack>
                     {HelperTooltip()}
                     <AutocompleteDropdown
@@ -146,7 +146,7 @@ const QuestionAutoCompleteDropDown = (props) => {
                     />
                     <IconButton icon={CheckIcon} onPress={() => submitField()}/>
                 </VStack>
-            </Section>
+            </QuestionSection>
         </Box>
         /*<Layout key={key} style={styles.container}>
             <Card header={Header} status={status}>

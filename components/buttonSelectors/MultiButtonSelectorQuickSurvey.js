@@ -6,7 +6,7 @@ import ImageSelector from '../image/imgIndex';
 import { styles } from './MultiButtonSelectorQuickSurvey.style';
 import TooltipView from '../Tooltip.js';
 import { dependencyParser } from '../../utils/dependencyHelper';
-import Section from '../Section';
+import QuestionSection from '../QuestionSection';
 
 const MultiButtonSelectorQuickSurvey = (props) => {
   const [visible, setVisible] = React.useState(false);
@@ -76,9 +76,9 @@ const MultiButtonSelectorQuickSurvey = (props) => {
     if (renderComponent){
         return(
         <React.Fragment>
-            <Section title={data.question}>
+            <QuestionSection title={data.question}>
                 {renderButtons()}
-            </Section>
+            </QuestionSection>
         </React.Fragment>
         )
     } else {

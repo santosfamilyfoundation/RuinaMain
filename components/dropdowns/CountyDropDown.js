@@ -3,7 +3,7 @@ import { updateResponse } from '../../actions/StoryActions';
 import { styles } from './DropDownSingleSelect.style';
 import { connect } from 'react-redux';
 import { deleteRoadSingleResponse } from '../../actions/RoadAction';
-import Section from '../Section';
+import QuestionSection from '../QuestionSection';
 import MultiSelect from 'react-native-multiple-select';
 import TooltipView from '../Tooltip';
 
@@ -126,10 +126,9 @@ const CountyDropDown = (props) => {
 
 
     return (
-        <Section
+        <QuestionSection
             key={key}
             title={data.question}
-            isForm
             helperText={data.helperText}
         >
             {HelperTooltip()}
@@ -141,7 +140,7 @@ const CountyDropDown = (props) => {
                 items={countyOptions}
                 uniqueKey={data.question.humanReadableId}
             />
-        </Section>
+        </QuestionSection>
     );
 };
 
