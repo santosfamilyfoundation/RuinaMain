@@ -181,7 +181,7 @@ const AdvancedDropDown = (props) => {
         switch(importFrom) {
             case "weather":
                 return (
-                    <IconButton icon={WeatherIcon()} onPress={()=> onImportWeatherPress() }/>
+                    <IconButton leftMargin={4} icon={WeatherIcon()} onPress={()=> onImportWeatherPress() }/>
                 )
         }
     }

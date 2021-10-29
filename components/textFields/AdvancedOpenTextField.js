@@ -168,23 +168,23 @@ const AdvancedOpenTextField = (props) => {
         switch(importFrom) {
             case "map":
                 return (
-                    <IconButton icon={MapIcon()} onPress={()=> onImportMapPress()}/>
+                    <IconButton leftMargin={4} icon={MapIcon()} onPress={()=> onImportMapPress()}/>
                 )
             case "driverIDCamera":
                 return (
-                    <IconButton icon={CameraIcon()} onPress={()=> onImportCameraPress()}/>
+                    <IconButton leftMargin={4} icon={CameraIcon()} onPress={()=> onImportCameraPress()}/>
                 )
             case "plateCamera":
                 return (
-                    <IconButton icon={CameraIcon()} onPress={()=> onImportCameraPress()}/>
+                    <IconButton leftMargin={4} icon={CameraIcon()} onPress={()=> onImportCameraPress()}/>
                 )
             case "VINCamera":
                 return (
-                    <IconButton icon={CameraIcon()} onPress={()=> onImportCameraPress()}/>
+                    <IconButton leftMargin={4} icon={CameraIcon()} onPress={()=> onImportCameraPress()}/>
                 )
             case "time":
                 return (
-                    <IconButton icon={ClockIcon()} onPress={()=> onImportTimePress()}/>
+                    <IconButton leftMargin={4} icon={ClockIcon()} onPress={()=> onImportTimePress()}/>
                 )
         }
     }
