@@ -5,7 +5,7 @@ import { styles } from './DropDownSingleSelect.style';
 import { connect } from 'react-redux';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
-import Section from '../Section';
+import QuestionSection from '../QuestionSection';
 
 const DropDownSingleSelect = (props) => {
     const [selectedOption, setSelectedOption] = React.useState(null);
@@ -80,10 +80,9 @@ const DropDownSingleSelect = (props) => {
     let renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
-            <Section
+            <QuestionSection
                 key={key}
                 title={data.question}
-                isForm
                 helperText={data.helperText}
             >
                 {HelperTooltip()}
@@ -94,7 +93,7 @@ const DropDownSingleSelect = (props) => {
                     items={data.answerOptions}
                     uniqueKey={data.question.humanReadableId}
                 />
-            </Section>
+            </QuestionSection>
         )
     }else{
         return null

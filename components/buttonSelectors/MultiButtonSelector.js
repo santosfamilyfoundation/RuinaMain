@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View, Image } from 'react-native';
 import { Box, Text, VStack, Button, HStack } from 'native-base';
-import Section from '../Section';
+import QuestionSection from '../QuestionSection';
 //import { Layout, Text, Card, Button, Modal, CardHeader, Icon } from '@ui-kitten/components';
 import ImageSelector from '../image/imgIndex';
 import { updateResponse } from '../../actions/StoryActions';
@@ -114,12 +114,12 @@ const MultiButtonSelector = (props) => {
     if (renderComponent){
         return(
             <Box>
-                <Section key={key} title={data.question} isForm helperText={data.helperText}>
+                <QuestionSection key={key} title={data.question} helperText={data.helperText}>
                     <VStack>
                     {HelperTooltip()}
                     {renderButtons()}
                     </VStack>
-                </Section>
+                </QuestionSection>
             </Box>
         )
     }else{

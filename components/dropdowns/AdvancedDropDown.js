@@ -6,7 +6,7 @@ import Geolocation from '@react-native-community/geolocation';
 import { API_KEY } from '../../utils/WeatherAPIKey';
 import * as Constants from '../../constants';
 import TooltipView from '../Tooltip';
-import Section from '../Section';
+import QuestionSection from '../QuestionSection';
 import IconButton from '../IconButton';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import MultiSelect from 'react-native-multiple-select';
@@ -219,10 +219,9 @@ const AdvancedDropDown = (props) => {
 
 
     return (
-        <Section
+        <QuestionSection
             key={key}
             title={data.question}
-            isForm
             helperText={data.helperText}
         >
             {WeatherHelper()}
@@ -237,7 +236,7 @@ const AdvancedDropDown = (props) => {
             />
             {RenderHeaderIcon()}
             </HStack>
-        </Section>
+        </QuestionSection>
     );
 };
 

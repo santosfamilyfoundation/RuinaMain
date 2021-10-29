@@ -6,7 +6,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { View } from 'react-native';
 import { updateResponse } from '../../actions/StoryActions';
 import TooltipView from '../Tooltip';
-import Section from '../Section';
+import QuestionSection from '../QuestionSection';
 
 
 
@@ -33,7 +33,7 @@ const NumberButtonSelector = (props) => {
     }
 
     return (
-        <Section title={data.question}>
+        <QuestionSection title={data.question}>
             {HelperTooltip()}
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={true} contentContainerStyle={styles.container}>
                 <HStack>
@@ -51,7 +51,7 @@ const NumberButtonSelector = (props) => {
                     />
                 </HStack>
             </ScrollView>
-        </Section>
+        </QuestionSection>
     )
 }
 

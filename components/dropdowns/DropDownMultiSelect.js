@@ -5,7 +5,7 @@ import { styles } from './DropDownMultiSelect.style';
 import { connect } from 'react-redux';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
-import Section from '../Section';
+import QuestionSection from '../QuestionSection';
 
 
 const DropDownMultiSelect = (props) => {
@@ -150,10 +150,9 @@ const DropDownMultiSelect = (props) => {
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
-            <Section
+            <QuestionSection
                 key={key}
                 title={data.question}
-                isForm
                 helperText={data.helperText}
             >
                 {HelperTooltip()}
@@ -163,7 +162,7 @@ const DropDownMultiSelect = (props) => {
                     items={data.answerOptions}
                     uniqueKey={data.question.humanReadableId}
                 />
-            </Section>
+            </QuestionSection>
         )
     }else{
         return null
