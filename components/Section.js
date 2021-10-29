@@ -5,7 +5,7 @@ const Section = (props) => {
     const { title } = props;
 
     return (
-        <Box>
+        <Box m={4}>
             <Heading>{title}</Heading>
             <Divider/>
             {props.children}

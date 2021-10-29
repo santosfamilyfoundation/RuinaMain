@@ -38,8 +38,8 @@ class NonMotoristSection extends Component{
         // describes two different nonmotorist cards (edit and non edit modes)
         if (edit) {
           return(
-              <Box>
-                <IconButton onPress = {() => this.setState({beforeDelete:true})} text={`Remove Non-Motorist ${index+1}`} icon={<Icon name='person-remove-alt-1' size={50}/>}/>
+              <Box mt={4}>
+                <IconButton rightMargin={4} onPress = {() => this.setState({beforeDelete:true})} text={`Remove Non-Motorist ${index+1}`} icon={<Icon name='person-remove-alt-1' size={50}/>}/>
 
                 <MaterialDialog
                   title={"Delete Confirmation"}
@@ -60,10 +60,11 @@ class NonMotoristSection extends Component{
           )
         } else {
           return(
-          <Box>
+          <Box mt={4}>
               <IconButton
                 onPress = {() => navigateQuestion(nonmotoristQuestions, nonmotorist.id, 'Nonmotorist', (index+1))}
                 text={`Non-Motorist ${index+1}`}
+                rightMargin={4}
                 icon = {<Icon name='person' size={50}/>}
               />
           </Box>

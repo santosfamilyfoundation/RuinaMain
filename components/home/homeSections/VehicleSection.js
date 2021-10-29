@@ -94,7 +94,7 @@ class VehicleSection extends Component{
             if (!this.state.driverDeleted) {
               if (edit) {
                 return (
-                    <IconButton text={`Remove Passenger ${idx + 1}`}
+                    <IconButton leftMargin={4} text={`Remove Passenger ${idx + 1}`}
                     onPress={() => this.setState({
                     beforePassengerDelete: true,
                     passengerToDelete: passenger.id
@@ -107,7 +107,7 @@ class VehicleSection extends Component{
                 )
               } else {
                 return (
-              <IconButton text={`Passenger ${idx + 1}`}
+              <IconButton leftMargin={4} text={`Passenger ${idx + 1}`}
                 onPress={() =>
                     navigateQuestion(passengerQuestions, passenger.id,
                     'Passenger', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}
@@ -121,7 +121,7 @@ class VehicleSection extends Component{
             } else {
               if (edit) {
                 return (
-                  <IconButton text={`Remove Occupant ${idx + 1}`}
+                  <IconButton leftMargin={4} text={`Remove Occupant ${idx + 1}`}
                   onPress={() => this.setState({
                   beforePassengerDelete: true,
                   passengerToDelete: passenger.id})
@@ -134,7 +134,7 @@ class VehicleSection extends Component{
                 )
               } else {
                 return (
-                    <IconButton text={`Occupant ${idx + 1}`}
+                    <IconButton leftMargin={4} text={`Occupant ${idx + 1}`}
                     onPress={() => navigateQuestion(passengerQuestions, passenger.id, 'Occupant', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}
                     icon={<Icon name="person" size={50}/>}/>
                    /* <Card key={idx} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Occupant', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}>
@@ -151,11 +151,11 @@ class VehicleSection extends Component{
             return(
                 <>
                     <Section title={`${name} ${index + 1}`}>
-                        <HStack>
+                        <HStack mt={4}>
                             {!this.state.driverDeleted && <IconButton onPress={() => this.setState({beforeDriverDelete: true})}
                                 text="Remove Driver" icon={<Icon name="person-remove-alt-1" size={50}/>}/>}
-                            {!this.state.driverDeleted && <IconButton onPress = {this._addPassenger} text="Add Passenger" icon={<Icon name="person-add-alt-1" size={50}/>}/>}
-                            {this.state.driverDeleted && <IconButton onPress = {this._addPassenger} text="Add Occupant" icon={<Icon name="person-add-alt-1" size={50}/>}/>}
+                            {!this.state.driverDeleted && <IconButton leftMargin={4} onPress = {this._addPassenger} text="Add Passenger" icon={<Icon name="person-add-alt-1" size={50}/>}/>}
+                            {this.state.driverDeleted && <IconButton leftMargin={4} onPress = {this._addPassenger} text="Add Occupant" icon={<Icon name="person-add-alt-1" size={50}/>}/>}
                             {passengerListArr}
                         </HStack>
                     </Section>
@@ -238,14 +238,14 @@ class VehicleSection extends Component{
         } else{
             return(
                 <Section title={`${name} ${index + 1}`}>
-                    <HStack>
+                    <HStack mt={4}>
                         <IconButton
                          onPress = {() => navigateQuestion(vehicleQuestions, vehicle.id, 'Vehicle', (index+1), 0, [roadID, vehicle.id])}
                          text={name}
                          icon={<Icon name='local-taxi' size={50}/>}
                          />
                         {!this.state.driverDeleted &&
-                        <IconButton onPress={styles.individualCard} onPress= {() => navigateQuestion(driverQuestions, vehicle.driver, 'Driver', (index+1), 0, [roadID, vehicle.id])} text="Driver" icon={<Icon name='person' size={50}/>}/>}
+                        <IconButton leftMargin={4} onPress={styles.individualCard} onPress= {() => navigateQuestion(driverQuestions, vehicle.driver, 'Driver', (index+1), 0, [roadID, vehicle.id])} text="Driver" icon={<Icon name='person' size={50}/>}/>}
                         {passengerListArr}
                     </HStack>
                 </Section>

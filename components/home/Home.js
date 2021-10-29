@@ -142,26 +142,26 @@ class Home extends Component {
             const { edit } = this.state;
             return(
             <View>
-                <HStack>
+                <TopNavigation>
                 {this.state.edit &&
                     <IconButton text="Confirm Changes"
                         onPress = {() => { this.setState({ edit: false })}}
-                        icon = {<Icon name="save" size={50}/>}
+                        icon = {<Icon name="save" size={25}/>}
                     />
                 }
                 {!this.state.edit &&
                     <>
-                    <IconButton text="Edit Sections"
-                        onPress = {() => { this.setState({ edit: true }) }}
-                        icon = {<Icon name="edit" size={50}/>}
-                    />
-                    <IconButton text="Export Report"
-                        onPress = {() => { navigation.navigate('FinalReport') }}
-                        icon = {<Icon name="assignment" size={50}/>}
-                    />
-                   </>
+                        <IconButton text="Edit Sections"
+                            onPress = {() => { this.setState({ edit: true }) }}
+                            icon = {<Icon name="edit" size={25}/>}
+                        />
+                        <IconButton leftMargin={4} text="Export Report"
+                            onPress = {() => { navigation.navigate('FinalReport') }}
+                            icon = {<Icon name="assignment" size={25}/>}
+                        />
+                    </>
                 }
-                </HStack>
+               </TopNavigation>
             </View>
             );
         }
@@ -173,13 +173,13 @@ class Home extends Component {
                     <Section title="Crash and Roadway">
                         {this.state.edit ?
                         <Box>
-                            <HStack>
+                            <HStack alignItems='center'  mt={4}>
                                 <Icon name="edit-road" size={50}/>
-                                <Text>Crash/Road</Text>
+                                <Text ml={2}>Crash/Road</Text>
                             </HStack>
                         </Box> :
                         <HStack>
-                            <IconButton text="Crash/Road"
+                            <IconButton topMargin={4} text="Crash/Road"
                             onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road', 'Crash/Road')}
                             icon = {<Icon name="edit-road" size={50}/>}/>
                         </HStack>
@@ -188,7 +188,7 @@ class Home extends Component {
                     <VStack>
                         {vehiclesListArr}
                         {this.state.edit &&
-                        <IconButton text="Add Vehicle"
+                        <IconButton leftMargin={4} rightMargin={4} text="Add Vehicle"
                             onPress = {() => this._addVehicleSection()}
                             icon = {<Icon name="local-taxi" size={50}/>}
                         />
@@ -199,7 +199,7 @@ class Home extends Component {
                         <HStack>
                             {nonmotoristListArr}
                         </HStack>
-                        <IconButton text="Add Non-Motorist"
+                        <IconButton topMargin={4} text="Add Non-Motorist"
                             onPress = {() => this._addNonmotorist()}
                             icon = {<Icon name="person-add" size={50}/>}
                         />

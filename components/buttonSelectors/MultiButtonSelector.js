@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { View, Image } from 'react-native';
 import { Box, Text, VStack, Button, HStack } from 'native-base';
 import QuestionSection from '../QuestionSection';
-//import { Layout, Text, Card, Button, Modal, CardHeader, Icon } from '@ui-kitten/components';
 import ImageSelector from '../image/imgIndex';
 import { updateResponse } from '../../actions/StoryActions';
 import { styles } from './MultiButtonSelector.style';
 import TooltipView from '../Tooltip.js';
 import { dependencyParser } from '../../utils/dependencyHelper';
+import { SafeAreaView } from 'react-navigation';
 
 const MultiButtonSelector = (props) => {
     const [visible, setVisible] = React.useState(false);
@@ -94,6 +94,8 @@ const MultiButtonSelector = (props) => {
                 /*key={option.idCode}
                 style={styles.answerButton}
                 appearance={appearance}*/
+                mr={4}
+                mb={4}
                 onPress={() => submitField(option.text, option.idCode)}
             >
                 {option.text}
@@ -104,7 +106,7 @@ const MultiButtonSelector = (props) => {
     const renderButtons = () => {
         let res = data.answerOptions.map(option => (renderSingleButton(option)));
         return (
-            <HStack>
+            <HStack flexWrap='wrap'>
                 {res}
             </HStack>
         );
@@ -113,14 +115,12 @@ const MultiButtonSelector = (props) => {
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
-            <Box>
-                <QuestionSection key={key} title={data.question} helperText={data.helperText}>
-                    <VStack>
-                    {HelperTooltip()}
-                    {renderButtons()}
-                    </VStack>
-                </QuestionSection>
-            </Box>
+            <QuestionSection key={key} title={data.question} helperText={data.helperText}>
+                <VStack>
+                {HelperTooltip()}
+                {renderButtons()}
+                </VStack>
+            </QuestionSection>
         )
     }else{
         return null
