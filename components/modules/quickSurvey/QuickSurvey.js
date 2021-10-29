@@ -321,7 +321,7 @@ class QuickSurvey extends Component {
        <Center><TopNavigation title="QUICK SURVEY"/></Center>
        <ScrollView>
            <VStack>
-               <SafeAreaView style={styles.questionContainer}>
+               <SafeAreaView>
                 <NumberButtonSelectorQuickSurvey
                         title="Number of vehicles involved"
                         submitFunction={changeVehicle}
@@ -331,14 +331,14 @@ class QuickSurvey extends Component {
                         endRange={5}
                 />
                </SafeAreaView>
-               <SafeAreaView style={styles.questionContainer}>
+               <SafeAreaView>
                   <NumberButtonSelectorQuickSurvey
-                            title="Number of non-motorists involved"
-                            submitFunction={changeNonmotorists}
-                            reducerName="quickquizReducer"
-                            fieldName="numNonmotorist"
-                            startRange={0}
-                            endRange={5}
+                        title="Number of non-motorists involved"
+                        submitFunction={changeNonmotorists}
+                        reducerName="quickquizReducer"
+                        fieldName="numNonmotorist"
+                        startRange={0}
+                        endRange={5}
                   />
                </SafeAreaView>
                {renderedQuestions()}
