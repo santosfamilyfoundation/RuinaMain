@@ -241,7 +241,7 @@ const QuestionForm = (props) => {
       <TopNavigation title={`Questions on ${questionDetail.name}`} backButton navigation={navigation}/>
       <Divider />
       <ScrollView>
-        <Box style={styles.content}>
+        <Box>
           {renderedQuestions}
         </Box>
       </ScrollView>
