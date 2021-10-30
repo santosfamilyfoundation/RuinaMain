@@ -4,18 +4,16 @@ import { Box, Text, VStack } from 'native-base';
 import { styles } from './HeaderComponent.style'
 import { connect } from 'react-redux';
 import { dependencyParser } from '../../utils/dependencyHelper';
+import Section from '../Section';
 
 const HeaderComponent = (props) => {
     const {data, dependencyID} = props;
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
-            <Box>
-                <VStack>
-                    <Text>{data.question}</Text>
+            <Section title={data.question}>
                     <Text>{data.helperText}</Text>
-                </VStack>
-            </Box>
+            </Section>
            /* <Layout style={styles.container}>
                 <Text category='h5'>{data.question}</Text>
                 <Text category='s1'>{data?.helperText}</Text>
