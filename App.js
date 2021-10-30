@@ -13,8 +13,14 @@ const theme = extendTheme({
         FormControlLabel: {
             baseStyle: {
                 _text: {
-                    color: "gray",
                     fontSize: 20
+                },
+            }
+        },
+        FormControlHelperText: {
+            baseStyle: {
+                _text: {
+                    fontSize: 16
                 },
             }
         }
