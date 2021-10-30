@@ -48,7 +48,6 @@ const TooltipView = (props) => {
                
     return (
     <Box>
-        <VStack>
             {toolTipText ?
             <>
                 <IconButton onPress={toggleModal} icon={InfoIcon()}/>
@@ -67,7 +66,6 @@ const TooltipView = (props) => {
                     </Modal.Content>
                 </Modal>
             </> : null}
-        </VStack>
     </Box>
     )
 
