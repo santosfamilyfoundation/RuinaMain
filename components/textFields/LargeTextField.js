@@ -41,14 +41,14 @@ const LargeTextField = (props) => {
         }
     };
     // Populate if value already exists in redux
-    if(!value) {
-        if(existingData != null) {
-            if(existingData[currId] != null && !value) {
-                setValue(existingData[currId]);
-                setButtonAppearance('filled');
-            }
-        }
-    }
+//    if(!value) {
+//        if(existingData != null) {
+//            if(existingData[currId] != null && !value) {
+//                setValue(existingData[currId]);
+//                setButtonAppearance('filled');
+//            }
+//        }
+//    }
 
     const debounceValidation = (func, timeout) => {
     let timer;
@@ -67,12 +67,11 @@ const LargeTextField = (props) => {
           console.log('this is where text goes: ', text)
 //          setValue(text)
           console.log('this is where value goes: ', value)
-          submitFunction({id, question: currId, selection: null})
-          if(!value){
+          if(!text){
             console.log('this sucks')
             return;
           }
-          if(value.length <= 500) {
+          if(text.length <= 500) {
               console.log('Fuck Jack Mao')
 //              status = 'success'
               setButtonAppearance('filled')
@@ -96,12 +95,15 @@ const LargeTextField = (props) => {
 
     const onTextChange = (text) => {
         console.log('this is text',text)
+        var localText = text
+        submitFunction({id, question: currId, selection: localText})
         if(!text) {
-            submitFunction({id, question: currId, selection: null})
+//            submitFunction({id, question: currId, selection: null})
+              setButtonAppearance('outline')
         }
-        submitField(text)
-        setValue(text);
-        submitFunction({id, question: currId, selection: null})
+        submitField(localText)
+//        setValue(text);
+//        submitFunction({id, question: currId, selection: null})
         console.log('This is value: ', value)
     }
 
@@ -171,7 +173,7 @@ const LargeTextField = (props) => {
                             icon={renderClear}
                             onIconPress={() => clearField()}
                             placeholder='Place your Text'
-                            value={value}
+//                            value={value}
                             onChangeText={(text) => onTextChange(text)}
                         />
                         <Button 
