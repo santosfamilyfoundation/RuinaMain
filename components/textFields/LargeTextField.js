@@ -57,6 +57,9 @@ const LargeTextField = (props) => {
         timer = setTimeout(() => { func.apply(this, args); }, timeout);
       };
     }
+    //do a use ref: gives back an object, can set current field to a value and the value will be
+    //on the next rerender
+
 
 //    const processChange = debounceValidation((text) => validateInput(text), 10000);
 
@@ -97,8 +100,8 @@ const LargeTextField = (props) => {
             submitFunction({id, question: currId, selection: null})
         }
         submitField(text)
-        submitFunction({id, question: currId, selection: null})
         setValue(text);
+        submitFunction({id, question: currId, selection: null})
         console.log('This is value: ', value)
     }
 
@@ -153,6 +156,7 @@ const LargeTextField = (props) => {
     };
     
     var renderComponent = dependencyParser(props.response, data, dependencyID)
+    //use let or const, not var
     if (renderComponent){
         return(
         <Layout key={key} style={styles.container}>
