@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { View, Image } from 'react-native';
 import { styles } from './Tooltip.style';
 import ImageSelector from './image/imgIndex';
-import { Box, VStack, Input, Text, Button, Modal, HStack } from 'native-base';
+import { Box, VStack, Input, Text, Button, Modal, HStack, IconButton } from 'native-base';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Section from './Section';
-import IconButton from './IconButton'
+//import IconButton from './IconButton'
 
 const TooltipView = (props) => {
     const {helperText, helperImg, toolTip} = props
@@ -50,7 +50,7 @@ const TooltipView = (props) => {
     <Box>
             {toolTipText ?
             <>
-                <IconButton onPress={toggleModal} icon={InfoIcon()}/>
+                <IconButton onPress={() => toggleModal()} icon={InfoIcon()} _icon={{color:'black'}}/>
                 <Modal isOpen={visible} onClose={() => setVisible(false)} size='lg'>
                     <Modal.Content>
                         <Modal.CloseButton />
