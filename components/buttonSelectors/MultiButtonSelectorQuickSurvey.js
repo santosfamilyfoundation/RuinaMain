@@ -59,7 +59,7 @@ const MultiButtonSelectorQuickSurvey = (props) => {
                 appearance={appearance}
                 onPress={() => submitField(option.text, option.idCode)}
             >
-                {option.name}
+                {option.item}
             </Button>
         )
     }

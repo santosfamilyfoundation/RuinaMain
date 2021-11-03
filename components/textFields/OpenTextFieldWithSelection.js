@@ -102,7 +102,7 @@ const OpenTextFieldWithSelection = (props) => {
               style={styles.answerButton}
               onPress={() => onSelectOneOption(option)}
           >
-              {option.name}
+              {option.item}
           </Button>
       )
     }
