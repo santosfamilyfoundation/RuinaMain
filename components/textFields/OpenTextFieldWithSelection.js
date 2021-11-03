@@ -98,11 +98,11 @@ const OpenTextFieldWithSelection = (props) => {
       let appearance = (value == option.text) ? 'filled': 'outline';
       return (
           <Button
-              key={option.idCode}
+              key={option.id}
               style={styles.answerButton}
               onPress={() => onSelectOneOption(option)}
           >
-              {option.text}
+              {option.name}
           </Button>
       )
     }
