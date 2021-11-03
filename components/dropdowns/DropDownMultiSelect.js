@@ -161,9 +161,7 @@ const DropDownMultiSelect = (props) => {
                     onSelectedItemsChange={(e) => submitField(e)}
                     items={data.answerOptions}
                     uniqueKey={data.question.humanReadableId}
-                    ref={(component) => {e = component}}
                 />
-                {this.multiSelcect.getSelectedItemsExt(selectedOptions)}
             </QuestionSection>
         )
     }else{
