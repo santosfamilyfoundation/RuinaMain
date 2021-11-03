@@ -51,14 +51,15 @@ const MultiButtonSelectorQuickSurvey = (props) => {
 
     const renderSingleButton = (option) => {
         let appearance = (selection == option.text) ? 'filled': 'outline';
+        console.log(option)
         return (
             <Button
-                key={option.idCode}
+                key={option.id}
                 style={styles.answerButton}
                 appearance={appearance}
                 onPress={() => submitField(option.text, option.idCode)}
             >
-                {option.text}
+                {option.name}
             </Button>
         )
     }
