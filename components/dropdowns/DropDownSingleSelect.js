@@ -8,7 +8,7 @@ import TooltipView from '../Tooltip';
 import QuestionSection from '../QuestionSection';
 
 const DropDownSingleSelect = (props) => {
-    const [selectedOption, setSelectedOption] = React.useState(null);
+    const [selectedOption, setSelectedOption] = React.useState([]);
     const {data, key, id, questionReducer, submitFunction, updateResponse, dependencyID} = props;
     let currId = data.id;
     const reducerData = questionReducer.data.find(entry => entry.id == id); 
@@ -21,8 +21,8 @@ const DropDownSingleSelect = (props) => {
                 for (let i = 0; i < data.answerOptions.length; i++) {
                     if(data.answerOptions[i].text == existingData[currId]) {
                         curOption = {
-                            idCode: existingData[currId],
-                            text: data.answerOptions[i].text
+                            id: existingData[currId],
+                            name: data.answerOptions[i].text
                         };
                     };
                 };
@@ -66,10 +66,6 @@ const DropDownSingleSelect = (props) => {
         let content = selection.text;
         submitFunction({id, question: currId, selection: content})
     }
-
-    const Header = () => (
-        <CardHeader title={data.question}/>
-      );
 
     const HelperTooltip = () => {
         return (

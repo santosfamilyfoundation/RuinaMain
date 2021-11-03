@@ -339,12 +339,13 @@ class QuickSurvey extends Component {
                         fieldName="numNonmotorist"
                         startRange={0}
                         endRange={5}
+                        tooltipText='Non Motorist are people who were not in a vehicle at the time of the crash'
                   />
                </SafeAreaView>
                {renderedQuestions()}
            </VStack>
        </ScrollView>
-       <Button onPress={() => moveHome()}>Continue</Button>
+       <Button onPress={() => moveHome() } mb={4} mx={4}>Continue</Button>
       </React.Fragment>
 
     )

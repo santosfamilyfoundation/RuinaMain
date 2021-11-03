@@ -10,7 +10,7 @@ import QuestionSection from '../QuestionSection';
 
 const NumberButtonSelectorQuickSurvey = (props) => {
     const [selection, setSelection] = React.useState('');
-    const {title, data, id, submitFunction, genericReducer, fieldName, updateResponse, dependencyID, startRange, endRange} = props;
+    const {title, data, id, submitFunction, genericReducer, fieldName, updateResponse, dependencyID, startRange, endRange, tooltipText} = props;
 
 //    let currId = data.id;
 
@@ -70,6 +70,7 @@ const NumberButtonSelectorQuickSurvey = (props) => {
 
     return (
         <QuestionSection title={title}>
+            <TooltipView toolTip={tooltipText}
             {renderButtons()}
         </QuestionSection>
     )

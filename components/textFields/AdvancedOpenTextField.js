@@ -7,7 +7,7 @@ import * as Constants from '../../constants';
 import vinValidator from 'vin-validator';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
-import Section from '../Section';
+import QuestionSection from '../QuestionSection';
 import IconButton from '../IconButton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -219,7 +219,7 @@ const AdvancedOpenTextField = (props) => {
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
-            <Section key={key}
+            <QuestionSection key={key}
                 title={data.question}
                 isForm
                 helperText={data.helperText}
@@ -234,7 +234,7 @@ const AdvancedOpenTextField = (props) => {
                     />
                     {RenderHeaderIcon()}
                 </HStack>
-            </Section>
+            </QuestionSection>
         )
     }
     else {

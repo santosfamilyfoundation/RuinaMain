@@ -4,7 +4,7 @@ import { View, Image } from 'react-native';
 import { Button, VStack, HStack } from 'native-base';
 import ImageSelector from '../image/imgIndex';
 import { styles } from './MultiButtonSelectorQuickSurvey.style';
-import TooltipView from '../Tooltip.js';
+import TooltipView from '../Tooltip';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import QuestionSection from '../QuestionSection';
 
@@ -76,7 +76,8 @@ const MultiButtonSelectorQuickSurvey = (props) => {
     if (renderComponent){
         return(
         <React.Fragment>
-            <QuestionSection title={data.question}>
+            <QuestionSection title={data.question} helperText={data.helperText}>
+                 <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
                 {renderButtons()}
             </QuestionSection>
         </React.Fragment>

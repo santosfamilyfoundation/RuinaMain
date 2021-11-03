@@ -226,13 +226,13 @@ const AdvancedDropDown = (props) => {
         >
             {WeatherHelper()}
             {HelperTooltip()}
-            <HStack>
+            <HStack justifyContnet='space-around'>
             <MultiSelect
+                hidSubmitButton={true}
                 selectedItems={selectedOptions}
                 onSelectedItemsChange={addOption}
                 items={data.answerOptions}
                 uniqueKey={data.question.humanReadableId}
-                single={false}
             />
             {RenderHeaderIcon()}
             </HStack>
