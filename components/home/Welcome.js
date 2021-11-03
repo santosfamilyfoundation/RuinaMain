@@ -77,9 +77,7 @@ class Welcome extends Component {
                 <Center><TopNavigation title="RUINA" navigation = {this.props.navigation}/></Center>
                 <Center flex={1} px="3">
                     <VStack alignItems="center">
-                         <TouchableOpacity style={styles.styledButton} activeOpacity = { .7 } onPress={() => navigateTo('Survey')}>
-                               <Text style={styles.btnText}>Start New Report</Text>
-                         </TouchableOpacity>
+                        <Button onPress = {() => navigateTo('Survey')} size="lg" p={4}>Start New Report</Button>
                     </VStack>
                 </Center>
                 <VStack alignItems="center">
