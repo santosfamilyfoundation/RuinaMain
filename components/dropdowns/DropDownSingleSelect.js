@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
 import QuestionSection from '../QuestionSection';
+import SelectBox from 'react-native-multi-selectbox';
 
 const DropDownSingleSelect = (props) => {
     const [selectedOption, setSelectedOption] = React.useState([]);
@@ -19,14 +20,15 @@ const DropDownSingleSelect = (props) => {
             if(existingData[currId] != null) {
                 let curOption;
                 for (let i = 0; i < data.answerOptions.length; i++) {
-                    if(data.answerOptions[i].text == existingData[currId]) {
+                    if(data.answerOptions[i].item == existingData[currId]) {
                         curOption = {
                             id: existingData[currId],
-                            name: data.answerOptions[i].text
+                            item: data.answerOptions[i].item
                         };
                     };
                 };
                 if (curOption != null) {
+                    console.log('setting option!!!')
                     setSelectedOption(curOption);
                 }
             };
@@ -45,25 +47,27 @@ const DropDownSingleSelect = (props) => {
     }
 
     const submitField = (selection) => {
+        console.log('inside submit!!!')
         setSelectedOption(selection);
+        console.log('Selection', selection)
         if (dependencyID==null || dependencyID.length == 1){
-            updateResponse && updateResponse({id, question: currId, selection: selection.idCode})
+            updateResponse && updateResponse({id, question: currId, selection: selection.id})
         }else{
             let vehicleID = dependencyID[1]
             switch (dependencyID.length) {
                 case 2:
-                    updateResponse && updateResponse({id, question: currId, selection: selection.idCode, vehicleID: vehicleID})
+                    updateResponse && updateResponse({id, question: currId, selection: selection.id, vehicleID: vehicleID})
                     break;
                 case 3:
                     let passengerID = dependencyID[2]
-                    updateResponse && updateResponse({id, question: currId, selection: selection.idCode, vehicleID: vehicleID, passengerID: passengerID})
+                    updateResponse && updateResponse({id, question: currId, selection: selection.id, vehicleID: vehicleID, passengerID: passengerID})
                 case 4:
-                    updateResponse && updateResponse({id, question: currId, selection: selection.idCode, vehicleID: vehicleID, nonmotoristID: dependencyID[3]})
+                    updateResponse && updateResponse({id, question: currId, selection: selection.id, vehicleID: vehicleID, nonmotoristID: dependencyID[3]})
                 default:
                     break;
             }
         }
-        let content = selection.text;
+        let content = selection.item;
         submitFunction({id, question: currId, selection: content})
     }
 
@@ -82,12 +86,11 @@ const DropDownSingleSelect = (props) => {
                 helperText={data.helperText}
             >
                 {HelperTooltip()}
-                <MultiSelect
-                    selectedItems={selectedOption}
-                    onSelectedItemsChange={(e) => submitField(e)}
-                    single={true}
-                    items={data.answerOptions}
-                    uniqueKey={data.question.humanReadableId}
+                <SelectBox
+                    label='test box'
+                    options={data.answerOptions}
+                    value={selectedOption}
+                    onChange={(e) => submitField(e)}
                 />
             </QuestionSection>
         )

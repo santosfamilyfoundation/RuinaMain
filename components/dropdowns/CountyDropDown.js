@@ -4,7 +4,7 @@ import { styles } from './DropDownSingleSelect.style';
 import { connect } from 'react-redux';
 import { deleteRoadSingleResponse } from '../../actions/RoadAction';
 import QuestionSection from '../QuestionSection';
-import MultiSelect from 'react-native-multiple-select';
+import SelectBox from 'react-native-multi-selectbox';
 import TooltipView from '../Tooltip';
 
 
@@ -14,7 +14,7 @@ const CountyDropDown = (props) => {
     // json is a dictionary where the keys are the states and US territories; values are each of its corresponding counties
     const countiesByStates = require('../../data/stateCountyMapping.json');
     
-    const [selectedOption, setSelectedOption] = React.useState(null);
+    const [selectedOption, setSelectedOption] = React.useState([]);
     const [deleteCountyFromState, setDeleteCountyFromState] = React.useState(false);
     const { data, key, id, questionReducer, submitFunction, updateResponse, deleteRoadSingleResponse } = props;
     let currId = data.id;
@@ -26,7 +26,7 @@ const CountyDropDown = (props) => {
 
     // Populate if value already exists in redux
     // If no selected answer in UI for county question
-    if (!selectedOption) {
+    if (selectedOption.length === 0) {
         // Road section isn't null
         if (existingData != null) {
             // Road section county response isn't null
@@ -37,7 +37,7 @@ const CountyDropDown = (props) => {
                     // the state answer in redux
                     const correspondingCounties = countiesByStates[existingDataState];
                     if (correspondingCounties.includes(existingData[currId])) {
-                        let curOption = {text: existingData[currId]};
+                        let curOption = {item: existingData[currId]};
                         setSelectedOption(curOption);
                     }
                 }
@@ -46,20 +46,20 @@ const CountyDropDown = (props) => {
     } 
     // Check if user has updated state selection
     else {
-        let selectedCounty = selectedOption.text;
+        let selectedCounty = selectedOption.item;
         // If user has filled out the state question
         if (existingDataState != null) {
             const correspondingCounties = countiesByStates[existingDataState];
             if (!correspondingCounties.includes(selectedCounty)) {
                 // set county selected option to null
-                setSelectedOption(null);
+                setSelectedOption([]);
                 // delete county answer from redux state
                 setDeleteCountyFromState(true);
                   
             }
         } else {
             // If user tries to select "Please select a state..." option in County dropdown without selecting a state
-            setSelectedOption(null);
+            setSelectedOption([]);
             setDeleteCountyFromState(true);
         }
     }
@@ -94,30 +94,23 @@ const CountyDropDown = (props) => {
         }
     }
 
-    let countyOptions = null;
+    let countyOptions = [];
     if (existingDataState) {
         countyOptions = countiesByStates[existingDataState].sort().map((county) => { 
-            return { "text": county } 
+            return { "item": county }
         });
     } else {
         countyOptions = [{
-            "text": "Please select a state..."
+            "item": "Please select a state..."
         }]
-    }    
-
+    }
     const submitField = (selection) => {
         setSelectedOption(selection);
         updateResponse && updateResponse({ id, question: currId, selection: selection.text })
-        let content = selection.text;
+        let content = selection.item;
         submitFunction({ id, question: currId, selection: content })
     }
 
-//    const HelperText = () => {
-//        if (data?.helperText?.length != 0) {
-//            return (<Text style={styles.helperText}>{data.helperText}</Text>)
-//        }
-//        return null;
-//    }
     const HelperTooltip = () => {
         return (
              <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
@@ -132,13 +125,11 @@ const CountyDropDown = (props) => {
             helperText={data.helperText}
         >
             {HelperTooltip()}
-            <MultiSelect
-                placeholder='Select County'
-                selectedItems={selectedOption}
-                onSelectedItemsChange={(e) => submitField(e)}
-                single={true}
-                items={countyOptions}
-                uniqueKey={data.question.humanReadableId}
+            <SelectBox
+                label='test box'
+                options={countyOptions}
+                value={selectedOption}
+                onChange={(e) => submitField(e)}
             />
         </QuestionSection>
     );
