@@ -6542,7 +6542,7 @@ lodash.throttle@^4.1.1:
   resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
   integrity sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
 
-lodash@^4.0.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.7.0:
+lodash@^4.0.0, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.7.0:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -7987,6 +7987,18 @@ react-native-material-dialog@^0.7.7:
     prop-types "^15.5.10"
     react-native-typography "^1.0.3"
     react-native-vector-icons "^4.2.0"
+
+react-native-multi-select@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-multi-select/-/react-native-multi-select-0.1.1.tgz#ead1566562c2cbea48b243a4614fb171574293a0"
+  integrity sha1-6tFWZWLCy+pIskOkYU+xcVdCk6A=
+  dependencies:
+    lodash "^4.15.0"
+
+react-native-multi-selectbox@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/react-native-multi-selectbox/-/react-native-multi-selectbox-1.5.0.tgz#a2bbb3ae9a76f10f6f0404ae9c9b0b573a051614"
+  integrity sha512-yRxV8PPD0TIRoXK4WduHcADzroB2UWGbJIlKEGkvz8sPPs80o8wdJDthuqbvO7U6rIP2ABb/TRaJAFAxFTi8jw==
 
 react-native-multiple-select@^0.5.7:
   version "0.5.7"
