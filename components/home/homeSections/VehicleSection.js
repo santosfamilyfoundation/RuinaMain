@@ -151,13 +151,16 @@ class VehicleSection extends Component{
             return(
                 <>
                     <Section title={`${name} ${index + 1}`}>
-                        <HStack mt={4}>
-                            {!this.state.driverDeleted && <IconButton onPress={() => this.setState({beforeDriverDelete: true})}
-                                text="Remove Driver" icon={<Icon name="person-remove-alt-1" size={50}/>}/>}
-                            {!this.state.driverDeleted && <IconButton leftMargin={4} onPress = {this._addPassenger} text="Add Passenger" icon={<Icon name="person-add-alt-1" size={50}/>}/>}
-                            {this.state.driverDeleted && <IconButton leftMargin={4} onPress = {this._addPassenger} text="Add Occupant" icon={<Icon name="person-add-alt-1" size={50}/>}/>}
-                            {passengerListArr}
-                        </HStack>
+                        <VStack>
+                            <HStack mt={4}>
+                                {!this.state.driverDeleted && <IconButton onPress={() => this.setState({beforeDriverDelete: true})}
+                                    text="Remove Driver" icon={<Icon name="person-remove-alt-1" size={50}/>}/>}
+                                {!this.state.driverDeleted && <IconButton leftMargin={4} onPress = {this._addPassenger} text="Add Passenger" icon={<Icon name="person-add-alt-1" size={50}/>}/>}
+                                {this.state.driverDeleted && <IconButton leftMargin={4} onPress = {this._addPassenger} text="Add Occupant" icon={<Icon name="person-add-alt-1" size={50}/>}/>}
+                                {passengerListArr}
+                            </HStack>
+                            <IconButton onPress = {() => this.setState({beforeVehicleDelete:true})} topMargin={4} text="Remove Vehicle" icon={<Icon name="delete" size={50}/>}/>
+                        </VStack>
                     </Section>
 
                      <MaterialDialog
