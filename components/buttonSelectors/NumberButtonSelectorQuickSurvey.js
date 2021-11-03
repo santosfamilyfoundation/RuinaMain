@@ -70,7 +70,7 @@ const NumberButtonSelectorQuickSurvey = (props) => {
 
     return (
         <QuestionSection title={title}>
-            <TooltipView toolTip={tooltipText}
+            <TooltipView toolTip={tooltipText} />
             {renderButtons()}
         </QuestionSection>
     )
