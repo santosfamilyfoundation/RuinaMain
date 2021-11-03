@@ -158,6 +158,7 @@ class VehicleSection extends Component{
                             {this.state.driverDeleted && <IconButton leftMargin={4} onPress = {this._addPassenger} text="Add Occupant" icon={<Icon name="person-add-alt-1" size={50}/>}/>}
                             {passengerListArr}
                         </HStack>
+                        <IconButton onPress = {() => this.setState({beforeVehicleDelete:true})} text="Remove Vehicle" icon={<Icon name="delete" size={50}/>}/>
                     </Section>
 
                      <MaterialDialog
