@@ -53,10 +53,6 @@ const MultiButtonSelector = (props) => {
         submitFunction({id, question: currId, selection: optionText})
     }
 
-    /*const Header = () => (
-        <CardHeader title={data.question}/>
-    );*/
-
     if(!existingData) {
         status = 'danger'
     } else {
@@ -75,20 +71,8 @@ const MultiButtonSelector = (props) => {
         )
     }
 
-   /* const InfoIcon = (props) => (
-        <Icon {...props} name='info'/>
-    );
-
-    const CloseIcon = (props) => (
-        <Icon {...props} name='close-outline'/>
-    );
-
-    const toggleModal = () => {
-        setVisible(!visible);
-    };*/
-
     const renderSingleButton = (option) => {
-        let appearance = (selection == option.text) ? 'filled': 'outline';
+        let appearance = (selection == option.name) ? 'filled': 'outline';
         return (
             <Button
                 /*key={option.idCode}
@@ -96,9 +80,9 @@ const MultiButtonSelector = (props) => {
                 appearance={appearance}*/
                 mr={4}
                 mb={4}
-                onPress={() => submitField(option.text, option.idCode)}
+                onPress={() => submitField(option.name, option.id)}
             >
-                {option.text}
+                {option.name}
             </Button>
         )
     }
