@@ -41,14 +41,15 @@ const LargeTextField = (props) => {
         }
     };
     // Populate if value already exists in redux
-//    if(!value) {
-//        if(existingData != null) {
-//            if(existingData[currId] != null && !value) {
-//                setValue(existingData[currId]);
-//                setButtonAppearance('filled');
-//            }
-//        }
-//    }
+    if(!value) {
+        if(existingData != null) {
+            if(existingData[currId] != null && !value) {
+                setValue(existingData[currId]);
+                setButtonAppearance('filled');
+            }
+        }
+    }
+    console.log(existingData[currId])
 
     const debounceValidation = (func, timeout) => {
     let timer;
@@ -66,7 +67,7 @@ const LargeTextField = (props) => {
     const validateInput = (text) => {
           console.log('this is where text goes: ', text)
 //          setValue(text)
-          console.log('this is where value goes: ', value)
+//          console.log('this is where value goes: ', value)
           if(!text){
             console.log('this sucks')
             return;
@@ -104,12 +105,12 @@ const LargeTextField = (props) => {
         submitField(localText)
 //        setValue(text);
 //        submitFunction({id, question: currId, selection: null})
-        console.log('This is value: ', value)
+//        console.log('This is value: ', value)
     }
 
     const clearField = () => {
         console.log('is it even reaching here')
-        setValue('');
+//        setValue('');
         submitFunction({id, question: currId, selection: null})
         setButtonAppearance('outline');
     }
@@ -173,7 +174,7 @@ const LargeTextField = (props) => {
                             icon={renderClear}
                             onIconPress={() => clearField()}
                             placeholder='Place your Text'
-//                            value={value}
+                            value = {existingData[currId]}
                             onChangeText={(text) => onTextChange(text)}
                         />
                         <Button 
