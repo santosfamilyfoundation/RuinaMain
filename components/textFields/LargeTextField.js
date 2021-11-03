@@ -112,6 +112,7 @@ const LargeTextField = (props) => {
         console.log('is it even reaching here')
 //        setValue('');
         submitFunction({id, question: currId, selection: null})
+        setValue(existingData[currId])
         setButtonAppearance('outline');
     }
 
