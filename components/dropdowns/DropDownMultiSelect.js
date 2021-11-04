@@ -1,5 +1,5 @@
 import React from 'react';
-import MultiSelect from 'react-native-multiple-select';
+import SelectBox from 'react-native-multi-selectbox';
 import { updateResponse } from '../../actions/StoryActions';
 import { styles } from './DropDownMultiSelect.style';
 import { connect } from 'react-redux';
@@ -127,8 +127,16 @@ const DropDownMultiSelect = (props) => {
     const addOption = (options) => {
         if(options.length == 0) {
             clearRedux();
+            setSelectedOptions([]);
         }
-        setSelectedOptions(options);
+        let previousSelected = selectedOptions
+        if (previousSelected.includes(options)) {
+            let indx = previousSelected.indexOf(options);
+            previousSelected.splice(indx-1, 1)
+        } else {
+            previousSelected.push(options);
+        }
+        setSelectedOptions(previousSelected);
     }
     
     const HelperTooltip = () => {
@@ -156,11 +164,13 @@ const DropDownMultiSelect = (props) => {
                 helperText={data.helperText}
             >
                 {HelperTooltip()}
-                <MultiSelect
-                    selectedItems={selectedOptions}
-                    onSelectedItemsChange={(e) => submitField(e)}
-                    items={data.answerOptions}
-                    uniqueKey={data.question.humanReadableId}
+                <SelectBox
+                    label='test box'
+                    selectedValues={selectedOptions}
+                    onMultiSelect={addOption}
+                    options={data.answerOptions}
+                    onTapClose={addOption}
+                    isMulti
                 />
             </QuestionSection>
         )

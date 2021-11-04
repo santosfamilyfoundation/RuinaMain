@@ -9,7 +9,8 @@ import TooltipView from '../Tooltip';
 import QuestionSection from '../QuestionSection';
 import IconButton from '../IconButton';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import MultiSelect from 'react-native-multiple-select';
+import SelectBox from 'react-native-multi-selectbox';
+import {xorBy} from 'lodash';
 
 //This component is used for "advanced" tool access with drop downs (weather)
 
@@ -37,7 +38,7 @@ const AdvancedDropDown = (props) => {
             if(existingData[currId] != null) {
                 let currOptions = []
                 for (i = 0; i < data.answerOptions.length; i++) {
-                    if(existingData[currId].includes(data.answerOptions[i].text)) {
+                    if(existingData[currId].includes(data.answerOptions[i].item)) {
                         currOptions.push(data.answerOptions[i]);
                     };
                 };
@@ -117,7 +118,7 @@ const AdvancedDropDown = (props) => {
         } else {
             let incompleteFlag = false;
             for(i = 0; i < selectedOptions.length; i++) {
-                if(!existingData[currId].includes(selectedOptions[i].text)){
+                if(!existingData[currId].includes(selectedOptions[i].item)){
                     incompleteFlag = true;
                 }
             }
@@ -139,7 +140,7 @@ const AdvancedDropDown = (props) => {
         }
         let res = [];
         for(i = 0; i < selectedOptions.length; i++) {
-            res.push(selectedOptions[i].text);
+            res.push(selectedOptions[i].item);
         }
         submitFunction({id, question: currId, selection: res})
     }
@@ -152,8 +153,16 @@ const AdvancedDropDown = (props) => {
     const addOption = (options) => {
         if(options.length == 0) {
             clearRedux();
+            setSelectedOptions([]);
         }
-        setSelectedOptions(options);
+        let previousSelected = selectedOptions
+        if (previousSelected.includes(options)) {
+            let indx = previousSelected.indexOf(options);
+            previousSelected.splice(indx-1, 1)
+        } else {
+            previousSelected.push(options);
+        }
+        setSelectedOptions(previousSelected);
     }
     
     const HelperTooltip = () => {
@@ -227,12 +236,13 @@ const AdvancedDropDown = (props) => {
             {WeatherHelper()}
             {HelperTooltip()}
             <HStack justifyContnet='space-around'>
-            <MultiSelect
-                hidSubmitButton={true}
-                selectedItems={selectedOptions}
-                onSelectedItemsChange={addOption}
-                items={data.answerOptions}
-                uniqueKey={data.question.humanReadableId}
+            <SelectBox
+                label='test box'
+                selectedValues={selectedOptions}
+                onMultiSelect={addOption}
+                options={data.answerOptions}
+                onTapClose={addOption}
+                isMulti
             />
             {RenderHeaderIcon()}
             </HStack>
