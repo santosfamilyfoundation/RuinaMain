@@ -136,7 +136,7 @@ const OpenTextFieldWithSelection = (props) => {
                 </HStack>
             </Section>
         )
-    }else{
+    } else {
         return null
     }
 };

@@ -96,9 +96,9 @@ const LargeTextField = (props) => {
     }
     
    const HelperTooltip = () => {
-    return (
-        <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
-    )
+        return (
+            <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
+        )
     }
 
     const ErrorMsg = () => {
@@ -140,13 +140,6 @@ const LargeTextField = (props) => {
                             placeholder='Place your Text'
                             value={value}
                             onChangeText={onTextChange}
-                        />
-                        <Button 
-                            style={styles.submitButton} 
-                            appearance={buttonAppearance}
-                            size='medium' 
-                            icon={CheckIcon} 
-                            onPress={() => submitField()}
                         />
                     </Layout>
                     {ErrorMsg()}

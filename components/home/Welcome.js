@@ -34,6 +34,7 @@ class Welcome extends Component {
         filePathSelected: false,
         selectedFile: {label: "", value: ""}
       };
+      this.unfinishedReportsPresent = false
     }
 
     async componentDidMount() {
@@ -47,16 +48,19 @@ class Welcome extends Component {
       this.props.resetMap();
       this.props.resetPhoto();
       await this.stateManager.getFilePaths();
+      this.unfinishedReportsAbsent = this.stateManager.filePaths.length == 0
+      console.log(this.stateManager.filePaths);
+      console.log(this.stateManager.filePaths.length == 0)
 //      this.checkAutoSavedSession();
       this.setState({ loading: false });
     }
 
     checkAutoSavedSession(){
         if (this.stateManager.filePaths != null) {
-            this.setState({autoSavedSession : true, autoSavedSessionDialogBoxVisible : true});
+            this.setState({autoSavedSession : true, filePickerDialogBoxVisible: true});
             console.log('Detect unfinished reports!');
         } else {
-            this.setState({ autoSavedSession: false, autoSavedSessionDialogBoxVisible: false });
+            this.setState({ autoSavedSession: false, filePickerDialogBoxVisible: false });
             console.log('No unfinished report!');
         }
     }
@@ -78,6 +82,7 @@ class Welcome extends Component {
                 <Center flex={1} px="3">
                     <VStack alignItems="center">
                         <Button onPress = {() => navigateTo('Survey')} size="lg" p={4}>Start New Report</Button>
+                        <Button onPress = {() => this.checkAutoSavedSession()} size="lg" p={4}>Continue Report</Button>
                     </VStack>
                 </Center>
                 <VStack alignItems="center">

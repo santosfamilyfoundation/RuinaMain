@@ -95,7 +95,7 @@ const OpenTextField = (props) => {
                    onChangeText={onTextChange} />
             </Section>
         )
-    } else{
+    } else {
         return null
     }
 };
