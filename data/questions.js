@@ -124,15 +124,15 @@ export const questions = {
             "humanReadableId": "driver-11",
             "answerOptions": [
                 {
-                    "item": "Female",
+                    "name": "Female",
                     "id": "0"
                 },
                 {
-                    "item": "Male",
+                    "name": "Male",
                     "id": "1"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "2"
                 }
             ]
@@ -158,35 +158,35 @@ export const questions = {
             "humanReadableId": "driver-13",
             "answerOptions": [
                 {
-                    "item": "No",
+                    "name": "No",
                     "id": "0"
                 },
                 {
-                    "item": "EMS",
+                    "name": "EMS",
                     "id": "1"
                 },
                 {
-                    "item": "Fire",
+                    "name": "Fire",
                     "id": "2"
                 },
                 {
-                    "item": "Police",
+                    "name": "Police",
                     "id": "3"
                 },
                 {
-                    "item": "Tow Operator",
+                    "name": "Tow Operator",
                     "id": "4"
                 },
                 {
-                    "item": "Transportation (i.e. maintenance workers, safety service patrol operators, etc.)",
+                    "name": "Transportation (i.e. maintenance workers, safety service patrol operators, etc.)",
                     "id": "5"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "6"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "7"
                 }
             ]
@@ -202,23 +202,23 @@ export const questions = {
             "humanReadableId": "driver-14",
             "answerOptions": [
                 {
-                    "item": "Fatal Injury",
+                    "name": "Fatal Injury",
                     "id": "0"
                 },
                 {
-                    "item": "Suspected Serious Injury",
+                    "name": "Suspected Serious Injury",
                     "id": "1"
                 },
                 {
-                    "item": "Suspected Minor Injury",
+                    "name": "Suspected Minor Injury",
                     "id": "2"
                 },
                 {
-                    "item": "Possible Injury",
+                    "name": "Possible Injury",
                     "id": "3"
                 },
                 {
-                    "item": "No Apparent Injury",
+                    "name": "No Apparent Injury",
                     "id": "4"
                 }
             ]
@@ -280,27 +280,27 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "Not Transported",
+                    "name": "Not Transported",
                     "id": "0"
                 },
                 {
-                    "item": "EMS Air",
+                    "name": "EMS Air",
                     "id": "1"
                 },
                 {
-                    "item": "EMS Ground",
+                    "name": "EMS Ground",
                     "id": "2"
                 },
                 {
-                    "item": "Law Enforcement",
+                    "name": "Law Enforcement",
                     "id": "3"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "4"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "5"
                 }
             ]
@@ -401,71 +401,71 @@ export const questions = {
             "helperText": "(choose up to 2)",
             "answerOptions": [
                 {
-                    "item": "Front",
+                    "name": "Front",
                     "id": "0"
                 },
                 {
-                    "item": "Second",
+                    "name": "Second",
                     "id": "1"
                 },
                 {
-                    "item": "Third",
+                    "name": "Third",
                     "id": "2"
                 },
                 {
-                    "item": "Fourth",
+                    "name": "Fourth",
                     "id": "3"
                 },
                 {
-                    "item": "Other Row (bus, 15 passenger van, etc.)",
+                    "name": "Other Row (bus, 15 passenger van, etc.)",
                     "id": "4"
                 },
                 {
-                    "item": "Unknown Row",
+                    "name": "Unknown Row",
                     "id": "5"
                 },
                 {
-                    "item": "Left (usually the motor vehicle or motorcycle driver except for postal vehicles)",
+                    "name": "Left (usually the motor vehicle or motorcycle driver except for postal vehicles)",
                     "id": "6"
                 },
                 {
-                    "item": "Middle",
+                    "name": "Middle",
                     "id": "7"
                 },
                 {
-                    "item": "Right",
+                    "name": "Right",
                     "id": "8"
                 },
                 {
-                    "item": "Unknown Seat",
+                    "name": "Unknown Seat",
                     "id": "9"
                 },
                 {
-                    "item": "Other Enclosed Cargo Area",
+                    "name": "Other Enclosed Cargo Area",
                     "id": "10"
                 },
                 {
-                    "item": "Riding on Motor Vehicle Exterior (non-trailing unit)",
+                    "name": "Riding on Motor Vehicle Exterior (non-trailing unit)",
                     "id": "11"
                 },
                 {
-                    "item": "Sleeper Section of Cab (truck)",
+                    "name": "Sleeper Section of Cab (truck)",
                     "id": "12"
                 },
                 {
-                    "item": "Trailing Unit",
+                    "name": "Trailing Unit",
                     "id": "13"
                 },
                 {
-                    "item": "Unenclosed Cargo Area",
+                    "name": "Unenclosed Cargo Area",
                     "id": "14"
                 },
                 {
-                    "item": "Not Applicable",
+                    "name": "Not Applicable",
                     "id": "15"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "16"
                 }
             ]
@@ -481,75 +481,75 @@ export const questions = {
             "humanReadableId": "driver-21",
             "answerOptions": [
                 {
-                    "item": "Booster Seat",
+                    "name": "Booster Seat",
                     "id": "0"
                 },
                 {
-                    "item": "Child Restraint System - Forward Facing",
+                    "name": "Child Restraint System - Forward Facing",
                     "id": "1"
                 },
                 {
-                    "item": "Child Restraint System - Rear Facing",
+                    "name": "Child Restraint System - Rear Facing",
                     "id": "2"
                 },
                 {
-                    "item": "Child Restraint - Type Unknown",
+                    "name": "Child Restraint - Type Unknown",
                     "id": "3"
                 },
                 {
-                    "item": "Lap Belt Only Used",
+                    "name": "Lap Belt Only Used",
                     "id": "4"
                 },
                 {
-                    "item": "None Used - Motor Vehicle Occupant",
+                    "name": "None Used - Motor Vehicle Occupant",
                     "id": "5"
                 },
                 {
-                    "item": "Restraint Used - Type Unknown",
+                    "name": "Restraint Used - Type Unknown",
                     "id": "6"
                 },
                 {
-                    "item": "Shoulder and Lap Belt Used",
+                    "name": "Shoulder and Lap Belt Used",
                     "id": "7"
                 },
                 {
-                    "item": "Shoulder Belt Only Used",
+                    "name": "Shoulder Belt Only Used",
                     "id": "8"
                 },
                 {
-                    "item": "Stretcher",
+                    "name": "Stretcher",
                     "id": "9"
                 },
                 {
-                    "item": "Wheelchair",
+                    "name": "Wheelchair",
                     "id": "10"
                 },
                 {
-                    "item": "DOT-Compliant Motorcycle Helmet",
+                    "name": "DOT-Compliant Motorcycle Helmet",
                     "id": "11"
                 },
                 {
-                    "item": "Not DOT-Compliant Motorcycle Helmet",
+                    "name": "Not DOT-Compliant Motorcycle Helmet",
                     "id": "12"
                 },
                 {
-                    "item": "Unknown If DOT-Compliant Motorcycle Helmet",
+                    "name": "Unknown If DOT-Compliant Motorcycle Helmet",
                     "id": "13"
                 },
                 {
-                    "item": "No Helmet",
+                    "name": "No Helmet",
                     "id": "14"
                 },
                 {
-                    "item": "Not Applicable",
+                    "name": "Not Applicable",
                     "id": "15"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "16"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "17"
                 }
             ]
@@ -566,11 +566,11 @@ export const questions = {
             "tooltip": "E.g. distracted driving",
             "answerOptions": [
                 {
-                    "item": "No",
+                    "name": "No",
                     "id": "0"
                 },
                 {
-                    "item": "Yes",
+                    "name": "Yes",
                     "id": "1"
                 }
             ]
@@ -587,31 +587,31 @@ export const questions = {
             "helperText": "(choose up to 4)",
             "answerOptions": [
                 {
-                    "item": "Not Deployed",
+                    "name": "Not Deployed",
                     "id": "0"
                 },
                 {
-                    "item": "Not Applicable",
+                    "name": "Not Applicable",
                     "id": "1"
                 },
                 {
-                    "item": "Curtain",
+                    "name": "Curtain",
                     "id": "2"
                 },
                 {
-                    "item": "Front",
+                    "name": "Front",
                     "id": "3"
                 },
                 {
-                    "item": "Side",
+                    "name": "Side",
                     "id": "4"
                 },
                 {
-                    "item": "Other (knee, air belt, etc.)",
+                    "name": "Other (knee, air belt, etc.)",
                     "id": "5"
                 },
                 {
-                    "item": "Deployment Unknown",
+                    "name": "Deployment Unknown",
                     "id": "6"
                 }
             ]
@@ -627,23 +627,23 @@ export const questions = {
             "humanReadableId": "driver-24",
             "answerOptions": [
                 {
-                    "item": "Not Ejected",
+                    "name": "Not Ejected",
                     "id": "0"
                 },
                 {
-                    "item": "Ejected, Partially",
+                    "name": "Ejected, Partially",
                     "id": "1"
                 },
                 {
-                    "item": "Ejected, Totally",
+                    "name": "Ejected, Totally",
                     "id": "2"
                 },
                 {
-                    "item": "Not Applicable",
+                    "name": "Not Applicable",
                     "id": "3"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "4"
                 }
             ]
@@ -669,39 +669,39 @@ export const questions = {
             "humanReadableId": "driver-26",
             "answerOptions": [
                 {
-                    "item": "Not Licensed",
+                    "name": "Not Licensed",
                     "id": "0"
                 },
                 {
-                    "item": "Canada",
+                    "name": "Canada",
                     "id": "1"
                 },
                 {
-                    "item": "Indian Nation",
+                    "name": "Indian Nation",
                     "id": "2"
                 },
                 {
-                    "item": "International License (other than Mexico or Canada)",
+                    "name": "International License (other than Mexico or Canada)",
                     "id": "3"
                 },
                 {
-                    "item": "Mexico",
+                    "name": "Mexico",
                     "id": "4"
                 },
                 {
-                    "item": "State",
+                    "name": "State",
                     "id": "5"
                 },
                 {
-                    "item": "U.S. Government",
+                    "name": "U.S. Government",
                     "id": "6"
                 },
                 {
-                    "item": "Not Applicable",
+                    "name": "Not Applicable",
                     "id": "7"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "8"
                 }
             ]
@@ -749,31 +749,31 @@ export const questions = {
             "humanReadableId": "driver-30",
             "answerOptions": [
                 {
-                    "item": "None",
+                    "name": "None",
                     "id": "0"
                 },
                 {
-                    "item": "Class A",
+                    "name": "Class A",
                     "id": "1"
                 },
                 {
-                    "item": "Class B",
+                    "name": "Class B",
                     "id": "2"
                 },
                 {
-                    "item": "Class C",
+                    "name": "Class C",
                     "id": "3"
                 },
                 {
-                    "item": "Class M",
+                    "name": "Class M",
                     "id": "4"
                 },
                 {
-                    "item": "Regular Driver License Class",
+                    "name": "Regular Driver License Class",
                     "id": "5"
                 },
                 {
-                    "item": "Not Applicable",
+                    "name": "Not Applicable",
                     "id": "6"
                 }
             ]
@@ -789,11 +789,11 @@ export const questions = {
             "humanReadableId": "driver-31",
             "answerOptions": [
                 {
-                    "item": "No",
+                    "name": "No",
                     "id": "0"
                 },
                 {
-                    "item": "Yes",
+                    "name": "Yes",
                     "id": "1"
                 }
             ]
@@ -809,35 +809,35 @@ export const questions = {
             "humanReadableId": "driver-32",
             "answerOptions": [
                 {
-                    "item": "None/Not Applicable",
+                    "name": "None/Not Applicable",
                     "id": "0"
                 },
                 {
-                    "item": "H - Hazardous Materials",
+                    "name": "H - Hazardous Materials",
                     "id": "1"
                 },
                 {
-                    "item": "N - Tank Vehicle",
+                    "name": "N - Tank Vehicle",
                     "id": "2"
                 },
                 {
-                    "item": "P - Passenger",
+                    "name": "P - Passenger",
                     "id": "3"
                 },
                 {
-                    "item": "S - School",
+                    "name": "S - School",
                     "id": "4"
                 },
                 {
-                    "item": "T - Double/Triple Trailers",
+                    "name": "T - Double/Triple Trailers",
                     "id": "5"
                 },
                 {
-                    "item": "X - Combination of Tank Vehicle and Hazardous Materials",
+                    "name": "X - Combination of Tank Vehicle and Hazardous Materials",
                     "id": "6"
                 },
                 {
-                    "item": "Other non-commercial license endorsements (e.g., motorcycle, etc.)",
+                    "name": "Other non-commercial license endorsements (e.g., motorcycle, etc.)",
                     "id": "7"
                 }
             ]
@@ -853,23 +853,23 @@ export const questions = {
             "humanReadableId": "driver-33",
             "answerOptions": [
                 {
-                    "item": "No",
+                    "name": "No",
                     "id": "0"
                 },
                 {
-                    "item": "Exceeded Speed Limit",
+                    "name": "Exceeded Speed Limit",
                     "id": "1"
                 },
                 {
-                    "item": "Racing",
+                    "name": "Racing",
                     "id": "2"
                 },
                 {
-                    "item": "Too Fast for Conditions",
+                    "name": "Too Fast for Conditions",
                     "id": "3"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "4"
                 }
             ]
@@ -886,79 +886,79 @@ export const questions = {
             "helperText": "(choose up to 4)",
             "answerOptions": [
                 {
-                    "item": "No Contributing Action",
+                    "name": "No Contributing Action",
                     "id": "0"
                 },
                 {
-                    "item": "Disregarded Other Road Markings",
+                    "name": "Disregarded Other Road Markings",
                     "id": "1"
                 },
                 {
-                    "item": "Disregarded Other Traffic Sign",
+                    "name": "Disregarded Other Traffic Sign",
                     "id": "2"
                 },
                 {
-                    "item": "Failed to Keep in Proper Lane",
+                    "name": "Failed to Keep in Proper Lane",
                     "id": "3"
                 },
                 {
-                    "item": "Failed to Yield Right-of-Way",
+                    "name": "Failed to Yield Right-of-Way",
                     "id": "4"
                 },
                 {
-                    "item": "Followed Too Closely",
+                    "name": "Followed Too Closely",
                     "id": "5"
                 },
                 {
-                    "item": "Improper Backing",
+                    "name": "Improper Backing",
                     "id": "6"
                 },
                 {
-                    "item": "Improper Passing",
+                    "name": "Improper Passing",
                     "id": "7"
                 },
                 {
-                    "item": "Improper Turn",
+                    "name": "Improper Turn",
                     "id": "8"
                 },
                 {
-                    "item": "Operated Motor Vehicle in Inattentive, Careless, Negligent, or Erratic Manner",
+                    "name": "Operated Motor Vehicle in Inattentive, Careless, Negligent, or Erratic Manner",
                     "id": "9"
                 },
                 {
-                    "item": "Operated Motor Vehicle in Reckless or Aggressive Manner",
+                    "name": "Operated Motor Vehicle in Reckless or Aggressive Manner",
                     "id": "10"
                 },
                 {
-                    "item": "Over-Correcting/Over-Steering",
+                    "name": "Over-Correcting/Over-Steering",
                     "id": "11"
                 },
                 {
-                    "item": "Ran Off Roadway",
+                    "name": "Ran Off Roadway",
                     "id": "12"
                 },
                 {
-                    "item": "Ran Red Light",
+                    "name": "Ran Red Light",
                     "id": "13"
                 },
                 {
-                    "item": "Ran Stop Sign",
+                    "name": "Ran Stop Sign",
                     "id": "14"
                 },
                 {
-                    "item": "Swerved or Avoided Due to Wind, Slippery Surface, Motor Vehicle, Object, Non-Mo",
+                    "name": "Swerved or Avoided Due to Wind, Slippery Surface, Motor Vehicle, Object, Non-Mo",
                     "id": "15"
                 },
                 {
-                    "item": "Wrong Side or Wrong Way",
+                    "name": "Wrong Side or Wrong Way",
                     "id": "16"
                 },
                 {
-                    "item": "Other Contributing Action",
+                    "name": "Other Contributing Action",
                     "id": "17"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "18"
                 }
             ]
@@ -991,63 +991,63 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "No Driver Present/Unknown if Driver Present",
+                    "name": "No Driver Present/Unknown if Driver Present",
                     "id": "0"
                 },
                 {
-                    "item": "Accelerating",
+                    "name": "Accelerating",
                     "id": "1"
                 },
                 {
-                    "item": "Accelerating and Steering Left",
+                    "name": "Accelerating and Steering Left",
                     "id": "2"
                 },
                 {
-                    "item": "Accelerating and Steering Right",
+                    "name": "Accelerating and Steering Right",
                     "id": "3"
                 },
                 {
-                    "item": "Braking and Steering Left",
+                    "name": "Braking and Steering Left",
                     "id": "4"
                 },
                 {
-                    "item": "Braking and Steering Right",
+                    "name": "Braking and Steering Right",
                     "id": "5"
                 },
                 {
-                    "item": "Braking (Lockup)",
+                    "name": "Braking (Lockup)",
                     "id": "6"
                 },
                 {
-                    "item": "Braking (Lockup Unknown)",
+                    "name": "Braking (Lockup Unknown)",
                     "id": "7"
                 },
                 {
-                    "item": "Braking (No Lockup)",
+                    "name": "Braking (No Lockup)",
                     "id": "8"
                 },
                 {
-                    "item": "No Avoidance Maneuver",
+                    "name": "No Avoidance Maneuver",
                     "id": "9"
                 },
                 {
-                    "item": "Releasing Brakes",
+                    "name": "Releasing Brakes",
                     "id": "10"
                 },
                 {
-                    "item": "Steering Left",
+                    "name": "Steering Left",
                     "id": "11"
                 },
                 {
-                    "item": "Steering Right",
+                    "name": "Steering Right",
                     "id": "12"
                 },
                 {
-                    "item": "Other Actions",
+                    "name": "Other Actions",
                     "id": "13"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "14"
                 }
             ]
@@ -1125,43 +1125,43 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "No CDL",
+                    "name": "No CDL",
                     "id": "0"
                 },
                 {
-                    "item": "Canceled or Denied",
+                    "name": "Canceled or Denied",
                     "id": "1"
                 },
                 {
-                    "item": "Disqualified",
+                    "name": "Disqualified",
                     "id": "2"
                 },
                 {
-                    "item": "Expired",
+                    "name": "Expired",
                     "id": "3"
                 },
                 {
-                    "item": "Revoked",
+                    "name": "Revoked",
                     "id": "4"
                 },
                 {
-                    "item": "Suspended",
+                    "name": "Suspended",
                     "id": "5"
                 },
                 {
-                    "item": "Learner's Permit",
+                    "name": "Learner's Permit",
                     "id": "6"
                 },
                 {
-                    "item": "Valid",
+                    "name": "Valid",
                     "id": "7"
                 },
                 {
-                    "item": "Other - Not Valid",
+                    "name": "Other - Not Valid",
                     "id": "8"
                 },
                 {
-                    "item": "Unknown License Status",
+                    "name": "Unknown License Status",
                     "id": "9"
                 }
             ]
@@ -1203,23 +1203,23 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "No Endorsement(s) Required for the Vehicle",
+                    "name": "No Endorsement(s) Required for the Vehicle",
                     "id": "0"
                 },
                 {
-                    "item": "Endorsement(s) Required, Complied With",
+                    "name": "Endorsement(s) Required, Complied With",
                     "id": "1"
                 },
                 {
-                    "item": "Endorsement(s) Required, Not Complied With",
+                    "name": "Endorsement(s) Required, Not Complied With",
                     "id": "2"
                 },
                 {
-                    "item": "Endorsement(s) Required, Compliance Unknown",
+                    "name": "Endorsement(s) Required, Compliance Unknown",
                     "id": "3"
                 },
                 {
-                    "item": "Unknown if Required",
+                    "name": "Unknown if Required",
                     "id": "4"
                 }
             ]
@@ -1245,23 +1245,23 @@ export const questions = {
             "humanReadableId": "driver-41",
             "answerOptions": [
                 {
-                    "item": "Not Distracted",
+                    "name": "Not Distracted",
                     "id": "0"
                 },
                 {
-                    "item": "Talking/listening",
+                    "name": "Talking/listening",
                     "id": "1"
                 },
                 {
-                    "item": "Manually Operating (texting, dialing, playing game, etc.)",
+                    "name": "Manually Operating (texting, dialing, playing game, etc.)",
                     "id": "2"
                 },
                 {
-                    "item": "Other Action (looking away from task, etc.)",
+                    "name": "Other Action (looking away from task, etc.)",
                     "id": "3"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "4"
                 }
             ]
@@ -1295,39 +1295,39 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "Not Applicable (Not Distracted)",
+                    "name": "Not Applicable (Not Distracted)",
                     "id": "0"
                 },
                 {
-                    "item": "Hands-Free Mobile Phone",
+                    "name": "Hands-Free Mobile Phone",
                     "id": "1"
                 },
                 {
-                    "item": "Hand-Held Mobile Phone",
+                    "name": "Hand-Held Mobile Phone",
                     "id": "2"
                 },
                 {
-                    "item": "Other Electronic Device",
+                    "name": "Other Electronic Device",
                     "id": "3"
                 },
                 {
-                    "item": "Vehicle-Integrated Device",
+                    "name": "Vehicle-Integrated Device",
                     "id": "4"
                 },
                 {
-                    "item": "Passenger/Other Non-Motorist",
+                    "name": "Passenger/Other Non-Motorist",
                     "id": "5"
                 },
                 {
-                    "item": "External (to vehicle/non-motorist area)",
+                    "name": "External (to vehicle/non-motorist area)",
                     "id": "6"
                 },
                 {
-                    "item": "Other Distraction (animal, food, grooming)",
+                    "name": "Other Distraction (animal, food, grooming)",
                     "id": "7"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "8"
                 }
             ]
@@ -1344,31 +1344,31 @@ export const questions = {
             "helperText": "(choose up to 2)",
             "answerOptions": [
                 {
-                    "item": "Not Applicable",
+                    "name": "Not Applicable",
                     "id": "0"
                 },
                 {
-                    "item": "Asleep or Fatigued",
+                    "name": "Asleep or Fatigued",
                     "id": "1"
                 },
                 {
-                    "item": "Emotional (depressed, angry, disturbed, etc.)",
+                    "name": "Emotional (depressed, angry, disturbed, etc.)",
                     "id": "2"
                 },
                 {
-                    "item": "Ill (sick), Fainted",
+                    "name": "Ill (sick), Fainted",
                     "id": "3"
                 },
                 {
-                    "item": "Physically Impaired",
+                    "name": "Physically Impaired",
                     "id": "4"
                 },
                 {
-                    "item": "Under the Influence of Medications/Drugs/Alcohol",
+                    "name": "Under the Influence of Medications/Drugs/Alcohol",
                     "id": "5"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "6"
                 }
             ]
@@ -1384,15 +1384,15 @@ export const questions = {
             "humanReadableId": "driver-44",
             "answerOptions": [
                 {
-                    "item": "No",
+                    "name": "No",
                     "id": "0"
                 },
                 {
-                    "item": "Yes",
+                    "name": "Yes",
                     "id": "1"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "2"
                 }
             ]
@@ -1430,19 +1430,19 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "Test Not Given",
+                    "name": "Test Not Given",
                     "id": "0"
                 },
                 {
-                    "item": "Test Given",
+                    "name": "Test Given",
                     "id": "1"
                 },
                 {
-                    "item": "Test Refused",
+                    "name": "Test Refused",
                     "id": "2"
                 },
                 {
-                    "item": "Unknown if Tested",
+                    "name": "Unknown if Tested",
                     "id": "3"
                 }
             ]
@@ -1464,23 +1464,23 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "Not Applicable (Test Not Given)",
+                    "name": "Not Applicable (Test Not Given)",
                     "id": "0"
                 },
                 {
-                    "item": "Blood",
+                    "name": "Blood",
                     "id": "1"
                 },
                 {
-                    "item": "Breath",
+                    "name": "Breath",
                     "id": "2"
                 },
                 {
-                    "item": "Urine",
+                    "name": "Urine",
                     "id": "3"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "4"
                 }
             ]
@@ -1496,15 +1496,15 @@ export const questions = {
             "humanReadableId": "driver-48",
             "answerOptions": [
                 {
-                    "item": "No",
+                    "name": "No",
                     "id": "0"
                 },
                 {
-                    "item": "Yes",
+                    "name": "Yes",
                     "id": "1"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "2"
                 }
             ]
@@ -1542,19 +1542,19 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "Test Not Given",
+                    "name": "Test Not Given",
                     "id": "0"
                 },
                 {
-                    "item": "Test Given",
+                    "name": "Test Given",
                     "id": "1"
                 },
                 {
-                    "item": "Test Refused",
+                    "name": "Test Refused",
                     "id": "2"
                 },
                 {
-                    "item": "Unknown if Tested",
+                    "name": "Unknown if Tested",
                     "id": "3"
                 }
             ]
@@ -1576,23 +1576,23 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "Not Applicable (Test Not Given)",
+                    "name": "Not Applicable (Test Not Given)",
                     "id": "0"
                 },
                 {
-                    "item": "Blood",
+                    "name": "Blood",
                     "id": "1"
                 },
                 {
-                    "item": "Saliva",
+                    "name": "Saliva",
                     "id": "2"
                 },
                 {
-                    "item": "Urine",
+                    "name": "Urine",
                     "id": "3"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "4"
                 }
             ]
@@ -1712,15 +1712,15 @@ export const questions = {
             "humanReadableId": "nonmotorist-10",
             "answerOptions": [
                 {
-                    "item": "Female",
+                    "name": "Female",
                     "id": "0"
                 },
                 {
-                    "item": "Male",
+                    "name": "Male",
                     "id": "1"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "2"
                 }
             ]
@@ -1746,27 +1746,27 @@ export const questions = {
             "humanReadableId": "nonmotorist-12",
             "answerOptions": [
                 {
-                    "item": "Bicyclist",
+                    "name": "Bicyclist",
                     "id": "0"
                 },
                 {
-                    "item": "Other Cyclist",
+                    "name": "Other Cyclist",
                     "id": "1"
                 },
                 {
-                    "item": "Pedestrian",
+                    "name": "Pedestrian",
                     "id": "2"
                 },
                 {
-                    "item": "Other Pedestrian (wheelchair, person in a building, skater, personal convey)",
+                    "name": "Other Pedestrian (wheelchair, person in a building, skater, personal convey)",
                     "id": "3"
                 },
                 {
-                    "item": "Occupant of a Non-Motor Vehicle Transportation Device",
+                    "name": "Occupant of a Non-Motor Vehicle Transportation Device",
                     "id": "4"
                 },
                 {
-                    "item": "Unknown Type of Non-Motorist",
+                    "name": "Unknown Type of Non-Motorist",
                     "id": "5"
                 }
             ]
@@ -1782,35 +1782,35 @@ export const questions = {
             "humanReadableId": "nonmotorist-13",
             "answerOptions": [
                 {
-                    "item": "No",
+                    "name": "No",
                     "id": "0"
                 },
                 {
-                    "item": "EMS",
+                    "name": "EMS",
                     "id": "1"
                 },
                 {
-                    "item": "Fire",
+                    "name": "Fire",
                     "id": "2"
                 },
                 {
-                    "item": "Police",
+                    "name": "Police",
                     "id": "3"
                 },
                 {
-                    "item": "Tow Operator",
+                    "name": "Tow Operator",
                     "id": "4"
                 },
                 {
-                    "item": "Transportation (i.e. maintenance workers, safety service patrol operators, etc.)",
+                    "name": "Transportation (i.e. maintenance workers, safety service patrol operators, etc.)",
                     "id": "5"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "6"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "7"
                 }
             ]
@@ -1826,23 +1826,23 @@ export const questions = {
             "humanReadableId": "nonmotorist-14",
             "answerOptions": [
                 {
-                    "item": "Fatal Injury",
+                    "name": "Fatal Injury",
                     "id": "0"
                 },
                 {
-                    "item": "Suspected Serious Injury",
+                    "name": "Suspected Serious Injury",
                     "id": "1"
                 },
                 {
-                    "item": "Suspected Minor Injury",
+                    "name": "Suspected Minor Injury",
                     "id": "2"
                 },
                 {
-                    "item": "Possible Injury",
+                    "name": "Possible Injury",
                     "id": "3"
                 },
                 {
-                    "item": "No Apparent Injury",
+                    "name": "No Apparent Injury",
                     "id": "4"
                 }
             ]
@@ -1904,27 +1904,27 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "Not Transported",
+                    "name": "Not Transported",
                     "id": "0"
                 },
                 {
-                    "item": "EMS Air",
+                    "name": "EMS Air",
                     "id": "1"
                 },
                 {
-                    "item": "EMS Ground",
+                    "name": "EMS Ground",
                     "id": "2"
                 },
                 {
-                    "item": "Law Enforcement",
+                    "name": "Law Enforcement",
                     "id": "3"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "4"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "5"
                 }
             ]
@@ -2034,23 +2034,23 @@ export const questions = {
             "humanReadableId": "nonmotorist-21",
             "answerOptions": [
                 {
-                    "item": "Not Distracted",
+                    "name": "Not Distracted",
                     "id": "0"
                 },
                 {
-                    "item": "Talking/listening",
+                    "name": "Talking/listening",
                     "id": "1"
                 },
                 {
-                    "item": "Manually Operating (texting, dialing, playing game, etc.)",
+                    "name": "Manually Operating (texting, dialing, playing game, etc.)",
                     "id": "2"
                 },
                 {
-                    "item": "Other Action (looking away from task, etc.)",
+                    "name": "Other Action (looking away from task, etc.)",
                     "id": "3"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "4"
                 }
             ]
@@ -2084,39 +2084,39 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "Not Applicable (Not Distracted)",
+                    "name": "Not Applicable (Not Distracted)",
                     "id": "0"
                 },
                 {
-                    "item": "Hands-Free Mobile Phone",
+                    "name": "Hands-Free Mobile Phone",
                     "id": "1"
                 },
                 {
-                    "item": "Hand-Held Mobile Phone",
+                    "name": "Hand-Held Mobile Phone",
                     "id": "2"
                 },
                 {
-                    "item": "Other Electronic Device",
+                    "name": "Other Electronic Device",
                     "id": "3"
                 },
                 {
-                    "item": "Vehicle-Integrated Device",
+                    "name": "Vehicle-Integrated Device",
                     "id": "4"
                 },
                 {
-                    "item": "Passenger/Other Non-Motorist",
+                    "name": "Passenger/Other Non-Motorist",
                     "id": "5"
                 },
                 {
-                    "item": "External (to vehicle/non-motorist area)",
+                    "name": "External (to vehicle/non-motorist area)",
                     "id": "6"
                 },
                 {
-                    "item": "Other Distraction (animal, food, grooming)",
+                    "name": "Other Distraction (animal, food, grooming)",
                     "id": "7"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "8"
                 }
             ]
@@ -2133,31 +2133,31 @@ export const questions = {
             "helperText": "(choose up to 2)",
             "answerOptions": [
                 {
-                    "item": "Not Applicable",
+                    "name": "Not Applicable",
                     "id": "0"
                 },
                 {
-                    "item": "Asleep or Fatigued",
+                    "name": "Asleep or Fatigued",
                     "id": "1"
                 },
                 {
-                    "item": "Emotional (depressed, angry, disturbed, etc.)",
+                    "name": "Emotional (depressed, angry, disturbed, etc.)",
                     "id": "2"
                 },
                 {
-                    "item": "Ill (sick), Fainted",
+                    "name": "Ill (sick), Fainted",
                     "id": "3"
                 },
                 {
-                    "item": "Physically Impaired",
+                    "name": "Physically Impaired",
                     "id": "4"
                 },
                 {
-                    "item": "Under the Influence of Medications/Drugs/Alcohol",
+                    "name": "Under the Influence of Medications/Drugs/Alcohol",
                     "id": "5"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "6"
                 }
             ]
@@ -2173,15 +2173,15 @@ export const questions = {
             "humanReadableId": "nonmotorist-24",
             "answerOptions": [
                 {
-                    "item": "No",
+                    "name": "No",
                     "id": "0"
                 },
                 {
-                    "item": "Yes",
+                    "name": "Yes",
                     "id": "1"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "2"
                 }
             ]
@@ -2219,19 +2219,19 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "Test Not Given",
+                    "name": "Test Not Given",
                     "id": "0"
                 },
                 {
-                    "item": "Test Given",
+                    "name": "Test Given",
                     "id": "1"
                 },
                 {
-                    "item": "Test Refused",
+                    "name": "Test Refused",
                     "id": "2"
                 },
                 {
-                    "item": "Unknown if Tested",
+                    "name": "Unknown if Tested",
                     "id": "3"
                 }
             ]
@@ -2253,23 +2253,23 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "Not Applicable (Test Not Given)",
+                    "name": "Not Applicable (Test Not Given)",
                     "id": "0"
                 },
                 {
-                    "item": "Blood",
+                    "name": "Blood",
                     "id": "1"
                 },
                 {
-                    "item": "Breath",
+                    "name": "Breath",
                     "id": "2"
                 },
                 {
-                    "item": "Urine",
+                    "name": "Urine",
                     "id": "3"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "4"
                 }
             ]
@@ -2285,15 +2285,15 @@ export const questions = {
             "humanReadableId": "nonmotorist-28",
             "answerOptions": [
                 {
-                    "item": "No",
+                    "name": "No",
                     "id": "0"
                 },
                 {
-                    "item": "Yes",
+                    "name": "Yes",
                     "id": "1"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "2"
                 }
             ]
@@ -2331,19 +2331,19 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "Test Not Given",
+                    "name": "Test Not Given",
                     "id": "0"
                 },
                 {
-                    "item": "Test Given",
+                    "name": "Test Given",
                     "id": "1"
                 },
                 {
-                    "item": "Test Refused",
+                    "name": "Test Refused",
                     "id": "2"
                 },
                 {
-                    "item": "Unknown if Tested",
+                    "name": "Unknown if Tested",
                     "id": "3"
                 }
             ]
@@ -2365,23 +2365,23 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "Not Applicable (Test Not Given)",
+                    "name": "Not Applicable (Test Not Given)",
                     "id": "0"
                 },
                 {
-                    "item": "Blood",
+                    "name": "Blood",
                     "id": "1"
                 },
                 {
-                    "item": "Saliva",
+                    "name": "Saliva",
                     "id": "2"
                 },
                 {
-                    "item": "Urine",
+                    "name": "Urine",
                     "id": "3"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "4"
                 }
             ]
@@ -2418,47 +2418,47 @@ export const questions = {
             "humanReadableId": "nonmotorist-34",
             "answerOptions": [
                 {
-                    "item": "None",
+                    "name": "None",
                     "id": "0"
                 },
                 {
-                    "item": "Adjacent to Roadway (e.g., Shoulder, Median)",
+                    "name": "Adjacent to Roadway (e.g., Shoulder, Median)",
                     "id": "1"
                 },
                 {
-                    "item": "Crossing Roadway",
+                    "name": "Crossing Roadway",
                     "id": "2"
                 },
                 {
-                    "item": "In Roadway - Other",
+                    "name": "In Roadway - Other",
                     "id": "3"
                 },
                 {
-                    "item": "Waiting to Cross Roadway",
+                    "name": "Waiting to Cross Roadway",
                     "id": "4"
                 },
                 {
-                    "item": "Walking/Cycling Along Roadway Against Traffic (In or Adjacent to Travel Lane)",
+                    "name": "Walking/Cycling Along Roadway Against Traffic (In or Adjacent to Travel Lane)",
                     "id": "5"
                 },
                 {
-                    "item": "Walking/Cycling Along Roadway with Traffic (In or Adjacent to Travel Lane)",
+                    "name": "Walking/Cycling Along Roadway with Traffic (In or Adjacent to Travel Lane)",
                     "id": "6"
                 },
                 {
-                    "item": "Walking/Cycling on Sidewalk",
+                    "name": "Walking/Cycling on Sidewalk",
                     "id": "7"
                 },
                 {
-                    "item": "Working in Trafficway (Incident Response)",
+                    "name": "Working in Trafficway (Incident Response)",
                     "id": "8"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "9"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "10"
                 }
             ]
@@ -2474,19 +2474,19 @@ export const questions = {
             "humanReadableId": "nonmotorist-35",
             "answerOptions": [
                 {
-                    "item": "Going to or from School (K-12)",
+                    "name": "Going to or from School (K-12)",
                     "id": "0"
                 },
                 {
-                    "item": "Going to or from Transit",
+                    "name": "Going to or from Transit",
                     "id": "1"
                 },
                 {
-                    "item": "Not Applicable",
+                    "name": "Not Applicable",
                     "id": "2"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "3"
                 }
             ]
@@ -2503,55 +2503,55 @@ export const questions = {
             "helperText": "(choose up to 2)",
             "answerOptions": [
                 {
-                    "item": "Dart/Dash",
+                    "name": "Dart/Dash",
                     "id": "0"
                 },
                 {
-                    "item": "Disabled Vehicle-Related (Working on, Pushing, Leaving/Approaching)",
+                    "name": "Disabled Vehicle-Related (Working on, Pushing, Leaving/Approaching)",
                     "id": "1"
                 },
                 {
-                    "item": "Entering/Exiting Parked/Standing Vehicle",
+                    "name": "Entering/Exiting Parked/Standing Vehicle",
                     "id": "2"
                 },
                 {
-                    "item": "Failure to Obey Traffic Signs, Signals, or Officer",
+                    "name": "Failure to Obey Traffic Signs, Signals, or Officer",
                     "id": "3"
                 },
                 {
-                    "item": "Failure to Yield Right-Of-Way",
+                    "name": "Failure to Yield Right-Of-Way",
                     "id": "4"
                 },
                 {
-                    "item": "Improper Passing",
+                    "name": "Improper Passing",
                     "id": "5"
                 },
                 {
-                    "item": "Improper Turn/Merge",
+                    "name": "Improper Turn/Merge",
                     "id": "6"
                 },
                 {
-                    "item": "Inattentive (Talking, Eating, etc.)",
+                    "name": "Inattentive (Talking, Eating, etc.)",
                     "id": "7"
                 },
                 {
-                    "item": "In Roadway Improperly (Standing, Lying, Working, Playing)",
+                    "name": "In Roadway Improperly (Standing, Lying, Working, Playing)",
                     "id": "8"
                 },
                 {
-                    "item": "Not Visible (Dark Clothing, No Lighting, etc.)",
+                    "name": "Not Visible (Dark Clothing, No Lighting, etc.)",
                     "id": "9"
                 },
                 {
-                    "item": "Wrong-Way Riding or Walking",
+                    "name": "Wrong-Way Riding or Walking",
                     "id": "10"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "11"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "12"
                 }
             ]
@@ -2567,79 +2567,79 @@ export const questions = {
             "humanReadableId": "nonmotorist-37",
             "answerOptions": [
                 {
-                    "item": "Intersection - Marked Crosswalk",
+                    "name": "Intersection - Marked Crosswalk",
                     "id": "0"
                 },
                 {
-                    "item": "Intersection - Unmarked Crosswalk",
+                    "name": "Intersection - Unmarked Crosswalk",
                     "id": "1"
                 },
                 {
-                    "item": "Intersection - Other",
+                    "name": "Intersection - Other",
                     "id": "2"
                 },
                 {
-                    "item": "Median/Crossing Island",
+                    "name": "Median/Crossing Island",
                     "id": "3"
                 },
                 {
-                    "item": "Midblock - Marked Crosswalk",
+                    "name": "Midblock - Marked Crosswalk",
                     "id": "4"
                 },
                 {
-                    "item": "Shoulder/Roadside",
+                    "name": "Shoulder/Roadside",
                     "id": "5"
                 },
                 {
-                    "item": "Travel Lane - Other Location",
+                    "name": "Travel Lane - Other Location",
                     "id": "6"
                 },
                 {
-                    "item": "Signed Route (no pavement marking)",
+                    "name": "Signed Route (no pavement marking)",
                     "id": "7"
                 },
                 {
-                    "item": "Shared Lane Markings",
+                    "name": "Shared Lane Markings",
                     "id": "8"
                 },
                 {
-                    "item": "On-Street Bike Lanes",
+                    "name": "On-Street Bike Lanes",
                     "id": "9"
                 },
                 {
-                    "item": "On-Street Buffered Bike Lanes",
+                    "name": "On-Street Buffered Bike Lanes",
                     "id": "10"
                 },
                 {
-                    "item": "Separated Bike Lanes",
+                    "name": "Separated Bike Lanes",
                     "id": "11"
                 },
                 {
-                    "item": "Off-Street Trails/Sidepaths",
+                    "name": "Off-Street Trails/Sidepaths",
                     "id": "12"
                 },
                 {
-                    "item": "Driveway Access",
+                    "name": "Driveway Access",
                     "id": "13"
                 },
                 {
-                    "item": "Non-Trafficway Area",
+                    "name": "Non-Trafficway Area",
                     "id": "14"
                 },
                 {
-                    "item": "Shared-Use Path or Trail",
+                    "name": "Shared-Use Path or Trail",
                     "id": "15"
                 },
                 {
-                    "item": "Sidewalk",
+                    "name": "Sidewalk",
                     "id": "16"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "17"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "18"
                 }
             ]
@@ -2656,35 +2656,35 @@ export const questions = {
             "helperText": "(choose up to 5)",
             "answerOptions": [
                 {
-                    "item": "None",
+                    "name": "None",
                     "id": "0"
                 },
                 {
-                    "item": "Helmet",
+                    "name": "Helmet",
                     "id": "1"
                 },
                 {
-                    "item": "Protective Pads Used (elbows, knees, shins, etc.)",
+                    "name": "Protective Pads Used (elbows, knees, shins, etc.)",
                     "id": "2"
                 },
                 {
-                    "item": "Reflective Wear (backpack, triangles, etc.)",
+                    "name": "Reflective Wear (backpack, triangles, etc.)",
                     "id": "3"
                 },
                 {
-                    "item": "Lighting",
+                    "name": "Lighting",
                     "id": "4"
                 },
                 {
-                    "item": "Reflectors",
+                    "name": "Reflectors",
                     "id": "5"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "6"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "7"
                 }
             ]
@@ -2700,23 +2700,23 @@ export const questions = {
             "humanReadableId": "nonmotorist-39",
             "answerOptions": [
                 {
-                    "item": "Right",
+                    "name": "Right",
                     "id": "0"
                 },
                 {
-                    "item": "Rear",
+                    "name": "Rear",
                     "id": "1"
                 },
                 {
-                    "item": "Left",
+                    "name": "Left",
                     "id": "2"
                 },
                 {
-                    "item": "Front",
+                    "name": "Front",
                     "id": "3"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "4"
                 }
             ]
@@ -2783,15 +2783,15 @@ export const questions = {
             "humanReadableId": "passenger-5",
             "answerOptions": [
                 {
-                    "item": "Female",
+                    "name": "Female",
                     "id": "0"
                 },
                 {
-                    "item": "Male",
+                    "name": "Male",
                     "id": "1"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "2"
                 }
             ]
@@ -2817,35 +2817,35 @@ export const questions = {
             "humanReadableId": "passenger-7",
             "answerOptions": [
                 {
-                    "item": "No",
+                    "name": "No",
                     "id": "0"
                 },
                 {
-                    "item": "EMS",
+                    "name": "EMS",
                     "id": "1"
                 },
                 {
-                    "item": "Fire",
+                    "name": "Fire",
                     "id": "2"
                 },
                 {
-                    "item": "Police",
+                    "name": "Police",
                     "id": "3"
                 },
                 {
-                    "item": "Tow Operator",
+                    "name": "Tow Operator",
                     "id": "4"
                 },
                 {
-                    "item": "Transportation (i.e. maintenance workers, safety service patrol operators, etc.)",
+                    "name": "Transportation (i.e. maintenance workers, safety service patrol operators, etc.)",
                     "id": "5"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "6"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "7"
                 }
             ]
@@ -2861,23 +2861,23 @@ export const questions = {
             "humanReadableId": "passenger-8",
             "answerOptions": [
                 {
-                    "item": "Fatal Injury",
+                    "name": "Fatal Injury",
                     "id": "0"
                 },
                 {
-                    "item": "Suspected Serious Injury",
+                    "name": "Suspected Serious Injury",
                     "id": "1"
                 },
                 {
-                    "item": "Suspected Minor Injury",
+                    "name": "Suspected Minor Injury",
                     "id": "2"
                 },
                 {
-                    "item": "Possible Injury",
+                    "name": "Possible Injury",
                     "id": "3"
                 },
                 {
-                    "item": "No Apparent Injury",
+                    "name": "No Apparent Injury",
                     "id": "4"
                 }
             ]
@@ -2939,27 +2939,27 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "Not Transported",
+                    "name": "Not Transported",
                     "id": "0"
                 },
                 {
-                    "item": "EMS Air",
+                    "name": "EMS Air",
                     "id": "1"
                 },
                 {
-                    "item": "EMS Ground",
+                    "name": "EMS Ground",
                     "id": "2"
                 },
                 {
-                    "item": "Law Enforcement",
+                    "name": "Law Enforcement",
                     "id": "3"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "4"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "5"
                 }
             ]
@@ -3060,71 +3060,71 @@ export const questions = {
             "helperText": "(choose up to 2)",
             "answerOptions": [
                 {
-                    "item": "Front",
+                    "name": "Front",
                     "id": "0"
                 },
                 {
-                    "item": "Second",
+                    "name": "Second",
                     "id": "1"
                 },
                 {
-                    "item": "Third",
+                    "name": "Third",
                     "id": "2"
                 },
                 {
-                    "item": "Fourth",
+                    "name": "Fourth",
                     "id": "3"
                 },
                 {
-                    "item": "Other Row (bus, 15 passenger van, etc.)",
+                    "name": "Other Row (bus, 15 passenger van, etc.)",
                     "id": "4"
                 },
                 {
-                    "item": "Unknown Row",
+                    "name": "Unknown Row",
                     "id": "5"
                 },
                 {
-                    "item": "Left (usually the motor vehicle or motorcycle driver except for postal vehicles)",
+                    "name": "Left (usually the motor vehicle or motorcycle driver except for postal vehicles)",
                     "id": "6"
                 },
                 {
-                    "item": "Middle",
+                    "name": "Middle",
                     "id": "7"
                 },
                 {
-                    "item": "Right",
+                    "name": "Right",
                     "id": "8"
                 },
                 {
-                    "item": "Unknown Seat",
+                    "name": "Unknown Seat",
                     "id": "9"
                 },
                 {
-                    "item": "Other Enclosed Cargo Area",
+                    "name": "Other Enclosed Cargo Area",
                     "id": "10"
                 },
                 {
-                    "item": "Riding on Motor Vehicle Exterior (non-trailing unit)",
+                    "name": "Riding on Motor Vehicle Exterior (non-trailing unit)",
                     "id": "11"
                 },
                 {
-                    "item": "Sleeper Section of Cab (truck)",
+                    "name": "Sleeper Section of Cab (truck)",
                     "id": "12"
                 },
                 {
-                    "item": "Trailing Unit",
+                    "name": "Trailing Unit",
                     "id": "13"
                 },
                 {
-                    "item": "Unenclosed Cargo Area",
+                    "name": "Unenclosed Cargo Area",
                     "id": "14"
                 },
                 {
-                    "item": "Not Applicable",
+                    "name": "Not Applicable",
                     "id": "15"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "16"
                 }
             ]
@@ -3140,75 +3140,75 @@ export const questions = {
             "humanReadableId": "passenger-15",
             "answerOptions": [
                 {
-                    "item": "Booster Seat",
+                    "name": "Booster Seat",
                     "id": "0"
                 },
                 {
-                    "item": "Child Restraint System - Forward Facing",
+                    "name": "Child Restraint System - Forward Facing",
                     "id": "1"
                 },
                 {
-                    "item": "Child Restraint System - Rear Facing",
+                    "name": "Child Restraint System - Rear Facing",
                     "id": "2"
                 },
                 {
-                    "item": "Child Restraint - Type Unknown",
+                    "name": "Child Restraint - Type Unknown",
                     "id": "3"
                 },
                 {
-                    "item": "Lap Belt Only Used",
+                    "name": "Lap Belt Only Used",
                     "id": "4"
                 },
                 {
-                    "item": "None Used - Motor Vehicle Occupant",
+                    "name": "None Used - Motor Vehicle Occupant",
                     "id": "5"
                 },
                 {
-                    "item": "Restraint Used - Type Unknown",
+                    "name": "Restraint Used - Type Unknown",
                     "id": "6"
                 },
                 {
-                    "item": "Shoulder and Lap Belt Used",
+                    "name": "Shoulder and Lap Belt Used",
                     "id": "7"
                 },
                 {
-                    "item": "Shoulder Belt Only Used",
+                    "name": "Shoulder Belt Only Used",
                     "id": "8"
                 },
                 {
-                    "item": "Stretcher",
+                    "name": "Stretcher",
                     "id": "9"
                 },
                 {
-                    "item": "Wheelchair",
+                    "name": "Wheelchair",
                     "id": "10"
                 },
                 {
-                    "item": "DOT-Compliant Motorcycle Helmet",
+                    "name": "DOT-Compliant Motorcycle Helmet",
                     "id": "11"
                 },
                 {
-                    "item": "Not DOT-Compliant Motorcycle Helmet",
+                    "name": "Not DOT-Compliant Motorcycle Helmet",
                     "id": "12"
                 },
                 {
-                    "item": "Unknown If DOT-Compliant Motorcycle Helmet",
+                    "name": "Unknown If DOT-Compliant Motorcycle Helmet",
                     "id": "13"
                 },
                 {
-                    "item": "No Helmet",
+                    "name": "No Helmet",
                     "id": "14"
                 },
                 {
-                    "item": "Not Applicable",
+                    "name": "Not Applicable",
                     "id": "15"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "16"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "17"
                 }
             ]
@@ -3224,11 +3224,11 @@ export const questions = {
             "humanReadableId": "passenger-16",
             "answerOptions": [
                 {
-                    "item": "No",
+                    "name": "No",
                     "id": "0"
                 },
                 {
-                    "item": "Yes",
+                    "name": "Yes",
                     "id": "1"
                 }
             ]
@@ -3245,31 +3245,31 @@ export const questions = {
             "helperText": "(choose up to 4)",
             "answerOptions": [
                 {
-                    "item": "Not Deployed",
+                    "name": "Not Deployed",
                     "id": "0"
                 },
                 {
-                    "item": "Not Applicable",
+                    "name": "Not Applicable",
                     "id": "1"
                 },
                 {
-                    "item": "Curtain",
+                    "name": "Curtain",
                     "id": "2"
                 },
                 {
-                    "item": "Front",
+                    "name": "Front",
                     "id": "3"
                 },
                 {
-                    "item": "Side",
+                    "name": "Side",
                     "id": "4"
                 },
                 {
-                    "item": "Other (knee, air belt, etc.)",
+                    "name": "Other (knee, air belt, etc.)",
                     "id": "5"
                 },
                 {
-                    "item": "Deployment Unknown",
+                    "name": "Deployment Unknown",
                     "id": "6"
                 }
             ]
@@ -3285,23 +3285,23 @@ export const questions = {
             "humanReadableId": "passenger-18",
             "answerOptions": [
                 {
-                    "item": "Not Ejected",
+                    "name": "Not Ejected",
                     "id": "0"
                 },
                 {
-                    "item": "Ejected, Partially",
+                    "name": "Ejected, Partially",
                     "id": "1"
                 },
                 {
-                    "item": "Ejected, Totally",
+                    "name": "Ejected, Totally",
                     "id": "2"
                 },
                 {
-                    "item": "Not Applicable",
+                    "name": "Not Applicable",
                     "id": "3"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "4"
                 }
             ]
@@ -3338,27 +3338,27 @@ export const questions = {
             "humanReadableId": "road-2",
             "answerOptions": [
                 {
-                    "item": "Fatal Injury",
+                    "name": "Fatal Injury",
                     "id": "0"
                 },
                 {
-                    "item": "Suspected Serious Injury",
+                    "name": "Suspected Serious Injury",
                     "id": "1"
                 },
                 {
-                    "item": "Suspected Minor Injury",
+                    "name": "Suspected Minor Injury",
                     "id": "2"
                 },
                 {
-                    "item": "Possible Injury",
+                    "name": "Possible Injury",
                     "id": "3"
                 },
                 {
-                    "item": "Property Damage-Only",
+                    "name": "Property Damage-Only",
                     "id": "4"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "5"
                 }
             ]
@@ -3385,11 +3385,11 @@ export const questions = {
             "tooltip": "Provide type for ownership of the land where the crash occurred",
             "answerOptions": [
                 {
-                    "item": "Public Property",
+                    "name": "Public Property",
                     "id": "0"
                 },
                 {
-                    "item": "Private Property",
+                    "name": "Private Property",
                     "id": "1"
                 }
             ]
@@ -3406,15 +3406,15 @@ export const questions = {
             "tooltip": "Does the crash happen on a road?",
             "answerOptions": [
                 {
-                    "item": "Trafficway, On Road",
+                    "name": "Trafficway, On Road",
                     "id": "0"
                 },
                 {
-                    "item": "Trafficway, Not on Road",
+                    "name": "Trafficway, Not on Road",
                     "id": "1"
                 },
                 {
-                    "item": "Non-Trafficway",
+                    "name": "Non-Trafficway",
                     "id": "2"
                 }
             ]
@@ -3431,11 +3431,11 @@ export const questions = {
             "tooltip": "A Secondary Crash is a crash  that resulted from another crash",
             "answerOptions": [
                 {
-                    "item": "No",
+                    "name": "No",
                     "id": "0"
                 },
                 {
-                    "item": "Yes",
+                    "name": "Yes",
                     "id": "1"
                 }
             ]
@@ -3484,227 +3484,227 @@ export const questions = {
             "humanReadableId": "road-10",
             "answerOptions": [
                 {
-                    "item": "Alabama",
+                    "name": "Alabama",
                     "id": "0"
                 },
                 {
-                    "item": "Alaska",
+                    "name": "Alaska",
                     "id": "1"
                 },
                 {
-                    "item": "American Samoa",
+                    "name": "American Samoa",
                     "id": "2"
                 },
                 {
-                    "item": "Arizona",
+                    "name": "Arizona",
                     "id": "3"
                 },
                 {
-                    "item": "Arkansas",
+                    "name": "Arkansas",
                     "id": "4"
                 },
                 {
-                    "item": "California",
+                    "name": "California",
                     "id": "5"
                 },
                 {
-                    "item": "Colorado",
+                    "name": "Colorado",
                     "id": "6"
                 },
                 {
-                    "item": "Commonwealth of the Northern Mariana Islands",
+                    "name": "Commonwealth of the Northern Mariana Islands",
                     "id": "7"
                 },
                 {
-                    "item": "Connecticut",
+                    "name": "Connecticut",
                     "id": "8"
                 },
                 {
-                    "item": "Delaware",
+                    "name": "Delaware",
                     "id": "9"
                 },
                 {
-                    "item": "District of Columbia",
+                    "name": "District of Columbia",
                     "id": "10"
                 },
                 {
-                    "item": "Florida",
+                    "name": "Florida",
                     "id": "11"
                 },
                 {
-                    "item": "Georgia",
+                    "name": "Georgia",
                     "id": "12"
                 },
                 {
-                    "item": "Guam",
+                    "name": "Guam",
                     "id": "13"
                 },
                 {
-                    "item": "Hawaii",
+                    "name": "Hawaii",
                     "id": "14"
                 },
                 {
-                    "item": "Idaho",
+                    "name": "Idaho",
                     "id": "15"
                 },
                 {
-                    "item": "Illinois",
+                    "name": "Illinois",
                     "id": "16"
                 },
                 {
-                    "item": "Indiana",
+                    "name": "Indiana",
                     "id": "17"
                 },
                 {
-                    "item": "Iowa",
+                    "name": "Iowa",
                     "id": "18"
                 },
                 {
-                    "item": "Kansas",
+                    "name": "Kansas",
                     "id": "19"
                 },
                 {
-                    "item": "Kentucky",
+                    "name": "Kentucky",
                     "id": "20"
                 },
                 {
-                    "item": "Louisiana",
+                    "name": "Louisiana",
                     "id": "21"
                 },
                 {
-                    "item": "Maine",
+                    "name": "Maine",
                     "id": "22"
                 },
                 {
-                    "item": "Maryland",
+                    "name": "Maryland",
                     "id": "23"
                 },
                 {
-                    "item": "Massachusetts",
+                    "name": "Massachusetts",
                     "id": "24"
                 },
                 {
-                    "item": "Michigan",
+                    "name": "Michigan",
                     "id": "25"
                 },
                 {
-                    "item": "Minnesota",
+                    "name": "Minnesota",
                     "id": "26"
                 },
                 {
-                    "item": "Mississippi",
+                    "name": "Mississippi",
                     "id": "27"
                 },
                 {
-                    "item": "Missouri",
+                    "name": "Missouri",
                     "id": "28"
                 },
                 {
-                    "item": "Montana",
+                    "name": "Montana",
                     "id": "29"
                 },
                 {
-                    "item": "Nebraska",
+                    "name": "Nebraska",
                     "id": "30"
                 },
                 {
-                    "item": "Nevada",
+                    "name": "Nevada",
                     "id": "31"
                 },
                 {
-                    "item": "New Hampshire",
+                    "name": "New Hampshire",
                     "id": "32"
                 },
                 {
-                    "item": "New Jersey",
+                    "name": "New Jersey",
                     "id": "33"
                 },
                 {
-                    "item": "New Mexico",
+                    "name": "New Mexico",
                     "id": "34"
                 },
                 {
-                    "item": "New York",
+                    "name": "New York",
                     "id": "35"
                 },
                 {
-                    "item": "North Carolina",
+                    "name": "North Carolina",
                     "id": "36"
                 },
                 {
-                    "item": "North Dakota",
+                    "name": "North Dakota",
                     "id": "37"
                 },
                 {
-                    "item": "Ohio",
+                    "name": "Ohio",
                     "id": "38"
                 },
                 {
-                    "item": "Oklahoma",
+                    "name": "Oklahoma",
                     "id": "39"
                 },
                 {
-                    "item": "Oregon",
+                    "name": "Oregon",
                     "id": "40"
                 },
                 {
-                    "item": "Pennsylvania",
+                    "name": "Pennsylvania",
                     "id": "41"
                 },
                 {
-                    "item": "Puerto Rico",
+                    "name": "Puerto Rico",
                     "id": "42"
                 },
                 {
-                    "item": "Rhode Island",
+                    "name": "Rhode Island",
                     "id": "43"
                 },
                 {
-                    "item": "South Carolina",
+                    "name": "South Carolina",
                     "id": "44"
                 },
                 {
-                    "item": "South Dakota",
+                    "name": "South Dakota",
                     "id": "45"
                 },
                 {
-                    "item": "Tennessee",
+                    "name": "Tennessee",
                     "id": "46"
                 },
                 {
-                    "item": "Texas",
+                    "name": "Texas",
                     "id": "47"
                 },
                 {
-                    "item": "United States Virgin Islands",
+                    "name": "United States Virgin Islands",
                     "id": "48"
                 },
                 {
-                    "item": "Utah",
+                    "name": "Utah",
                     "id": "49"
                 },
                 {
-                    "item": "Vermont",
+                    "name": "Vermont",
                     "id": "50"
                 },
                 {
-                    "item": "Virginia",
+                    "name": "Virginia",
                     "id": "51"
                 },
                 {
-                    "item": "Washington",
+                    "name": "Washington",
                     "id": "52"
                 },
                 {
-                    "item": "West Virginia",
+                    "name": "West Virginia",
                     "id": "53"
                 },
                 {
-                    "item": "Wisconsin",
+                    "name": "Wisconsin",
                     "id": "54"
                 },
                 {
-                    "item": "Wyoming",
+                    "name": "Wyoming",
                     "id": "55"
                 }
             ]
@@ -3783,171 +3783,171 @@ export const questions = {
             "tooltip": "The first injury or damage-producing event that characterizes the crash type.",
             "answerOptions": [
                 {
-                    "item": "Cargo/Equipment Loss or Shift",
+                    "name": "Cargo/Equipment Loss or Shift",
                     "id": "0"
                 },
                 {
-                    "item": "Fell/Jumped From Motor Vehicle",
+                    "name": "Fell/Jumped From Motor Vehicle",
                     "id": "1"
                 },
                 {
-                    "item": "Fire/Explosion",
+                    "name": "Fire/Explosion",
                     "id": "2"
                 },
                 {
-                    "item": "Immersion, Full or Partial",
+                    "name": "Immersion, Full or Partial",
                     "id": "3"
                 },
                 {
-                    "item": "Jackknife",
+                    "name": "Jackknife",
                     "id": "4"
                 },
                 {
-                    "item": "Other Non-Collision",
+                    "name": "Other Non-Collision",
                     "id": "5"
                 },
                 {
-                    "item": "Overturn/Rollover",
+                    "name": "Overturn/Rollover",
                     "id": "6"
                 },
                 {
-                    "item": "Thrown or Falling Object",
+                    "name": "Thrown or Falling Object",
                     "id": "7"
                 },
                 {
-                    "item": "Animal (live)",
+                    "name": "Animal (live)",
                     "id": "8"
                 },
                 {
-                    "item": "Construction Equipment (backhoe, bulldozer, etc.)",
+                    "name": "Construction Equipment (backhoe, bulldozer, etc.)",
                     "id": "9"
                 },
                 {
-                    "item": "Farm Equipment (tractor, combine harvester, etc.)",
+                    "name": "Farm Equipment (tractor, combine harvester, etc.)",
                     "id": "10"
                 },
                 {
-                    "item": "Motor Vehicle in Transport",
+                    "name": "Motor Vehicle in Transport",
                     "id": "11"
                 },
                 {
-                    "item": "Other Non-Fixed Object",
+                    "name": "Other Non-Fixed Object",
                     "id": "12"
                 },
                 {
-                    "item": "Other Non-motorist",
+                    "name": "Other Non-motorist",
                     "id": "13"
                 },
                 {
-                    "item": "Parked Motor Vehicle",
+                    "name": "Parked Motor Vehicle",
                     "id": "14"
                 },
                 {
-                    "item": "Pedalcycle",
+                    "name": "Pedalcycle",
                     "id": "15"
                 },
                 {
-                    "item": "Pedestrian",
+                    "name": "Pedestrian",
                     "id": "16"
                 },
                 {
-                    "item": "Railway Vehicle (train, engine)",
+                    "name": "Railway Vehicle (train, engine)",
                     "id": "17"
                 },
                 {
-                    "item": "Strikes Object at Rest from MV in Transport",
+                    "name": "Strikes Object at Rest from MV in Transport",
                     "id": "18"
                 },
                 {
-                    "item": "Struck by Falling, Shifting Cargo or Anything Set in Motion by Motor Vehicle",
+                    "name": "Struck by Falling, Shifting Cargo or Anything Set in Motion by Motor Vehicle",
                     "id": "19"
                 },
                 {
-                    "item": "Bridge Overhead Structure",
+                    "name": "Bridge Overhead Structure",
                     "id": "20"
                 },
                 {
-                    "item": "Bridge Pier or Support",
+                    "name": "Bridge Pier or Support",
                     "id": "21"
                 },
                 {
-                    "item": "Bridge Rail",
+                    "name": "Bridge Rail",
                     "id": "22"
                 },
                 {
-                    "item": "Cable Barrier",
+                    "name": "Cable Barrier",
                     "id": "23"
                 },
                 {
-                    "item": "Concrete Traffic Barrier",
+                    "name": "Concrete Traffic Barrier",
                     "id": "24"
                 },
                 {
-                    "item": "Culvert",
+                    "name": "Culvert",
                     "id": "25"
                 },
                 {
-                    "item": "Curb",
+                    "name": "Curb",
                     "id": "26"
                 },
                 {
-                    "item": "Ditch",
+                    "name": "Ditch",
                     "id": "27"
                 },
                 {
-                    "item": "Embankment",
+                    "name": "Embankment",
                     "id": "28"
                 },
                 {
-                    "item": "Fence",
+                    "name": "Fence",
                     "id": "29"
                 },
                 {
-                    "item": "Guardrail End Terminal",
+                    "name": "Guardrail End Terminal",
                     "id": "30"
                 },
                 {
-                    "item": "Guardrail Face",
+                    "name": "Guardrail Face",
                     "id": "31"
                 },
                 {
-                    "item": "Impact Attenuator/Crash Cushion",
+                    "name": "Impact Attenuator/Crash Cushion",
                     "id": "32"
                 },
                 {
-                    "item": "Mailbox",
+                    "name": "Mailbox",
                     "id": "33"
                 },
                 {
-                    "item": "Other Fixed Object (wall, building, tunnel, etc.)",
+                    "name": "Other Fixed Object (wall, building, tunnel, etc.)",
                     "id": "34"
                 },
                 {
-                    "item": "Other Post, Pole, or Support",
+                    "name": "Other Post, Pole, or Support",
                     "id": "35"
                 },
                 {
-                    "item": "Other Traffic Barrier",
+                    "name": "Other Traffic Barrier",
                     "id": "36"
                 },
                 {
-                    "item": "Traffic Sign Support",
+                    "name": "Traffic Sign Support",
                     "id": "37"
                 },
                 {
-                    "item": "Traffic Signal Support",
+                    "name": "Traffic Signal Support",
                     "id": "38"
                 },
                 {
-                    "item": "Tree (standing)",
+                    "name": "Tree (standing)",
                     "id": "39"
                 },
                 {
-                    "item": "Utility Pole/Light Support",
+                    "name": "Utility Pole/Light Support",
                     "id": "40"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "41"
                 }
             ]
@@ -3963,47 +3963,47 @@ export const questions = {
             "humanReadableId": "road-17",
             "answerOptions": [
                 {
-                    "item": "Gore",
+                    "name": "Gore",
                     "id": "0"
                 },
                 {
-                    "item": "In Parking Lane or Zone",
+                    "name": "In Parking Lane or Zone",
                     "id": "1"
                 },
                 {
-                    "item": "Median",
+                    "name": "Median",
                     "id": "2"
                 },
                 {
-                    "item": "Off-Roadway, Location Unknown",
+                    "name": "Off-Roadway, Location Unknown",
                     "id": "3"
                 },
                 {
-                    "item": "On Roadway",
+                    "name": "On Roadway",
                     "id": "4"
                 },
                 {
-                    "item": "On Shoulder, Left Side",
+                    "name": "On Shoulder, Left Side",
                     "id": "5"
                 },
                 {
-                    "item": "On Shoulder, Right Side",
+                    "name": "On Shoulder, Right Side",
                     "id": "6"
                 },
                 {
-                    "item": "Outside Road/Right-of-Way",
+                    "name": "Outside Road/Right-of-Way",
                     "id": "7"
                 },
                 {
-                    "item": "Roadside",
+                    "name": "Roadside",
                     "id": "8"
                 },
                 {
-                    "item": "Separator/Traffic Island",
+                    "name": "Separator/Traffic Island",
                     "id": "9"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "10"
                 }
             ]
@@ -4022,51 +4022,51 @@ export const questions = {
             "helperImg": "../image/manner_example.png",
             "answerOptions": [
                 {
-                    "item": "Not a Collision between Two Motor Vehicles In-transport",
+                    "name": "Not a Collision between Two Motor Vehicles In-transport",
                     "id": "0"
                 },
                 {
-                    "item": "Angle",
+                    "name": "Angle",
                     "id": "1"
                 },
                 {
-                    "item": "Front to Front",
+                    "name": "Front to Front",
                     "id": "2"
                 },
                 {
-                    "item": "Front to Rear",
+                    "name": "Front to Rear",
                     "id": "3"
                 },
                 {
-                    "item": "Rear to Rear",
+                    "name": "Rear to Rear",
                     "id": "4"
                 },
                 {
-                    "item": "Rear to Side",
+                    "name": "Rear to Side",
                     "id": "5"
                 },
                 {
-                    "item": "Sideswipe, Opposite Direction",
+                    "name": "Sideswipe, Opposite Direction",
                     "id": "6"
                 },
                 {
-                    "item": "Sideswipe, Same Direction",
+                    "name": "Sideswipe, Same Direction",
                     "id": "7"
                 },
                 {
-                    "item": "Single Vehicle Collision",
+                    "name": "Single Vehicle Collision",
                     "id": "8"
                 },
                 {
-                    "item": "Collision with a Parked Motor Vehicle",
+                    "name": "Collision with a Parked Motor Vehicle",
                     "id": "9"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "10"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "11"
                 }
             ]
@@ -4093,11 +4093,11 @@ export const questions = {
             "tooltip": "Affiliation of the person completing the crash report",
             "answerOptions": [
                 {
-                    "item": "Law Enforcement Agency",
+                    "name": "Law Enforcement Agency",
                     "id": "0"
                 },
                 {
-                    "item": "Civilian",
+                    "name": "Civilian",
                     "id": "1"
                 }
             ]
@@ -4126,51 +4126,51 @@ export const questions = {
             "autoMethod": "weather",
             "answerOptions": [
                 {
-                    "item": "Clear",
+                    "name": "Clear",
                     "id": "0"
                 },
                 {
-                    "item": "Cloudy",
+                    "name": "Cloudy",
                     "id": "1"
                 },
                 {
-                    "item": "Blowing Sand, Soil, Dirt",
+                    "name": "Blowing Sand, Soil, Dirt",
                     "id": "2"
                 },
                 {
-                    "item": "Blowing Snow",
+                    "name": "Blowing Snow",
                     "id": "3"
                 },
                 {
-                    "item": "Fog, Smog, Smoke",
+                    "name": "Fog, Smog, Smoke",
                     "id": "4"
                 },
                 {
-                    "item": "Freezing Rain or Freezing Drizzle",
+                    "name": "Freezing Rain or Freezing Drizzle",
                     "id": "5"
                 },
                 {
-                    "item": "Rain",
+                    "name": "Rain",
                     "id": "6"
                 },
                 {
-                    "item": "Severe Crosswinds",
+                    "name": "Severe Crosswinds",
                     "id": "7"
                 },
                 {
-                    "item": "Sleet or Hail",
+                    "name": "Sleet or Hail",
                     "id": "8"
                 },
                 {
-                    "item": "Snow",
+                    "name": "Snow",
                     "id": "9"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "10"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "11"
                 }
             ]
@@ -4186,31 +4186,31 @@ export const questions = {
             "humanReadableId": "road-23",
             "answerOptions": [
                 {
-                    "item": "Daylight",
+                    "name": "Daylight",
                     "id": "0"
                 },
                 {
-                    "item": "Dawn/Dusk",
+                    "name": "Dawn/Dusk",
                     "id": "1"
                 },
                 {
-                    "item": "Dark - Lighted",
+                    "name": "Dark - Lighted",
                     "id": "2"
                 },
                 {
-                    "item": "Dark - Not Lighted",
+                    "name": "Dark - Not Lighted",
                     "id": "3"
                 },
                 {
-                    "item": "Dark - Unknown Lighting",
+                    "name": "Dark - Unknown Lighting",
                     "id": "4"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "5"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "6"
                 }
             ]
@@ -4226,47 +4226,47 @@ export const questions = {
             "humanReadableId": "road-24",
             "answerOptions": [
                 {
-                    "item": "Dry",
+                    "name": "Dry",
                     "id": "0"
                 },
                 {
-                    "item": "Ice/Frost",
+                    "name": "Ice/Frost",
                     "id": "1"
                 },
                 {
-                    "item": "Mud, Dirt, Gravel",
+                    "name": "Mud, Dirt, Gravel",
                     "id": "2"
                 },
                 {
-                    "item": "Oil",
+                    "name": "Oil",
                     "id": "3"
                 },
                 {
-                    "item": "Sand",
+                    "name": "Sand",
                     "id": "4"
                 },
                 {
-                    "item": "Slush",
+                    "name": "Slush",
                     "id": "5"
                 },
                 {
-                    "item": "Snow",
+                    "name": "Snow",
                     "id": "6"
                 },
                 {
-                    "item": "Water (standing, moving)",
+                    "name": "Water (standing, moving)",
                     "id": "7"
                 },
                 {
-                    "item": "Wet",
+                    "name": "Wet",
                     "id": "8"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "9"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "10"
                 }
             ]
@@ -4283,87 +4283,87 @@ export const questions = {
             "helperText": "(choose up to 2)",
             "answerOptions": [
                 {
-                    "item": "None",
+                    "name": "None",
                     "id": "0"
                 },
                 {
-                    "item": "Animal(s)",
+                    "name": "Animal(s)",
                     "id": "1"
                 },
                 {
-                    "item": "Debris",
+                    "name": "Debris",
                     "id": "2"
                 },
                 {
-                    "item": "Glare",
+                    "name": "Glare",
                     "id": "3"
                 },
                 {
-                    "item": "Non-Highway Work",
+                    "name": "Non-Highway Work",
                     "id": "4"
                 },
                 {
-                    "item": "Obstructed Crosswalks",
+                    "name": "Obstructed Crosswalks",
                     "id": "5"
                 },
                 {
-                    "item": "Obstruction in Roadway",
+                    "name": "Obstruction in Roadway",
                     "id": "6"
                 },
                 {
-                    "item": "Prior Crash",
+                    "name": "Prior Crash",
                     "id": "7"
                 },
                 {
-                    "item": "Prior Non-Recurring Incident",
+                    "name": "Prior Non-Recurring Incident",
                     "id": "8"
                 },
                 {
-                    "item": "Regular Congestion",
+                    "name": "Regular Congestion",
                     "id": "9"
                 },
                 {
-                    "item": "Related to a Bus Stop",
+                    "name": "Related to a Bus Stop",
                     "id": "10"
                 },
                 {
-                    "item": "Road Surface Condition (wet, icy, snow, slush, etc.)",
+                    "name": "Road Surface Condition (wet, icy, snow, slush, etc.)",
                     "id": "11"
                 },
                 {
-                    "item": "Ruts, Holes, Bumps",
+                    "name": "Ruts, Holes, Bumps",
                     "id": "12"
                 },
                 {
-                    "item": "Shoulders (none, low, soft, high)",
+                    "name": "Shoulders (none, low, soft, high)",
                     "id": "13"
                 },
                 {
-                    "item": "Toll Booth/Plaza Related",
+                    "name": "Toll Booth/Plaza Related",
                     "id": "14"
                 },
                 {
-                    "item": "Traffic Control Device",
+                    "name": "Traffic Control Device",
                     "id": "15"
                 },
                 {
-                    "item": "Traffic Incident",
+                    "name": "Traffic Incident",
                     "id": "16"
                 },
                 {
-                    "item": "Visual Obstruction(s)",
+                    "name": "Visual Obstruction(s)",
                     "id": "17"
                 },
                 {
-                    "item": "Weather Conditions",
+                    "name": "Weather Conditions",
                     "id": "18"
                 },
                 {
-                    "item": "Work Zone (construction/maintenance/utility)",
+                    "name": "Work Zone (construction/maintenance/utility)",
                     "id": "19"
                 },
                 {
-                    "item": "Worn, Travel-Polished Surface",
+                    "name": "Worn, Travel-Polished Surface",
                     "id": "20"
                 }
             ]
@@ -4389,15 +4389,15 @@ export const questions = {
             "humanReadableId": "road-27",
             "answerOptions": [
                 {
-                    "item": "No",
+                    "name": "No",
                     "id": "0"
                 },
                 {
-                    "item": "Yes",
+                    "name": "Yes",
                     "id": "1"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "2"
                 }
             ]
@@ -4413,51 +4413,51 @@ export const questions = {
             "humanReadableId": "road-28",
             "answerOptions": [
                 {
-                    "item": "Not an Interchange Area",
+                    "name": "Not an Interchange Area",
                     "id": "0"
                 },
                 {
-                    "item": "Acceleration/Deceleration Lane",
+                    "name": "Acceleration/Deceleration Lane",
                     "id": "1"
                 },
                 {
-                    "item": "Crossover-Related",
+                    "name": "Crossover-Related",
                     "id": "2"
                 },
                 {
-                    "item": "Driveway Access or Related",
+                    "name": "Driveway Access or Related",
                     "id": "3"
                 },
                 {
-                    "item": "Entrance/Exit Ramp or Related",
+                    "name": "Entrance/Exit Ramp or Related",
                     "id": "4"
                 },
                 {
-                    "item": "Intersection or Related",
+                    "name": "Intersection or Related",
                     "id": "5"
                 },
                 {
-                    "item": "Non-Junction",
+                    "name": "Non-Junction",
                     "id": "6"
                 },
                 {
-                    "item": "Railway Grade Crossing",
+                    "name": "Railway Grade Crossing",
                     "id": "7"
                 },
                 {
-                    "item": "Shared-Use Path or Trail",
+                    "name": "Shared-Use Path or Trail",
                     "id": "8"
                 },
                 {
-                    "item": "Through Roadway",
+                    "name": "Through Roadway",
                     "id": "9"
                 },
                 {
-                    "item": "Other Location Not Listed Above Within an Interchange Area (median, shoulder an",
+                    "name": "Other Location Not Listed Above Within an Interchange Area (median, shoulder an",
                     "id": "10"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "11"
                 }
             ]
@@ -4483,23 +4483,23 @@ export const questions = {
             "humanReadableId": "road-30",
             "answerOptions": [
                 {
-                    "item": "Not an Intersection",
+                    "name": "Not an Intersection",
                     "id": "0"
                 },
                 {
-                    "item": "Two",
+                    "name": "Two",
                     "id": "1"
                 },
                 {
-                    "item": "Three",
+                    "name": "Three",
                     "id": "2"
                 },
                 {
-                    "item": "Four",
+                    "name": "Four",
                     "id": "3"
                 },
                 {
-                    "item": "Five or more",
+                    "name": "Five or more",
                     "id": "4"
                 }
             ]
@@ -4515,19 +4515,19 @@ export const questions = {
             "humanReadableId": "road-31",
             "answerOptions": [
                 {
-                    "item": "Angled/Skewed",
+                    "name": "Angled/Skewed",
                     "id": "0"
                 },
                 {
-                    "item": "Roundabout/Traffic Circle",
+                    "name": "Roundabout/Traffic Circle",
                     "id": "1"
                 },
                 {
-                    "item": "Perpendicular",
+                    "name": "Perpendicular",
                     "id": "2"
                 },
                 {
-                    "item": "Not Applicable/Not an Intersection",
+                    "name": "Not Applicable/Not an Intersection",
                     "id": "3"
                 }
             ]
@@ -4543,27 +4543,27 @@ export const questions = {
             "humanReadableId": "road-32",
             "answerOptions": [
                 {
-                    "item": "Signalized",
+                    "name": "Signalized",
                     "id": "0"
                 },
                 {
-                    "item": "Stop - All Way",
+                    "name": "Stop - All Way",
                     "id": "1"
                 },
                 {
-                    "item": "Stop - Partial",
+                    "name": "Stop - Partial",
                     "id": "2"
                 },
                 {
-                    "item": "Yield",
+                    "name": "Yield",
                     "id": "3"
                 },
                 {
-                    "item": "No Controls",
+                    "name": "No Controls",
                     "id": "4"
                 },
                 {
-                    "item": "Not Applicable/Not an Intersection",
+                    "name": "Not Applicable/Not an Intersection",
                     "id": "5"
                 }
             ]
@@ -4579,15 +4579,15 @@ export const questions = {
             "humanReadableId": "road-33",
             "answerOptions": [
                 {
-                    "item": "No",
+                    "name": "No",
                     "id": "0"
                 },
                 {
-                    "item": "Yes, School Bus Directly Involved",
+                    "name": "Yes, School Bus Directly Involved",
                     "id": "1"
                 },
                 {
-                    "item": "Yes, School Bus Indirectly Involved",
+                    "name": "Yes, School Bus Indirectly Involved",
                     "id": "2"
                 }
             ]
@@ -4603,15 +4603,15 @@ export const questions = {
             "humanReadableId": "road-34",
             "answerOptions": [
                 {
-                    "item": "No",
+                    "name": "No",
                     "id": "0"
                 },
                 {
-                    "item": "Yes",
+                    "name": "Yes",
                     "id": "1"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "2"
                 }
             ]
@@ -4650,27 +4650,27 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "Before the First Work Zone Warning Sign",
+                    "name": "Before the First Work Zone Warning Sign",
                     "id": "0"
                 },
                 {
-                    "item": "Advance Warning Area",
+                    "name": "Advance Warning Area",
                     "id": "1"
                 },
                 {
-                    "item": "Transition Area",
+                    "name": "Transition Area",
                     "id": "2"
                 },
                 {
-                    "item": "Activity Area",
+                    "name": "Activity Area",
                     "id": "3"
                 },
                 {
-                    "item": "Termination Area",
+                    "name": "Termination Area",
                     "id": "4"
                 },
                 {
-                    "item": "Not Applicable/Not Within or Related to a Work Zone",
+                    "name": "Not Applicable/Not Within or Related to a Work Zone",
                     "id": "5"
                 }
             ]
@@ -4692,27 +4692,27 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "Lane Closure",
+                    "name": "Lane Closure",
                     "id": "0"
                 },
                 {
-                    "item": "Lane Shift/Crossover",
+                    "name": "Lane Shift/Crossover",
                     "id": "1"
                 },
                 {
-                    "item": "Work on Shoulder or Median",
+                    "name": "Work on Shoulder or Median",
                     "id": "2"
                 },
                 {
-                    "item": "Intermittent or Moving Work",
+                    "name": "Intermittent or Moving Work",
                     "id": "3"
                 },
                 {
-                    "item": "Other Type of Work Zone",
+                    "name": "Other Type of Work Zone",
                     "id": "4"
                 },
                 {
-                    "item": "Not Applicable/Not Within or Related to a Work Zone",
+                    "name": "Not Applicable/Not Within or Related to a Work Zone",
                     "id": "5"
                 }
             ]
@@ -4734,19 +4734,19 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "No",
+                    "name": "No",
                     "id": "0"
                 },
                 {
-                    "item": "Yes",
+                    "name": "Yes",
                     "id": "1"
                 },
                 {
-                    "item": "Not Applicable/Not Within or Related to a Work Zone",
+                    "name": "Not Applicable/Not Within or Related to a Work Zone",
                     "id": "2"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "3"
                 }
             ]
@@ -4768,15 +4768,15 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "No",
+                    "name": "No",
                     "id": "0"
                 },
                 {
-                    "item": "Yes",
+                    "name": "Yes",
                     "id": "1"
                 },
                 {
-                    "item": "Not Applicable/Not Within or Related to a Work Zone",
+                    "name": "Not Applicable/Not Within or Related to a Work Zone",
                     "id": "2"
                 }
             ]
@@ -4892,7 +4892,7 @@ export const questions = {
             "humanReadableId": "vehicle-9",
             "answerOptions": [
                 {
-                    "item": "Uninsured",
+                    "name": "Uninsured",
                     "id": "0"
                 }
             ]
@@ -4908,7 +4908,7 @@ export const questions = {
             "humanReadableId": "vehicle-10",
             "answerOptions": [
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "0"
                 }
             ]
@@ -4924,7 +4924,7 @@ export const questions = {
             "humanReadableId": "vehicle-11",
             "answerOptions": [
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "0"
                 }
             ]
@@ -4952,15 +4952,15 @@ export const questions = {
             "humanReadableId": "vehicle-13",
             "answerOptions": [
                 {
-                    "item": "Motor Vehicle in Transport",
+                    "name": "Motor Vehicle in Transport",
                     "id": "0"
                 },
                 {
-                    "item": "Parked Motor Vehicle",
+                    "name": "Parked Motor Vehicle",
                     "id": "1"
                 },
                 {
-                    "item": "Working Vehicle/Equipment",
+                    "name": "Working Vehicle/Equipment",
                     "id": "2"
                 }
             ]
@@ -5071,15 +5071,15 @@ export const questions = {
             "humanReadableId": "vehicle-23",
             "answerOptions": [
                 {
-                    "item": "Light (10,000 lbs. or less GVWR/GCWR)",
+                    "name": "Light (10,000 lbs. or less GVWR/GCWR)",
                     "id": "0"
                 },
                 {
-                    "item": "Medium (10,001 - 26,000 lbs. GVWR/GCWR)",
+                    "name": "Medium (10,001 - 26,000 lbs. GVWR/GCWR)",
                     "id": "1"
                 },
                 {
-                    "item": "Heavy (Greater than 26,000 lbs. GVWR/GCWR)",
+                    "name": "Heavy (Greater than 26,000 lbs. GVWR/GCWR)",
                     "id": "2"
                 }
             ]
@@ -5096,19 +5096,19 @@ export const questions = {
             "tooltip": "GVWR is used for single-unit trucks and other body types. GCWR is used for combination trucks or any vehicle with a trailing unit",
             "answerOptions": [
                 {
-                    "item": "1",
+                    "name": "1",
                     "id": "0"
                 },
                 {
-                    "item": "2",
+                    "name": "2",
                     "id": "1"
                 },
                 {
-                    "item": "3",
+                    "name": "3",
                     "id": "2"
                 },
                 {
-                    "item": "Not Applicable",
+                    "name": "Not Applicable",
                     "id": "3"
                 }
             ]
@@ -5124,11 +5124,11 @@ export const questions = {
             "humanReadableId": "vehicle-25",
             "answerOptions": [
                 {
-                    "item": "No",
+                    "name": "No",
                     "id": "0"
                 },
                 {
-                    "item": "Yes",
+                    "name": "Yes",
                     "id": "1"
                 }
             ]
@@ -5154,107 +5154,107 @@ export const questions = {
             "humanReadableId": "vehicle-27",
             "answerOptions": [
                 {
-                    "item": "No Special Function",
+                    "name": "No Special Function",
                     "id": "0"
                 },
                 {
-                    "item": "Bus - School (Public or Private)",
+                    "name": "Bus - School (Public or Private)",
                     "id": "1"
                 },
                 {
-                    "item": "Bus - Childcare/Daycare",
+                    "name": "Bus - Childcare/Daycare",
                     "id": "2"
                 },
                 {
-                    "item": "Bus - Transit/Commuter",
+                    "name": "Bus - Transit/Commuter",
                     "id": "3"
                 },
                 {
-                    "item": "Bus - Charter/Tour",
+                    "name": "Bus - Charter/Tour",
                     "id": "4"
                 },
                 {
-                    "item": "Bus - Intercity",
+                    "name": "Bus - Intercity",
                     "id": "5"
                 },
                 {
-                    "item": "Bus - Shuttle",
+                    "name": "Bus - Shuttle",
                     "id": "6"
                 },
                 {
-                    "item": "Bus - Other",
+                    "name": "Bus - Other",
                     "id": "7"
                 },
                 {
-                    "item": "Farm Vehicle",
+                    "name": "Farm Vehicle",
                     "id": "8"
                 },
                 {
-                    "item": "Fire Truck",
+                    "name": "Fire Truck",
                     "id": "9"
                 },
                 {
-                    "item": "Highway/Maintenance",
+                    "name": "Highway/Maintenance",
                     "id": "10"
                 },
                 {
-                    "item": "Mail Carrier",
+                    "name": "Mail Carrier",
                     "id": "11"
                 },
                 {
-                    "item": "Military",
+                    "name": "Military",
                     "id": "12"
                 },
                 {
-                    "item": "Ambulance",
+                    "name": "Ambulance",
                     "id": "13"
                 },
                 {
-                    "item": "Police",
+                    "name": "Police",
                     "id": "14"
                 },
                 {
-                    "item": "Public Utility",
+                    "name": "Public Utility",
                     "id": "15"
                 },
                 {
-                    "item": "Non-Transport Emergency Services Vehicle",
+                    "name": "Non-Transport Emergency Services Vehicle",
                     "id": "16"
                 },
                 {
-                    "item": "Safety Service Patrols - Incident Response",
+                    "name": "Safety Service Patrols - Incident Response",
                     "id": "17"
                 },
                 {
-                    "item": "Other Incident Response",
+                    "name": "Other Incident Response",
                     "id": "18"
                 },
                 {
-                    "item": "Rental Truck (Over 10,000 lbs.)",
+                    "name": "Rental Truck (Over 10,000 lbs.)",
                     "id": "19"
                 },
                 {
-                    "item": "Towing - Incident Response",
+                    "name": "Towing - Incident Response",
                     "id": "20"
                 },
                 {
-                    "item": "Truck Acting as Crash Attenuator",
+                    "name": "Truck Acting as Crash Attenuator",
                     "id": "21"
                 },
                 {
-                    "item": "Taxi",
+                    "name": "Taxi",
                     "id": "22"
                 },
                 {
-                    "item": "Vehicle Used for Electronic Ride-hailing (transportation network company)",
+                    "name": "Vehicle Used for Electronic Ride-hailing (transportation network company)",
                     "id": "23"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "24"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "25"
                 }
             ]
@@ -5270,27 +5270,27 @@ export const questions = {
             "humanReadableId": "vehicle-28",
             "answerOptions": [
                 {
-                    "item": "Not Applicable",
+                    "name": "Not Applicable",
                     "id": "0"
                 },
                 {
-                    "item": "Non-Emergency, Non-Transport",
+                    "name": "Non-Emergency, Non-Transport",
                     "id": "1"
                 },
                 {
-                    "item": "Non-Emergency Transport",
+                    "name": "Non-Emergency Transport",
                     "id": "2"
                 },
                 {
-                    "item": "Emergency Operation, Emergency Warning Equipment Not in Use",
+                    "name": "Emergency Operation, Emergency Warning Equipment Not in Use",
                     "id": "3"
                 },
                 {
-                    "item": "Emergency Operation, Emergency Warning Equipment in Use",
+                    "name": "Emergency Operation, Emergency Warning Equipment in Use",
                     "id": "4"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "5"
                 }
             ]
@@ -5316,27 +5316,27 @@ export const questions = {
             "humanReadableId": "vehicle-30",
             "answerOptions": [
                 {
-                    "item": "Not on Roadway",
+                    "name": "Not on Roadway",
                     "id": "0"
                 },
                 {
-                    "item": "Northbound",
+                    "name": "Northbound",
                     "id": "1"
                 },
                 {
-                    "item": "Eastbound",
+                    "name": "Eastbound",
                     "id": "2"
                 },
                 {
-                    "item": "Southbound",
+                    "name": "Southbound",
                     "id": "3"
                 },
                 {
-                    "item": "Westbound",
+                    "name": "Westbound",
                     "id": "4"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "5"
                 }
             ]
@@ -5362,11 +5362,11 @@ export const questions = {
             "humanReadableId": "vehicle-32",
             "answerOptions": [
                 {
-                    "item": "One-Way",
+                    "name": "One-Way",
                     "id": "0"
                 },
                 {
-                    "item": "Two-Way",
+                    "name": "Two-Way",
                     "id": "1"
                 }
             ]
@@ -5382,27 +5382,27 @@ export const questions = {
             "humanReadableId": "vehicle-33",
             "answerOptions": [
                 {
-                    "item": "Not Divided",
+                    "name": "Not Divided",
                     "id": "0"
                 },
                 {
-                    "item": "Not Divided, With a Continuous Left-Turn Lane",
+                    "name": "Not Divided, With a Continuous Left-Turn Lane",
                     "id": "1"
                 },
                 {
-                    "item": "Divided, Flush Median (greater than 4ft wide)",
+                    "name": "Divided, Flush Median (greater than 4ft wide)",
                     "id": "2"
                 },
                 {
-                    "item": "Divided, Raised Median (curbed)",
+                    "name": "Divided, Raised Median (curbed)",
                     "id": "3"
                 },
                 {
-                    "item": "Divided, Depressed Median",
+                    "name": "Divided, Depressed Median",
                     "id": "4"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "5"
                 }
             ]
@@ -5418,27 +5418,27 @@ export const questions = {
             "humanReadableId": "vehicle-34",
             "answerOptions": [
                 {
-                    "item": "No Barrier",
+                    "name": "No Barrier",
                     "id": "0"
                 },
                 {
-                    "item": "Cable Barrier",
+                    "name": "Cable Barrier",
                     "id": "1"
                 },
                 {
-                    "item": "Concrete Barrier (e.g. Jersey Barrier)",
+                    "name": "Concrete Barrier (e.g. Jersey Barrier)",
                     "id": "2"
                 },
                 {
-                    "item": "Earth Embankment",
+                    "name": "Earth Embankment",
                     "id": "3"
                 },
                 {
-                    "item": "Guardrail",
+                    "name": "Guardrail",
                     "id": "4"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "5"
                 }
             ]
@@ -5455,15 +5455,15 @@ export const questions = {
             "tooltip": "High occupancy vehicle/high occupancy toll lane",
             "answerOptions": [
                 {
-                    "item": "None present",
+                    "name": "None present",
                     "id": "0"
                 },
                 {
-                    "item": "Separated, Barrier, Flush (greater than 4ft wide), Raised or Depressed Median",
+                    "name": "Separated, Barrier, Flush (greater than 4ft wide), Raised or Depressed Median",
                     "id": "1"
                 },
                 {
-                    "item": "Not Separated, Painted Pavement Markings, Post-Mounted Delineators",
+                    "name": "Not Separated, Painted Pavement Markings, Post-Mounted Delineators",
                     "id": "2"
                 }
             ]
@@ -5489,11 +5489,11 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "No",
+                    "name": "No",
                     "id": "0"
                 },
                 {
-                    "item": "Yes",
+                    "name": "Yes",
                     "id": "1"
                 }
             ]
@@ -5551,15 +5551,15 @@ export const questions = {
             "humanReadableId": "vehicle-41",
             "answerOptions": [
                 {
-                    "item": "Straight",
+                    "name": "Straight",
                     "id": "0"
                 },
                 {
-                    "item": "Curve Left",
+                    "name": "Curve Left",
                     "id": "1"
                 },
                 {
-                    "item": "Curve Right",
+                    "name": "Curve Right",
                     "id": "2"
                 }
             ]
@@ -5575,23 +5575,23 @@ export const questions = {
             "humanReadableId": "vehicle-42",
             "answerOptions": [
                 {
-                    "item": "Level",
+                    "name": "Level",
                     "id": "0"
                 },
                 {
-                    "item": "Uphill",
+                    "name": "Uphill",
                     "id": "1"
                 },
                 {
-                    "item": "Hillcrest",
+                    "name": "Hillcrest",
                     "id": "2"
                 },
                 {
-                    "item": "Downhill",
+                    "name": "Downhill",
                     "id": "3"
                 },
                 {
-                    "item": "Sag (bottom)",
+                    "name": "Sag (bottom)",
                     "id": "4"
                 }
             ]
@@ -5618,115 +5618,115 @@ export const questions = {
             "helperText": "(choose up to 4)",
             "answerOptions": [
                 {
-                    "item": "No Controls",
+                    "name": "No Controls",
                     "id": "0"
                 },
                 {
-                    "item": "Person (including flagger, law enforcement, crossing guard, etc.)",
+                    "name": "Person (including flagger, law enforcement, crossing guard, etc.)",
                     "id": "1"
                 },
                 {
-                    "item": "Bicycle Crossing Sign",
+                    "name": "Bicycle Crossing Sign",
                     "id": "2"
                 },
                 {
-                    "item": "\"Curve Ahead\" Warning Sign",
+                    "name": "\"Curve Ahead\" Warning Sign",
                     "id": "3"
                 },
                 {
-                    "item": "\"Intersection Ahead\" Warning Sign",
+                    "name": "\"Intersection Ahead\" Warning Sign",
                     "id": "4"
                 },
                 {
-                    "item": "Other Warning Sign",
+                    "name": "Other Warning Sign",
                     "id": "5"
                 },
                 {
-                    "item": "Pedestrian Crossing Sign",
+                    "name": "Pedestrian Crossing Sign",
                     "id": "6"
                 },
                 {
-                    "item": "Railroad Crossing Sign",
+                    "name": "Railroad Crossing Sign",
                     "id": "7"
                 },
                 {
-                    "item": "\"Reduce Speed Ahead\" Warning Sign",
+                    "name": "\"Reduce Speed Ahead\" Warning Sign",
                     "id": "8"
                 },
                 {
-                    "item": "School Zone Sign",
+                    "name": "School Zone Sign",
                     "id": "9"
                 },
                 {
-                    "item": "Stop Sign",
+                    "name": "Stop Sign",
                     "id": "10"
                 },
                 {
-                    "item": "Yield Sign",
+                    "name": "Yield Sign",
                     "id": "11"
                 },
                 {
-                    "item": "Flashing Railroad Crossing Signal (may include gates)",
+                    "name": "Flashing Railroad Crossing Signal (may include gates)",
                     "id": "12"
                 },
                 {
-                    "item": "Flashing School Zone Signal",
+                    "name": "Flashing School Zone Signal",
                     "id": "13"
                 },
                 {
-                    "item": "Flashing Traffic Control Signal",
+                    "name": "Flashing Traffic Control Signal",
                     "id": "14"
                 },
                 {
-                    "item": "Lane Use Control Signal",
+                    "name": "Lane Use Control Signal",
                     "id": "15"
                 },
                 {
-                    "item": "Other Signal",
+                    "name": "Other Signal",
                     "id": "16"
                 },
                 {
-                    "item": "Ramp Meter Signal",
+                    "name": "Ramp Meter Signal",
                     "id": "17"
                 },
                 {
-                    "item": "Traffic Control Signal",
+                    "name": "Traffic Control Signal",
                     "id": "18"
                 },
                 {
-                    "item": "Bicycle Crossing",
+                    "name": "Bicycle Crossing",
                     "id": "19"
                 },
                 {
-                    "item": "Other Pavement Marking (excluding edgelines, centerlines, or lane lines)",
+                    "name": "Other Pavement Marking (excluding edgelines, centerlines, or lane lines)",
                     "id": "20"
                 },
                 {
-                    "item": "Pedestrian Crossing",
+                    "name": "Pedestrian Crossing",
                     "id": "21"
                 },
                 {
-                    "item": "Railroad Crossing",
+                    "name": "Railroad Crossing",
                     "id": "22"
                 },
                 {
-                    "item": "School Zone",
+                    "name": "School Zone",
                     "id": "23"
                 },
                 {
-                    "item": "No Controls",
+                    "name": "No Controls",
                     "id": "24"
                 },
                 {
-                    "item": "Person (including flagger, law enforcement, crossing guard, etc.)",
+                    "name": "Person (including flagger, law enforcement, crossing guard, etc.)",
                     "id": "25"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "26"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "27"
                 }
             ]
@@ -5853,115 +5853,115 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "None inoperative or missing",
+                    "name": "None inoperative or missing",
                     "id": "0"
                 },
                 {
-                    "item": "Person (including flagger, law enforcement, crossing guard, etc.)",
+                    "name": "Person (including flagger, law enforcement, crossing guard, etc.)",
                     "id": "1"
                 },
                 {
-                    "item": "Bicycle Crossing Sign",
+                    "name": "Bicycle Crossing Sign",
                     "id": "2"
                 },
                 {
-                    "item": "\"Curve Ahead\" Warning Sign",
+                    "name": "\"Curve Ahead\" Warning Sign",
                     "id": "3"
                 },
                 {
-                    "item": "\"Intersection Ahead\" Warning Sign",
+                    "name": "\"Intersection Ahead\" Warning Sign",
                     "id": "4"
                 },
                 {
-                    "item": "Other Warning Sign",
+                    "name": "Other Warning Sign",
                     "id": "5"
                 },
                 {
-                    "item": "Pedestrian Crossing Sign",
+                    "name": "Pedestrian Crossing Sign",
                     "id": "6"
                 },
                 {
-                    "item": "Railroad Crossing Sign",
+                    "name": "Railroad Crossing Sign",
                     "id": "7"
                 },
                 {
-                    "item": "\"Reduce Speed Ahead\" Warning Sign",
+                    "name": "\"Reduce Speed Ahead\" Warning Sign",
                     "id": "8"
                 },
                 {
-                    "item": "School Zone Sign",
+                    "name": "School Zone Sign",
                     "id": "9"
                 },
                 {
-                    "item": "Stop Sign",
+                    "name": "Stop Sign",
                     "id": "10"
                 },
                 {
-                    "item": "Yield Sign",
+                    "name": "Yield Sign",
                     "id": "11"
                 },
                 {
-                    "item": "Flashing Railroad Crossing Signal (may include gates)",
+                    "name": "Flashing Railroad Crossing Signal (may include gates)",
                     "id": "12"
                 },
                 {
-                    "item": "Flashing School Zone Signal",
+                    "name": "Flashing School Zone Signal",
                     "id": "13"
                 },
                 {
-                    "item": "Flashing Traffic Control Signal",
+                    "name": "Flashing Traffic Control Signal",
                     "id": "14"
                 },
                 {
-                    "item": "Lane Use Control Signal",
+                    "name": "Lane Use Control Signal",
                     "id": "15"
                 },
                 {
-                    "item": "Other Signal",
+                    "name": "Other Signal",
                     "id": "16"
                 },
                 {
-                    "item": "Ramp Meter Signal",
+                    "name": "Ramp Meter Signal",
                     "id": "17"
                 },
                 {
-                    "item": "Traffic Control Signal",
+                    "name": "Traffic Control Signal",
                     "id": "18"
                 },
                 {
-                    "item": "Bicycle Crossing",
+                    "name": "Bicycle Crossing",
                     "id": "19"
                 },
                 {
-                    "item": "Other Pavement Marking (excluding edgelines, centerlines, or lane lines)",
+                    "name": "Other Pavement Marking (excluding edgelines, centerlines, or lane lines)",
                     "id": "20"
                 },
                 {
-                    "item": "Pedestrian Crossing",
+                    "name": "Pedestrian Crossing",
                     "id": "21"
                 },
                 {
-                    "item": "Railroad Crossing",
+                    "name": "Railroad Crossing",
                     "id": "22"
                 },
                 {
-                    "item": "School Zone",
+                    "name": "School Zone",
                     "id": "23"
                 },
                 {
-                    "item": "No Controls",
+                    "name": "No Controls",
                     "id": "24"
                 },
                 {
-                    "item": "Person (including flagger, law enforcement, crossing guard, etc.)",
+                    "name": "Person (including flagger, law enforcement, crossing guard, etc.)",
                     "id": "25"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "26"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "27"
                 }
             ]
@@ -5977,63 +5977,63 @@ export const questions = {
             "humanReadableId": "vehicle-46",
             "answerOptions": [
                 {
-                    "item": "Movements Essentially Straight Ahead",
+                    "name": "Movements Essentially Straight Ahead",
                     "id": "0"
                 },
                 {
-                    "item": "Backing",
+                    "name": "Backing",
                     "id": "1"
                 },
                 {
-                    "item": "Changing Lanes",
+                    "name": "Changing Lanes",
                     "id": "2"
                 },
                 {
-                    "item": "Entering Traffic Lane",
+                    "name": "Entering Traffic Lane",
                     "id": "3"
                 },
                 {
-                    "item": "Leaving Traffic Lane",
+                    "name": "Leaving Traffic Lane",
                     "id": "4"
                 },
                 {
-                    "item": "Making U-Turn",
+                    "name": "Making U-Turn",
                     "id": "5"
                 },
                 {
-                    "item": "Negotiating a Curve",
+                    "name": "Negotiating a Curve",
                     "id": "6"
                 },
                 {
-                    "item": "Overtaking/Passing",
+                    "name": "Overtaking/Passing",
                     "id": "7"
                 },
                 {
-                    "item": "Parked",
+                    "name": "Parked",
                     "id": "8"
                 },
                 {
-                    "item": "Slowing",
+                    "name": "Slowing",
                     "id": "9"
                 },
                 {
-                    "item": "Stopped in Traffic",
+                    "name": "Stopped in Traffic",
                     "id": "10"
                 },
                 {
-                    "item": "Turning Left",
+                    "name": "Turning Left",
                     "id": "11"
                 },
                 {
-                    "item": "Turning Right",
+                    "name": "Turning Right",
                     "id": "12"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "13"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "14"
                 }
             ]
@@ -6061,75 +6061,75 @@ export const questions = {
             "helperImg": "../image/initial_contact.png",
             "answerOptions": [
                 {
-                    "item": "Non-Collision",
+                    "name": "Non-Collision",
                     "id": "0"
                 },
                 {
-                    "item": "(Clock Position) 1",
+                    "name": "(Clock Position) 1",
                     "id": "1"
                 },
                 {
-                    "item": "(Clock Position) 2",
+                    "name": "(Clock Position) 2",
                     "id": "2"
                 },
                 {
-                    "item": "(Clock Position) 3",
+                    "name": "(Clock Position) 3",
                     "id": "3"
                 },
                 {
-                    "item": "(Clock Position) 4",
+                    "name": "(Clock Position) 4",
                     "id": "4"
                 },
                 {
-                    "item": "(Clock Position) 5",
+                    "name": "(Clock Position) 5",
                     "id": "5"
                 },
                 {
-                    "item": "(Clock Position) 6",
+                    "name": "(Clock Position) 6",
                     "id": "6"
                 },
                 {
-                    "item": "(Clock Position) 7",
+                    "name": "(Clock Position) 7",
                     "id": "7"
                 },
                 {
-                    "item": "(Clock Position) 8",
+                    "name": "(Clock Position) 8",
                     "id": "8"
                 },
                 {
-                    "item": "(Clock Position) 9",
+                    "name": "(Clock Position) 9",
                     "id": "9"
                 },
                 {
-                    "item": "(Clock Position) 10",
+                    "name": "(Clock Position) 10",
                     "id": "10"
                 },
                 {
-                    "item": "(Clock Position) 11",
+                    "name": "(Clock Position) 11",
                     "id": "11"
                 },
                 {
-                    "item": "(Clock Position) 12",
+                    "name": "(Clock Position) 12",
                     "id": "12"
                 },
                 {
-                    "item": "Top",
+                    "name": "Top",
                     "id": "13"
                 },
                 {
-                    "item": "Undercarriage",
+                    "name": "Undercarriage",
                     "id": "14"
                 },
                 {
-                    "item": "Cargo Loss",
+                    "name": "Cargo Loss",
                     "id": "15"
                 },
                 {
-                    "item": "Vehicle Not at Scene",
+                    "name": "Vehicle Not at Scene",
                     "id": "16"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "17"
                 }
             ]
@@ -6216,71 +6216,71 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "(Clock Position) 1",
+                    "name": "(Clock Position) 1",
                     "id": "0"
                 },
                 {
-                    "item": "(Clock Position) 2",
+                    "name": "(Clock Position) 2",
                     "id": "1"
                 },
                 {
-                    "item": "(Clock Position) 3",
+                    "name": "(Clock Position) 3",
                     "id": "2"
                 },
                 {
-                    "item": "(Clock Position) 4",
+                    "name": "(Clock Position) 4",
                     "id": "3"
                 },
                 {
-                    "item": "(Clock Position) 5",
+                    "name": "(Clock Position) 5",
                     "id": "4"
                 },
                 {
-                    "item": "(Clock Position) 6",
+                    "name": "(Clock Position) 6",
                     "id": "5"
                 },
                 {
-                    "item": "(Clock Position) 7",
+                    "name": "(Clock Position) 7",
                     "id": "6"
                 },
                 {
-                    "item": "(Clock Position) 8",
+                    "name": "(Clock Position) 8",
                     "id": "7"
                 },
                 {
-                    "item": "(Clock Position) 9",
+                    "name": "(Clock Position) 9",
                     "id": "8"
                 },
                 {
-                    "item": "(Clock Position) 10",
+                    "name": "(Clock Position) 10",
                     "id": "9"
                 },
                 {
-                    "item": "(Clock Position) 11",
+                    "name": "(Clock Position) 11",
                     "id": "10"
                 },
                 {
-                    "item": "(Clock Position) 12",
+                    "name": "(Clock Position) 12",
                     "id": "11"
                 },
                 {
-                    "item": "Top",
+                    "name": "Top",
                     "id": "12"
                 },
                 {
-                    "item": "Undercarriage",
+                    "name": "Undercarriage",
                     "id": "13"
                 },
                 {
-                    "item": "All Areas",
+                    "name": "All Areas",
                     "id": "14"
                 },
                 {
-                    "item": "No Damage",
+                    "name": "No Damage",
                     "id": "15"
                 },
                 {
-                    "item": "Vehicle Not at Scene",
+                    "name": "Vehicle Not at Scene",
                     "id": "16"
                 }
             ]
@@ -6366,23 +6366,23 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "No Damage",
+                    "name": "No Damage",
                     "id": "0"
                 },
                 {
-                    "item": "Minor Damage",
+                    "name": "Minor Damage",
                     "id": "1"
                 },
                 {
-                    "item": "Functional Damage",
+                    "name": "Functional Damage",
                     "id": "2"
                 },
                 {
-                    "item": "Disabling Damage",
+                    "name": "Disabling Damage",
                     "id": "3"
                 },
                 {
-                    "item": "Vehicle Not at Scene",
+                    "name": "Vehicle Not at Scene",
                     "id": "4"
                 }
             ]
@@ -6399,207 +6399,207 @@ export const questions = {
             "helperText": "(choose up to 4)",
             "answerOptions": [
                 {
-                    "item": "Cross Centerline",
+                    "name": "Cross Centerline",
                     "id": "0"
                 },
                 {
-                    "item": "Cross Median",
+                    "name": "Cross Median",
                     "id": "1"
                 },
                 {
-                    "item": "End Departure (T-intersection, dead-end, etc.)",
+                    "name": "End Departure (T-intersection, dead-end, etc.)",
                     "id": "2"
                 },
                 {
-                    "item": "Downhill Runaway",
+                    "name": "Downhill Runaway",
                     "id": "3"
                 },
                 {
-                    "item": "Equipment Failure (blown tire, brake failure, etc.)",
+                    "name": "Equipment Failure (blown tire, brake failure, etc.)",
                     "id": "4"
                 },
                 {
-                    "item": "Ran Off Roadway Left",
+                    "name": "Ran Off Roadway Left",
                     "id": "5"
                 },
                 {
-                    "item": "Ran Off Roadway Right",
+                    "name": "Ran Off Roadway Right",
                     "id": "6"
                 },
                 {
-                    "item": "Reentering Roadway",
+                    "name": "Reentering Roadway",
                     "id": "7"
                 },
                 {
-                    "item": "Separation of Units",
+                    "name": "Separation of Units",
                     "id": "8"
                 },
                 {
-                    "item": "Other Non-Harmful Event",
+                    "name": "Other Non-Harmful Event",
                     "id": "9"
                 },
                 {
-                    "item": "Cargo/Equipment Loss or Shift",
+                    "name": "Cargo/Equipment Loss or Shift",
                     "id": "10"
                 },
                 {
-                    "item": "Fell/Jumped From Motor Vehicle",
+                    "name": "Fell/Jumped From Motor Vehicle",
                     "id": "11"
                 },
                 {
-                    "item": "Fire/Explosion",
+                    "name": "Fire/Explosion",
                     "id": "12"
                 },
                 {
-                    "item": "Immersion, Full or Partial",
+                    "name": "Immersion, Full or Partial",
                     "id": "13"
                 },
                 {
-                    "item": "Jackknife",
+                    "name": "Jackknife",
                     "id": "14"
                 },
                 {
-                    "item": "Other Non-Collision Harmful Event",
+                    "name": "Other Non-Collision Harmful Event",
                     "id": "15"
                 },
                 {
-                    "item": "Overturn/Rollover",
+                    "name": "Overturn/Rollover",
                     "id": "16"
                 },
                 {
-                    "item": "Thrown or Falling Object",
+                    "name": "Thrown or Falling Object",
                     "id": "17"
                 },
                 {
-                    "item": "Animal (live)",
+                    "name": "Animal (live)",
                     "id": "18"
                 },
                 {
-                    "item": "Motor Vehicle in Transport",
+                    "name": "Motor Vehicle in Transport",
                     "id": "19"
                 },
                 {
-                    "item": "Other Non-Fixed Object",
+                    "name": "Other Non-Fixed Object",
                     "id": "20"
                 },
                 {
-                    "item": "Other Non-Motorist",
+                    "name": "Other Non-Motorist",
                     "id": "21"
                 },
                 {
-                    "item": "Parked Motor Vehicle",
+                    "name": "Parked Motor Vehicle",
                     "id": "22"
                 },
                 {
-                    "item": "Pedalcycle",
+                    "name": "Pedalcycle",
                     "id": "23"
                 },
                 {
-                    "item": "Pedestrian",
+                    "name": "Pedestrian",
                     "id": "24"
                 },
                 {
-                    "item": "Railway Vehicle (train, engine)",
+                    "name": "Railway Vehicle (train, engine)",
                     "id": "25"
                 },
                 {
-                    "item": "Strikes Object at Rest from MV in Transport",
+                    "name": "Strikes Object at Rest from MV in Transport",
                     "id": "26"
                 },
                 {
-                    "item": "Struck by Falling, Shifting Cargo or Anything Set in Motion by Motor Vehicle",
+                    "name": "Struck by Falling, Shifting Cargo or Anything Set in Motion by Motor Vehicle",
                     "id": "27"
                 },
                 {
-                    "item": "Work Zone/Maintenance Equipment",
+                    "name": "Work Zone/Maintenance Equipment",
                     "id": "28"
                 },
                 {
-                    "item": "Bridge Overhead Structure",
+                    "name": "Bridge Overhead Structure",
                     "id": "29"
                 },
                 {
-                    "item": "Bridge Pier or Support",
+                    "name": "Bridge Pier or Support",
                     "id": "30"
                 },
                 {
-                    "item": "Bridge Rail",
+                    "name": "Bridge Rail",
                     "id": "31"
                 },
                 {
-                    "item": "Cable Barrier",
+                    "name": "Cable Barrier",
                     "id": "32"
                 },
                 {
-                    "item": "Concrete Traffic Barrier",
+                    "name": "Concrete Traffic Barrier",
                     "id": "33"
                 },
                 {
-                    "item": "Culvert",
+                    "name": "Culvert",
                     "id": "34"
                 },
                 {
-                    "item": "Curb",
+                    "name": "Curb",
                     "id": "35"
                 },
                 {
-                    "item": "Ditch",
+                    "name": "Ditch",
                     "id": "36"
                 },
                 {
-                    "item": "Embankment",
+                    "name": "Embankment",
                     "id": "37"
                 },
                 {
-                    "item": "Fence",
+                    "name": "Fence",
                     "id": "38"
                 },
                 {
-                    "item": "Guardrail End Terminal",
+                    "name": "Guardrail End Terminal",
                     "id": "39"
                 },
                 {
-                    "item": "Guardrail Face",
+                    "name": "Guardrail Face",
                     "id": "40"
                 },
                 {
-                    "item": "Impact Attenuator/Crash Cushion",
+                    "name": "Impact Attenuator/Crash Cushion",
                     "id": "41"
                 },
                 {
-                    "item": "Mailbox",
+                    "name": "Mailbox",
                     "id": "42"
                 },
                 {
-                    "item": "Other Fixed Object (wall, building, tunnel, etc.)",
+                    "name": "Other Fixed Object (wall, building, tunnel, etc.)",
                     "id": "43"
                 },
                 {
-                    "item": "Other Post, Pole or Support",
+                    "name": "Other Post, Pole or Support",
                     "id": "44"
                 },
                 {
-                    "item": "Other Traffic Barrier",
+                    "name": "Other Traffic Barrier",
                     "id": "45"
                 },
                 {
-                    "item": "Traffic Sign Support",
+                    "name": "Traffic Sign Support",
                     "id": "46"
                 },
                 {
-                    "item": "Traffic Signal Support",
+                    "name": "Traffic Signal Support",
                     "id": "47"
                 },
                 {
-                    "item": "Tree (standing)",
+                    "name": "Tree (standing)",
                     "id": "48"
                 },
                 {
-                    "item": "Utility Pole/Light Support",
+                    "name": "Utility Pole/Light Support",
                     "id": "49"
                 },
                 {
-                    "item": "Unknown Fixed Object",
+                    "name": "Unknown Fixed Object",
                     "id": "50"
                 }
             ]
@@ -6615,167 +6615,167 @@ export const questions = {
             "humanReadableId": "vehicle-52",
             "answerOptions": [
                 {
-                    "item": "Cargo/Equipment Loss or Shift",
+                    "name": "Cargo/Equipment Loss or Shift",
                     "id": "0"
                 },
                 {
-                    "item": "Fell/Jumped From Motor Vehicle",
+                    "name": "Fell/Jumped From Motor Vehicle",
                     "id": "1"
                 },
                 {
-                    "item": "Fire/Explosion",
+                    "name": "Fire/Explosion",
                     "id": "2"
                 },
                 {
-                    "item": "Immersion, Full or Partial",
+                    "name": "Immersion, Full or Partial",
                     "id": "3"
                 },
                 {
-                    "item": "Jackknife",
+                    "name": "Jackknife",
                     "id": "4"
                 },
                 {
-                    "item": "Other Non-Collision Harmful Event",
+                    "name": "Other Non-Collision Harmful Event",
                     "id": "5"
                 },
                 {
-                    "item": "Overturn/Rollover",
+                    "name": "Overturn/Rollover",
                     "id": "6"
                 },
                 {
-                    "item": "Thrown or Falling Object",
+                    "name": "Thrown or Falling Object",
                     "id": "7"
                 },
                 {
-                    "item": "Animal (live)",
+                    "name": "Animal (live)",
                     "id": "8"
                 },
                 {
-                    "item": "Motor Vehicle in Transport",
+                    "name": "Motor Vehicle in Transport",
                     "id": "9"
                 },
                 {
-                    "item": "Other Non-Fixed Object",
+                    "name": "Other Non-Fixed Object",
                     "id": "10"
                 },
                 {
-                    "item": "Other Non-Motorist",
+                    "name": "Other Non-Motorist",
                     "id": "11"
                 },
                 {
-                    "item": "Parked Motor Vehicle",
+                    "name": "Parked Motor Vehicle",
                     "id": "12"
                 },
                 {
-                    "item": "Pedalcycle",
+                    "name": "Pedalcycle",
                     "id": "13"
                 },
                 {
-                    "item": "Pedestrian",
+                    "name": "Pedestrian",
                     "id": "14"
                 },
                 {
-                    "item": "Railway Vehicle (train, engine)",
+                    "name": "Railway Vehicle (train, engine)",
                     "id": "15"
                 },
                 {
-                    "item": "Strikes Object at Rest from MV in Transport",
+                    "name": "Strikes Object at Rest from MV in Transport",
                     "id": "16"
                 },
                 {
-                    "item": "Struck by Falling, Shifting Cargo or Anything Set in Motion by Motor Vehicle",
+                    "name": "Struck by Falling, Shifting Cargo or Anything Set in Motion by Motor Vehicle",
                     "id": "17"
                 },
                 {
-                    "item": "Work Zone / Maintenance Equipment",
+                    "name": "Work Zone / Maintenance Equipment",
                     "id": "18"
                 },
                 {
-                    "item": "Bridge Overhead Structure",
+                    "name": "Bridge Overhead Structure",
                     "id": "19"
                 },
                 {
-                    "item": "Bridge Pier or Support",
+                    "name": "Bridge Pier or Support",
                     "id": "20"
                 },
                 {
-                    "item": "Bridge Rail",
+                    "name": "Bridge Rail",
                     "id": "21"
                 },
                 {
-                    "item": "Cable Barrier",
+                    "name": "Cable Barrier",
                     "id": "22"
                 },
                 {
-                    "item": "Concrete Traffic Barrier",
+                    "name": "Concrete Traffic Barrier",
                     "id": "23"
                 },
                 {
-                    "item": "Culvert",
+                    "name": "Culvert",
                     "id": "24"
                 },
                 {
-                    "item": "Curb",
+                    "name": "Curb",
                     "id": "25"
                 },
                 {
-                    "item": "Ditch",
+                    "name": "Ditch",
                     "id": "26"
                 },
                 {
-                    "item": "Embankment",
+                    "name": "Embankment",
                     "id": "27"
                 },
                 {
-                    "item": "Fence",
+                    "name": "Fence",
                     "id": "28"
                 },
                 {
-                    "item": "Guardrail End Terminal",
+                    "name": "Guardrail End Terminal",
                     "id": "29"
                 },
                 {
-                    "item": "Guardrail Face",
+                    "name": "Guardrail Face",
                     "id": "30"
                 },
                 {
-                    "item": "Impact Attenuator/Crash Cushion",
+                    "name": "Impact Attenuator/Crash Cushion",
                     "id": "31"
                 },
                 {
-                    "item": "Mailbox",
+                    "name": "Mailbox",
                     "id": "32"
                 },
                 {
-                    "item": "Other Fixed Object (wall, building, tunnel, etc.)",
+                    "name": "Other Fixed Object (wall, building, tunnel, etc.)",
                     "id": "33"
                 },
                 {
-                    "item": "Other Post, Pole or Support",
+                    "name": "Other Post, Pole or Support",
                     "id": "34"
                 },
                 {
-                    "item": "Other Traffic Barrier",
+                    "name": "Other Traffic Barrier",
                     "id": "35"
                 },
                 {
-                    "item": "Traffic Sign Support",
+                    "name": "Traffic Sign Support",
                     "id": "36"
                 },
                 {
-                    "item": "Traffic Signal Support",
+                    "name": "Traffic Signal Support",
                     "id": "37"
                 },
                 {
-                    "item": "Tree (standing)",
+                    "name": "Tree (standing)",
                     "id": "38"
                 },
                 {
-                    "item": "Utility Pole/Light Support",
+                    "name": "Utility Pole/Light Support",
                     "id": "39"
                 },
                 {
-                    "item": "Unknown Collision With Fixed Object",
+                    "name": "Unknown Collision With Fixed Object",
                     "id": "40"
                 }
             ]
@@ -6791,11 +6791,11 @@ export const questions = {
             "humanReadableId": "vehicle-53",
             "answerOptions": [
                 {
-                    "item": "No, Did Not Leave Scene",
+                    "name": "No, Did Not Leave Scene",
                     "id": "0"
                 },
                 {
-                    "item": "Yes, Driver or Car and Driver Left Scene",
+                    "name": "Yes, Driver or Car and Driver Left Scene",
                     "id": "1"
                 }
             ]
@@ -6811,15 +6811,15 @@ export const questions = {
             "humanReadableId": "vehicle-54",
             "answerOptions": [
                 {
-                    "item": "Not towed",
+                    "name": "Not towed",
                     "id": "0"
                 },
                 {
-                    "item": "Towed, But Not Due to Disabling Damage",
+                    "name": "Towed, But Not Due to Disabling Damage",
                     "id": "1"
                 },
                 {
-                    "item": "Towed Due to Disabling Damage",
+                    "name": "Towed Due to Disabling Damage",
                     "id": "2"
                 }
             ]
@@ -6835,67 +6835,67 @@ export const questions = {
             "humanReadableId": "vehicle-55",
             "answerOptions": [
                 {
-                    "item": "None",
+                    "name": "None",
                     "id": "0"
                 },
                 {
-                    "item": "Brakes",
+                    "name": "Brakes",
                     "id": "1"
                 },
                 {
-                    "item": "Exhaust System",
+                    "name": "Exhaust System",
                     "id": "2"
                 },
                 {
-                    "item": "Body, Doors",
+                    "name": "Body, Doors",
                     "id": "3"
                 },
                 {
-                    "item": "Steering",
+                    "name": "Steering",
                     "id": "4"
                 },
                 {
-                    "item": "Power Train",
+                    "name": "Power Train",
                     "id": "5"
                 },
                 {
-                    "item": "Suspension",
+                    "name": "Suspension",
                     "id": "6"
                 },
                 {
-                    "item": "Tires",
+                    "name": "Tires",
                     "id": "7"
                 },
                 {
-                    "item": "Wheels",
+                    "name": "Wheels",
                     "id": "8"
                 },
                 {
-                    "item": "Lights (head, signal, tail)",
+                    "name": "Lights (head, signal, tail)",
                     "id": "9"
                 },
                 {
-                    "item": "Windows/Windshield",
+                    "name": "Windows/Windshield",
                     "id": "10"
                 },
                 {
-                    "item": "Mirrors",
+                    "name": "Mirrors",
                     "id": "11"
                 },
                 {
-                    "item": "Wipers",
+                    "name": "Wipers",
                     "id": "12"
                 },
                 {
-                    "item": "Truck Coupling/Trailer Hitch/Safety Chains",
+                    "name": "Truck Coupling/Trailer Hitch/Safety Chains",
                     "id": "13"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "14"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "15"
                 }
             ]
@@ -7543,19 +7543,19 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "US DOT Number",
+                    "name": "US DOT Number",
                     "id": "0"
                 },
                 {
-                    "item": "State Number",
+                    "name": "State Number",
                     "id": "1"
                 },
                 {
-                    "item": "Not Applicable",
+                    "name": "Not Applicable",
                     "id": "2"
                 },
                 {
-                    "item": "Unknown/Unable to Determine",
+                    "name": "Unknown/Unable to Determine",
                     "id": "3"
                 }
             ]
@@ -7851,19 +7851,19 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "Interstate Carrier",
+                    "name": "Interstate Carrier",
                     "id": "0"
                 },
                 {
-                    "item": "Intrastate Carrier",
+                    "name": "Intrastate Carrier",
                     "id": "1"
                 },
                 {
-                    "item": "Not in Commerce/Government",
+                    "name": "Not in Commerce/Government",
                     "id": "2"
                 },
                 {
-                    "item": "Not in Commerce/Other Truck or Bus",
+                    "name": "Not in Commerce/Other Truck or Bus",
                     "id": "3"
                 }
             ]
@@ -7941,51 +7941,51 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "Vehicle 10,000 lbs. or less placarded for hazardous materials",
+                    "name": "Vehicle 10,000 lbs. or less placarded for hazardous materials",
                     "id": "0"
                 },
                 {
-                    "item": "Bus/Large Van (seats for 9-15 occupants, including driver)",
+                    "name": "Bus/Large Van (seats for 9-15 occupants, including driver)",
                     "id": "1"
                 },
                 {
-                    "item": "Bus (seats more than 15 occupants, including driver)",
+                    "name": "Bus (seats more than 15 occupants, including driver)",
                     "id": "2"
                 },
                 {
-                    "item": "Single-Unit Truck (2-axle and GVWR > 10,000 lbs.)",
+                    "name": "Single-Unit Truck (2-axle and GVWR > 10,000 lbs.)",
                     "id": "3"
                 },
                 {
-                    "item": "Single-Unit Truck (3 or more axles)",
+                    "name": "Single-Unit Truck (3 or more axles)",
                     "id": "4"
                 },
                 {
-                    "item": "Truck Pulling Trailer(s)",
+                    "name": "Truck Pulling Trailer(s)",
                     "id": "5"
                 },
                 {
-                    "item": "Truck Tractor (Bobtail)",
+                    "name": "Truck Tractor (Bobtail)",
                     "id": "6"
                 },
                 {
-                    "item": "Truck Tractor/Semi-Trailer",
+                    "name": "Truck Tractor/Semi-Trailer",
                     "id": "7"
                 },
                 {
-                    "item": "Truck Tractor/Double",
+                    "name": "Truck Tractor/Double",
                     "id": "8"
                 },
                 {
-                    "item": "Truck Tractor/Triple",
+                    "name": "Truck Tractor/Triple",
                     "id": "9"
                 },
                 {
-                    "item": "Truck More Than 10,000 lbs., cannot classify",
+                    "name": "Truck More Than 10,000 lbs., cannot classify",
                     "id": "10"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "11"
                 }
             ]
@@ -8028,23 +8028,23 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "No special sizing",
+                    "name": "No special sizing",
                     "id": "0"
                 },
                 {
-                    "item": "Over-height",
+                    "name": "Over-height",
                     "id": "1"
                 },
                 {
-                    "item": "Over-length",
+                    "name": "Over-length",
                     "id": "2"
                 },
                 {
-                    "item": "Over-weight",
+                    "name": "Over-weight",
                     "id": "3"
                 },
                 {
-                    "item": "Over-width",
+                    "name": "Over-width",
                     "id": "4"
                 }
             ]
@@ -8086,11 +8086,11 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "Non-Permitted Load",
+                    "name": "Non-Permitted Load",
                     "id": "0"
                 },
                 {
-                    "item": "Permitted Load",
+                    "name": "Permitted Load",
                     "id": "1"
                 }
             ]
@@ -8116,71 +8116,71 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "No Cargo Body (bobtail, light MV with hazardous materials [HM] placard, etc.)",
+                    "name": "No Cargo Body (bobtail, light MV with hazardous materials [HM] placard, etc.)",
                     "id": "0"
                 },
                 {
-                    "item": "Bus",
+                    "name": "Bus",
                     "id": "1"
                 },
                 {
-                    "item": "Auto Transporter",
+                    "name": "Auto Transporter",
                     "id": "2"
                 },
                 {
-                    "item": "Cargo Tank",
+                    "name": "Cargo Tank",
                     "id": "3"
                 },
                 {
-                    "item": "Concrete Mixer",
+                    "name": "Concrete Mixer",
                     "id": "4"
                 },
                 {
-                    "item": "Dump",
+                    "name": "Dump",
                     "id": "5"
                 },
                 {
-                    "item": "Flatbed",
+                    "name": "Flatbed",
                     "id": "6"
                 },
                 {
-                    "item": "Garbage/Refuse",
+                    "name": "Garbage/Refuse",
                     "id": "7"
                 },
                 {
-                    "item": "Grain/Chips/Gravel",
+                    "name": "Grain/Chips/Gravel",
                     "id": "8"
                 },
                 {
-                    "item": "Intermodal Container Chassis",
+                    "name": "Intermodal Container Chassis",
                     "id": "9"
                 },
                 {
-                    "item": "Log",
+                    "name": "Log",
                     "id": "10"
                 },
                 {
-                    "item": "Pole-Trailer",
+                    "name": "Pole-Trailer",
                     "id": "11"
                 },
                 {
-                    "item": "Van/Enclosed Box",
+                    "name": "Van/Enclosed Box",
                     "id": "12"
                 },
                 {
-                    "item": "Vehicle Towing Another Vehicle",
+                    "name": "Vehicle Towing Another Vehicle",
                     "id": "13"
                 },
                 {
-                    "item": "Not Applicable (MV 10,000 lbs. or less, not displaying HM placard)",
+                    "name": "Not Applicable (MV 10,000 lbs. or less, not displaying HM placard)",
                     "id": "14"
                 },
                 {
-                    "item": "Other",
+                    "name": "Other",
                     "id": "15"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "16"
                 }
             ]
@@ -8250,19 +8250,19 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "No",
+                    "name": "No",
                     "id": "0"
                 },
                 {
-                    "item": "Yes",
+                    "name": "Yes",
                     "id": "1"
                 },
                 {
-                    "item": "Not Applicable",
+                    "name": "Not Applicable",
                     "id": "2"
                 },
                 {
-                    "item": "Unknown if Released",
+                    "name": "Unknown if Released",
                     "id": "3"
                 }
             ]
@@ -8288,15 +8288,15 @@ export const questions = {
             "humanReadableId": "vehicle-101",
             "answerOptions": [
                 {
-                    "item": "No",
+                    "name": "No",
                     "id": "0"
                 },
                 {
-                    "item": "Yes",
+                    "name": "Yes",
                     "id": "1"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "2"
                 }
             ]
@@ -8318,35 +8318,35 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "No Automation",
+                    "name": "No Automation",
                     "id": "0"
                 },
                 {
-                    "item": "Driver Assistance",
+                    "name": "Driver Assistance",
                     "id": "1"
                 },
                 {
-                    "item": "Partial Automation",
+                    "name": "Partial Automation",
                     "id": "2"
                 },
                 {
-                    "item": "Conditional Automation",
+                    "name": "Conditional Automation",
                     "id": "3"
                 },
                 {
-                    "item": "High Automation",
+                    "name": "High Automation",
                     "id": "4"
                 },
                 {
-                    "item": "Full Automation",
+                    "name": "Full Automation",
                     "id": "5"
                 },
                 {
-                    "item": "Automation Level Unknown",
+                    "name": "Automation Level Unknown",
                     "id": "6"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "7"
                 }
             ]
@@ -8368,35 +8368,35 @@ export const questions = {
             ],
             "answerOptions": [
                 {
-                    "item": "No Automation",
+                    "name": "No Automation",
                     "id": "0"
                 },
                 {
-                    "item": "Driver Assistance",
+                    "name": "Driver Assistance",
                     "id": "1"
                 },
                 {
-                    "item": "Partial Automation",
+                    "name": "Partial Automation",
                     "id": "2"
                 },
                 {
-                    "item": "Conditional Automation",
+                    "name": "Conditional Automation",
                     "id": "3"
                 },
                 {
-                    "item": "High Automation",
+                    "name": "High Automation",
                     "id": "4"
                 },
                 {
-                    "item": "Full Automation",
+                    "name": "Full Automation",
                     "id": "5"
                 },
                 {
-                    "item": "Automation Level Unknown",
+                    "name": "Automation Level Unknown",
                     "id": "6"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "7"
                 }
             ]
@@ -8413,11 +8413,11 @@ export const questions = {
             "tooltip": "Ownership refers to the type of property, public or private",
             "answerOptions": [
                 {
-                    "item": "Public Property",
+                    "name": "Public Property",
                     "id": "0"
                 },
                 {
-                    "item": "Private Property",
+                    "name": "Private Property",
                     "id": "1"
                 }
             ]
@@ -8434,11 +8434,11 @@ export const questions = {
             "tooltip": "A Secondary Crash is a crash that resulted from another crash",
             "answerOptions": [
                 {
-                    "item": "No",
+                    "name": "No",
                     "id": "0"
                 },
                 {
-                    "item": "Yes",
+                    "name": "Yes",
                     "id": "1"
                 }
             ]
@@ -8454,27 +8454,27 @@ export const questions = {
             "humanReadableId": "road-31",
             "answerOptions": [
                 {
-                    "item": "Fatal Injury",
+                    "name": "Fatal Injury",
                     "id": "0"
                 },
                 {
-                    "item": "Suspected Serious Injury",
+                    "name": "Suspected Serious Injury",
                     "id": "1"
                 },
                 {
-                    "item": "Suspected Minor Injury",
+                    "name": "Suspected Minor Injury",
                     "id": "2"
                 },
                 {
-                    "item": "Possible Injury",
+                    "name": "Possible Injury",
                     "id": "3"
                 },
                 {
-                    "item": "Property Damage-Only",
+                    "name": "Property Damage-Only",
                     "id": "4"
                 },
                 {
-                    "item": "Unknown",
+                    "name": "Unknown",
                     "id": "5"
                 }
             ]
