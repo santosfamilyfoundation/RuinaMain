@@ -72,7 +72,7 @@ const MultiButtonSelector = (props) => {
     }
 
     const renderSingleButton = (option) => {
-        let appearance = (selection == option.item) ? 'filled': 'outline';
+        let appearance = (selection == option.name) ? 'filled': 'outline';
         return (
             <Button
                 /*key={option.idCode}
@@ -80,9 +80,9 @@ const MultiButtonSelector = (props) => {
                 appearance={appearance}*/
                 mr={4}
                 mb={4}
-                onPress={() => submitField(option.item, option.id)}
+                onPress={() => submitField(option.name, option.id)}
             >
-                {option.item}
+                {option.name}
             </Button>
         )
     }
