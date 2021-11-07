@@ -68,7 +68,7 @@ def generate_questions_json(filename):
                 # generate list of dicts from answer options
                 answer_options = []
                 for index2, row2 in df_sub_answer.iterrows():
-                    answer_option_dict = {'item':row2['option_text'], 'id':str(row2['option_number'])}
+                    answer_option_dict = {'name':row2['option_text'], 'id':str(row2['option_number'])}
                     answer_options.append(answer_option_dict)
                 question_dict['answerOptions'] = answer_options
             questions_json['data'].append(question_dict)
