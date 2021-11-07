@@ -1,12 +1,12 @@
 import React from 'react';
-import SelectBox from 'react-native-multi-selectbox';
 import { updateResponse } from '../../actions/StoryActions';
 import { styles } from './DropDownMultiSelect.style';
 import { connect } from 'react-redux';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
 import QuestionSection from '../QuestionSection';
-
+import SectionedMultiSelect from 'react-native-sectioned-multi-select';
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
 const DropDownMultiSelect = (props) => {
     const [selectedOptions, setSelectedOptions] = React.useState([]);
@@ -16,14 +16,14 @@ const DropDownMultiSelect = (props) => {
     let currId = data.id;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
-
+    if (selectedOptions) {
     // Populate if value already exists in redux
     if(selectedOptions.length == 0) {
         if(existingData != null) {
             if(existingData[currId] != null) {
                 let currOptions = []
                 for (i = 0; i < data.answerOptions.length; i++) {
-                    if(existingData[currId].includes(data.answerOptions[i].text)) {
+                    if(existingData[currId].includes(data.answerOptions[i].name)) {
                         currOptions.push(data.answerOptions[i]);
                     };
                 };
@@ -32,7 +32,7 @@ const DropDownMultiSelect = (props) => {
                 };
             };
         }
-    };
+    };}
 
     // Disable/enable if numOptionsAllowed reached
     if(selectedOptions.length == data.numOptionsAllowed) {
@@ -73,7 +73,7 @@ const DropDownMultiSelect = (props) => {
         } else {
             let incompleteFlag = false;
             for(let i = 0; i < selectedOptions.length; i++) {
-                if(!existingData[currId].includes(selectedOptions[i].text)){
+                if(!existingData[currId].includes(selectedOptions[i].name)){
                     incompleteFlag = true;
                 }
             }
@@ -93,13 +93,13 @@ const DropDownMultiSelect = (props) => {
         }
         let res = [];
         for(i = 0; i < selectedOptions.length; i++) {
-            res.push(selectedOptions[i].text);
+            res.push(selectedOptions[i].name);
         }
         let resId = []
         for(i = 0; i < selectedOptions.length; i++) {
-            resId.push(selectedOptions[i].idCode);
+            resId.push(selectedOptions[i].id);
         }
-        
+
         if (dependencyID==null || dependencyID.length == 1){
             updateResponse && updateResponse({id, question: currId, selection: resId})
         }else{
@@ -124,53 +124,40 @@ const DropDownMultiSelect = (props) => {
         submitFunction({id, question: currId, selection: null})
     }
 
-    const addOption = (options) => {
-        if(options.length == 0) {
+    const addOption = (selectedItems) => {
+        if (!selectedItems){
+            return
+        }
+        if(selectedItems.length == 0) {
             clearRedux();
             setSelectedOptions([]);
         }
-        let previousSelected = selectedOptions
-        if (previousSelected.includes(options)) {
-            let indx = previousSelected.indexOf(options);
-            previousSelected.splice(indx-1, 1)
-        } else {
-            previousSelected.push(options);
-        }
-        setSelectedOptions(previousSelected);
+        console.log(selectedOptions)
+        setSelectedOptions(selectedItems);
     }
-    
+
     const HelperTooltip = () => {
         return (
             <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
         )
     }
 
-    const CheckIcon = (style) => (
-        <Icon {...style} name='checkmark-outline' />
-    )
-    
-    const checkOptionCode = (entry, target) => {
-        status = 'success'
-        if(buttonAppearance != 'filled') {
-            setButtonAppearance('filled');
-        };
-    }
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
             <QuestionSection
-                key={key}
                 title={data.question}
                 helperText={data.helperText}
             >
                 {HelperTooltip()}
-                <SelectBox
-                    label='test box'
-                    selectedValues={selectedOptions}
-                    onMultiSelect={addOption}
-                    options={data.answerOptions}
-                    onTapClose={addOption}
-                    isMulti
+                <SectionedMultiSelect
+                  items={data.answerOptions}
+                  IconRenderer={Icon}
+                  uniqueKey='id'
+                  selectText={data.helperText}
+                  onSelectedItemsChange={addOption}
+                  selectedItems={selectedOptions}
+                  onConfirm={addOption}
                 />
             </QuestionSection>
         )

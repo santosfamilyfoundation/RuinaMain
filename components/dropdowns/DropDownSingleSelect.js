@@ -6,13 +6,14 @@ import { connect } from 'react-redux';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
 import QuestionSection from '../QuestionSection';
-import SelectBox from 'react-native-multi-selectbox';
+import SectionedMultiSelect from 'react-native-sectioned-multi-select';
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
 const DropDownSingleSelect = (props) => {
     const [selectedOption, setSelectedOption] = React.useState([]);
     const {data, key, id, questionReducer, submitFunction, updateResponse, dependencyID} = props;
     let currId = data.id;
-    const reducerData = questionReducer.data.find(entry => entry.id == id); 
+    const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
 
     if(!selectedOption) {
@@ -20,10 +21,10 @@ const DropDownSingleSelect = (props) => {
             if(existingData[currId] != null) {
                 let curOption;
                 for (let i = 0; i < data.answerOptions.length; i++) {
-                    if(data.answerOptions[i].item == existingData[currId]) {
+                    if(data.answerOptions[i].name == existingData[currId]) {
                         curOption = {
                             id: existingData[currId],
-                            item: data.answerOptions[i].item
+                            name: data.answerOptions[i].name
                         };
                     };
                 };
@@ -47,28 +48,29 @@ const DropDownSingleSelect = (props) => {
     }
 
     const submitField = (selection) => {
-        console.log('inside submit!!!')
-        setSelectedOption(selection);
-        console.log('Selection', selection)
+        if (!selection || selection.length == 0) {
+            setSelectedOptions([]);
+            return submitFunction({id, question: currId, selection: null});
+        }
+        let selected = selection[0]
         if (dependencyID==null || dependencyID.length == 1){
-            updateResponse && updateResponse({id, question: currId, selection: selection.id})
+            updateResponse && updateResponse({id, question: currId, selection: selected})
         }else{
             let vehicleID = dependencyID[1]
             switch (dependencyID.length) {
                 case 2:
-                    updateResponse && updateResponse({id, question: currId, selection: selection.id, vehicleID: vehicleID})
+                    updateResponse && updateResponse({id, question: currId, selection: selected, vehicleID: vehicleID})
                     break;
                 case 3:
                     let passengerID = dependencyID[2]
-                    updateResponse && updateResponse({id, question: currId, selection: selection.id, vehicleID: vehicleID, passengerID: passengerID})
+                    updateResponse && updateResponse({id, question: currId, selection: selected, vehicleID: vehicleID, passengerID: passengerID})
                 case 4:
-                    updateResponse && updateResponse({id, question: currId, selection: selection.id, vehicleID: vehicleID, nonmotoristID: dependencyID[3]})
+                    updateResponse && updateResponse({id, question: currId, selection: selected, vehicleID: vehicleID, nonmotoristID: dependencyID[3]})
                 default:
                     break;
             }
         }
-        let content = selection.item;
-        submitFunction({id, question: currId, selection: content})
+        setSelectedOption(selection)
     }
 
     const HelperTooltip = () => {
@@ -86,15 +88,20 @@ const DropDownSingleSelect = (props) => {
                 helperText={data.helperText}
             >
                 {HelperTooltip()}
-                <SelectBox
-                    label='test box'
-                    options={data.answerOptions}
-                    value={selectedOption}
-                    onChange={(e) => submitField(e)}
+                <SectionedMultiSelect
+                  items={data.answerOptions}
+                  IconRenderer={Icon}
+                  uniqueKey='id'
+                  selectText={data.helperText}
+                  onSelectedItemsChange={submitField}
+                  onSelectedItemObjectsChange={(selectedObject) => {submitFunction({id, question: currId, selection: selectedObject[0].name})}}
+                  selectedItems={selectedOption}
+                  hideConfirm={true}
+                  single={true}
                 />
             </QuestionSection>
         )
-    }else{
+    } else{
         return null
     }
 };
