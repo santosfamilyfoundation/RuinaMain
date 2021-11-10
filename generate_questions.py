@@ -5,8 +5,8 @@ import json
 #             'info', 'injured', 'lvhm', 'lvhmDriver', 'nonmotorist', 'passenger',
 #             'road', 'setup', 'vehicle', 'answerOptions']
 
-question_sheets = ['driver']
-answer_sheets = ['driverAnswers']
+question_sheets = ['driver', 'vehicle', 'nonmotorist', 'passenger', 'setup', 'road']
+answer_sheets = ['driverAnswers', 'vehicleAnswers', 'nonmotoristAnswers', 'passengerAnswers', 'roadAnswers']
 
 def get_inverse_dependencies(uid, option, df_answer):
     df_sub_answer = df_answer[df_answer['question_uid']==uid]
@@ -26,6 +26,7 @@ def generate_questions_json(filename):
 
     for section in sections_df:
         questions_df = sections_df[section]
+        print('in form section', section);
 
         section_json = {}
         for index, row in questions_df.iterrows():
@@ -90,10 +91,12 @@ def generate_questions_json(filename):
                         answer_options.append(answer_option_dict)
                     question_dict['answerOptions'] = answer_options
 
-                section_json['questions'].append(question_dict)
+                if (section_json != {}):
+                    section_json['questions'].append(question_dict)
+                else:
+                    questions_json['data'].append(question_dict)
+            
                 print('added question', row['question_text'])
-
-        print(questions_json['data'])
 
     return questions_json
                     
