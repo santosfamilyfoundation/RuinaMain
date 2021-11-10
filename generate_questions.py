@@ -48,7 +48,8 @@ def generate_questions_json(filename):
                         print('added section to data', section_json['sectionTitle'])
 
                 section_json = {'sectionTitle': row['question_text'],
-                                'questions': []}
+                                'questions': [],
+                                'display': row['display_section']}
                 print('created new section', section_json['sectionTitle'])
 
             else:
