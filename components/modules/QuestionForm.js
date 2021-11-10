@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
-import { Divider, Box} from 'native-base';
+import { Divider, Box, Accordion, VStack} from 'native-base';
 import { styles } from '../../containers/AutoComponentContainer.style';
 import { ScrollView } from 'react-native-gesture-handler';
 import MultiButtonSelector from '../buttonSelectors/MultiButtonSelector';
@@ -226,12 +226,6 @@ const QuestionForm = (props) => {
               {...props}
             />
           )
-        case 'sectionHeader':
-            return (
-              <SectionHeader
-                {...props}
-              />
-            )
         case 'questionHeader':
             return(
                 <QuestionHeader
@@ -242,18 +236,54 @@ const QuestionForm = (props) => {
     }
 
     const question = questionData(questionDetail.type)
-    const renderedQuestions = question.questionsData.map((item) => {
-      const obj = {data:item, setting: question, detail:questionDetail}
-      const dom = renderSingleQuestion(item.answerType, questionProps(item.answerType, obj));
-      return dom
-    });
+    const renderedQuestions = (questions) => {
+        let questionList = []
+        for (const q of questions) {
+            const obj = {data:q, setting: question, detail:questionDetail}
+            const dom = renderSingleQuestion(q.answerType, questionProps(q.answerType, obj));
+            questionList.push(dom)
+        }
+        return (
+            <VStack>
+                {questionList}
+            </VStack>
+        )
+    };
+  const renderSingleSection = (item) => {
+    console.log(item.questions)
+    return (
+        <Accordion.Item>
+            <Accordion.Summary>
+                {item.sectionTitle}
+                <Accordion.Icon />
+            </Accordion.Summary>
+            <Accordion.Details>
+                {renderedQuestions(item.questions)}
+            </Accordion.Details>
+        </Accordion.Item>
+    )
+  }
+
+
+  const renderSections = (question) => {
+    let sections = []
+
+    for (const item of question.questionsData) {
+        sections.push(renderSingleSection(item))
+    }
+    return (
+        <Accordion index={[0]}>
+            {sections}
+        </Accordion>
+    )
+  }
   return (
     <SafeAreaView style={styles.container}>
       <TopNavigation title={`Questions on ${questionDetail.name}`} backButton navigation={navigation}/>
       <Divider />
       <ScrollView>
         <Box>
-          {renderedQuestions}
+            {renderSections(question)}
         </Box>
       </ScrollView>
     </SafeAreaView>
