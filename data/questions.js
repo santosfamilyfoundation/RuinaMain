@@ -1,4 +1,4 @@
-{
+export const questions = {
     "data": [
         {
             "sectionTitle": "Personal Information Section",
@@ -2317,12 +2317,12 @@
                         "vehicle"
                     ],
                     "humanReadableId": "vehicle-11",
-                    "answerOptions": [
-                        {
-                            "name": "Unknown",
-                            "id": "0.0"
-                        }
-                    ]
+                   "answerOptions": [
+                       {
+                           "name": "Unknown",
+                           "id": "0.0"
+                       }
+                   ]
                 },
                 {
                     "numOptionsAllowed": "1.0",
@@ -2333,12 +2333,12 @@
                         "vehicle"
                     ],
                     "humanReadableId": "vehicle-12",
-                    "answerOptions": [
-                        {
-                            "name": "Unknown",
-                            "id": "0.0"
-                        }
-                    ]
+                   "answerOptions": [
+                       {
+                           "name": "Unknown",
+                           "id": "0.0"
+                       }
+                   ]
                 }
             ],
             "display": [
@@ -5577,21 +5577,7 @@
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-38",
-                    "answerOptions": [
-                        {
-                            "name": "No",
-                            "id": "0.0"
-                        },
-                        {
-                            "name": "Yes",
-                            "id": "1.0"
-                        },
-                        {
-                            "name": "Unknown",
-                            "id": "2.0"
-                        }
-                    ]
+                    "humanReadableId": "nonmotorist-38"
                 },
                 {
                     "numOptionsAllowed": "1.0",
