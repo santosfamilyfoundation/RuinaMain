@@ -82,14 +82,14 @@ class Welcome extends Component {
                 <Center flex={1} px="3">
                     <VStack alignItems="center">
                         <Button onPress = {() => navigateTo('Survey')} size="lg" p={4}>Start New Report</Button>
-                        <Button onPress = {() => this.checkAutoSavedSession()} size="lg" p={4}>Continue Report</Button>
+                        <Button onPress = {() => this.checkAutoSavedSession()} size="lg" p={4} isDisabled={this.stateManager.filePaths.length === 0} mt={8}>Continue Report</Button>
                     </VStack>
                 </Center>
-                <VStack alignItems="center">
+                <VStack alignItems="center" mb={8}>
                     <TouchableOpacity onPress={() => Linking.openURL('https://forms.gle/ho3cZNyoaFArNNN79')}><Text style={{ color: 'blue' }}>Submit Feedback</Text></TouchableOpacity>
-                        <Text textAlign="center">
-                          {"Built by students at Olin College of Engineering in partnership with the Volpe Center and Santos Family Foundation"}
-                        </Text>
+                    <Text textAlign="center">
+                      {"Built by students at Olin College of Engineering in partnership with the Volpe Center and Santos Family Foundation"}
+                    </Text>
                  </VStack>
 
                  <SinglePickerMaterialDialog
