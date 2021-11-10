@@ -27,7 +27,7 @@ export class backgroundSave {
         await this.RNFS.readdir(this.RNFS.DocumentDirectoryPath).then( files => {
             for (const file of files) {
                 if (file.includes('CrashReport') && file.includes('.json')) {
-                    this.filePaths.push(file);
+                    this.filePaths.unshift(file);
                 }
             }
         });
