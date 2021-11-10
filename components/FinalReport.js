@@ -7,6 +7,8 @@ import { MaterialDialog, SinglePickerMaterialDialog} from 'react-native-material
 import * as Constants from '../constants';
 import Section from './Section';
 import TopNavigation from './TopNavigation';
+import IconButton from './IconButton';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 class FinalReport extends Component {
     constructor(props) {
@@ -80,9 +82,12 @@ class FinalReport extends Component {
             <Button onPress={()=>Linking.openURL('https://forms.gle/ho3cZNyoaFArNNN79')}>Submit Feedback</Button>
         );
 
+
         return (
           <SafeAreaView style={{flex:1}}>
-            <TopNavigation title='Final Report' backButton navigation={this.props.navigation}/>
+            <TopNavigation title='Final Report' backButton navigation={navigation}>
+                <IconButton onPress={() => navigation.navigate('Welcome')} icon={<Icon size={25} name='file-document-outline'/>}  text='Start New Report'/>
+            </TopNavigation>
             <Center>
                 <VStack space={8}>
                     <Section title='Save to Local Device'>
