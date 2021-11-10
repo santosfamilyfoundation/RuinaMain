@@ -58,28 +58,16 @@ const LargeTextField = (props) => {
         timer = setTimeout(() => { func.apply(this, args); }, timeout);
       };
     }
-    //do a use ref: gives back an object, can set current field to a value and the value will be
-    //on the next rerender
 
-
-//    const processChange = debounceValidation((text) => validateInput(text), 10000);
 
     const validateInput = (text) => {
-          console.log('this is where text goes: ', text)
-//          setValue(text)
-//          console.log('this is where value goes: ', value)
           if(!text){
-            console.log('this sucks')
             return;
           }
           if(text.length <= 500) {
-              console.log('Fuck Jack Mao')
-//              status = 'success'
               setButtonAppearance('filled')
           }
           else{
-            console.log('made it to else')
-            status = 'danger'
             setButtonAppearance('outline')
           }
 
@@ -90,7 +78,6 @@ const LargeTextField = (props) => {
         if(!text) {
             return;
         }
-        console.log('please work')
         processChange(text);
     }
 
@@ -99,18 +86,13 @@ const LargeTextField = (props) => {
         var localText = text
         submitFunction({id, question: currId, selection: localText})
         if(!text) {
-//            submitFunction({id, question: currId, selection: null})
               setButtonAppearance('outline')
         }
         submitField(localText)
-//        setValue(text);
-//        submitFunction({id, question: currId, selection: null})
-//        console.log('This is value: ', value)
     }
 
     const clearField = () => {
         console.log('is it even reaching here')
-//        setValue('');
         submitFunction({id, question: currId, selection: null})
         setValue(existingData[currId])
         setButtonAppearance('outline');
