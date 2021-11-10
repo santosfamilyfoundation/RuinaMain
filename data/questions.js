@@ -5674,6 +5674,12 @@
                         "nonmotorist"
                     ],
                     "humanReadableId": "nonmotorist-41",
+                    "questionDependency": [
+                        {
+                            "dependencyUid": "ski3jtpd",
+                            "dependencyOptionCode": "1"
+                        }
+                    ],
                     "answerOptions": [
                         {
                             "name": "Pending",
@@ -5802,6 +5808,12 @@
                         "nonmotorist"
                     ],
                     "humanReadableId": "nonmotorist-46",
+                    "questionDependency": [
+                        {
+                            "dependencyUid": "Qenr80I4",
+                            "dependencyOptionCode": "1"
+                        }
+                    ],
                     "answerOptions": [
                         {
                             "name": "Negative",
