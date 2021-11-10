@@ -15,7 +15,8 @@ import AdvancedDropDown from '../dropdowns/AdvancedDropDown';
 import DropDownMultiSelect from '../dropdowns/DropDownMultiSelect';
 import CountyDropDown from '../dropdowns/CountyDropDown';
 import LargeTextField from '../textFields/LargeTextField';
-import HeaderComponent from '../header/HeaderComponent';
+import SectionHeader from '../header/SectionHeader';
+import QuestionHeader from '../header/QuestionHeader';
 import { updateDriver } from '../../actions/DriverAction';
 import { updateNonmotorist } from '../../actions/NonmotoristAction';
 import { updateVehicle } from '../../actions/VehicleAction';
@@ -98,7 +99,11 @@ const QuestionForm = (props) => {
         autoCompleteDropdown: {
           ...PublicObj
         },
-        header: {
+        sectionHeader: {
+          data: res.data,
+          dependencyID:res.detail.dependencyID,
+        },
+        questionHeader: {
           data: res.data,
           dependencyID:res.detail.dependencyID,
         },
@@ -221,11 +226,17 @@ const QuestionForm = (props) => {
               {...props}
             />
           )
-        case 'header':
+        case 'sectionHeader':
             return (
-              <HeaderComponent
+              <SectionHeader
                 {...props}
               />
+            )
+        case 'questionHeader':
+            return(
+                <QuestionHeader
+                    {...props}
+                />
             )
       }
     }
