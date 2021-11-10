@@ -6,7 +6,7 @@ import { Input, Layout, Text, Card, Button, Modal, CardHeader, Icon } from '@ui-
 import { styles } from './LargeTextField.style';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip.js';
-// import TextFieldValidation.js from '../../utils/TextFieldValidation.js';
+import TextFieldValidation from '../../utils/TextFieldValidation.js';
 
 
 const LargeTextField = (props) => {
@@ -15,6 +15,8 @@ const LargeTextField = (props) => {
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const [isInvalid, setIsInvalid] = React.useState(false);
     const {data, key, id, questionReducer, submitFunction, dependencyID} = props;
+
+
 
     let currId = data.id
     let status
@@ -50,49 +52,60 @@ const LargeTextField = (props) => {
             }
         }
     }
-    console.log(existingData[currId])
-
-    const debounceValidation = (func, timeout) => {
-    let timer;
-      return (...args) => {
-        clearTimeout(timer);
-        timer = setTimeout(() => { func.apply(this, args); }, timeout);
-      };
-    }
-
-
-    const validateInput = (text) => {
-          if(!text){
-            return;
-          }
-          if(text.length <= 500) {
-              setButtonAppearance('filled')
-          }
-          else{
-            setButtonAppearance('outline')
-          }
-
-
-    }
-    const submitField = (text) => {
-        const processChange = debounceValidation((text) => validateInput(text), 500);
-        if(!text) {
-            return;
-        }
-        processChange(text);
-    }
+//    console.log(existingData[currId])
+//
+//    const debounceValidation = (func, timeout) => {
+//    let timer;
+//      return (...args) => {
+//        clearTimeout(timer);
+//        timer = setTimeout(() => { func.apply(this, args); }, timeout);
+//      };
+//    }
+//
+//
+//    const validateInput = (text) => {
+//          if(!text){
+//            return;
+//          }
+//          if(text.length <= 500) {
+//              setButtonAppearance('filled')
+//          }
+//          else{
+//            setButtonAppearance('outline')
+//          }
+//
+//
+//    }
+//    const submitField = (text) => {
+//        const processChange = debounceValidation((text) => validateInput(text), 500);
+//        if(!text) {
+//            return;
+//        }
+//        processChange(text);
+//    }
 
 
 // something like 'textFieldValidation = new TextFieldValidation'
 // something like 'if(textFieldValidation.submitField(localText){ setButtonAppearance('outline') } )'
-    const onTextChange = (text) => {
+     const onTextChange = (text) => {
         console.log('this is text',text)
         var localText = text
         submitFunction({id, question: currId, selection: localText})
         if(!text) {
               setButtonAppearance('outline')
         }
-        submitField(localText)
+        textFieldValidation = TextFieldValidation
+        textFieldValidation.submitField(localText);
+        var localStatus = textFieldValidation.status
+        console.log("localstatus ", localStatus)
+        if (localStatus) {
+        setButtonAppearance('filled')
+        }
+        else {
+        setButtonAppearance('outline')
+        }
+
+//        submitField(localText)
     }
 
     const clearField = () => {
