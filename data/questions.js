@@ -59,7 +59,7 @@
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Street Address 2",
-                    "id": "jkc3Za9x",
+                    "id": "juihpNVm",
                     "answerType": "openTextBox",
                     "display": [
                         "driver"
@@ -329,7 +329,7 @@
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Restrictions",
-                    "id": "f6tgewDR",
+                    "id": "GE0UVywS",
                     "answerType": "questionHeader",
                     "display": [
                         "driver"
@@ -339,7 +339,7 @@
                 {
                     "numOptionsAllowed": "3.0",
                     "question": "Driver License Restrictions",
-                    "id": "8BtBdls2",
+                    "id": "mVfImy06",
                     "answerType": "dropdownMultiSelect",
                     "display": [
                         "driver"
@@ -428,7 +428,7 @@
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Alcohol Interlock Present?",
-                    "id": "uCbQngHX",
+                    "id": "Rb2JOQaH",
                     "answerType": "numberButton",
                     "display": [
                         "driver"
@@ -452,7 +452,7 @@
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Driver License Status",
-                    "id": "saCEI1G1",
+                    "id": "2pL19EuI",
                     "answerType": "questionHeader",
                     "display": [
                         "driver"
@@ -462,7 +462,7 @@
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Type Applicable for This Person",
-                    "id": "p7o3PRwH",
+                    "id": "ug5OYr9e",
                     "answerType": "dropdown",
                     "display": [
                         "driver"
@@ -486,7 +486,7 @@
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Status",
-                    "id": "QT39Fndd",
+                    "id": "NLku3A2C",
                     "answerType": "dropdown",
                     "display": [
                         "driver"
@@ -620,7 +620,7 @@
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Restraint Systems / Motorcycle Helmet Use",
-                    "id": "ia9MO3Tf",
+                    "id": "OkqAxNuI",
                     "answerType": "questionHeader",
                     "display": [
                         "driver"
@@ -1198,7 +1198,7 @@
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Injury Area",
-                    "id": "33YmQHlJ",
+                    "id": "yLSbTFSX",
                     "answerType": "dropdown",
                     "display": [
                         "driver"
@@ -1247,7 +1247,7 @@
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Injury Diagnosis",
-                    "id": "v7InKQ1D",
+                    "id": "qcL5HdYm",
                     "answerType": "largeTextField",
                     "display": [
                         "driver"
@@ -1258,7 +1258,7 @@
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Injury Severity",
-                    "id": "3vGBj243",
+                    "id": "gklh2mdF",
                     "answerType": "multiButton",
                     "display": [
                         "driver"
@@ -1912,7 +1912,7 @@
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "BAC Test Result",
-                    "id": "HFaeY0Jd",
+                    "id": "xew9fNfA",
                     "answerType": "openTextBoxWithSelection",
                     "display": [
                         "driver"
@@ -2245,7 +2245,7 @@
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Street Address 2",
-                    "id": "r571zpxz",
+                    "id": "ZA66gCFK",
                     "answerType": "openTextBox",
                     "display": [
                         "vehicle"
@@ -4572,7 +4572,7 @@
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Street Address 2",
-                    "id": "2H8gwE7i",
+                    "id": "MZZ4opND",
                     "answerType": "openTextBox",
                     "display": [
                         "nonmotorist"
@@ -5270,7 +5270,7 @@
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Injury Area",
-                    "id": "TdZ69VgR",
+                    "id": "CFTkeTju",
                     "answerType": "dropdown",
                     "display": [
                         "nonmotorist"
@@ -5319,7 +5319,7 @@
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Injury Diagnosis",
-                    "id": "8AzHnYlS",
+                    "id": "fmrO5ZWz",
                     "answerType": "largeTextField",
                     "display": [
                         "nonmotorist"
@@ -5330,7 +5330,7 @@
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Injury Severity",
-                    "id": "FOLmL7Vm",
+                    "id": "nPPoAnU5",
                     "answerType": "multiButton",
                     "display": [
                         "nonmotorist"
@@ -5642,7 +5642,7 @@
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "BAC Test Result",
-                    "id": "81UFNUC5",
+                    "id": "vZokhj4y",
                     "answerType": "openTextBoxWithSelection",
                     "display": [
                         "nonmotorist"
@@ -5770,7 +5770,7 @@
                 {
                     "numOptionsAllowed": "4.0",
                     "question": "Drug Test Result",
-                    "id": "sS6QNfhJ",
+                    "id": "LX3Hspui",
                     "answerType": "dropdownMultiSelect",
                     "display": [
                         "nonmotorist"
@@ -5830,7 +5830,7 @@
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "First Name of Person Involved",
-                    "id": "pffMIipI",
+                    "id": "PHBTL0FJ",
                     "answerType": "openTextBox",
                     "display": [
                         "passenger"
@@ -5840,7 +5840,7 @@
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Middle Initial of Person Involved",
-                    "id": "3WIYYMjz",
+                    "id": "UQqBQHCB",
                     "answerType": "openTextBox",
                     "display": [
                         "passenger"
@@ -5850,7 +5850,7 @@
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Last Name of Person Involved",
-                    "id": "n0LoL0oF",
+                    "id": "h1QuqLnp",
                     "answerType": "openTextBox",
                     "display": [
                         "passenger"
@@ -5860,7 +5860,7 @@
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Date of Birth",
-                    "id": "ARb0L6rp",
+                    "id": "6EiSSnQN",
                     "answerType": "openTextBox",
                     "display": [
                         "passenger"
@@ -5871,7 +5871,7 @@
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Sex",
-                    "id": "EKHOM9O2",
+                    "id": "VPBTzbPO",
                     "answerType": "multiButton",
                     "display": [
                         "passenger"
@@ -5903,7 +5903,7 @@
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Incident Responder?",
-                    "id": "rEU8uxaR",
+                    "id": "v9M7QPjK",
                     "answerType": "dropdown",
                     "display": [
                         "passenger"
@@ -5947,7 +5947,7 @@
                 {
                     "numOptionsAllowed": "2.0",
                     "question": "Seating Position",
-                    "id": "2PjiXpDS",
+                    "id": "az0jhcoG",
                     "answerType": "dropdownMultiSelect",
                     "display": [
                         "passenger"
@@ -6029,7 +6029,7 @@
                 {
                     "numOptionsAllowed": "nan",
                     "question": "Restraint Systems / Motorcycle Helmet Use",
-                    "id": "Rbu0f8ek",
+                    "id": "aQC2P7xI",
                     "answerType": "questionHeader",
                     "display": [
                         "passenger"
@@ -6039,7 +6039,7 @@
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Restraint Systems in Use",
-                    "id": "tfF37Fzp",
+                    "id": "8hTxEZ6K",
                     "answerType": "dropdown",
                     "display": [
                         "passenger"
@@ -6123,7 +6123,7 @@
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Any Indication of Improper Use?",
-                    "id": "5E2VhMNs",
+                    "id": "lEqfMxPo",
                     "answerType": "multiButton",
                     "display": [
                         "passenger"
@@ -6144,7 +6144,7 @@
                 {
                     "numOptionsAllowed": "4.0",
                     "question": "Air Bag Deployed?",
-                    "id": "eKXyiIHW",
+                    "id": "sN8ceYNO",
                     "answerType": "dropdownMultiSelect",
                     "display": [
                         "passenger"
@@ -6186,7 +6186,7 @@
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Ejection?",
-                    "id": "VakPCBSj",
+                    "id": "cg3r6Gut",
                     "answerType": "multiButton",
                     "display": [
                         "passenger"
@@ -6806,7 +6806,7 @@
                 {
                     "numOptionsAllowed": "nan",
                     "question": "Nearest Street Address",
-                    "id": "qEZfnuco",
+                    "id": "UKo2l3Dr",
                     "answerType": "openTextBox",
                     "display": [
                         "road"
@@ -6830,7 +6830,7 @@
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "First Harmful Event Information",
-                    "id": "AEdTfRsL",
+                    "id": "jMCrhZwO",
                     "answerType": "questionHeader",
                     "display": [
                         "road"
@@ -7280,7 +7280,7 @@
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Environment Conditions",
-                    "id": "BhSna9Uo",
+                    "id": "qdbONl1x",
                     "answerType": "questionHeader",
                     "display": [
                         "road"
@@ -7297,7 +7297,57 @@
                     ],
                     "humanReadableId": "road-32",
                     "helperText": "(choose up to 2)",
-                    "autoMethod": "weather"
+                    "autoMethod": "weather",
+                    "answerOptions": [
+                        {
+                            "name": "Clear",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Cloudy",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Blowing Sand, Soil, Dirt",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Blowing Snow",
+                            "id": "3.0"
+                        },
+                        {
+                            "name": "Fog, Smog, Smoke",
+                            "id": "4.0"
+                        },
+                        {
+                            "name": "Freezing Rain or Freezing Drizzle",
+                            "id": "5.0"
+                        },
+                        {
+                            "name": "Rain",
+                            "id": "6.0"
+                        },
+                        {
+                            "name": "Severe Crosswinds",
+                            "id": "7.0"
+                        },
+                        {
+                            "name": "Sleet or Hail",
+                            "id": "8.0"
+                        },
+                        {
+                            "name": "Snow",
+                            "id": "9.0"
+                        },
+                        {
+                            "name": "Other",
+                            "id": "10.0"
+                        },
+                        {
+                            "name": "Unknown",
+                            "id": "11.0"
+                        }
+                    ]
                 },
                 {
                     "numOptionsAllowed": "1.0",
