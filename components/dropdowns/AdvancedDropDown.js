@@ -157,7 +157,7 @@ const AdvancedDropDown = (props) => {
             clearRedux();
             setSelectedOptions([]);
         }
-        setSelectedOptions(updatedOptions);
+        setSelectedOptions(options);
     }
     
     const HelperTooltip = () => {
