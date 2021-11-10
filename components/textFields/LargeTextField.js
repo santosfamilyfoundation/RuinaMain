@@ -6,6 +6,7 @@ import { Input, Layout, Text, Card, Button, Modal, CardHeader, Icon } from '@ui-
 import { styles } from './LargeTextField.style';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip.js';
+// import TextFieldValidation.js from '../../utils/TextFieldValidation.js';
 
 
 const LargeTextField = (props) => {
@@ -81,6 +82,9 @@ const LargeTextField = (props) => {
         processChange(text);
     }
 
+
+// something like 'textFieldValidation = new TextFieldValidation'
+// something like 'if(textFieldValidation.submitField(localText){ setButtonAppearance('outline') } )'
     const onTextChange = (text) => {
         console.log('this is text',text)
         var localText = text
