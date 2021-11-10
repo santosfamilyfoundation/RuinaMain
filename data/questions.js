@@ -132,7 +132,9 @@
                     ]
                 }
             ],
-            "display": "driver"
+            "display": [
+                "driver"
+            ]
         },
         {
             "sectionTitle": "Driver License Information",
@@ -526,7 +528,9 @@
                     ]
                 }
             ],
-            "display": "driver"
+            "display": [
+                "driver"
+            ]
         },
         {
             "sectionTitle": "Crash-Related Information",
@@ -1107,7 +1111,9 @@
                     ]
                 }
             ],
-            "display": "driver"
+            "display": [
+                "driver"
+            ]
         },
         {
             "sectionTitle": "Injury Section",
@@ -1472,7 +1478,9 @@
                     ]
                 }
             ],
-            "display": "driver"
+            "display": [
+                "driver"
+            ]
         },
         {
             "sectionTitle": "Large Vehicle and Hazardous Material Related Information",
@@ -1674,7 +1682,9 @@
                     ]
                 }
             ],
-            "display": "driver"
+            "display": [
+                "driver"
+            ]
         },
         {
             "sectionTitle": "Alcohol Section",
@@ -1930,7 +1940,9 @@
                     ]
                 }
             ],
-            "display": "driver"
+            "display": [
+                "driver"
+            ]
         },
         {
             "sectionTitle": "Drug Section",
@@ -2183,7 +2195,9 @@
                     ]
                 }
             ],
-            "display": "driver"
+            "display": [
+                "driver"
+            ]
         },
         {
             "sectionTitle": "Vehicle Owner Information",
@@ -2315,7 +2329,9 @@
                     "humanReadableId": "vehicle-12"
                 }
             ],
-            "display": "vehicle"
+            "display": [
+                "vehicle"
+            ]
         },
         {
             "sectionTitle": "Vehicle Information",
@@ -2722,7 +2738,9 @@
                     "tooltip": "Must be divisble by 5. If unknown enter 99. If not applicable enter 97."
                 }
             ],
-            "display": "vehicle"
+            "display": [
+                "vehicle"
+            ]
         },
         {
             "sectionTitle": "Crash-Related Information",
@@ -3398,7 +3416,9 @@
                     ]
                 }
             ],
-            "display": "vehicle"
+            "display": [
+                "vehicle"
+            ]
         },
         {
             "sectionTitle": "Crash Events",
@@ -4490,7 +4510,9 @@
                     ]
                 }
             ],
-            "display": "vehicle"
+            "display": [
+                "vehicle"
+            ]
         },
         {
             "sectionTitle": "Personal Information Section",
@@ -5162,7 +5184,9 @@
                     ]
                 }
             ],
-            "display": "nonmotorist"
+            "display": [
+                "nonmotorist"
+            ]
         },
         {
             "sectionTitle": "Injury Section",
@@ -5526,7 +5550,9 @@
                     ]
                 }
             ],
-            "display": "nonmotorist"
+            "display": [
+                "nonmotorist"
+            ]
         },
         {
             "sectionTitle": "Alcohol Use",
@@ -5638,7 +5664,9 @@
                     ]
                 }
             ],
-            "display": "nonmotorist"
+            "display": [
+                "nonmotorist"
+            ]
         },
         {
             "sectionTitle": "Drug Use",
@@ -5792,7 +5820,9 @@
                     ]
                 }
             ],
-            "display": "nonmotorist"
+            "display": [
+                "nonmotorist"
+            ]
         },
         {
             "sectionTitle": "Personal Information Section",
@@ -5863,7 +5893,9 @@
                     ]
                 }
             ],
-            "display": "passenger"
+            "display": [
+                "passenger"
+            ]
         },
         {
             "sectionTitle": "Crash Related Information",
@@ -6184,7 +6216,9 @@
                     ]
                 }
             ],
-            "display": "passenger"
+            "display": [
+                "passenger"
+            ]
         },
         {
             "numOptionsAllowed": "1.0",
@@ -6786,7 +6820,9 @@
                     ]
                 }
             ],
-            "display": "road"
+            "display": [
+                "road"
+            ]
         },
         {
             "sectionTitle": "Detailed Crash Information",
@@ -7751,7 +7787,9 @@
                     ]
                 }
             ],
-            "display": "road"
+            "display": [
+                "road"
+            ]
         }
     ]
 }
