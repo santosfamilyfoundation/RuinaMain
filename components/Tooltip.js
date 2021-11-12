@@ -9,9 +9,9 @@ import Section from './Section';
 //import IconButton from './IconButton'
 
 const TooltipView = (props) => {
-    const {helperText, helperImg, toolTip} = props
+    const { helperImg, toolTip } = props
     const [visible, setVisible] = React.useState(false);
-    const[toolTipText, setToolTipText] = React.useState(toolTip ? true: false);
+    const [toolTipText, setToolTipText] = React.useState(toolTip ? true: false);
     const InfoIcon = (props) => (
         <Icon name="help" color='white' size={25}/>
     )
