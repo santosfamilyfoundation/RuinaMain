@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
-import { Divider, Box} from 'native-base';
+import { Divider, Box, HStack, Button} from 'native-base';
 import { styles } from '../../containers/AutoComponentContainer.style';
 import { ScrollView } from 'react-native-gesture-handler';
 import MultiButtonSelector from '../buttonSelectors/MultiButtonSelector';
@@ -239,12 +239,15 @@ const QuestionForm = (props) => {
   return (
     <SafeAreaView style={styles.container}>
       <TopNavigation title={`Questions on ${questionDetail.name}`} backButton navigation={navigation}/>
-      <Divider />
       <ScrollView>
         <Box>
           {renderedQuestions}
         </Box>
       </ScrollView>
+      <Divider />
+      <Box p={4}>
+        <Button onPress={()=> {navigation.goBack()}}>Done</Button>
+      </Box>
     </SafeAreaView>
   );
 }
