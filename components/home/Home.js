@@ -179,7 +179,7 @@ class Home extends Component {
                             </HStack>
                         </Box> :
                         <HStack>
-                            <IconButton topMargin={4} text="Crash/Road"
+                            <IconButton topMargin={4} text="Crash/Road Form"
                             onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road', 'Crash/Road')}
                             icon = {<Icon name="edit-road" size={50}/>}/>
                         </HStack>
@@ -205,7 +205,7 @@ class Home extends Component {
                         />
                     </Section> :
                     nonmotoristListArr.length ?
-                    <Section title='Non-motorists'>
+                    <Section title='Non-motorists Form'>
                         <HStack>
                             {nonmotoristListArr}
                         </HStack>
