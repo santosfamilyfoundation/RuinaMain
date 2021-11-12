@@ -39,8 +39,6 @@ const QuestionForm = (props) => {
     updateResponse,
   } = props
 
-  console.log(props)
-
   // filter question information based on section type
   const filterQuestionsData = (questionType) => {
     return questions.data.filter(question => question.display.includes(questionType));
@@ -245,7 +243,6 @@ const QuestionForm = (props) => {
         )
     };
   const renderSingleSection = (item) => {
-    console.log(item.questions)
     return (
         <Accordion.Item>
             <Accordion.Summary>
@@ -267,7 +264,7 @@ const QuestionForm = (props) => {
         sections.push(renderSingleSection(item))
     }
     return (
-        <Accordion index={[0]}>
+        <Accordion index={[0]} mx={4} my={8}>
             {sections}
         </Accordion>
     )
