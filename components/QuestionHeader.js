@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { dependencyParser } from '../../utils/dependencyHelper';
+import { dependencyParser } from '../utils/dependencyHelper';
 import { Heading, Text, VStack } from 'native-base';
 
 const QuestionHeader = (props) => {
@@ -9,7 +9,7 @@ const QuestionHeader = (props) => {
     if (renderComponent){
         return(
             <VStack>
-                <Heading size='sm'>{data.question}</Heading>
+                <Heading size='md'>{data.question}</Heading>
                 <Text>{data.helperText}</Text>
             </VStack>
         )
