@@ -57,7 +57,7 @@ const TooltipView = (props) => {
                         <Modal.Header>
                             <HStack>
                                 <Icon name="help" size={15}/>
-                                <Text>Tooltip</Text>
+                                <Text ml={4}>Tooltip</Text>
                             </HStack>
                         </Modal.Header>
                         <Modal.Body>
