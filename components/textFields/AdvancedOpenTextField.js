@@ -196,12 +196,6 @@ const AdvancedOpenTextField = (props) => {
         status = 'success'
     }
 
-     const HelperTooltip = () => {
-            return (
-                <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
-            )
-    }
-
     const ErrorMsg = () => {
         if(invalidLength) {
             return(
@@ -221,11 +215,11 @@ const AdvancedOpenTextField = (props) => {
         return(
             <QuestionSection key={key}
                 title={data.question}
-                isForm
                 helperText={data.helperText}
                 errorMessage={ErrorMsg()}
+                isInvalid={invalidLength ? invalidLength : invalidVin}
             >
-                {HelperTooltip()}
+                <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
                 <HStack>
                     <Input
                         placeholder='Place your Text'

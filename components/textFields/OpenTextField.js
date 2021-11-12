@@ -72,12 +72,6 @@ const OpenTextField = (props) => {
         status = 'success'
     }
 
-    
-    const HelperTooltip = () => {
-        return (
-            <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
-        )
-    }
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
@@ -89,7 +83,7 @@ const OpenTextField = (props) => {
                 errorMessage='Maximum Character Input Exceeded'
                 isInvalid={isInvalid}
             >
-                {HelperTooltip()}
+                <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
                 <Input placeholder="Place your text"
                    value={value}
                    onChangeText={onTextChange} />

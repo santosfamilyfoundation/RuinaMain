@@ -12,25 +12,6 @@ const NumberButtonSelectorQuickSurvey = (props) => {
     const [selection, setSelection] = React.useState('');
     const {title, data, id, submitFunction, genericReducer, fieldName, updateResponse, dependencyID, startRange, endRange, tooltipText} = props;
 
-//    let currId = data.id;
-
-//    if(genericReducer[fieldName] != null & selection != genericReducer[fieldName]) {
-//        setSelection(genericReducer[fieldName]);
-//    }
-
-
-//    const reducerData = questionReducer.data.find(entry => entry.id == id);
-//    let existingData = !reducerData?.response ? null: reducerData.response;
-//
-//    // Populate if value already exists in redux
-//    if(!selection) {
-//        if(existingData != null) {
-//            if(existingData[currId] != selection) {
-//                setSelection(existingData[currId]);
-//            }
-//        }
-//    }
-
     const submitField = (val) => {
         val = parseInt(val);
         setSelection(val);

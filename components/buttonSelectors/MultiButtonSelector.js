@@ -11,12 +11,10 @@ import { dependencyParser } from '../../utils/dependencyHelper';
 import { SafeAreaView } from 'react-navigation';
 
 const MultiButtonSelector = (props) => {
-    const [visible, setVisible] = React.useState(false);
     const [selection, setSelection] = React.useState(null);
     const {data, key, id, questionReducer, submitFunction, updateResponse, dependencyID} = props;
 
     let currId = data.id
-    let status = 'danger';
 
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
@@ -53,31 +51,10 @@ const MultiButtonSelector = (props) => {
         submitFunction({id, question: currId, selection: optionText})
     }
 
-    if(!existingData) {
-        status = 'danger'
-    } else {
-        if(!existingData[currId]) {
-            status = 'danger';
-        } else if(existingData[currId] != selection) {
-            status = 'danger'
-        } else {
-            status = 'success'
-        }
-    }
-
-    const HelperTooltip = () => {
-        return (
-            <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
-        )
-    }
-
     const renderSingleButton = (option) => {
-        let appearance = (selection == option.name) ? 'filled': 'outline';
         return (
             <Button
-                /*key={option.idCode}
-                style={styles.answerButton}
-                appearance={appearance}*/
+                key={option.id}
                 mr={4}
                 mb={4}
                 onPress={() => submitField(option.name, option.id)}
@@ -100,6 +77,7 @@ const MultiButtonSelector = (props) => {
     if (renderComponent){
         return(
             <QuestionSection key={key} title={data.question} helperText={data.helperText}>
+                <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
                 <VStack>
                 {HelperTooltip()}
                 {renderButtons()}

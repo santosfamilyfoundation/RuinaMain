@@ -117,20 +117,13 @@ const CountyDropDown = (props) => {
 
     }
 
-    const HelperTooltip = () => {
-        return (
-             <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
-        )
-    }
-
-    console.log(reducerData)
     return (
         <QuestionSection
             key={key}
             title={data.question}
             helperText={data.helperText}
         >
-            {HelperTooltip()}
+             <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
                 <SectionedMultiSelect
                   items={countyOptions}
                   IconRenderer={Icon}

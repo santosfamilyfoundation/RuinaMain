@@ -87,13 +87,6 @@ const OpenTextFieldWithSelection = (props) => {
         status = 'success'
     }
 
-    
-    const HelperTooltip = () => {
-        return (
-            <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
-        )
-    }
-
     const renderSingleButton = (option) => {
       let appearance = (value == option.text) ? 'filled': 'outline';
       return (
@@ -125,7 +118,7 @@ const OpenTextFieldWithSelection = (props) => {
                 errorMessage={`Maximum Character Limit: ${data.maxLength}`}
                 isInvalid={isInvalid}
             >
-                {HelperTooltip()}
+                <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
                 <Input
                     placeholder='Place your Text'
                     value={value}
