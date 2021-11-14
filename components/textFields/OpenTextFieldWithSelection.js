@@ -5,7 +5,7 @@ import { styles } from './OpenTextFieldWithSelection.style';
 import { updateResponse } from '../../actions/StoryActions';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
-import Section from '../Section';
+import QuestionSection from '../QuestionSection';
 
 
 const OpenTextFieldWithSelection = (props) => {
@@ -110,10 +110,9 @@ const OpenTextFieldWithSelection = (props) => {
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
-            <Section
+            <QuestionSection
                 key={key}
                 title={data.question}
-                isForm
                 helperText={data.helperText}
                 errorMessage={`Maximum Character Limit: ${data.maxLength}`}
                 isInvalid={isInvalid}
@@ -127,7 +126,7 @@ const OpenTextFieldWithSelection = (props) => {
                 <HStack>
                     {renderButtons()}
                 </HStack>
-            </Section>
+            </QuestionSection>
         )
     } else {
         return null

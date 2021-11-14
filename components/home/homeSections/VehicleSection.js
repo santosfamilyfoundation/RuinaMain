@@ -4,7 +4,6 @@ import { View} from 'react-native';
 import IconButton from '../../IconButton';
 import { Box, Heading, Divider, VStack, HStack, Text } from 'native-base';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-//import { Text, Card, CardHeader, Icon } from '@ui-kitten/components';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import { connect } from 'react-redux';
@@ -100,22 +99,14 @@ class VehicleSection extends Component{
                     passengerToDelete: passenger.id
                     })}
                     icon={<Icon name="person-remove-alt-1" size={50}/>}/>
- /*                   <Card key={idx} style={styles.individualCardRemove} onPress= {() => this.setState({beforePassengerDelete:true, passengerToDelete:passenger.id})}>
-                        <Icon name='person-remove' width={75} height={75} float alignSelf= "center" fill='white' />
-                        <Text style={styles.itemCardFooterEdit} category="s1">Remove Passenger {idx+1}</Text>
-                    </Card> */
                 )
               } else {
                 return (
-              <IconButton leftMargin={4} text={`Passenger ${idx + 1}`}
+              <IconButton leftMargin={4} text={`Passenger ${idx + 1} Form`}
                 onPress={() =>
                     navigateQuestion(passengerQuestions, passenger.id,
                     'Passenger', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}
                 icon={<Icon name="person" size={50}/>}/>
-                   /* <Card key={idx} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Passenger', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}>
-                        <Icon name='person' width={75} height={75} />
-                        <Text style={styles.itemCardFooter} category="s1">Passenger {idx+1}</Text>
-                    </Card> */
                 )
               }
             } else {
@@ -127,20 +118,12 @@ class VehicleSection extends Component{
                   passengerToDelete: passenger.id})
                   }
                   icon={<Icon name="person-remove-alt-1" size={50}/>}/>
-                   /* <Card key={idx} style={styles.individualCardRemove} onPress= {() => this.setState({beforePassengerDelete:true, passengerToDelete:passenger.id})}>
-                        <Icon name='person-remove' width={75} height={75} float alignSelf= "center" fill="white" />
-                        <Text style={styles.itemCardFooterEdit} category="s1">Remove Occupant {idx+1}</Text>
-                    </Card> */
                 )
               } else {
                 return (
-                    <IconButton leftMargin={4} text={`Occupant ${idx + 1}`}
+                    <IconButton leftMargin={4} text={`Occupant ${idx + 1} Form`}
                     onPress={() => navigateQuestion(passengerQuestions, passenger.id, 'Occupant', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}
                     icon={<Icon name="person" size={50}/>}/>
-                   /* <Card key={idx} style={styles.individualCard} onPress= {() => navigateQuestion(passengerQuestions, passenger.id, 'Occupant', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}>
-                        <Icon name='person' width={75} height={75} />
-                        <Text style={styles.itemCardFooter} category="s1">Occupant {idx+1}</Text>
-                    </Card> */
                 )
               }
             }
@@ -208,35 +191,6 @@ class VehicleSection extends Component{
                             </Text>
                      </MaterialDialog>
                  </>
-               /* <Card key={vehicle.id} header={VehiclesHeader} style={styles.itemCard} >
-                    <View style={styles.itemCardContent}>
-                        {!this.state.driverDeleted &&
-                          <Card style={styles.individualCardRemove} onPress= {() => this.setState({beforeDriverDelete:true})}>
-                              <Icon name='person-remove' width={75} height={75} float alignSelf= "center" fill='white'/>
-                              <Text style={styles.itemCardFooterEdit} category="s1">Remove Driver</Text>
-                          </Card>
-                        }
-                        {!this.state.driverDeleted &&
-                          <Card style={styles.individualCardAdd} onPress= {this._addPassenger}>
-                            <Icon name='person-add' width={75} height={75} float alignSelf= "center" fill='white'/>
-                            <Text style={styles.itemCardFooterEdit} category="s1">Add Passenger</Text>
-                          </Card>
-                        }
-                        {this.state.driverDeleted &&
-                          <Card style={styles.individualCardAdd} onPress= {this._addPassenger} >
-                            <Icon name='person-add' width={75} height={75} float alignSelf= "center" fill='white'/>
-                            <Text style={styles.itemCardFooterEdit} category="s1">Add Occupant</Text>
-                          </Card>
-                        }
-                        {passengerListArr}
-                        <Card style={styles.vehicleRemove} float onPress= {() => this.setState({beforeVehicleDelete:true})}>
-                        <View style={styles.vehicleRemove}>
-                          <Icon name='minus-circle' width={75} height={75} fill='white'  />
-                          <Text style={styles.itemCardFooterEditVehicle} float category="s1">Delete Vehicle {index+1}</Text>
-                        </View>
-                        </Card>
-                    </View>
-                </Card> */
             )
         } else{
             return(
@@ -244,29 +198,14 @@ class VehicleSection extends Component{
                     <HStack mt={4}>
                         <IconButton
                          onPress = {() => navigateQuestion(vehicleQuestions, vehicle.id, 'Vehicle', (index+1), 0, [roadID, vehicle.id])}
-                         text={name}
+                         text={`${name} Form`}
                          icon={<Icon name='local-taxi' size={50}/>}
                          />
                         {!this.state.driverDeleted &&
-                        <IconButton leftMargin={4} onPress={styles.individualCard} onPress= {() => navigateQuestion(driverQuestions, vehicle.driver, 'Driver', (index+1), 0, [roadID, vehicle.id])} text="Driver" icon={<Icon name='person' size={50}/>}/>}
+                        <IconButton leftMargin={4} onPress={styles.individualCard} onPress= {() => navigateQuestion(driverQuestions, vehicle.driver, 'Driver', (index+1), 0, [roadID, vehicle.id])} text="Driver Form" icon={<Icon name='person' size={50}/>}/>}
                         {passengerListArr}
                     </HStack>
                 </Section>
-               /* <Card key={vehicle.id} header={VehiclesHeader} style={styles.itemCard} >
-                    <View style={styles.itemCardContent}>
-                        <Card style={styles.individualCard} onPress= {() => navigateQuestion(vehicleQuestions, vehicle.id, 'Vehicle', (index+1), 0, [roadID, vehicle.id])}>
-                            <Icon name='car' width={75} height={75} style={{justifyItems:'center', alignItems:'center'}} fill='black'/>
-                            <Text style={styles.itemCardFooter} category="s1">{name}</Text>
-                        </Card>
-                        {!this.state.driverDeleted &&
-                          <Card style={styles.individualCard} onPress= {() => navigateQuestion(driverQuestions, vehicle.driver, 'Driver', (index+1), 0, [roadID, vehicle.id])}>
-                              <Icon name='person' width={75} height={75} fill='black'/>
-                              <Text style={styles.itemCardFooter} category="s1">Driver</Text>
-                          </Card>
-                        }
-                        {passengerListArr}
-                    </View>
-                </Card> */
             )
         }
 

@@ -4,7 +4,7 @@ import { Input, Button, VStack, IconButton, CloseIcon, Text } from 'native-base'
 import { styles } from './OpenTextField.style';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
-import Section from '../Section';
+import QuestionSection from '../QuestionSection';
 
 
 const OpenTextField = (props) => {
@@ -75,7 +75,7 @@ const OpenTextField = (props) => {
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
-            <Section
+            <QuestionSection
                 key={key}
                 title={data.question}
                 isForm
@@ -87,7 +87,7 @@ const OpenTextField = (props) => {
                 <Input placeholder="Place your text"
                    value={value}
                    onChangeText={onTextChange} />
-            </Section>
+            </QuestionSection>
         )
     } else {
         return null
