@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View, Image } from 'react-native';
 import ImageSelector from '../image/imgIndex';
-import Section from '../Section';
+import QuestionSection from '../QuestionSection';
 import { TextArea, Box, Text, Icon, VStack } from 'native-base';
 import { styles } from './LargeTextField.style';
 import { dependencyParser } from '../../utils/dependencyHelper';
@@ -116,7 +116,7 @@ const LargeTextField = (props) => {
     if (renderComponent){
         return(
         <Box>
-            <Section title={data.question}>
+            <QuestionSection key={key} title={data.question}>
                 <VStack>
                     {HelperTooltip()}
                     <TextArea
@@ -124,28 +124,8 @@ const LargeTextField = (props) => {
                         value={value}
                         onChangeText={onTextChange}/>
                 </VStack>
-            </Section>
+            </QuestionSection>
         </Box>
-        /*<Layout key={key} style={styles.container}>
-            <Card header={Header} status={status}>
-                <Layout style={styles.content}>
-                    {HelperTooltip()}
-                    <Layout style={styles.input}>
-                        <Input
-                            style={styles.inputField}
-                            multiline={true}
-                            maxLength={data.maxLength}
-                            icon={renderClear}
-                            onIconPress={() => clearField()}
-                            placeholder='Place your Text'
-                            value={value}
-                            onChangeText={onTextChange}
-                        />
-                    </Layout>
-                    {ErrorMsg()}
-                </Layout>
-            </Card>
-        </Layout>*/
         )
     }else{
         return null

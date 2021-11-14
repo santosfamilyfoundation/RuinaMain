@@ -63,7 +63,7 @@ class NonMotoristSection extends Component{
           <Box mt={4}>
               <IconButton
                 onPress = {() => navigateQuestion(nonmotoristQuestions, nonmotorist.id, 'Nonmotorist', (index+1))}
-                text={`Non-Motorist ${index+1}`}
+                text={`Non-Motorist ${index+1} Form`}
                 rightMargin={4}
                 icon = {<Icon name='person' size={50}/>}
               />
