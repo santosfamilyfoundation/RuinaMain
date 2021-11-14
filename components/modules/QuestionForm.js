@@ -246,7 +246,7 @@ const QuestionForm = (props) => {
       </ScrollView>
       <Divider />
       <Box p={4}>
-        <Button onPress={()=> {navigation.goBack()}}>Done</Button>
+        <Button onPress={()=> {navigation.goBack()}}>Save Progress</Button>
       </Box>
     </SafeAreaView>
   );
