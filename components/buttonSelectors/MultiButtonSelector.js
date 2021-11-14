@@ -79,7 +79,6 @@ const MultiButtonSelector = (props) => {
             <QuestionSection key={key} title={data.question} helperText={data.helperText}>
                 <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
                 <VStack>
-                {HelperTooltip()}
                 {renderButtons()}
                 </VStack>
             </QuestionSection>

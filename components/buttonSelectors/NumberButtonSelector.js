@@ -27,7 +27,7 @@ const NumberButtonSelector = (props) => {
     }
 
     return (
-        <QuestionSection key={key} title={data.question} helperText={data.helperText}>
+        <QuestionSection title={data.question} helperText={data.helperText}>
             <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={true} contentContainerStyle={styles.container}>
                 <HStack>
