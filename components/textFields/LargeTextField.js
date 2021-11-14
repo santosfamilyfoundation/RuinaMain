@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View, Image } from 'react-native';
 import ImageSelector from '../image/imgIndex';
-import Section from '../Section';
+import QuestionSection from '../QuestionSection';
 import { TextArea, Box, Text, Icon, VStack } from 'native-base';
 import { styles } from './LargeTextField.style';
 import { dependencyParser } from '../../utils/dependencyHelper';
@@ -95,57 +95,20 @@ const LargeTextField = (props) => {
         status = 'success'
     }
     
-   const HelperTooltip = () => {
-        return (
-            <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
-        )
-    }
-
-    const ErrorMsg = () => {
-        if(isInvalid) {
-            return(
-                <Text>
-                    Too long!
-                </Text>
-            )
-        }
-        return null;
-    };
-    
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
         <Box>
-            <Section title={data.question}>
+            <Section title={data.question} helperText={data.helperText} errorMessage='Maximum Character Limit Exceeded' isInvalid={isInvalid}>
                 <VStack>
-                    {HelperTooltip()}
+                    <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
                     <TextArea
                         placeholder="Place your text"
                         value={value}
                         onChangeText={onTextChange}/>
                 </VStack>
-            </Section>
+            </QuestionSection>
         </Box>
-        /*<Layout key={key} style={styles.container}>
-            <Card header={Header} status={status}>
-                <Layout style={styles.content}>
-                    {HelperTooltip()}
-                    <Layout style={styles.input}>
-                        <Input
-                            style={styles.inputField}
-                            multiline={true}
-                            maxLength={data.maxLength}
-                            icon={renderClear}
-                            onIconPress={() => clearField()}
-                            placeholder='Place your Text'
-                            value={value}
-                            onChangeText={onTextChange}
-                        />
-                    </Layout>
-                    {ErrorMsg()}
-                </Layout>
-            </Card>
-        </Layout>*/
         )
     }else{
         return null

@@ -136,12 +136,6 @@ const DropDownMultiSelect = (props) => {
         setSelectedOptions(selectedItems);
     }
 
-    const HelperTooltip = () => {
-        return (
-            <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
-        )
-    }
-
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
@@ -149,7 +143,7 @@ const DropDownMultiSelect = (props) => {
                 title={data.question}
                 helperText={data.helperText}
             >
-                {HelperTooltip()}
+                <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
                 <SectionedMultiSelect
                   items={data.answerOptions}
                   IconRenderer={Icon}

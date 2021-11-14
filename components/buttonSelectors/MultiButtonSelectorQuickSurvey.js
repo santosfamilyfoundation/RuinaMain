@@ -38,17 +38,6 @@ const MultiButtonSelectorQuickSurvey = (props) => {
       submitFunction({question: data.id, selection: optionText})
   }
 
-    /* const Header = () => (
-        <CardHeader title={data.question}/>
-    ); */
-
-    /*const InfoIcon = (props) => (
-        <Icon {...props} name='info'/>
-    );
-    const CloseIcon = (props) => (
-        <Icon {...props} name='close-outline'/>
-    ); */
-
     const renderSingleButton = (option) => {
         let appearance = (selection == option.text) ? 'filled': 'outline';
         return (
@@ -66,7 +55,7 @@ const MultiButtonSelectorQuickSurvey = (props) => {
     const renderButtons = () => {
         let res = data.answerOptions.map(option => (renderSingleButton(option)));
         return (
-            <HStack>
+            <HStack flexWrap='wrap'>
             {res}
             </HStack>
         );

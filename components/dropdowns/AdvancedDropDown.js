@@ -159,12 +159,6 @@ const AdvancedDropDown = (props) => {
         }
         setSelectedOptions(options);
     }
-    
-    const HelperTooltip = () => {
-        return (
-            <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
-        )
-    }
 
     const WeatherIcon = (style) => (
         <Icon name='wb-sunny' color='white' size={25}/>
@@ -229,7 +223,7 @@ const AdvancedDropDown = (props) => {
             helperText={data.helperText}
         >
             {WeatherHelper()}
-            {HelperTooltip()}
+            <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
             <HStack justifyContent='space-around'>
             <SectionedMultiSelect
               items={data.answerOptions}

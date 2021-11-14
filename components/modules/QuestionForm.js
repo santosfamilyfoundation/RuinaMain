@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
-import { Divider, Box} from 'native-base';
+import { Divider, Box, Accordion, VStack} from 'native-base';
 import { styles } from '../../containers/AutoComponentContainer.style';
 import { ScrollView } from 'react-native-gesture-handler';
 import MultiButtonSelector from '../buttonSelectors/MultiButtonSelector';
@@ -15,7 +15,7 @@ import AdvancedDropDown from '../dropdowns/AdvancedDropDown';
 import DropDownMultiSelect from '../dropdowns/DropDownMultiSelect';
 import CountyDropDown from '../dropdowns/CountyDropDown';
 import LargeTextField from '../textFields/LargeTextField';
-import HeaderComponent from '../header/HeaderComponent';
+import QuestionHeader from '../QuestionHeader';
 import { updateDriver } from '../../actions/DriverAction';
 import { updateNonmotorist } from '../../actions/NonmotoristAction';
 import { updateVehicle } from '../../actions/VehicleAction';
@@ -38,8 +38,6 @@ const QuestionForm = (props) => {
     navigation,
     updateResponse,
   } = props
-
-  console.log(props)
 
   // filter question information based on section type
   const filterQuestionsData = (questionType) => {
@@ -98,7 +96,7 @@ const QuestionForm = (props) => {
         autoCompleteDropdown: {
           ...PublicObj
         },
-        header: {
+        questionHeader: {
           data: res.data,
           dependencyID:res.detail.dependencyID,
         },
@@ -221,30 +219,68 @@ const QuestionForm = (props) => {
               {...props}
             />
           )
-        case 'header':
-            return (
-              <HeaderComponent
-                {...props}
-              />
+        case 'questionHeader':
+            return(
+                <QuestionHeader
+                    {...props}
+                />
             )
       }
     }
 
     const question = questionData(questionDetail.type)
-    const renderedQuestions = question.questionsData.map((item) => {
-      const obj = {data:item, setting: question, detail:questionDetail}
-      const dom = renderSingleQuestion(item.answerType, questionProps(item.answerType, obj));
-      return dom
-    });
+    const renderedQuestions = (questions) => {
+        let questionList = []
+        for (const q of questions) {
+            const obj = {data:q, setting: question, detail:questionDetail}
+            const dom = renderSingleQuestion(q.answerType, questionProps(q.answerType, obj));
+            questionList.push(dom)
+        }
+        return (
+            <VStack>
+                {questionList}
+            </VStack>
+        )
+    };
+  const renderSingleSection = (item) => {
+    return (
+        <Accordion.Item>
+            <Accordion.Summary>
+                {item.sectionTitle}
+                <Accordion.Icon />
+            </Accordion.Summary>
+            <Accordion.Details>
+                {renderedQuestions(item.questions)}
+            </Accordion.Details>
+        </Accordion.Item>
+    )
+  }
+
+
+  const renderSections = (question) => {
+    let sections = []
+
+    for (const item of question.questionsData) {
+        sections.push(renderSingleSection(item))
+    }
+    return (
+        <Accordion index={[0]} mx={4} my={8}>
+            {sections}
+        </Accordion>
+    )
+  }
   return (
     <SafeAreaView style={styles.container}>
       <TopNavigation title={`Questions on ${questionDetail.name}`} backButton navigation={navigation}/>
-      <Divider />
       <ScrollView>
         <Box>
-          {renderedQuestions}
+            {renderSections(question)}
         </Box>
       </ScrollView>
+      <Divider />
+      <Box p={4}>
+        <Button onPress={()=> {navigation.goBack()}}>Save Progress</Button>
+      </Box>
     </SafeAreaView>
   );
 }

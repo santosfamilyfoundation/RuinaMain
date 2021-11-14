@@ -9,9 +9,9 @@ import Section from './Section';
 //import IconButton from './IconButton'
 
 const TooltipView = (props) => {
-    const {helperText, helperImg, toolTip} = props
+    const { helperImg, toolTip } = props
     const [visible, setVisible] = React.useState(false);
-    const[toolTipText, setToolTipText] = React.useState(toolTip ? true: false);
+    const [toolTipText, setToolTipText] = React.useState(toolTip ? true: false);
     const InfoIcon = (props) => (
         <Icon name="help" color='white' size={25}/>
     )
@@ -57,7 +57,7 @@ const TooltipView = (props) => {
                         <Modal.Header>
                             <HStack>
                                 <Icon name="help" size={15}/>
-                                <Text>Tooltip</Text>
+                                <Text ml={4}>Tooltip</Text>
                             </HStack>
                         </Modal.Header>
                         <Modal.Body>
