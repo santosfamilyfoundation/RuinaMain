@@ -52,41 +52,7 @@ const LargeTextField = (props) => {
             }
         }
     }
-//    console.log(existingData[currId])
-//
-//    const debounceValidation = (func, timeout) => {
-//    let timer;
-//      return (...args) => {
-//        clearTimeout(timer);
-//        timer = setTimeout(() => { func.apply(this, args); }, timeout);
-//      };
-//    }
-//
-//
-//    const validateInput = (text) => {
-//          if(!text){
-//            return;
-//          }
-//          if(text.length <= 500) {
-//              setButtonAppearance('filled')
-//          }
-//          else{
-//            setButtonAppearance('outline')
-//          }
-//
-//
-//    }
-//    const submitField = (text) => {
-//        const processChange = debounceValidation((text) => validateInput(text), 500);
-//        if(!text) {
-//            return;
-//        }
-//        processChange(text);
-//    }
 
-
-// something like 'textFieldValidation = new TextFieldValidation'
-// something like 'if(textFieldValidation.submitField(localText){ setButtonAppearance('outline') } )'
      const onTextChange = (text) => {
         console.log('this is text',text)
         var localText = text
@@ -104,12 +70,9 @@ const LargeTextField = (props) => {
         else {
         setButtonAppearance('outline')
         }
-
-//        submitField(localText)
     }
 
     const clearField = () => {
-        console.log('is it even reaching here')
         submitFunction({id, question: currId, selection: null})
         setValue(existingData[currId])
         setButtonAppearance('outline');

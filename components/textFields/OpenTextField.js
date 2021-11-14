@@ -1,26 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { View, Image } from 'react-native';
-import { Input, Layout, Text, Card, Button, Modal, CardHeader, Icon} from '@ui-kitten/components';
 import ImageSelector from '../image/imgIndex';
+import { Input, Layout, Text, Card, Button, Modal, CardHeader, Icon } from '@ui-kitten/components';
 import { styles } from './OpenTextField.style';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip.js';
+import TextFieldValidation from '../../utils/TextFieldValidation.js';
 
 
 const OpenTextField = (props) => {
-    const [visible, setVisible] = React.useState(false);
     const [value, setValue] = React.useState('');
+    const [visible, setVisible] = React.useState(false);
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const [isInvalid, setIsInvalid] = React.useState(false);
     const {data, key, id, questionReducer, submitFunction, dependencyID} = props;
 
+
+
     let currId = data.id
-    let status;
+    let status
 
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
-
 
     // Populate if value already exists in redux
     if(!value) {
@@ -32,90 +34,75 @@ const OpenTextField = (props) => {
         }
     }
 
-    const submitField = () => {
-        if(!value) {
-            return;
-        }
-        submitFunction({id, question: currId, selection: value})
-        setButtonAppearance('filled');
-    }
-
-    const onTextChange = (text) => {
+     const onTextChange = (text) => {
+        console.log('this is text',text)
+        var localText = text
+        submitFunction({id, question: currId, selection: localText})
         if(!text) {
-            submitFunction({id, question: currId, selection: null})
+              setButtonAppearance('outline')
         }
-        setValue(text);
+        textFieldValidation = TextFieldValidation
+        console.log('it breaks after the definition but before the submitField')
+        textFieldValidation.submitField(localText);
+        var localStatus = textFieldValidation.status
+        console.log("localstatus ", localStatus)
+        if (localStatus) {
+        setButtonAppearance('filled')
+        }
+        else {
+        setButtonAppearance('outline')
+        }
     }
 
     const clearField = () => {
-        setValue('');
         submitFunction({id, question: currId, selection: null})
+        console.log('sadly, it was this one')
+        setValue(existingData[currId])
         setButtonAppearance('outline');
     }
 
-    if(!value && buttonAppearance != 'outline') {
-        setButtonAppearance('outline');
-    } else if(existingData != null) {
-        if(value != existingData[currId] && buttonAppearance != 'outline') {
-            setButtonAppearance('outline');
+    const valueSet = (currId) => {
+        try {if (existingData[currId] != null){
+            return existingData[currId]
+        }
+        }
+        catch(err)
+        {
+        return null
         }
     }
 
-    // Input length checking
-    if(value.length > data.maxLength && !isInvalid) {
-        setIsInvalid(true);
-    } else if(isInvalid && value.length <= data.maxLength) {
-        setIsInvalid(false);
-    }
-
     const Header = () => (
-        <CardHeader title={data.question} />
+        <CardHeader title={data.question}/>
     );
 
     const renderClear = (style) => (
         <Icon {...style} name='close-outline'/>
     );
 
-    if(buttonAppearance == 'outline') {
-        status = 'danger'
-    } else {
-        status = 'success'
-    }
-
     const CheckIcon = (style) => (
         <Icon {...style} name='checkmark-outline' />
     )
 
-    
-    const HelperTooltip = () => {
-        if (data.helperText != null && (data.tooltip != null||data.helperImg!=null)){
-            return (
-                            <TooltipView data={data} />
-                        )
-        }
-        else if (data.helperText != null) {
-            return (<Text style={styles.helperText}>{data.helperText}</Text>)
-        }
-        else if (data.tooltip != null || data.helperImg != null) {
-            return (
-                            <TooltipView data={data} />
-                        )
-        } else {
-            return null;
-        }
+    const CloseIcon = (style) => {
+    <Icon {...style} name='checkmark-outline' />
     }
-    
+
+        const HelperTooltip = () => {
+                     return (
+                                 <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
+                             )
+                 }
+
     const InfoIcon = (props) => (
+        // <Image source={require('../image/test.jpg')} style={styles.img}/>
         <Icon {...props} name='info'/>
     );
-    const CloseIcon = (props) => (
-        <Icon {...props} name='close-outline'/>
-    );
+
 
     const toggleModal = () => {
         setVisible(!visible);
     };
-
 
     const ErrorMsg = () => {
         if(isInvalid) {
@@ -127,7 +114,9 @@ const OpenTextField = (props) => {
         }
         return null;
     };
+
     var renderComponent = dependencyParser(props.response, data, dependencyID)
+    //use let or const, not var
     if (renderComponent){
         return(
         <Layout key={key} style={styles.container}>
@@ -137,11 +126,13 @@ const OpenTextField = (props) => {
                     <Layout style={styles.input}>
                         <Input
                             style={styles.inputField}
+                            multiline={false}
+                            maxLength={data.maxLength}
                             icon={renderClear}
                             onIconPress={() => clearField()}
                             placeholder='Place your Text'
-                            value={value}
-                            onChangeText={onTextChange}
+                            value = {valueSet(currId)}
+                            onChangeText={(text) => onTextChange(text)}
                         />
                         <Button
                             style={styles.submitButton}
@@ -162,10 +153,10 @@ const OpenTextField = (props) => {
 };
 
 const mapStateToProps = (state, props) => {
-    const { response } = state.storyReducer
+    const { story } = state;
     const { reducer } = props;
     const questionReducer = state[reducer];
-    return { questionReducer, response}
+    return { story, questionReducer }
 };
 
 export default connect(mapStateToProps)(OpenTextField);
