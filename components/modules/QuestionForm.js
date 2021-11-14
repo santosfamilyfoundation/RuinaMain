@@ -272,12 +272,15 @@ const QuestionForm = (props) => {
   return (
     <SafeAreaView style={styles.container}>
       <TopNavigation title={`Questions on ${questionDetail.name}`} backButton navigation={navigation}/>
-      <Divider />
       <ScrollView>
         <Box>
             {renderSections(question)}
         </Box>
       </ScrollView>
+      <Divider />
+      <Box p={4}>
+        <Button onPress={()=> {navigation.goBack()}}>Save Progress</Button>
+      </Box>
     </SafeAreaView>
   );
 }

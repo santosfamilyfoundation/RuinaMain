@@ -75,9 +75,7 @@ const MultiButtonSelector = (props) => {
         let appearance = (selection == option.name) ? 'filled': 'outline';
         return (
             <Button
-                /*key={option.idCode}
-                style={styles.answerButton}
-                appearance={appearance}*/
+                key={option.id}
                 mr={4}
                 mb={4}
                 onPress={() => submitField(option.name, option.id)}
@@ -99,7 +97,7 @@ const MultiButtonSelector = (props) => {
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
-            <QuestionSection key={key} title={data.question} helperText={data.helperText}>
+            <QuestionSection title={data.question} helperText={data.helperText}>
                 <VStack>
                 {HelperTooltip()}
                 {renderButtons()}
