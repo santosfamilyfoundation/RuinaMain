@@ -75,11 +75,11 @@ const OpenTextFieldWithSelection = (props) => {
     }
 
     // Input length checking
-    if(value.length > data.maxLength && !isInvalid) {
-        setIsInvalid(true);
-    } else if(isInvalid && value.length <= data.maxLength) {
-        setIsInvalid(false);
-    }
+//    if(value.length > data.maxLength && !isInvalid) {
+//        setIsInvalid(true);
+//    } else if(isInvalid && value.length <= data.maxLength) {
+//        setIsInvalid(false);
+//    }
 
     if(buttonAppearance == 'outline') {
         status = 'danger'
@@ -123,7 +123,7 @@ const OpenTextFieldWithSelection = (props) => {
                     value={value}
                     onChange={onTextChange}
                 />
-                <HStack>
+                <HStack mt={4}>
                     {renderButtons()}
                 </HStack>
             </QuestionSection>
