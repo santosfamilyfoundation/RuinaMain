@@ -91,19 +91,19 @@ class FinalReport extends Component {
             <Center>
                 <VStack space={8}>
                     <Section title='Save to Local Device'>
-                     <Text>Press this button to save the crash report to local device.</Text>
+                     <Text my={2}>Press this button to save the crash report to local device.</Text>
                      {cardButton('Save Report to Local Device', navigateSaveToDevice)}
                     </Section>
                     <Section title='Email'>
-                     <Text>Press this button to email the crash report.</Text>
+                     <Text my={2}>Press this button to email the crash report.</Text>
                      {cardButton('Email Report', navigateEmail)}
                     </Section>
                     <Section title='Save to Database'>
-                     <Text>FEATURE COMING SOON</Text>
+                     <Text my={2}>FEATURE COMING SOON</Text>
                      {cardButton('Save Report to Database', navigateDatabase, true)}
                     </Section>
                     <Section title='Feedback'>
-                     <Text>Tell us what you liked and what you did not like so we can make your experience better.</Text>
+                     <Text my={2}>Tell us what you liked and what you did not like so we can make your experience better.</Text>
                      {feedbackButton()}
                     </Section>
                 </VStack>
