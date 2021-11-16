@@ -3,7 +3,6 @@ import { View, ScrollView, Keyboard, BackHandler, Pressable } from 'react-native
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { Heading, Divider, VStack, HStack, Box, Text } from 'native-base';
-//import { TopNavigation, TopNavigationAction, Text, Card, CardHeader, Layout, Icon } from '@ui-kitten/components';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styles } from './Home.style';
 import {questions} from '../../data/questions';
@@ -169,7 +168,7 @@ class Home extends Component {
         return(
             <SafeAreaView flex={1}>
                 {rightControls()}
-                <ScrollView>
+                <ScrollView marginBottom={24}>
                     <Section title="Crash and Roadway">
                         {this.state.edit ?
                         <HStack alignItems='center' mt={4}>
