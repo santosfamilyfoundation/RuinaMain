@@ -258,15 +258,8 @@ const QuestionForm = (props) => {
 
 
   const renderSections = (question) => {
-    /*let sections = []
-
-    for (const item of question.questionsData) {
-        sections.push(renderSingleSection(item))
-    }*/
-    
     return (
         <Accordion index={[0]} mx={4} my={8}>
-            { /* {sections} */ }
             { question.questionsData.map(item => renderSingleSection(item)) }
         </Accordion>
     )
