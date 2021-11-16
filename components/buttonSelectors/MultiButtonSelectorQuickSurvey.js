@@ -42,8 +42,10 @@ const MultiButtonSelectorQuickSurvey = (props) => {
         return (
             <Button
                 key={option.id}
+                mr={4}
+                mb={4}
                 style={styles.answerButton}
-                variant={selection == option.name ? 'solid': 'outline'}
+                variant={selection === option.name ? 'solid': 'outline'}
                 onPress={() => submitField(option.name, option.id)}
             >
                 {option.name}

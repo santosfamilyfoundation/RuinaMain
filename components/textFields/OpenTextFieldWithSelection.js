@@ -83,7 +83,7 @@ const OpenTextFieldWithSelection = (props) => {
       return (
           <Button
               key={option.id}
-              variant={selected == option.id ? 'solid': 'outline'}
+              variant={selected === option.id ? 'solid': 'outline'}
               onPress={() => onSelectOneOption(option)}
           >
               {option.name}

@@ -9,7 +9,8 @@ import { View } from 'react-native';
 import QuestionSection from '../QuestionSection';
 
 const NumberButtonSelectorQuickSurvey = (props) => {
-    const [selection, setSelection] = React.useState('');
+    const [selection, setSelection] = React.useState('')
+    console.log(selection)
     const {title, data, id, submitFunction, genericReducer, fieldName, updateResponse, dependencyID, startRange, endRange, tooltipText} = props;
 
     const submitField = (val) => {
@@ -26,7 +27,7 @@ const NumberButtonSelectorQuickSurvey = (props) => {
 
     const renderSingleButton = (option) => {
         return (
-            <Button variant={selection == option.id ? 'solid': 'outline'} onPress={() => submitField(option.id)} size={10}>{option.name}</Button>
+            <Button variant={selection === option.id ? 'solid': 'outline'} onPress={() => submitField(option.id)} size={10}>{option.name}</Button>
         )
     }
 
@@ -44,7 +45,7 @@ const NumberButtonSelectorQuickSurvey = (props) => {
         return(
             <HStack space={4}>
             {buttons}
-            <Input placeholder = "other" onChangeText = {submitField} size="md"/>
+            <Input placeholder="other" onChangeText={submitField} size="md"/>
             </HStack>
         )
     }
