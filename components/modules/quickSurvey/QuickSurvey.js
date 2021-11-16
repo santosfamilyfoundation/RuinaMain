@@ -272,7 +272,7 @@ class QuickSurvey extends Component {
             switch (question.answerType) {
               case 'multiButton':
                 return (
-                  <SafeAreaView key={question.id} style = {styles.questionContainer}>
+                  <SafeAreaView key={question.id}>
                     <MultiButtonSelectorQuickSurvey
                       data={question}
                       reducer={"quickquizReducer"}
