@@ -5,7 +5,8 @@ import json
 #             'info', 'injured', 'lvhm', 'lvhmDriver', 'nonmotorist', 'passenger',
 #             'road', 'setup', 'vehicle', 'answerOptions']
 
-question_sheets = ['driver', 'vehicle', 'nonmotorist', 'passenger', 'setup', 'road']
+# question_sheets = ['driver', 'vehicle', 'nonmotorist', 'passenger', 'setup', 'road']
+question_sheets = ['driver']
 answer_sheets = ['driverAnswers', 'vehicleAnswers', 'nonmotoristAnswers', 'passengerAnswers', 'roadAnswers']
 
 def get_inverse_dependencies(uid, option, df_answer):
@@ -22,11 +23,9 @@ def generate_questions_json(filename):
     sections_df = pd.read_excel(filename, sheet_name=question_sheets)
     answers_df = pd.concat(pd.read_excel(filename, sheet_name=answer_sheets))
 
-    print(answers_df)
-
     for section in sections_df:
         questions_df = sections_df[section]
-        print('in form section', section);
+        # print('in form section', section)
 
         section_json = {}
         for index, row in questions_df.iterrows():
@@ -45,12 +44,12 @@ def generate_questions_json(filename):
                 if section_json != {}:
                     if section_json not in questions_json['data']:
                         questions_json['data'].append(section_json)
-                        print('added section to data', section_json['sectionTitle'])
+                        # print('added section to data', section_json['sectionTitle'])
 
                 section_json = {'sectionTitle': row['question_text'],
                                 'questions': [],
                                 'display': [row['display_section']]}
-                print('created new section', section_json['sectionTitle'])
+                # print('created new section', section_json['sectionTitle'])
 
             else:
                 question_dict = {'numOptionsAllowed': str(row['num_selected_option']),
@@ -59,13 +58,15 @@ def generate_questions_json(filename):
                                 'answerType': row['question_type'],
                                 'display': [row['display_section']],
                                 'humanReadableId': row['id']}
-                
+                print(question_dict['question'])
                 if pd.notna(row['helper_text']):
                     question_dict['helperText'] = row['helper_text']
                 if pd.notna(row['tooltip']):
                     question_dict['tooltip'] = row['tooltip']
                 if pd.notna(row['helper_img']):
                     question_dict['helperImg'] = row['helper_img']
+                    print("**********")
+                    print(row['helper_img'])
                 if pd.notna(row['automation_method']):
                     question_dict['autoMethod'] = row['automation_method']
 
@@ -82,6 +83,7 @@ def generate_questions_json(filename):
                         else:
                             questionDependency.append({'dependencyUid':uid, 'dependencyOptionCode':str(option)})
                     question_dict['questionDependency'] = questionDependency
+                    # print('added dependencies', questionDependency)
                 
                 question_uid = row['question_uid']
                 df_sub_answer = answers_df[answers_df['question_uid'] == question_uid]
@@ -97,7 +99,7 @@ def generate_questions_json(filename):
                 else:
                     questions_json['data'].append(question_dict)
             
-                print('added question', row['question_text'])
+                # print('added question', row['question_text'])
 
     return questions_json
                     
@@ -161,8 +163,8 @@ def generate_questions_json(filename):
 #     return questions_json
 
 if __name__ == '__main__':
-    filename = '~/2021_11_10_questions.xlsx'
-    new_filename = 'data/questions.js'
+    filename = '~/2021_11_15_questions.xlsx'
+    new_filename = '/home/shreya/questions.js'
 
     json_data = generate_questions_json(filename)
 
