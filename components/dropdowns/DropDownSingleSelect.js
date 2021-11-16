@@ -8,6 +8,7 @@ import TooltipView from '../Tooltip';
 import QuestionSection from '../QuestionSection';
 import SectionedMultiSelect from 'react-native-sectioned-multi-select';
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import IconButton from '../IconButton';
 
 const DropDownSingleSelect = (props) => {
     const [selectedOption, setSelectedOption] = React.useState([]);
@@ -73,6 +74,10 @@ const DropDownSingleSelect = (props) => {
         setSelectedOption(selection)
     }
 
+    const tooltip = () => {
+        return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
+    }
+
     let renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
@@ -80,18 +85,19 @@ const DropDownSingleSelect = (props) => {
                 key={key}
                 title={data.question}
                 helperText={data.helperText}
+                tooltip={tooltip()}
             >
-                <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
                 <SectionedMultiSelect
                   items={data.answerOptions}
                   IconRenderer={Icon}
                   uniqueKey='id'
-                  selectText={data.helperText}
+                  selectText={'Select Option ...'}
                   onSelectedItemsChange={submitField}
                   onSelectedItemObjectsChange={(selectedObject) => {submitFunction({id, question: currId, selection: selectedObject[0].name})}}
                   selectedItems={selectedOption}
                   hideConfirm={true}
                   single={true}
+                  showCancelButton={true}
                 />
             </QuestionSection>
         )

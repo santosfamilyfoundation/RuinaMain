@@ -132,7 +132,7 @@ const CountyDropDown = (props) => {
                   items={countyOptions}
                   IconRenderer={Icon}
                   uniqueKey='name'
-                  selectText={data.helperText}
+                  selectText={'Select Option ...'}
                   onSelectedItemsChange={submitField}
                   onSelectedItemObjectsChange={(selectedObject) => submitFunction({id, question:currId, selection: selectedObject[0].name})}
                   selectedItems={selectedOption}
