@@ -32,16 +32,17 @@ const NumberButtonSelector = (props) => {
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={true} contentContainerStyle={styles.container}>
                 <HStack>
                     <Button onPress={() => submitField('0')}>None</Button>
-                    <Button onPress={() => submitField('1')}>1</Button>
-                    <Button onPress={() => submitField('2')}>2</Button>
-                    <Button onPress={() => submitField('3')}>3</Button>
-                    <Button onPress={() => submitField('4')}>4</Button>
-                    <Button onPress={() => submitField('5')}>5</Button>
+                    <Button onPress={() => submitField('1')} ml={4}>1</Button>
+                    <Button onPress={() => submitField('2')} ml={4}>2</Button>
+                    <Button onPress={() => submitField('3')} ml={4}>3</Button>
+                    <Button onPress={() => submitField('4')} ml={4}>4</Button>
+                    <Button onPress={() => submitField('5')} ml={4}>5</Button>
                     <Input
                         placeholder = "Other"
                         onChangeText = {submitField}
                         value = {(selection > 5) ? selection:''}
                         size="md"
+                        ml={4}
                     />
                 </HStack>
             </ScrollView>
