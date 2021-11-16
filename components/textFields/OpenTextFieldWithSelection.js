@@ -107,6 +107,10 @@ const OpenTextFieldWithSelection = (props) => {
         );
     }
 
+    const tooltip = () => {
+        return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
+    }
+
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
@@ -116,8 +120,8 @@ const OpenTextFieldWithSelection = (props) => {
                 helperText={data.helperText}
                 errorMessage={`Maximum Character Limit: ${data.maxLength}`}
                 isInvalid={isInvalid}
+                tooltip={tooltip()}
             >
-                <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
                 <Input
                     placeholder='Place your Text'
                     value={value}

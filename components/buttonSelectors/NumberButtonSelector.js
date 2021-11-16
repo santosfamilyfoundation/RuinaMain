@@ -26,9 +26,12 @@ const NumberButtonSelector = (props) => {
         submitFunction(val);
     }
 
+    const tooltip = () => {
+        return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
+    }
+
     return (
-        <QuestionSection title={data.question} helperText={data.helperText}>
-            <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
+        <QuestionSection title={data.question} helperText={data.helperText} tooltip={tooltip()}>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={true} contentContainerStyle={styles.container}>
                 <HStack>
                     <Button onPress={() => submitField('0')}>None</Button>

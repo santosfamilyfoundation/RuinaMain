@@ -73,11 +73,14 @@ const MultiButtonSelector = (props) => {
         );
     }
 
+    const tooltip = () => {
+        return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
+    }
+
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
-            <QuestionSection key={key} title={data.question} helperText={data.helperText}>
-                <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
+            <QuestionSection key={key} title={data.question} helperText={data.helperText} tooltip={tooltip()}>
                 <VStack>
                 {renderButtons()}
                 </VStack>
