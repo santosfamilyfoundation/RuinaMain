@@ -49,9 +49,15 @@ const NumberButtonSelectorQuickSurvey = (props) => {
         )
     }
 
+    const tooltip = () => {
+        return(<TooltipView toolTip={tooltipText}/>)
+    }
+
     return (
-        <QuestionSection title={title}>
-            <TooltipView toolTip={tooltipText} />
+        <QuestionSection
+          title={title}
+          tooltip={tooltip()}
+        >
             {renderButtons()}
         </QuestionSection>
     )
