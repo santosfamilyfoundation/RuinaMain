@@ -99,7 +99,7 @@ const LargeTextField = (props) => {
     if (renderComponent){
         return(
         <Box>
-            <Section title={data.question} helperText={data.helperText} errorMessage='Maximum Character Limit Exceeded' isInvalid={isInvalid}>
+            <QuestionSection title={data.question} helperText={data.helperText} errorMessage='Maximum Character Limit Exceeded' isInvalid={isInvalid}>
                 <VStack>
                     <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
                     <TextArea
