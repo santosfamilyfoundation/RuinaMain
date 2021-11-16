@@ -19,6 +19,7 @@ const NumberButtonSelector = (props) => {
         setSelection(val);
         if (dependencyID!=null){
             const vehicleID = dependencyID[1] // Get vehicle id to identify different vehicles
+            console.log(vehicleID)
             updateResponse && updateResponse({id, question: currId, selection: val, vehicleID: vehicleID})
         } else{
             updateResponse && updateResponse({id, question: currId, selection: val})
@@ -34,12 +35,12 @@ const NumberButtonSelector = (props) => {
         <QuestionSection title={data.question} helperText={data.helperText} tooltip={tooltip()}>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={true} contentContainerStyle={styles.container}>
                 <HStack>
-                    <Button onPress={() => submitField('0')}>None</Button>
-                    <Button onPress={() => submitField('1')} ml={4}>1</Button>
-                    <Button onPress={() => submitField('2')} ml={4}>2</Button>
-                    <Button onPress={() => submitField('3')} ml={4}>3</Button>
-                    <Button onPress={() => submitField('4')} ml={4}>4</Button>
-                    <Button onPress={() => submitField('5')} ml={4}>5</Button>
+                    <Button variant={selection == '0' ? 'solid': 'outline'} onPress={() => submitField('0')}>None</Button>
+                    <Button variant={selection == '1' ? 'solid': 'outline'} onPress={() => submitField('1')} ml={4}>1</Button>
+                    <Button variant={selection == '2' ? 'solid': 'outline'} onPress={() => submitField('2')} ml={4}>2</Button>
+                    <Button variant={selection == '3' ? 'solid': 'outline'} onPress={() => submitField('3')} ml={4}>3</Button>
+                    <Button variant={selection == '4' ? 'solid': 'outline'} onPress={() => submitField('4')} ml={4}>4</Button>
+                    <Button variant={selection == '5' ? 'solid': 'outline'} onPress={() => submitField('5')} ml={4}>5</Button>
                     <Input
                         placeholder = "Other"
                         onChangeText = {submitField}

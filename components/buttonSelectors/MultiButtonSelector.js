@@ -57,6 +57,7 @@ const MultiButtonSelector = (props) => {
                 key={option.id}
                 mr={4}
                 mb={4}
+                variant={selection == option.id ? 'solid': 'outline'}
                 onPress={() => submitField(option.name, option.id)}
             >
                 {option.name}

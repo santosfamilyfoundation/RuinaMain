@@ -10,7 +10,7 @@ import QuestionSection from '../QuestionSection';
 
 const OpenTextFieldWithSelection = (props) => {
     const [value, setValue] = React.useState('');
-    const [buttonAppearance, setButtonAppearance] = React.useState('outline');
+    const [selected, setSelected] = React.useState(null);
     const [isInvalid, setIsInvalid] = React.useState(false);
 
     const {data, key, id, questionReducer, submitFunction, updateResponse, dependencyID} = props;
@@ -27,7 +27,8 @@ const OpenTextFieldWithSelection = (props) => {
         if(existingData != null) {
             if(existingData[currId] != null && !value) {
                 setValue(existingData[currId]);
-                setButtonAppearance('filled');
+                setSelected(existingData[currId])
+//                setButtonAppearance('filled');
             }
         }
     }
@@ -44,7 +45,7 @@ const OpenTextFieldWithSelection = (props) => {
         }
         updateResponse && updateResponse({id, question: currId, selection: value})
         submitFunction({id, question: currId, selection: value})
-        setButtonAppearance('filled');
+//        setButtonAppearance('filled');
     }
 
     const onTextChange = (text) => {
@@ -52,27 +53,22 @@ const OpenTextFieldWithSelection = (props) => {
             submitFunction({id, question: currId, selection: null})
         }
         setValue(text);
-    }
-
-    const clearField = () => {
-        setValue('');
-        submitFunction({id, question: currId, selection: null})
-        setButtonAppearance('outline');
+        setSelected(null)
     }
 
     const onSelectOneOption = (option) => {
       setValue(option.text);
       submitFunction({id, question: currId, selection: option.text});
-      setButtonAppearance('filled');
+      setSelected(option.id)
     }
 
-    if(!value && buttonAppearance != 'outline') {
-        setButtonAppearance('outline');
-    } else if(existingData != null) {
-        if(value != existingData[currId] && buttonAppearance != 'outline') {
-            setButtonAppearance('outline');
-        }
-    }
+//    if(!value && buttonAppearance != 'outline') {
+//        setButtonAppearance('outline');
+//    } else if(existingData != null) {
+//        if(value != existingData[currId] && buttonAppearance != 'outline') {
+//            setButtonAppearance('outline');
+//        }
+//    }
 
     // Input length checking
 //    if(value.length > data.maxLength && !isInvalid) {
@@ -81,18 +77,13 @@ const OpenTextFieldWithSelection = (props) => {
 //        setIsInvalid(false);
 //    }
 
-    if(buttonAppearance == 'outline') {
-        status = 'danger'
-    } else {
-        status = 'success'
-    }
 
     const renderSingleButton = (option) => {
-      let appearance = (value == option.text) ? 'filled': 'outline';
+//      let appearance = (value == option.text) ? 'filled': 'outline';
       return (
           <Button
               key={option.id}
-              style={styles.answerButton}
+              variant={selected == option.id ? 'solid': 'outline'}
               onPress={() => onSelectOneOption(option)}
           >
               {option.name}

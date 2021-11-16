@@ -24,9 +24,9 @@ const NumberButtonSelectorQuickSurvey = (props) => {
         submitFunction(val);
     }
 
-    const renderSingleButton = (num) => {
+    const renderSingleButton = (option) => {
         return (
-            <Button onPress={() => submitField(num)} size={10}>{num}</Button>
+            <Button variant={selection == option.id ? 'solid': 'outline'} onPress={() => submitField(option.id)} size={10}>{option.name}</Button>
         )
     }
 
@@ -35,9 +35,9 @@ const NumberButtonSelectorQuickSurvey = (props) => {
         for (let i = startRange; i <= endRange; i++) {
             let button;
             if (i == 0) {
-                button = renderSingleButton("None");
+                button = renderSingleButton({id: i, name: "None"});
             } else {
-                button = renderSingleButton(i);
+                button = renderSingleButton({id: i, name: i});
             }
             buttons.push(button);
         }
