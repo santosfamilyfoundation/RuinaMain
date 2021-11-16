@@ -13,18 +13,40 @@ import QuestionSection from '../QuestionSection';
 const NumberButtonSelector = (props) => {
     const [selection, setSelection] = React.useState('');
     const { data, id, submitFunction, questionReducer, fieldName, updateResponse, dependencyID } = props;
-     let currId = data.id;
+    let currId = data.id;
+
+    const reducerData = questionReducer.data.find(entry => entry.id == id);
+    let existingData = !reducerData?.response ? null: reducerData.response;
+
+    // Populate if value already exists in redux
+    if(!selection) {
+        if(existingData != null) {
+            if(existingData[currId] != selection) {
+                setSelection(existingData[currId]);
+            }
+        }
+    }
 
     const submitField = (val) => {
         setSelection(val);
-        if (dependencyID!=null){
-            const vehicleID = dependencyID[1] // Get vehicle id to identify different vehicles
-            console.log(vehicleID)
-            updateResponse && updateResponse({id, question: currId, selection: val, vehicleID: vehicleID})
-        } else{
+        if (dependencyID==null || dependencyID.length == 1){
             updateResponse && updateResponse({id, question: currId, selection: val})
+        }else{
+            let vehicleID = dependencyID[1]
+            switch (dependencyID.length) {
+                case 2:
+                    updateResponse && updateResponse({id, question: currId, selection: val, vehicleID: vehicleID})
+                    break;
+                case 3:
+                    let passengerID = dependencyID[2]
+                    updateResponse && updateResponse({id, question: currId, selection: val, vehicleID: vehicleID, passengerID: passengerID})
+                case 4:
+                    updateResponse && updateResponse({id, question: currId, selection: val, vehicleID: vehicleID, nonmotoristID: dependencyID[3]})
+                default:
+                    break;
+            }
         }
-        submitFunction(val);
+        submitFunction({id, question: currId, selection: val})
     }
 
     const tooltip = () => {
@@ -34,13 +56,13 @@ const NumberButtonSelector = (props) => {
     return (
         <QuestionSection title={data.question} helperText={data.helperText} tooltip={tooltip()}>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={true} contentContainerStyle={styles.container}>
-                <HStack>
-                    <Button variant={selection == '0' ? 'solid': 'outline'} onPress={() => submitField('0')}>None</Button>
-                    <Button variant={selection == '1' ? 'solid': 'outline'} onPress={() => submitField('1')} ml={4}>1</Button>
-                    <Button variant={selection == '2' ? 'solid': 'outline'} onPress={() => submitField('2')} ml={4}>2</Button>
-                    <Button variant={selection == '3' ? 'solid': 'outline'} onPress={() => submitField('3')} ml={4}>3</Button>
-                    <Button variant={selection == '4' ? 'solid': 'outline'} onPress={() => submitField('4')} ml={4}>4</Button>
-                    <Button variant={selection == '5' ? 'solid': 'outline'} onPress={() => submitField('5')} ml={4}>5</Button>
+                <HStack space={4}>
+                    <Button variant={selection === '0' ? 'solid': 'outline'} onPress={() => submitField('0')}>None</Button>
+                    <Button variant={selection === '1' ? 'solid': 'outline'} onPress={() => submitField('1')}>1</Button>
+                    <Button variant={selection === '2' ? 'solid': 'outline'} onPress={() => submitField('2')}>2</Button>
+                    <Button variant={selection === '3' ? 'solid': 'outline'} onPress={() => submitField('3')}>3</Button>
+                    <Button variant={selection === '4' ? 'solid': 'outline'} onPress={() => submitField('4')}>4</Button>
+                    <Button variant={selection === '5' ? 'solid': 'outline'} onPress={() => submitField('5')}>5</Button>
                     <Input
                         placeholder = "Other"
                         onChangeText = {submitField}
