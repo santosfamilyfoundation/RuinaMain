@@ -173,7 +173,7 @@ class Home extends Component {
                     <Section title="Crash and Roadway">
                         {this.state.edit ?
                         <Box>
-                            <HStack alignItems='center'  mt={4}>
+                            <HStack alignItems='center' mt={4}>
                                 <Icon name="edit-road" size={50}/>
                                 <Text ml={2}>Crash/Road</Text>
                             </HStack>
@@ -196,7 +196,7 @@ class Home extends Component {
                     </VStack>
                     {this.state.edit ?
                     <Section title='Non-motorists'>
-                        <HStack>
+                        <HStack flexWrap='wrap'>
                             {nonmotoristListArr}
                         </HStack>
                         <IconButton topMargin={4} text="Add Non-Motorist"
@@ -206,7 +206,7 @@ class Home extends Component {
                     </Section> :
                     nonmotoristListArr.length ?
                     <Section title='Non-motorists Form'>
-                        <HStack>
+                        <HStack flexWrap='wrap'>
                             {nonmotoristListArr}
                         </HStack>
                     </Section> : null
