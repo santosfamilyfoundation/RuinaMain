@@ -167,17 +167,15 @@ class Home extends Component {
         }
 
         return(
-            <VStack>
+            <SafeAreaView flex={1}>
                 {rightControls()}
                 <ScrollView>
                     <Section title="Crash and Roadway">
                         {this.state.edit ?
-                        <Box>
-                            <HStack alignItems='center' mt={4}>
-                                <Icon name="edit-road" size={50}/>
-                                <Text ml={2}>Crash/Road</Text>
-                            </HStack>
-                        </Box> :
+                        <HStack alignItems='center' mt={4}>
+                            <Icon name="edit-road" size={50}/>
+                            <Text ml={2}>Crash/Road</Text>
+                        </HStack>:
                         <HStack>
                             <IconButton topMargin={4} text="Crash/Road Form"
                             onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road', 'Crash/Road')}
@@ -212,7 +210,7 @@ class Home extends Component {
                     </Section> : null
                     }
                 </ScrollView>
-            </VStack>
+            </SafeAreaView>
         );
     }
 }
