@@ -233,6 +233,7 @@ const QuestionForm = (props) => {
         let questionList = []
         for (const q of questions) {
             const obj = {data:q, setting: question, detail:questionDetail}
+            console.log('questionDetail.type:', questionDetail.type);
             const dom = renderSingleQuestion(q.answerType, questionProps(q.answerType, obj));
             questionList.push(dom)
         }
