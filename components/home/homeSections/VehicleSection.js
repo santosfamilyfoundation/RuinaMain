@@ -102,7 +102,7 @@ class VehicleSection extends Component{
                 )
               } else {
                 return (
-              <IconButton topMargin={4} rightMargin={4} text={`Passenger ${idx + 1} Form`}
+              <IconButton topMargin={4} rightMargin={4} text={`Passenger ${idx + 1} \nForm`}
                 onPress={() =>
                     navigateQuestion(passengerQuestions, passenger.id,
                     'Passenger', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}
@@ -121,7 +121,7 @@ class VehicleSection extends Component{
                 )
               } else {
                 return (
-                    <IconButton topMargin={4} rightMargin={4} text={`Occupant ${idx + 1} Form`}
+                    <IconButton topMargin={4} rightMargin={4} text={`Occupant ${idx + 1} \nForm`}
                     onPress={() => navigateQuestion(passengerQuestions, passenger.id, 'Occupant', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}
                     icon={<Icon color="white" name="person" size={50}/>}/>
                 )
@@ -200,7 +200,7 @@ class VehicleSection extends Component{
                          topMargin={4}
                          rightMargin={4}
                          onPress = {() => navigateQuestion(vehicleQuestions, vehicle.id, 'Vehicle', (index+1), 0, [roadID, vehicle.id])}
-                         text={`${name} Form`}
+                         text={`${name} \nForm`}
                          icon={<Icon color='white' name='local-taxi' size={50}/>}
                          />
                         {!this.state.driverDeleted &&
@@ -209,7 +209,7 @@ class VehicleSection extends Component{
                          rightMargin={4}
                          onPress={styles.individualCard}
                          onPress= {() => navigateQuestion(driverQuestions, vehicle.driver, 'Driver', (index+1), 0, [roadID, vehicle.id])}
-                         text="Driver Form"
+                         text={`Driver \nForm`}
                          icon={<Icon color='white' name='person' size={50}/>}
                         />}
                         {passengerListArr}

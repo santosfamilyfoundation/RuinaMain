@@ -176,7 +176,7 @@ class Home extends Component {
                             <Text ml={2}>Crash/Road</Text>
                         </HStack>:
                         <HStack>
-                            <IconButton topMargin={4} text="Crash/Road Form"
+                            <IconButton topMargin={4} text={`Crash/Road \nForm`}
                             onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road', 'Crash/Road')}
                             icon = {<Icon color="white" name="edit-road" size={50}/>}/>
                         </HStack>
@@ -202,7 +202,7 @@ class Home extends Component {
                         />
                     </Section> :
                     nonmotoristListArr.length ?
-                    <Section title='Non-motorists Form'>
+                    <Section title='Non-motorists'>
                         <HStack flexWrap='wrap'>
                             {nonmotoristListArr}
                         </HStack>
