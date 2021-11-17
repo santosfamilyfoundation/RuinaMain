@@ -2,7 +2,7 @@ import React from 'react';
 import FinalReport from '../components/FinalReport';
 import { View, ScrollView, Keyboard, BackHandler, Pressable } from 'react-native';
 import { styles } from '../components/home/Home.style';
-import { TopNavigation, TopNavigationAction, Text, Card, CardHeader, Layout, Icon } from '@ui-kitten/components';
+import { TopNavigationAction, Icon } from '@ui-kitten/components';
 
 export const FinalReportScreen = ({navigation}) => {
 
@@ -11,21 +11,11 @@ export const FinalReportScreen = ({navigation}) => {
             );
     return(
         <>
-        <FinalReport
-            navigation = {navigation}
-            BackAction = {()=> <TopNavigationAction icon={(style) => <Icon {...style} name='arrow-back'/>}
-                                                    onPress={() => navigation.goBack()}/>}
-        />
-        <View style={styles.rightControlsContainer}>
-                                             <Layout style={styles.rightControls}>
-                                               <Pressable style={styles.rightControls} onPress = {() =>
-                                               {navigation.navigate('Welcome')}
-                                               }>
-                                                 <TopNavigationAction icon={finalReportIcon}/>
-                                                 <Text style={styles.rightControlsText}>Back to New Report</Text>
-                                               </Pressable>
-                                             </Layout>
-        </View>
+            <FinalReport
+                navigation = {navigation}
+                BackAction = {()=> <TopNavigationAction icon={(style) => <Icon {...style} name='arrow-back'/>}
+                                                        onPress={() => navigation.goBack()}/>}
+            />
         </>
     );
 };

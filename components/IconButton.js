@@ -9,7 +9,7 @@ const IconButton = (props) => {
         <Button onPress={onPress} ml={leftMargin} mr={rightMargin} mt={topMargin}>
             <HStack alignItems='center'>
                 {icon}
-                <Text ml={2}>{text}</Text>
+                {text ? <Text ml={2} color='white'>{text}</Text> : null }
             </HStack>
         </Button>
     )

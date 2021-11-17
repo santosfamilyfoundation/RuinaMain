@@ -117,23 +117,28 @@ const CountyDropDown = (props) => {
 
     }
 
+    const tooltip = () => {
+        return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
+    }
+
     return (
         <QuestionSection
             key={key}
             title={data.question}
             helperText={data.helperText}
+            tooltip={tooltip()}
         >
-             <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
                 <SectionedMultiSelect
                   items={countyOptions}
                   IconRenderer={Icon}
                   uniqueKey='name'
-                  selectText={data.helperText}
+                  selectText={'Select Option ...'}
                   onSelectedItemsChange={submitField}
                   onSelectedItemObjectsChange={(selectedObject) => submitFunction({id, question:currId, selection: selectedObject[0].name})}
                   selectedItems={selectedOption}
                   hideConfirm={true}
                   single={true}
+                  showCancelButton={true}
                 />
         </QuestionSection>
     );

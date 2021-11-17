@@ -7,6 +7,8 @@ import { MaterialDialog, SinglePickerMaterialDialog} from 'react-native-material
 import * as Constants from '../constants';
 import Section from './Section';
 import TopNavigation from './TopNavigation';
+import IconButton from './IconButton';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 class FinalReport extends Component {
     constructor(props) {
@@ -80,25 +82,28 @@ class FinalReport extends Component {
             <Button onPress={()=>Linking.openURL('https://forms.gle/ho3cZNyoaFArNNN79')}>Submit Feedback</Button>
         );
 
+
         return (
           <SafeAreaView style={{flex:1}}>
-            <TopNavigation title='Final Report' backButton navigation={this.props.navigation}/>
+            <TopNavigation title='Final Report' backButton navigation={navigation}>
+                <IconButton onPress={() => navigation.navigate('Welcome')} icon={<Icon color="white" size={25} name='file-document-outline'/>}  text='Start New Report'/>
+            </TopNavigation>
             <Center>
                 <VStack space={8}>
                     <Section title='Save to Local Device'>
-                     <Text>Press this button to save the crash report to local device.</Text>
+                     <Text my={2}>Press this button to save the crash report to local device.</Text>
                      {cardButton('Save Report to Local Device', navigateSaveToDevice)}
                     </Section>
                     <Section title='Email'>
-                     <Text>Press this button to email the crash report.</Text>
+                     <Text my={2}>Press this button to email the crash report.</Text>
                      {cardButton('Email Report', navigateEmail)}
                     </Section>
                     <Section title='Save to Database'>
-                     <Text>FEATURE COMING SOON</Text>
+                     <Text my={2}>FEATURE COMING SOON</Text>
                      {cardButton('Save Report to Database', navigateDatabase, true)}
                     </Section>
                     <Section title='Feedback'>
-                     <Text>Tell us what you liked and what you did not like so we can make your experience better.</Text>
+                     <Text my={2}>Tell us what you liked and what you did not like so we can make your experience better.</Text>
                      {feedbackButton()}
                     </Section>
                 </VStack>

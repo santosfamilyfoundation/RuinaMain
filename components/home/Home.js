@@ -3,7 +3,6 @@ import { View, ScrollView, Keyboard, BackHandler, Pressable } from 'react-native
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { Heading, Divider, VStack, HStack, Box, Text } from 'native-base';
-//import { TopNavigation, TopNavigationAction, Text, Card, CardHeader, Layout, Icon } from '@ui-kitten/components';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styles } from './Home.style';
 import {questions} from '../../data/questions';
@@ -146,18 +145,18 @@ class Home extends Component {
                 {this.state.edit &&
                     <IconButton text="Confirm Changes"
                         onPress = {() => { this.setState({ edit: false })}}
-                        icon = {<Icon name="save" size={25}/>}
+                        icon = {<Icon color="white" name="save" size={25}/>}
                     />
                 }
                 {!this.state.edit &&
                     <>
                         <IconButton text="Edit Sections"
                             onPress = {() => { this.setState({ edit: true }) }}
-                            icon = {<Icon name="edit" size={25}/>}
+                            icon = {<Icon color="white" name="edit" size={25}/>}
                         />
                         <IconButton leftMargin={4} text="Export Report"
                             onPress = {() => { navigation.navigate('FinalReport') }}
-                            icon = {<Icon name="assignment" size={25}/>}
+                            icon = {<Icon color="white" name="assignment" size={25}/>}
                         />
                     </>
                 }
@@ -167,21 +166,19 @@ class Home extends Component {
         }
 
         return(
-            <VStack>
+            <SafeAreaView flex={1}>
                 {rightControls()}
-                <ScrollView>
+                <ScrollView marginBottom={24}>
                     <Section title="Crash and Roadway">
                         {this.state.edit ?
-                        <Box>
-                            <HStack alignItems='center'  mt={4}>
-                                <Icon name="edit-road" size={50}/>
-                                <Text ml={2}>Crash/Road</Text>
-                            </HStack>
-                        </Box> :
+                        <HStack alignItems='center' mt={4}>
+                            <Icon name="edit-road" size={50}/>
+                            <Text ml={2}>Crash/Road</Text>
+                        </HStack>:
                         <HStack>
                             <IconButton topMargin={4} text="Crash/Road Form"
                             onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road', 'Crash/Road')}
-                            icon = {<Icon name="edit-road" size={50}/>}/>
+                            icon = {<Icon color="white" name="edit-road" size={50}/>}/>
                         </HStack>
                         }
                     </Section>
@@ -190,29 +187,29 @@ class Home extends Component {
                         {this.state.edit &&
                         <IconButton leftMargin={4} rightMargin={4} text="Add Vehicle"
                             onPress = {() => this._addVehicleSection()}
-                            icon = {<Icon name="local-taxi" size={50}/>}
+                            icon = {<Icon color="white" name="local-taxi" size={50}/>}
                         />
                         }
                     </VStack>
                     {this.state.edit ?
                     <Section title='Non-motorists'>
-                        <HStack>
+                        <HStack flexWrap='wrap'>
                             {nonmotoristListArr}
                         </HStack>
                         <IconButton topMargin={4} text="Add Non-Motorist"
                             onPress = {() => this._addNonmotorist()}
-                            icon = {<Icon name="person-add" size={50}/>}
+                            icon = {<Icon color="white" name="person-add" size={50}/>}
                         />
                     </Section> :
                     nonmotoristListArr.length ?
                     <Section title='Non-motorists Form'>
-                        <HStack>
+                        <HStack flexWrap='wrap'>
                             {nonmotoristListArr}
                         </HStack>
                     </Section> : null
                     }
                 </ScrollView>
-            </VStack>
+            </SafeAreaView>
         );
     }
 }

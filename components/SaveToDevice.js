@@ -10,7 +10,10 @@ import RNHTMLtoPDF from 'react-native-html-to-pdf';
 import JSONconverter from '../utils/jsonConverter';
 import backgroundSave from '../utils/backgroundSave';
 import { createPDF, getDefaultFilename } from '../utils/helperFunctions'
-import TopNavigation from './TopNavigation'
+import TopNavigation from './TopNavigation';
+import IconButton from './IconButton';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Section from './Section'
 
 class SaveToDevice extends Component {
   constructor(props) {
@@ -48,25 +51,6 @@ componentDidMount() {
       this.setState({data: file, encoding: encoding});
     }
   }
-
-  // generate html and convert it into a PDF
-//  async createPDF(data) {
-//    var converter = new JSONconverter();
-//    // const htmlString = converter.handleConverter('pdftest', "");
-//    const htmlString = converter.handleConverter('pdf', data);
-//    let options = {
-//      html: htmlString,
-//      base64: true,
-//      fileName: 'crash_report',
-//    };
-//    try {
-//      const data = await RNHTMLtoPDF.convert(options);
-//      console.log("got PDF data");
-//      this.setState({uri: data.filePath, data: data.base64, isPDF:true});
-//    } catch (error) {
-//      console.log('error->', error);
-//    }
-//  }
 
   // update filename based on user input
   setUserInputFilename = (text) => {
@@ -114,17 +98,15 @@ componentDidMount() {
   render() {
     return(
         <>
-        <TopNavigation title="Save Crash Report to Files" backButton navigation={this.props.navigation} />
-        <VStack>
-            <Box>
-                <Heading size="md">Edit Filename below.</Heading>
-                <Divider/>
-                <TextInput id="userInputFilename"
-                  value={this.state.filename}
-                  onChangeText={this.setUserInputFilename}
-                />
-            </Box>
-        </VStack>
+        <TopNavigation title="Save Crash Report to Files" backButton navigation={this.props.navigation}>
+            <IconButton onPress={() => {this.props.navigation.navigate('Welcome')}} icon={<Icon color="white" size={25} name='file-document-outline'/>}  text='Start New Report'/>
+        </TopNavigation>
+        <Section title="Edit filename below.">
+            <TextInput id="userInputFilename"
+              value={this.state.filename}
+              onChangeText={this.setUserInputFilename}
+            />
+        </Section>
         {this.state.isPDF &&
           <View style={styles.container}>
             <Pdf
@@ -139,7 +121,7 @@ componentDidMount() {
                 style={styles.pdf}/>
           </View>
         }
-        <Button onPress={() => this.saveData()}>
+        <Button onPress={() => this.saveData()} m={4}>
           Save Report
         </Button>
         <MaterialDialog

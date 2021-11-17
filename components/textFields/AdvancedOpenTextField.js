@@ -210,6 +210,10 @@ const AdvancedOpenTextField = (props) => {
         return null;
     };
 
+    const tooltip = () => {
+        return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
+    }
+
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
@@ -218,8 +222,8 @@ const AdvancedOpenTextField = (props) => {
                 helperText={data.helperText}
                 errorMessage={ErrorMsg()}
                 isInvalid={invalidLength ? invalidLength : invalidVin}
+                tooltip={tooltip()}
             >
-                <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
                 <HStack>
                     <Input
                         placeholder='Place your Text'

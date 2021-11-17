@@ -8,7 +8,7 @@ const QuestionHeader = (props) => {
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
-            <VStack>
+            <VStack ml={4} mt={4}>
                 <Heading size='md'>{data.question}</Heading>
                 <Text>{data.helperText}</Text>
             </VStack>

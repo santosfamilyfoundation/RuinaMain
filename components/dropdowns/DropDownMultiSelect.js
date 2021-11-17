@@ -136,22 +136,27 @@ const DropDownMultiSelect = (props) => {
         setSelectedOptions(selectedItems);
     }
 
+    const tooltip = () => {
+        return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
+    }
+
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
             <QuestionSection
                 title={data.question}
                 helperText={data.helperText}
+                tooltip={tooltip()}
             >
-                <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
                 <SectionedMultiSelect
                   items={data.answerOptions}
                   IconRenderer={Icon}
                   uniqueKey='id'
-                  selectText={data.helperText}
+                  selectText={'Select Options ...'}
                   onSelectedItemsChange={addOption}
                   selectedItems={selectedOptions}
                   onConfirm={addOption}
+                  showCancelButton={true}
                 />
             </QuestionSection>
         )

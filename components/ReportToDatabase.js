@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { Linking, TextInput, StyleSheet, Alert, View } from 'react-native';
-//import {Card, CardHeader, Text, Button} from '@ui-kitten/components';
 import { Button } from 'native-base';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
@@ -11,6 +10,8 @@ import NetInfoAPI from "../utils/NetAPI"
 import backgroundSave from '../utils/backgroundSave';
 import TopNavigation from './TopNavigation';
 import Section from './Section';
+import IconButton from './IconButton';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
 export class ReportToDatabase extends Component{
@@ -72,28 +73,14 @@ export class ReportToDatabase extends Component{
     }
   }
   render() {
-    const FilenameHeader = () => (
-        <CardHeader title="Do you want to send crash report to our database?"/>
-    )
     return(
       <SafeAreaView style={{flex:1}}>
-        <TopNavigation title='Send Report to Database' backButton navigation={this.props.navigation} />
+        <TopNavigation title='Send Report to Database' backButton navigation={this.props.navigation}>
+            <IconButton onPress={() => {this.props.navigation.navigate('Welcome')}} icon={<Icon color="white" size={25} name='file-document-outline'/>}  text='Start New Report'/>
+        </TopNavigation>
         <Section title='Do you want to send crash report to our database?'>
             <Button id='sendButton' onPress={() => this.sendHttpRequest()}>Send</Button>
         </Section>
-/*        <TopNavigation id="emailNavBar" title="Send Report To Database" alignment="center" leftControl={this.props.BackAction()}/>
-
-        <Card id="filenameInput" header={FilenameHeader}>
-           <View style={[styles.footerContainer]}>
-               <Button
-                 id="sendButton"
-                 style={styles.footerControl}
-                 size='small'
-                 onPress={() => this.sendHttpRequest()}>
-                 Send
-               </Button>
-           </View>
-        </Card> */
         <MaterialDialog
           title={"Report saved successfully!"}
           visible={this.state.sendDatabaseVisible}

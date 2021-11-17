@@ -106,35 +106,16 @@ const QuestionAutoCompleteDropDown = (props) => {
     } else {
         status = 'success'
     }
-
-    /*const CheckIcon = (style) => (
-        <Icon {...style} name='checkmark-outline' />
-    )*/
     
-    const HelperTooltip = () => {
-        return (
-            <TooltipView helperText={data.helperText} toolTip={data.tooltip} helperImg={data.helperImg}/>
-        )
+    const tooltip = () => {
+        return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
     }
-    
-    /*const InfoIcon = (props) => (
-        <Icon {...props} name='info'/>
-    );
-    const CloseIcon = (props) => (
-        <Icon {...props} name='close-outline'/>
-    );
-
-    const toggleModal = () => {
-        setVisible(!visible);
-    };*/
 
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent) {
         return(
-        <Box>
-            <QuestionSection title={data.question}>
+            <QuestionSection title={data.question} tooltip={tooltip()}>
                 <VStack>
-                    {HelperTooltip()}
                     <AutocompleteDropdown
                     initialValue = "Select your value"
                     dataSet = {selectionData}
@@ -147,27 +128,6 @@ const QuestionAutoCompleteDropDown = (props) => {
                     <IconButton icon={CheckIcon} onPress={() => submitField()}/>
                 </VStack>
             </QuestionSection>
-        </Box>
-        /*<Layout key={key} style={styles.container}>
-            <Card header={Header} status={status}>
-                <Layout style={styles.content}>
-                    {HelperTooltip()}
-                    <Layout style={styles.input}>
-                        <Autocomplete
-                            style={styles.inputField}
-                            value={title}
-                            // value={value}
-                            data={selectionData}
-                            placeholder='Select your value'
-                            icon={renderClear}
-                            onIconPress={() => clearField()}
-                            onChangeText={searchItems}
-                            onSelect={(e) => onOptionSelect(e)}
-                        />
-                    </Layout>
-                </Layout>
-            </Card>
-        </Layout>*/
         )
     }else{
         return null

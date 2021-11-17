@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { combineReducers } from 'redux';
 import { SafeAreaView } from 'react-navigation';
 import { Linking, ActivityIndicator, Text } from 'react-native';
-import { Button, Divider, Container, Heading, VStack, Center, View, Spinner, Pressable } from 'native-base';
+import { Button, Divider, Container, Heading, VStack, Center, View, Spinner, Pressable, Box } from 'native-base';
 import { styles } from './Welcome.style';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import backgroundSave from '../../utils/backgroundSave';
@@ -80,16 +80,16 @@ class Welcome extends Component {
             <React.Fragment>
                 <Center><TopNavigation title="RUINA" navigation = {this.props.navigation}/></Center>
                 <Center flex={1} px="3">
-                    <VStack alignItems="center">
+                    <Box>
                         <Button onPress = {() => navigateTo('Survey')} size="lg" p={4}>Start New Report</Button>
-                        <Button onPress = {() => this.checkAutoSavedSession()} size="lg" p={4}>Continue Report</Button>
-                    </VStack>
+                        <Button onPress = {() => this.checkAutoSavedSession()} size="lg" p={4} isDisabled={this.stateManager.filePaths.length === 0} mt={8}>Continue Report</Button>
+                    </Box>
                 </Center>
-                <VStack alignItems="center">
+                <VStack alignItems="center" mb={8}>
                     <TouchableOpacity onPress={() => Linking.openURL('https://forms.gle/ho3cZNyoaFArNNN79')}><Text style={{ color: 'blue' }}>Submit Feedback</Text></TouchableOpacity>
-                        <Text textAlign="center">
-                          {"Built by students at Olin College of Engineering in partnership with the Volpe Center and Santos Family Foundation"}
-                        </Text>
+                    <Text textAlign="center">
+                      {"Built by students at Olin College of Engineering in partnership with the Volpe Center and Santos Family Foundation"}
+                    </Text>
                  </VStack>
 
                  <SinglePickerMaterialDialog

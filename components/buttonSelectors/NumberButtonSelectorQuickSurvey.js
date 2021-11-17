@@ -9,7 +9,8 @@ import { View } from 'react-native';
 import QuestionSection from '../QuestionSection';
 
 const NumberButtonSelectorQuickSurvey = (props) => {
-    const [selection, setSelection] = React.useState('');
+    const [selection, setSelection] = React.useState('')
+    console.log(selection)
     const {title, data, id, submitFunction, genericReducer, fieldName, updateResponse, dependencyID, startRange, endRange, tooltipText} = props;
 
     const submitField = (val) => {
@@ -24,9 +25,9 @@ const NumberButtonSelectorQuickSurvey = (props) => {
         submitFunction(val);
     }
 
-    const renderSingleButton = (num) => {
+    const renderSingleButton = (option) => {
         return (
-            <Button onPress={() => submitField(num)} size={10}>{num}</Button>
+            <Button variant={selection === option.id ? 'solid': 'subtle'} onPress={() => submitField(option.id)} size={10}>{option.name}</Button>
         )
     }
 
@@ -35,23 +36,29 @@ const NumberButtonSelectorQuickSurvey = (props) => {
         for (let i = startRange; i <= endRange; i++) {
             let button;
             if (i == 0) {
-                button = renderSingleButton("None");
+                button = renderSingleButton({id: i, name: "None"});
             } else {
-                button = renderSingleButton(i);
+                button = renderSingleButton({id: i, name: i});
             }
             buttons.push(button);
         }
         return(
             <HStack space={4}>
             {buttons}
-            <Input placeholder = "other" onChangeText = {submitField} size="md"/>
+            <Input placeholder="other" onChangeText={submitField} size="md"/>
             </HStack>
         )
     }
 
+    const tooltip = () => {
+        return(<TooltipView toolTip={tooltipText}/>)
+    }
+
     return (
-        <QuestionSection title={title}>
-            <TooltipView toolTip={tooltipText} />
+        <QuestionSection
+          title={title}
+          tooltip={tooltip()}
+        >
             {renderButtons()}
         </QuestionSection>
     )

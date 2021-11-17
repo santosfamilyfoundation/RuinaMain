@@ -13,7 +13,7 @@ const TooltipView = (props) => {
     const [visible, setVisible] = React.useState(false);
     const [toolTipText, setToolTipText] = React.useState(toolTip ? true: false);
     const InfoIcon = (props) => (
-        <Icon name="help" color='white' size={25}/>
+        <Icon name="help" color='white' size={15}/>
     )
 
     const CloseIcon = (style) => (
@@ -55,7 +55,7 @@ const TooltipView = (props) => {
                     <Modal.Content>
                         <Modal.CloseButton />
                         <Modal.Header>
-                            <HStack>
+                            <HStack alignItems='center'>
                                 <Icon name="help" size={15}/>
                                 <Text ml={4}>Tooltip</Text>
                             </HStack>

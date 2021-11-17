@@ -39,12 +39,13 @@ const MultiButtonSelectorQuickSurvey = (props) => {
   }
 
     const renderSingleButton = (option) => {
-        let appearance = (selection == option.text) ? 'filled': 'outline';
         return (
             <Button
                 key={option.id}
+                mr={4}
+                mb={4}
                 style={styles.answerButton}
-                appearance={appearance}
+                variant={selection === option.name ? 'solid': 'subtle'}
                 onPress={() => submitField(option.name, option.id)}
             >
                 {option.name}
@@ -59,15 +60,22 @@ const MultiButtonSelectorQuickSurvey = (props) => {
             {res}
             </HStack>
         );
-  }
+    }
+
+    const tooltip = () => {
+        return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
+    }
 
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
         <React.Fragment>
-            <QuestionSection title={data.question} helperText={data.helperText}>
-                 <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
-                {renderButtons()}
+            <QuestionSection
+             title={data.question}
+             helperText={data.helperText}
+             tooltip={tooltip()}
+            >
+               {renderButtons()}
             </QuestionSection>
         </React.Fragment>
         )

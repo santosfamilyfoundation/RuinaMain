@@ -3,7 +3,6 @@ import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { StyleSheet, Alert, View, Dimensions } from 'react-native';
 import { Input, Button, Text } from 'native-base';
-//import {TopNavigation, Card, CardHeader, Text, Button} from '@ui-kitten/components';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import Mailer from 'react-native-mail';
@@ -14,6 +13,8 @@ import RNHTMLtoPDF from 'react-native-html-to-pdf';
 import backgroundSave from '../utils/backgroundSave';
 import TopNavigation from './TopNavigation';
 import Section from './Section';
+import IconButton from './IconButton';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export class EmailFinalReport extends Component {
   constructor(props) {
@@ -157,7 +158,9 @@ export class EmailFinalReport extends Component {
   render() {
     return(
       <SafeAreaView style={{flex:1}}>
-        <TopNavigation id="emailNavBar" title="Email Crash Report" backButton navigation={this.props.navigation}/>
+        <TopNavigation id="emailNavBar" title="Email Crash Report" backButton navigation={this.props.navigation}>
+            <IconButton onPress={() => {this.props.navigation.navigate('Welcome')}} icon={<Icon color="white" size={25} name='file-document-outline'/>}  text='Start New Report'/>
+        </TopNavigation>
         <Section title="Edit filename below.">
             <Input
                 defaultValue = {this.state.filename}
@@ -181,7 +184,7 @@ export class EmailFinalReport extends Component {
         }
 
         <Button
-          onPress={() => this.handleEmail()}>
+          onPress={() => this.handleEmail()} m={4}>
           Send Report
         </Button>
 

@@ -157,7 +157,7 @@ const AdvancedDropDown = (props) => {
             clearRedux();
             setSelectedOptions([]);
         }
-        setSelectedOptions(updatedOptions);
+        setSelectedOptions(options);
     }
 
     const WeatherIcon = (style) => (
@@ -215,24 +215,28 @@ const AdvancedDropDown = (props) => {
       }
     };
 
+    const tooltip = () => {
+        return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
+    }
 
     return (
         <QuestionSection
             key={key}
             title={data.question}
             helperText={data.helperText}
+            tooltip={tooltip()}
         >
             {WeatherHelper()}
-            <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
             <HStack justifyContent='space-around'>
             <SectionedMultiSelect
               items={data.answerOptions}
               IconRenderer={Icon}
               uniqueKey='id'
-              selectText={data.helperText}
+              selectText={'Select Options ...'}
               onSelectedItemsChange={addOption}
               selectedItems={selectedOptions}
               onConfirm={addOption}
+              showCancelButton={true}
             />
             {RenderHeaderIcon()}
             </HStack>
