@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { TextInput, Text, StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
-import { Button, Heading, Divider, VStack, Center } from 'native-base';
+import { Button, Heading, Divider, VStack, Center, Spinner } from 'native-base';
 import { connect } from 'react-redux';
 import { changeVehicle, changeDrivers, changeNonmotorists, changePassengers, changeFatality, changeNonFatalInjury, changeRespond, changePhotos, updateSetup } from '../../../actions/QuickQuizActions';
 import { updateResponse } from '../../../actions/StoryActions';
@@ -290,6 +290,14 @@ class QuickSurvey extends Component {
           res
         );
       }
+      if (this.state.loading) {
+      return (
+                <Center flex={1}>
+                  <Spinner accessibilityLabel="loadingScreen" size="lg"/>
+                </Center>
+              );
+
+      } else{
 
        if (this.state.loadedAutoSave) {
                 return (
@@ -349,7 +357,7 @@ class QuickSurvey extends Component {
       </React.Fragment>
 
     )
-    }
+    }}
     }
 
     /*render() {
