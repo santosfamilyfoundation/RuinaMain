@@ -3,14 +3,16 @@ import { connect } from 'react-redux';
 import { View, Image } from 'react-native';
 import ImageSelector from '../image/imgIndex';
 import QuestionSection from '../QuestionSection';
-import { TextArea, Box, Text, Icon, VStack } from 'native-base';
+import { Button, TextArea, Box, Text, Icon, VStack } from 'native-base';
 import { styles } from './LargeTextField.style';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
 import IconButton from '../IconButton';
+import TextFieldValidation from '../../utils/TextFieldValidation.js';
 
 
 const LargeTextField = (props) => {
+    const [errors, setErrors] = React.useState({});
     const [value, setValue] = React.useState('');
     const [visible, setVisible] = React.useState(false);
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
@@ -45,55 +47,33 @@ const LargeTextField = (props) => {
 
     // Populate if value already exists in redux
     if(!value) {
-        if(existingData != null) {
-            if(existingData[currId] != null && !value) {
-                setValue(existingData[currId]);
-                setButtonAppearance('filled');
-            }
-        }
-    }
+         if(existingData != null) {
+             if(existingData[currId] != null && !value) {
+                 setValue(existingData[currId]);
+//                 setIsInvalid(false)
+             }
+         }
+     }
 
-    const submitField = () => {
-        if(!value) {
-            return;
-        }
-        submitFunction({id, question: currId, selection: value})
-        setButtonAppearance('filled');
-    }
-
-    const onTextChange = (text) => {
-        if(!text) {
-            submitFunction({id, question: currId, selection: null})
-        }
-        setValue(text);
-    }
-
-    const clearField = () => {
-        setValue('');
-        submitFunction({id, question: currId, selection: null})
-        setButtonAppearance('outline');
-    }
-
-    if(!value && buttonAppearance != 'outline') {
-        setButtonAppearance('outline');
-    } else if(existingData != null) {
-        if(value != existingData[currId] && buttonAppearance != 'outline') {
-            setButtonAppearance('outline');
-        }
-    }
-
-    if(value.length > data.maxLength && !isInvalid) {
-        setIsInvalid(true);
-    } else if(isInvalid && value.length <= data.maxLength) {
-        setIsInvalid(false);
-    }
-
-    
-    if(buttonAppearance == 'outline') {
-        status = 'danger'
-    } else {
-        status = 'success'
-    }
+      const onTextChange = (text) => {
+         console.log('this is text',text)
+         var localText = text
+         submitFunction({id, question: currId, selection: localText})
+         if(!text) {
+            setIsInvalid(true)
+         }
+         textFieldValidation = TextFieldValidation
+         console.log(textFieldValidation)
+         textFieldValidation.submitField(localText);
+         var localStatus = textFieldValidation.status
+         console.log("localstatus ", localStatus)
+         if (localStatus) {
+            setIsInvalid(false)
+         }
+         else {
+         setIsInvalid(true)
+         }
+     }
 
     const tooltip = () => {
         return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
@@ -107,13 +87,13 @@ const LargeTextField = (props) => {
              title={data.question}
              helperText={data.helperText}
              tooltip={tooltip()}
-             errorMessage='Maximum Character Limit Exceeded'
+             errorMessage='Invalid Input'
              isInvalid={isInvalid}
             >
                 <TextArea
                  placeholder="Place your text"
-                 value={value}
-                 onChangeText={onTextChange}
+                 value = {existingData[currId]}
+                 onChangeText={(text) => onTextChange(text)}
                 />
             </QuestionSection>
         </Box>
