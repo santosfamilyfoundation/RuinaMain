@@ -57,12 +57,12 @@ const NumberButtonSelector = (props) => {
         <QuestionSection title={data.question} helperText={data.helperText} tooltip={tooltip()}>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={true} contentContainerStyle={styles.container}>
                 <HStack space={4}>
-                    <Button variant={selection === '0' ? 'solid': 'outline'} onPress={() => submitField('0')}>None</Button>
-                    <Button variant={selection === '1' ? 'solid': 'outline'} onPress={() => submitField('1')}>1</Button>
-                    <Button variant={selection === '2' ? 'solid': 'outline'} onPress={() => submitField('2')}>2</Button>
-                    <Button variant={selection === '3' ? 'solid': 'outline'} onPress={() => submitField('3')}>3</Button>
-                    <Button variant={selection === '4' ? 'solid': 'outline'} onPress={() => submitField('4')}>4</Button>
-                    <Button variant={selection === '5' ? 'solid': 'outline'} onPress={() => submitField('5')}>5</Button>
+                    <Button variant={selection === '0' ? 'solid': 'subtle'} onPress={() => submitField('0')}>None</Button>
+                    <Button variant={selection === '1' ? 'solid': 'subtle'} onPress={() => submitField('1')}>1</Button>
+                    <Button variant={selection === '2' ? 'solid': 'subtle'} onPress={() => submitField('2')}>2</Button>
+                    <Button variant={selection === '3' ? 'solid': 'subtle'} onPress={() => submitField('3')}>3</Button>
+                    <Button variant={selection === '4' ? 'solid': 'subtle'} onPress={() => submitField('4')}>4</Button>
+                    <Button variant={selection === '5' ? 'solid': 'subtle'} onPress={() => submitField('5')}>5</Button>
                     <Input
                         placeholder = "Other"
                         onChangeText = {submitField}
