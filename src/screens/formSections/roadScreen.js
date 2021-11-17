@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon, TopNavigationAction } from '@ui-kitten/components';
-import AutoComponentContainer from '../../containers/AutoComponentContainer';
+import AutoComponentContainer from '../../autocomponentContainer/AutoComponentContainer';
 
 export const RoadScreen = ({ navigation }) => {
   return (

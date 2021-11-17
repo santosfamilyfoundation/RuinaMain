@@ -9,9 +9,9 @@ export class ImageSelector extends Component {
     pathHandler = (name) => {
         switch (name) {
             case '../image/manner_example.png':
-                return require('../image/manner_example.png');
+                return require('./manner_example.png');
             case '../image/initial_contact.png':
-                return require('../image/initial_contact.png')
+                return require('./initial_contact.png')
             // append images file here if needed
         }
     }
