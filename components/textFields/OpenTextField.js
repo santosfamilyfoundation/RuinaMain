@@ -25,7 +25,6 @@ const OpenTextField = (props) => {
         if(existingData != null) {
             if(existingData[currId] != null && !value) {
                 setValue(existingData[currId]);
-                setButtonAppearance('filled');
             }
         }
     }

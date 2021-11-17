@@ -50,7 +50,6 @@ const LargeTextField = (props) => {
          if(existingData != null) {
              if(existingData[currId] != null && !value) {
                  setValue(existingData[currId]);
-//                 setIsInvalid(false)
              }
          }
      }
@@ -75,6 +74,17 @@ const LargeTextField = (props) => {
          }
      }
 
+     const valueSet = (currId) => {
+             try {if (existingData[currId] != null){
+                 return existingData[currId]
+             }
+             }
+             catch(err)
+             {
+             return null
+             }
+         }
+
     const tooltip = () => {
         return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
     }
@@ -92,7 +102,7 @@ const LargeTextField = (props) => {
             >
                 <TextArea
                  placeholder="Place your text"
-                 value = {existingData[currId]}
+                 value = {valueSet(currId)}
                  onChangeText={(text) => onTextChange(text)}
                 />
             </QuestionSection>
