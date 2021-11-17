@@ -8,11 +8,11 @@ Follow the instructions described below if you want to setup `RuinaMain` using W
   * Since we use Gradle 5.5, as of now, you should install JDK version 11. You can download the Windows zip file for JDK 11 [here](https://jdk.java.net/java-se-ri/11). Extract the zip folder into `C:\Program Files\Java\` and then add `C:\Program Files\Java\jdk-11` to the System `Path` variable. To easily switch between different JDK version, I would recommend following [this tutorial](https://www.happycoders.eu/java/how-to-switch-multiple-java-versions-windows/). Confirm you have JDK installed by typing `java -version` in the command prompt    
   * In case you need to install Gradle, you can do that [here](https://gradle.org/install/)
 
-  ![image](imagesMD/reactTutorial.PNG)
+  ![image](./imagesMD/reactTutorial.PNG)
 
 2. Follow the first two steps of [this](https://reactnative.dev/docs/running-on-device) tutorial to connect a tablet with Android (select Android and Windows)
 
-  ![image](imagesMD/connectTabletTutorial.PNG)
+  ![image](./imagesMD/connectTabletTutorial.PNG)
 
 3. Clone the `RuinaMain` [repo](https://github.com/santosfamilyfoundation/RuinaMain)
   * In a terminal, `cd` into the main directory of the repo
@@ -23,7 +23,7 @@ Follow the instructions described below if you want to setup `RuinaMain` using W
   * To add them, create a new folder called `anylineConfigs` in your `RuinaMain` directory
   * Download all the files from [here](https://drive.google.com/drive/folders/1R-s-ASSDIUl32IrHriw40iRoKcLCaVOv), and put them in the `anylineConfigs` folder  
 
-  ![image](imagesMD/anylineFolder.png)
+  ![image](./imagesMD/anylineFolder.png)
 
 5. Rebuild the Android folder with the following commands
     * `cd android`

@@ -9,7 +9,7 @@ To use Flipper with Android, please follow these steps:
 4. Open up a terminal window, cd into the RuinaMain main directory, and then run `react-native run-android`
 5. Check to make sure there is a "React Native" section in your Flipper desktop app. The logs should be printed in real time in the logs feature (reference image below)
 
-![image](imagesMD/flipperDesktopApp.PNG)
+![image](./imagesMD/flipperDesktopApp.PNG)
 
 ### Troubleshooting
 If Flipper isn't working then you can try to following
