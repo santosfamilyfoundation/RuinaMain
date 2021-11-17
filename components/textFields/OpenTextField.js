@@ -5,6 +5,7 @@ import { styles } from './OpenTextField.style';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
 import QuestionSection from '../QuestionSection';
+import TextFieldValidation from '../../utils/TextFieldValidation.js';
 
 
 const OpenTextField = (props) => {
@@ -20,7 +21,6 @@ const OpenTextField = (props) => {
     let existingData = !reducerData?.response ? null: reducerData.response;
 
 
-    // Populate if value already exists in redux
     if(!value) {
         if(existingData != null) {
             if(existingData[currId] != null && !value) {
@@ -30,46 +30,35 @@ const OpenTextField = (props) => {
         }
     }
 
-    const submitField = () => {
-        if(!value) {
-            return;
-        }
-        submitFunction({id, question: currId, selection: value})
-        setButtonAppearance('filled');
-    }
-
-    const onTextChange = (text) => {
+     const onTextChange = (text) => {
+        console.log('this is text',text)
+        var localText = text
+        submitFunction({id, question: currId, selection: localText})
         if(!text) {
-            submitFunction({id, question: currId, selection: null})
+            setIsInvalid(true)
+            }
+        textFieldValidation = TextFieldValidation
+        console.log('it breaks after the definition but before the submitField')
+        textFieldValidation.submitField(localText);
+        var localStatus = textFieldValidation.status
+        console.log("localstatus ", localStatus)
+        if (localStatus) {
+            setIsInvalid(false)
+            }
+        else {
+            setIsInvalid(true)
+            }
+    }
+
+    const valueSet = (currId) => {
+        try {if (existingData[currId] != null){
+            return existingData[currId]
         }
-        setValue(text);
-    }
-
-    const clearField = () => {
-        setValue('');
-        submitFunction({id, question: currId, selection: null})
-        setButtonAppearance('outline');
-    }
-
-    if(!value && buttonAppearance != 'outline') {
-        setButtonAppearance('outline');
-    } else if(existingData != null) {
-        if(value != existingData[currId] && buttonAppearance != 'outline') {
-            setButtonAppearance('outline');
         }
-    }
-
-    // Input length checking
-    if(value.length > data.maxLength && !isInvalid) {
-        setIsInvalid(true);
-    } else if(isInvalid && value.length <= data.maxLength) {
-        setIsInvalid(false);
-    }
-
-    if(buttonAppearance == 'outline') {
-        status = 'danger'
-    } else {
-        status = 'success'
+        catch(err)
+        {
+        return null
+        }
     }
 
     const tooltip = () => {
@@ -84,13 +73,13 @@ const OpenTextField = (props) => {
                 title={data.question}
                 isForm
                 helperText={data.helperText}
-                errorMessage='Maximum Character Input Exceeded'
+                errorMessage='Invalid Input'
                 isInvalid={isInvalid}
                 tooltip={tooltip()}
             >
                 <Input placeholder="Place your text"
-                   value={value}
-                   onChangeText={onTextChange} />
+                value = {valueSet(currId)}
+                onChangeText={(text) => onTextChange(text)}/>
             </QuestionSection>
         )
     } else {
