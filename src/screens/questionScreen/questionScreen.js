@@ -1,14 +1,14 @@
 import React from 'react';
 import { Icon, TopNavigationAction } from '@ui-kitten/components';
-import AutoComponentContainer from '../autocomponentContainer/AutoComponentContainer';
+import QuestionForm from './QuestionForm';
 
-export const TesterScreen = ({ navigation }) => {
+export const QuestionScreen = ({ navigation }) => {
   return (
-          <AutoComponentContainer
+        <QuestionForm
             navigation = { navigation }
-            title = "Test"
             BackAction = { () => <TopNavigationAction icon={ (style) => <Icon {...style} name='arrow-back' /> }
                                                   onPress={() => navigation.goBack()}/> }
+            questionDetail = {navigation.state.params}
           />
   );
 };

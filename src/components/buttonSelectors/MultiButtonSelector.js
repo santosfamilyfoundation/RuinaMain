@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { View, Image } from 'react-native';
 import { Box, Text, VStack, Button, HStack } from 'native-base';
 import QuestionSection from '../QuestionSection';
-import ImageSelector from '../image/imgIndex';
+import ImageSelector from '../../image/imgIndex';
 import { updateResponse } from '../../actions/StoryActions';
 import { styles } from './MultiButtonSelector.style';
 import TooltipView from '../Tooltip.js';

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View, Image } from 'react-native';
 import { styles } from './Tooltip.style';
-import ImageSelector from './image/imgIndex';
+import ImageSelector from '../image/imgIndex';
 import { Box, VStack, Input, Text, Button, Modal, HStack, IconButton } from 'native-base';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Section from './Section';

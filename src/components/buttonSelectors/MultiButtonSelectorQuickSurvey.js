@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View, Image } from 'react-native';
 import { Button, VStack, HStack } from 'native-base';
-import ImageSelector from '../image/imgIndex';
+import ImageSelector from '../../image/imgIndex';
 import { styles } from './MultiButtonSelectorQuickSurvey.style';
 import TooltipView from '../Tooltip';
 import { dependencyParser } from '../../utils/dependencyHelper';

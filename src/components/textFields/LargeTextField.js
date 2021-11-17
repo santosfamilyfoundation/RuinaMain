@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { View, Image } from 'react-native';
-import ImageSelector from '../image/imgIndex';
+import ImageSelector from '../../image/imgIndex';
 import QuestionSection from '../QuestionSection';
 import { TextArea, Box, Text, Icon, VStack } from 'native-base';
 import { styles } from './LargeTextField.style';

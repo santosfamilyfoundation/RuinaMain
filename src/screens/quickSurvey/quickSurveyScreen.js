@@ -1,12 +1,11 @@
 import React from 'react';
 import { Icon, TopNavigationAction } from '@ui-kitten/components';
-import AutoComponentContainer from '../autocomponentContainer/AutoComponentContainer';
+import QuickSurvey from './QuickSurvey';
 
-export const TesterScreen = ({ navigation }) => {
+export const QuickSurveyScreen = ({ navigation }) => {
   return (
-          <AutoComponentContainer
+          <QuickSurvey
             navigation = { navigation }
-            title = "Test"
             BackAction = { () => <TopNavigationAction icon={ (style) => <Icon {...style} name='arrow-back' /> }
                                                   onPress={() => navigation.goBack()}/> }
           />
