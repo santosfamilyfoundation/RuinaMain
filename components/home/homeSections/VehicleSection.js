@@ -98,7 +98,7 @@ class VehicleSection extends Component{
                     beforePassengerDelete: true,
                     passengerToDelete: passenger.id
                     })}
-                    icon={<Icon name="person-remove-alt-1" size={50}/>}/>
+                    icon={<Icon color="white" name="person-remove-alt-1" size={50}/>}/>
                 )
               } else {
                 return (
@@ -106,7 +106,7 @@ class VehicleSection extends Component{
                 onPress={() =>
                     navigateQuestion(passengerQuestions, passenger.id,
                     'Passenger', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}
-                icon={<Icon name="person" size={50}/>}/>
+                icon={<Icon color="white" name="person" size={50}/>}/>
                 )
               }
             } else {
@@ -117,13 +117,13 @@ class VehicleSection extends Component{
                   beforePassengerDelete: true,
                   passengerToDelete: passenger.id})
                   }
-                  icon={<Icon name="person-remove-alt-1" size={50}/>}/>
+                  icon={<Icon color="white" name="person-remove-alt-1" size={50}/>}/>
                 )
               } else {
                 return (
                     <IconButton topMargin={4} rightMargin={4} text={`Occupant ${idx + 1} Form`}
                     onPress={() => navigateQuestion(passengerQuestions, passenger.id, 'Occupant', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}
-                    icon={<Icon name="person" size={50}/>}/>
+                    icon={<Icon color="white" name="person" size={50}/>}/>
                 )
               }
             }
@@ -137,12 +137,12 @@ class VehicleSection extends Component{
                         <VStack>
                             <HStack flexWrap='wrap'>
                                 {!this.state.driverDeleted && <IconButton topMargin={4} rightMargin={4} onPress={() => this.setState({beforeDriverDelete: true})}
-                                    text="Remove Driver" icon={<Icon name="person-remove-alt-1" size={50}/>}/>}
-                                {!this.state.driverDeleted && <IconButton topMargin={4} rightMargin={4} onPress = {this._addPassenger} text="Add Passenger" icon={<Icon name="person-add-alt-1" size={50}/>}/>}
-                                {this.state.driverDeleted && <IconButton topMargin={4} rightMargin={4} onPress = {this._addPassenger} text="Add Occupant" icon={<Icon name="person-add-alt-1" size={50}/>}/>}
+                                    text="Remove Driver" icon={<Icon color="white" name="person-remove-alt-1" size={50}/>}/>}
+                                {!this.state.driverDeleted && <IconButton topMargin={4} rightMargin={4} onPress = {this._addPassenger} text="Add Passenger" icon={<Icon color="white" name="person-add-alt-1" size={50}/>}/>}
+                                {this.state.driverDeleted && <IconButton topMargin={4} rightMargin={4} onPress = {this._addPassenger} text="Add Occupant" icon={<Icon color="white" name="person-add-alt-1" size={50}/>}/>}
                                 {passengerListArr}
                             </HStack>
-                            <IconButton onPress = {() => this.setState({beforeVehicleDelete:true})} topMargin={4} text="Remove Vehicle" icon={<Icon name="delete" size={50}/>}/>
+                            <IconButton onPress = {() => this.setState({beforeVehicleDelete:true})} topMargin={4} text="Remove Vehicle" icon={<Icon color="white" name="delete" size={50}/>}/>
                         </VStack>
                     </Section>
 
@@ -201,10 +201,17 @@ class VehicleSection extends Component{
                          rightMargin={4}
                          onPress = {() => navigateQuestion(vehicleQuestions, vehicle.id, 'Vehicle', (index+1), 0, [roadID, vehicle.id])}
                          text={`${name} Form`}
-                         icon={<Icon name='local-taxi' size={50}/>}
+                         icon={<Icon color='white' name='local-taxi' size={50}/>}
                          />
                         {!this.state.driverDeleted &&
-                        <IconButton topMargin={4} rightMargin={4} onPress={styles.individualCard} onPress= {() => navigateQuestion(driverQuestions, vehicle.driver, 'Driver', (index+1), 0, [roadID, vehicle.id])} text="Driver Form" icon={<Icon name='person' size={50}/>}/>}
+                        <IconButton
+                         topMargin={4}
+                         rightMargin={4}
+                         onPress={styles.individualCard}
+                         onPress= {() => navigateQuestion(driverQuestions, vehicle.driver, 'Driver', (index+1), 0, [roadID, vehicle.id])}
+                         text="Driver Form"
+                         icon={<Icon color='white' name='person' size={50}/>}
+                        />}
                         {passengerListArr}
                     </HStack>
                 </Section>

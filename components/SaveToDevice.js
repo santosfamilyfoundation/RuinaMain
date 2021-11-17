@@ -13,6 +13,7 @@ import { createPDF, getDefaultFilename } from '../utils/helperFunctions'
 import TopNavigation from './TopNavigation';
 import IconButton from './IconButton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Section from './Section'
 
 class SaveToDevice extends Component {
   constructor(props) {
@@ -98,18 +99,14 @@ componentDidMount() {
     return(
         <>
         <TopNavigation title="Save Crash Report to Files" backButton navigation={this.props.navigation}>
-            <IconButton onPress={() => {this.props.navigation.navigate('Welcome')}} icon={<Icon size={25} name='file-document-outline'/>}  text='Start New Report'/>
+            <IconButton onPress={() => {this.props.navigation.navigate('Welcome')}} icon={<Icon color="white" size={25} name='file-document-outline'/>}  text='Start New Report'/>
         </TopNavigation>
-        <VStack>
-            <Box>
-                <Heading size="md">Edit Filename below.</Heading>
-                <Divider/>
-                <TextInput id="userInputFilename"
-                  value={this.state.filename}
-                  onChangeText={this.setUserInputFilename}
-                />
-            </Box>
-        </VStack>
+        <Section title="Edit filename below.">
+            <TextInput id="userInputFilename"
+              value={this.state.filename}
+              onChangeText={this.setUserInputFilename}
+            />
+        </Section>
         {this.state.isPDF &&
           <View style={styles.container}>
             <Pdf
@@ -124,7 +121,7 @@ componentDidMount() {
                 style={styles.pdf}/>
           </View>
         }
-        <Button onPress={() => this.saveData()}>
+        <Button onPress={() => this.saveData()} m={4}>
           Save Report
         </Button>
         <MaterialDialog

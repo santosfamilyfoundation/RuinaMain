@@ -145,18 +145,18 @@ class Home extends Component {
                 {this.state.edit &&
                     <IconButton text="Confirm Changes"
                         onPress = {() => { this.setState({ edit: false })}}
-                        icon = {<Icon name="save" size={25}/>}
+                        icon = {<Icon color="white" name="save" size={25}/>}
                     />
                 }
                 {!this.state.edit &&
                     <>
                         <IconButton text="Edit Sections"
                             onPress = {() => { this.setState({ edit: true }) }}
-                            icon = {<Icon name="edit" size={25}/>}
+                            icon = {<Icon color="white" name="edit" size={25}/>}
                         />
                         <IconButton leftMargin={4} text="Export Report"
                             onPress = {() => { navigation.navigate('FinalReport') }}
-                            icon = {<Icon name="assignment" size={25}/>}
+                            icon = {<Icon color="white" name="assignment" size={25}/>}
                         />
                     </>
                 }
@@ -178,7 +178,7 @@ class Home extends Component {
                         <HStack>
                             <IconButton topMargin={4} text="Crash/Road Form"
                             onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road', 'Crash/Road')}
-                            icon = {<Icon name="edit-road" size={50}/>}/>
+                            icon = {<Icon color="white" name="edit-road" size={50}/>}/>
                         </HStack>
                         }
                     </Section>
@@ -187,7 +187,7 @@ class Home extends Component {
                         {this.state.edit &&
                         <IconButton leftMargin={4} rightMargin={4} text="Add Vehicle"
                             onPress = {() => this._addVehicleSection()}
-                            icon = {<Icon name="local-taxi" size={50}/>}
+                            icon = {<Icon color="white" name="local-taxi" size={50}/>}
                         />
                         }
                     </VStack>
@@ -198,7 +198,7 @@ class Home extends Component {
                         </HStack>
                         <IconButton topMargin={4} text="Add Non-Motorist"
                             onPress = {() => this._addNonmotorist()}
-                            icon = {<Icon name="person-add" size={50}/>}
+                            icon = {<Icon color="white" name="person-add" size={50}/>}
                         />
                     </Section> :
                     nonmotoristListArr.length ?

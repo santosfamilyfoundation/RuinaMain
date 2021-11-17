@@ -159,7 +159,7 @@ export class EmailFinalReport extends Component {
     return(
       <SafeAreaView style={{flex:1}}>
         <TopNavigation id="emailNavBar" title="Email Crash Report" backButton navigation={this.props.navigation}>
-            <IconButton onPress={() => {this.props.navigation.navigate('Welcome')}} icon={<Icon size={25} name='file-document-outline'/>}  text='Start New Report'/>
+            <IconButton onPress={() => {this.props.navigation.navigate('Welcome')}} icon={<Icon color="white" size={25} name='file-document-outline'/>}  text='Start New Report'/>
         </TopNavigation>
         <Section title="Edit filename below.">
             <Input
@@ -184,7 +184,7 @@ export class EmailFinalReport extends Component {
         }
 
         <Button
-          onPress={() => this.handleEmail()}>
+          onPress={() => this.handleEmail()} m={4}>
           Send Report
         </Button>
 

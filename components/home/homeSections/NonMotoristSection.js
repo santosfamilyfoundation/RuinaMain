@@ -39,7 +39,12 @@ class NonMotoristSection extends Component{
         if (edit) {
           return(
               <Box mt={4}>
-                <IconButton rightMargin={4} onPress = {() => this.setState({beforeDelete:true})} text={`Remove Non-Motorist ${index+1}`} icon={<Icon name='person-remove-alt-1' size={50}/>}/>
+                <IconButton
+                 rightMargin={4}
+                 onPress = {() => this.setState({beforeDelete:true})}
+                 text={`Remove Non-Motorist ${index+1}`}
+                 icon={<Icon color='white' name='person-remove-alt-1' size={50}/>}
+                 />
 
                 <MaterialDialog
                   title={"Delete Confirmation"}
@@ -65,7 +70,7 @@ class NonMotoristSection extends Component{
                 onPress = {() => navigateQuestion(nonmotoristQuestions, nonmotorist.id, 'Nonmotorist', (index+1))}
                 text={`Non-Motorist ${index+1} Form`}
                 rightMargin={4}
-                icon = {<Icon name='person' size={50}/>}
+                icon = {<Icon color='white' name='person' size={50}/>}
               />
           </Box>
           )

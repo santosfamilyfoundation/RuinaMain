@@ -76,7 +76,7 @@ export class ReportToDatabase extends Component{
     return(
       <SafeAreaView style={{flex:1}}>
         <TopNavigation title='Send Report to Database' backButton navigation={this.props.navigation}>
-            <IconButton onPress={() => {this.props.navigation.navigate('Welcome')}} icon={<Icon size={25} name='file-document-outline'/>}  text='Start New Report'/>
+            <IconButton onPress={() => {this.props.navigation.navigate('Welcome')}} icon={<Icon color="white" size={25} name='file-document-outline'/>}  text='Start New Report'/>
         </TopNavigation>
         <Section title='Do you want to send crash report to our database?'>
             <Button id='sendButton' onPress={() => this.sendHttpRequest()}>Send</Button>
