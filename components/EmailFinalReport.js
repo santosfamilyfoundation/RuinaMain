@@ -18,10 +18,10 @@ export class EmailFinalReport extends Component {
     this.state = {
       filename: this.getDefaultFilename(),
       offlineStatus: false,
-      uri: '',
-      data: '',
-      format: '',
-      encoding: '',
+      uri: [],
+      data: [],
+      format: [],
+      encoding: [],
       isPDF: false,
     };
     this.changeFilename = this.changeFilename.bind(this);
@@ -32,23 +32,34 @@ export class EmailFinalReport extends Component {
       const format = this.props.navigation.state.params.format;
       console.log(format);
       // convert data to desired format
-      const data = {
+      const export_data = {
         driver: this.props.driver.data,
         nonmotorist: this.props.nonmotorist.data,
         vehicle: this.props.vehicle.data,
         passenger: this.props.passenger.data,
         road: this.props.road.data,
       };
-      if (format === "pdf") {
-        this.setState({encoding:'base64', format:format});
-        this.createPDF(data);
-      } else {
-        var converter = new JSONconverter();
-        var file = converter.handleConverter(format, data);
-        var encoding = format === "xlsx" ? 'ascii' : 'utf8';
-        this.setState({data: file, encoding: encoding, format:format});
-      }
+    for (let i = 0; i < format.length; i++){
+        if (format[i] === "pdf") {
+          console.log("PDF LOOP")
+          this.state.encoding.push('base64');
+          this.createPDF(export_data);
+        } else {
+          var converter = new JSONconverter();
+          var file = converter.handleConverter(format[i], export_data);
+          var encode = format[i] === "xlsx" ? 'ascii' : 'utf8';
+          console.log('encode for html', encode);
+          console.log('HTML FILE', typeof(file));
+          this.state.data.push(file);
+
+          console.log('data html', typeof(data[0]));
+
+          this.state.encoding.push(encode);
+//          this.setState({data: this.state.data.push(file), encoding: this.state.encoding.push(encode)});
+        }
+
     }
+   }
 
   // generate default filename
   getDefaultFilename() {

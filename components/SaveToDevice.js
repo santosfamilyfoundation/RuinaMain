@@ -9,6 +9,7 @@ import Pdf from 'react-native-pdf';
 import RNHTMLtoPDF from 'react-native-html-to-pdf';
 import JSONconverter from '../utils/jsonConverter';
 import backgroundSave from '../utils/backgroundSave';
+//import RNFetchBlob from 'rn-fetch-blob';
 
 class SaveToDevice extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class SaveToDevice extends Component {
       uri: [],
       data: [],
       encoding: [],
+      format: [],
       isPDF: false,
     };
   }
@@ -38,8 +40,8 @@ async componentDidMount() {
     };
     for (let i = 0; i < format.length; i++){
         if (format[i] === "pdf") {
-          this.state.encoding.push('base64');
-          await this.createPDF(export_data);
+          console.log("PDF LOOP")
+          this.createPDF(export_data);
         } else {
           var converter = new JSONconverter();
           var file = converter.handleConverter(format[i], export_data);
@@ -47,7 +49,7 @@ async componentDidMount() {
           console.log('encode for html', encode);
           console.log('HTML FILE', typeof(file));
           this.state.data.push(file);
-
+          this.state.format.push(format[i])
           console.log('data html', typeof(data[0]));
 
           this.state.encoding.push(encode);
@@ -66,9 +68,9 @@ async componentDidMount() {
 
   // generate html and convert it into a PDF
   async createPDF(export_data) {
-    var converter = new JSONconverter();
+    var converter = new JSONconverter()
     // const htmlString = converter.handleConverter('pdftest', "");
-    const htmlString = converter.handleConverter('pdf', export_data);
+    const htmlString = converter.handleConverter('pdf', export_data)
     let options = {
       html: htmlString,
       base64: true,
@@ -76,14 +78,16 @@ async componentDidMount() {
     };
     try {
       const pdf_data = await RNHTMLtoPDF.convert(options);
-      console.log("got PDF data", pdf_data.base64);
+      console.log("got PDF data");
 //      let updated_data = [pdf_data.base64];
 
       this.state.uri.push(pdf_data.filePath);
       this.state.data.push(pdf_data.base64);
       this.state.isPDF= true;
+      this.state.encoding.push("base64");
+      this.state.format.push("pdf");
       console.log("what is uri",this.state.uri[0])
-      console.log("Type of encoding",typeof(this.state.encoding[0]))
+      console.log("Type of encoding",this.state.encoding[0])
     } catch (error) {
       console.log('this is the pdf converter error->', error);
     }
@@ -95,7 +99,7 @@ async componentDidMount() {
   }
 
   async saveData() {
-      const format = this.props.navigation.state.params.format;
+      const format = this.state.format;
       var device_platform = Platform.OS
       var RNFS = require('react-native-fs');
 
@@ -112,23 +116,25 @@ async componentDidMount() {
       } else {
         path = path_android;
       }
+//      console.log("this.state.data: " + this.state.data)
+      console.log("this.state.format: " + this.state.format)
       for (let i = 0; i < format.length; i++){
       // write the file and save to Files app on device:
           try {
             if (format[i] == "pdf"){
                 var filepath = path  + "." + format[i]
-                console.log('data and encoding', this.state.data[i].length, this.state.encoding);
-                let result = await RNFS.writeFile(filepath, this.state.data[i], 'base64');
-                console.log('FILE WRITTEN!');
-                console.log('Data: ' + this.state.data[i]);
+                console.log('data and encoding', format[i], this.state.encoding[i]);
+                RNFS.writeFile(filepath, this.state.data[i], "base64");
+                console.log(filepath);
+//                console.log('Data: ' + this.state.data[i]);
                 this.setState({ reportSavedMessageVisible: true });
 
             } else {
                 var filepath = path  + "." + format[i]
-                console.log('data and encoding', this.state.data[i].length, this.state.encoding);
-                let result = await RNFS.writeFile(filepath, this.state.data[i], this.state.encoding[i]);
-                console.log('FILE WRITTEN!');
-                console.log('Data: ' + this.state.data[i]);
+                console.log('data and encoding', format[i], this.state.encoding[i]);
+                RNFS.writeFile(filepath, this.state.data[i], this.state.encoding[i]);
+//                console.log('FILE WRITTEN!');
+//                console.log('Data: ' + this.state.data[i]);
                 this.setState({ reportSavedMessageVisible: true });
 
             }
