@@ -103,6 +103,7 @@ const LargeTextField = (props) => {
     if (renderComponent){
         return(
         <Box>
+<<<<<<< HEAD
             <QuestionSection
              title={data.question}
              helperText={data.helperText}
@@ -115,6 +116,16 @@ const LargeTextField = (props) => {
                  value={value}
                  onChangeText={onTextChange}
                 />
+=======
+            <QuestionSection title={data.question} helperText={data.helperText} errorMessage='Maximum Character Limit Exceeded' isInvalid={isInvalid}>
+                <VStack>
+                    <TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>
+                    <TextArea
+                        placeholder="Place your text"
+                        value={value}
+                        onChangeText={onTextChange}/>
+                </VStack>
+>>>>>>> fix/18chowdhary/fix-tooltip-images
             </QuestionSection>
         </Box>
         )

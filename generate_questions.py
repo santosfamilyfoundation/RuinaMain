@@ -1,43 +1,40 @@
 import pandas as pd
 import json
+import uuid
 
 # sheets = ['construction', 'driver', 'fatalityDriver', 'fatalityNonmotorist',
 #             'info', 'injured', 'lvhm', 'lvhmDriver', 'nonmotorist', 'passenger',
 #             'road', 'setup', 'vehicle', 'answerOptions']
 
 question_sheets = ['driver', 'vehicle', 'nonmotorist', 'passenger', 'setup', 'road']
+# question_sheets = ['driver']
+# answer_sheets = ['driverAnswers']
 answer_sheets = ['driverAnswers', 'vehicleAnswers', 'nonmotoristAnswers', 'passengerAnswers', 'roadAnswers']
 
-def get_inverse_dependencies(uid, option, df_answer):
-    df_sub_answer = df_answer[df_answer['question_uid']==uid]
+def get_inverse_dependencies(name, option, df_answer):
+    df_sub_answer = df_answer[df_answer['question_name']==name]
     dependencies = []
     for index, row in df_sub_answer.iterrows():
         if str(row['option_number']) != option:
-            dependencies.append({'dependencyUid':uid, 'dependencyOptionCode':str(row['option_number'])})
+            dependencies.append({'dependencyName':name, 'dependencyOptionCode':str(row['option_number'])})
     return dependencies
 
 def generate_questions_json(filename):
     questions_json = {'data': []}
-    question_uids = []
     sections_df = pd.read_excel(filename, sheet_name=question_sheets)
     answers_df = pd.concat(pd.read_excel(filename, sheet_name=answer_sheets))
 
-    print(answers_df)
-
     for section in sections_df:
         questions_df = sections_df[section]
-        print('in form section', section);
+        print('in form section', section)
 
         section_json = {}
         for index, row in questions_df.iterrows():
 
-            if pd.isna(row['id']):
+            if pd.isna(row['question_name']):
                 continue
 
-            if row['question_uid'] in question_uids:
-                print('Duplicate uid at', row['display_section'], row['question_uid'])
-            else:
-                question_uids.append(row['question_uid'])
+            question_uid = str(uuid.uuid1())
 
             question_type = row['question_type']
 
@@ -55,11 +52,11 @@ def generate_questions_json(filename):
             else:
                 question_dict = {'numOptionsAllowed': str(row['num_selected_option']),
                                 'question': row['question_text'],
-                                'id': row['question_uid'],
+                                'id': question_uid,
                                 'answerType': row['question_type'],
                                 'display': [row['display_section']],
-                                'humanReadableId': row['id']}
-                
+                                'humanReadableId': row['question_name']}
+                print(question_dict['question'])
                 if pd.notna(row['helper_text']):
                     question_dict['helperText'] = row['helper_text']
                 if pd.notna(row['tooltip']):
@@ -74,17 +71,18 @@ def generate_questions_json(filename):
                     dependencies = row['question_dependency'].split(";")
                     questionDependency = []
                     for d in dependencies:
-                        uid, option = d.split(",")
+                        name, option = d.split(",")
                         # deal with not dependencies
                         if "!" in option:
-                            opposite_ds = get_inverse_dependencies(uid, option[1:], answers_df)
+                            opposite_ds = get_inverse_dependencies(name, option[1:], answers_df)
                             questionDependency.extend(opposite_ds)
                         else:
-                            questionDependency.append({'dependencyUid':uid, 'dependencyOptionCode':str(option)})
+                            questionDependency.append({'dependencyName':name, 'dependencyOptionCode':str(option)})
                     question_dict['questionDependency'] = questionDependency
+                    print('added dependencies', questionDependency)
                 
-                question_uid = row['question_uid']
-                df_sub_answer = answers_df[answers_df['question_uid'] == question_uid]
+                question_name = row['question_name']
+                df_sub_answer = answers_df[answers_df['question_name'] == question_name]
                 if len(df_sub_answer) > 0:
                     answer_options = []
                     for index2, row2 in df_sub_answer.iterrows():
@@ -161,7 +159,7 @@ def generate_questions_json(filename):
 #     return questions_json
 
 if __name__ == '__main__':
-    filename = '~/2021_11_10_questions.xlsx'
+    filename = '~/2021_11_16_questions.xlsx'
     new_filename = 'data/questions.js'
 
     json_data = generate_questions_json(filename)
