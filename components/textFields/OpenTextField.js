@@ -23,7 +23,8 @@ const OpenTextField = (props) => {
 
     if(!value) {
         if(existingData != null) {
-            if(existingData[currId] != null && !value) {
+            if(existingData[currId] != null && existingData[currId] != '' && !value) {
+                console.log('sadly, this is broken now')
                 setValue(existingData[currId]);
             }
         }
@@ -36,7 +37,7 @@ const OpenTextField = (props) => {
         if(!text) {
             setIsInvalid(true)
             }
-        textFieldValidation = TextFieldValidation
+        let textFieldValidation = TextFieldValidation
         console.log('it breaks after the definition but before the submitField')
         textFieldValidation.submitField(localText);
         var localStatus = textFieldValidation.status

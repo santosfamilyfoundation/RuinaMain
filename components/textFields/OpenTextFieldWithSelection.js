@@ -6,7 +6,7 @@ import { updateResponse } from '../../actions/StoryActions';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
 import QuestionSection from '../QuestionSection';
-
+import TextFieldValidation from '../../utils/TextFieldValidation.js';
 
 const OpenTextFieldWithSelection = (props) => {
     const [value, setValue] = React.useState('');
@@ -22,21 +22,25 @@ const OpenTextFieldWithSelection = (props) => {
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
 
-    // Populate if value already exists in redux
     if(!value) {
-        if(existingData != null) {
-            if(existingData[currId] != null && !value) {
-                setValue(existingData[currId]);
-                setSelected(existingData[currId])
-//                setButtonAppearance('filled');
-            }
-        }
-    }
+         if(existingData != null) {
+             if(existingData[currId] != '' && existingData[currId] != null && !value) {
+                 console.log(existingData[currId], ' and ', value)
+                 console.log(typeof(existingData[currId]), ' and ', typeof(value))
+                 setValue(existingData[currId]);
+             }
+         }
+     }
+     if(!selected) {
+             if(existingData != null) {
+                 if(existingData[currId] != selected) {
+                     setSelected(existingData[currId]);
 
-    const submitField = () => {
-        if(!value) {
-            return;
-        }
+                 }
+             }
+         }
+
+    const dependencyField = () => {
         if (dependencyID!=null){
             const vehicleID = dependencyID[1] // Get vehicle id to identify different vehicles
             updateResponse && updateResponse({id, question: currId, selection: value, vehicleID: vehicleID})
@@ -48,42 +52,65 @@ const OpenTextFieldWithSelection = (props) => {
 //        setButtonAppearance('filled');
     }
 
-    const onTextChange = (text) => {
-        if(!text) {
-            submitFunction({id, question: currId, selection: null})
-        }
-        setValue(text);
-        setSelected(null)
-    }
+      const onTextChange = (text) => {
+         console.log('this is text',text)
+         var localText = text
+         submitFunction({id, question: currId, selection: localText})
+         if(!text) {
+            setIsInvalid(true)
+         }
+         let textFieldValidation = TextFieldValidation
+         console.log(textFieldValidation)
+         textFieldValidation.submitField(localText);
+         var localStatus = textFieldValidation.status
+         console.log("localstatus ", localStatus)
+         if (localStatus) {
+            setIsInvalid(false)
+         }
+         else {
+         setIsInvalid(true)
+         }
+         if (localText != 'Unknown'){
+            setSelected(null)
+         }
+     }
+
+     const valueSet = (currId) => {
+             try {if (existingData[currId] != null){
+                 return existingData[currId]
+             }
+             }
+             catch(err)
+             {
+             return null
+             }
+         }
+
 
     const onSelectOneOption = (option) => {
-      setValue(option.text);
-      submitFunction({id, question: currId, selection: option.text});
+      console.log('option: ', option)
+      console.log(' option name: ', option.name)
       setSelected(option.id)
+      submitFunction({id, question: currId, selection: option.name});
+      let textFieldValidation = TextFieldValidation
+      textFieldValidation.submitField(option.name)
+      var localStatus = textFieldValidation.status
+       console.log("localstatus ", localStatus)
+       if (localStatus) {
+          setIsInvalid(false)
+       }
+       else {
+       setIsInvalid(true)
+       }
     }
 
-//    if(!value && buttonAppearance != 'outline') {
-//        setButtonAppearance('outline');
-//    } else if(existingData != null) {
-//        if(value != existingData[currId] && buttonAppearance != 'outline') {
-//            setButtonAppearance('outline');
-//        }
-//    }
-
-    // Input length checking
-//    if(value.length > data.maxLength && !isInvalid) {
-//        setIsInvalid(true);
-//    } else if(isInvalid && value.length <= data.maxLength) {
-//        setIsInvalid(false);
-//    }
 
 
     const renderSingleButton = (option) => {
-//      let appearance = (value == option.text) ? 'filled': 'outline';
       return (
           <Button
               key={option.id}
-              variant={selected === option.id ? 'solid': 'sublte'}
+              variant={selected === option.id ? 'solid': 'subtle'}
               onPress={() => onSelectOneOption(option)}
           >
               {option.name}
@@ -109,14 +136,14 @@ const OpenTextFieldWithSelection = (props) => {
                 key={key}
                 title={data.question}
                 helperText={data.helperText}
-                errorMessage={`Maximum Character Limit: ${data.maxLength}`}
+                errorMessage={`Invalid Input`}
                 isInvalid={isInvalid}
                 tooltip={tooltip()}
             >
                 <Input
                     placeholder='Place your Text'
-                    value={value}
-                    onChange={onTextChange}
+                     value = {valueSet(currId)}
+                     onChangeText={(text) => onTextChange(text)}
                 />
                 <HStack mt={4}>
                     {renderButtons()}

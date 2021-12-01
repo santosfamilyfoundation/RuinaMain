@@ -48,7 +48,7 @@ const LargeTextField = (props) => {
     // Populate if value already exists in redux
     if(!value) {
          if(existingData != null) {
-             if(existingData[currId] != null && !value) {
+             if(existingData[currId] != null && existingData[currId] != '' && !value) {
                  setValue(existingData[currId]);
              }
          }
@@ -61,7 +61,7 @@ const LargeTextField = (props) => {
          if(!text) {
             setIsInvalid(true)
          }
-         textFieldValidation = TextFieldValidation
+         let textFieldValidation = TextFieldValidation
          console.log(textFieldValidation)
          textFieldValidation.submitField(localText);
          var localStatus = textFieldValidation.status
