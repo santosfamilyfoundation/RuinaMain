@@ -96,6 +96,7 @@ class Home extends Component {
 
         const captureState = new backgroundSave(this.state.filePath, this.state.openOldFile);
         captureState.captureCurrentState(JSON.stringify(data));
+        console.log('capturing current state at filepath:', this.state.filePath);
 
         let roadQuestions = this.filterQuestionsData('road');
 
