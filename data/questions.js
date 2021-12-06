@@ -1,4 +1,4 @@
-{
+export const questions = {
     "data": [
         {
             "sectionTitle": "Personal Information Section",
