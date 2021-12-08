@@ -16,7 +16,6 @@ const DropDownMultiSelect = (props) => {
     let currId = data.id;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
-    console.log(existingData)
 
     if (selectedOptions) {
     // Populate if value already exists in redux
