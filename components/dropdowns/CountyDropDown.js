@@ -21,13 +21,13 @@ const CountyDropDown = (props) => {
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
 
-    const stateDropDownQuestionID = data.questionDependency[0].dependencyUid;
+    const stateDropDownQuestionID = data.questionDependency[0].dependencyUuid;
     let existingDataState = existingData ? existingData[stateDropDownQuestionID] : null;
 
     // Populate if value already exists in redux
     // If no selected answer in UI for county question
-    if (selectedOption) {
-        if (selectedOption.length === 0) {
+    if (selectedOption < 1) {
+//        if (selectedOption.length === 0) {
             // Road section isn't null
             if (existingData != null) {
                 // Road section county response isn't null
@@ -38,13 +38,13 @@ const CountyDropDown = (props) => {
                         // the state answer in redux
                         const correspondingCounties = countiesByStates[existingDataState];
                         if (correspondingCounties.includes(existingData[currId])) {
-                            let curOption = [{name: existingData[currId]}];
+                            let curOption = [existingData[currId]];
                             setSelectedOption(curOption);
                         }
                     }
                 }
             }
-        }
+//        }
         // Check if user has updated state selection
         else {
             let selectedCounty = selectedOption[0]
@@ -107,6 +107,7 @@ const CountyDropDown = (props) => {
         }]
     }
     const submitField = (selection) => {
+        console.log("selection", selection)
         if (!selection || selection.length == 0) {
             setSelectedOptions([]);
             return submitFunction({id, question: currId, selection: null});
@@ -133,7 +134,7 @@ const CountyDropDown = (props) => {
                   IconRenderer={Icon}
                   uniqueKey='name'
                   selectText={'Select Option ...'}
-                  onSelectedItemsChange={submitField}
+                  onSelectedItemsChange={(selectedItems) => {submitField(selectedItems)}}
                   onSelectedItemObjectsChange={(selectedObject) => submitFunction({id, question:currId, selection: selectedObject[0].name})}
                   selectedItems={selectedOption}
                   hideConfirm={true}
