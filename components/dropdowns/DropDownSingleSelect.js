@@ -17,20 +17,17 @@ const DropDownSingleSelect = (props) => {
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
 
-    if(!selectedOption) {
+    if(selectedOption.length < 1) {
         if(existingData != null) {
+            console.log()
             if(existingData[currId] != null) {
                 let curOption;
                 for (let i = 0; i < data.answerOptions.length; i++) {
                     if(data.answerOptions[i].name == existingData[currId]) {
-                        curOption = {
-                            id: existingData[currId],
-                            name: data.answerOptions[i].name
-                        };
+                        curOption = [data.answerOptions[i].id];
                     };
                 };
                 if (curOption != null) {
-                    console.log('setting option!!!')
                     setSelectedOption(curOption);
                 }
             };
@@ -92,7 +89,7 @@ const DropDownSingleSelect = (props) => {
                   IconRenderer={Icon}
                   uniqueKey='id'
                   selectText={'Select Option ...'}
-                  onSelectedItemsChange={submitField}
+                  onSelectedItemsChange={(selectedItems) => {submitField(selectedItems)}}
                   onSelectedItemObjectsChange={(selectedObject) => {submitFunction({id, question: currId, selection: selectedObject[0].name})}}
                   selectedItems={selectedOption}
                   hideConfirm={true}

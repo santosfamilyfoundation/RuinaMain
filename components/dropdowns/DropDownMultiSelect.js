@@ -16,15 +16,16 @@ const DropDownMultiSelect = (props) => {
     let currId = data.id;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
+
     if (selectedOptions) {
     // Populate if value already exists in redux
     if(selectedOptions.length == 0) {
         if(existingData != null) {
             if(existingData[currId] != null) {
                 let currOptions = []
-                for (i = 0; i < data.answerOptions.length; i++) {
+                for (let i = 0; i < data.answerOptions.length; i++) {
                     if(existingData[currId].includes(data.answerOptions[i].name)) {
-                        currOptions.push(data.answerOptions[i]);
+                        currOptions.push(data.answerOptions[i].id);
                     };
                 };
                 if(currOptions.length != 0) {
@@ -87,17 +88,10 @@ const DropDownMultiSelect = (props) => {
             }
         }
     }
-    const submitField = () => {
-        if(selectedOptions.length == 0) {
-            return;
-        }
-        let res = [];
-        for(i = 0; i < selectedOptions.length; i++) {
-            res.push(selectedOptions[i].name);
-        }
+    const submitField = (selectedItems) => {
         let resId = []
-        for(i = 0; i < selectedOptions.length; i++) {
-            resId.push(selectedOptions[i].id);
+        for(let i = 0; i < selectedItems.length; i++) {
+            resId.push(selectedItems[i]);
         }
 
         if (dependencyID==null || dependencyID.length == 1){
@@ -117,11 +111,6 @@ const DropDownMultiSelect = (props) => {
                     break;
             }
         }
-        submitFunction({id, question: currId, selection: res})
-    }
-
-    const clearRedux = () => {
-        submitFunction({id, question: currId, selection: null})
     }
 
     const addOption = (selectedItems) => {
@@ -129,11 +118,13 @@ const DropDownMultiSelect = (props) => {
             return
         }
         if(selectedItems.length == 0) {
-            clearRedux();
+            submitFunction({id, question: currId, selection: null})
             setSelectedOptions([]);
+            return;
         }
         console.log(selectedOptions)
         setSelectedOptions(selectedItems);
+        submitField(selectedItems);
     }
 
     const tooltip = () => {
@@ -153,7 +144,12 @@ const DropDownMultiSelect = (props) => {
                   IconRenderer={Icon}
                   uniqueKey='id'
                   selectText={'Select Options ...'}
-                  onSelectedItemsChange={addOption}
+                  onSelectedItemsChange={(selectedItems) => addOption(selectedItems)}
+                  onSelectedItemObjectsChange={(selectedObject) => {
+                    let res = [];
+                    selectedObject.forEach(object => {res.push(object.name)});
+                    submitFunction({id, question: currId, selection: res})
+                  }}
                   selectedItems={selectedOptions}
                   onConfirm={addOption}
                   showCancelButton={true}

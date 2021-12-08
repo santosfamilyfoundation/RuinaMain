@@ -30,19 +30,13 @@ const OpenTextField = (props) => {
         }
     }
 
-    const submitField = () => {
-        if(!value) {
+    const onTextChange = (text) => {
+        setValue(text);
+        if(!text) {
+            submitFunction({id, question: currId, selection: null});
             return;
         }
-        submitFunction({id, question: currId, selection: value})
-        setButtonAppearance('filled');
-    }
-
-    const onTextChange = (text) => {
-        if(!text) {
-            submitFunction({id, question: currId, selection: null})
-        }
-        setValue(text);
+        submitFunction({id, question: currId, selection: text})
     }
 
     const clearField = () => {
@@ -90,7 +84,7 @@ const OpenTextField = (props) => {
             >
                 <Input placeholder="Place your text"
                    value={value}
-                   onChangeText={onTextChange} />
+                   onChangeText={(text) => {onTextChange(text)}} />
             </QuestionSection>
         )
     } else {
