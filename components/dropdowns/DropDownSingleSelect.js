@@ -16,7 +16,6 @@ const DropDownSingleSelect = (props) => {
     let currId = data.id;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
-    console.log(currId, existingData)
 
     if(selectedOption.length < 1) {
         if(existingData != null) {

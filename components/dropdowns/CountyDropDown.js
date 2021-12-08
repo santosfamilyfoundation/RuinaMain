@@ -107,7 +107,6 @@ const CountyDropDown = (props) => {
         }]
     }
     const submitField = (selection) => {
-        console.log("selection", selection)
         if (!selection || selection.length == 0) {
             setSelectedOptions([]);
             return submitFunction({id, question: currId, selection: null});
