@@ -134,7 +134,7 @@ const QuestionForm = (props) => {
         submitFunction: updateRoad,
         actionType: "UPDATEROAD",
         questionsData : filterQuestionsData('road'),
-      }
+      },
     }
     return type?obj[type]:obj
   }
@@ -260,11 +260,15 @@ const QuestionForm = (props) => {
 
   const renderSections = (question) => {
     return (
+      // <Accordion>
+      //   { [renderSingleSection(question.questionsData[0])] }
+      // </Accordion>
         <Accordion index={[0]} mx={4} my={8}>
             { question.questionsData.map(item => renderSingleSection(item)) }
         </Accordion>
     )
   }
+  
   return (
     <SafeAreaView style={styles.container}>
       <TopNavigation title={`Questions on ${questionDetail.name}`} backButton navigation={navigation}/>
