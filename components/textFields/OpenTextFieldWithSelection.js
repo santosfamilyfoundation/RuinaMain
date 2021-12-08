@@ -33,33 +33,32 @@ const OpenTextFieldWithSelection = (props) => {
         }
     }
 
-    const submitField = () => {
-        if(!value) {
-            return;
-        }
+    const submitField = (text) => {
         if (dependencyID!=null){
             const vehicleID = dependencyID[1] // Get vehicle id to identify different vehicles
-            updateResponse && updateResponse({id, question: currId, selection: value, vehicleID: vehicleID})
+            updateResponse && updateResponse({id, question: currId, selection: text, vehicleID: vehicleID})
         } else{
-            updateResponse && updateResponse({id, question: currId, selection: value})
+            updateResponse && updateResponse({id, question: currId, selection: text})
         }
-        updateResponse && updateResponse({id, question: currId, selection: value})
-        submitFunction({id, question: currId, selection: value})
+        updateResponse && updateResponse({id, question: currId, selection: text})
+        submitFunction({id, question: currId, selection: text})
 //        setButtonAppearance('filled');
     }
 
     const onTextChange = (text) => {
-        if(!text) {
-            submitFunction({id, question: currId, selection: null})
-        }
         setValue(text);
-        setSelected(null)
+        if(!text) {
+            submitFunction({id, question: currId, selection: null});
+            return;
+        }
+        setSelected(null);
+        submitField(text)
     }
 
     const onSelectOneOption = (option) => {
-      setValue(option.text);
-      submitFunction({id, question: currId, selection: option.text});
-      setSelected(option.id)
+      setValue(option.name);
+      submitFunction({id, question: currId, selection: option.name});
+      setSelected(option.name)
     }
 
 //    if(!value && buttonAppearance != 'outline') {
@@ -83,7 +82,7 @@ const OpenTextFieldWithSelection = (props) => {
       return (
           <Button
               key={option.id}
-              variant={selected === option.id ? 'solid': 'sublte'}
+              variant={selected === option.name ? 'solid': 'subtle'}
               onPress={() => onSelectOneOption(option)}
           >
               {option.name}
@@ -116,7 +115,7 @@ const OpenTextFieldWithSelection = (props) => {
                 <Input
                     placeholder='Place your Text'
                     value={value}
-                    onChange={onTextChange}
+                    onChangeText={(text) => {onTextChange(text)}}
                 />
                 <HStack mt={4}>
                     {renderButtons()}
