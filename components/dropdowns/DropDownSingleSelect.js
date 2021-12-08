@@ -69,7 +69,6 @@ const DropDownSingleSelect = (props) => {
                     break;
             }
         }
-        console.log(selection)
         setSelectedOption(selection)
     }
 
