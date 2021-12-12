@@ -48,10 +48,10 @@ class Welcome extends Component {
       this.props.resetMap();
       this.props.resetPhoto();
       await this.stateManager.getFilePaths();
+      console.log("Unfinished reports found:", this.stateManager.filePaths);
       this.unfinishedReportsAbsent = this.stateManager.filePaths.length == 0
       console.log(this.stateManager.filePaths);
       console.log(this.stateManager.filePaths.length == 0)
-//      this.checkAutoSavedSession();
       this.setState({ loading: false });
     }
 
@@ -71,9 +71,9 @@ class Welcome extends Component {
          };
          if (this.state.loading) {
            return (
-             <SafeAreaView style={styles.spinnerView}>
-               <Spinner accessibilityLabel="Loading App"/>
-             </SafeAreaView>
+             <Center flex={1}>
+               <Spinner size="lg" accessibilityLabel="Loading App"/>
+             </Center>
             );}
          else {
             return (

@@ -6,116 +6,116 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "First Name of Person Involved",
-                    "id": "reJw3rUT",
+                    "id": "11791e63-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-1"
+                    "humanReadableId": "driver-firstName"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Middle Initial of Person Involved",
-                    "id": "ElI9UkWD",
+                    "id": "11791e64-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-2"
+                    "humanReadableId": "driver-middleName"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Last Name of Person Involved",
-                    "id": "Iv7jSfKw",
+                    "id": "11791e65-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-3"
+                    "humanReadableId": "driver-lastName"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Date of Birth",
-                    "id": "oMObMoQs",
+                    "id": "11791e66-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-4",
+                    "humanReadableId": "driver-dob",
                     "helperText": "Format: YYYY/MM/DD",
                     "tooltip": "Use 99 if the month and/or day are unknown. For example, 2017/02/99 indicates that the birthday is in February 2017 but the day is unknown."
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Street Address 1",
-                    "id": "bqPmjHhl",
+                    "id": "11791e67-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-5",
+                    "humanReadableId": "driver-streetAddress1",
                     "tooltip": "E.g. 1000 Olin Way"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Street Address 2",
-                    "id": "juihpNVm",
+                    "id": "11791e68-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-6"
+                    "humanReadableId": "driver-streetAddress2"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "City/Town",
-                    "id": "mfUnfGGG",
+                    "id": "11791e69-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-7"
+                    "humanReadableId": "driver-city"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "State",
-                    "id": "I5sdJ3MP",
+                    "id": "11791e6a-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-8"
+                    "humanReadableId": "driver-state"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "ZIP Code",
-                    "id": "g9aneW3g",
+                    "id": "11791e6b-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-9"
+                    "humanReadableId": "driver-zip"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Phone Number",
-                    "id": "hLG4AOsN",
+                    "id": "11791e6c-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-10",
+                    "humanReadableId": "driver-phoneNum",
                     "helperText": "format: 15555551212 (no dashes)"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Sex",
-                    "id": "cGeoDWm1",
+                    "id": "11791e6d-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-11",
+                    "humanReadableId": "driver-sex",
                     "answerOptions": [
                         {
                             "name": "Female",
@@ -142,22 +142,22 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Driver License Jurisdiction",
-                    "id": "RTMZU1us",
+                    "id": "11791e6f-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-13"
+                    "humanReadableId": "driver-licenseJurisdiction"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Type",
-                    "id": "swdK3ctL",
+                    "id": "11791e70-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-7",
+                    "humanReadableId": "driver-jurisidctionType",
                     "answerOptions": [
                         {
                             "name": "Not Licensed",
@@ -200,34 +200,35 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Name of Jurisdiction (ANSI Code)",
-                    "id": "XaITnP8d",
+                    "id": "11791e71-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-15",
+                    "humanReadableId": "driver-jurisdictionName",
                     "tooltip": "Provide the specific State, Province or Nation indicated on the Driver's License"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "License Number",
-                    "id": "xL5WOZpG",
+                    "id": "11791e72-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "advancedOpenTextBox",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-16",
+                    "humanReadableId": "driver-licenseNum",
+                    "tooltip": "Scan the barcode on the back of the driver's license.",
                     "autoMethod": "driverIDCamera"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Class",
-                    "id": "fUE3Zk9I",
+                    "id": "11791e73-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-17",
+                    "humanReadableId": "driver-licenseClass",
                     "tooltip": "The Class is the type of driver license issued by the State and the type of motor vehicle the driver is qualified to drive.\nA: Any combination of vehicles with a gross combination weight rating (GCWR) of 26,001 pounds or more provided the GVWR of the vehicles being towed is in excess of 10,000 pounds.\n\nB: Any single vehicle with a GVWR of 26,001 or more pounds, or any such vehicle towing a vehicle not in excess of 10,000 pounds GVWR.\n\nC: Any single vehicle, or combination of vehicles, that does not meet the definition of Class A or B, but is either designed to transport 16 or more passengers, including the driver, or is used in the transportation of materials found to be hazardous, which require the motor vehicle to be placarded.\n\nM: Motorcycles, mopeds, motor-driven cycles.\n\nRegular Driver License Class: Any regular or standard driver license issued for the operation of automobiles and light trucks by States that separate these vehicles from Class C. Other class designation  such as \"D\", \"R\", and others may be used by States to indicate a regular driver license class.\n",
                     "answerOptions": [
                         {
@@ -263,13 +264,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Commercial Driver License (CDL)",
-                    "id": "16LCTlmo",
+                    "id": "11791e74-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-18",
-                    "helperImg": "../image/CDL.png",
+                    "humanReadableId": "driver-CDL",
                     "answerOptions": [
                         {
                             "name": "No",
@@ -284,12 +284,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Endorsements",
-                    "id": "qVaWWaWs",
+                    "id": "11791e75-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-19",
+                    "humanReadableId": "driver-CDLEndorsements",
                     "helperImg": "../image/CDL_endorsements.png",
                     "answerOptions": [
                         {
@@ -329,22 +329,22 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Restrictions",
-                    "id": "GE0UVywS",
+                    "id": "11791e76-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-20"
+                    "humanReadableId": "driver-restrictions"
                 },
                 {
                     "numOptionsAllowed": "3.0",
                     "question": "Driver License Restrictions",
-                    "id": "mVfImy06",
+                    "id": "11791e77-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdownMultiSelect",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-21",
+                    "humanReadableId": "driver-licenseRestrictions",
                     "helperText": "(select up to 3)",
                     "answerOptions": [
                         {
@@ -428,12 +428,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Alcohol Interlock Present?",
-                    "id": "Rb2JOQaH",
+                    "id": "11791e78-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "numberButton",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-22",
+                    "humanReadableId": "driver-alcoholInterlock",
                     "answerOptions": [
                         {
                             "name": "No",
@@ -452,22 +452,22 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Driver License Status",
-                    "id": "2pL19EuI",
+                    "id": "11791e79-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-23"
+                    "humanReadableId": "driver-licenseStatus"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Type Applicable for This Person",
-                    "id": "ug5OYr9e",
+                    "id": "11791e7a-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-24",
+                    "humanReadableId": "driver-statusType",
                     "answerOptions": [
                         {
                             "name": "Non-CDL Driver License",
@@ -486,12 +486,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Status",
-                    "id": "NLku3A2C",
+                    "id": "11791e7b-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-25",
+                    "humanReadableId": "driver-status",
                     "answerOptions": [
                         {
                             "name": "Not Licensed",
@@ -538,12 +538,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "2.0",
                     "question": "Seating Position",
-                    "id": "qAJO1kQq",
+                    "id": "11791e7d-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdownMultiSelect",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-27",
+                    "humanReadableId": "driver-seatingPos",
                     "helperText": "(choose up to 2)",
                     "helperImg": "../image/seating_positions.png",
                     "answerOptions": [
@@ -620,22 +620,22 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Restraint Systems / Motorcycle Helmet Use",
-                    "id": "OkqAxNuI",
+                    "id": "11791e7e-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-28"
+                    "humanReadableId": "driver-restraintSys"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Restraint Systems in Use",
-                    "id": "Pr9o5SM6",
+                    "id": "11791e7f-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-29",
+                    "humanReadableId": "driver-restraintInUse",
                     "answerOptions": [
                         {
                             "name": "Booster Seat",
@@ -714,12 +714,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Any Indication of Improper Use?",
-                    "id": "Vln5VkAh",
+                    "id": "11791e80-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-30",
+                    "humanReadableId": "driver-improperUse",
                     "tooltip": "ie, seatbelt was not buckled in correctly",
                     "answerOptions": [
                         {
@@ -735,12 +735,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "4.0",
                     "question": "Air Bag Deployed?",
-                    "id": "1h6r5JFf",
+                    "id": "11791e81-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdownMultiSelect",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-31",
+                    "humanReadableId": "driver-airbag",
                     "helperText": "(choose up to 4)",
                     "helperImg": "../image/airbag_diagram.png",
                     "answerOptions": [
@@ -777,12 +777,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Ejection?",
-                    "id": "4VkVRWWY",
+                    "id": "11791e82-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-32",
+                    "humanReadableId": "driver-ejection",
                     "answerOptions": [
                         {
                             "name": "Not Ejected",
@@ -809,12 +809,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Speeding-Related?",
-                    "id": "EVbRTEnb",
+                    "id": "11791e83-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-33",
+                    "humanReadableId": "driver-speeding",
                     "answerOptions": [
                         {
                             "name": "No",
@@ -841,12 +841,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "4.0",
                     "question": "Driver Actions at Time of Crash",
-                    "id": "qWDsDeEY",
+                    "id": "11791e84-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdownMultiSelect",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-9",
+                    "humanReadableId": "driver-actions",
                     "helperText": "(choose up to 4)",
                     "answerOptions": [
                         {
@@ -930,12 +930,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Violation Codes",
-                    "id": "SJP0mZrJ",
+                    "id": "11791e85-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-35",
+                    "humanReadableId": "driver-violationCodes",
                     "helperText": "(choose up to 2)",
                     "tooltip": "Select the two most critical",
                     "answerOptions": [
@@ -952,22 +952,22 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Distracted By",
-                    "id": "lUTQ3LEq",
+                    "id": "11791e86-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-36"
+                    "humanReadableId": "driver-distracted"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Action",
-                    "id": "0Mat8q8u",
+                    "id": "11791e87-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-37",
+                    "humanReadableId": "driver-distractedAction",
                     "answerOptions": [
                         {
                             "name": "Not Distracted",
@@ -994,32 +994,37 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Source",
-                    "id": "d3ZHeqkH",
+                    "id": "11791e88-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-38",
+                    "humanReadableId": "driver-distractionSource",
                     "questionDependency": [
                         {
-                            "dependencyUid": "0Mat8q8u",
-                            "dependencyOptionCode": "0.0"
+                            "dependencyName": "driver-distractedAction",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791e87-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "0Mat8q8u",
-                            "dependencyOptionCode": "1.0"
+                            "dependencyName": "driver-distractedAction",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791e87-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "0Mat8q8u",
-                            "dependencyOptionCode": "2.0"
+                            "dependencyName": "driver-distractedAction",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791e87-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "0Mat8q8u",
-                            "dependencyOptionCode": "3.0"
+                            "dependencyName": "driver-distractedAction",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791e87-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "0Mat8q8u",
-                            "dependencyOptionCode": "4.0"
+                            "dependencyName": "driver-distractedAction",
+                            "dependencyOptionCode": "4.0",
+                            "dependencyUuid": "11791e87-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ],
                     "answerOptions": [
@@ -1064,12 +1069,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "2.0",
                     "question": "Condition at Time of the Crash",
-                    "id": "e0ILJxlx",
+                    "id": "11791e89-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdownMultiSelect",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-39",
+                    "humanReadableId": "driver-condition",
                     "helperText": "(choose up to 2)",
                     "answerOptions": [
                         {
@@ -1121,12 +1126,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Incident Responder?",
-                    "id": "xwtnXE2c",
+                    "id": "11791e8b-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-10",
+                    "humanReadableId": "driver-incidentResponder",
                     "answerOptions": [
                         {
                             "name": "No",
@@ -1165,12 +1170,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Injury Status",
-                    "id": "TNNilZo2",
+                    "id": "11791e8c-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-42",
+                    "humanReadableId": "driver-injuryStatus",
                     "tooltip": "Fatal Injury: an injury that results in death within 30 days after the motor vehicle crash in which the injury occured. If the person did not die at the scene, but died within 30 days of the motor vehicle crash in which the injury occured, the injury classification should be changed to Fatal Injury. \n\nSuspected Serious Injury: any injury other than fatal which results in one or more of the following: severe laceration reuslting in exposure of underlying tissues/muscles/organs or resulting in significant loss of blood; broken or distorted arm or leg; crush injuries; suspected skull, chest, or abdominal injury other than bruises or minor lacerations; significant burns (second and third degree burns over 10% or more of the body); unconsciousness when taken from crash scene; paralysis\n\nSuspected Minor Injury: any injury that is evident at the scene of the crash, other than fatal or serious injuries. Examples include lump on the head, abrasions, bruises, minor lacerations (cuts on the skin surface with minimal bleeding and no exposure of deeper tissue/muscle).\n\nPossible Injury: any injury reported or claimed which is not fatal, suspected  serious, or suspected minor. Examples include momentary loss of consciousness, claim of injury, limping, or complaint of pain or nausea. These are reported by the person or indicated by their behavior, but no wounds or injuries are readily evident.\n\nNo Apparent Injury: there is no reason to believe that the person received any bodily harm from the motor vehicle crash. There is no physical evidence of injury and the person does not report any change in normal function.\n",
                     "answerOptions": [
                         {
@@ -1198,13 +1203,40 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Injury Area",
-                    "id": "yLSbTFSX",
+                    "id": "11791e8d-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-44",
+                    "humanReadableId": "driver-injuryArea",
                     "tooltip": "Select the primary or most obvious area of the person's body injured during the crash. This will be typically be indicated in a matrix or narrative in the EMS records or as a hospital discharge code (ICD-9-CM or ICD-10, if implemented) in the emergency department, hospital or insurance records.",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "4.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ],
                     "answerOptions": [
                         {
                             "name": "Head",
@@ -1247,23 +1279,77 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Injury Diagnosis",
-                    "id": "qcL5HdYm",
+                    "id": "11791e8e-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "largeTextField",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-45",
-                    "tooltip": "Describe the injury."
+                    "humanReadableId": "driver-injuryDiagnosis",
+                    "tooltip": "Describe the injury.",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "4.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Injury Severity",
-                    "id": "gklh2mdF",
+                    "id": "11791e8f-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-46",
+                    "humanReadableId": "driver-injurySeverity",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "4.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ],
                     "answerOptions": [
                         {
                             "name": "Fatal",
@@ -1294,64 +1380,74 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Transported to First Medical Facility By",
-                    "id": "N4korfDu",
+                    "id": "11791e90-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-46",
+                    "humanReadableId": "driver-transport",
                     "questionDependency": [
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "0.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "1.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "2.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "3.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "4.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "4.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ]
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Source of Transport to First Medical Facility",
-                    "id": "vCowZjea",
+                    "id": "11791e91-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-47",
+                    "humanReadableId": "driver-transportSource",
                     "questionDependency": [
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "0.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "1.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "2.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "3.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "4.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "4.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ],
                     "answerOptions": [
@@ -1384,96 +1480,111 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "EMS Response Agency Identifier",
-                    "id": "jqLkcNdf",
+                    "id": "11791e92-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-48",
+                    "humanReadableId": "driver-EMSIdentifier",
                     "questionDependency": [
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "0.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "1.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "2.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "3.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "4.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "4.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ]
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "EMS Response Run Number",
-                    "id": "RjEUrhoq",
+                    "id": "11791e93-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-49",
+                    "humanReadableId": "driver-EMSRunNum",
                     "questionDependency": [
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "0.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "1.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "2.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "3.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "4.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "4.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ]
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Medical Facility Receiving Patient",
-                    "id": "IjFlnCUa",
+                    "id": "11791e94-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-50",
+                    "humanReadableId": "driver-medicalFacility",
                     "questionDependency": [
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "0.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "1.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "2.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "3.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "TNNilZo2",
-                            "dependencyOptionCode": "4.0"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "4.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ]
                 }
@@ -1488,88 +1599,104 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "CMV License Status and Compliance with CDL Endorsements",
-                    "id": "fWq06Row",
+                    "id": "11791e96-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-52",
+                    "humanReadableId": "driver-CMV",
                     "questionDependency": [
                         {
-                            "dependencyUid": "ovVntlnU",
-                            "dependencyOptionCode": "0.0"
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "ovVntlnU",
-                            "dependencyOptionCode": "1.0"
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "ovVntlnU",
-                            "dependencyOptionCode": "2.0"
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "ovVntlnU",
-                            "dependencyOptionCode": "3.0"
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "CynWHwxP",
-                            "dependencyOptionCode": "0.0"
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "CynWHwxP",
-                            "dependencyOptionCode": "1.0"
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "CynWHwxP",
-                            "dependencyOptionCode": "2.0"
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "sM5HGjcV",
-                            "dependencyOptionCode": "1"
+                            "dependencyName": "vehicle-hazardousMaterials",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec6-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ]
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "CMV License Status",
-                    "id": "UiP7Gr7i",
+                    "id": "11791e97-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-11",
+                    "humanReadableId": "driver-CMVStatus",
                     "questionDependency": [
                         {
-                            "dependencyUid": "ovVntlnU",
-                            "dependencyOptionCode": "0.0"
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "ovVntlnU",
-                            "dependencyOptionCode": "1.0"
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "ovVntlnU",
-                            "dependencyOptionCode": "2.0"
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "ovVntlnU",
-                            "dependencyOptionCode": "3.0"
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "CynWHwxP",
-                            "dependencyOptionCode": "0.0"
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "CynWHwxP",
-                            "dependencyOptionCode": "1.0"
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "CynWHwxP",
-                            "dependencyOptionCode": "2.0"
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "sM5HGjcV",
-                            "dependencyOptionCode": "1"
+                            "dependencyName": "vehicle-hazardousMaterials",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec6-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ],
                     "answerOptions": [
@@ -1618,44 +1745,52 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Compliance with CDL Endorsement(s)",
-                    "id": "juLmQZEB",
+                    "id": "11791e98-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-54",
+                    "humanReadableId": "driver-complianceCDL",
                     "questionDependency": [
                         {
-                            "dependencyUid": "ovVntlnU",
-                            "dependencyOptionCode": "0.0"
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "ovVntlnU",
-                            "dependencyOptionCode": "1.0"
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "ovVntlnU",
-                            "dependencyOptionCode": "2.0"
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "ovVntlnU",
-                            "dependencyOptionCode": "3.0"
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "CynWHwxP",
-                            "dependencyOptionCode": "0.0"
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "CynWHwxP",
-                            "dependencyOptionCode": "1.0"
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "CynWHwxP",
-                            "dependencyOptionCode": "2.0"
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "sM5HGjcV",
-                            "dependencyOptionCode": "1"
+                            "dependencyName": "vehicle-hazardousMaterials",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec6-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ],
                     "answerOptions": [
@@ -1692,12 +1827,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Law Enforcement Suspects Alcohol Use",
-                    "id": "9cFGpRmQ",
+                    "id": "11791e9a-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-56",
+                    "humanReadableId": "driver-suspectedAlcohol",
                     "answerOptions": [
                         {
                             "name": "No",
@@ -1716,16 +1851,27 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Alcohol Test Status",
-                    "id": "uTZ8u8an",
+                    "id": "11791e9b-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-57",
+                    "humanReadableId": "driver-alcoholTestStatus",
                     "questionDependency": [
                         {
-                            "dependencyUid": "9cFGpRmQ",
-                            "dependencyOptionCode": "1"
+                            "dependencyName": "driver-suspectedAlcohol",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791e9a-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "driver-suspectedAlcohol",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791e9a-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "driver-suspectedAlcohol",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791e9a-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ],
                     "answerOptions": [
@@ -1744,7 +1890,253 @@ export const questions = {
                         {
                             "name": "Unknown if Tested",
                             "id": "3.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "1.0",
+                    "question": "Type of Alcohol Test",
+                    "id": "11791e9c-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "multiButton",
+                    "display": [
+                        "driver"
+                    ],
+                    "humanReadableId": "driver-alcoholTestType",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "driver-suspectedAlcohol",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791e9a-52dc-11ec-9691-d109d8c8abd2"
                         },
+                        {
+                            "dependencyName": "driver-suspectedAlcohol",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791e9a-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "driver-suspectedAlcohol",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791e9a-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ],
+                    "answerOptions": [
+                        {
+                            "name": "Not Applicable (Test Not Given)",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Blood",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Breath",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Urine",
+                            "id": "3.0"
+                        },
+                        {
+                            "name": "Other",
+                            "id": "4.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "1.0",
+                    "question": "BAC Test Result",
+                    "id": "11791e9d-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBoxWithSelection",
+                    "display": [
+                        "driver"
+                    ],
+                    "humanReadableId": "driver-BACTestResult",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "driver-suspectedAlcohol",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791e9a-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "driver-suspectedAlcohol",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791e9a-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "driver-suspectedAlcohol",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791e9a-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ],
+                    "answerOptions": [
+                        {
+                            "name": "Pending",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Not Applicable (Test Not Given)",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Unknown",
+                            "id": "2.0"
+                        }
+                    ]
+                }
+            ],
+            "display": [
+                "driver"
+            ]
+        },
+        {
+            "sectionTitle": "Drug Section",
+            "questions": [
+                {
+                    "numOptionsAllowed": "1.0",
+                    "question": "Law Enforcement Suspects Drug Use",
+                    "id": "11791e9f-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "multiButton",
+                    "display": [
+                        "driver"
+                    ],
+                    "humanReadableId": "driver-suspectedDrug",
+                    "answerOptions": [
+                        {
+                            "name": "No",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Yes",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Unknown",
+                            "id": "2.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "1.0",
+                    "question": "Drug Test Status",
+                    "id": "11791ea0-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "multiButton",
+                    "display": [
+                        "driver"
+                    ],
+                    "humanReadableId": "driver-drugTestStatus",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "driver-suspectedDrug",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791e9f-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "driver-suspectedDrug",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791e9f-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "driver-suspectedDrug",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791e9f-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ],
+                    "answerOptions": [
+                        {
+                            "name": "Test Not Given",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Test Given",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Test Refused",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Unknown if Tested",
+                            "id": "3.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "1.0",
+                    "question": "Type of Drug Test",
+                    "id": "11791ea1-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "multiButton",
+                    "display": [
+                        "driver"
+                    ],
+                    "humanReadableId": "driver-drugTestType",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "driver-suspectedDrug",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791e9f-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "driver-suspectedDrug",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791e9f-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "driver-suspectedDrug",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791e9f-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ],
+                    "answerOptions": [
+                        {
+                            "name": "Blood",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Saliva",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Urine",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Not Applicable (Test Not Given)",
+                            "id": "3.0"
+                        },
+                        {
+                            "name": "Other",
+                            "id": "4.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "4.0",
+                    "question": "Drug Test Result",
+                    "id": "11791ea2-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "dropdownMultiSelect",
+                    "display": [
+                        "driver"
+                    ],
+                    "humanReadableId": "driver-drugTestResult",
+                    "helperText": "(choose up to 4)",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "driver-suspectedDrug",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791e9f-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "driver-suspectedDrug",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791e9f-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "driver-suspectedDrug",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791e9f-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ],
+                    "answerOptions": [
                         {
                             "name": "Negative",
                             "id": "0.0"
@@ -1784,7 +2176,254 @@ export const questions = {
                         {
                             "name": "Unknown",
                             "id": "9.0"
+                        }
+                    ]
+                }
+            ],
+            "display": [
+                "driver"
+            ]
+        },
+        {
+            "sectionTitle": "Fataiity-Related Information",
+            "questions": [
+                {
+                    "numOptionsAllowed": "1.0",
+                    "question": "Attempted Avoidance Maneuver",
+                    "id": "11791ea4-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "dropdown",
+                    "display": [
+                        "driver"
+                    ],
+                    "humanReadableId": "driver-attemptedAvoidance",
+                    "tooltip": "Movements/actions taken by the driver after the driver realizes there is an impending danger.",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ],
+                    "answerOptions": [
+                        {
+                            "name": "No Driver Present/Unknown if Driver Present",
+                            "id": "0.0"
                         },
+                        {
+                            "name": "Accelerating",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Accelerating and Steering Left",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Accelerating and Steering Right",
+                            "id": "3.0"
+                        },
+                        {
+                            "name": "Braking and Steering Left",
+                            "id": "4.0"
+                        },
+                        {
+                            "name": "Braking and Steering Right",
+                            "id": "5.0"
+                        },
+                        {
+                            "name": "Braking (Lockup)",
+                            "id": "6.0"
+                        },
+                        {
+                            "name": "Braking (Lockup Unknown)",
+                            "id": "7.0"
+                        },
+                        {
+                            "name": "Braking (No Lockup)",
+                            "id": "8.0"
+                        },
+                        {
+                            "name": "No Avoidance Maneuver",
+                            "id": "9.0"
+                        },
+                        {
+                            "name": "Releasing Brakes",
+                            "id": "10.0"
+                        },
+                        {
+                            "name": "Steering Left",
+                            "id": "11.0"
+                        },
+                        {
+                            "name": "Steering Right",
+                            "id": "12.0"
+                        },
+                        {
+                            "name": "Other Actions",
+                            "id": "13.0"
+                        },
+                        {
+                            "name": "Unknown",
+                            "id": "14.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Detailed Alcohol Test Information",
+                    "id": "11791ea5-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "questionHeader",
+                    "display": [
+                        "driver"
+                    ],
+                    "humanReadableId": "driver-delatedAlcohol",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "1.0",
+                    "question": "Alcohol Test Type",
+                    "id": "11791ea6-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "dropdown",
+                    "display": [
+                        "driver"
+                    ],
+                    "humanReadableId": "driver-fatalAlcoholTest",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ],
+                    "answerOptions": [
+                        {
+                            "name": "Test Not Given",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Breath Test (AC)",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Blood",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Blood Clot",
+                            "id": "3.0"
+                        },
+                        {
+                            "name": "Blood Plasma/Serum",
+                            "id": "4.0"
+                        },
+                        {
+                            "name": "Liver",
+                            "id": "5.0"
+                        },
+                        {
+                            "name": "Preliminary Breath Test (PBT)",
+                            "id": "6.0"
+                        },
+                        {
+                            "name": "Unknown if Tested",
+                            "id": "7.0"
+                        },
+                        {
+                            "name": "Urine",
+                            "id": "8.0"
+                        },
+                        {
+                            "name": "Vitreous",
+                            "id": "9.0"
+                        },
+                        {
+                            "name": "Other Test Type",
+                            "id": "10.0"
+                        },
+                        {
+                            "name": "Unknown Test Type",
+                            "id": "11.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "1.0",
+                    "question": "Alcohol Test Result",
+                    "id": "11791ea7-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBoxWithSelection",
+                    "display": [
+                        "driver"
+                    ],
+                    "humanReadableId": "driver-fatalAlcoholResult",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ],
+                    "answerOptions": [
+                        {
+                            "name": "0.94 or Greater",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Test Not Given",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "AC Test Performed, Results Unknown",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Positive Reading with No Actual Value",
+                            "id": "3.0"
+                        },
+                        {
+                            "name": "Unknown if Tested",
+                            "id": "4.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Detailed Drug Test Information",
+                    "id": "11791ea8-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "questionHeader",
+                    "display": [
+                        "driver"
+                    ],
+                    "humanReadableId": "driver-deltailedDrug",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "1.0",
+                    "question": "Drug Test Type",
+                    "id": "11791ea9-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "dropdown",
+                    "display": [
+                        "driver"
+                    ],
+                    "humanReadableId": "driver-fatalDrugTest",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ],
+                    "answerOptions": [
                         {
                             "name": "Test Not Given",
                             "id": "0.0"
@@ -1817,40 +2456,21 @@ export const questions = {
                 },
                 {
                     "numOptionsAllowed": "1.0",
-                    "question": "Type of Alcohol Test",
-                    "id": "Um6CdyUJ",
-                    "answerType": "multiButton",
+                    "question": "Result of Drug Test",
+                    "id": "11791eaa-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "dropdown",
                     "display": [
                         "driver"
                     ],
-                    "humanReadableId": "driver-58",
+                    "humanReadableId": "driver-fatalDrugResult",
                     "questionDependency": [
                         {
-                            "dependencyUid": "9cFGpRmQ",
-                            "dependencyOptionCode": "1"
+                            "dependencyName": "driver-injuryStatus",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791e8c-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ],
                     "answerOptions": [
-                        {
-                            "name": "Not Applicable (Test Not Given)",
-                            "id": "0.0"
-                        },
-                        {
-                            "name": "Blood",
-                            "id": "1.0"
-                        },
-                        {
-                            "name": "Breath",
-                            "id": "2.0"
-                        },
-                        {
-                            "name": "Urine",
-                            "id": "3.0"
-                        },
-                        {
-                            "name": "Other",
-                            "id": "4.0"
-                        },
                         {
                             "name": "Test Not Given",
                             "id": "0.0"
@@ -1908,291 +2528,6 @@ export const questions = {
                             "id": "13.0"
                         }
                     ]
-                },
-                {
-                    "numOptionsAllowed": "1.0",
-                    "question": "BAC Test Result",
-                    "id": "xew9fNfA",
-                    "answerType": "openTextBoxWithSelection",
-                    "display": [
-                        "driver"
-                    ],
-                    "humanReadableId": "driver-56",
-                    "questionDependency": [
-                        {
-                            "dependencyUid": "9cFGpRmQ",
-                            "dependencyOptionCode": "1"
-                        }
-                    ],
-                    "answerOptions": [
-                        {
-                            "name": "Pending",
-                            "id": "0.0"
-                        },
-                        {
-                            "name": "Not Applicable (Test Not Given)",
-                            "id": "1.0"
-                        },
-                        {
-                            "name": "Unknown",
-                            "id": "2.0"
-                        }
-                    ]
-                }
-            ],
-            "display": [
-                "driver"
-            ]
-        },
-        {
-            "sectionTitle": "Drug Section",
-            "questions": [
-                {
-                    "numOptionsAllowed": "1.0",
-                    "question": "Law Enforcement Suspects Drug Use",
-                    "id": "qlTVIWWS",
-                    "answerType": "multiButton",
-                    "display": [
-                        "driver"
-                    ],
-                    "humanReadableId": "driver-61",
-                    "answerOptions": [
-                        {
-                            "name": "No",
-                            "id": "0.0"
-                        },
-                        {
-                            "name": "Yes",
-                            "id": "1.0"
-                        },
-                        {
-                            "name": "Unknown",
-                            "id": "2.0"
-                        },
-                        {
-                            "name": "Test Not Given",
-                            "id": "0.0"
-                        },
-                        {
-                            "name": "Breath Test (AC)",
-                            "id": "1.0"
-                        },
-                        {
-                            "name": "Blood",
-                            "id": "2.0"
-                        },
-                        {
-                            "name": "Blood Clot",
-                            "id": "3.0"
-                        },
-                        {
-                            "name": "Blood Plasma/Serum",
-                            "id": "4.0"
-                        },
-                        {
-                            "name": "Liver",
-                            "id": "5.0"
-                        },
-                        {
-                            "name": "Preliminary Breath Test (PBT)",
-                            "id": "6.0"
-                        },
-                        {
-                            "name": "Unknown if Tested",
-                            "id": "7.0"
-                        },
-                        {
-                            "name": "Urine",
-                            "id": "8.0"
-                        },
-                        {
-                            "name": "Vitreous",
-                            "id": "9.0"
-                        },
-                        {
-                            "name": "Other Test Type",
-                            "id": "10.0"
-                        },
-                        {
-                            "name": "Unknown Test Type",
-                            "id": "11.0"
-                        }
-                    ]
-                },
-                {
-                    "numOptionsAllowed": "1.0",
-                    "question": "Drug Test Status",
-                    "id": "nCXTPsU5",
-                    "answerType": "multiButton",
-                    "display": [
-                        "driver"
-                    ],
-                    "humanReadableId": "driver-12",
-                    "questionDependency": [
-                        {
-                            "dependencyUid": "qlTVIWWS",
-                            "dependencyOptionCode": "1"
-                        }
-                    ],
-                    "answerOptions": [
-                        {
-                            "name": "Test Not Given",
-                            "id": "0.0"
-                        },
-                        {
-                            "name": "Test Given",
-                            "id": "1.0"
-                        },
-                        {
-                            "name": "Test Refused",
-                            "id": "2.0"
-                        },
-                        {
-                            "name": "Unknown if Tested",
-                            "id": "3.0"
-                        }
-                    ]
-                },
-                {
-                    "numOptionsAllowed": "1.0",
-                    "question": "Type of Drug Test",
-                    "id": "QUYxXsUT",
-                    "answerType": "multiButton",
-                    "display": [
-                        "driver"
-                    ],
-                    "humanReadableId": "driver-63",
-                    "questionDependency": [
-                        {
-                            "dependencyUid": "qlTVIWWS",
-                            "dependencyOptionCode": "1"
-                        }
-                    ],
-                    "answerOptions": [
-                        {
-                            "name": "Blood",
-                            "id": "0.0"
-                        },
-                        {
-                            "name": "Saliva",
-                            "id": "1.0"
-                        },
-                        {
-                            "name": "Urine",
-                            "id": "2.0"
-                        },
-                        {
-                            "name": "Not Applicable (Test Not Given)",
-                            "id": "3.0"
-                        },
-                        {
-                            "name": "Other",
-                            "id": "4.0"
-                        }
-                    ]
-                },
-                {
-                    "numOptionsAllowed": "4.0",
-                    "question": "Drug Test Result",
-                    "id": "uTZ8u8an",
-                    "answerType": "dropdownMultiSelect",
-                    "display": [
-                        "driver"
-                    ],
-                    "humanReadableId": "driver-64",
-                    "helperText": "(choose up to 4)",
-                    "questionDependency": [
-                        {
-                            "dependencyUid": "qlTVIWWS",
-                            "dependencyOptionCode": "1"
-                        }
-                    ],
-                    "answerOptions": [
-                        {
-                            "name": "Test Not Given",
-                            "id": "0.0"
-                        },
-                        {
-                            "name": "Test Given",
-                            "id": "1.0"
-                        },
-                        {
-                            "name": "Test Refused",
-                            "id": "2.0"
-                        },
-                        {
-                            "name": "Unknown if Tested",
-                            "id": "3.0"
-                        },
-                        {
-                            "name": "Negative",
-                            "id": "0.0"
-                        },
-                        {
-                            "name": "Amphetamine",
-                            "id": "1.0"
-                        },
-                        {
-                            "name": "Cocaine",
-                            "id": "2.0"
-                        },
-                        {
-                            "name": "Marijuana",
-                            "id": "3.0"
-                        },
-                        {
-                            "name": "Opiate",
-                            "id": "4.0"
-                        },
-                        {
-                            "name": "Other Controlled Substance",
-                            "id": "5.0"
-                        },
-                        {
-                            "name": "PCP",
-                            "id": "6.0"
-                        },
-                        {
-                            "name": "Other Drug (excludes post-crash drugs)",
-                            "id": "7.0"
-                        },
-                        {
-                            "name": "Not Applicable (Test Not Given)",
-                            "id": "8.0"
-                        },
-                        {
-                            "name": "Unknown",
-                            "id": "9.0"
-                        },
-                        {
-                            "name": "Test Not Given",
-                            "id": "0.0"
-                        },
-                        {
-                            "name": "Blood",
-                            "id": "1.0"
-                        },
-                        {
-                            "name": "Both Blood and Urine",
-                            "id": "2.0"
-                        },
-                        {
-                            "name": "Unknown Test Type",
-                            "id": "3.0"
-                        },
-                        {
-                            "name": "Urine",
-                            "id": "4.0"
-                        },
-                        {
-                            "name": "Other Test Type",
-                            "id": "5.0"
-                        },
-                        {
-                            "name": "Unknown if Tested",
-                            "id": "6.0"
-                        }
-                    ]
                 }
             ],
             "display": [
@@ -2205,102 +2540,102 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "First Name",
-                    "id": "YyQ6jMwd",
+                    "id": "11791eac-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-1"
+                    "humanReadableId": "vehicle-ownerFirst"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Middle Initial",
-                    "id": "SulL32si",
+                    "id": "11791ead-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-2"
+                    "humanReadableId": "vehicle-ownerMiddle"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Last Name",
-                    "id": "zOGjRlMJ",
+                    "id": "11791eae-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-3"
+                    "humanReadableId": "vehicle-ownerLast"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Street Address 1",
-                    "id": "ywUJNXkj",
+                    "id": "11791eaf-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-4"
+                    "humanReadableId": "vehicle-ownerStreet1"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Street Address 2",
-                    "id": "ZA66gCFK",
+                    "id": "11791eb0-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-4"
+                    "humanReadableId": "vehicle-ownerStreet2"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "City/Town",
-                    "id": "4G5ht6pl",
+                    "id": "11791eb1-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-6"
+                    "humanReadableId": "vehicle-ownerCity"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "State",
-                    "id": "3g8Oxu93",
+                    "id": "11791eb2-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-7"
+                    "humanReadableId": "vehicle-ownerState"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "ZIP Code",
-                    "id": "crxPGHSm",
+                    "id": "11791eb3-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-8"
+                    "humanReadableId": "vehicle-ownerZIP"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Insurance Information",
-                    "id": "yuQ3Zjt2",
+                    "id": "11791eb4-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-9"
+                    "humanReadableId": "vehicle-ownerInsurance"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Insurance Company Name",
-                    "id": "TDkAb1u9",
+                    "id": "11791eb5-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBoxWithSelection",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-10",
+                    "humanReadableId": "vehicle-insuranceCompany",
                     "answerOptions": [
                         {
                             "name": "Unknown",
@@ -2311,12 +2646,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "NAIC #",
-                    "id": "iWGTReJ5",
+                    "id": "11791eb6-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBoxWithSelection",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-11",
+                    "humanReadableId": "vehicle-NAIC",
                     "answerOptions": [
                         {
                             "name": "Unknown",
@@ -2327,12 +2662,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Policy #",
-                    "id": "RGPLYKWA",
+                    "id": "11791eb7-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBoxWithSelection",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-12",
+                    "humanReadableId": "vehicle-policy",
                     "answerOptions": [
                         {
                             "name": "Unknown",
@@ -2351,24 +2686,23 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Vehicle Identification Number (VIN)",
-                    "id": "Bw7d2KTr",
-                    "answerType": "advancedOpenTextBox",
+                    "id": "11791eb9-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-14",
-                    "tooltip": "The VIN can often be found on the lower-left corner of the dashboard, in front of the steering wheel.",
-                    "autoMethod": "VINCamera"
+                    "humanReadableId": "vehicle-VIN",
+                    "tooltip": "The VIN can often be found on the lower-left corner of the dashboard, in front of the steering wheel."
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Motor Vehicle Unit Type ",
-                    "id": "Dpk0wqnI",
+                    "id": "11791eba-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-15",
+                    "humanReadableId": "vehicle-motorUnitType",
                     "answerOptions": [
                         {
                             "name": "Motor Vehicle in Transport",
@@ -2387,98 +2721,97 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Motor Vehicle Registration State and Year",
-                    "id": "sXvB0sJf",
+                    "id": "11791ebb-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-16",
+                    "humanReadableId": "vehicle-motorRegistration",
                     "tooltip": "The category indicating the general configuration or shape of a motor vehicle distinguished by characteristics such as number of doors, rows of seats, windows, or roof line."
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Identifier",
-                    "id": "d7zJ5NIq",
+                    "id": "11791ebc-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-17",
+                    "humanReadableId": "vehicle-identifier",
                     "helperText": "Might be zip code",
                     "tooltip": "No Driver Present, State Identifier, Unknown"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Year of Motor Vehicle Registration",
-                    "id": "QoX1IOdG",
+                    "id": "11791ebd-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-18",
+                    "humanReadableId": "vehicle-yearRegistration",
                     "helperText": "Format: YYYY"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Motor Vehicle License Plate Number",
-                    "id": "vDnyDl5t",
-                    "answerType": "advancedOpenTextBox",
+                    "id": "11791ebe-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-19",
-                    "autoMethod": "plateCamera"
+                    "humanReadableId": "vehicle-licensePlate"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Motor Vehicle Make",
-                    "id": "eZglw8FV",
+                    "id": "11791ebf-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-20"
+                    "humanReadableId": "vehicle-make"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Motor Vehicle Model",
-                    "id": "29h5OiPC",
+                    "id": "11791ec0-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-21"
+                    "humanReadableId": "vehicle-model"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Motor Vehicle Model Year",
-                    "id": "C0rbnXHC",
+                    "id": "11791ec1-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-22",
+                    "humanReadableId": "vehicle-modelYear",
                     "helperText": "Format: YYYY"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Motor Vehicle Body Type Category",
-                    "id": "IOCCjh0h",
+                    "id": "11791ec2-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-23"
+                    "humanReadableId": "vehicle-motorBodyType"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Body Type Category",
-                    "id": "MMkwgaog",
+                    "id": "11791ec3-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-24",
+                    "humanReadableId": "vehicle-bodyType",
                     "tooltip": "What is the general configuration or shape of a motor vehicle? You should use characteristics like the number of doors, rows of seats, windows, roof line, etc. to distinguish between different body types. Personal conveyances, like skateboards, motorized toy cars, and wheelchairs are not considered motor vehicles.",
                     "answerOptions": [
                         {
@@ -2610,12 +2943,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Vehicle Size",
-                    "id": "CynWHwxP",
+                    "id": "11791ec4-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-25",
+                    "humanReadableId": "vehicle-size",
                     "tooltip": "GVWR is used for single-unit trucks and other body types. GCWR is used for combination trucks or any vehicle with a trailing unit",
                     "answerOptions": [
                         {
@@ -2635,12 +2968,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Number of Trailing Units",
-                    "id": "ovVntlnU",
+                    "id": "11791ec5-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-26",
+                    "humanReadableId": "vehicle-numTrailingUnits",
                     "tooltip": "The number of trailers attached to this vehicle",
                     "answerOptions": [
                         {
@@ -2664,12 +2997,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Did this motor vehicle display a hazardous materials (HM) placard?",
-                    "id": "sM5HGjcV",
+                    "id": "11791ec6-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-27",
+                    "humanReadableId": "vehicle-hazardousMaterials",
                     "answerOptions": [
                         {
                             "name": "No",
@@ -2684,33 +3017,33 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Total Occupants in Motor Vehicle",
-                    "id": "CTfb8pdV",
+                    "id": "11791ec7-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "numberButton",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-28"
+                    "humanReadableId": "vehicle-occupants"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Special Function of Motor Vehicle in Transport",
-                    "id": "4vrmnvfC",
+                    "id": "11791ec8-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-29",
+                    "humanReadableId": "vehicle-specialFunction",
                     "tooltip": "What was the special function (if any) that this vehicle was serving (regardless of whether the function is marked on the vehicle) at the time of the crash? For example, was the vehicle acting as a school bus, even if it is not actually marked as a school bus? Buses are any motor vehicles with seats to transport nine (9) or more people, including the driver seat, but not including vans owned and operated for personal use."
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Emergency Motor Vehicle Use",
-                    "id": "CFa8RCtt",
+                    "id": "11791ec9-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-30",
+                    "humanReadableId": "vehicle-emergencyUse",
                     "answerOptions": [
                         {
                             "name": "Not Applicable",
@@ -2741,12 +3074,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Motor Vehicle Posted/ Statutory Speed Limit",
-                    "id": "wAqrAfiG",
+                    "id": "11791eca-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-31",
+                    "humanReadableId": "vehicle-speedLimit",
                     "tooltip": "Must be divisble by 5. If unknown enter 99. If not applicable enter 97."
                 }
             ],
@@ -2760,12 +3093,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Direction of Travel Before Crash",
-                    "id": "CP4soemD",
+                    "id": "11791ecc-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-33",
+                    "humanReadableId": "vehicle-directionBefore",
                     "tooltip": "Note that this is not a compass direction, but a direction consistent with the designated direction of the road. For example, the direction of a State-designated North-South highway must be either northbound or southbound even though a motor vehicle may have been traveling due east as a result of a short segment of the highway having an east-west orientation.",
                     "answerOptions": [
                         {
@@ -2797,22 +3130,22 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Trafficway Description",
-                    "id": "Ahz6r67I",
+                    "id": "11791ecd-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-34"
+                    "humanReadableId": "vehicle-trafficway"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Travel Directions",
-                    "id": "udnyu4F5",
+                    "id": "11791ece-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-35",
+                    "humanReadableId": "vehicle-travelDirections",
                     "answerOptions": [
                         {
                             "name": "One-Way",
@@ -2827,12 +3160,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Divided?",
-                    "id": "u5KrpsMu",
+                    "id": "11791ecf-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-36",
+                    "humanReadableId": "vehicle-divided",
                     "answerOptions": [
                         {
                             "name": "Not Divided",
@@ -2863,12 +3196,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Barrier Type",
-                    "id": "4P4o8TWH",
+                    "id": "11791ed0-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-37",
+                    "humanReadableId": "vehicle-barrierType",
                     "answerOptions": [
                         {
                             "name": "No Barrier",
@@ -2899,12 +3232,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "HOV/HOT Lanes",
-                    "id": "Gk088QR4",
+                    "id": "11791ed1-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-38",
+                    "humanReadableId": "vehicle-hovHotLanes",
                     "tooltip": "High occupancy vehicle/high occupancy toll lane",
                     "answerOptions": [
                         {
@@ -2924,24 +3257,27 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Crash Related to HOV/HOT Lane?",
-                    "id": "Uzw63nI0",
+                    "id": "11791ed2-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-39",
+                    "humanReadableId": "vehicle-crashHovHotRelated",
                     "questionDependency": [
                         {
-                            "dependencyUid": "Gk088QR4",
-                            "dependencyOptionCode": "0.0"
+                            "dependencyName": "vehicle-hovHotLanes",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ed1-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "Gk088QR4",
-                            "dependencyOptionCode": "1.0"
+                            "dependencyName": "vehicle-hovHotLanes",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ed1-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "Gk088QR4",
-                            "dependencyOptionCode": "2.0"
+                            "dependencyName": "vehicle-hovHotLanes",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ed1-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ],
                     "answerOptions": [
@@ -2958,54 +3294,54 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Total Lanes in Roadway",
-                    "id": "iTScm08u",
+                    "id": "11791ed3-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-40"
+                    "humanReadableId": "vehicle-totalLanes"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Enter the total through lanes, excluding auxiliary lanes.",
-                    "id": "FdF7XvAQ",
+                    "id": "11791ed4-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "numberButton",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-41",
+                    "humanReadableId": "vehicle-throughLanes",
                     "tooltip": "If the traffic way is divided, only count the total through lanes in the vehicle's direction."
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Enter the total auxiliary lanes",
-                    "id": "JwQN2ENk",
+                    "id": "11791ed5-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "numberButton",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-42",
+                    "humanReadableId": "vehicle-auxillaryLanes",
                     "tooltip": "If the traffic way is divided, only count the total through lanes in the vehicle's direction."
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Roadway Alignment and Grade",
-                    "id": "nuD8IERF",
+                    "id": "11791ed6-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-43"
+                    "humanReadableId": "vehicle-roadwayAlignmentGrade"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Horizontal Alignment",
-                    "id": "UigT0ygk",
+                    "id": "11791ed7-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-44",
+                    "humanReadableId": "vehicle-horizontalAlignment",
                     "answerOptions": [
                         {
                             "name": "Straight",
@@ -3024,12 +3360,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Grade",
-                    "id": "tFYqNzmA",
+                    "id": "11791ed8-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-45",
+                    "humanReadableId": "vehicle-grade",
                     "answerOptions": [
                         {
                             "name": "Level",
@@ -3056,22 +3392,22 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Traffic Control Device (TCD) Type",
-                    "id": "LEx2ZDxu",
+                    "id": "11791ed9-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-46"
+                    "humanReadableId": "vehicle-trafficControl"
                 },
                 {
                     "numOptionsAllowed": "4.0",
                     "question": "TCD Type(s)",
-                    "id": "xBm1Bisf",
+                    "id": "11791eda-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdownMultiSelect",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-47",
+                    "humanReadableId": "vehicle-TCDTypes",
                     "helperText": "(choose up to 4)",
                     "answerOptions": [
                         {
@@ -3191,125 +3527,153 @@ export const questions = {
                 {
                     "numOptionsAllowed": "4.0",
                     "question": "Are any Inoperative or Missing?",
-                    "id": "YLcktHvs",
+                    "id": "11791edb-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdownMultiSelect",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-48",
+                    "humanReadableId": "vehicle-TCDInoperativeMissing",
                     "helperText": "(choose up to 4)",
                     "questionDependency": [
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "0.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "1.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "2.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "3.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "4.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "4.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "5.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "5.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "6.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "6.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "7.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "7.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "8.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "8.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "9.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "9.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "10.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "10.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "11.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "11.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "12.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "12.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "13.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "13.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "14.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "14.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "15.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "15.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "16.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "16.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "17.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "17.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "18.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "18.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "19.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "19.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "20.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "20.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "21.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "21.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "22.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "22.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "23.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "23.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "24.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "24.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "25.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "25.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "26.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "26.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "xBm1Bisf",
-                            "dependencyOptionCode": "27.0"
+                            "dependencyName": "vehicle-TCDTypes",
+                            "dependencyOptionCode": "27.0",
+                            "dependencyUuid": "11791eda-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ],
                     "answerOptions": [
@@ -3438,12 +3802,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Motor Vehicle Maneuver/Action",
-                    "id": "DJ4YPDuQ",
+                    "id": "11791edd-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-50",
+                    "humanReadableId": "vehicle-manueverAction",
                     "answerOptions": [
                         {
                             "name": "Movements Essentially Straight Ahead",
@@ -3510,22 +3874,22 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Vehicle Damage",
-                    "id": "i7hJdGR6",
+                    "id": "11791ede-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-51"
+                    "humanReadableId": "vehicle-damage"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Initial Point of Contact",
-                    "id": "4KpRmZXB",
+                    "id": "11791edf-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-52",
+                    "humanReadableId": "vehicle-initialPointContact",
                     "tooltip": "Provide the approximate contact point on this vehicle associated with this vehicle’s initial harmful event. If there was no collision, select \"Non-Collision\". If the initial harmful event for this vehicle involves striking another vehicle, person, or property (a collision event) because a load/cargo fell from or was propelled by the vehicle, then select \"Cargo Loss\". If the vehicle was not at the scene for the officer to assess the initial point of contact, location of damaged area(s), or resulting extent of amage, then select \"Vehicle Not At Scene\".",
                     "helperImg": "../image/initial_contact.png",
                     "answerOptions": [
@@ -3606,86 +3970,104 @@ export const questions = {
                 {
                     "numOptionsAllowed": "13.0",
                     "question": "Location of Damage Area(s)",
-                    "id": "lZDkbTdw",
+                    "id": "11791ee0-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdownMultiSelect",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-53",
+                    "humanReadableId": "vehicle-damageLocation",
                     "helperText": "(choose up to 13)",
                     "tooltip": "If the vehicle was not at the scene for the officer to assess the initial point of contact, location of damaged area(s), or resulting extent of amage, then select \"Vehicle Not At Scene\".",
                     "questionDependency": [
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "0.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "1.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "2.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "3.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "4.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "4.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "5.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "5.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "6.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "6.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "7.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "7.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "8.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "8.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "9.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "9.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "10.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "10.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "11.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "11.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "12.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "12.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "13.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "13.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "14.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "14.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "15.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "15.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "16.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "16.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "17.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "17.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ],
                     "answerOptions": [
@@ -3762,85 +4144,103 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Resulting Extent of Damage",
-                    "id": "a1fPOVyS",
+                    "id": "11791ee1-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-54",
+                    "humanReadableId": "vehicle-resultingExtentDamage",
                     "tooltip": "If the vehicle was not at the scene for the officer to assess the initial point of contact, location of damaged area(s), or resulting extent of amage, then select \"Vehicle Not At Scene\".",
                     "questionDependency": [
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "0.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "1.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "2.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "3.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "4.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "4.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "5.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "5.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "6.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "6.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "7.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "7.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "8.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "8.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "9.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "9.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "10.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "10.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "11.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "11.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "12.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "12.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "13.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "13.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "14.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "14.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "15.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "15.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "16.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "16.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "4KpRmZXB",
-                            "dependencyOptionCode": "17.0"
+                            "dependencyName": "vehicle-initialPointContact",
+                            "dependencyOptionCode": "17.0",
+                            "dependencyUuid": "11791edf-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ],
                     "answerOptions": [
@@ -3869,12 +4269,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "4.0",
                     "question": "Sequence of Events",
-                    "id": "N1NDCJhB",
+                    "id": "11791ee2-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdownMultiSelect",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-55",
+                    "humanReadableId": "vehicle-sequence",
                     "helperText": "(choose up to 4)",
                     "tooltip": "Describe the sequence of events related to this motor vehicle, including non-harmful events, non-collision harmful events and collision events.",
                     "answerOptions": [
@@ -4087,12 +4487,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Most Harmful Event for this Motor Vehicle",
-                    "id": "9WuImDSX",
+                    "id": "11791ee3-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-56",
+                    "humanReadableId": "vehicle-mostHarmfulEvent",
                     "answerOptions": [
                         {
                             "name": "Cargo/Equipment Loss or Shift",
@@ -4263,12 +4663,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Hit and Run",
-                    "id": "4EHCUQHM",
+                    "id": "11791ee4-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-57",
+                    "humanReadableId": "vehicle-hitRun",
                     "tooltip": "Refers to cases where the vehicle or the driver of the vehicle in transport is a contact vehicle in a crash and departs the scene without stopping to render aid or report the crash.",
                     "answerOptions": [
                         {
@@ -4284,12 +4684,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Towed Due to Disabling Damage",
-                    "id": "pTV8x6So",
+                    "id": "11791ee5-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-58",
+                    "humanReadableId": "vehicle-towed",
                     "tooltip": "Disabling damage is damage to the motor vehicle that is sufficient to require the motor vehicle be towed or carried from the scene.",
                     "answerOptions": [
                         {
@@ -4309,12 +4709,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Contributing Circumstances, Motor Vehicle",
-                    "id": "PzKUFMw0",
+                    "id": "11791ee6-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-59",
+                    "humanReadableId": "vehicle-contributingCircumstances",
                     "tooltip": "Pre-existing motor vehicle defects or maintenance conditions that may have contributed to the crash.",
                     "answerOptions": [
                         {
@@ -4386,22 +4786,22 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Motor Vehicle Automated Driving System(s)",
-                    "id": "QA0BSYIz",
+                    "id": "11791ee7-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-60"
+                    "humanReadableId": "vehicle-automated"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Automated System(s) in Vehicle",
-                    "id": "krQbh0po",
+                    "id": "11791ee8-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-61",
+                    "humanReadableId": "vehicle-automatedSystems",
                     "answerOptions": [
                         {
                             "name": "No",
@@ -4420,19 +4820,20 @@ export const questions = {
                 {
                     "numOptionsAllowed": "5.0",
                     "question": "Automated System Levels in Vehicle",
-                    "id": "d4OE8GnI",
+                    "id": "11791ee9-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-62",
+                    "humanReadableId": "vehicle-automatedSystemLevels",
                     "helperText": "(choose up to 5)",
                     "tooltip": "No Automation: Requires full-time performance of human driver, even when enhanced by warning or intervention systems\nDriver Assistance: Assistance of either steering or acceleration/deceleration using information about the drivng environment, with the expectation that the driver does the rest\nPartial Automation: Driving mode-specific execution by one or more driver assistance systems of both steering and acceleration/deceleration, with the expectation that the driver does the rest\nConditional Automation: Driving mode-specific performance by an automated driving system of all dynamic driving tasks, with the expectation that the human driver will respond appropriately to a request to intervene\nHigh Automation: The driving mode-specific performance by an automated driving system of all aspects of dynamic driving tasks, even if the human driver does not respond appropriately to a request to intervene\nFull automation: The full-time performance by an automated driving system of all aspects of the dynamic driving task under all roadway and environmental conditions that can be managed by a human driver\nDynamic driving task: operational (steering, braking, accelerating, monitoring the vehicle and roadway) and tactical (responding to events, determining when to change lanes, turn, use signals, etc), aspects of the driving task, but not strategic (determining destinations and waypoints)\nDriving mode: type of driving scenario with characteristic dynamic driving task requirements (e.g., expressway merging, high-speed cruising, low speed traffic jam, closed-campus operations, etc.)\nRequest to intervene: notification by the automated driving system to a human driver that they should promptly begin or resume performance of the dynamic driving task\n",
                     "helperImg": "../image/automation_levels.png",
                     "questionDependency": [
                         {
-                            "dependencyUid": "krQbh0po",
-                            "dependencyOptionCode": "1"
+                            "dependencyName": "vehicle-automatedSystems",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ee8-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ],
                     "answerOptions": [
@@ -4473,17 +4874,18 @@ export const questions = {
                 {
                     "numOptionsAllowed": "5.0",
                     "question": "Automated System Levels Engaged at Time of Crash",
-                    "id": "zk6QtmkD",
+                    "id": "11791eea-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "vehicle"
                     ],
-                    "humanReadableId": "vehicle-63",
+                    "humanReadableId": "vehicle-systemsEngaged",
                     "helperText": "(choose up to 5)",
                     "questionDependency": [
                         {
-                            "dependencyUid": "krQbh0po",
-                            "dependencyOptionCode": "1"
+                            "dependencyName": "vehicle-automatedSystems",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ee8-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ],
                     "answerOptions": [
@@ -4527,120 +4929,1875 @@ export const questions = {
             ]
         },
         {
+            "sectionTitle": "Large Vehicles and Hazardous Material Related Information",
+            "questions": [
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Trailer License Plate Number",
+                    "id": "11791eec-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "questionHeader",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-trailerLicensePlate",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "First Trailer Behind Tractor",
+                    "id": "11791eed-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "advancedOpenTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-firstTrailerLicense",
+                    "helperText": "License Plate 1",
+                    "autoMethod": "plateCamera",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Second Trailer Behind Tractor",
+                    "id": "11791eee-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "advancedOpenTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-secondTrailerLicense",
+                    "helperText": "License Plate 2",
+                    "autoMethod": "plateCamera",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Third Trailer Behind Tractor",
+                    "id": "11791eef-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "advancedOpenTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-thirdTrailerLicense",
+                    "helperText": "License Plate 3",
+                    "autoMethod": "plateCamera",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Trailer VIN(s)",
+                    "id": "11791ef0-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "questionHeader",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-trailerVINs",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "First Trailer Behind Tractor",
+                    "id": "11791ef1-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-firstTrailerVin",
+                    "helperText": "VIN 1",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Second Trailer Behind Tractor",
+                    "id": "11791ef2-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-secondTrailerVin",
+                    "helperText": "VIN 2",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Third Trailer Behind Tractor",
+                    "id": "11791ef3-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-thirdTrailerVin",
+                    "helperText": "VIN 3",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Trailer Make(s)",
+                    "id": "11791ef4-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "questionHeader",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-trailerMakes",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "First Trailer Behind Tractor",
+                    "id": "11791ef5-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-firstTrailerMake",
+                    "helperText": "Make 1",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Second Trailer Behind Tractor",
+                    "id": "11791ef6-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-secondTrailerMake",
+                    "helperText": "Make 2",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Third Trailer Behind Tractor",
+                    "id": "11791ef7-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-thirdTrailerMake",
+                    "helperText": "Make 3",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Trailer Model(s)",
+                    "id": "11791ef8-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "questionHeader",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-trailerModels",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "First Trailer Behind Tractor",
+                    "id": "11791ef9-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-firstTrailerModel",
+                    "helperText": "Model 1",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Second Trailer Behind Tractor",
+                    "id": "11791efa-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehile-secondTrailerModel",
+                    "helperText": "Model 2",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Third Trailer Behind Tractor",
+                    "id": "11791efb-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-thirdTrailerModel",
+                    "helperText": "Model 3",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Trailer Model Year(s)",
+                    "id": "11791efc-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "questionHeader",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-trailerModelYears",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "First Trailer Behind Tractor",
+                    "id": "11791efd-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-firstTrailerModelYear",
+                    "helperText": "Year 1",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Second Trailer Behind Tractor",
+                    "id": "11791efe-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-secondTrailerModelYear",
+                    "helperText": "Year 2",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Third Trailer Behind Tractor",
+                    "id": "11791eff-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-thirdTrailerModelYear",
+                    "helperText": "Year 3",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Total Number of Axles",
+                    "id": "11791f00-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "questionHeader",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-numAxles",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-hazardousMaterials",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec6-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Truck Tractor",
+                    "id": "11791f01-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-truckAxles",
+                    "helperText": "Number of axles",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-hazardousMaterials",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec6-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "First Trailer Behind Tractor",
+                    "id": "11791f02-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-firstTrailerAxles",
+                    "helperText": "Number of axles",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Second Trailer Behind Tractor",
+                    "id": "11791f03-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-secondTrailerAxles",
+                    "helperText": "Number of axles",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Third Trailer Behind Tractor",
+                    "id": "11791f04-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-thirdTrailerAxles",
+                    "helperText": "Number of axles",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Motor Carrier Identification",
+                    "id": "11791f05-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "questionHeader",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-motorIdentification",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-hazardousMaterials",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec6-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "1.0",
+                    "question": "Identification Type",
+                    "id": "11791f06-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "multiButton",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-identificationType",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-hazardousMaterials",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec6-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ],
+                    "answerOptions": [
+                        {
+                            "name": "US DOT Number",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "State Number",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Not Applicable",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Unknown/Unable to Determine",
+                            "id": "3.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Country/State Code",
+                    "id": "11791f07-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-countryStateCode",
+                    "tooltip": "Non-US Country Code (e.g. Mexico or Canada) US State Code",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-hazardousMaterials",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec6-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Identification Number",
+                    "id": "11791f08-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-identificationNum",
+                    "tooltip": "US DOT Number - up to 7 digits If not a US DOT Number, include State issued Identification Number and State",
+                    "helperImg": "../image/determine_responsible_carrier.png",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-hazardousMaterials",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec6-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Motor Carrier Name",
+                    "id": "11791f09-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-carrierName",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-hazardousMaterials",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec6-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Motor Carrier Street Address",
+                    "id": "11791f0a-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-carrierStreetAddress",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-hazardousMaterials",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec6-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Motor Carrier City/Town",
+                    "id": "11791f0b-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-carrierCityTown",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-hazardousMaterials",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec6-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Motor Carrier State",
+                    "id": "11791f0c-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-carrierState",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-hazardousMaterials",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec6-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Motor Carrier ZIP Code",
+                    "id": "11791f0d-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-carrierZIP",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-hazardousMaterials",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec6-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "1.0",
+                    "question": "Type of Carrier",
+                    "id": "11791f0e-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "multiButton",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-carrierType",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-hazardousMaterials",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec6-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ],
+                    "answerOptions": [
+                        {
+                            "name": "Interstate Carrier",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Intrastate Carrier",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Not in Commerce/Government",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Not in Commerce/Other Truck or Bus",
+                            "id": "3.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Vehicle Configuration Information",
+                    "id": "11791f0f-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "questionHeader",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-configurationInfo",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-hazardousMaterials",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec6-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "1.0",
+                    "question": "Vehicle Configuration",
+                    "id": "11791f10-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "dropdown",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-configuration",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-hazardousMaterials",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec6-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ],
+                    "answerOptions": [
+                        {
+                            "name": "Vehicle 10,000 lbs. or less placarded for hazardous materials",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Bus/Large Van (seats for 9-15 occupants, including driver)",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Bus (seats more than 15 occupants, including driver)",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Single-Unit Truck (2-axle and GVWR > 10,000 lbs.)",
+                            "id": "3.0"
+                        },
+                        {
+                            "name": "Single-Unit Truck (3 or more axles)",
+                            "id": "4.0"
+                        },
+                        {
+                            "name": "Truck Pulling Trailer(s)",
+                            "id": "5.0"
+                        },
+                        {
+                            "name": "Truck Tractor (Bobtail)",
+                            "id": "6.0"
+                        },
+                        {
+                            "name": "Truck Tractor/Semi-Trailer",
+                            "id": "7.0"
+                        },
+                        {
+                            "name": "Truck Tractor/Double",
+                            "id": "8.0"
+                        },
+                        {
+                            "name": "Truck Tractor/Triple",
+                            "id": "9.0"
+                        },
+                        {
+                            "name": "Truck More Than 10,000 lbs., cannot classify",
+                            "id": "10.0"
+                        },
+                        {
+                            "name": "Unknown",
+                            "id": "11.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "1.0",
+                    "question": "Special Sizing",
+                    "id": "11791f11-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "multiButton",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-specialSizing",
+                    "helperText": "(choose up to 4)",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-hazardousMaterials",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec6-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ],
+                    "answerOptions": [
+                        {
+                            "name": "No special sizing",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Over-height",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Over-length",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Over-weight",
+                            "id": "3.0"
+                        },
+                        {
+                            "name": "Over-width",
+                            "id": "4.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "1.0",
+                    "question": "Permitted?",
+                    "id": "11791f12-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "multiButton",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-permitted",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-numTrailingUnits",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791ec5-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-hazardousMaterials",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec6-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ],
+                    "answerOptions": [
+                        {
+                            "name": "Non-Permitted Load",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Permitted Load",
+                            "id": "1.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "1.0",
+                    "question": "Cargo Body Type",
+                    "id": "11791f13-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "dropdown",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-cargoBodyType",
+                    "helperImg": "../image/cargo_body_types.png",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "vehicle-size",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791ec4-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ],
+                    "answerOptions": [
+                        {
+                            "name": "No Cargo Body (bobtail, light MV with hazardous materials [HM] placard, etc.)",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Bus",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Auto Transporter",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Cargo Tank",
+                            "id": "3.0"
+                        },
+                        {
+                            "name": "Concrete Mixer",
+                            "id": "4.0"
+                        },
+                        {
+                            "name": "Dump",
+                            "id": "5.0"
+                        },
+                        {
+                            "name": "Flatbed",
+                            "id": "6.0"
+                        },
+                        {
+                            "name": "Garbage/Refuse",
+                            "id": "7.0"
+                        },
+                        {
+                            "name": "Grain/Chips/Gravel",
+                            "id": "8.0"
+                        },
+                        {
+                            "name": "Intermodal Container Chassis",
+                            "id": "9.0"
+                        },
+                        {
+                            "name": "Log",
+                            "id": "10.0"
+                        },
+                        {
+                            "name": "Pole-Trailer",
+                            "id": "11.0"
+                        },
+                        {
+                            "name": "Van/Enclosed Box",
+                            "id": "12.0"
+                        },
+                        {
+                            "name": "Vehicle Towing Another Vehicle",
+                            "id": "13.0"
+                        },
+                        {
+                            "name": "Not Applicable (MV 10,000 lbs. or less, not displaying HM placard)",
+                            "id": "14.0"
+                        },
+                        {
+                            "name": "Other",
+                            "id": "15.0"
+                        },
+                        {
+                            "name": "Unknown",
+                            "id": "16.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Hazardous Materials (Cargo Only)",
+                    "id": "11791f14-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "questionHeader",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-hazardousMaterialsCargo",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-hazardousMaterials",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec6-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Hazardous Materials ID",
+                    "id": "11791f15-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-hazardousMaterialsID",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-hazardousMaterials",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec6-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Hazardous Materials Class",
+                    "id": "11791f16-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-hazardousMaterialsClass",
+                    "helperImg": "../image/hazardous_materials_class.png",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-hazardousMaterials",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec6-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "1.0",
+                    "question": "Release of hazardous materials from a cargo compartment (e.g. trailer), cargo container (e.g. tank) or from a package?",
+                    "id": "11791f17-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "multiButton",
+                    "display": [
+                        "vehicle"
+                    ],
+                    "humanReadableId": "vehicle-releaseHazardousMaterials",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "vehicle-hazardousMaterials",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791ec6-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ],
+                    "answerOptions": [
+                        {
+                            "name": "No",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Yes",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Not Applicable",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Unknown if Released",
+                            "id": "3.0"
+                        }
+                    ]
+                }
+            ],
+            "display": [
+                "vehicle"
+            ]
+        },
+        {
             "sectionTitle": "Personal Information Section",
             "questions": [
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "First Name of Person Involved",
-                    "id": "wgjUrZEh",
+                    "id": "11791f19-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-1"
+                    "humanReadableId": "nonmotorist-firstName"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Middle Initial of Person Involved",
-                    "id": "sv3smQdV",
+                    "id": "11791f1a-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-2"
+                    "humanReadableId": "nonmotorist-middleName"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Last Name of Person Involved",
-                    "id": "OEKyiMLG",
+                    "id": "11791f1b-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-3"
+                    "humanReadableId": "nonmotorist-lastName"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Date of Birth",
-                    "id": "FxZPgGC6",
+                    "id": "11791f1c-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-4",
+                    "humanReadableId": "nonmotorist-dob",
                     "helperText": "Format: (YYYY/MM/DD)"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Street Address 1",
-                    "id": "dQxO7MP5",
+                    "id": "11791f1d-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-5",
+                    "humanReadableId": "nonmotorist-streetAddress1",
                     "tooltip": "E.g. 1000 Olin Way; MB 999"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Street Address 2",
-                    "id": "MZZ4opND",
+                    "id": "11791f1e-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-6"
+                    "humanReadableId": "nonmotorist-streetAddress2"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "City/Town",
-                    "id": "QmWZUbzm",
+                    "id": "11791f1f-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-7"
+                    "humanReadableId": "nonmotorist-city"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "State",
-                    "id": "AIurIT7V",
+                    "id": "11791f20-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-8"
+                    "humanReadableId": "nonmotorist-state"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "ZIP Code",
-                    "id": "CwUaGdXZ",
+                    "id": "11791f21-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-9"
+                    "humanReadableId": "nonmotorist-zip"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Phone Number",
-                    "id": "WHYkEvFv",
+                    "id": "11791f22-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-10",
+                    "humanReadableId": "nonmotorist-phoneNum",
                     "helperText": "Format: 15555551212"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Sex",
-                    "id": "z0RAR9nQ",
+                    "id": "11791f23-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-11",
+                    "humanReadableId": "nonmotorist-sex",
                     "answerOptions": [
                         {
                             "name": "Female",
@@ -4655,26 +6812,24 @@ export const questions = {
                             "id": "2.0"
                         }
                     ]
-                },
-                {
-                    "numOptionsAllowed": "0.0",
-                    "question": "Crash-Related Information Section",
-                    "id": "nLuF6bPr",
-                    "answerType": "questionHeader",
-                    "display": [
-                        "nonmotorist"
-                    ],
-                    "humanReadableId": "nonmotorist-12"
-                },
+                }
+            ],
+            "display": [
+                "nonmotorist"
+            ]
+        },
+        {
+            "sectionTitle": "Crash-Related Information Section",
+            "questions": [
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Person Type",
-                    "id": "6TkriXzZ",
+                    "id": "11791f25-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-13",
+                    "humanReadableId": "nonmotorist-personType",
                     "answerOptions": [
                         {
                             "name": "Bicyclist",
@@ -4705,12 +6860,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "2.0",
                     "question": "Condition at Time of the Crash",
-                    "id": "u3pLOnML",
+                    "id": "11791f26-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdownMultiSelect",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-14",
+                    "humanReadableId": "nonmotorist-condition",
                     "helperText": "(choose up to 2)",
                     "answerOptions": [
                         {
@@ -4754,33 +6909,33 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Unit Number of Motor Vehicle Striking Non-Motorist",
-                    "id": "0P7ETSzE",
+                    "id": "11791f27-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-15",
+                    "humanReadableId": "nonmotorist-unitNum",
                     "tooltip": "e.g. '2' for Vehicle 2"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Non-Motorist Action/Circumstance Prior to Crash",
-                    "id": "SM5BGqvn",
+                    "id": "11791f28-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-16"
+                    "humanReadableId": "nonmotorist-actionPrior"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Action/Circumstance",
-                    "id": "m1CAZSdr",
+                    "id": "11791f29-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-17",
+                    "humanReadableId": "nonmotorist-actionCircumstance",
                     "answerOptions": [
                         {
                             "name": "None",
@@ -4831,12 +6986,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Origin/Destination",
-                    "id": "G2zq94Fz",
+                    "id": "11791f2a-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-18",
+                    "humanReadableId": "nonmotorist-originDestination",
                     "answerOptions": [
                         {
                             "name": "Going to or from School (K-12)",
@@ -4859,12 +7014,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "2.0",
                     "question": "Non-Motorist Contributing Action(s)/Circumstance(s)",
-                    "id": "4D3Re10A",
+                    "id": "11791f2b-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdownMultiSelect",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-19",
+                    "humanReadableId": "nonmotorist-contributingAction",
                     "helperText": "(choose up to 2)",
                     "answerOptions": [
                         {
@@ -4928,12 +7083,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Non-Motorist Location at Time of Crash",
-                    "id": "6O3xLeXP",
+                    "id": "11791f2c-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-20",
+                    "humanReadableId": "nonmotorist-locationAtCrash",
                     "helperImg": "../image/bike_lanes.png",
                     "answerOptions": [
                         {
@@ -5017,12 +7172,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "5.0",
                     "question": "Non-Motorist Safety Equipment",
-                    "id": "3Na7yzFj",
+                    "id": "11791f2d-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdownMultiSelect",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-21",
+                    "humanReadableId": "nonmotorist-safetyEquipment",
                     "helperText": "(choose up to 5)",
                     "answerOptions": [
                         {
@@ -5062,12 +7217,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Initial Contact Point on Non-Motorist",
-                    "id": "ntZC5cPW",
+                    "id": "11791f2e-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-22",
+                    "humanReadableId": "nonmotorist-initialContactPoint",
                     "answerOptions": [
                         {
                             "name": "Right",
@@ -5094,22 +7249,22 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Distracted By",
-                    "id": "qNaBDuaT",
+                    "id": "11791f2f-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-23"
+                    "humanReadableId": "nonmotorist-distractedBy"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Action",
-                    "id": "0ZnIFZ0X",
+                    "id": "11791f30-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-24",
+                    "humanReadableId": "nonmotorist-distractedAction",
                     "answerOptions": [
                         {
                             "name": "Not Distracted",
@@ -5132,28 +7287,32 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Source",
-                    "id": "v1Hvf6d7",
+                    "id": "11791f31-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-25",
+                    "humanReadableId": "nonmotorist-distractedSource",
                     "questionDependency": [
                         {
-                            "dependencyUid": "0ZnIFZ0X",
-                            "dependencyOptionCode": "0.0"
+                            "dependencyName": "nonmotorist-distractedAction",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791f30-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "0ZnIFZ0X",
-                            "dependencyOptionCode": "1.0"
+                            "dependencyName": "nonmotorist-distractedAction",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791f30-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "0ZnIFZ0X",
-                            "dependencyOptionCode": "2.0"
+                            "dependencyName": "nonmotorist-distractedAction",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791f30-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "0ZnIFZ0X",
-                            "dependencyOptionCode": "3.0"
+                            "dependencyName": "nonmotorist-distractedAction",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791f30-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ],
                     "answerOptions": [
@@ -5206,12 +7365,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Incident Responder?",
-                    "id": "MNdMxtx5",
+                    "id": "11791f33-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-27",
+                    "humanReadableId": "nonmotorist-incidentResponder",
                     "answerOptions": [
                         {
                             "name": "No",
@@ -5250,12 +7409,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Injury Status",
-                    "id": "WRishqwU",
+                    "id": "11791f34-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-28",
+                    "humanReadableId": "nonmotorist-injuryStatus",
                     "answerOptions": [
                         {
                             "name": "Fatal Injury",
@@ -5282,12 +7441,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Injury Area",
-                    "id": "CFTkeTju",
+                    "id": "11791f35-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-29",
+                    "humanReadableId": "nonmotorist-injuryArea",
                     "tooltip": "Select the primary or most obvious area of the person's body injured during the crash. This will be typically be indicated in a matrix or narrative in the EMS records or as a hospital discharge code (ICD-9-CM or ICD-10, if implemented) in the emergency department, hospital or insurance records.",
                     "answerOptions": [
                         {
@@ -5331,23 +7490,23 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Injury Diagnosis",
-                    "id": "fmrO5ZWz",
+                    "id": "11791f36-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "largeTextField",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-30",
+                    "humanReadableId": "nonmotorist-injuryDiagnosis",
                     "tooltip": "Describe the injury."
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Injury Severity",
-                    "id": "nPPoAnU5",
+                    "id": "11791f37-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-31",
+                    "humanReadableId": "nonmotorist-injurySeverity",
                     "answerOptions": [
                         {
                             "name": "Fatal",
@@ -5378,64 +7537,84 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Transported to First Medical Facility By",
-                    "id": "0yuO9rxr",
+                    "id": "11791f38-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-32",
+                    "humanReadableId": "nonmotorist-transported",
                     "questionDependency": [
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "0.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "1.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "2.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "3.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "4.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "4.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "5.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ]
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Source of Transport to First Medical Facility",
-                    "id": "Kb53Ie1J",
+                    "id": "11791f39-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-33",
+                    "humanReadableId": "nonmotorist-sourceTransport",
                     "questionDependency": [
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "0.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "1.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "2.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "3.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "4.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "4.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "5.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ],
                     "answerOptions": [
@@ -5468,96 +7647,126 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "EMS Response Agency Identifier",
-                    "id": "ooSKnRtS",
+                    "id": "11791f3a-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-34",
+                    "humanReadableId": "nonmotorist-EMSIdentifier",
                     "questionDependency": [
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "0.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "1.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "2.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "3.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "4.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "4.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "5.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ]
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "EMS Response Run Number",
-                    "id": "kWoq6gRR",
+                    "id": "11791f3b-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-35",
+                    "humanReadableId": "nonmotorist-EMSRunNumber",
                     "questionDependency": [
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "0.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "1.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "2.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "3.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "4.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "4.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "5.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ]
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Medical Facility Receiving Patient",
-                    "id": "GmOcudA0",
+                    "id": "11791f3c-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-36",
+                    "humanReadableId": "nonmotorist-medicalFacility",
                     "questionDependency": [
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "0.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "1.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "2.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "3.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         },
                         {
-                            "dependencyUid": "WRishqwU",
-                            "dependencyOptionCode": "4.0"
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "4.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "5.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ]
                 }
@@ -5572,12 +7781,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Law Enforcement Suspects Alcohol Use",
-                    "id": "ski3jtpd",
+                    "id": "11791f3e-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-38",
+                    "humanReadableId": "nonmotorist-suspectedAlcohol",
                     "answerOptions": [
                         {
                             "name": "No",
@@ -5596,16 +7805,17 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Alcohol Test Status",
-                    "id": "eweonIMI",
+                    "id": "11791f3f-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-39",
+                    "humanReadableId": "nonmotorist-alcoholTestStatus",
                     "questionDependency": [
                         {
-                            "dependencyUid": "ski3jtpd",
-                            "dependencyOptionCode": "1"
+                            "dependencyName": "nonmotorist-suspectedAlcohol",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791f3e-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ],
                     "answerOptions": [
@@ -5630,16 +7840,17 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Type of Alcohol Test",
-                    "id": "mZGcJRTW",
+                    "id": "11791f40-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-40",
+                    "humanReadableId": "nonmotorist-alcoholTestType",
                     "questionDependency": [
                         {
-                            "dependencyUid": "ski3jtpd",
-                            "dependencyOptionCode": "1"
+                            "dependencyName": "nonmotorist-suspectedAlcohol",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791f3e-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ],
                     "answerOptions": [
@@ -5668,16 +7879,17 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "BAC Test Result",
-                    "id": "vZokhj4y",
+                    "id": "11791f41-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBoxWithSelection",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-41",
+                    "humanReadableId": "nonmotorist-BACTestResult",
                     "questionDependency": [
                         {
-                            "dependencyUid": "ski3jtpd",
-                            "dependencyOptionCode": "1"
+                            "dependencyName": "nonmotorist-suspectedAlcohol",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791f3e-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ],
                     "answerOptions": [
@@ -5706,12 +7918,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Law Enforcement Suspects Drug Use",
-                    "id": "Qenr80I4",
+                    "id": "11791f43-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-43",
+                    "humanReadableId": "nonmotorist-suspectedDrug",
                     "answerOptions": [
                         {
                             "name": "No",
@@ -5730,16 +7942,17 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Drug Test Status",
-                    "id": "uqQGx3Rc",
+                    "id": "11791f44-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-44",
+                    "humanReadableId": "nonmotorist-drugTestStatus",
                     "questionDependency": [
                         {
-                            "dependencyUid": "Qenr80I4",
-                            "dependencyOptionCode": "1"
+                            "dependencyName": "nonmotorist-suspectedDrug",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791f43-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ],
                     "answerOptions": [
@@ -5764,16 +7977,17 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Type of Drug Test",
-                    "id": "cYXv5Qkz",
+                    "id": "11791f45-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-45",
+                    "humanReadableId": "nonmotorist-drugTestType",
                     "questionDependency": [
                         {
-                            "dependencyUid": "Qenr80I4",
-                            "dependencyOptionCode": "1"
+                            "dependencyName": "nonmotorist-suspectedDrug",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791f43-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ],
                     "answerOptions": [
@@ -5802,16 +8016,17 @@ export const questions = {
                 {
                     "numOptionsAllowed": "4.0",
                     "question": "Drug Test Result",
-                    "id": "LX3Hspui",
+                    "id": "11791f46-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdownMultiSelect",
                     "display": [
                         "nonmotorist"
                     ],
-                    "humanReadableId": "nonmotorist-46",
+                    "humanReadableId": "nonmotorist-drugTestResult",
                     "questionDependency": [
                         {
-                            "dependencyUid": "Qenr80I4",
-                            "dependencyOptionCode": "1"
+                            "dependencyName": "nonmotorist-suspectedDrug",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791f43-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ],
                     "answerOptions": [
@@ -5863,58 +8078,328 @@ export const questions = {
             ]
         },
         {
+            "sectionTitle": "Fatality-Related Information",
+            "questions": [
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Detailed Alcohol Test Information",
+                    "id": "11791f48-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "questionHeader",
+                    "display": [
+                        "nonmotorist"
+                    ],
+                    "humanReadableId": "nonmotorist-detailedAlcohol",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "1.0",
+                    "question": "Alcohol Test Type",
+                    "id": "11791f49-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "dropdown",
+                    "display": [
+                        "nonmotorist"
+                    ],
+                    "humanReadableId": "nonmotorist-fatalAlcoholTest",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ],
+                    "answerOptions": [
+                        {
+                            "name": "Test Not Given",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Breath Test (AC)",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Blood",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Blood Clot",
+                            "id": "3.0"
+                        },
+                        {
+                            "name": "Blood Plasma/Serum",
+                            "id": "4.0"
+                        },
+                        {
+                            "name": "Liver",
+                            "id": "5.0"
+                        },
+                        {
+                            "name": "Preliminary Breath Test (PBT)",
+                            "id": "6.0"
+                        },
+                        {
+                            "name": "Unknown if Tested",
+                            "id": "7.0"
+                        },
+                        {
+                            "name": "Urine",
+                            "id": "8.0"
+                        },
+                        {
+                            "name": "Vitreous",
+                            "id": "9.0"
+                        },
+                        {
+                            "name": "Other Test Type",
+                            "id": "10.0"
+                        },
+                        {
+                            "name": "Unknown Test Type",
+                            "id": "11.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "1.0",
+                    "question": "Alcohol Test Result",
+                    "id": "11791f4a-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBoxWithSelection",
+                    "display": [
+                        "nonmotorist"
+                    ],
+                    "humanReadableId": "nonmotorist-fatalAlcoholREsult",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ],
+                    "answerOptions": [
+                        {
+                            "name": "0.94 or Greater",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Test Not Given",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "AC Test Performed, Results Unknown",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Positive Reading with No Actual Value",
+                            "id": "3.0"
+                        },
+                        {
+                            "name": "Unknown if Tested",
+                            "id": "4.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Detailed Drug Test Information",
+                    "id": "11791f4b-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "questionHeader",
+                    "display": [
+                        "nonmotorist"
+                    ],
+                    "humanReadableId": "nonmotorist-detailedDrug",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "1.0",
+                    "question": "Drug Test Type",
+                    "id": "11791f4c-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "dropdown",
+                    "display": [
+                        "nonmotorist"
+                    ],
+                    "humanReadableId": "nonmotorist-fatalDrugTest",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ],
+                    "answerOptions": [
+                        {
+                            "name": "Test Not Given",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Blood",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Both Blood and Urine",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Unknown Test Type",
+                            "id": "3.0"
+                        },
+                        {
+                            "name": "Urine",
+                            "id": "4.0"
+                        },
+                        {
+                            "name": "Other Test Type",
+                            "id": "5.0"
+                        },
+                        {
+                            "name": "Unknown if Tested",
+                            "id": "6.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "1.0",
+                    "question": "Result of Drug Test",
+                    "id": "11791f4d-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "dropdown",
+                    "display": [
+                        "nonmotorist"
+                    ],
+                    "humanReadableId": "nonmotorist-fatalDrugResult",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "nonmotorist-injurySeverity",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791f37-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ],
+                    "answerOptions": [
+                        {
+                            "name": "Test Not Given",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Tested No Drugs Found/Negative",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Narcotic",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Depressant",
+                            "id": "3.0"
+                        },
+                        {
+                            "name": "Simulant",
+                            "id": "4.0"
+                        },
+                        {
+                            "name": "Hallucinogen",
+                            "id": "5.0"
+                        },
+                        {
+                            "name": "Cannabinoid",
+                            "id": "6.0"
+                        },
+                        {
+                            "name": "Phencyclidine (PCP)",
+                            "id": "7.0"
+                        },
+                        {
+                            "name": "Anabolic Steroid",
+                            "id": "8.0"
+                        },
+                        {
+                            "name": "Inhalant",
+                            "id": "9.0"
+                        },
+                        {
+                            "name": "Other Drug",
+                            "id": "10.0"
+                        },
+                        {
+                            "name": "Tested for Drugs, Results Unknown",
+                            "id": "11.0"
+                        },
+                        {
+                            "name": "Tested for Drugs, Drugs Found, Type Unknown/Positive",
+                            "id": "12.0"
+                        },
+                        {
+                            "name": "Unknown if Tested",
+                            "id": "13.0"
+                        }
+                    ]
+                }
+            ],
+            "display": [
+                "nonmotorist"
+            ]
+        },
+        {
             "sectionTitle": "Personal Information Section",
             "questions": [
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "First Name of Person Involved",
-                    "id": "PHBTL0FJ",
+                    "id": "11791f4f-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "passenger"
                     ],
-                    "humanReadableId": "passenger-1"
+                    "humanReadableId": "passenger-firstName"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Middle Initial of Person Involved",
-                    "id": "UQqBQHCB",
+                    "id": "11791f50-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "passenger"
                     ],
-                    "humanReadableId": "passenger-2"
+                    "humanReadableId": "passenger-middleName"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Last Name of Person Involved",
-                    "id": "h1QuqLnp",
+                    "id": "11791f51-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "passenger"
                     ],
-                    "humanReadableId": "passenger-3"
+                    "humanReadableId": "passenger-lastName"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Date of Birth",
-                    "id": "6EiSSnQN",
+                    "id": "11791f52-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "passenger"
                     ],
-                    "humanReadableId": "passenger-4",
+                    "humanReadableId": "passenger-dob",
                     "helperText": "Format: YYYY/MM/DD"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Sex",
-                    "id": "VPBTzbPO",
+                    "id": "11791f53-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "passenger"
                     ],
-                    "humanReadableId": "passenger-5",
+                    "humanReadableId": "passenger-sex",
                     "answerOptions": [
                         {
                             "name": "Female",
@@ -5941,12 +8426,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Incident Responder?",
-                    "id": "v9M7QPjK",
+                    "id": "11791f55-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "passenger"
                     ],
-                    "humanReadableId": "passenger-7",
+                    "humanReadableId": "passenger-incidentResponder",
                     "answerOptions": [
                         {
                             "name": "No",
@@ -5985,12 +8470,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "2.0",
                     "question": "Seating Position",
-                    "id": "az0jhcoG",
+                    "id": "11791f56-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdownMultiSelect",
                     "display": [
                         "passenger"
                     ],
-                    "humanReadableId": "passenger-8",
+                    "humanReadableId": "passenger-seatingPos",
                     "helperText": "(choose up to 2)",
                     "helperImg": "../image/seating_positions.png",
                     "answerOptions": [
@@ -6067,22 +8552,22 @@ export const questions = {
                 {
                     "numOptionsAllowed": "nan",
                     "question": "Restraint Systems / Motorcycle Helmet Use",
-                    "id": "aQC2P7xI",
+                    "id": "11791f57-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "passenger"
                     ],
-                    "humanReadableId": "passenger-9"
+                    "humanReadableId": "passenger-restraints"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Restraint Systems in Use",
-                    "id": "8hTxEZ6K",
+                    "id": "11791f58-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "passenger"
                     ],
-                    "humanReadableId": "passenger-10",
+                    "humanReadableId": "passenger-restraintsInUse",
                     "answerOptions": [
                         {
                             "name": "Booster Seat",
@@ -6161,12 +8646,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Any Indication of Improper Use?",
-                    "id": "lEqfMxPo",
+                    "id": "11791f59-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "passenger"
                     ],
-                    "humanReadableId": "passenger-11",
+                    "humanReadableId": "passenger-improperUse",
                     "tooltip": "ie, seatbelt was not buckled in correctly",
                     "answerOptions": [
                         {
@@ -6182,12 +8667,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "4.0",
                     "question": "Air Bag Deployed?",
-                    "id": "sN8ceYNO",
+                    "id": "11791f5a-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdownMultiSelect",
                     "display": [
                         "passenger"
                     ],
-                    "humanReadableId": "passenger-12",
+                    "humanReadableId": "passenger-airbag",
                     "helperText": "(choose up to 4)",
                     "helperImg": "../image/airbag_diagram.png",
                     "answerOptions": [
@@ -6224,12 +8709,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Ejection?",
-                    "id": "cg3r6Gut",
+                    "id": "11791f5b-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "passenger"
                     ],
-                    "humanReadableId": "passenger-13",
+                    "humanReadableId": "passenger-ejection",
                     "answerOptions": [
                         {
                             "name": "Not Ejected",
@@ -6259,14 +8744,387 @@ export const questions = {
             ]
         },
         {
+            "sectionTitle": "Injury Related Information",
+            "questions": [
+                {
+                    "numOptionsAllowed": "1.0",
+                    "question": "Injury Status",
+                    "id": "11791f5d-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "multiButton",
+                    "display": [
+                        "passenger"
+                    ],
+                    "humanReadableId": "passenger-injuryStatus",
+                    "tooltip": "Fatal Injury: an injury that results in death within 30 days after the motor vehicle crash in which the injury occured. If the person did not die at the scene, but died within 30 days of the motor vehicle crash in which the injury occured, the injury classification should be changed to Fatal Injury. \n\nSuspected Serious Injury: any injury other than fatal which results in one or more of the following: severe laceration reuslting in exposure of underlying tissues/muscles/organs or resulting in significant loss of blood; broken or distorted arm or leg; crush injuries; suspected skull, chest, or abdominal injury other than bruises or minor lacerations; significant burns (second and third degree burns over 10% or more of the body); unconsciousness when taken from crash scene; paralysis\n\nSuspected Minor Injury: any injury that is evident at the scene of the crash, other than fatal or serious injuries. Examples include lump on the head, abrasions, bruises, minor lacerations (cuts on the skin surface with minimal bleeding and no exposure of deeper tissue/muscle).\n\nPossible Injury: any injury reported or claimed which is not fatal, suspected  serious, or suspected minor. Examples include momentary loss of consciousness, claim of injury, limping, or complaint of pain or nausea. These are reported by the person or indicated by their behavior, but no wounds or injuries are readily evident.\n\nNo Apparent Injury: there is no reason to believe that the person received any bodily harm from the motor vehicle crash. There is no physical evidence of injury and the person does not report any change in normal function.\n",
+                    "answerOptions": [
+                        {
+                            "name": "Fatal Injury",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Suspected Serious Injury",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Suspected Minor Injury",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Possible Injury",
+                            "id": "3.0"
+                        },
+                        {
+                            "name": "No Apparent Injury",
+                            "id": "4.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "1.0",
+                    "question": "Injury Area",
+                    "id": "11791f5e-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "dropdown",
+                    "display": [
+                        "passenger"
+                    ],
+                    "humanReadableId": "passenger-injuryArea",
+                    "tooltip": "Select the primary or most obvious area of the person's body injured during the crash. This will be typically be indicated in a matrix or narrative in the EMS records or as a hospital discharge code (ICD-9-CM or ICD-10, if implemented) in the emergency department, hospital or insurance records.",
+                    "answerOptions": [
+                        {
+                            "name": "Head",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Face",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Neck",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Upper Extremity",
+                            "id": "3.0"
+                        },
+                        {
+                            "name": "Thorax (chest)",
+                            "id": "4.0"
+                        },
+                        {
+                            "name": "Spine",
+                            "id": "5.0"
+                        },
+                        {
+                            "name": "Adnomen and Pelvis",
+                            "id": "6.0"
+                        },
+                        {
+                            "name": "Lower Extremity",
+                            "id": "7.0"
+                        },
+                        {
+                            "name": "Unspecified",
+                            "id": "8.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Injury Diagnosis",
+                    "id": "11791f5f-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "largeTextField",
+                    "display": [
+                        "passenger"
+                    ],
+                    "humanReadableId": "passenger-injuryDiagnosis",
+                    "tooltip": "Describe the injury."
+                },
+                {
+                    "numOptionsAllowed": "1.0",
+                    "question": "Injury Severity",
+                    "id": "11791f60-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "multiButton",
+                    "display": [
+                        "passenger"
+                    ],
+                    "humanReadableId": "passenger-injurySeverity",
+                    "answerOptions": [
+                        {
+                            "name": "Fatal",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Serious",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Moderate",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Minor",
+                            "id": "3.0"
+                        },
+                        {
+                            "name": "No Injury",
+                            "id": "4.0"
+                        },
+                        {
+                            "name": "Unknown",
+                            "id": "5.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Transported to First Medical Facility By",
+                    "id": "11791f61-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "questionHeader",
+                    "display": [
+                        "passenger"
+                    ],
+                    "humanReadableId": "passenger-transported",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "4.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "5.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "1.0",
+                    "question": "Source of Transport to First Medical Facility",
+                    "id": "11791f62-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "multiButton",
+                    "display": [
+                        "passenger"
+                    ],
+                    "humanReadableId": "passenger-transportSource",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "4.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "5.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ],
+                    "answerOptions": [
+                        {
+                            "name": "Not Transported",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "EMS Air",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "EMS Ground",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Law Enforcement",
+                            "id": "3.0"
+                        },
+                        {
+                            "name": "Other",
+                            "id": "4.0"
+                        },
+                        {
+                            "name": "Unknown",
+                            "id": "5.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "EMS Response Agency Identifier",
+                    "id": "11791f63-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "passenger"
+                    ],
+                    "humanReadableId": "passenger-EMSIdentifier",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "4.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "5.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "EMS Response Run Number",
+                    "id": "11791f64-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "passenger"
+                    ],
+                    "humanReadableId": "passenger-EMSRunNumber",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "4.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "5.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "0.0",
+                    "question": "Medical Facility Receiving Patient",
+                    "id": "11791f65-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "passenger"
+                    ],
+                    "humanReadableId": "passenger-medicalFacility",
+                    "questionDependency": [
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "0.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "2.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "3.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "4.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "passenger-injurySeverity",
+                            "dependencyOptionCode": "5.0",
+                            "dependencyUuid": "11791f60-52dc-11ec-9691-d109d8c8abd2"
+                        }
+                    ]
+                }
+            ],
+            "display": [
+                "passenger"
+            ]
+        },
+        {
             "numOptionsAllowed": "1.0",
             "question": "Ownership",
-            "id": "pT0Wq1RO",
+            "id": "11791f66-52dc-11ec-9691-d109d8c8abd2",
             "answerType": "multiButton",
             "display": [
                 "setup"
             ],
-            "humanReadableId": "road-3",
+            "humanReadableId": "road-ownership",
             "tooltip": "Ownership refers to the type of property, public or private",
             "answerOptions": [
                 {
@@ -6282,12 +9140,12 @@ export const questions = {
         {
             "numOptionsAllowed": "1.0",
             "question": "Secondary Crash",
-            "id": "A6uoXDGb",
+            "id": "11791f67-52dc-11ec-9691-d109d8c8abd2",
             "answerType": "multiButton",
             "display": [
                 "setup"
             ],
-            "humanReadableId": "road-5",
+            "humanReadableId": "road-secondary",
             "tooltip": "A Secondary Crash is a crash that resulted from another crash",
             "answerOptions": [
                 {
@@ -6303,12 +9161,12 @@ export const questions = {
         {
             "numOptionsAllowed": "1.0",
             "question": "Crash Severity",
-            "id": "8dY73Yzs",
+            "id": "11791f68-52dc-11ec-9691-d109d8c8abd2",
             "answerType": "multiButton",
             "display": [
                 "setup"
             ],
-            "humanReadableId": "road-31",
+            "humanReadableId": "road-severity",
             "answerOptions": [
                 {
                     "name": "Fatal Injury",
@@ -6342,33 +9200,33 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Crash Identifier",
-                    "id": "gNkzJih5",
+                    "id": "11791f6a-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-1",
+                    "humanReadableId": "road-crashIdentifier",
                     "tooltip": "The unique identifier within a given year that identifies a given crash within a State. "
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Agency Crash Identifier",
-                    "id": "qfge7d3g",
+                    "id": "11791f6b-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-2"
+                    "humanReadableId": "road-agencyIdentifier"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Crash Severity",
-                    "id": "8dY73Yzs",
+                    "id": "11791f6c-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-3",
+                    "humanReadableId": "road-severity",
                     "answerOptions": [
                         {
                             "name": "Fatal Injury",
@@ -6399,32 +9257,32 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Crash Description",
-                    "id": "KxicONP1",
+                    "id": "11791f6d-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "largeTextField",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-4"
+                    "humanReadableId": "road-description"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Crash Classification",
-                    "id": "E79ZNLXO",
+                    "id": "11791f6e-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-5"
+                    "humanReadableId": "road-classification"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Ownership",
-                    "id": "pT0Wq1RO",
+                    "id": "11791f6f-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-6",
+                    "humanReadableId": "road-ownership",
                     "tooltip": "Provide type for ownership of the land where the crash occurred.",
                     "answerOptions": [
                         {
@@ -6440,12 +9298,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Characteristics",
-                    "id": "zUUpOYVy",
+                    "id": "11791f70-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-7",
+                    "humanReadableId": "road-characteristics",
                     "tooltip": "Did the crash occur on or off a trafficway?",
                     "helperImg": "../image/trafficway_diagram.png",
                     "answerOptions": [
@@ -6466,12 +9324,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Secondary Crash",
-                    "id": "A6uoXDGb",
+                    "id": "11791f71-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-8",
+                    "humanReadableId": "road-secondary",
                     "tooltip": "A Secondary Crash is a crash that resulted from another crash.",
                     "answerOptions": [
                         {
@@ -6487,12 +9345,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "School Bus-Related?",
-                    "id": "gDFQkFn9",
+                    "id": "11791f72-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-9",
+                    "humanReadableId": "road-schoolBus",
                     "tooltip": "Was a school bus or motor vehicle functioning as a school bus for a school-related purpose involved in the crash? The \"school bus\", with or without a passenger on board, must be directly involved as a contact motor vehicle, or iindirectly involved (ie, children struck when boarding or alighting from the school bus, two vehicles colliding as a result of the stopped school bus, etc.)",
                     "answerOptions": [
                         {
@@ -6512,57 +9370,57 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Crash Date and Time",
-                    "id": "iJ8lLM6P",
+                    "id": "11791f73-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-10"
+                    "humanReadableId": "road-dateTime"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Crash Date and Time (Valid Military Time)",
-                    "id": "FQ2cYAHj",
+                    "id": "11791f74-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "advancedOpenTextBox",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-11",
+                    "humanReadableId": "road-dateTimeMilitary",
                     "helperText": "Foramtt: YYYY/MM/DD HH:MM",
                     "tooltip": "Midnight should be coded as 00:00. Use 99 for any dates or times that are unknown. For example, 02/99/2017 22:51 denotes that the crash occurred in February 2017 at 22:51, but the day of the month was unknown. Unknown should not be used for the year, only for the month, day, hour, and minute.",
                     "autoMethod": "time"
                 },
                 {
                     "numOptionsAllowed": "0.0",
-                    "question": "Time of Roadway Clearance (Valid Military Time",
-                    "id": "zyHP4WbS",
+                    "question": "Time of Roadway Clearance (Valid Military Time)",
+                    "id": "11791f75-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-12",
+                    "humanReadableId": "road-timeClearance",
                     "helperText": "Format: HH:MM",
                     "tooltip": "The time of roadway clearance is the time that all lanes were available for traffic flow. Midnight should be coded as 00:00. Use 99 for any dates or times that are unknown. For example, 02/99/2017 22:51 denotes that the crash occurred in February 2017 at 22:51, but the day of the month was unknown. "
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Crash Location",
-                    "id": "GlitCeKG",
+                    "id": "11791f76-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-13"
+                    "humanReadableId": "road-location"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Crash State",
-                    "id": "Sl6ypLYA",
+                    "id": "11791f77-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-14",
+                    "humanReadableId": "road-state",
                     "answerOptions": [
                         {
                             "name": "Alabama",
@@ -6793,67 +9651,74 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Crash County",
-                    "id": "8V2H4hT4",
+                    "id": "11791f78-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "countyDropDown",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-15",
+                    "humanReadableId": "road-county",
                     "autoMethod": "county",
                     "questionDependency": [
                         {
-                            "dependencyUid": "Sl6ypLYA",
-                            "dependencyOptionCode": " "
+                            "dependencyName": "road-state",
+                            "dependencyOptionCode": "",
+                            "dependencyUuid": "11791f77-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ]
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Crash City/Place",
-                    "id": "JDBENf0A",
+                    "id": "11791f79-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-16"
+                    "humanReadableId": "road-city"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Latitude",
-                    "id": "Y0UeyBYf",
+                    "id": "11791f7a-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "advancedOpenTextBox",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-17",
+                    "humanReadableId": "road-latitude",
                     "helperText": "Format: degrees.minutes.seconds, compass direction",
                     "autoMethod": "map"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Longitude",
-                    "id": "eFXNchTA",
+                    "id": "11791f7b-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "advancedOpenTextBox",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-18",
+                    "humanReadableId": "road-longitude",
                     "helperText": "Format: degrees.minutes.seconds, compass direction",
                     "autoMethod": "map"
                 },
                 {
                     "numOptionsAllowed": "nan",
                     "question": "Nearest Street Address",
-                    "id": "UKo2l3Dr",
+                    "id": "11791f7c-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-19",
+                    "humanReadableId": "road-streetAddress",
                     "questionDependency": [
                         {
-                            "dependencyUid": "YOUeyBYf",
-                            "dependencyOptionCode": " eFXNchTA"
+                            "dependencyName": "road-latitude",
+                            "dependencyOptionCode": "",
+                            "dependencyUuid": "11791f7a-52dc-11ec-9691-d109d8c8abd2"
+                        },
+                        {
+                            "dependencyName": "road-longitude",
+                            "dependencyOptionCode": "",
+                            "dependencyUuid": "11791f7b-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ]
                 }
@@ -6868,22 +9733,22 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "First Harmful Event Information",
-                    "id": "jMCrhZwO",
+                    "id": "11791f7e-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-21"
+                    "humanReadableId": "road-firstHarmfulEventInfo"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "First Harmful Event",
-                    "id": "Anwspdcw",
+                    "id": "11791f7f-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-22",
+                    "humanReadableId": "road-firstHarmfulEvent",
                     "tooltip": "The first injury or damage-producing event that characterizes the crash type.",
                     "answerOptions": [
                         {
@@ -7059,12 +9924,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Location of First Harmful Event Relative to the Trafficway",
-                    "id": "oRhCbvy6",
+                    "id": "11791f80-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-23",
+                    "humanReadableId": "road-locationFirstHarmful",
                     "helperImg": "../image/trafficway_diagram.png",
                     "answerOptions": [
                         {
@@ -7116,12 +9981,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Manner of Crash/ Collision Impact",
-                    "id": "KXoL8mdI",
+                    "id": "11791f81-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-24",
+                    "humanReadableId": "road-mannerCollision",
                     "helperText": "This question refers only to crashes where the first harmful event involves a collision between two motor vehicles.",
                     "tooltip": "The figure below displays a diagram of the manner of collision.",
                     "helperImg": "../image/manner_example.png",
@@ -7179,22 +10044,22 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Relation to Junction Section",
-                    "id": "XgWpu2Tk",
+                    "id": "11791f82-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-25"
+                    "humanReadableId": "road-relationJunction"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Within Interchange Area?",
-                    "id": "2cnmGpDV",
+                    "id": "11791f83-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-26",
+                    "humanReadableId": "road-withinInterchange",
                     "helperImg": "../image/interchange_diagram.png",
                     "answerOptions": [
                         {
@@ -7214,12 +10079,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Specific Location",
-                    "id": "OeRyvF4v",
+                    "id": "11791f84-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-27",
+                    "humanReadableId": "road-specificLocation",
                     "tooltip": " ",
                     "helperImg": "../image/intersection_diagram.png",
                     "answerOptions": [
@@ -7276,22 +10141,22 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Source of Information Section",
-                    "id": "S3xImn49",
+                    "id": "11791f85-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-28"
+                    "humanReadableId": "road-sourceInfoSection"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Source of Information",
-                    "id": "IGD5NNyh",
+                    "id": "11791f86-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-29",
+                    "humanReadableId": "road-sourceInfo",
                     "tooltip": "Affiliation of the person completing the crash report",
                     "answerOptions": [
                         {
@@ -7307,35 +10172,34 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Law Enforcement Agency Identifier",
-                    "id": "VwPfe11r",
+                    "id": "11791f87-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "openTextBox",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-30",
+                    "humanReadableId": "road-lawEnforcementIdentifier",
                     "helperText": "9 character NCIC Originating Agency Identifier"
                 },
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Environment Conditions",
-                    "id": "qdbONl1x",
+                    "id": "11791f88-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-31"
+                    "humanReadableId": "road-environmentConditions"
                 },
                 {
                     "numOptionsAllowed": "2.0",
                     "question": "Weather Conditions",
-                    "id": "u07WbEUL",
-                    "answerType": "advancedDropDown",
+                    "id": "11791f89-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "dropdownMultiSelect",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-32",
+                    "humanReadableId": "road-weatherConditions",
                     "helperText": "(choose up to 2)",
-                    "autoMethod": "weather",
                     "answerOptions": [
                         {
                             "name": "Clear",
@@ -7390,12 +10254,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Light Condition",
-                    "id": "DMwKNwQA",
+                    "id": "11791f8a-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-33",
+                    "humanReadableId": "road-lightConditions",
                     "answerOptions": [
                         {
                             "name": "Daylight",
@@ -7430,12 +10294,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Roadway Surface Condition",
-                    "id": "psx5cEXm",
+                    "id": "11791f8b-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-34",
+                    "humanReadableId": "road-surfaceCondition",
                     "answerOptions": [
                         {
                             "name": "Dry",
@@ -7486,12 +10350,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "2.0",
                     "question": "Contributing Circumstances - Roadway Environment",
-                    "id": "ms4OGVRF",
+                    "id": "11791f8c-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdownMultiSelect",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-35",
+                    "humanReadableId": "road-roadwayEnvironment",
                     "helperText": "(choose up to 2)",
                     "answerOptions": [
                         {
@@ -7583,22 +10447,22 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Type of Intersection",
-                    "id": "fwfC3bVi",
+                    "id": "11791f8d-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-36"
+                    "humanReadableId": "road-typeIntersection"
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Number of Approaches",
-                    "id": "fvIxja95",
+                    "id": "11791f8e-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-37",
+                    "humanReadableId": "road-numApproaches",
                     "helperImg": "../image/intersection_examples.png",
                     "answerOptions": [
                         {
@@ -7626,12 +10490,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Overall Intersection Geometry",
-                    "id": "UwUUqXFT",
+                    "id": "11791f8f-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-38",
+                    "humanReadableId": "road-intersectionGeometry",
                     "helperImg": "../image/intersection_examples.png",
                     "answerOptions": [
                         {
@@ -7655,12 +10519,12 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Overall Traffic Control Device",
-                    "id": "Rq1LXZwZ",
+                    "id": "11791f90-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-39",
+                    "humanReadableId": "road-overallTCD",
                     "helperImg": "../image/intersection_examples.png",
                     "answerOptions": [
                         {
@@ -7692,23 +10556,23 @@ export const questions = {
                 {
                     "numOptionsAllowed": "0.0",
                     "question": "Work Zone-Related (Constrution/Maintenance/Utility)",
-                    "id": "DtJB6lqd",
+                    "id": "11791f91-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "questionHeader",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-40",
+                    "humanReadableId": "road-workZone",
                     "helperImg": " "
                 },
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Was the crash work-zone related?",
-                    "id": "34oHCyQs",
+                    "id": "11791f92-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-41",
+                    "humanReadableId": "road-workzoneRelated",
                     "tooltip": "Did the crash occur in or is it related to a construction, maintenance, or utility work zone (regardless of whether workers were actually present at the time of the crash)? \"Work zone-related crashes\" may also include those involve motor vehicles slowed or stopped because of the work zone, even if the first harmful event occurred before the first warning sign.",
                     "helperImg": " ",
                     "answerOptions": [
@@ -7729,16 +10593,17 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Location of the Crash",
-                    "id": "H8Nc9OMd",
+                    "id": "11791f93-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-42",
+                    "humanReadableId": "road-locationWorkZone",
                     "questionDependency": [
                         {
-                            "dependencyUid": "34oHCyQs",
-                            "dependencyOptionCode": "1"
+                            "dependencyName": "road-workzoneRelated",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791f92-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ],
                     "answerOptions": [
@@ -7771,16 +10636,17 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Type of Work Zone",
-                    "id": "h6LUiplf",
+                    "id": "11791f94-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "dropdown",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-43",
+                    "humanReadableId": "road-typeWorkZone",
                     "questionDependency": [
                         {
-                            "dependencyUid": "34oHCyQs",
-                            "dependencyOptionCode": "1"
+                            "dependencyName": "road-workzoneRelated",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791f92-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ],
                     "answerOptions": [
@@ -7813,16 +10679,17 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Workers Present?",
-                    "id": "3pIa77uR",
+                    "id": "11791f95-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-44",
+                    "humanReadableId": "road-workersPresent",
                     "questionDependency": [
                         {
-                            "dependencyUid": "34oHCyQs",
-                            "dependencyOptionCode": "1"
+                            "dependencyName": "road-workzoneRelated",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791f92-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ],
                     "answerOptions": [
@@ -7847,16 +10714,17 @@ export const questions = {
                 {
                     "numOptionsAllowed": "1.0",
                     "question": "Law Enforcement Present?",
-                    "id": "NvS2JTFP",
+                    "id": "11791f96-52dc-11ec-9691-d109d8c8abd2",
                     "answerType": "multiButton",
                     "display": [
                         "road"
                     ],
-                    "humanReadableId": "road-45",
+                    "humanReadableId": "road-lawEnforcementPresent",
                     "questionDependency": [
                         {
-                            "dependencyUid": "34oHCyQs",
-                            "dependencyOptionCode": "1"
+                            "dependencyName": "road-workzoneRelated",
+                            "dependencyOptionCode": "1.0",
+                            "dependencyUuid": "11791f92-52dc-11ec-9691-d109d8c8abd2"
                         }
                     ],
                     "answerOptions": [
@@ -7873,6 +10741,638 @@ export const questions = {
                             "id": "2.0"
                         }
                     ]
+                }
+            ],
+            "display": [
+                "road"
+            ]
+        },
+        {
+            "sectionTitle": "Additional Roadway Information",
+            "questions": [
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Bridge/Structure Identification Number",
+                    "id": "11791f98-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-bridgeStructureNum",
+                    "tooltip": "A unique federal inspection/inventory identifier assigned to a bridge, underpass, overpass, or tunnel bridge/structure that is also linkable to the National Bridge Inventory."
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Roadway Curvature",
+                    "id": "11791f99-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "questionHeader",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-curvature",
+                    "tooltip": "The measurement (in feet) of the curvature in the roadway expressed in terms of its radius, length, and superelevation. Obtained from the Roadway Inventory data."
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Curve Radius",
+                    "id": "11791f9a-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-curveRadius"
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Length",
+                    "id": "11791f9b-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-length"
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Superelevation",
+                    "id": "11791f9c-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-superelevation"
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Grade",
+                    "id": "11791f9d-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "questionHeader",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-grade"
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Direction of Slope",
+                    "id": "11791f9e-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-directionSlope",
+                    "tooltip": "Indicate up with a \"+\" and down with a \"-\""
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Percent of Slope",
+                    "id": "11791f9f-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-percentSlope"
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Part of National Highway System",
+                    "id": "11791fa0-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "multiButton",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-nationalHighway",
+                    "tooltip": "Is this road a part of the National Highway System?",
+                    "answerOptions": [
+                        {
+                            "name": "No",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Yes",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Unknown",
+                            "id": "2.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Roadway Functional Class: Rural or Urban",
+                    "id": "11791fa1-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "dropdown",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-ruralUrban",
+                    "tooltip": "The character of service or function of streets or highways",
+                    "answerOptions": [
+                        {
+                            "name": "Rural",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Urban",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Unknown",
+                            "id": "2.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Roadway Functional Class: Specific Class",
+                    "id": "11791fa2-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": NaN,
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-specificClass",
+                    "answerOptions": [
+                        {
+                            "name": "Interstate",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Principal Arterial - Other Freeway or Expressway",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Principal Arterial - Other",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Minor Arterial",
+                            "id": "3.0"
+                        },
+                        {
+                            "name": "Major Collector",
+                            "id": "4.0"
+                        },
+                        {
+                            "name": "Minor Collector",
+                            "id": "5.0"
+                        },
+                        {
+                            "name": "Local",
+                            "id": "6.0"
+                        },
+                        {
+                            "name": "Unknown",
+                            "id": "7.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Annual Average Daily Traffic (AADT)",
+                    "id": "11791fa3-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "questionHeader",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-AADT"
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "AADT (Year)",
+                    "id": "11791fa4-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-AADTYear",
+                    "tooltip": "The specific calendar year during which the AADT was calculated."
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "AADT (Value)",
+                    "id": "11791fa5-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-AADTValue"
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Truck (over 10,000 lbs) Count or Percentage",
+                    "id": "11791fa6-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-truckCount"
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Motorcycle Count or Percentage",
+                    "id": "11791fa7-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-motorcycleCount"
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Widths of Lane(s) and Shoulder(s)",
+                    "id": "11791fa8-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "questionHeader",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-laneShoulderWidths"
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Lane Width",
+                    "id": "11791fa9-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-laneWidth",
+                    "helperText": "(in feet)"
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Left Shoulder Width",
+                    "id": "11791faa-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-leftShoulderWidth",
+                    "helperText": "(in feet)"
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Right Shoulder Width",
+                    "id": "11791fab-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-rightShoulderWidth",
+                    "helperText": "(in feet)"
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Width of Median",
+                    "id": "11791fac-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-medianWidth",
+                    "helperText": "(in feet)",
+                    "tooltip": "Width from the travel lane edge to travel lane edge of the portion of divided highway separating the road for traffic in opposing directions where the crash occurred. If a crash occurs at a mid-block section, the median width is based on the mid-block section. If the crash occurs at an intersection, the median width is based on the median widths at the intersection."
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Access Control",
+                    "id": "11791fad-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "multiButton",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-accessControl",
+                    "tooltip": "The degree that access to abutting land is fully, partially, or not controlled by a public authority.\nFull access control: preference given to through traffic movements by providing interchanges with selected public roads, and by prohbiting crossing at-grade and direct driveway connections (ie, limited access to the facility).\nPartial access control: preference given to through traffic movement. In addition to interchanges, there may be some crossings at-grade with public roads, but direct private driveway connections have been minimized through th euse of frontage roads or other local access restrictions. Control of curb cuts is not access control.\nNo access control: no degree of access control exists; full access to the facility is permitted.\n",
+                    "answerOptions": [
+                        {
+                            "name": "No Access Control",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Partial Access Control",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Full Access Control",
+                            "id": "2.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Railway Crossing ID",
+                    "id": "11791fae-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-railwayCrossingId",
+                    "tooltip": "Unique US DOT/AAR number assigned for identification purposes to a railroad crossing by a State highway agency in cooperation with the Federal Railroad Administration."
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Roadway Lighting",
+                    "id": "11791faf-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "dropdown",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-lighting",
+                    "answerOptions": [
+                        {
+                            "name": "Continuous Lighting on Both SIdes",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Continuous Lighting on One Side",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "No Lighting",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Spot Illumination on Both Sides",
+                            "id": "3.0"
+                        },
+                        {
+                            "name": "Spot Illumination on One Side",
+                            "id": "4.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Pavement Markings, Longitudinal",
+                    "id": "11791fb0-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "questionHeader",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-pavementMarkings",
+                    "helperText": " us"
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Edgeline Presence/Type",
+                    "id": "11791fb1-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "dropdown",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-edgeline",
+                    "answerOptions": [
+                        {
+                            "name": "No Marked Edgeline",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Standard Width Edgeline",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Wide Edgeline",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Other",
+                            "id": "3.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Centerline Presence/Type",
+                    "id": "11791fb2-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "dropdown",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-centerline",
+                    "answerOptions": [
+                        {
+                            "name": "No Marked Centerline",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Centerline with Centerline Rumble Stirp",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Standard Centerline Markings",
+                            "id": "2.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Lane Line Markings",
+                    "id": "11791fb3-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "dropdown",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-laneLine",
+                    "answerOptions": [
+                        {
+                            "name": "No Lane Markings",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Standard Lane Line",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Wide Lane Line",
+                            "id": "2.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Presence/Type of Bicycle Facility",
+                    "id": "11791fb4-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "questionHeader",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-bicycleFacility"
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Facility",
+                    "id": "11791fb5-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "dropdown",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-facility",
+                    "answerOptions": [
+                        {
+                            "name": "None",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Marked Bicycle Lane",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Separated Bicycle Path/Trail",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Unmarked Pave Shoulder",
+                            "id": "3.0"
+                        },
+                        {
+                            "name": "Wide Curb Lane",
+                            "id": "4.0"
+                        },
+                        {
+                            "name": "Unknown",
+                            "id": "5.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Signed Bicycle Route",
+                    "id": "11791fb6-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "dropdown",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-signedBicycleRoute",
+                    "answerOptions": [
+                        {
+                            "name": "No",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "Yes",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Not Applicable",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Unknown",
+                            "id": "3.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Mainline Number of Lanes at Intersection",
+                    "id": "11791fb7-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "multiButton",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-mainlineLanesAtIntersection",
+                    "tooltip": "Number of through lanes on the mainline approaches of an intersection, including all lanes with through movement (through and left-turn, or through and right-turn) but not exclusive turn lanes.",
+                    "answerOptions": [
+                        {
+                            "name": "Not an Intersection or Interchange",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "One Lane",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Two Lanes",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Three Lanes",
+                            "id": "3.0"
+                        },
+                        {
+                            "name": "Four to Six Lanes",
+                            "id": "4.0"
+                        },
+                        {
+                            "name": "Seven or More Lanes",
+                            "id": "5.0"
+                        },
+                        {
+                            "name": "Unknown",
+                            "id": "6.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Cross-Street Number of Lanes at Intersection",
+                    "id": "11791fb8-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "multiButton",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-crossStreetLanesAtIntersection",
+                    "tooltip": "Number of through lanes on the side-road approaches at intersection including all lanes with through movement (through and left-turn, or through and right-turn) but not exclusive turn lanes.",
+                    "answerOptions": [
+                        {
+                            "name": "Not an Intersection or Interchange",
+                            "id": "0.0"
+                        },
+                        {
+                            "name": "One Lane",
+                            "id": "1.0"
+                        },
+                        {
+                            "name": "Two Lanes",
+                            "id": "2.0"
+                        },
+                        {
+                            "name": "Three Lanes",
+                            "id": "3.0"
+                        },
+                        {
+                            "name": "Four to Six Lanes",
+                            "id": "4.0"
+                        },
+                        {
+                            "name": "Seven or More Lanes",
+                            "id": "5.0"
+                        },
+                        {
+                            "name": "Unknown",
+                            "id": "6.0"
+                        }
+                    ]
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Total Volume of Entering Vehicles",
+                    "id": "11791fb9-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "questionHeader",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-totalVolumeVehicles"
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Year",
+                    "id": "11791fba-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-totalVolumeYear"
+                },
+                {
+                    "numOptionsAllowed": "nan",
+                    "question": "Value",
+                    "id": "11791fbb-52dc-11ec-9691-d109d8c8abd2",
+                    "answerType": "openTextBox",
+                    "display": [
+                        "road"
+                    ],
+                    "humanReadableId": "road-totalVolumeValue"
                 }
             ],
             "display": [
