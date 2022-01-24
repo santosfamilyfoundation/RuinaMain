@@ -209,6 +209,12 @@ class Home extends Component {
                         </HStack>
                     </Section> : null
                     }
+                    <Section title='Crash Diagram'>
+                        <IconButton topMargin={4} text="Add Crash Diagram"
+                            onPress={()=>{console.log('diagram button pressed'); navigation.navigate('DiagramTool')}}
+                            icon={<Icon color='white' name='add' size={50}/>}
+                        />
+                    </Section>
                 </ScrollView>
             </SafeAreaView>
         );
