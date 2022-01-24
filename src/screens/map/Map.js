@@ -3,8 +3,9 @@ import { SafeAreaView } from 'react-navigation';
 import { TextInput, Text, Dimensions, StyleSheet, View, TouchableOpacity, ActivityIndicator } from 'react-native';
 import MapView, { Marker, AnimatedRegion, Polyline, PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
-import { Button, Divider, Layout, TopNavigation, Icon } from '@ui-kitten/components';
-import { EvaIconsPack } from '@ui-kitten/eva-icons';
+//import { Button, Divider, Layout, TopNavigation, Icon } from '@ui-kitten/components';
+import { Button, Spinner, Stack } from 'native-base';
+//import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import { connect } from 'react-redux';
@@ -12,7 +13,9 @@ import { styles } from './Map.style';
 import { changeLat, changeLong } from '../../actions/MapAction';
 import { updateRoad } from '../../actions/RoadAction';
 import * as Constants from '../../constants';
-import NetInfoAPI from "../../utils/NetAPI"
+import NetInfoAPI from "../../utils/NetAPI";
+import TopNavigation from '../TopNavigation';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const { width, height } = Dimensions.get('window');
 const SCREEN_WIDTH = width;
@@ -172,16 +175,15 @@ export class Map extends Component {
     if (this.state.loading) {
       return (
         <SafeAreaView style={styles.spinnerView}>
-          <ActivityIndicator id="loadingScreen" size="large" color="#0000ff" />
+           <Spinner accessibilityLabel="Loading App"/>
         </SafeAreaView>
       );
     } else {
       return (
         <SafeAreaView style={{ flex: 1 }}>
-            <TopNavigation id="mapNavBar" title='Map View' alignment='center' leftControl={this.props.BackAction()}/>
-            <Divider/>
-            <Layout style={styles.pageContainer}>
-              <Layout style={styles.container}>
+            <TopNavigation title='Map View' backButton navigation={this.props.navigation}/>
+            <Stack style={styles.pageContainer}>
+              <Stack style={styles.container}>
                 <MapView id="mapView"
                   style={styles.mapContainer}
                   ref={component => {this._map = component;}}
@@ -202,25 +204,25 @@ export class Map extends Component {
                       onPress={()=>{this.onPressZoomIn()}}
                       >
                       <View style={styles.sideBoxItems}>
-                        <Icon name='minus-circle-outline' width={32} height={32} fill='#3366FF'/>
+                        <Icon name='minus-circle-outline' size={20}/>
                       </View>
                   </TouchableOpacity>
                   <TouchableOpacity id="zoomOutButton"
                       onPress={()=>{this.onPressZoomOut()}}
                       >
                       <View style={styles.sideBoxItems}>
-                        <Icon name='plus-circle-outline' width={32} height={32} fill='#3366FF'/>
+                        <Icon name='plus-circle-outline' size={20}/>
                       </View>
                   </TouchableOpacity>
                   <TouchableOpacity id="recenterButton"
                       onPress={()=>{this.onPressRecenter()}}
                       >
                       <View style={styles.sideBoxItems}>
-                        <Icon name='stop-circle-outline' width={32} height={32} fill='#3366FF'/>
+                        <Icon name='stop-circle-outline' size={20}/>
                       </View>
                   </TouchableOpacity>
                 </View>
-              </Layout>
+              </Stack>
               <View style={styles.coords}>
                 <Text id="latLongCoord" style={styles.coordText}>
                   Latitude: { this.state.region.latitude.toFixed(3)}
@@ -228,7 +230,7 @@ export class Map extends Component {
                   Longitude: {this.state.region.longitude.toFixed(3)}
                 </Text>
               </View>
-            </Layout>
+            </Stack>
             <Button id="saveButton" onPress={() => {this.saveLocations()}}>SAVE</Button>
 
             <MaterialDialog id="saveFailedDialog"

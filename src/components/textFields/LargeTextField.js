@@ -48,24 +48,25 @@ const LargeTextField = (props) => {
         if(existingData != null) {
             if(existingData[currId] != null && !value) {
                 setValue(existingData[currId]);
-                setButtonAppearance('filled');
+
             }
         }
     }
 
-    const submitField = () => {
-        if(!value) {
+    const submitField = (text) => {
+        if(!text) {
             return;
         }
-        submitFunction({id, question: currId, selection: value})
-        setButtonAppearance('filled');
+        submitFunction({id, question: currId, selection: text})
     }
 
     const onTextChange = (text) => {
-        if(!text) {
-            submitFunction({id, question: currId, selection: null})
-        }
         setValue(text);
+        if(!text) {
+            submitFunction({id, question: currId, selection: null});
+            return;
+        }
+        submitFunction({id, question: currId, selection: text})
     }
 
     const clearField = () => {
@@ -74,26 +75,11 @@ const LargeTextField = (props) => {
         setButtonAppearance('outline');
     }
 
-    if(!value && buttonAppearance != 'outline') {
-        setButtonAppearance('outline');
-    } else if(existingData != null) {
-        if(value != existingData[currId] && buttonAppearance != 'outline') {
-            setButtonAppearance('outline');
-        }
-    }
-
-    if(value.length > data.maxLength && !isInvalid) {
-        setIsInvalid(true);
-    } else if(isInvalid && value.length <= data.maxLength) {
-        setIsInvalid(false);
-    }
-
-    
-    if(buttonAppearance == 'outline') {
-        status = 'danger'
-    } else {
-        status = 'success'
-    }
+//    if(value.length > data.maxLength && !isInvalid) {
+//        setIsInvalid(true);
+//    } else if(isInvalid && value.length <= data.maxLength) {
+//        setIsInvalid(false);
+//    }
 
     const tooltip = () => {
         return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
@@ -113,7 +99,7 @@ const LargeTextField = (props) => {
                 <TextArea
                  placeholder="Place your text"
                  value={value}
-                 onChangeText={onTextChange}
+                 onChangeText={(text) => {onTextChange(text)}}
                 />
             </QuestionSection>
         </Box>

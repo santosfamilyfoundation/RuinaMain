@@ -11,7 +11,7 @@ def get_inverse_dependencies(name, option, df_answer):
     for index, row in df_sub_answer.iterrows():
         if str(row['option_number']) != option:
             dependencies.append({
-                'dependencyName': name, 
+                'dependencyName': name,
                 'dependencyOptionCode': str(float(row['option_number']))
                 })
     return dependencies
@@ -81,7 +81,7 @@ def generate_questions_json(filename):
                         else:
                             if int(option) >= 0:
                                 questionDependency.append({
-                                    'dependencyName': name, 
+                                    'dependencyName': name,
                                     'dependencyOptionCode': str(float(option))
                                 })
                             else:
@@ -91,7 +91,7 @@ def generate_questions_json(filename):
                                 })
                     question_dict['questionDependency'] = questionDependency
                     # print('added dependencies', questionDependency)
-                
+
                 question_name = row['question_name']
                 df_sub_answer = answers_df[answers_df['question_name'] == question_name]
                 if len(df_sub_answer) > 0:
@@ -105,14 +105,14 @@ def generate_questions_json(filename):
                     section_json['questions'].append(question_dict)
                 else:
                     questions_json['data'].append(question_dict)
-            
+
                 # print('added question', row['question_text'])
 
             if section_json != {}:
                 if section_json not in questions_json['data']:
                     questions_json['data'].append(section_json)
                     print('added section to data', section_json['sectionTitle'])
-    
+
     questions_data = questions_json['data']
     for section in questions_data:
         section_keys = section.keys()
@@ -138,7 +138,7 @@ def generate_questions_json(filename):
     return questions_json
 
 if __name__ == '__main__':
-    filename = '~/2021_12_01_questions.xlsx'
+    filename = '~/2021_12_08_questions.xlsx'
     new_filename = 'data/questions.js'
 
     json_data = generate_questions_json(filename)

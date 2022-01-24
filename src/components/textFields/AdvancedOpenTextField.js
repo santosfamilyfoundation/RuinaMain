@@ -38,12 +38,9 @@ const AdvancedOpenTextField = (props) => {
         }
     }
 
-    const submitField = () => {
+    const submitField = (text) => {
       //submits data to reducer and is shown as complete
-        if(!value) {
-            return;
-        }
-        submitFunction({id, question: currId, selection: value})
+        submitFunction({id, question: currId, selection: text})
         switch(currId) {
           case "Bw7d2KTr": // VIN question id
             if (!vinValidator.validate(value)) {
@@ -61,10 +58,12 @@ const AdvancedOpenTextField = (props) => {
 
     const onTextChange = (text) => {
         //Updated the reducer when user types
-        if(!text) {
-            submitFunction({id, question: currId, selection: null})
-        }
         setValue(text);
+        if(!text) {
+            submitFunction({id, question: currId, selection: null});
+            return;
+        }
+        submitField(text);
     }
 
     const clearField = () => {
@@ -228,7 +227,7 @@ const AdvancedOpenTextField = (props) => {
                     <Input
                         placeholder='Place your Text'
                         value={value}
-                        onChange={onTextChange}
+                        onChangeText={(text) => {onTextChange(text)}}
                     />
                     {RenderHeaderIcon()}
                 </HStack>
