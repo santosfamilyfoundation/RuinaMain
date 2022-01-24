@@ -14,7 +14,7 @@ import { changeLat, changeLong } from '../../actions/MapAction';
 import { updateRoad } from '../../actions/RoadAction';
 import * as Constants from '../../constants';
 import NetInfoAPI from "../../utils/NetAPI";
-import TopNavigation from '../TopNavigation';
+import TopNavigation from '../../components/TopNavigation';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const { width, height } = Dimensions.get('window');
