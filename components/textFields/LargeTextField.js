@@ -9,6 +9,7 @@ import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
 import IconButton from '../IconButton';
 import TextFieldValidation from '../../utils/TextFieldValidation.js';
+import { questions } from '../../data/questions.js';
 
 
 const LargeTextField = (props) => {
@@ -54,9 +55,12 @@ const LargeTextField = (props) => {
          }
      }
 
+
       const onTextChange = (text) => {
          console.log('this is text',text)
          var localText = text
+         var questionDataTest = data.id
+         console.log("question data test", questionDataTest)
          submitFunction({id, question: currId, selection: localText})
          if(!text) {
             setIsInvalid(true)
