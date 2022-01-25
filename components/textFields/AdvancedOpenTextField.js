@@ -209,8 +209,8 @@ const AdvancedOpenTextField = (props) => {
                 <HStack>
                     <Input
                         placeholder='Place your Text'
-                         value = {valueSet(currId)}
-                         onChangeText={(text) => onTextChange(text)}
+                        value = {valueSet(currId)}
+                        onChangeText={(text) => onTextChange(text)}
                     />
                     {RenderHeaderIcon()}
                 </HStack>
