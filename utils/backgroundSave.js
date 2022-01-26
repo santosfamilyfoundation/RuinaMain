@@ -1,10 +1,7 @@
 export class backgroundSave {
     constructor(filePath, openOldFile) {
-        console.log('filePath given to backgroundSave object:', filePath);
-        console.log("Value of openOldFile:", openOldFile);
-
+        console.log("Instatiating a new background save object")
         this.RNFS = require('react-native-fs');
-
         this.openOldFile = openOldFile;
         this.path = "";
         if (openOldFile) {
@@ -16,7 +13,8 @@ export class backgroundSave {
         } else {
             this.path = this.getSavePath();
         }
-        console.log("this.path in backgroundSave object:", this.path);
+
+        console.log("path initialized to:", this.path);
 
         this.filePaths = [];
         this.getFilePaths();
@@ -24,10 +22,13 @@ export class backgroundSave {
     }
 
     async getFilePaths() {
+        console.log(this.RNFS.DocumentDirectoryPath);
         await this.RNFS.readdir(this.RNFS.DocumentDirectoryPath).then( files => {
             for (const file of files) {
                 if (file.includes('CrashReport') && file.includes('.json')) {
-                    this.filePaths.unshift(file);
+                    if (!this.filePaths.includes(file)) {
+                        this.filePaths.unshift(file);
+                    }
                 }
             }
         });
@@ -36,13 +37,16 @@ export class backgroundSave {
     async captureCurrentState(data){
         // write the file
         //console.log("data: ", data);
-        this.RNFS.writeFile(this.path, data, 'utf8')
-            .then((success) => {
-                console.log('Current state saved to: ' + this.path);
-            })
-            .catch((err) => {
-                console.log(err.message);
-            });
+        this.getFilePaths();
+        if (!this.filePaths.includes(this.path)) {
+             this.RNFS.writeFile(this.path, data, 'utf8')
+                        .then((success) => {
+                            console.log('Current state saved to: ' + this.path);
+                        })
+                        .catch((err) => {
+                            console.log(err.message);
+                        });
+        }
     }
 
     getSavePath() {

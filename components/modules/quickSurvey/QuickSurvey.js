@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { TextInput, Text, StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
-import { Button, Heading, Divider, VStack, Center } from 'native-base';
+import { Button, Heading, Divider, VStack, Center, Spinner } from 'native-base';
 import { connect } from 'react-redux';
 import { changeVehicle, changeDrivers, changeNonmotorists, changePassengers, changeFatality, changeNonFatalInjury, changeRespond, changePhotos, updateSetup } from '../../../actions/QuickQuizActions';
 import { updateResponse } from '../../../actions/StoryActions';
@@ -290,6 +290,14 @@ class QuickSurvey extends Component {
           res
         );
       }
+      if (this.state.loading) {
+      return (
+                <Center flex={1}>
+                  <Spinner accessibilityLabel="loadingScreen" size="lg"/>
+                </Center>
+              );
+
+      } else{
 
        if (this.state.loadedAutoSave) {
                 return (
@@ -349,233 +357,8 @@ class QuickSurvey extends Component {
       </React.Fragment>
 
     )
+    }}
     }
-    }
-
-    /*render() {
-      const {navigation,
-        changeRespond,
-        changeVehicle,
-        changeNonmotorists,
-        changeFatality,
-        changeNonFatalInjury,
-        changePhotos,
-        addVehicle,
-        addNonmotorist,
-        addDriver,
-        addRoad,
-        addPassenger,
-        updateResponse,
-        updateSetup,
-        updateVehicle,
-        updateNonmotorist,
-        updateDriver,
-        updateRoad,
-        updatePassenger,
-      } = this.props;
-      
-      // contains the state from the QuickQuizReducer
-      const quiz = this.props.quiz;
-
-      // gets called from moveHome
-      const dispatchAll = () => {
-        // add as many nonmotorists as user inputs
-        addNonmotorist(quiz.numNonmotorist);
-        // add road with pre-populated questions from setup questions in questions.js
-        addRoad({ setupData: quiz["setupData"], roadID: uuid.v1()});
-        // connect vehicles with drivers
-        for (let i = 0; i < (quiz.numVehicle); i++){
-            let vehicleID = uuid.v1(); // Generate a v1 (time-based) id
-            let driverID = uuid.v1();
-            addVehicle({vehicleID, driverID})
-            addDriver({driverID, vehicleID})
-        }
-      }
-
-      // gets called when user clicks continue button
-      const moveHome = () => {
-        console.log('filepath being sent to home screen:', this.stateManager.path);
-        if (quiz.hasResponded){
-          this.props.navigation.navigate('Home', {edit: false,
-                                       filePath: this.stateManager.path,
-                                       openOldFile: true});
-          return
-        }
-        
-        changeRespond();
-        if (!this.state.loadedAutoSave) {
-          dispatchAll();
-        }
-        this.props.navigation.navigate('Home', { edit: false,
-                                      filePath: this.stateManager.path,
-                                      openOldFile: true});
-      }
-
-      // filter out questions in questions.js with particular display
-      const filterQuestionsData = (questionType) => {
-        return questions.data.filter(question => question.display.includes(questionType));
-      }
-
-      let questionsData = filterQuestionsData('setup');
-
-    const submitField = () => {
-        console.log("Question", question);
-        // updateResponse && updateResponse({id, question: currId, selection: idCode})
-        updateSetup
-        updateResponse
-    }
-      
-      // render a single setup question
-      // note that right now we only render multiButton questions
-      // if more questions of different types were to be added to the setup tab, then
-      // we would need to create new quick survey components for them and render them here
-      const renderSingleQuestion = (question) => {
-        switch (question.answerType) {
-          case 'multiButton':
-            return (
-              <SafeAreaView key={question.id} style = {styles.questionContainer}>
-                <MultiButtonSelectorQuickSurvey
-                  data={question}
-                  reducer={"quickquizReducer"}
-                  submitFunction={updateSetup}
-                  updateResponse={updateResponse}
-                />
-              </SafeAreaView>
-            )
-        }
-      }
-
-      // render all the setup questions
-      const renderedQuestions = () => {
-        let res = questionsData.map((question => (renderSingleQuestion(question))));
-        return (
-          res
-        );
-      }
-
-//      console.log("LOADING SCREEN STATUS (render): ", this.state.loading);
-      if (this.state.loading) { // showing a spinning loading wheel while trying to load autosaved session
-        return (
-          <SafeAreaView style={styles.spinnerView}>
-            <ActivityIndicator id="loadingScreen" size="large" color="#0000ff" />
-          </SafeAreaView>
-        );
-      } else { 
-        console.log("Status after trying to load autosaved session: success, ", this.state.loadedAutoSave);
-        // Successfully loaded autosaved session
-        if (this.state.loadedAutoSave) {
-          return (
-            <SafeAreaView style={{ flex: 1 }}>
-              <MaterialDialog
-                title={"Successfully Loaded your Last Session!"}
-                visible={this.state.loadedAutoSaveSuccessMessageVisible}
-                cancelLabel=''
-                okLabel = 'Continue'
-                onCancel={() => {
-                  this.setState({ loadedAutoSaveSuccessMessageVisible: false });
-                  moveHome();
-                }}
-                onOk={() => {
-                  this.setState({ loadedAutoSaveSuccessMessageVisible: false });
-                  moveHome();
-                }}
-              >
-                <Text style={material.subheading}>
-                  Your last session is successfully loaded. Press Continue to edit the report.
-                </Text>
-              </MaterialDialog>
-            </SafeAreaView>
-          )
-        } 
-        // Start new report by filling out the quick survey, could be due to three possible cases: 
-        // 1) user doesnt want to load background saved session
-        // 2) no background saved session exist
-        // 3) json parsing failed
-        else {
-          // render the entire quick survey
-          // some questions are hardcoded right now because they don't correspond to
-          // crash report questions and have special submitFunctions
-          return (
-            <SafeAreaView style={{ flex: 1 }}>
-              <TopNavigation title='Quick Survey' alignment='center' leftControl={this.props.BackAction()} />
-              <ScrollView style={{ flex: 1 }}>
-                <SafeAreaView style={styles.questionContainer}>
-                  <NumberButtonSelectorQuickSurvey
-                    title="Number of vehicles involved"
-                    submitFunction={changeVehicle}
-                    reducerName="quickquizReducer"
-                    fieldName="numVehicle"
-                  />
-                </SafeAreaView>
-                <SafeAreaView style={styles.questionContainer}>
-                  <NumberButtonSelectorQuickSurvey
-                    title="Number of non-motorists involved"
-                    submitFunction={changeNonmotorists}
-                    reducerName="quickquizReducer"
-                    fieldName="numNonmotorist"
-                  />
-                </SafeAreaView>
-                {/*<SafeAreaView style = {styles.questionContainer}>
-                <NumberButtonSelectorQuickSurvey
-                  title="Number of fatalities"
-                  submitFunction = {changeFatality}
-                  reducerName = "quickquizReducer"
-                  fieldName = "fatality"
-                />
-              </SafeAreaView>
-              <SafeAreaView style = {styles.questionContainer}>
-                <NumberButtonSelectorQuickSurvey
-                  title="Number of non-fatal injuries"
-                  submitFunction = {changeNonFatalInjury}
-                  reducerName = "quickquizReducer"
-                  fieldName = "nonFatalInjury"
-                />
-              </SafeAreaView>
-              {renderedQuestions()}
-              /*<SafeAreaView style = {styles.questionContainer}>
-                <Card style = {styles.cardStyle}>
-                    <Text style = {styles.questionText}>Photos taken?</Text>
-                    <Layout style={{flexDirection: 'row'}}>
-                      <Button
-                        style={styles.buttonSytle}
-                        onPress={() => changePhotos(true)}
-                        appearance={(quiz.photos ? 'filled' : 'outline')}
-                      >
-                        Yes
-                      </Button>
-                      <Button
-                        style={styles.buttonSytle}
-                        onPress={() => changePhotos(false)}
-                        appearance={(quiz.photos ? 'outline' : 'filled')}
-                      >
-                        No
-                      </Button>
-                    </Layout>
-                  </Card>
-                </SafeAreaView>
-              </ScrollView>
-              <Button onPress={() => moveHome()}>Continue</Button>
-
-              <MaterialDialog
-                title={"Failed to Load your Last Session!"}
-                visible={this.state.loadedAutoSaveFailMessageVisible}
-                cancelLabel=''
-                onCancel={() => {
-                  this.setState({ loadedAutoSaveFailMessageVisible: false });
-                }}
-                onOk={() => {
-                  this.setState({ loadedAutoSaveFailMessageVisible: false });
-                }}
-              >
-                <Text style={material.subheading}>
-                  An error occured while trying to load your last session. The file is corrupted. Press OK to start a new report.
-                </Text>
-              </MaterialDialog>
-            </SafeAreaView>
-          );
-        }
-      }
-    } // render */
 };
 
 // all the possible actions in QuickSurvey
