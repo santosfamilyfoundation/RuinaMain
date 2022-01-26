@@ -10,6 +10,7 @@ import TooltipView from '../Tooltip';
 import QuestionSection from '../QuestionSection';
 import IconButton from '../IconButton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import TextFieldValidation from '../../utils/TextFieldValidation.js';
 
 
 //This component is used for "advanced" tool access (map, photo, VIN, and time)
@@ -21,6 +22,7 @@ const AdvancedOpenTextField = (props) => {
     const [advancedButtonAppearance, setAdvancedButtonAppearance] = React.useState('outline');
     const [invalidLength, setInvalidLength] = React.useState(false);
     const [invalidVin, setInvalidVin] = React.useState(false);
+    const [isInvalid, setIsInvalid] = React.useState(false);
     const {data, key, id, questionReducer, submitFunction, pageChange, importFrom, updateRoad, dependencyID} = props;
     let currId = data.id;
     let status;
@@ -30,65 +32,52 @@ const AdvancedOpenTextField = (props) => {
     // Populate if value already exists in redux
     if(!value) {
         if(existingData != null) {
-            if(existingData[currId] != null && !value) {
+            if(existingData[currId] != null && existingData[currId] != '' && !value) {
                 setValue(existingData[currId]);
-                setButtonAppearance('filled');
-                setAdvancedButtonAppearance("filled")
             }
         }
-    }
-
-    const submitField = (text) => {
-      //submits data to reducer and is shown as complete
-        submitFunction({id, question: currId, selection: text})
-        switch(currId) {
-          case "Bw7d2KTr": // VIN question id
-            if (!vinValidator.validate(value)) {
-              setInvalidVin(true);
-            } else {
-              setInvalidVin(false);
-            }
-            break;
-          default:
-            break;
-        }
-        ErrorMsg();
-        setButtonAppearance('filled');
     }
 
     const onTextChange = (text) => {
         //Updated the reducer when user types
-        setValue(text);
+        let localText = text
         if(!text) {
-            submitFunction({id, question: currId, selection: null});
-            return;
+            submitFunction({id, question: currId, selection: null})
+            setIsInvalid(false)
         }
-        submitField(text);
+        let textFieldValidation = TextFieldValidation
+        textFieldValidation.submitField(localText);
+        let localStatus = textFieldValidation.status
+        if (localStatus) {
+            setIsInvalid(false)
+         }
+        else {
+            setIsInvalid(true)
+         }
+         switch(currId) {
+                   case "Bw7d2KTr": // VIN question id
+                     if (!vinValidator.validate(value)) {
+                       setInvalidVin(true);
+                     } else {
+                       setInvalidVin(false);
+                     }
+                     break;
+                   default:
+                     break;
+                 }
+        // Eventually the vin switch will live inside the TextFieldValidation Area
     }
 
-    const clearField = () => {
-        // Resets the question field
-        setValue('');
-        submitFunction({id, question: currId, selection: null})
-        setButtonAppearance('outline');
-    }
-
-    // Update the fill of the check button to show completeness
-    if(!value && buttonAppearance != 'outline') {
-        setButtonAppearance('outline');
-    } else if(existingData != null) {
-        if(value != existingData[currId] && buttonAppearance != 'outline') {
-            setButtonAppearance('outline');
-        }
-    }
-
-    // checking if response length is valid
-    // currently no questions use this, but could be added in the future
-    if(value.length > data.maxLength && !invalidLength) {
-        setInvalidLength(true);
-    } else if(invalidLength && value.length <= data.maxLength) {
-        setInvalidLength(false);
-    }
+     const valueSet = (currId) => {
+             try {if (existingData[currId] != null){
+                 return existingData[currId]
+             }
+             }
+             catch(err)
+             {
+             return null
+             }
+         }
 
     const onImportMapPress = () => {
       //Sends user to map tool
@@ -188,13 +177,6 @@ const AdvancedOpenTextField = (props) => {
         }
     }
 
-    //Updates color status of card
-    if(buttonAppearance == 'outline') {
-        status = 'danger'
-    } else {
-        status = 'success'
-    }
-
     const ErrorMsg = () => {
         if(invalidLength) {
             return(
@@ -220,14 +202,15 @@ const AdvancedOpenTextField = (props) => {
                 title={data.question}
                 helperText={data.helperText}
                 errorMessage={ErrorMsg()}
-                isInvalid={invalidLength ? invalidLength : invalidVin}
                 tooltip={tooltip()}
+                errorMessage='Invalid Input'
+                isInvalid={isInvalid}
             >
                 <HStack>
                     <Input
                         placeholder='Place your Text'
-                        value={value}
-                        onChangeText={(text) => {onTextChange(text)}}
+                        value = {valueSet(currId)}
+                        onChangeText={(text) => onTextChange(text)}
                     />
                     {RenderHeaderIcon()}
                 </HStack>
