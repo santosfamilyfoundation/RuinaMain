@@ -40,14 +40,14 @@ const AdvancedOpenTextField = (props) => {
 
     const onTextChange = (text) => {
         //Updated the reducer when user types
-        var localText = text
+        let localText = text
         if(!text) {
             submitFunction({id, question: currId, selection: null})
             setIsInvalid(false)
         }
         let textFieldValidation = TextFieldValidation
         textFieldValidation.submitField(localText);
-        var localStatus = textFieldValidation.status
+        let localStatus = textFieldValidation.status
         if (localStatus) {
             setIsInvalid(false)
          }
@@ -209,8 +209,8 @@ const AdvancedOpenTextField = (props) => {
                 <HStack>
                     <Input
                         placeholder='Place your Text'
-                         value = {valueSet(currId)}
-                         onChangeText={(text) => onTextChange(text)}
+                        value = {valueSet(currId)}
+                        onChangeText={(text) => onTextChange(text)}
                     />
                     {RenderHeaderIcon()}
                 </HStack>

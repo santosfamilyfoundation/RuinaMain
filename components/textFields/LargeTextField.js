@@ -57,19 +57,14 @@ const LargeTextField = (props) => {
 
 
       const onTextChange = (text) => {
-         console.log('this is text',text)
-         var localText = text
-         var questionDataTest = data.id
-         console.log("question data test", questionDataTest)
+         let localText = text
          submitFunction({id, question: currId, selection: localText})
          if(!text) {
             setIsInvalid(true)
          }
          let textFieldValidation = TextFieldValidation
-         console.log(textFieldValidation)
          textFieldValidation.submitField(localText);
-         var localStatus = textFieldValidation.status
-         console.log("localstatus ", localStatus)
+         let localStatus = textFieldValidation.status
          if (localStatus) {
             setIsInvalid(false)
          }
