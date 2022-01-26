@@ -31,10 +31,6 @@ const QuestionForm = (props) => {
     updateResponse,
   } = props
 
-  // filter question information based on section type
-  // const filterQuestionsData = (questionType) => {
-  //   return questions.data.filter(question => question.display.includes(questionType));
-  // }
   const navigateToAdvanced = (place, props) =>{
       navigation.navigate(place, props);
     }
@@ -219,9 +215,6 @@ const QuestionForm = (props) => {
 
   const renderSections = (question) => {
     return (
-      // <Accordion>
-      //   { [renderSingleSection(question.questionsData[0])] }
-      // </Accordion>
         <Accordion index={[0]} mx={4} my={8}>
             { question.questionsData.map(item => renderSingleSection(item)) }
         </Accordion>
