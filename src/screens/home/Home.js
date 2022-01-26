@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Keyboard, BackHandler, Pressable } from 'react-native';
+import { View, ScrollView, BackHandler } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { Heading, Divider, VStack, HStack, Box, Text } from 'native-base';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { styles } from './Home.style';
-import {questions} from '../../data/questions';
+import { VStack, HStack, Text } from 'native-base';
 import VehicleSection from '../formSections/VehicleSection';
 import NonMotoristSection from '../formSections/NonMotoristSection';
 import { addNonmotorist } from '../../actions/NonmotoristAction';
@@ -17,6 +14,7 @@ import Section from '../../components/Section';
 import IconButton from '../../components/IconButton';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import TopNavigation from '../../components/TopNavigation';
+import { questionData } from '../../utils/questionParser';
 
 class Home extends Component {
     constructor(props) {
@@ -46,11 +44,6 @@ class Home extends Component {
       this.props.addVehicle({vehicleID, driverID})
       this.props.addDriver({driverID, vehicleID})
     }
-
-    filterQuestionsData = (questionType) => {
-        return questions.data.filter(question => question.display.includes(questionType));
-    }
-
     // add event listener for when user clicks Android back button
     componentDidMount() {
       BackHandler.addEventListener(
@@ -98,11 +91,9 @@ class Home extends Component {
         captureState.captureCurrentState(JSON.stringify(data));
         console.log('capturing current state at filepath:', this.state.filePath);
 
-        let roadQuestions = this.filterQuestionsData('road');
-
         // navigate to question form
-        const navigateQuestion = (form, id, type, name) => {
-            navigation.navigate('Question', {questions: form.data, objectID: id, type, name, dependencyID:[id]})
+        const navigateQuestion = (id, type, name) => {
+            navigation.navigate('Question', {questions: questionData(type), objectID: id, type, name, dependencyID:[id]})
         }
 
         // generate the vehicle section components based on global state
@@ -178,7 +169,7 @@ class Home extends Component {
                         </HStack>:
                         <HStack>
                             <IconButton topMargin={4} text={`Crash/Road \nForm`}
-                            onPress = {() => navigateQuestion(roadQuestions, road.data[0].id, 'Road', 'Crash/Road')}
+                            onPress = {() => navigateQuestion(road.data[0].id, 'Road', 'Crash/Road')}
                             icon = {<Icon color="white" name="edit-road" size={50}/>}/>
                         </HStack>
                         }

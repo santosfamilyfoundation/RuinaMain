@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
-import { styles } from '../home/Home.style';
-//import { Text, Card, Icon } from '@ui-kitten/components';
 import { Box, Text } from 'native-base';
 import { connect } from 'react-redux';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import { deleteNonmotorist } from '../../actions/NonmotoristAction';
 import {questions} from '../../data/questions';
-import Section from '../../components/Section'
 import IconButton from '../../components/IconButton'
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import { questionData } from '../../utils/questionParser';
 
 class NonMotoristSection extends Component{
 
@@ -27,12 +24,11 @@ class NonMotoristSection extends Component{
     }
 
     render(){
-        const {navigation, nonmotorist, index, edit, roadID} = this.props
-        let nonmotoristQuestions = this.filterQuestionsData('nonmotorist');
+        const {navigation, nonmotorist, index, edit, roadID } = this.props
 
         const navigateQuestion = (form, id, type, idx) => {
           var name = type + ' ' + idx;
-          navigation.navigate('Question', {questions: form.data, objectID: id, type, name, dependencyID: [0, 0, 0, id]})
+          navigation.navigate('Question', {questions: form, objectID: id, type, name, dependencyID: [0, 0, 0, id]})
         }
 
         // describes two different nonmotorist cards (edit and non edit modes)
@@ -67,7 +63,7 @@ class NonMotoristSection extends Component{
           return(
           <Box mt={4}>
               <IconButton
-                onPress = {() => navigateQuestion(nonmotoristQuestions, nonmotorist.id, 'Nonmotorist', (index+1))}
+                onPress = {() => navigateQuestion(questionData('Nonmotorist'), nonmotorist.id, 'Nonmotorist', (index+1))}
                 text={`Non-Motorist ${index+1} \nForm`}
                 rightMargin={4}
                 icon = {<Icon color='white' name='person' size={50}/>}

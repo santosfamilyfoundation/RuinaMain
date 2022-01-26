@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
-import { TextInput, Text, StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
-import { Button, Heading, Divider, VStack, Center, Spinner } from 'native-base';
+import { Text, ScrollView } from 'react-native';
+import { Button, VStack, Center, Spinner } from 'native-base';
 import { connect } from 'react-redux';
 import { changeVehicle, changeDrivers, changeNonmotorists, changePassengers, changeFatality, changeNonFatalInjury, changeRespond, changePhotos, updateSetup } from '../../actions/QuickQuizActions';
 import { updateResponse } from '../../actions/StoryActions';
@@ -19,9 +19,8 @@ import { updateRoad } from '../../actions/RoadAction';
 import NumberButtonSelectorQuickSurvey from '../../components/buttonSelectors/NumberButtonSelectorQuickSurvey';
 import MultiButtonSelectorQuickSurvey from '../../components/buttonSelectors/MultiButtonSelectorQuickSurvey';
 import TopNavigation from '../../components/TopNavigation';
-import { styles } from './QuickSurvey.style';
 
-import { questions } from '../../data/questions';
+import { setupQuestions } from '../../utils/questionParser';
 import backgroundSave from '../../utils/backgroundSave';
 
 import { MaterialDialog } from 'react-native-material-dialog';
@@ -250,13 +249,6 @@ class QuickSurvey extends Component {
                                              openOldFile: true});
              }
 
-             // filter out questions in questions.js with particular display
-             const filterQuestionsData = (questionType) => {
-               return questions.data.filter(question => question.display.includes(questionType));
-             }
-
-             let questionsData = filterQuestionsData('setup');
-
            const submitField = () => {
                console.log("Question", question);
                // updateResponse && updateResponse({id, question: currId, selection: idCode})
@@ -285,7 +277,7 @@ class QuickSurvey extends Component {
           }
 
         const renderedQuestions = () => {
-        let res = questionsData.map((question => (renderSingleQuestion(question))));
+        let res = setupQuestions.map((question => (renderSingleQuestion(question))));
         return (
           res
         );

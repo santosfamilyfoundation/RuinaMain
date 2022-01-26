@@ -24,25 +24,17 @@ import { updateRoad } from '../../actions/RoadAction';
 import { updateResponse } from '../../actions/StoryActions';
 import TopNavigation from '../../components/TopNavigation';
 
-import {questions} from '../../data/questions';
-
 const QuestionForm = (props) => {
   const {
     questionDetail,
-    updateDriver,
-    updateNonmotorist,
-    updatePassenger,
-    updateVehicle,
-    updateRoad,
-    BackAction,
     navigation,
     updateResponse,
   } = props
 
   // filter question information based on section type
-  const filterQuestionsData = (questionType) => {
-    return questions.data.filter(question => question.display.includes(questionType));
-  }
+  // const filterQuestionsData = (questionType) => {
+  //   return questions.data.filter(question => question.display.includes(questionType));
+  // }
   const navigateToAdvanced = (place, props) =>{
       navigation.navigate(place, props);
     }
@@ -103,41 +95,7 @@ const QuestionForm = (props) => {
       }
       return  obj[type]
     }
-  const questionData = (type) => {
-    const obj = {
-      Driver: {
-        reducer: "driverReducer",
-        submitFunction: updateDriver,
-        actionType: "UPDATEDRIVER",
-        questionsData : filterQuestionsData('driver'),
-      },
-      Nonmotorist: {
-        reducer: "nonmotoristReducer",
-        submitFunction: updateNonmotorist,
-        actionType: "UPDATENONMOTORIST",
-        questionsData : filterQuestionsData('nonmotorist'),
-      },
-      Passenger: {
-        reducer: "passengerReducer",
-        submitFunction: updatePassenger,
-        actionType: "UPDATEPASSENGER",
-        questionsData : filterQuestionsData('passenger'),
-      },
-      Vehicle: {
-        reducer: "vehicleReducer",
-        submitFunction: updateVehicle,
-        actionType: "UPDATEVEHICLE",
-        questionsData : filterQuestionsData('vehicle'),
-      },
-      Road: {
-        reducer: "roadReducer",
-        submitFunction: updateRoad,
-        actionType: "UPDATEROAD",
-        questionsData : filterQuestionsData('road'),
-      },
-    }
-    return type?obj[type]:obj
-  }
+  
    const renderSingleQuestion = (type, props) => {
       switch (type) {
         case 'dropdown':
@@ -228,12 +186,12 @@ const QuestionForm = (props) => {
       }
     }
 
-    const question = questionData(questionDetail.type)
+    const question = questionDetail.questions;
+    console.log('questionDetail:', questionDetail);
     const renderedQuestions = (questions) => {
         let questionList = []
         for (const q of questions) {
             const obj = {data:q, setting: question, detail:questionDetail}
-            console.log('questionDetail.type:', questionDetail.type);
             const dom = renderSingleQuestion(q.answerType, questionProps(q.answerType, obj));
             questionList.push(dom)
         }
@@ -243,6 +201,7 @@ const QuestionForm = (props) => {
             </VStack>
         )
     };
+
   const renderSingleSection = (item) => {
     return (
         <Accordion.Item>
