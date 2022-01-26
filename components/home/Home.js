@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Keyboard, BackHandler, Pressable } from 'react-native';
+import { View, ScrollView, Keyboard, BackHandler, Pressable, Linking } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { Heading, Divider, VStack, HStack, Box, Text } from 'native-base';
@@ -210,6 +210,12 @@ class Home extends Component {
                     </Section> : null
                     }
                 </ScrollView>
+                <VStack alignItems="center" mb={8}>
+                    <TouchableOpacity onPress={() => Linking.openURL('https://forms.gle/aXVjxVrQU6jm3KUx6')}><Text style={{ color: 'blue' }}>Submit Feedback</Text></TouchableOpacity>
+                    <Text textAlign="center">
+                      {"Built by students at Olin College of Engineering in partnership with the Volpe Center and Santos Family Foundation"}
+                    </Text>
+                </VStack>
             </SafeAreaView>
         );
     }

@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
-import { Divider, Box, Accordion, VStack, Button } from 'native-base';
+import { Linking } from 'react-native';
+import { Divider, Box, Accordion, VStack, Button, Text } from 'native-base';
 import { styles } from '../../containers/AutoComponentContainer.style';
 import { ScrollView } from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import MultiButtonSelector from '../buttonSelectors/MultiButtonSelector';
 import NumberButtonSelector from '../buttonSelectors/NumberButtonSelector';
 import QuestionAutoCompleteDropDown from '../dropdowns/QuestionAutoCompleteDropDown';
@@ -277,6 +279,12 @@ const QuestionForm = (props) => {
       <Box p={4}>
         <Button onPress={()=> {navigation.goBack()}}>Save Progress</Button>
       </Box>
+        <VStack alignItems="center" mb={8}>
+          <TouchableOpacity onPress={() => Linking.openURL('https://forms.gle/aXVjxVrQU6jm3KUx6')}><Text style={{ color: 'blue' }}>Submit Feedback</Text></TouchableOpacity>
+          <Text textAlign="center">
+            {"Built by students at Olin College of Engineering in partnership with the Volpe Center and Santos Family Foundation"}
+          </Text>
+        </VStack>
     </SafeAreaView>
   );
 }

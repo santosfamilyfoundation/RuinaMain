@@ -1,6 +1,6 @@
 import React from 'react';
 import FinalReport from '../components/FinalReport';
-import { View, ScrollView, Keyboard, BackHandler, Pressable } from 'react-native';
+import { View, ScrollView, Keyboard, BackHandler, Pressable, Linking } from 'react-native';
 import { styles } from '../components/home/Home.style';
 import { TopNavigationAction, Icon } from '@ui-kitten/components';
 

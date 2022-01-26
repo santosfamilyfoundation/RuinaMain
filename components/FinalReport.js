@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { VStack, Button, Heading, Divider, Center, Text} from 'native-base'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { StyleSheet, Linking, ScrollView, PermissionsAndroid } from 'react-native';
 import { MaterialDialog, SinglePickerMaterialDialog} from 'react-native-material-dialog';
 import * as Constants from '../constants';
@@ -124,6 +125,12 @@ class FinalReport extends Component {
                         this.state.exportAction(result.selectedItem.label.substring(1));
                     }}
               />
+              <VStack alignItems="center" mb={8}>
+                  <TouchableOpacity onPress={() => Linking.openURL('https://forms.gle/aXVjxVrQU6jm3KUx6')}><Text style={{ color: 'blue' }}>Submit Feedback</Text></TouchableOpacity>
+                  <Text textAlign="center">
+                    {"Built by students at Olin College of Engineering in partnership with the Volpe Center and Santos Family Foundation"}
+                  </Text>
+              </VStack>
           </SafeAreaView>
         )
     }
