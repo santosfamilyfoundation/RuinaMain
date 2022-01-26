@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, ScrollView, Keyboard, BackHandler, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { Heading, Divider, VStack, HStack, Box, Text } from 'native-base';
+import { Heading, Divider, VStack, HStack, Box, Text, Image } from 'native-base';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styles } from './Home.style';
 import {questions} from '../../data/questions';
@@ -11,12 +11,16 @@ import NonMotoristSection from '../formSections/NonMotoristSection';
 import { addNonmotorist } from '../../actions/NonmotoristAction';
 import { addVehicle } from '../../actions/VehicleAction';
 import { addDriver } from '../../actions/DriverAction';
-var uuid = require('react-native-uuid');
+import { photoAction } from '../../actions/PhotoAction'
 import backgroundSave from '../../utils/backgroundSave';
 import Section from '../../components/Section';
 import IconButton from '../../components/IconButton';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import TopNavigation from '../../components/TopNavigation';
+import { launchCamera } from 'react-native-image-picker';
+import { photoSave } from '../../utils/helperFunctions'
+var uuid = require('react-native-uuid');
+
 
 class Home extends Component {
     constructor(props) {
@@ -28,7 +32,10 @@ class Home extends Component {
         this.state = {
             edit: props.edit || false,
             filePath: this.props.navigation.getParam('filePath'),
-            openOldFile: this.props.navigation.getParam('openOldFile')
+            openOldFile: this.props.navigation.getParam('openOldFile'),
+            photo: {
+                fileUri: ''
+            }
         }
     }
 
@@ -82,7 +89,8 @@ class Home extends Component {
             nonmotorist,
             vehicle,
             passenger,
-            road
+            road,
+            photo
             } = this.props
 
         const data = {
@@ -92,8 +100,9 @@ class Home extends Component {
             passenger: this.props.passenger.data,
             road: this.props.road.data,
             quiz: this.props.quiz,
+            photo: this.props.photo.image
         };
-
+        console.log(data)
         const captureState = new backgroundSave(this.state.filePath, this.state.openOldFile);
         captureState.captureCurrentState(JSON.stringify(data));
         console.log('capturing current state at filepath:', this.state.filePath);
@@ -104,7 +113,6 @@ class Home extends Component {
         const navigateQuestion = (form, id, type, name) => {
             navigation.navigate('Question', {questions: form.data, objectID: id, type, name, dependencyID:[id]})
         }
-
         // generate the vehicle section components based on global state
         let vehiclesListArr = vehicle.data.map((vehicle, index) => {
             const { edit } = this.state;
@@ -137,6 +145,46 @@ class Home extends Component {
                 />
             )
         })
+
+        let savedPhoto;
+        const captureCrash = () => {
+           let options = {
+               storageOptions: {
+                   skipBackup: true,
+               },
+//               saveToPhotos: true,
+           }
+           launchCamera(options, (response) => {
+               if (response.error) { console.log('ImagePicker Error: ', response.error) }
+               else if (response.didCancel) { this.props.navigation.navigate('Home') }
+               else {
+//                    const imagePath = '/data/user/0/com.ruina/files/' + "/" + response.assets[0].filename;
+//                   const source = { uri: response.uri };
+                   console.log('response', JSON.stringify(response));
+                   this.setState({
+                        ...this.state,
+                        photo: {
+                            fileUri: response.assets[0].uri
+                       }
+                   })
+                   savedPhoto = new photoSave(response.assets[0].fileName)
+                   savedPhoto.addPhoto(response.assets[0].uri)
+                   this.props.photoAction({image: 'file://' + savedPhoto.path});
+
+               }
+
+           });
+        };
+
+        const fetchPhoto = () => {
+            if (this.state.photo.fileUri) {
+                return <Image mt={4} source={{uri:this.state.photo.fileUri}} alt='Car Crash' size='xl'/>
+            } else if (photo.image) {
+            console.log('using reducer')
+                return <Image mt={4} source={{uri:photo.image}} alt='Car Crash' size='xl'/>
+            } else return null
+
+        };
 
         const rightControls = () => {
             const { edit } = this.state;
@@ -201,20 +249,25 @@ class Home extends Component {
                             onPress = {() => this._addNonmotorist()}
                             icon = {<Icon color="white" name="person-add" size={50}/>}
                         />
-                    </Section> :
-                    nonmotoristListArr.length ?
+                    </Section>:
+                    <>
+                    {nonmotoristListArr.length ?
                     <Section title='Non-motorists'>
                         <HStack flexWrap='wrap'>
                             {nonmotoristListArr}
                         </HStack>
-                    </Section> : null
-                    }
+                    </Section> : null}
                     <Section title='Crash Diagram'>
                         <IconButton topMargin={4} text="Add Crash Diagram"
-                            onPress={()=>{console.log('diagram button pressed'); navigation.navigate('DiagramTool')}}
+                            onPress={() => captureCrash()}
                             icon={<Icon color='white' name='add' size={50}/>}
                         />
+                        <HStack flexWrap='wrap'>
+                            {fetchPhoto()}
+                        </HStack>
                     </Section>
+                    </>
+                    }
                 </ScrollView>
             </SafeAreaView>
         );
@@ -224,7 +277,8 @@ class Home extends Component {
 const mapDispatchToProps = {
     addNonmotorist,
     addVehicle,
-    addDriver
+    addDriver,
+    photoAction
 };
 
 const mapStateToProps = (state) => {
@@ -235,6 +289,7 @@ const mapStateToProps = (state) => {
         passenger: state.passengerReducer,
         quiz: state.quickquizReducer,
         road: state.roadReducer,
+        photo: state.photosReducer,
     }
 }
 
