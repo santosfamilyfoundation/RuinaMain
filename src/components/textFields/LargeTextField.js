@@ -85,7 +85,11 @@ const LargeTextField = (props) => {
         return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
     }
 
-    var renderComponent = dependencyParser(props.response, data, dependencyID)
+    var renderComponent = true;
+    if (data.questionDependency != undefined && props.response != null) {
+        renderComponent = dependencyParser(props.response, data, dependencyID)
+    }
+
     if (renderComponent){
         return(
         <Box>
