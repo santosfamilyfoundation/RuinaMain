@@ -24,3 +24,27 @@ export const getDefaultFilename = () => {
     var localDate = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
     return "Crash Report " + localDate + " at " + localTime;
 }
+
+// save photos to app files
+export class photoSave {
+    constructor(filePath) {
+        console.log("Instatiating a new background save object")
+        this.RNFS = require('react-native-fs');
+        this.path = "";
+        this.path = this.RNFS.DocumentDirectoryPath + "/" + filePath;
+
+        console.log("path initialized to:", this.path);
+    }
+    async addPhoto(data) {
+        this.RNFS.copyFile(data, this.path)
+            .then((success) => {
+                console.log('Current photo state saved to: ' + this.path);
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
+    }
+//        this.filePaths = [];
+//        this.getFilePaths();
+
+}
