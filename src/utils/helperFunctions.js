@@ -31,7 +31,9 @@ export class photoSave {
         console.log("Instatiating a new background save object")
         this.RNFS = require('react-native-fs');
         this.path = "";
-        this.path = this.RNFS.DocumentDirectoryPath + "/" + filePath;
+        this.crashDate = filePath.slice(29, -5)
+        this.filename = this.crashDate + '-CrashDiagram.jpg'
+        this.path = this.RNFS.DocumentDirectoryPath + "/" + this.filename;
 
         console.log("path initialized to:", this.path);
     }
@@ -44,7 +46,5 @@ export class photoSave {
                 console.log(err.message);
             });
     }
-//        this.filePaths = [];
-//        this.getFilePaths();
 
 }
