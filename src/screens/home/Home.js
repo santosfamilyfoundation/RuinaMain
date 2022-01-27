@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Keyboard, BackHandler, Pressable } from 'react-native';
+import { View, ScrollView, Keyboard, BackHandler, Pressable, PermissionsAndroid } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { Heading, Divider, VStack, HStack, Box, Text, Image } from 'native-base';
+import { VStack, HStack, Box, Text, Image, Alert, Center } from 'native-base';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styles } from './Home.style';
 import {questions} from '../../data/questions';
@@ -11,7 +11,7 @@ import NonMotoristSection from '../formSections/NonMotoristSection';
 import { addNonmotorist } from '../../actions/NonmotoristAction';
 import { addVehicle } from '../../actions/VehicleAction';
 import { addDriver } from '../../actions/DriverAction';
-import { photoAction } from '../../actions/PhotoAction'
+import { addPhoto } from '../../actions/PhotoAction';
 import backgroundSave from '../../utils/backgroundSave';
 import Section from '../../components/Section';
 import IconButton from '../../components/IconButton';
@@ -33,12 +33,37 @@ class Home extends Component {
             edit: props.edit || false,
             filePath: this.props.navigation.getParam('filePath'),
             openOldFile: this.props.navigation.getParam('openOldFile'),
-            photo: {
-                fileUri: ''
-            }
+            photoUri: '',
+            cameraPermission: false,
         }
+        this.requestCameraPermission()
     }
-
+    requestCameraPermission = async () => {
+      console.log('working on permissions')
+      try {
+        console.log('trying permissions')
+        const granted = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.CAMERA,
+          {
+            title: "App Camera Permission",
+            message:
+              "Ruina needs access to your camera.",
+            buttonNeutral: "Ask Me Later",
+            buttonNegative: "Cancel",
+            buttonPositive: "OK"
+          }
+        );
+        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+          console.log("You can use external storage");
+          return this.setState({cameraPermission: true})
+        } else {
+          console.log("external permission denied");
+          return this.setState({cameraPermission: false})
+        }
+      } catch (err) {
+        console.warn(err);
+      }
+    };
 
     // add nonmotorist to global state
     _addNonmotorist () {
@@ -102,7 +127,7 @@ class Home extends Component {
             quiz: this.props.quiz,
             photo: this.props.photo.image
         };
-        console.log(data)
+
         const captureState = new backgroundSave(this.state.filePath, this.state.openOldFile);
         captureState.captureCurrentState(JSON.stringify(data));
         console.log('capturing current state at filepath:', this.state.filePath);
@@ -146,41 +171,41 @@ class Home extends Component {
             )
         })
 
-        let savedPhoto;
         const captureCrash = () => {
-           let options = {
-               storageOptions: {
-                   skipBackup: true,
-               },
-//               saveToPhotos: true,
+           if (this.state.cameraPermission) {
+                let options = {
+                   storageOptions: {
+                       skipBackup: true,
+                   },
+                }
+                launchCamera(options, (response) => {
+                  if (response.errorMessage) { console.log('ImagePicker Error: ', response.errorMessage) }
+                  else if (response.didCancel) { this.props.navigation.navigate('Home') }
+                  else {
+                      console.log('response', JSON.stringify(response));
+                      this.setState({
+                           ...this.state,
+                           photoUri: response.assets[0].uri,
+                      })
+                      let savedPhoto = new photoSave(this.state.filePath)
+                      savedPhoto.addPhoto(response.assets[0].uri)
+                      this.props.addPhoto({image: 'file://' + savedPhoto.path});
+                  }
+                });
+           } else {
+                return <Center>
+                <Alert status='error'>
+                    <Text>Access to camera denied</Text>
+                </Alert>
+                </Center>
            }
-           launchCamera(options, (response) => {
-               if (response.error) { console.log('ImagePicker Error: ', response.error) }
-               else if (response.didCancel) { this.props.navigation.navigate('Home') }
-               else {
-//                    const imagePath = '/data/user/0/com.ruina/files/' + "/" + response.assets[0].filename;
-//                   const source = { uri: response.uri };
-                   console.log('response', JSON.stringify(response));
-                   this.setState({
-                        ...this.state,
-                        photo: {
-                            fileUri: response.assets[0].uri
-                       }
-                   })
-                   savedPhoto = new photoSave(response.assets[0].fileName)
-                   savedPhoto.addPhoto(response.assets[0].uri)
-                   this.props.photoAction({image: 'file://' + savedPhoto.path});
 
-               }
-
-           });
         };
 
         const fetchPhoto = () => {
-            if (this.state.photo.fileUri) {
-                return <Image mt={4} source={{uri:this.state.photo.fileUri}} alt='Car Crash' size='xl'/>
+            if (this.state.photoUri) {
+                return <Image mt={4} source={{uri:this.state.photoUri}} alt='Car Crash' size='xl'/>
             } else if (photo.image) {
-            console.log('using reducer')
                 return <Image mt={4} source={{uri:photo.image}} alt='Car Crash' size='xl'/>
             } else return null
 
@@ -278,7 +303,7 @@ const mapDispatchToProps = {
     addNonmotorist,
     addVehicle,
     addDriver,
-    photoAction
+    addPhoto,
 };
 
 const mapStateToProps = (state) => {
