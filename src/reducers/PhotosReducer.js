@@ -4,11 +4,7 @@ const INITIAL_STATE = {
   image: ''
 };
 
-//const photosReducer = (state = INITIAL_STATE, action) => {
-const photosReducer = (state, action) => {
-  if (!state) {
-    state = INITIAL_STATE
-  }
+const photosReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'ADDPHOTO':
       let imageObj = state.image;
