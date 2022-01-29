@@ -9,6 +9,7 @@ export class JSONconverter extends Component {
 		super(props);
 	}
 	handleConverter(format, data) {
+	    console.log('JSON COVERTER', data)
 		let file;
 		switch (format) {
 			case 'json':
@@ -48,6 +49,7 @@ export class JSONconverter extends Component {
 					answer = answer.join(", ");
 				}
 				rows.push({A: question, B: answer});
+				if
 			}
 			// write data starting at A2
 			XLSX.utils.sheet_add_json(ws, rows, {skipHeader: true, origin: "A2"});
@@ -190,8 +192,13 @@ export class JSONconverter extends Component {
 
 	JSONtoHTML(jsondata) {
 		function getAnswer(answerSubsetData, id) {
+		    if ("photo" in answerSubsetData && id === 'crashDia') {
+		        let source = 'src="' + answerSubsetData['photo'] + '" '
+		        return source
+		    }
 			if (("response" in answerSubsetData) && (id in answerSubsetData["response"])) {
 				if (answerSubsetData["response"][id] instanceof Array) {
+				    console.log(answerSubsetData["response"][id])
 					return answerSubsetData["response"][id].join(", ")
 				}
 				return answerSubsetData["response"][id];
@@ -245,7 +252,11 @@ export class JSONconverter extends Component {
 					var ans = getAnswer(answers, id);
 					// put ans into line and replace
 					if (fillInMethod == "datasection") {
-						line = line.slice(0, pos+14) + ans + line.slice(pos+14);
+					    if (id === 'crashDia') {
+					        line = line.slice(0, pos+18) + ans + line.slice(pos+18);
+					    } else {
+					        line = line.slice(0, pos+14) + ans + line.slice(pos+14);
+					    }
 					} else {
 						line = line.replace("###", ans);
 					}
@@ -297,7 +308,12 @@ export class JSONconverter extends Component {
 		// fill in cover page header
 		htmlString += fillCoverPageHeader(htmlStrings.coverPageHeaderString, jsondata["road"][0], numSectionsDict);
 		// fill in cover page data sections
-		htmlString += processQuestionIds(htmlStrings.crashDataSectionString, jsondata["road"][0], "datasection");
+		let crashRoadData = jsondata['road'[0]]
+		if(jsondata['photo'].length > 0) {
+            crashRoadData = {...crashRoadData, photo: jsondata['photo']}
+        }
+		htmlString += processQuestionIds(htmlStrings.crashDataSectionString, crashRoadData, "datasection");
+		console.log(htmlString)
 		// if applicable, add in construction table
 		var displayConstruction = false;
 		if (getAnswer(jsondata["road"][0], "34oHCyQs") == "Yes") {
