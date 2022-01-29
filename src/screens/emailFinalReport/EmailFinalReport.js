@@ -35,6 +35,7 @@ export class EmailFinalReport extends Component {
   componentDidMount() {
       const format = this.props.navigation.state.params.format;
       console.log(format);
+      console.log(this.props)
       // convert data to desired format
       const data = {
         driver: this.props.driver.data,
@@ -42,6 +43,7 @@ export class EmailFinalReport extends Component {
         vehicle: this.props.vehicle.data,
         passenger: this.props.passenger.data,
         road: this.props.road.data,
+        photo: this.props.photo.image,
       };
       if (format === "pdf") {
         this.setState({encoding:'base64', format:format});
@@ -215,7 +217,8 @@ const mapStateToProps = (state) => {
         nonmotorist: state.nonmotoristReducer,
         vehicle: state.vehicleReducer,
         passenger: state.passengerReducer,
-        road: state.roadReducer
+        road: state.roadReducer,
+        photo: state.photoReducer,
     }
 }
 

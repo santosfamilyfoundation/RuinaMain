@@ -138,7 +138,8 @@ const mapStateToProps = (state) => {
         quiz: state.quickquizReducer,
         photos: state.photosReducer,
         story: state.storyReducer,
-        road: state.roadReducer
+        road: state.roadReducer,
+        photo: state.photoReducer
     }
 }
 

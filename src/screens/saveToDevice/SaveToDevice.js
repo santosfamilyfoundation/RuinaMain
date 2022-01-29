@@ -40,7 +40,9 @@ componentDidMount() {
       vehicle: this.props.vehicle.data,
       passenger: this.props.passenger.data,
       road: this.props.road.data,
+      photo: this.props.photo.image,
     };
+
     if (format === "pdf") {
       this.setState({encoding:'base64'});
       createPDF(data);
@@ -165,9 +167,9 @@ const mapStateToProps = (state) => {
         vehicle: state.vehicleReducer,
         passenger: state.passengerReducer,
         quiz: state.quickquizReducer,
-        photos: state.photosReducer,
+        photo: state.photosReducer,
         story: state.storyReducer,
-        road: state.roadReducer
+        road: state.roadReducer,
     }
 }
 
