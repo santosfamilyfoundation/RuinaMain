@@ -16,7 +16,7 @@ import Section from '../../components/Section';
 import IconButton from '../../components/IconButton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export class EmailFinalReport extends Component {
+class EmailFinalReport extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,7 +35,6 @@ export class EmailFinalReport extends Component {
   componentDidMount() {
       const format = this.props.navigation.state.params.format;
       console.log(format);
-      console.log(this.props)
       // convert data to desired format
       const data = {
         driver: this.props.driver.data,
@@ -217,8 +216,8 @@ const mapStateToProps = (state) => {
         nonmotorist: state.nonmotoristReducer,
         vehicle: state.vehicleReducer,
         passenger: state.passengerReducer,
+        photo: state.photosReducer,
         road: state.roadReducer,
-        photo: state.photoReducer,
     }
 }
 
