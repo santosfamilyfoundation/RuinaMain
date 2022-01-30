@@ -21,38 +21,49 @@ export class EmailFinalReport extends Component {
     super(props);
     this.state = {
       filename: this.getDefaultFilename(),
-      offlineStatus: false,
-      uri: '',
-      data: '',
-      format: '',
-      encoding: '',
+      devicePlatform: Platform.OS,
+      reportSavedMessageVisible: false,
+      reportSavedFailedMessageVisible: false,
+      uri: [],
+      data: [],
+      encoding: [],
+      format: [],
       isPDF: false,
     };
     this.changeFilename = this.changeFilename.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
   }
 
-  componentDidMount() {
-      const format = this.props.navigation.state.params.format;
-      console.log(format);
-      // convert data to desired format
-      const data = {
-        driver: this.props.driver.data,
-        nonmotorist: this.props.nonmotorist.data,
-        vehicle: this.props.vehicle.data,
-        passenger: this.props.passenger.data,
-        road: this.props.road.data,
-      };
-      if (format === "pdf") {
-        this.setState({encoding:'base64', format:format});
-        this.createPDF(data);
-      } else {
-        var converter = new JSONconverter();
-        var file = converter.handleConverter(format, data);
-        var encoding = format === "xlsx" ? 'ascii' : 'utf8';
-        this.setState({data: file, encoding: encoding, format:format});
-      }
+async componentDidMount() {
+    const format = this.props.navigation.state.params.format;
+    console.log(format);
+    // convert data to desired format
+    const export_data = {
+      driver: this.props.driver.data,
+      nonmotorist: this.props.nonmotorist.data,
+      vehicle: this.props.vehicle.data,
+      passenger: this.props.passenger.data,
+      road: this.props.road.data,
+    };
+    for (let i = 0; i < format.length; i++){
+        if (format[i] === "pdf") {
+          console.log("PDF LOOP")
+          this.createPDF(export_data);
+        } else {
+          var converter = new JSONconverter();
+          var file = converter.handleConverter(format[i], export_data);
+          var encode = format[i] === "xlsx" ? 'ascii' : 'utf8';
+          console.log('encode for html', encode);
+          console.log('HTML FILE', typeof(file));
+          this.state.data.push(file);
+          this.state.format.push(format[i])
+          console.log('data html', typeof(data[0]));
+
+          this.state.encoding.push(encode);
+//          this.setState({data: this.state.data.push(file), encoding: this.state.encoding.push(encode)});
+        }
     }
+  }
 
   // generate default filename
   getDefaultFilename() {
@@ -68,21 +79,29 @@ export class EmailFinalReport extends Component {
   }
 
   // generate html and convert it into a PDF
-  async createPDF(data) {
-    var converter = new JSONconverter();
+  async createPDF(export_data) {
+    var converter = new JSONconverter()
     // const htmlString = converter.handleConverter('pdftest', "");
-    const htmlString = converter.handleConverter('pdf', data);
+    const htmlString = converter.handleConverter('pdf', export_data)
     let options = {
       html: htmlString,
       base64: true,
       fileName: 'crash_report',
     };
     try {
-      const data = await RNHTMLtoPDF.convert(options);
+      const pdf_data = await RNHTMLtoPDF.convert(options);
       console.log("got PDF data");
-      this.setState({uri: data.filePath, data: data.base64, isPDF:true});
+//      let updated_data = [pdf_data.base64];
+
+      this.state.uri.push(pdf_data.filePath);
+      this.state.data.push(pdf_data.base64);
+      this.state.isPDF= true;
+      this.state.encoding.push("base64");
+      this.state.format.push("pdf");
+      console.log("what is uri",this.state.uri[0])
+      console.log("Type of encoding",this.state.encoding[0])
     } catch (error) {
-      console.log('error->', error);
+      console.log('this is the pdf converter error->', error);
     }
   }
 
@@ -119,12 +138,7 @@ export class EmailFinalReport extends Component {
       body: '',
       customChooserTitle: "Send Crash Report", // Android only (defaults to "Send Mail")
       isHTML: true,
-      attachments: [{
-        path: path,  // The absolute path of the file from which to read data.
-        // type: type,   // Mime Type: jpg, png, doc, ppt, html, pdf, csv
-        // mimeType - use only if you want to use custom type
-        // name: ,   // Optional: Custom filename for attachment
-      }]
+      attachments: path,
     }, (error, event) => {
       console.log('errror', error)
       Alert.alert(
@@ -150,9 +164,12 @@ export class EmailFinalReport extends Component {
       return;
     }
     // save data internally
-    var path = await this.saveDataInternal(this.state.filename + "." + this.state.format);
+    var path = []
+    for (let i = 0; i < this.state.format.length; i++){
+        path += await this.saveDataInternal(this.state.filename + "." + this.state.format);
+     }
     // send email
-    await this.sendEmail(path, this.state.filename + "." + this.state.format);
+    await this.sendEmail(path, this.state.filename );
   }
   // required method that creates components of email screen
   render() {
