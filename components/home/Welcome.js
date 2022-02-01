@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { combineReducers } from 'redux';
 import { SafeAreaView } from 'react-navigation';
-import { Linking, ActivityIndicator, Text } from 'react-native';
+import { Linking, ActivityIndicator, Text, PermissionsAndroid } from 'react-native';
 import { Button, Divider, Container, Heading, VStack, Center, View, Spinner, Pressable, Box } from 'native-base';
 import { styles } from './Welcome.style';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -10,6 +10,7 @@ import { MaterialDialog, SinglePickerMaterialDialog } from 'react-native-materia
 import { material } from "react-native-typography";
 import { connect } from 'react-redux';
 import TopNavigation from '../TopNavigation';
+import { getMobileSpreadsheet } from '../../utils/helperFunctions'
 
 import { resetDriver } from '../../actions/DriverAction';
 import { resetNonmotorist } from '../../actions/NonmotoristAction';
@@ -27,12 +28,15 @@ class Welcome extends Component {
       this.stateManager = new backgroundSave("", false);
       this.state = {
         loading: true,
+        downloadsFolder: getMobileSpreadsheet(),
         displayOutputTest: false,
         autoSavedSession: false,
         autoSavedSessionDialogBoxVisible: false,
         filePickerDialogBoxVisible: false,
         filePathSelected: false,
-        selectedFile: {label: "", value: ""}
+        selectedFile: {label: "", value: ""},
+        filePermissionsGranted: false,
+        filePermissionsErrorMessageVisible: false
       };
       this.unfinishedReportsPresent = false
     }
@@ -53,6 +57,15 @@ class Welcome extends Component {
       console.log(this.stateManager.filePaths);
       console.log(this.stateManager.filePaths.length == 0)
       this.setState({ loading: false });
+    }
+
+    checkDownloadsFolder(){
+        if (this.state.downloadsFolder != null){
+            console.log("this is the print: ", this.state.downloadsFolder)
+        }
+        else {
+        console.log('no contents in downloads folder')
+        }
     }
 
     checkAutoSavedSession(){

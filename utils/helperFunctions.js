@@ -24,3 +24,31 @@ export const getDefaultFilename = () => {
     var localDate = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
     return "Crash Report " + localDate + " at " + localTime;
 }
+
+// locate the questions spreadsheet file in the mobile downloads folder.
+export const getMobileSpreadsheet = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+        {
+          title: "Android External Storage Permission",
+          message:
+            "Ruina needs access to your external storage to find your customized questions. ",
+          buttonNeutral: "Ask Me Later",
+          buttonNegative: "Cancel",
+          buttonPositive: "OK"
+        }
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log("You can use external storage");
+        this.setState({ filePermissionsGranted: true });
+      } else {
+        console.log("external permission denied");
+        this.setState({ filePermissionsGranted: false });
+        this.setState({ filePermissionsErrorMessageVisible: true });
+      }
+    } catch (err) {
+      console.warn(err);
+    }
+
+}
