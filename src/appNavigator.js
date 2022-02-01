@@ -20,6 +20,7 @@ import { EmailFinalReportScreen } from './screens/emailFinalReport/emailFinalRep
 import { SaveToDeviceScreen } from './screens/saveToDevice/saveToDeviceScreen';
 import { FeatureComingSoonScreen } from './screens/featureComingSoon/featureComingSoonScreen';
 import { ReportToDatabaseScreen } from './screens/reportToDatabase/ReportToDatabaseScreen';
+import { DiagramToolScreen} from './screens/diagramTool/diagramToolScreen';
 
 const HomeNavigator = createStackNavigator({
   Welcome: WelcomeScreen,
@@ -42,6 +43,7 @@ const HomeNavigator = createStackNavigator({
   InfoExchange: InfoExchangeScreen,
   SinglePhoto: SinglePhotoScreen,
   ReportToDatabase: FeatureComingSoonScreen,
+  DiagramTool: DiagramToolScreen,
 }, {
   headerMode: 'none',
 });

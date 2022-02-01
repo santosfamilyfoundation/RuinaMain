@@ -36,16 +36,17 @@ export class backgroundSave {
 
     async captureCurrentState(data){
         // write the file
-        //console.log("data: ", data);
         this.getFilePaths();
         if (!this.filePaths.includes(this.path)) {
+             this.RNFS.unlink(this.path)
              this.RNFS.writeFile(this.path, data, 'utf8')
-                        .then((success) => {
-                            console.log('Current state saved to: ' + this.path);
-                        })
-                        .catch((err) => {
-                            console.log(err.message);
-                        });
+                .then((success) => {
+                    console.log('Current state saved to: ' + this.path);
+                })
+                .catch((err) => {
+                    console.log('file write error')
+                    console.log(err.message);
+                });
         }
     }
 
