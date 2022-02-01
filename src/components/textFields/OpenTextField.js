@@ -6,8 +6,8 @@ import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
 import QuestionSection from '../QuestionSection';
 
-
 const OpenTextField = (props) => {
+    console.log('at the VERY beginning of opentextfield')
     const [value, setValue] = React.useState('');
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const [isInvalid, setIsInvalid] = React.useState(false);
@@ -19,7 +19,7 @@ const OpenTextField = (props) => {
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
 
-
+    console.log('beginning of openTextField')
     // Populate if value already exists in redux
     if(!value) {
         if(existingData != null) {
@@ -70,6 +70,7 @@ const OpenTextField = (props) => {
         return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
     }
 
+    console.log('evaluating renderComponent in openTextField')
     var renderComponent = true;
     if (data.questionDependency != undefined && props.response != null) {
         renderComponent = dependencyParser(props.response, data, dependencyID)

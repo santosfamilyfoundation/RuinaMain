@@ -1,4 +1,6 @@
 export function dependencyParser(response, data, formID) {
+    const startParserTime = performance.now()
+    console.log('Starting to parse dependencies')
     var renderComponent = false;
     let tarQuesArr = data.questionDependency;
     for (let i = 0; i <tarQuesArr.length; i++) {
@@ -53,5 +55,6 @@ export function dependencyParser(response, data, formID) {
     }
 
     console.log('value of render component:', renderComponent)
+    console.log('Parser time:', performance.now() - startParserTime)
     return renderComponent
 }

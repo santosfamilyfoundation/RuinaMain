@@ -48,20 +48,20 @@ class Welcome extends Component {
       this.props.resetMap();
       this.props.resetPhoto();
       await this.stateManager.getFilePaths();
-      console.log("Unfinished reports found:", this.stateManager.filePaths);
+      // console.log("Unfinished reports found:", this.stateManager.filePaths);
       this.unfinishedReportsAbsent = this.stateManager.filePaths.length == 0
-      console.log(this.stateManager.filePaths);
-      console.log(this.stateManager.filePaths.length == 0)
+      // console.log(this.stateManager.filePaths);
+      // console.log(this.stateManager.filePaths.length == 0)
       this.setState({ loading: false });
     }
 
     checkAutoSavedSession(){
         if (this.stateManager.filePaths != null) {
             this.setState({autoSavedSession : true, filePickerDialogBoxVisible: true});
-            console.log('Detect unfinished reports!');
+            // console.log('Detect unfinished reports!');
         } else {
             this.setState({ autoSavedSession: false, filePickerDialogBoxVisible: false });
-            console.log('No unfinished report!');
+            // console.log('No unfinished report!');
         }
     }
 

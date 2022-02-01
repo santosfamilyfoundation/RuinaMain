@@ -56,17 +56,17 @@ class QuickSurvey extends Component {
         }
 
         async loadStateFromJSON() {
-        console.log("Loading State from JSON");
+        // console.log("Loading State from JSON");
           await this.stateManager.RNFS.readFile(this.stateManager.path, 'utf8')
             .then((data) => {
               try {
                 const loadedState = JSON.parse(data);
-                console.log("Successfully Parsed JSON");
+                // console.log("Successfully Parsed JSON");
                 this.parseLoadedState(loadedState);
                 this.setState({ loadedAutoSaveSuccessMessageVisible: true})
               } catch(e) {
                 // catch any error while parsing the JSON
-                console.log("ERROR: " + e.message);
+                // console.log("ERROR: " + e.message);
     //            this.setState({ loadedAutoSaveFailMessageVisible: true })
     //            this.stateManager.deleteCapturedState();
               }
@@ -79,13 +79,13 @@ class QuickSurvey extends Component {
               this.setState({ autoSavedSession: false });
               this.setState({ loading: false });
     //          this.setState({ loadedAutoSaveFailMessageVisible: true })
-              console.log(err.message);
+              // console.log(err.message);
             })
         }
 
         parseLoadedState(loadedState){
           for (let d in loadedState) {
-            console.log("LOADED SECTION: ", d, ": ", loadedState[d]);
+            // console.log("LOADED SECTION: ", d, ": ", loadedState[d]);
           }
 
           // Parse all fields from loaded state
@@ -109,7 +109,7 @@ class QuickSurvey extends Component {
           /*              Add and Update Road               */
           // add road with pre-populated questions from loaded state setup questions in questions.js
           let roadID = loadedRoad["id"];
-          console.log("roadID: ", roadID);
+          // console.log("roadID: ", roadID);
           this.props.addRoad({ setupData: loadedQuiz["setupData"], roadID: roadID });
           // update resposes from loaded road state
           let roadResponse = loadedRoad["response"];
@@ -124,7 +124,7 @@ class QuickSurvey extends Component {
             let currentDriver = loadedDriver[i];
             let vehicleID = currentDriver["vehicle"];
             let driverID = currentDriver["id"];
-            console.log("driverID: ", driverID, "vehicleID: ", vehicleID);
+            // console.log("driverID: ", driverID, "vehicleID: ", vehicleID);
             this.props.addDriver({ driverID, vehicleID });
 
             // update responses for this driver
@@ -141,7 +141,7 @@ class QuickSurvey extends Component {
             let currentVehicle = loadedVehicle[i];
             let vehicleID = currentVehicle["id"];
             let driverID = currentVehicle["driver"];
-            console.log("vehicleID: ", vehicleID, "driverID: ", driverID);
+            // console.log("vehicleID: ", vehicleID, "driverID: ", driverID);
             this.props.addVehicle({ vehicleID, driverID });
 
             // update responses for this vehicle
@@ -158,7 +158,7 @@ class QuickSurvey extends Component {
             let currentPassenger = loadedPassenger[i];
             let vehicleID = currentPassenger["vehicle"];
             let passengerID = currentPassenger["id"];
-            console.log("vehicleID: ", vehicleID, "passengerID: ", passengerID);
+            // console.log("vehicleID: ", vehicleID, "passengerID: ", passengerID);
             this.props.addPassenger({ id: passengerID, vehicleID: vehicleID });
 
             // update responses for this passenger
@@ -174,7 +174,7 @@ class QuickSurvey extends Component {
           for (let i = 0; i < loadedNonmotorist.length; i++) {
             let currentNonmotorist = loadedNonmotorist[i];
             let nonmotoristID = currentNonmotorist["id"];
-            console.log("nonmotorist ID: ", nonmotoristID);
+            // console.log("nonmotorist ID: ", nonmotoristID);
             this.props.addNonmotorist({ id: nonmotoristID });
 
             // update responses for this nonmotorist
@@ -185,7 +185,7 @@ class QuickSurvey extends Component {
             }
           }
           this.setState({ loadedAutoSave: true });
-          console.log("Finish loading saved state from disk.")
+          // console.log("Finish loading saved state from disk.")
         }
 
     render() {
@@ -212,17 +212,17 @@ class QuickSurvey extends Component {
 
              // contains the state from the QuickQuizReducer
              const quiz = this.props.quiz;
-             console.log('quiz from reducer:', quiz);
+            //  console.log('quiz from reducer:', quiz);
 
              // gets called from moveHome
              const dispatchAll = () => {
                // add as many nonmotorists as user inputs
-               console.log('quiz.numNonmotorist:', quiz.numNonmotorist);
+              //  console.log('quiz.numNonmotorist:', quiz.numNonmotorist);
                addNonmotorist(quiz.numNonmotorist);
                // add road with pre-populated questions from setup questions in questions.js
                addRoad({ setupData: quiz["setupData"], roadID: uuid.v1()});
                // connect vehicles with drivers
-               console.log('quiz.numVehicle:', quiz.numVehicle);
+              //  console.log('quiz.numVehicle:', quiz.numVehicle);
                for (let i = 0; i < (quiz.numVehicle); i++){
                    let vehicleID = uuid.v1(); // Generate a v1 (time-based) id
                    let driverID = uuid.v1();
@@ -250,7 +250,7 @@ class QuickSurvey extends Component {
              }
 
            const submitField = () => {
-               console.log("Question", question);
+              //  console.log("Question", question);
                // updateResponse && updateResponse({id, question: currId, selection: idCode})
                updateSetup
                updateResponse

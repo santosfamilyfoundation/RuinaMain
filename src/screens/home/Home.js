@@ -89,7 +89,7 @@ class Home extends Component {
 
         const captureState = new backgroundSave(this.state.filePath, this.state.openOldFile);
         captureState.captureCurrentState(JSON.stringify(data));
-        console.log('capturing current state at filepath:', this.state.filePath);
+        // console.log('capturing current state at filepath:', this.state.filePath);
 
         // navigate to question form
         const navigateQuestion = (id, type, name) => {

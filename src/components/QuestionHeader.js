@@ -6,7 +6,7 @@ import { Heading, Text, VStack } from 'native-base';
 const QuestionHeader = (props) => {
     const {data, dependencyID} = props;
     var renderComponent = true;
-    if (data.questionDependency != undefined && props.response != null) {
+    if (data.questionDependency !== undefined && props.response !== null) {
         renderComponent = dependencyParser(props.response, data, dependencyID)
     }
     if (renderComponent){

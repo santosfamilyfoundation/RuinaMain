@@ -92,8 +92,8 @@ const QuestionForm = (props) => {
       return  obj[type]
     }
   
-   const renderSingleQuestion = (type, props) => {
-      switch (type) {
+   const RenderSingleQuestion = (props) => {
+      switch (props.type) {
         case 'dropdown':
           return (
             <DropDownSingleSelect
@@ -110,11 +110,12 @@ const QuestionForm = (props) => {
           )
 
         case 'openTextBox':
-
+          const comp = (<OpenTextField
+            {...props}
+          />)
+          console.log(comp)
           return (
-            <OpenTextField
-              {...props}
-            />
+            comp
           )
 
         case 'openTextBoxWithSelection':
@@ -179,54 +180,70 @@ const QuestionForm = (props) => {
                     {...props}
                 />
             )
+        default:
+          return null;
       }
     }
 
     const question = questionDetail.questions;
-    console.log('questionDetail:', questionDetail);
-    const renderedQuestions = (questions) => {
+    // console.log('questionDetail:', questionDetail);
+    const RenderedQuestions = ({questions}) => {
+      console.log('Beginning to render questions for section')
+      const questionsTimer = performance.now()
+      // console.log('questions in renderedQuestions:', questions)
         let questionList = []
         for (const q of questions) {
             const obj = {data:q, setting: question, detail:questionDetail}
-            const dom = renderSingleQuestion(q.answerType, questionProps(q.answerType, obj));
+            const newProps = questionProps(q.answerType, obj)
+            newProps['type'] = q.answerType
+            const dom = <RenderSingleQuestion newProps key={q.id}/>
+            // const dom = renderSingleQuestion(q.answerType, questionProps(q.answerType, obj));
             questionList.push(dom)
         }
+        console.log('Rendering all questions for section duration:', Math.round(performance.now() - questionsTimer))
         return (
             <VStack>
                 {questionList}
             </VStack>
         )
+      
     };
 
-  const renderSingleSection = (item) => {
-    return (
-        <Accordion.Item>
-            <Accordion.Summary>
-                {item.sectionTitle}
-                <Accordion.Icon />
-            </Accordion.Summary>
-            <Accordion.Details>
-                {renderedQuestions(item.questions)}
-            </Accordion.Details>
-        </Accordion.Item>
-    )
+  const RenderSingleSection = ({item}) => {
+    const sectionTimer = performance.now()
+    console.log('Beginning to render a single section')
+    // console.log('item in renderSingleSection:', item)
+    const result = (<Accordion.Item>
+      <Accordion.Summary>
+          {item.sectionTitle}
+          <Accordion.Icon />
+      </Accordion.Summary>
+      <Accordion.Details>
+          <RenderedQuestions questions={item.questions}/>
+      </Accordion.Details>
+  </Accordion.Item>)
+  console.log('Render single section duration:', Math.round(performance.now() - sectionTimer))
+    return result
   }
 
 
-  const renderSections = (question) => {
-    return (
-        <Accordion index={[0]} mx={4} my={8}>
-            { question.questionsData.map(item => renderSingleSection(item)) }
-        </Accordion>
-    )
+  const RenderSections = ({question}) => {
+    const sectionsTimer = performance.now()
+    console.log('Beginning to render all sections')
+    const result = <Accordion index={[0]} mx={4} my={8}> <RenderSingleSection item={question.questionsData[0]}/> </Accordion>
+    //  (<Accordion index={[0]} mx={4} my={8}> { question.questionsData.map(item => <RenderSingleSection item={item} key={item.sectionTitle}/>) } </Accordion>)
+  console.log('Render all sections duration:', Math.round(performance.now() - sectionsTimer))
+    return result
+    
   }
   
+  console.log('question in QuestionForm:', question)
   return (
     <SafeAreaView style={styles.container}>
       <TopNavigation title={`Questions on ${questionDetail.name}`} backButton navigation={navigation}/>
       <ScrollView>
         <Box>
-            {renderSections(question)}
+            <RenderSections question={question}/>
         </Box>
       </ScrollView>
       <Divider />
