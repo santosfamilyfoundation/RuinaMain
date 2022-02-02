@@ -122,7 +122,7 @@ const DropDownMultiSelect = (props) => {
             setSelectedOptions([]);
             return;
         }
-        console.log(selectedOptions)
+        console.log('dropdownmultiselect selectedoptions:', selectedOptions)
         setSelectedOptions(selectedItems);
         submitField(selectedItems);
     }
