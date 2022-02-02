@@ -19,7 +19,6 @@ const DropDownSingleSelect = (props) => {
 
     if(selectedOption.length < 1) {
         if(existingData != null) {
-            console.log()
             if(existingData[currId] != null) {
                 let curOption;
                 for (let i = 0; i < data.answerOptions.length; i++) {

@@ -31,6 +31,8 @@ const QuestionForm = (props) => {
     updateResponse,
   } = props
 
+  const question = questionDetail.questions;
+
   const navigateToAdvanced = (place, props) =>{
       navigation.navigate(place, props);
     }
@@ -92,8 +94,8 @@ const QuestionForm = (props) => {
       return  obj[type]
     }
   
-   const renderSingleQuestion = (props) => {
-      switch (props.type) {
+   const renderSingleQuestion = (type, props) => {
+      switch (type) {
         case 'dropdown':
           return (
             <DropDownSingleSelect
@@ -184,12 +186,16 @@ const QuestionForm = (props) => {
       }
     }
 
-    const question = questionDetail.questions;
-    // console.log('questionDetail:', questionDetail);
+    
+
     const renderedQuestions = (questions) => {
       console.log('Beginning to render questions for section')
       const questionsTimer = performance.now()
-      const questionList = questions.map(q => renderSingleQuestion(questionProps({data:q, setting: question, detail: questionDetail, type: q.answerType})))
+      const questionList = questions.map(q => 
+        renderSingleQuestion(q.answerType, 
+          questionProps(q.answerType, 
+            {data:q, setting: question, detail: questionDetail}))
+      )
         // const questionList = questions.map(q => <RenderSingleQuestion {...questionProps(q.answerType, {data:q, setting: question, detail: questionDetail})} key={q.id} type={q.answerType}/>)
         console.log('Rendering all questions for section duration:', Math.round(performance.now() - questionsTimer))
         return (
@@ -220,32 +226,24 @@ const QuestionForm = (props) => {
   }
 
 
-  const renderSections = (question) => {
+  const RenderSections = ({question}) => {
     const sectionsTimer = performance.now()
     console.log('Beginning to render all sections')
     // const result = <Accordion index={[0]} mx={4} my={8}>{ question.questionsData.map(item => <RenderSingleSection item={item} key={item.sectionTitle}/>)}</Accordion>
     const result = <Accordion index={[0]} mx={4} my={8}>{question.questionsData.map(item => renderSingleSection(item))}</Accordion>
-    // <Accordion>{[<RenderSingleSection item={question.questionsData[0]} key={question.questionsData[0].sectionTitle}/>]}</Accordion>
-    // question.questionsData.map(item => <RenderSingleSection item={item} key={item.sectionTitle}/>)
-    // <RenderSingleQuestion {...questionProps(q.answerType, {data:q, setting: question, detail: questionDetail})} key={q.id} type={q.answerType}/>
-    // <Accordion index={[0]} mx={4} my={8}> <Accordion.Item><Accordion.Summary> {"hello world"} </Accordion.Summary><Accordion.Details><RenderSingleQuestion {...questionProps(q.answerType, {data:q, setting: question, detail: questionDetail})} key={q.id} type={q.answerType}/> </Accordion.Details></Accordion.Item> </Accordion>
-    // <Accordion index={[0]} mx={4} my={8}> <Accordion.Item><Accordion.Summary> {"hello world"} </Accordion.Summary><Accordion.Details><RenderedQuestions questions = {question.questionsData[0].questions}/> </Accordion.Details></Accordion.Item> </Accordion>
-    //  <RenderedQuestions questions = {question.questionsData[0].questions}/>
-    // <Accordion index={[0]} mx={4} my={8}> <RenderSingleSection item={question.questionsData[0]}/> </Accordion>
-    //  (<Accordion index={[0]} mx={4} my={8}> { question.questionsData.map(item => <RenderSingleSection item={item} key={item.sectionTitle}/>) } </Accordion>)
-  console.log('Render all sections duration:', Math.round(performance.now() - sectionsTimer))
+    console.log('Render all sections duration:', Math.round(performance.now() - sectionsTimer))
     return result
     
   }
   
-  console.log('question in QuestionForm:', question)
+  
   return (
     <SafeAreaView style={styles.container}>
       <TopNavigation title={`Questions on ${questionDetail.name}`} backButton navigation={navigation}/>
       <ScrollView>
         <Box>
-            {/* <RenderSections question={question}/> */}
-            { renderSections(question) }
+            <RenderSections question={question}/>
+            {/* { renderSections(question) } */}
         </Box>
       </ScrollView>
       <Divider />
