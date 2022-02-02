@@ -32,9 +32,8 @@ class EmailFinalReport extends Component {
     this.handleEmail = this.handleEmail.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
       const format = this.props.navigation.state.params.format;
-      console.log(format);
       // convert data to desired format
       const data = {
         driver: this.props.driver.data,
@@ -49,7 +48,9 @@ class EmailFinalReport extends Component {
         this.createPDF(data);
       } else {
         var converter = new JSONconverter();
-        var file = converter.handleConverter(format, data);
+        var file = await converter.handleConverter(format, data);
+        console.log('logging file type', typeof file)
+        console.log(file)
         var encoding = format === "xlsx" ? 'ascii' : 'utf8';
         this.setState({data: file, encoding: encoding, format:format});
       }
@@ -58,9 +59,9 @@ class EmailFinalReport extends Component {
   // generate default filename
   getDefaultFilename() {
     var date = new Date();
-    var localTime = date.toLocaleTimeString().replace(/\W/g, '.');
+    var localTime = date.toLocaleTimeString().replace(/\W/g, '_');
     var localDate = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
-    return "Crash Report " + localDate + " at " + localTime;
+    return "Crash_Report " + localDate + "_at_" + localTime;
   }
 
   // update the filename
@@ -94,8 +95,17 @@ class EmailFinalReport extends Component {
     var path = RNFS.ExternalDirectoryPath + '/' + filename;
 
     // write the file
+    console.log(this.state.data)
     try {
-        let result = await RNFS.writeFile(path, this.state.data, this.state.encoding);
+        if (this.state.format === 'xlsx' && this.props.photo.image.length) {
+            const photoPath = RNFS.ExternalDirectoryPath + '/' + this.state.filename + '.jpeg'
+            const base64Image = this.props.photo.image.split("data:image/jpeg;base64,")
+            path = [path, photoPath]
+            let fileResult  = await RNFS.writeFile(path[0], this.state.data, this.state.encoding);
+            let photoResult = await RNFS.writeFile(path[1], base64Image[1], 'base64');
+        } else {
+            let result = await RNFS.writeFile(path, this.state.data, this.state.encoding);
+        }
         console.log('FILE WRITTEN!');
         console.log(path);
 
@@ -111,6 +121,12 @@ class EmailFinalReport extends Component {
   // send email based on the inputted filename
   // leave everything else blank, except subject (subject = filename)
   async sendEmail(path, filename) {
+    let attachments
+    if (this.props.photo.image.length) {
+        attachments = [{path:path[0]}, {path:path[1]}]
+    } else {
+        attachments = [{path:path}]
+    }
     console.log('Sending email!');
     await Mailer.mail({
       subject: "Sending " + "\"" + filename + "\"",
@@ -120,12 +136,7 @@ class EmailFinalReport extends Component {
       body: '',
       customChooserTitle: "Send Crash Report", // Android only (defaults to "Send Mail")
       isHTML: true,
-      attachments: [{
-        path: path,  // The absolute path of the file from which to read data.
-        // type: type,   // Mime Type: jpg, png, doc, ppt, html, pdf, csv
-        // mimeType - use only if you want to use custom type
-        // name: ,   // Optional: Custom filename for attachment
-      }]
+      attachments: attachments
     }, (error, event) => {
       console.log('errror', error)
       Alert.alert(
