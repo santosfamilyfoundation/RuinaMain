@@ -113,7 +113,6 @@ const QuestionForm = (props) => {
           const comp = (<OpenTextField
             {...props}
           />)
-          console.log(comp)
           return (
             comp
           )
@@ -190,17 +189,7 @@ const QuestionForm = (props) => {
     const RenderedQuestions = ({questions}) => {
       console.log('Beginning to render questions for section')
       const questionsTimer = performance.now()
-      // console.log('questions in renderedQuestions:', questions)
-        // let questionList = []
         const questionList = questions.map(q => <RenderSingleQuestion {...questionProps(q.answerType, {data:q, setting: question, detail: questionDetail})} key={q.id} type={q.answerType}/>)
-        // for (const q of questions) {
-        //     const obj = {data:q, setting: question, detail:questionDetail}
-        //     const newProps = questionProps(q.answerType, obj)
-        //     newProps['type'] = q.answerType
-        //     const dom = <RenderSingleQuestion {...newProps} key={q.id}/>
-        //     // const dom = renderSingleQuestion(q.answerType, questionProps(q.answerType, obj));
-        //     questionList.push(dom)
-        // }
         console.log('Rendering all questions for section duration:', Math.round(performance.now() - questionsTimer))
         return (
             <VStack>
@@ -213,34 +202,32 @@ const QuestionForm = (props) => {
   const RenderSingleSection = ({item}) => {
     const sectionTimer = performance.now()
     console.log('Beginning to render a single section')
-    // console.log('item in renderSingleSection:', item)
-    // const result = (<Accordion.Item>
-    //   <Accordion.Summary>
-    //       {item.sectionTitle}
-    //       <Accordion.Icon />
-    //   </Accordion.Summary>
-    //   <Accordion.Details>
-    //       <RenderedQuestions questions={item.questions}/>
-    //   </Accordion.Details>
- // </Accordion.Item>)
-  // console.log('Render single section duration:', Math.round(performance.now() - sectionTimer))
-  //   return (<Accordion.Item>
-  //     <Accordion.Summary>
-  //         {"Hello World!"}
-  //         <Accordion.Icon />
-  //     </Accordion.Summary>
-  //     <Accordion.Details>
-  //         <RenderedQuestions questions={item.questions}/>
-  //     </Accordion.Details>
-  // </Accordion.Item>)
-  return (<RenderedQuestions questions={item.questions}/>)
+//  const result = ()
+  console.log('Render single section duration:', Math.round(performance.now() - sectionTimer))
+    return (
+    <Accordion.Item>
+      <Accordion.Summary>
+        {item.sectionTitle}
+        <Accordion.Icon />
+      </Accordion.Summary>
+      <Accordion.Details>
+        <RenderedQuestions questions={item.questions}/>
+      </Accordion.Details>
+    </Accordion.Item>)
+  // return (<RenderedQuestions questions={item.questions}/>)
   }
 
 
   const RenderSections = ({question}) => {
     const sectionsTimer = performance.now()
     console.log('Beginning to render all sections')
-    const result = <Accordion index={[0]} mx={4} my={8}> <Accordion.Item><Accordion.Summary> {"hello world"} </Accordion.Summary><Accordion.Details><RenderedQuestions questions = {question.questionsData[0].questions}/> </Accordion.Details></Accordion.Item> </Accordion>
+    const result = <Accordion index={[0]} mx={4} my={8}>{ question.questionsData.map(item => <RenderSingleSection item={item} key={item.sectionTitle}/>)}</Accordion>
+    // <Accordion>{[<RenderSingleSection item={question.questionsData[0]} key={question.questionsData[0].sectionTitle}/>]}</Accordion>
+    // question.questionsData.map(item => <RenderSingleSection item={item} key={item.sectionTitle}/>)
+    // <RenderSingleQuestion {...questionProps(q.answerType, {data:q, setting: question, detail: questionDetail})} key={q.id} type={q.answerType}/>
+    // <Accordion index={[0]} mx={4} my={8}> <Accordion.Item><Accordion.Summary> {"hello world"} </Accordion.Summary><Accordion.Details><RenderSingleQuestion {...questionProps(q.answerType, {data:q, setting: question, detail: questionDetail})} key={q.id} type={q.answerType}/> </Accordion.Details></Accordion.Item> </Accordion>
+    // <Accordion index={[0]} mx={4} my={8}> <Accordion.Item><Accordion.Summary> {"hello world"} </Accordion.Summary><Accordion.Details><RenderedQuestions questions = {question.questionsData[0].questions}/> </Accordion.Details></Accordion.Item> </Accordion>
+    //  <RenderedQuestions questions = {question.questionsData[0].questions}/>
     // <Accordion index={[0]} mx={4} my={8}> <RenderSingleSection item={question.questionsData[0]}/> </Accordion>
     //  (<Accordion index={[0]} mx={4} my={8}> { question.questionsData.map(item => <RenderSingleSection item={item} key={item.sectionTitle}/>) } </Accordion>)
   console.log('Render all sections duration:', Math.round(performance.now() - sectionsTimer))
