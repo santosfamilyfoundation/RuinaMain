@@ -1,0 +1,14 @@
+question_type,automation_method
+multiButton,time
+openTextBox,map
+dropdown,weather
+questionHeader,VINCamera
+autoComplete,plateCamera
+dropdownMultiSelect,driverIDCamera
+advancedDropDown,county
+advancedOpenTextBox,
+openTextBoxWithSelection,
+largeTextField,
+countyDropDown,
+numberButton,
+sectionHeader,
