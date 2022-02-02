@@ -10,7 +10,7 @@ import { MaterialDialog, SinglePickerMaterialDialog } from 'react-native-materia
 import { material } from "react-native-typography";
 import { connect } from 'react-redux';
 import TopNavigation from '../TopNavigation';
-import { getMobileSpreadsheet } from '../../utils/helperFunctions'
+import getMobileSpreadsheet  from '../../utils/helperFunctions'
 
 import { resetDriver } from '../../actions/DriverAction';
 import { resetNonmotorist } from '../../actions/NonmotoristAction';
@@ -28,7 +28,6 @@ class Welcome extends Component {
       this.stateManager = new backgroundSave("", false);
       this.state = {
         loading: true,
-        downloadsFolder: getMobileSpreadsheet(),
         displayOutputTest: false,
         autoSavedSession: false,
         autoSavedSessionDialogBoxVisible: false,
@@ -40,6 +39,55 @@ class Welcome extends Component {
       };
       this.unfinishedReportsPresent = false
     }
+
+   requestExternalStoragePermission = async () => {
+        console.log('running this now')
+       try {
+         const granted = await PermissionsAndroid.request(
+           PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+           {
+             title: "Android External Storage Permission",
+             message:
+               "Ruina needs access to your external storage to save the report ",
+             buttonNeutral: "Ask Me Later",
+             buttonNegative: "Cancel",
+             buttonPositive: "OK"
+           }
+         );
+         if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+           console.log("You can use external storage");
+         } else {
+           console.log("external permission denied");
+         }
+       } catch (err) {
+         console.warn(err);
+       }
+     };
+
+   getMobileSpreadsheet(){
+//              var RNFS = require('react-native-fs');
+//              var path = `${RNFS.ExternalStorageDirectoryPath}/MyApp`;
+//              RNFS.mkdir(path);
+//              path += '/data.xlsx';
+//              RNFS.downloadFile(url, path).promise.then(res => {
+//                this.setState({ downloaded: true });
+//              });
+//              console.log('executed filesave')
+
+                var RNFS = require('react-native-fs');
+
+                // create a path you want to write to
+                // :warning: on iOS, you cannot write into `RNFS.MainBundlePath`,
+                // but `RNFS.DocumentDirectoryPath` exists on both platforms and is writable
+                var path = RNFS.ExternalStorageDirectoryPath + '/test.html';
+
+                // write the file
+                RNFS.downloadFile({
+                          fromUrl: 'https://docs.google.com/spreadsheets/d/1IJQxPEhVJnvAXOn2gLR25wyBVPcpk7c6RwlQwd5M_Fc/edit?usp=sharing',
+                          toFile: path
+                      }).promise
+                console.log('File Downloaded')
+              }
 
     async componentDidMount() {
       this.props.resetDriver();
@@ -57,15 +105,9 @@ class Welcome extends Component {
       console.log(this.stateManager.filePaths);
       console.log(this.stateManager.filePaths.length == 0)
       this.setState({ loading: false });
-    }
-
-    checkDownloadsFolder(){
-        if (this.state.downloadsFolder != null){
-            console.log("this is the print: ", this.state.downloadsFolder)
-        }
-        else {
-        console.log('no contents in downloads folder')
-        }
+      console.log('testing')
+      await this.requestExternalStoragePermission
+      this.getMobileSpreadsheet()
     }
 
     checkAutoSavedSession(){
