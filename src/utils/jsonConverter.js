@@ -9,6 +9,7 @@ export class JSONconverter extends Component {
 		super(props);
 	}
 	handleConverter(format, data) {
+		console.log('handleconverter starting');
 		let file;
 		switch (format) {
 			case 'json':
@@ -27,8 +28,9 @@ export class JSONconverter extends Component {
 	}
 
 	JSONtoXLS(jsondata) {
-		function getQuestion(questionUid) {
-			var queryResult = questions.data.filter(question => question.id == questionUid);
+		console.log('jsontoxls');
+		function getQuestion(questionId) {
+			var queryResult = questions.data.filter(question => question.humanReadableId == questionId);
 			return queryResult[0].question
 		};
 
