@@ -126,6 +126,7 @@ export class EmailFinalReport extends Component {
         }
   //      console.log("this.state.data: " + this.state.data)
         console.log("this.state.format: " + this.state.format)
+        console.log("file_path android: " + path_android)
         for (let i = 0; i < format.length; i++){
         // write the file and save to Files app on device:
             try {
@@ -167,22 +168,22 @@ export class EmailFinalReport extends Component {
   // send email based on the inputted filename
   // leave everything else blank, except subject (subject = filename)
   async sendEmail(path, filename) {
-    console.log('Sending email!');
+    console.log('Sending email!' + path);
+    var fp = []
     for (let i = 0; i < this.state.format.length; i++){
+        var str = path + "." + this.state.format[i];
+        fp.push({path:str, type:this.state.format[i]})
+    }
+
         await Mailer.mail({
           subject: "Sending " + "\"" + filename + "\"",
-          recipients: ['santosvolpescope2021@gmail.com'],
+          recipients: [''],
           ccRecipients: [''],
           bccRecipients: [''],
           body: '',
           customChooserTitle: "Send Crash Report", // Android only (defaults to "Send Mail")
           isHTML: true,
-          attachments: [{
-            path: path+"\\" + filename[i] + "." + this.state.format[i],  // The absolute path of the file from which to read data.
-            // type: type,   // Mime Type: jpg, png, doc, ppt, html, pdf, csv
-            // mimeType - use only if you want to use custom type
-            // name: ,   // Optional: Custom filename for attachment
-          }]
+          attachments: fp,
         }, (error, event) => {
           console.log('errror', error)
           Alert.alert(
@@ -195,7 +196,7 @@ export class EmailFinalReport extends Component {
             { cancelable: true }
           )
         });
-    }
+
 
   }
   // handles the entire email workflow
