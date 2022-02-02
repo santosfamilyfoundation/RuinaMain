@@ -240,7 +240,7 @@ const QuestionForm = (props) => {
   const RenderSections = ({question}) => {
     const sectionsTimer = performance.now()
     console.log('Beginning to render all sections')
-    const result = <Accordion> <Accordion.Item><Accordion.Summary> {"hello world"} </Accordion.Summary><Accordion.Details><RenderedQuestions questions = {question.questionsData[0].questions}/> </Accordion.Details></Accordion.Item> </Accordion>
+    const result = <Accordion index={[0]} mx={4} my={8}> <Accordion.Item><Accordion.Summary> {"hello world"} </Accordion.Summary><Accordion.Details><RenderedQuestions questions = {question.questionsData[0].questions}/> </Accordion.Details></Accordion.Item> </Accordion>
     // <Accordion index={[0]} mx={4} my={8}> <RenderSingleSection item={question.questionsData[0]}/> </Accordion>
     //  (<Accordion index={[0]} mx={4} my={8}> { question.questionsData.map(item => <RenderSingleSection item={item} key={item.sectionTitle}/>) } </Accordion>)
   console.log('Render all sections duration:', Math.round(performance.now() - sectionsTimer))
