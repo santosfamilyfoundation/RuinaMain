@@ -1,11 +1,8 @@
 import {Component} from 'react';
 import XLSX from 'xlsx';
-import ExcelJS from "exceljs"
 import * as htmlStrings from '../utils/html_for_pdf_pages/htmlStrings'
 import { testAnswers } from '../data/testAnswers';
 import { questions } from '../data/questions';
-import { getDefaultFilename } from './helperFunctions';
-import RNFS from 'react-native-fs';
 
 
 export class JSONconverter extends Component {
@@ -30,7 +27,7 @@ export class JSONconverter extends Component {
 		}
 	}
 
-	JSONtoXLS(jsondata) {
+	async JSONtoXLS (jsondata) {
 		function getQuestion(questionUid) {
 		    var questionName = ''
 		    questions.data.forEach(questionGroup => {
@@ -45,16 +42,14 @@ export class JSONconverter extends Component {
 			return questionName
 		};
 
-		function populateCrashSheet(data, sheet) {
+		function populateCrashSheet(data) {
 			// initial row
-            sheet.columns = [
-                { header: 'question', key: 'A'},
-                { header: 'answer', key: 'B'}
-            ]
+			var ws = XLSX.utils.json_to_sheet([{ A: "question", B: "answer"}],
+				{header: ["A", "B"], skipHeader: true});
 			// gather crash questions and answers
+			var rows = [];
 			if (!("response" in data["road"][0])) {
-
-                return;
+				return ws;
 			}
 			for (var key in data["road"][0]["response"]) {
 				var question = getQuestion(key);
@@ -62,28 +57,19 @@ export class JSONconverter extends Component {
 				if (answer instanceof Array) {
 					answer = answer.join(", ");
 				}
-                sheet.addRow({A: question, B:answer})
-                if (question === 'Crash Description') {
-                    const crashDiagram = wb.addImage({
-                        base64: jsondata['photo'],
-                        extension: 'jpeg',
-                    })
-//                    console.log(crashDiagram)
-//                    sheet.addImage(crashDiagram)
-//                    console.log('added image')
-                }
+				rows.push({A: question, B: answer});
 			}
-            return;
+			// write data starting at A2
+			XLSX.utils.sheet_add_json(ws, rows, {skipHeader: true, origin: "A2"});
+			return ws;
 		};
 
-		function populateVehicleSheet(data, sheet) {
+		function populateVehicleSheet(data) {
 			// initial row
-            sheet.columns= [
-                {header: 'vehicle number', key: 'A'},
-                { header: 'question', key: 'B'},
-                { header: 'answer', key: 'C'}
-            ]
+			var ws = XLSX.utils.json_to_sheet([{ A: "vehicle number", B: "question", C: "answer"}],
+				{header: ["A", "B", "C"], skipHeader: true});
 			// gather vehicle questions and answers
+			var rows = [];
 			var vehicleNumDict = {}; // key is id and value is number
 			// iterate through each vehicle
 			for (var i = 0; i < data["vehicle"].length; i++) {
@@ -96,21 +82,21 @@ export class JSONconverter extends Component {
 						if (answer instanceof Array) {
 							answer = answer.join(", ");
 						}
-                        sheet.addRow({A: i+1, B: question, C: answer})
+						rows.push({A: i+1, B: question, C: answer});
 					}
 				}
 			}
-            return vehicleNumDict
+			// write data starting at A2
+			XLSX.utils.sheet_add_json(ws, rows, {skipHeader: true, origin: "A2"});
+			return [ws, vehicleNumDict];
 		}
 
-		function populateDriverSheet(data, vehicleNumDict, sheet){
+		function populateDriverSheet(data, vehicleNumDict){
 			// initial row
-            sheet.columns= [
-                {header: 'vehicle number', key: 'A'},
-                { header: 'question', key: 'B'},
-                { header: 'answer', key: 'C'}
-            ]
+			var ws = XLSX.utils.json_to_sheet([{ A: "vehicle number", B: "question", C: "answer"}],
+				{header: ["A", "B", "C"], skipHeader: true});
 			// gather driver questions and answers
+			var rows = [];
 			// iterate through each driver
 			for (var i = 0; i < data["driver"].length; i++) {
 				var driverData = data["driver"][i];
@@ -122,22 +108,21 @@ export class JSONconverter extends Component {
 						if (answer instanceof Array) {
 							answer = answer.join(", ");
 						}
-					    sheet.addRow({A: i+1, B: question, C: answer})
+						rows.push({A: vehicleNum, B: question, C: answer});
 					}
 				}
 			}
-		    return;
+			// write data starting at A2
+			XLSX.utils.sheet_add_json(ws, rows, {skipHeader: true, origin: "A2"});
+			return ws;
 		}
 
-		function populatePassengerSheet(data, vehicleNumDict, sheet){
+		function populatePassengerSheet(data, vehicleNumDict){
 			// initial row
-            sheet.columns = [
-                {header:'vehicle number', key: 'A'},
-                {header:'passenger number', key: 'B'},
-                {header:'question', key: 'C'},
-                {header:'answer', key: 'D'},
-            ]
+			var ws = XLSX.utils.json_to_sheet([{ A: "vehicle number", B: "passenger number", C: "question", D: "answer"}],
+				{header: ["A", "B", "C", "D"], skipHeader: true});
 			// gather passenger questions and answers
+			var rows = [];
 			var passengerNumDict = {};
 			// iterate through each passenger
 			for (var i = 0; i < data["passenger"].length; i++) {
@@ -157,21 +142,21 @@ export class JSONconverter extends Component {
 						if (answer instanceof Array) {
 							answer = answer.join(", ");
 						}
-						sheet.addRow({A: vehicleNum, B:passengerNum, C: question, D: answer});
+						rows.push({A: vehicleNum, B:passengerNum, C: question, D: answer});
 					}
 				}
 			}
-            return;
+			// write data starting at A2
+			XLSX.utils.sheet_add_json(ws, rows, {skipHeader: true, origin: "A2"});
+			return ws;
 		}
 
-		function populateNonmotoristSheet(data, sheet) {
+		function populateNonmotoristSheet(data) {
 			// initial row
-            sheet.columns= [
-                {header: 'vehicle number', key: 'A'},
-                { header: 'question', key: 'B'},
-                { header: 'answer', key: 'C'}
-            ]
+			var ws = XLSX.utils.json_to_sheet([{ A: "nonmotorist number", B: "question", C: "answer"}],
+				{header: ["A", "B", "C"], skipHeader: true});
 			// gather vehicle questions and answers
+			var rows = [];
 			// iterate through each vehicle
 			for (var i = 0; i < data["nonmotorist"].length; i++) {
 				var nonmotoristData = data["nonmotorist"][i];
@@ -182,40 +167,35 @@ export class JSONconverter extends Component {
 						if (answer instanceof Array) {
 							answer = answer.join(", ");
 						}
-						sheet.addRow({A: i+1, B: question, C: answer})
+						rows.push({A: i+1, B: question, C: answer});
 					}
 				}
 			}
-            return;
+			// write data starting at A2
+			XLSX.utils.sheet_add_json(ws, rows, {skipHeader: true, origin: "A2"});
+			return ws;
 		}
-
-	    // build new workbook
-        const wb = new ExcelJS.Workbook();
+		// build new workbook
+		const wb = XLSX.utils.book_new();
 		// create the crash sheet
-        const crashWS = wb.addWorksheet('Crash and Road');
-        populateCrashSheet(jsondata, crashWS);
+		const crashWS = populateCrashSheet(jsondata);
+		XLSX.utils.book_append_sheet(wb, crashWS, "road");
 		// create the vehicle sheet
-        const vehicleWS = wb.addWorksheet('Vehicle');
-        const vehicleNumDict = populateVehicleSheet(jsondata, vehicleWS);
+		const [vehicleWS, vehicleNumDict] = populateVehicleSheet(jsondata);
+		XLSX.utils.book_append_sheet(wb, vehicleWS, "vehicle");
 		// create the driver sheet
-        const driverWS = wb.addWorksheet('Driver');
-        populateDriverSheet(jsondata, vehicleNumDict, driverWS);
+		const driverWS = populateDriverSheet(jsondata, vehicleNumDict);
+		XLSX.utils.book_append_sheet(wb, driverWS, "driver");
 		// create the passenger sheet
-        const passengerWS = wb.addWorksheet('Passenger');
-        populateDriverSheet(jsondata, vehicleNumDict, passengerWS);
+		const passengerWS = populatePassengerSheet(jsondata, vehicleNumDict);
+		XLSX.utils.book_append_sheet(wb, passengerWS, "passenger");
 		// create the nonmotorist sheet
-        const nonmotoristWS = wb.addWorksheet('Nonmotorist');
-        populateNonmotoristSheet(jsondata, nonmotoristWS);
+		const nonmotoristWS = populateNonmotoristSheet(jsondata);
+		XLSX.utils.book_append_sheet(wb, nonmotoristWS, "nonmotorist");
 		// output workbook so it can be written to a file
 		const output = str => str;
-//		console.log('writing file')
-        const wbout = wb.xlsx.writeBuffer().then(function(buffer) {
-            console.log([buffer.data])
-            return new Blob([buffer.data], { type:"application/octet-stream" })
-        });
-//        console.log(wbout)
-        console.log(output(wbout))
-        return output(wbout);
+		const wbout = XLSX.write(wb, { type: 'binary', bookType: "xlsx" });
+		return output(wbout);
 	}
 
 	JSONtoHTML(jsondata) {
