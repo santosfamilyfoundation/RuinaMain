@@ -48,7 +48,15 @@ class FinalReport extends Component {
           console.warn(err);
         }
       };
+    resetState(){
+        const {
+            navigation
+        } = this.props
 
+
+        navigation.navigate('Welcome');
+        this.props.state = {}
+    }
     render(){
         const {
             navigation
@@ -86,7 +94,7 @@ class FinalReport extends Component {
         return (
           <SafeAreaView style={{flex:1}}>
             <TopNavigation title='Final Report' backButton navigation={navigation}>
-                <IconButton onPress={() => navigation.navigate('Welcome')} icon={<Icon color="white" size={25} name='file-document-outline'/>}  text='Start New Report'/>
+                <IconButton onPress={() => this.resetState()} icon={<Icon color="white" size={25} name='file-document-outline'/>}  text='Start New Report'/>
             </TopNavigation>
             <Center>
                 <VStack space={8}>
