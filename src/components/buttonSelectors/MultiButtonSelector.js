@@ -9,8 +9,10 @@ import { styles } from './MultiButtonSelector.style';
 import TooltipView from '../Tooltip.js';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import { SafeAreaView } from 'react-navigation';
+import SelectionValidation from '../../utils/SelectionValidation.js';
 
 const MultiButtonSelector = (props) => {
+    const [isInvalid, setIsInvalid] = React.useState(false);
     const [selection, setSelection] = React.useState(null);
     const {data, key, id, questionReducer, submitFunction, updateResponse, dependencyID} = props;
 
@@ -31,6 +33,15 @@ const MultiButtonSelector = (props) => {
 
     const submitField = (optionText, idCode) => {
         setSelection(optionText);
+        let selectionValidation = SelectionValidation
+                         selectionValidation.validateField(optionText);
+                         let localStatus = selectionValidation.status
+                         if (localStatus) {
+                            setIsInvalid(false)
+                         }
+                         else {
+                         setIsInvalid(true)
+                         }
         if (dependencyID==null || dependencyID.length == 1){
             updateResponse && updateResponse({id, question: currId, selection: idCode})
         }else{
@@ -50,6 +61,17 @@ const MultiButtonSelector = (props) => {
         }
         submitFunction({id, question: currId, selection: optionText})
     }
+
+    const selectionSet = (currId) => {
+                 try {if (existingData[currId] != null){
+                     return existingData[currId]
+                 }
+                 }
+                 catch(err)
+                 {
+                 return null
+                 }
+             }
 
     const renderSingleButton = (option) => {
         return (
