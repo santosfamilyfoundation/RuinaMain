@@ -13,13 +13,13 @@ import IconButton from '../IconButton';
 const DropDownSingleSelect = (props) => {
     const [selectedOption, setSelectedOption] = React.useState([]);
     const {data, key, id, questionReducer, submitFunction, updateResponse, dependencyID} = props;
-    let currId = data.id;
+    let currId = data.humanReadableId;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
 
     if(selectedOption.length < 1) {
         if(existingData != null) {
-            console.log()
+            // console.log()
             if(existingData[currId] != null) {
                 let curOption;
                 for (let i = 0; i < data.answerOptions.length; i++) {

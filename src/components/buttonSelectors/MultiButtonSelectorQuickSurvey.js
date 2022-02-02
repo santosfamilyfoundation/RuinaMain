@@ -13,7 +13,7 @@ const MultiButtonSelectorQuickSurvey = (props) => {
   const [selection, setSelection] = React.useState(null);
   // obtained as inputs to component made in QuickSurvey
   const {data, quickSurveyReducer, submitFunction, updateResponse, dependencyID} = props;
-  let currId = data.id
+  let currId = data.humanReadableId
 
   // when button selected, set the option and update the quick survey setupData
   const submitField = (optionText, idCode) => {
@@ -35,7 +35,7 @@ const MultiButtonSelectorQuickSurvey = (props) => {
                     break;
             }
         }
-      submitFunction({question: data.id, selection: optionText})
+      submitFunction({question: data.humanReadableId, selection: optionText})
   }
 
     const renderSingleButton = (option) => {

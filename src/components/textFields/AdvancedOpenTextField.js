@@ -22,7 +22,7 @@ const AdvancedOpenTextField = (props) => {
     const [invalidLength, setInvalidLength] = React.useState(false);
     const [invalidVin, setInvalidVin] = React.useState(false);
     const {data, key, id, questionReducer, submitFunction, pageChange, importFrom, updateRoad, dependencyID} = props;
-    let currId = data.id;
+    let currId = data.humanReadableId;
     let status;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;

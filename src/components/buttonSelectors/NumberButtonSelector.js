@@ -13,7 +13,7 @@ import QuestionSection from '../QuestionSection';
 const NumberButtonSelector = (props) => {
     const [selection, setSelection] = React.useState('');
     const { data, id, submitFunction, questionReducer, fieldName, updateResponse, dependencyID } = props;
-    let currId = data.id;
+    let currId = data.humanReadableId;
 
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
