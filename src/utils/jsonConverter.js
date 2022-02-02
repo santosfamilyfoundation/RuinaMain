@@ -30,8 +30,19 @@ export class JSONconverter extends Component {
 	JSONtoXLS(jsondata) {
 		console.log('jsontoxls');
 		function getQuestion(questionId) {
-			var queryResult = questions.data.filter(question => question.humanReadableId == questionId);
-			return queryResult[0].question
+			console.log('questionId:', questionId);
+
+			var questionName = ''
+		    questions.data.forEach(questionGroup => {
+		        if (questionGroup.questions) {
+		            questionGroup.questions.forEach(question => {
+		                if (question.humanReadableId === questionId) {
+		                    questionName =  question.question
+		                }
+		            });
+		        }
+		    })
+			return questionName
 		};
 
 		function populateCrashSheet(data) {
@@ -44,6 +55,7 @@ export class JSONconverter extends Component {
 				return ws;
 			}
 			for (var key in data["road"][0]["response"]) {
+				console.log('key in crash response:', key)
 				var question = getQuestion(key);
 				var answer = data["road"][0]["response"][key];
 				if (answer instanceof Array) {
@@ -69,6 +81,7 @@ export class JSONconverter extends Component {
 				vehicleNumDict[vehicleData["id"]] = i+1;
 				if ("response" in vehicleData) {
 					for (var key in vehicleData["response"]) {
+						console.log('key in vehicle sheet:', key)
 						var question = getQuestion(key);
 						var answer = vehicleData["response"][key];
 						if (answer instanceof Array) {
@@ -95,6 +108,7 @@ export class JSONconverter extends Component {
 				var vehicleNum = vehicleNumDict[driverData["vehicle"]];
 				if ("response" in driverData) {
 					for (var key in driverData["response"]) {
+						console.log('key in driver sheet:', key)
 						var question = getQuestion(key);
 						var answer = driverData["response"][key];
 						if (answer instanceof Array) {
@@ -129,6 +143,7 @@ export class JSONconverter extends Component {
 				}
 				if ("response" in passengerData) {
 					for (var key in passengerData["response"]) {
+						console.log('key in passenger sheet:', key)
 						var question = getQuestion(key);
 						var answer = passengerData["response"][key];
 						if (answer instanceof Array) {
@@ -154,6 +169,7 @@ export class JSONconverter extends Component {
 				var nonmotoristData = data["nonmotorist"][i];
 				if ("response" in nonmotoristData) {
 					for (var key in nonmotoristData["response"]) {
+						console.log('key in nonmotorist sheet:', key)
 						var question = getQuestion(key);
 						var answer = nonmotoristData["response"][key];
 						if (answer instanceof Array) {
