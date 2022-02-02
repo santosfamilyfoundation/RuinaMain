@@ -22,10 +22,10 @@ export class EmailFinalReport extends Component {
     this.state = {
       filename: this.getDefaultFilename(),
       offlineStatus: false,
-      uri: '',
-      data: '',
-      format: '',
-      encoding: '',
+      uri: [],
+      data: [],
+      format: [],
+      encoding: [],
       isPDF: false,
     };
     this.changeFilename = this.changeFilename.bind(this);
@@ -36,22 +36,32 @@ export class EmailFinalReport extends Component {
       const format = this.props.navigation.state.params.format;
       console.log(format);
       // convert data to desired format
-      const data = {
+      const export_data = {
         driver: this.props.driver.data,
         nonmotorist: this.props.nonmotorist.data,
         vehicle: this.props.vehicle.data,
         passenger: this.props.passenger.data,
         road: this.props.road.data,
       };
-      if (format === "pdf") {
-        this.setState({encoding:'base64', format:format});
-        this.createPDF(data);
-      } else {
-        var converter = new JSONconverter();
-        var file = converter.handleConverter(format, data);
-        var encoding = format === "xlsx" ? 'ascii' : 'utf8';
-        this.setState({data: file, encoding: encoding, format:format});
+      for (let i = 0; i < format.length; i++){
+            if (format[i] === "pdf") {
+              console.log("PDF LOOP")
+              this.createPDF(export_data);
+            } else {
+              var converter = new JSONconverter();
+              var file = converter.handleConverter(format[i], export_data);
+              var encode = format[i] === "xlsx" ? 'ascii' : 'utf8';
+              console.log('encode for html', encode);
+              console.log('HTML FILE', typeof(file));
+              this.state.data.push(file);
+              this.state.format.push(format[i])
+              console.log('data html', typeof(data[0]));
+
+              this.state.encoding.push(encode);
+    //          this.setState({data: this.state.data.push(file), encoding: this.state.encoding.push(encode)});
+            }
       }
+
     }
 
   // generate default filename
@@ -68,75 +78,125 @@ export class EmailFinalReport extends Component {
   }
 
   // generate html and convert it into a PDF
-  async createPDF(data) {
-    var converter = new JSONconverter();
+  async createPDF(export_data) {
+    var converter = new JSONconverter()
     // const htmlString = converter.handleConverter('pdftest', "");
-    const htmlString = converter.handleConverter('pdf', data);
+    const htmlString = converter.handleConverter('pdf', export_data)
     let options = {
       html: htmlString,
       base64: true,
       fileName: 'crash_report',
     };
     try {
-      const data = await RNHTMLtoPDF.convert(options);
+      const pdf_data = await RNHTMLtoPDF.convert(options);
       console.log("got PDF data");
-      this.setState({uri: data.filePath, data: data.base64, isPDF:true});
+//      let updated_data = [pdf_data.base64];
+
+      this.state.uri.push(pdf_data.filePath);
+      this.state.data.push(pdf_data.base64);
+      this.state.isPDF= true;
+      this.state.encoding.push("base64");
+      this.state.format.push("pdf");
+      console.log("what is uri",this.state.uri[0])
+      console.log("Type of encoding",this.state.encoding[0])
     } catch (error) {
-      console.log('error->', error);
+      console.log('this is the pdf converter error->', error);
     }
   }
 
   // save data as file inside app in order send email with attachment
-  async saveDataInternal(filename) {
-    var RNFS = require('react-native-fs');
-    // var path = RNFS.DocumentDirectoryPath + '/' + filename;
-    var path = RNFS.ExternalDirectoryPath + '/' + filename;
 
-    // write the file
-    try {
-        let result = await RNFS.writeFile(path, this.state.data, this.state.encoding);
-        console.log('FILE WRITTEN!');
-        console.log(path);
+  async saveDataInternal(filename, i) {
+      const format = this.state.format;
+        var device_platform = Platform.OS
+        var RNFS = require('react-native-fs');
 
+        // Notes for Android External Storage
+        // for andorid: externalDirectoryPath: /storage/emulated/0/Android/data/com.ruina/files
+        // for android: externalStorageDirectoryPath: /storage/emulated/0
+        // for ios: DocumentDirectoryPath: /var/mobile/Containers/Data/Application/12F7361A-BC3E-42C9-B81E-FBBBF7BA3E2C/Documents
+        var path_ios = RNFS.DocumentDirectoryPath + '/' + this.state.filename;
+        var path_android = RNFS.ExternalStorageDirectoryPath + '/' + this.state.filename;
+        //const path = this.state.devicePlatform === 'ios' ? path_ios : path_android;
+        let path;
+        if (this.state.devicePlatform === 'ios'){
+          path = path_ios;
+        } else {
+          path = path_android;
+        }
+  //      console.log("this.state.data: " + this.state.data)
+        console.log("this.state.format: " + this.state.format)
+        for (let i = 0; i < format.length; i++){
+        // write the file and save to Files app on device:
+            try {
+              if (format[i] == "pdf"){
+                  var filepath = path  + "." + format[i]
+                  console.log('data and encoding', format[i], this.state.encoding[i]);
+                  RNFS.writeFile(filepath, this.state.data[i], "base64");
+                  console.log(filepath);
+  //                console.log('Data: ' + this.state.data[i]);
+                  this.setState({ reportSavedMessageVisible: true });
+
+              } else {
+                  var filepath = path  + "." + format[i]
+                  console.log('data and encoding', format[i], this.state.encoding[i]);
+                  RNFS.writeFile(filepath, this.state.data[i], this.state.encoding[i]);
+  //                console.log('FILE WRITTEN!');
+  //                console.log('Data: ' + this.state.data[i]);
+                  this.setState({ reportSavedMessageVisible: true });
+
+              }
+
+
+  //            return path;
+            } catch (err) {
+              console.log("message is here: ",err.message);
+              console.log("at loop ", i);
+              this.setState({ reportSavedFailedMessageVisible: true });
+              console.log("failed with", this.state.format[i]);
+  //            return null;
+            }
+
+        }
         // clear background save
         const clearBackgroundSave = new backgroundSave();
         var deleted = await clearBackgroundSave.deleteCapturedState();
+
         return path;
-    } catch(error) {
-      console.log(error.message);
-      return null;
-    }
   }
   // send email based on the inputted filename
   // leave everything else blank, except subject (subject = filename)
   async sendEmail(path, filename) {
     console.log('Sending email!');
-    await Mailer.mail({
-      subject: "Sending " + "\"" + filename + "\"",
-      recipients: [''],
-      ccRecipients: [''],
-      bccRecipients: [''],
-      body: '',
-      customChooserTitle: "Send Crash Report", // Android only (defaults to "Send Mail")
-      isHTML: true,
-      attachments: [{
-        path: path,  // The absolute path of the file from which to read data.
-        // type: type,   // Mime Type: jpg, png, doc, ppt, html, pdf, csv
-        // mimeType - use only if you want to use custom type
-        // name: ,   // Optional: Custom filename for attachment
-      }]
-    }, (error, event) => {
-      console.log('errror', error)
-      Alert.alert(
-        error,
-        event,
-        [
-          {text: 'Ok', onPress: () => console.log('OK: Email Error Response')},
-          {text: 'Cancel', onPress: () => console.log('CANCEL: Email Error Response')}
-        ],
-        { cancelable: true }
-      )
-    });
+    for (let i = 0; i < this.state.format.length; i++){
+        await Mailer.mail({
+          subject: "Sending " + "\"" + filename + "\"",
+          recipients: ['santosvolpescope2021@gmail.com'],
+          ccRecipients: [''],
+          bccRecipients: [''],
+          body: '',
+          customChooserTitle: "Send Crash Report", // Android only (defaults to "Send Mail")
+          isHTML: true,
+          attachments: [{
+            path: path+"\\" + filename[i] + "." + this.state.format[i],  // The absolute path of the file from which to read data.
+            // type: type,   // Mime Type: jpg, png, doc, ppt, html, pdf, csv
+            // mimeType - use only if you want to use custom type
+            // name: ,   // Optional: Custom filename for attachment
+          }]
+        }, (error, event) => {
+          console.log('errror', error)
+          Alert.alert(
+            error,
+            event,
+            [
+              {text: 'Ok', onPress: () => console.log('OK: Email Error Response')},
+              {text: 'Cancel', onPress: () => console.log('CANCEL: Email Error Response')}
+            ],
+            { cancelable: true }
+          )
+        });
+    }
+
   }
   // handles the entire email workflow
   async handleEmail() {
@@ -152,7 +212,7 @@ export class EmailFinalReport extends Component {
     // save data internally
     var path = await this.saveDataInternal(this.state.filename + "." + this.state.format);
     // send email
-    await this.sendEmail(path, this.state.filename + "." + this.state.format);
+    await this.sendEmail(path, this.state.filename );
   }
   // required method that creates components of email screen
   render() {
