@@ -92,7 +92,7 @@ const QuestionForm = (props) => {
       return  obj[type]
     }
   
-   const RenderSingleQuestion = (props) => {
+   const renderSingleQuestion = (props) => {
       switch (props.type) {
         case 'dropdown':
           return (
@@ -186,10 +186,11 @@ const QuestionForm = (props) => {
 
     const question = questionDetail.questions;
     // console.log('questionDetail:', questionDetail);
-    const RenderedQuestions = ({questions}) => {
+    const renderedQuestions = (questions) => {
       console.log('Beginning to render questions for section')
       const questionsTimer = performance.now()
-        const questionList = questions.map(q => <RenderSingleQuestion {...questionProps(q.answerType, {data:q, setting: question, detail: questionDetail})} key={q.id} type={q.answerType}/>)
+      const questionList = questions.map(q => renderSingleQuestion(questionProps({data:q, setting: question, detail: questionDetail, type: q.answerType})))
+        // const questionList = questions.map(q => <RenderSingleQuestion {...questionProps(q.answerType, {data:q, setting: question, detail: questionDetail})} key={q.id} type={q.answerType}/>)
         console.log('Rendering all questions for section duration:', Math.round(performance.now() - questionsTimer))
         return (
             <VStack>
@@ -199,10 +200,9 @@ const QuestionForm = (props) => {
       
     };
 
-  const RenderSingleSection = ({item}) => {
+  const renderSingleSection = (item) => {
     const sectionTimer = performance.now()
     console.log('Beginning to render a single section')
-//  const result = ()
   console.log('Render single section duration:', Math.round(performance.now() - sectionTimer))
     return (
     <Accordion.Item>
@@ -211,17 +211,20 @@ const QuestionForm = (props) => {
         <Accordion.Icon />
       </Accordion.Summary>
       <Accordion.Details>
-        <RenderedQuestions questions={item.questions}/>
+        {/* <RenderedQuestions questions={item.questions}/> */}
+        { renderedQuestions(item.questions) }
       </Accordion.Details>
     </Accordion.Item>)
+
   // return (<RenderedQuestions questions={item.questions}/>)
   }
 
 
-  const RenderSections = ({question}) => {
+  const renderSections = (question) => {
     const sectionsTimer = performance.now()
     console.log('Beginning to render all sections')
-    const result = <Accordion index={[0]} mx={4} my={8}>{ question.questionsData.map(item => <RenderSingleSection item={item} key={item.sectionTitle}/>)}</Accordion>
+    // const result = <Accordion index={[0]} mx={4} my={8}>{ question.questionsData.map(item => <RenderSingleSection item={item} key={item.sectionTitle}/>)}</Accordion>
+    const result = <Accordion index={[0]} mx={4} my={8}>{question.questionsData.map(item => renderSingleSection(item))}</Accordion>
     // <Accordion>{[<RenderSingleSection item={question.questionsData[0]} key={question.questionsData[0].sectionTitle}/>]}</Accordion>
     // question.questionsData.map(item => <RenderSingleSection item={item} key={item.sectionTitle}/>)
     // <RenderSingleQuestion {...questionProps(q.answerType, {data:q, setting: question, detail: questionDetail})} key={q.id} type={q.answerType}/>
@@ -241,7 +244,8 @@ const QuestionForm = (props) => {
       <TopNavigation title={`Questions on ${questionDetail.name}`} backButton navigation={navigation}/>
       <ScrollView>
         <Box>
-            <RenderSections question={question}/>
+            {/* <RenderSections question={question}/> */}
+            { renderSections(question) }
         </Box>
       </ScrollView>
       <Divider />
