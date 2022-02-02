@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { VStack, Button, Heading, Divider, Center, Text} from 'native-base'
+import { VStack, Button, Heading, Divider, Center, Text, Box} from 'native-base'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { StyleSheet, Linking, ScrollView, PermissionsAndroid } from 'react-native';
 import { MaterialDialog, SinglePickerMaterialDialog} from 'react-native-material-dialog';
@@ -90,7 +90,7 @@ class FinalReport extends Component {
                 <IconButton onPress={() => navigation.navigate('Welcome')} icon={<Icon color="white" size={25} name='file-document-outline'/>}  text='Start New Report'/>
             </TopNavigation>
             <Center>
-                <VStack space={8}>
+                <VStack mt={5} space={9}>
                     <Section title='Save to Local Device'>
                      <Text my={2}>Press this button to save the crash report to local device.</Text>
                      {cardButton('Save Report to Local Device', navigateSaveToDevice)}
@@ -125,12 +125,16 @@ class FinalReport extends Component {
                         this.state.exportAction(result.selectedItem.label.substring(1));
                     }}
               />
-              <VStack alignItems="center" mb={8}>
-                  <TouchableOpacity onPress={() => Linking.openURL('https://forms.gle/aXVjxVrQU6jm3KUx6')}><Text style={{ color: 'blue' }}>Submit Feedback</Text></TouchableOpacity>
-                  <Text textAlign="center">
-                    {"Built by students at Olin College of Engineering in partnership with the Volpe Center and Santos Family Foundation"}
-                  </Text>
-              </VStack>
+              <Center flex={1} px="3">
+                <Box>
+                  <VStack alignItems="center" mt={150}>
+                    <TouchableOpacity onPress={() => Linking.openURL('https://forms.gle/aXVjxVrQU6jm3KUx6')}><Text style={{ color: 'blue' }}>Submit Feedback</Text></TouchableOpacity>
+                    <Text textAlign="center">
+                      {"Built by students at Olin College of Engineering in partnership with the Volpe Center and Santos Family Foundation"}
+                    </Text>
+                  </VStack>
+                </Box>
+              </Center>
           </SafeAreaView>
         )
     }
