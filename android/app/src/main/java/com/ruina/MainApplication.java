@@ -14,12 +14,10 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.anyline.reactnative.AnylinePackage;
-import io.invertase.firebase.storage.RNFirebaseStoragePackage;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-import io.invertase.firebase.RNFirebasePackage;
 
 
 public class MainApplication extends Application implements ReactApplication {
@@ -35,7 +33,6 @@ public class MainApplication extends Application implements ReactApplication {
         protected List<ReactPackage> getPackages() {
           @SuppressWarnings("UnnecessaryLocalVariable")
           List<ReactPackage> packages = new PackageList(this).getPackages();
-          packages.add(new RNFirebaseStoragePackage());
           return packages;
         }
 
@@ -57,7 +54,6 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager()); // Remove this line if you don't want Flipper enabled
-    //FirebaseApp.initializeApp(this);
   }
 
     /**
