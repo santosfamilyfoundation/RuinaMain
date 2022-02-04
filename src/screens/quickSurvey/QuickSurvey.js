@@ -192,10 +192,9 @@ class QuickSurvey extends Component {
 
           /*              Add Photo             */
           // add passengers to vehicles based on loaded state
-          console.log('photo file path: ', this.props)
-console.log({ image: loadedPhoto })
           this.props.addPhoto({ image: loadedPhoto });
           this.setState({ loadedAutoSave: true });
+
           console.log("Finish loading saved state from disk.")
         }
 
