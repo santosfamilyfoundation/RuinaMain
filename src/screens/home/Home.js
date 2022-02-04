@@ -19,6 +19,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import TopNavigation from '../../components/TopNavigation';
 import { launchCamera } from 'react-native-image-picker';
 import { photoSave } from '../../utils/helperFunctions'
+import { SvgXml } from 'react-native-svg';
 var uuid = require('react-native-uuid');
 
 
@@ -172,34 +173,7 @@ class Home extends Component {
         })
 
         const captureCrash = () => {
-           if (this.state.cameraPermission) {
-                let options = {
-                   storageOptions: {
-                       skipBackup: true,
-                   },
-                }
-                launchCamera(options, (response) => {
-                  if (response.errorMessage) { console.log('ImagePicker Error: ', response.errorMessage) }
-                  else if (response.didCancel) { this.props.navigation.navigate('Home') }
-                  else {
-                      console.log('response', JSON.stringify(response));
-                      this.setState({
-                           ...this.state,
-                           photoUri: response.assets[0].uri,
-                      })
-                      let savedPhoto = new photoSave(this.state.filePath)
-                      savedPhoto.addPhoto(response.assets[0].uri)
-                      this.props.addPhoto({image: 'file://' + savedPhoto.path});
-                  }
-                });
-           } else {
-                return <Center>
-                <Alert status='error'>
-                    <Text>Access to camera denied</Text>
-                </Alert>
-                </Center>
-           }
-
+            navigation.navigate('DiagramTool')
         };
 
         const fetchPhoto = () => {
@@ -287,9 +261,7 @@ class Home extends Component {
                             onPress={() => captureCrash()}
                             icon={<Icon color='white' name='add' size={50}/>}
                         />
-                        <HStack flexWrap='wrap'>
-                            {fetchPhoto()}
-                        </HStack>
+                        <SvgXml />
                     </Section>
                     </>
                     }
