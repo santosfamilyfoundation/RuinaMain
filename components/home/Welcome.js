@@ -41,7 +41,6 @@ class Welcome extends Component {
     }
 
    requestExternalStoragePermission = async () => {
-        console.log('running this now')
        try {
          const granted = await PermissionsAndroid.request(
            PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
@@ -64,30 +63,23 @@ class Welcome extends Component {
        }
      };
 
-   getMobileSpreadsheet(){
-//              var RNFS = require('react-native-fs');
-//              var path = `${RNFS.ExternalStorageDirectoryPath}/MyApp`;
-//              RNFS.mkdir(path);
-//              path += '/data.xlsx';
-//              RNFS.downloadFile(url, path).promise.then(res => {
-//                this.setState({ downloaded: true });
-//              });
-//              console.log('executed filesave')
+//   getMobileSpreadsheet(){
+//
+//                var RNFS = require('react-native-fs');
+//
+//                // create a path you want to write to
+//                // :warning: on iOS, you cannot write into `RNFS.MainBundlePath`,
+//                // but `RNFS.DocumentDirectoryPath` exists on both platforms and is writable
+//                var path = RNFS.ExternalStorageDirectoryPath + '/test.html';
+//
+//                // write the file
+//                RNFS.downloadFile({
+//                          fromUrl: 'https://docs.google.com/spreadsheets/d/1IJQxPEhVJnvAXOn2gLR25wyBVPcpk7c6RwlQwd5M_Fc/edit?usp=sharing',
+//                          toFile: path
+//                      }).promise
+//                 }
 
-                var RNFS = require('react-native-fs');
-
-                // create a path you want to write to
-                // :warning: on iOS, you cannot write into `RNFS.MainBundlePath`,
-                // but `RNFS.DocumentDirectoryPath` exists on both platforms and is writable
-                var path = RNFS.ExternalStorageDirectoryPath + '/test.html';
-
-                // write the file
-                RNFS.downloadFile({
-                          fromUrl: 'https://docs.google.com/spreadsheets/d/1IJQxPEhVJnvAXOn2gLR25wyBVPcpk7c6RwlQwd5M_Fc/edit?usp=sharing',
-                          toFile: path
-                      }).promise
-                console.log('File Downloaded')
-              }
+//This section would autodownload a file to the device on launch if it was uncommented. It's been commented out to prevent extraneous downloads.
 
     async componentDidMount() {
       this.props.resetDriver();
