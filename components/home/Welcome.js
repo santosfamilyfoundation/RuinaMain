@@ -97,7 +97,6 @@ class Welcome extends Component {
       console.log(this.stateManager.filePaths);
       console.log(this.stateManager.filePaths.length == 0)
       this.setState({ loading: false });
-      console.log('testing')
       await this.requestExternalStoragePermission
       this.getMobileSpreadsheet()
     }
