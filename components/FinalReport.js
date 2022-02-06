@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { VStack, Button, Heading, Divider, Center, Text} from 'native-base'
+import { VStack, Button, Heading, Divider, Center, Text, Box} from 'native-base'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { StyleSheet, Linking, ScrollView, PermissionsAndroid } from 'react-native';
 import { MaterialDialog, SinglePickerMaterialDialog} from 'react-native-material-dialog';
@@ -91,7 +91,7 @@ class FinalReport extends Component {
             </TopNavigation>
             <ScrollView>
             <Center>
-                <VStack space={8}>
+                <VStack mt={5} space={9}>
                     <Section title='Save to Local Device'>
                      <Text my={2}>Press this button to save the crash report to local device.</Text>
                      {cardButton('Save Report to Local Device', navigateSaveToDevice)}
