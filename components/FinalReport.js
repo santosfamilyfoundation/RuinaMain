@@ -89,6 +89,7 @@ class FinalReport extends Component {
             <TopNavigation title='Final Report' backButton navigation={navigation}>
                 <IconButton onPress={() => navigation.navigate('Welcome')} icon={<Icon color="white" size={25} name='file-document-outline'/>}  text='Start New Report'/>
             </TopNavigation>
+            <ScrollView>
             <Center>
                 <VStack space={8}>
                     <Section title='Save to Local Device'>
@@ -125,6 +126,7 @@ class FinalReport extends Component {
                         this.state.exportAction(result.selectedItem.label.substring(1));
                     }}
               />
+              </ScrollView>
               <VStack alignItems="center" mb={8}>
                   <TouchableOpacity onPress={() => Linking.openURL('https://forms.gle/aXVjxVrQU6jm3KUx6')}><Text style={{ color: 'blue' }}>Submit Feedback</Text></TouchableOpacity>
                   <Text textAlign="center">
