@@ -9,8 +9,10 @@ import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
 import QuestionSection from '../QuestionSection';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import SelectionValidation from '../../utils/SelectionValidation.js';
 
 const QuestionAutoCompleteDropDown = (props) => {
+    const [isInvalid, setIsInvalid] = React.useState(false);
     const [visible, setVisible] = React.useState(false);
     const [value, setValue] = React.useState('');   // value that will be stored in Redux
     const [title, setTitle] = React.useState('');   // value that will be displayed to user in form field
@@ -40,6 +42,9 @@ const QuestionAutoCompleteDropDown = (props) => {
 
     const submitField = () => {
         if(!value) {
+            // potentially do validation here
+            console.log('this is when it would be invalid')
+
             return;
         }
         if (dependencyID==null || dependencyID.length == 1){

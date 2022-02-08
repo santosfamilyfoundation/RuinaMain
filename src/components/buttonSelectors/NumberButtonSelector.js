@@ -7,10 +7,12 @@ import { View } from 'react-native';
 import { updateResponse } from '../../actions/StoryActions';
 import TooltipView from '../Tooltip';
 import QuestionSection from '../QuestionSection';
+import SelectionValidation from '../../utils/SelectionValidation.js';
 
 
 
 const NumberButtonSelector = (props) => {
+    const [isInvalid, setIsInvalid] = React.useState(false);
     const [selection, setSelection] = React.useState('');
     const { data, id, submitFunction, questionReducer, fieldName, updateResponse, dependencyID } = props;
     let currId = data.id;
@@ -28,7 +30,19 @@ const NumberButtonSelector = (props) => {
     }
 
     const submitField = (val) => {
-        setSelection(val);
+//        setSelection(val);
+        let selectionValidation = SelectionValidation
+                 selectionValidation.validateField(val);
+                 let localStatus = selectionValidation.status
+                 console.log('at the right place, at least')
+                 if (localStatus) {
+                    setIsInvalid(false)
+                    setSelection(val);
+                 }
+                 else {
+                    setIsInvalid(true)
+                    setSelection(val);
+                 }
         if (dependencyID==null || dependencyID.length == 1){
             updateResponse && updateResponse({id, question: currId, selection: val})
         }else{

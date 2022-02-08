@@ -34,19 +34,17 @@ const MultiButtonSelector = (props) => {
     const submitField = (optionText, idCode) => {
 //        setSelection(optionText);
         let selectionValidation = SelectionValidation
-                         selectionValidation.validateField(optionText);
-                         let localStatus = selectionValidation.status
-                         console.log('at the right place, at least')
-                         if (localStatus) {
-                            console.log('this is just to make sure the invalid set is working')
-                            setIsInvalid(true)
-                            setSelection(optionText);
-                         }
-                         else {
-                            console.log('it should not be going here')
-                            setIsInvalid(true)
-                            setSelection(optionText);
-                         }
+         selectionValidation.validateField(optionText);
+         let localStatus = selectionValidation.status
+         console.log('at the right place, at least')
+         if (localStatus) {
+            setIsInvalid(false)
+            setSelection(optionText);
+         }
+         else {
+            setIsInvalid(true)
+            setSelection(optionText);
+         }
         if (dependencyID==null || dependencyID.length == 1){
             updateResponse && updateResponse({id, question: currId, selection: idCode})
         }else{

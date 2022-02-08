@@ -10,6 +10,7 @@ import QuestionSection from '../QuestionSection';
 import IconButton from '../IconButton';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import SectionedMultiSelect from 'react-native-sectioned-multi-select'
+import SelectionValidation from '../../utils/SelectionValidation.js';
 
 //This component is used for "advanced" tool access with drop downs (weather)
 
@@ -134,7 +135,21 @@ const AdvancedDropDown = (props) => {
 
     //Updated reducer
     const submitField = () => {
+//        let selectionValidation = SelectionValidation
+//                         selectionValidation.validateField(val);
+//                         let localStatus = selectionValidation.status
+//                         console.log('at the right place, at least')
+//                         if (localStatus) {
+//                            setIsInvalid(false)
+//                            setSelection(val);
+//                         }
+//                         else {
+//                            setIsInvalid(true)
+//                            setSelection(val);
+//                         }
         if(selectedOptions.length == 0) {
+            console.log('this is where validation could potentially happen?')
+            setIsInvalid(true)
             return;
         }
         let res = [];

@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import { Layout, Select, Text, Card, CardHeader } from '@ui-kitten/components';
 import { StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
+import SelectionValidation from '../../utils/SelectionValidation.js'
 
 const BasicDropDown = (props) => {
 
   const [selectedOption, setSelectedOption] = React.useState(null);  // Need to change indexing!
+  const [isInvalid, setIsInvalid] = React.useState(false);
 
   const setOption = (selection) => {
+        setIsInvalid(true)
         props.selectFunction(selection.text);
         setSelectedOption({text: selection.text});
     }
