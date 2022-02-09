@@ -15,12 +15,13 @@ import TopNavigation from '../../components/TopNavigation';
 import Section from '../../components/Section';
 import IconButton from '../../components/IconButton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { getDefaultFilename } from '../../utils/helperFunctions'
 
 class EmailFinalReport extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filename: this.getDefaultFilename(),
+      filename: getDefaultFilename(),
       offlineStatus: false,
       uri: '',
       data: '',
@@ -49,20 +50,10 @@ class EmailFinalReport extends Component {
       } else {
         var converter = new JSONconverter();
         var file = await converter.handleConverter(format, data);
-        console.log('logging file type', typeof file)
-        console.log(file)
         var encoding = format === "xlsx" ? 'ascii' : 'utf8';
         this.setState({data: file, encoding: encoding, format:format});
       }
     }
-
-  // generate default filename
-  getDefaultFilename() {
-    var date = new Date();
-    var localTime = date.toLocaleTimeString().replace(/\W/g, '_');
-    var localDate = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
-    return "Crash_Report " + localDate + "_at_" + localTime;
-  }
 
   // update the filename
   changeFilename(text) {
@@ -95,14 +86,13 @@ class EmailFinalReport extends Component {
     var path = RNFS.ExternalDirectoryPath + '/' + filename;
 
     // write the file
-    console.log(this.state.data)
     try {
-        if (this.state.format === 'xlsx' && this.props.photo.image.length) {
-            const photoPath = RNFS.ExternalDirectoryPath + '/' + this.state.filename + '.jpeg'
-            const base64Image = this.props.photo.image.split("data:image/jpeg;base64,")
+        if (this.state.format === 'xlsx' && (this.props.photo.image.length > 0)) {
+            const photoPath = RNFS.ExternalDirectoryPath + '/' + this.state.filename + '.svg'
+            const encodedSvg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' + this.props.photo.image
             path = [path, photoPath]
             let fileResult  = await RNFS.writeFile(path[0], this.state.data, this.state.encoding);
-            let photoResult = await RNFS.writeFile(path[1], base64Image[1], 'base64');
+            let photoResult = await RNFS.writeFile(path[1], this.props.photo.image);
         } else {
             let result = await RNFS.writeFile(path, this.state.data, this.state.encoding);
         }
@@ -155,7 +145,6 @@ class EmailFinalReport extends Component {
     const net = new NetInfoAPI();
     let netStatus = await net.checkNetOnce();
     // net info is wraped in net.status
-    // console.log(`NetInfo: ${net.status}`);
     if (netStatus==false){
       // deal with internet not connected
       this.setState({ offlineStatus: true });
