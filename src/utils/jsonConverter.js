@@ -201,12 +201,11 @@ export class JSONconverter extends Component {
 	JSONtoHTML(jsondata) {
 		function getAnswer(answerSubsetData, id) {
 		    if ("photo" in answerSubsetData && id === 'crashDia') {
-		        let source = 'src="' + answerSubsetData['photo'] + '" '
+		        let source = answerSubsetData['photo']
 		        return source
 		    }
 			if (("response" in answerSubsetData) && (id in answerSubsetData["response"])) {
 				if (answerSubsetData["response"][id] instanceof Array) {
-				    console.log(answerSubsetData["response"][id])
 					return answerSubsetData["response"][id].join(", ")
 				}
 				return answerSubsetData["response"][id];
@@ -249,7 +248,6 @@ export class JSONconverter extends Component {
 			var lines = str.split("\n");
 			var filledString = "";
 			for (var i = 0; i < lines.length; i++){
-			  // console.log(crashDataSectionLines[i]);
 			  var line = lines[i];
 			  // check if line contains "id=" if so then get the id
 				// there could be multiple ids in one line so process all of them
@@ -261,7 +259,7 @@ export class JSONconverter extends Component {
 					// put ans into line and replace
 					if (fillInMethod == "datasection") {
 					    if (id === 'crashDia') {
-					        line = line.slice(0, pos+18) + ans + line.slice(pos+18);
+					        line = ans;
 					    } else {
 					        line = line.slice(0, pos+14) + ans + line.slice(pos+14);
 					    }
