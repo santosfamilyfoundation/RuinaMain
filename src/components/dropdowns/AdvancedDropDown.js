@@ -240,6 +240,8 @@ const AdvancedDropDown = (props) => {
             title={data.question}
             helperText={data.helperText}
             tooltip={tooltip()}
+            errorMessage='Invalid Input'
+            isInvalid={isInvalid}
         >
             {WeatherHelper()}
             <HStack justifyContent='space-around'>

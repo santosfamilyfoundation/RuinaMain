@@ -15,7 +15,8 @@ export class SelectionValidation {
 
     validateInput(selection){
           console.log('validateInput')
-          if(!selection){
+          console.log('trying this', selection.length)
+          if(selection.length == 0){
             console.log('false')
             this.status = false;
           }

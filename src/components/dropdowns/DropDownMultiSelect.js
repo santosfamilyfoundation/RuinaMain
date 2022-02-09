@@ -91,6 +91,24 @@ const DropDownMultiSelect = (props) => {
         }
     }
     const submitField = (selectedItems) => {
+                 submitFunction({id, question: currId, selection: selectedItems})
+                 selectedOptions.push(selectedItems)
+                 setSelectedOptions(selectedItems);
+                 let selectionValidation = SelectionValidation
+                 selectionValidation.validateField(selectedOptions);
+                 let localStatus = selectionValidation.status
+                 console.log('at the right place, at least')
+                 if (localStatus) {
+                    console.log(localStatus, ' local Status')
+                    setIsInvalid(false);
+                    console.log('selectedOptions', selectedOptions)
+
+                 }
+                 else {
+                    setIsInvalid(true);
+                    console.log('this part, yikes')
+                    return;
+                 }
         let resId = []
         for(let i = 0; i < selectedItems.length; i++) {
             resId.push(selectedItems[i]);
@@ -117,12 +135,16 @@ const DropDownMultiSelect = (props) => {
 
     const addOption = (selectedItems) => {
         if (!selectedItems){
+            console.log('check here: ', selectedOptions)
             return
         }
         if(selectedItems.length == 0) {
+            console.log('no one expected this one!!')
             submitFunction({id, question: currId, selection: null})
-            setSelectedOptions([]);
             return;
+        }
+        else {
+           setIsInvalid(false)
         }
         console.log(selectedOptions)
         setSelectedOptions(selectedItems);
@@ -140,6 +162,8 @@ const DropDownMultiSelect = (props) => {
                 title={data.question}
                 helperText={data.helperText}
                 tooltip={tooltip()}
+                errorMessage='Invalid Input'
+                isInvalid={isInvalid}
             >
                 <SectionedMultiSelect
                   items={data.answerOptions}
@@ -154,6 +178,9 @@ const DropDownMultiSelect = (props) => {
                   }}
                   selectedItems={selectedOptions}
                   onConfirm={addOption}
+                  onCancel={() => {
+//                    let res = []
+                    addOption()}}
                   showCancelButton={true}
                 />
             </QuestionSection>
