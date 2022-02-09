@@ -7,10 +7,12 @@ import TooltipView from '../Tooltip';
 import QuestionSection from '../QuestionSection';
 import SectionedMultiSelect from 'react-native-sectioned-multi-select';
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import SelectionValidation from '../../utils/SelectionValidation.js'
 
 const DropDownMultiSelect = (props) => {
     const [selectedOptions, setSelectedOptions] = React.useState([]);
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
+    const [isInvalid, setIsInvalid] = React.useState(false);
     const {data, key, id, questionReducer, submitFunction, updateResponse, dependencyID} = props;
 
     let currId = data.id;

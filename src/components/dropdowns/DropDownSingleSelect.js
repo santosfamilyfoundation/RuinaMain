@@ -9,10 +9,12 @@ import QuestionSection from '../QuestionSection';
 import SectionedMultiSelect from 'react-native-sectioned-multi-select';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import IconButton from '../IconButton';
+import SelectionValidation from '../../utils/SelectionValidation.js';
 
 const DropDownSingleSelect = (props) => {
     const [selectedOption, setSelectedOption] = React.useState([]);
     const {data, key, id, questionReducer, submitFunction, updateResponse, dependencyID} = props;
+    const [isInvalid, setIsInvalid] = React.useState(false);
     let currId = data.id;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;

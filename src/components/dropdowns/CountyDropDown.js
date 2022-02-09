@@ -7,6 +7,7 @@ import QuestionSection from '../QuestionSection';
 import SectionedMultiSelect from 'react-native-sectioned-multi-select';
 import TooltipView from '../Tooltip';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import SelectionValidation from '../../utils/SelectionValidation.js'
 
 const CountyDropDown = (props) => {
     // json created from running:
@@ -17,6 +18,7 @@ const CountyDropDown = (props) => {
     const [selectedOption, setSelectedOption] = React.useState([]);
     const [deleteCountyFromState, setDeleteCountyFromState] = React.useState(false);
     const { data, key, id, questionReducer, submitFunction, updateResponse, deleteRoadSingleResponse } = props;
+    const [isInvalid, setIsInvalid] = React.useState(false);
     let currId = data.id;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;

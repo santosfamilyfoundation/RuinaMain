@@ -26,6 +26,7 @@ const AdvancedDropDown = (props) => {
     const [place, setPlace] = React.useState("");
     const [speed, setSpeed] = React.useState("");
     const [degree, setDegree] = React.useState("");
+    const [isInvalid, setIsInvalid] = React.useState(false);
 
     let currId = data.id;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
@@ -135,22 +136,21 @@ const AdvancedDropDown = (props) => {
 
     //Updated reducer
     const submitField = () => {
-//        let selectionValidation = SelectionValidation
-//                         selectionValidation.validateField(val);
-//                         let localStatus = selectionValidation.status
-//                         console.log('at the right place, at least')
-//                         if (localStatus) {
-//                            setIsInvalid(false)
-//                            setSelection(val);
-//                         }
-//                         else {
-//                            setIsInvalid(true)
-//                            setSelection(val);
-//                         }
-        if(selectedOptions.length == 0) {
-            console.log('this is where validation could potentially happen?')
-            setIsInvalid(true)
-            return;
+        let selectionValidation = SelectionValidation
+                 selectionValidation.validateField(optionText);
+                 let localStatus = selectionValidation.status
+                 console.log('at the right place, at least')
+                 if (localStatus) {
+                    setIsInvalid(false)
+                    setSelection(optionText);
+                 }
+                 else {
+                    setIsInvalid(true)
+                    setSelection(optionText);
+                 }
+            if(selectedOptions.length == 0) {
+                setIsInvalid(true)
+                return;
         }
         let res = [];
         for(i = 0; i < selectedOptions.length; i++) {

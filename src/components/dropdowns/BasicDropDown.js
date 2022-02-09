@@ -10,7 +10,18 @@ const BasicDropDown = (props) => {
   const [isInvalid, setIsInvalid] = React.useState(false);
 
   const setOption = (selection) => {
-        setIsInvalid(true)
+        let selectionValidation = SelectionValidation
+                     selectionValidation.validateField(selection);
+                     let localStatus = selectionValidation.status
+                     console.log('at the right place, at least')
+                     if (localStatus) {
+                        setIsInvalid(false)
+                        setSelectedOption(selection);
+                     }
+                     else {
+                        setIsInvalid(true)
+                        setSelectedOption(selection);
+                     }
         props.selectFunction(selection.text);
         setSelectedOption({text: selection.text});
     }
