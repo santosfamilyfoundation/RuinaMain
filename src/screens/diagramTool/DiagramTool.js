@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import {ScrollView} from 'react-native'
+import {ScrollView, Dimensions} from 'react-native'
 import { SafeAreaView } from 'react-navigation';
 import TopNavigation from '../../components/TopNavigation';
 import { Button, Text } from 'native-base';
@@ -9,27 +9,17 @@ import { connect } from 'react-redux';
 
 
 const DiagramTool = (props) => {
-    const { navigation, addPhoto } = props
-//    state = {
-//        content: '',
-//    }
-
+    const { navigation, addPhoto, photo } = props
     const drawRef = useRef(null);
+    const windowWidth = Dimensions.get('window').width;
+    const windowHeight = Dimensions.get('window').height - (Dimensions.get('window').height/4);
 
-//      const removeLastPath = () => {
-//        drawRef.current.?undo();
-//      }
-//
-//      const clearDrawing = () =>  {
-//        drawRef.current.?clear();
-//      }
-    const saveDiagram = () => {
+    const saveDiagram = async() => {
         const diagram = drawRef.current.getSvg();
-        console.log(diagram);
-        addPhoto(str(diagram));
+        const diagramPaths = drawRef.current.getPaths();
+        await addPhoto({image:diagram, paths: diagramPaths});
         navigation.navigate('Home');
     };
-
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -37,12 +27,12 @@ const DiagramTool = (props) => {
             <ScrollView>
                 <Draw
                   ref={drawRef}
-                  height={675}
-                  width={600}
+                  height={windowHeight}
+                  width={windowWidth}
                   initialValues={{
                     color: "black",
                     thickness: 3,
-                    paths: []
+                    paths: photo.paths ||[]
                   }}
                   autoDismissColorPicker
                   brushPreview="none"
