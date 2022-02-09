@@ -11,11 +11,6 @@ import { addDriver, updateDriver } from '../../actions/DriverAction';
 import { addPassenger, updatePassenger } from '../../actions/PassengerAction';
 import { addRoad, updateRoad } from '../../actions/RoadAction';
 import { addPhoto } from '../../actions/PhotoAction';
-//import { updateDriver } from '../../actions/DriverAction';
-//import { updateNonmotorist } from '../../actions/NonmotoristAction';
-//import { updateVehicle } from '../../actions/VehicleAction';
-//import { updatePassenger } from '../../actions/PassengerAction';
-//import { updateRoad } from '../../actions/RoadAction';
 
 import NumberButtonSelectorQuickSurvey from '../../components/buttonSelectors/NumberButtonSelectorQuickSurvey';
 import MultiButtonSelectorQuickSurvey from '../../components/buttonSelectors/MultiButtonSelectorQuickSurvey';
@@ -99,8 +94,6 @@ class QuickSurvey extends Component {
           const loadedPassenger = loadedState["passenger"];
           const loadedNonmotorist = loadedState["nonmotorist"];
           const loadedPhoto = loadedState['photo'];
-            console.log('line 102 state', loadedState)
-            console.log(loadedPhoto)
           /*             Update Quiz               */
           this.props.changeVehicle(loadedQuiz["numVehicle"]);
           this.props.changeNonmotorists(loadedQuiz["numNonmotorist"]);
@@ -192,7 +185,7 @@ class QuickSurvey extends Component {
 
           /*              Add Photo             */
           // add passengers to vehicles based on loaded state
-          this.props.addPhoto({ image: loadedPhoto });
+          this.props.addPhoto(loadedPhoto);
           this.setState({ loadedAutoSave: true });
 
           console.log("Finish loading saved state from disk.")
