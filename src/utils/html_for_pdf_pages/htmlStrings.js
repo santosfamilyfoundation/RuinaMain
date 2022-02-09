@@ -401,9 +401,9 @@ export const vehicleDataSectionString1 = `
     <tbody>
       <tr>
         <td rowspan="2">
-           <p><span id="YyQ6jMwd"></span> <span id="SulL32si"></span> <span id="zOGjRlMJ"></span></p>
-           <p><span id="ywUJNXkj"></span></p>
-           <p><span id="4G5ht6pl"></span>, <span id="3g8Oxu93"></span> <span id="crxPGHSm"></span></p>
+           <p><span id="vehicle-ownerFirst"></span> <span id="vehicle-ownerMiddle"></span> <span id="vehicle-ownerLast"></span></p>
+           <p><span id="vehicle-ownerStreet1"></span></p>
+           <p><span id="vehicle-ownerCity"></span>, <span id="vehicle-ownerState"></span> <span id="vehicle-ownerZIP"></span></p>
         </td>
        <td rowspan="2">
           <p class="field">Insurance Company Name</p>
@@ -735,9 +735,9 @@ export const lvhmVehicleDataSectionString = `
     <tbody>
       <tr>
         <td rowspan="2">
-        <p><span id="t9IOgQh1"></span></p>
-        <p id="L2bjG9Ih"></p>
-        <p><span id="5TFzoeJL"></span>, <span id="vQBsuEeU"></span> <span id="1WeAldXJ"></span></p>
+        <p><span id="vehicle-carrierName"></span></p>
+        <p id="vehicle-carrierStreetAddress"></p>
+        <p><span id="vehicle-carrierCityTown"></span>, <span id="vehicle-carrierState"></span> <span id="vehicle-carrierZIP"></span></p>
         </td>
         <td>
           <p class="field">Identification Type</p>
