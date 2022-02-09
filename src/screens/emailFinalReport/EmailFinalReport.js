@@ -16,7 +16,7 @@ import Section from '../../components/Section';
 import IconButton from '../../components/IconButton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export class EmailFinalReport extends Component {
+class EmailFinalReport extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,9 +32,8 @@ export class EmailFinalReport extends Component {
     this.handleEmail = this.handleEmail.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
       const format = this.props.navigation.state.params.format;
-      console.log(format);
       // convert data to desired format
       const export_data = {
         driver: this.props.driver.data,
@@ -42,7 +41,9 @@ export class EmailFinalReport extends Component {
         vehicle: this.props.vehicle.data,
         passenger: this.props.passenger.data,
         road: this.props.road.data,
+        photo: this.props.photo.image,
       };
+
       for (let i = 0; i < format.length; i++){
             if (format[i] === "pdf") {
               console.log("PDF LOOP")
@@ -60,6 +61,7 @@ export class EmailFinalReport extends Component {
               this.state.encoding.push(encode);
     //          this.setState({data: this.state.data.push(file), encoding: this.state.encoding.push(encode)});
             }
+
       }
 
     }
@@ -67,9 +69,9 @@ export class EmailFinalReport extends Component {
   // generate default filename
   getDefaultFilename() {
     var date = new Date();
-    var localTime = date.toLocaleTimeString().replace(/\W/g, '.');
+    var localTime = date.toLocaleTimeString().replace(/\W/g, '_');
     var localDate = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
-    return "Crash Report " + localDate + " at " + localTime;
+    return "Crash_Report " + localDate + "_at_" + localTime;
   }
 
   // update the filename
@@ -105,6 +107,7 @@ export class EmailFinalReport extends Component {
   }
 
   // save data as file inside app in order send email with attachment
+
 
   async saveDataInternal(filename, i) {
       const format = this.state.format;
@@ -149,6 +152,7 @@ export class EmailFinalReport extends Component {
               }
 
 
+
   //            return path;
             } catch (err) {
               console.log("message is here: ",err.message);
@@ -168,6 +172,7 @@ export class EmailFinalReport extends Component {
   // send email based on the inputted filename
   // leave everything else blank, except subject (subject = filename)
   async sendEmail(path, filename) {
+
     console.log('Sending email!' + path);
     var fp = []
     for (let i = 0; i < this.state.format.length; i++){
@@ -196,6 +201,7 @@ export class EmailFinalReport extends Component {
             { cancelable: true }
           )
         });
+
 
 
   }
@@ -276,7 +282,8 @@ const mapStateToProps = (state) => {
         nonmotorist: state.nonmotoristReducer,
         vehicle: state.vehicleReducer,
         passenger: state.passengerReducer,
-        road: state.roadReducer
+        photo: state.photosReducer,
+        road: state.roadReducer,
     }
 }
 

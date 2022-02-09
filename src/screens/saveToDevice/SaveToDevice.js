@@ -41,7 +41,9 @@ async componentDidMount() {
       vehicle: this.props.vehicle.data,
       passenger: this.props.passenger.data,
       road: this.props.road.data,
+      photo: this.props.photo.image,
     };
+
     for (let i = 0; i < format.length; i++){
         if (format[i] === "pdf") {
           console.log("PDF LOOP")
@@ -94,6 +96,7 @@ async componentDidMount() {
       console.log("Type of encoding",this.state.encoding[0])
     } catch (error) {
       console.log('this is the pdf converter error->', error);
+
     }
   }
 
@@ -124,6 +127,7 @@ async componentDidMount() {
       console.log("this.state.format: " + this.state.format)
       for (let i = 0; i < format.length; i++){
       // write the file and save to Files app on device:
+
           try {
             if (format[i] == "pdf"){
                 var filepath = path  + "." + format[i]
@@ -152,6 +156,7 @@ async componentDidMount() {
             console.log("failed with", this.state.format[i]);
 //            return null;
           }
+
 
       }
       // clear background save
@@ -232,9 +237,9 @@ const mapStateToProps = (state) => {
         vehicle: state.vehicleReducer,
         passenger: state.passengerReducer,
         quiz: state.quickquizReducer,
-        photos: state.photosReducer,
+        photo: state.photosReducer,
         story: state.storyReducer,
-        road: state.roadReducer
+        road: state.roadReducer,
     }
 }
 

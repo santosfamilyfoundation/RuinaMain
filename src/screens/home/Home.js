@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Keyboard, BackHandler, Pressable } from 'react-native';
+import { View, ScrollView, Keyboard, BackHandler, Pressable, PermissionsAndroid } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { Heading, Divider, VStack, HStack, Box, Text } from 'native-base';
+import { VStack, HStack, Box, Text, Image, Alert, Center } from 'native-base';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styles } from './Home.style';
 import {questions} from '../../data/questions';
@@ -11,12 +11,16 @@ import NonMotoristSection from '../formSections/NonMotoristSection';
 import { addNonmotorist } from '../../actions/NonmotoristAction';
 import { addVehicle } from '../../actions/VehicleAction';
 import { addDriver } from '../../actions/DriverAction';
-var uuid = require('react-native-uuid');
+import { addPhoto } from '../../actions/PhotoAction';
 import backgroundSave from '../../utils/backgroundSave';
 import Section from '../../components/Section';
 import IconButton from '../../components/IconButton';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import TopNavigation from '../../components/TopNavigation';
+import { launchCamera } from 'react-native-image-picker';
+import { photoSave } from '../../utils/helperFunctions'
+var uuid = require('react-native-uuid');
+
 
 class Home extends Component {
     constructor(props) {
@@ -28,10 +32,38 @@ class Home extends Component {
         this.state = {
             edit: props.edit || false,
             filePath: this.props.navigation.getParam('filePath'),
-            openOldFile: this.props.navigation.getParam('openOldFile')
+            openOldFile: this.props.navigation.getParam('openOldFile'),
+            photoUri: '',
+            cameraPermission: false,
         }
+        this.requestCameraPermission()
     }
-
+    requestCameraPermission = async () => {
+      console.log('working on permissions')
+      try {
+        console.log('trying permissions')
+        const granted = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.CAMERA,
+          {
+            title: "App Camera Permission",
+            message:
+              "Ruina needs access to your camera.",
+            buttonNeutral: "Ask Me Later",
+            buttonNegative: "Cancel",
+            buttonPositive: "OK"
+          }
+        );
+        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+          console.log("You can use external storage");
+          return this.setState({cameraPermission: true})
+        } else {
+          console.log("external permission denied");
+          return this.setState({cameraPermission: false})
+        }
+      } catch (err) {
+        console.warn(err);
+      }
+    };
 
     // add nonmotorist to global state
     _addNonmotorist () {
@@ -82,7 +114,8 @@ class Home extends Component {
             nonmotorist,
             vehicle,
             passenger,
-            road
+            road,
+            photo
             } = this.props
 
         const data = {
@@ -92,6 +125,7 @@ class Home extends Component {
             passenger: this.props.passenger.data,
             road: this.props.road.data,
             quiz: this.props.quiz,
+            photo: this.props.photo.image
         };
 
         const captureState = new backgroundSave(this.state.filePath, this.state.openOldFile);
@@ -104,7 +138,6 @@ class Home extends Component {
         const navigateQuestion = (form, id, type, name) => {
             navigation.navigate('Question', {questions: form.data, objectID: id, type, name, dependencyID:[id]})
         }
-
         // generate the vehicle section components based on global state
         let vehiclesListArr = vehicle.data.map((vehicle, index) => {
             const { edit } = this.state;
@@ -137,6 +170,49 @@ class Home extends Component {
                 />
             )
         })
+
+        const captureCrash = () => {
+           if (this.state.cameraPermission) {
+                let options = {
+                   storageOptions: {
+                       skipBackup: true,
+                   },
+                   includeBase64: true,
+                }
+                launchCamera(options, (response) => {
+                  if (response.errorMessage) { console.log('ImagePicker Error: ', response.errorMessage) }
+                  else if (response.didCancel) { this.props.navigation.navigate('Home') }
+                  else {
+                      console.log('response', JSON.stringify(response));
+                      this.setState({
+                           ...this.state,
+//                           photoUri: response.assets[0].uri,
+                            photoUri: response.assets[0].base64,
+                      })
+                      let savedPhoto = new photoSave(this.state.filePath)
+                      savedPhoto.addPhoto(response.assets[0].uri)
+//                      this.props.addPhoto({image: 'file://' + savedPhoto.path});
+                      this.props.addPhoto({image: 'data:image/jpeg;base64,' + response.assets[0].base64});
+                  }
+                });
+           } else {
+                return <Center>
+                <Alert status='error'>
+                    <Text>Access to camera denied</Text>
+                </Alert>
+                </Center>
+           }
+
+        };
+
+        const fetchPhoto = () => {
+            if (this.state.photoUri) {
+                return <Image mt={4} source={{uri:'data:image/jpeg;base64,' + this.state.photoUri}} alt='Car Crash' size='xl'/>
+            } else if (photo.image) {
+                return <Image mt={4} source={{uri:photo.image}} alt='Car Crash' size='xl'/>
+            } else return null
+
+        };
 
         const rightControls = () => {
             const { edit } = this.state;
@@ -201,13 +277,24 @@ class Home extends Component {
                             onPress = {() => this._addNonmotorist()}
                             icon = {<Icon color="white" name="person-add" size={50}/>}
                         />
-                    </Section> :
-                    nonmotoristListArr.length ?
+                    </Section>:
+                    <>
+                    {nonmotoristListArr.length ?
                     <Section title='Non-motorists'>
                         <HStack flexWrap='wrap'>
                             {nonmotoristListArr}
                         </HStack>
-                    </Section> : null
+                    </Section> : null}
+                    <Section title='Crash Diagram'>
+                        <IconButton topMargin={4} text="Add Crash Diagram"
+                            onPress={() => captureCrash()}
+                            icon={<Icon color='white' name='add' size={50}/>}
+                        />
+                        <HStack flexWrap='wrap'>
+                            {fetchPhoto()}
+                        </HStack>
+                    </Section>
+                    </>
                     }
                 </ScrollView>
             </SafeAreaView>
@@ -218,7 +305,8 @@ class Home extends Component {
 const mapDispatchToProps = {
     addNonmotorist,
     addVehicle,
-    addDriver
+    addDriver,
+    addPhoto,
 };
 
 const mapStateToProps = (state) => {
@@ -229,6 +317,7 @@ const mapStateToProps = (state) => {
         passenger: state.passengerReducer,
         quiz: state.quickquizReducer,
         road: state.roadReducer,
+        photo: state.photosReducer,
     }
 }
 
