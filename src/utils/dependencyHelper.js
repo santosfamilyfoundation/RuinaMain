@@ -3,7 +3,7 @@ export function dependencyParser(response, data, formID) {
     if (data.questionDependency == undefined) {
         renderComponent = true;
     } else if (response != null) {
-        console.log('data.questionDependency:', data.questionDependency);
+        // console.log('data.questionDependency:', data.questionDependency);
         let tarQuesArr = data.questionDependency;
         for (let i = 0; i <tarQuesArr.length; i++) {
             let tarUuid = tarQuesArr[i].dependencyUuid;
@@ -41,22 +41,22 @@ export function dependencyParser(response, data, formID) {
                 }
             }
             if (findResponse){
-                console.log(findResponse.selection);
-                console.log('tarOptionCode:', tarOptionCode);
-                console.log(typeof(tarOptionCode));
+                // console.log(findResponse.selection);
+                // console.log('tarOptionCode:', tarOptionCode);
+                // console.log(typeof(tarOptionCode));
                 if (typeof findResponse.selection == "object"){
-                    console.log('selection is object')
+                    // console.log('selection is object')
                     findResponse.selection.forEach(element => {
                         if (element == tarOptionCode){renderComponent = true}
                     });
                 } else if (findResponse.selection === tarOptionCode) {
-                    console.log('selection is not an object, selection and target option code match')
+                    // console.log('selection is not an object, selection and target option code match')
                     renderComponent = true
                 }
             }
         }
     }
 
-    console.log('value of render component:', renderComponent)
+    // console.log('value of render component:', renderComponent)
     return renderComponent
 }

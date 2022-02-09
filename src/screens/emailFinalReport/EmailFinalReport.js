@@ -47,6 +47,7 @@ export class EmailFinalReport extends Component {
         this.setState({encoding:'base64', format:format});
         this.createPDF(data);
       } else {
+        console.log('desired format is not pdf')
         var converter = new JSONconverter();
         var file = converter.handleConverter(format, data);
         var encoding = format === "xlsx" ? 'ascii' : 'utf8';

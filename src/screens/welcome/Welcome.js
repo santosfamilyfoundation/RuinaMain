@@ -48,10 +48,10 @@ class Welcome extends Component {
       this.props.resetMap();
       this.props.resetPhoto();
       await this.stateManager.getFilePaths();
-      console.log("Unfinished reports found:", this.stateManager.filePaths);
+      // console.log("Unfinished reports found:", this.stateManager.filePaths);
       this.unfinishedReportsAbsent = this.stateManager.filePaths.length == 0
-      console.log(this.stateManager.filePaths);
-      console.log(this.stateManager.filePaths.length == 0)
+      // console.log(this.stateManager.filePaths);
+      // console.log(this.stateManager.filePaths.length == 0)
       this.setState({ loading: false });
     }
 

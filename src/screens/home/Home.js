@@ -39,9 +39,9 @@ class Home extends Component {
         this.requestCameraPermission()
     }
     requestCameraPermission = async () => {
-      console.log('working on permissions')
+    //   console.log('working on permissions')
       try {
-        console.log('trying permissions')
+        // console.log('trying permissions')
         const granted = await PermissionsAndroid.request(
           PermissionsAndroid.PERMISSIONS.CAMERA,
           {
@@ -54,10 +54,10 @@ class Home extends Component {
           }
         );
         if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-          console.log("You can use external storage");
+        //   console.log("You can use external storage");
           return this.setState({cameraPermission: true})
         } else {
-          console.log("external permission denied");
+        //   console.log("external permission denied");
           return this.setState({cameraPermission: false})
         }
       } catch (err) {
@@ -130,7 +130,7 @@ class Home extends Component {
 
         const captureState = new backgroundSave(this.state.filePath, this.state.openOldFile);
         captureState.captureCurrentState(JSON.stringify(data));
-        console.log('capturing current state at filepath:', this.state.filePath);
+        // console.log('capturing current state at filepath:', this.state.filePath);
 
         let roadQuestions = this.filterQuestionsData('road');
 
