@@ -21,7 +21,7 @@ const CountyDropDown = (props) => {
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
 
-    const stateDropDownQuestionID = data.questionDependency[0].dependencyUuid;
+    const stateDropDownQuestionID = data.questionDependency[0].dependencyName;
     let existingDataState = existingData ? existingData[stateDropDownQuestionID] : null;
 
     // Populate if value already exists in redux
