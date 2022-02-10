@@ -144,7 +144,7 @@ const AdvancedOpenTextField = (props) => {
         let hours = (now.getHours()).toString();
         let min = (now.getMinutes()).toString();
         let fullDate = year + "/" +  month + "/" + date + "\t" + hours + ":" + min;;
-        updateRoad({id, question:data.id, selection: fullDate });
+        updateRoad({id, question:data.humanReadableId, selection: fullDate });
       }
     };
 
