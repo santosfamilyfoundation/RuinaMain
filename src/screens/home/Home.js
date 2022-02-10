@@ -34,37 +34,8 @@ class Home extends Component {
             edit: props.edit || false,
             filePath: this.props.navigation.getParam('filePath'),
             openOldFile: this.props.navigation.getParam('openOldFile'),
-            photoUri: '',
-            cameraPermission: false,
         }
-        this.requestCameraPermission()
     }
-    requestCameraPermission = async () => {
-      console.log('working on permissions')
-      try {
-        console.log('trying permissions')
-        const granted = await PermissionsAndroid.request(
-          PermissionsAndroid.PERMISSIONS.CAMERA,
-          {
-            title: "App Camera Permission",
-            message:
-              "Ruina needs access to your camera.",
-            buttonNeutral: "Ask Me Later",
-            buttonNegative: "Cancel",
-            buttonPositive: "OK"
-          }
-        );
-        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-          console.log("You can use external storage");
-          return this.setState({cameraPermission: true})
-        } else {
-          console.log("external permission denied");
-          return this.setState({cameraPermission: false})
-        }
-      } catch (err) {
-        console.warn(err);
-      }
-    };
 
     // add nonmotorist to global state
     _addNonmotorist () {
@@ -126,7 +97,7 @@ class Home extends Component {
             passenger: this.props.passenger.data,
             road: this.props.road.data,
             quiz: this.props.quiz,
-            photo: this.props.photo.image
+            photo: this.props.photo
         };
 
         const captureState = new backgroundSave(this.state.filePath, this.state.openOldFile);
@@ -171,19 +142,6 @@ class Home extends Component {
                 />
             )
         })
-
-        const captureCrash = () => {
-            navigation.navigate('DiagramTool')
-        };
-
-        const fetchPhoto = () => {
-            if (this.state.photoUri) {
-                return <Image mt={4} source={{uri:this.state.photoUri}} alt='Car Crash' size='xl'/>
-            } else if (photo.image) {
-                return <Image mt={4} source={{uri:photo.image}} alt='Car Crash' size='xl'/>
-            } else return null
-
-        };
 
         const rightControls = () => {
             const { edit } = this.state;
@@ -257,11 +215,44 @@ class Home extends Component {
                         </HStack>
                     </Section> : null}
                     <Section title='Crash Diagram'>
-                        <IconButton topMargin={4} text="Add Crash Diagram"
-                            onPress={() => captureCrash()}
-                            icon={<Icon color='white' name='add' size={50}/>}
-                        />
-                        <SvgXml />
+                        {photo.image ?
+                            <>
+                                <IconButton topMargin={4} text="Edit Crash Diagram"
+                                    onPress={() => navigation.navigate('DiagramTool')}
+                                    icon={<Icon color='white' name='edit' size={50}/>}
+                                />
+                                <Box m={4} borderColor="secondary.700">
+                                    <SvgXml xml={photo.image} width="100%" height="50%"/>
+                                    <Text>After svg</Text>
+                                    <Text>After svg</Text>
+                                    <Text>After svg</Text>
+                                    <Text>After svg</Text>
+                                    <Text>After svg</Text>
+                                    <Text>After svg</Text>
+                                    <Text>After svg</Text>
+                                    <Text>After svg</Text>
+                                    <Text>After svg</Text>
+                                    <Text>After svg</Text>
+                                    <Text>After svg</Text>
+                                    <Text>After svg</Text>
+                                    <Text>After svg</Text>
+                                    <Text>After svg</Text>
+                                    <Text>After svg</Text>
+                                    <Text>After svg</Text>
+                                    <Text>After svg</Text>
+                                    <Text>After svg</Text>
+                                    <Text>After svg</Text>
+                                    <Text>After svg</Text>
+                                    <Text>After svg</Text>
+                                    <Text>After svg</Text>
+
+                                </Box>
+                            </>:
+                            <IconButton topMargin={4} text="Add Crash Diagram"
+                                onPress={() => navigation.navigate('DiagramTool')}
+                                icon={<Icon color='white' name='add' size={50}/>}
+                            />
+                        }
                     </Section>
                     </>
                     }
