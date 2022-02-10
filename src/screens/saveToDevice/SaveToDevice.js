@@ -81,12 +81,11 @@ async componentDidMount() {
       // write the file and save to Files app on device:
       try {
         if ((format === 'xlsx') && (this.props.photo.image.length > 0)) {
-            console.log('inside xlsx and photo')
-            const photoPath = RNFS.ExternalDirectoryPath + '/' + this.state.filename + '.jpeg'
-            const base64Image = this.props.photo.image.split("data:image/jpeg;base64,")
+            const photoPath = RNFS.ExternalDirectoryPath + '/' + this.state.filename + '.svg'
+          const encodedSvg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' + this.props.photo.image
             path = [path, photoPath]
             let fileResult  = await RNFS.writeFile(path[0], this.state.data, this.state.encoding);
-            let photoResult = await RNFS.writeFile(path[1], base64Image[1], 'base64');
+            let photoResult = await RNFS.writeFile(path[1], this.props.photo.image);
         } else {
             let result = await RNFS.writeFile(path, this.state.data, this.state.encoding);
         }

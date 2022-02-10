@@ -15,7 +15,7 @@ import TopNavigation from '../../components/TopNavigation';
 import Section from '../../components/Section';
 import IconButton from '../../components/IconButton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { getDefaultFilename } from '../../utils/helperFunctions'
+import { getDefaultFilename } from '../../utils/helperFunctions';
 
 class EmailFinalReport extends Component {
   constructor(props) {
@@ -88,11 +88,13 @@ class EmailFinalReport extends Component {
     // write the file
     try {
         if (this.state.format === 'xlsx' && (this.props.photo.image.length > 0)) {
-            const photoPath = RNFS.ExternalDirectoryPath + '/' + this.state.filename + '.svg'
-            const encodedSvg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' + this.props.photo.image
+            const photoPath = RNFS.ExternalDirectoryPath + '/' + this.state.filename + '.jpeg'
             path = [path, photoPath]
+            const svgFile = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' + this.props.photo.image
+            const encodedSvg = `data:image/svg+xml;utf8,${svgFile}`
+            console.log(encodedSvg)
             let fileResult  = await RNFS.writeFile(path[0], this.state.data, this.state.encoding);
-            let photoResult = await RNFS.writeFile(path[1], this.props.photo.image);
+            let photoResult = await RNFS.writeFile(path[1], encodedSvg, 'base64');
         } else {
             let result = await RNFS.writeFile(path, this.state.data, this.state.encoding);
         }
@@ -108,6 +110,7 @@ class EmailFinalReport extends Component {
       return null;
     }
   }
+
   // send email based on the inputted filename
   // leave everything else blank, except subject (subject = filename)
   async sendEmail(path, filename) {
