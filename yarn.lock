@@ -738,10 +738,15 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@benjeau/react-native-draw@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@benjeau/react-native-draw/-/react-native-draw-0.5.0.tgz#55991067d1308abb5897424670cec0e8a3c77a4f"
-  integrity sha512-+DRPIl/tYQ9SnTJHASZiocwFUq97OeiDn7T+FHP+mUhoAgieAT30HwJ0jZyINKWtJ3c7g65FaP0ZaopYhm1MtQ==
+"@benjeau/react-native-draw-extras@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@benjeau/react-native-draw-extras/-/react-native-draw-extras-0.1.0.tgz#e0622860f7cf94f82e959d4d3c56ebd974a12b52"
+  integrity sha512-VTn0+Smx5hRdAsQbAZOrSGllDNXyRFvsJF+SkIEp3sTVilTaTfT11RWGBKFLNmLcReUqsfWSau8MXknBTVjPtw==
+
+"@benjeau/react-native-draw@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@benjeau/react-native-draw/-/react-native-draw-0.7.0.tgz#50cd3d8b87f7f4957c4ce803a35afb6ca1afa9a2"
+  integrity sha512-HD0V2e6UlyXD/z6ydJzmcLRDe0ftFI3cN+r+Tx5Y1pF+FN6WZ3UBkhvlUYu4VBAwNlJZDbTEFkO0SYgXM51PUQ==
   dependencies:
     "@luncheon/simplify-svg-path" "^0.1.4"
 

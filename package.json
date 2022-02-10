@@ -11,7 +11,8 @@
     "iPad": "react-native run-ios --simulator='iPad (7th generation)'"
   },
   "dependencies": {
-    "@benjeau/react-native-draw": "^0.5.0",
+    "@benjeau/react-native-draw": "^0.7.0",
+    "@benjeau/react-native-draw-extras": "^0.1.0",
     "@eva-design/eva": "^1.3.2",
     "@react-native-community/async-storage": "^1.12.0",
     "@react-native-community/geolocation": "^2.0.2",
