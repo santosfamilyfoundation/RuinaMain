@@ -111,6 +111,7 @@ const OpenTextFieldWithSelection = (props) => {
                 errorMessage={`Maximum Character Limit: ${data.maxLength}`}
                 isInvalid={isInvalid}
                 tooltip={tooltip()}
+                required={data.required}
             >
                 <Input
                     placeholder='Place your Text'

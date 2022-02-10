@@ -81,6 +81,7 @@ const OpenTextField = (props) => {
                 errorMessage='Maximum Character Input Exceeded'
                 isInvalid={isInvalid}
                 tooltip={tooltip()}
+                required={data.required}
             >
                 <Input placeholder="Place your text"
                    value={value}

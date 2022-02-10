@@ -66,6 +66,8 @@ const MultiButtonSelectorQuickSurvey = (props) => {
         return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
     }
 
+    console.log(typeof data.required)
+
     var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
@@ -74,6 +76,7 @@ const MultiButtonSelectorQuickSurvey = (props) => {
              title={data.question}
              helperText={data.helperText}
              tooltip={tooltip()}
+             required={data.required}
             >
                {renderButtons()}
             </QuestionSection>
