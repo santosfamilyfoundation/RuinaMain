@@ -1,9 +1,10 @@
-import React, { useRef } from 'react';
-import {ScrollView, Dimensions} from 'react-native'
+import React, { useRef, useState } from 'react';
+import {ScrollView, Dimensions, View, Animated } from 'react-native'
 import { SafeAreaView } from 'react-navigation';
 import TopNavigation from '../../components/TopNavigation';
 import { Button, Text } from 'native-base';
-import { Draw, DrawRef } from "@benjeau/react-native-draw";
+import { Canvas, DrawingTool } from "@benjeau/react-native-draw";
+import { CanvasControls, BrushProperties, DEFAULT_COLORS } from "@benjeau/react-native-draw-extras";
 import { addPhoto } from '../../actions/PhotoAction';
 import { connect } from 'react-redux';
 
@@ -13,6 +14,47 @@ const DiagramTool = (props) => {
     const drawRef = useRef(null);
     const windowWidth = Dimensions.get('window').width;
     const windowHeight = Dimensions.get('window').height - (Dimensions.get('window').height/4);
+
+    const [color, setColor] = useState(DEFAULT_COLORS[1][0][0]);
+    const [thickness, setThickness] = useState(5);
+    const [opacity, setOpacity] = useState(1);
+    const [tool, setTool] = useState(DrawingTool.Brush);
+    const [visibleBrushProperties, setVisibleBrushProperties] = useState(false);
+
+    const handleUndo = () => {
+     drawRef.current.undo();
+    };
+
+    const handleClear = () => {
+     drawRef.current.clear();
+    };
+
+    const handleToggleEraser = () => {
+     setTool((prev) =>
+       prev === DrawingTool.Brush ? DrawingTool.Eraser : DrawingTool.Brush
+     );
+    };
+
+    const [overlayOpacity] = useState(new Animated.Value(0));
+    const handleToggleBrushProperties = () => {
+     if (!visibleBrushProperties) {
+       setVisibleBrushProperties(true);
+
+       Animated.timing(overlayOpacity, {
+         toValue: 1,
+         duration: 200,
+         useNativeDriver: true,
+       }).start();
+     } else {
+       Animated.timing(overlayOpacity, {
+         toValue: 0,
+         duration: 200,
+         useNativeDriver: true,
+       }).start(() => {
+         setVisibleBrushProperties(false);
+       });
+     }
+    }
 
     const saveDiagram = async() => {
         const diagram = drawRef.current.getSvg();
@@ -25,19 +67,51 @@ const DiagramTool = (props) => {
         <SafeAreaView style={{ flex: 1 }}>
           <TopNavigation title='Crash Diagram' backButton navigation={navigation} />
             <ScrollView>
-                <Draw
-                  ref={drawRef}
-                  height={windowHeight}
-                  width={windowWidth}
-                  initialValues={{
-                    color: "black",
-                    thickness: 3,
-                    paths: photo.paths ||[]
-                  }}
-                  autoDismissColorPicker
-                  brushPreview="none"
-                  canvasStyle={{ elevation: 0 }}
+                <Canvas
+                 ref={drawRef}
+                 height={windowHeight}
+                 color={color}
+                 thickness={thickness}
+                 opacity={opacity}
+                 tool={tool}
+                 initialPaths={photo.paths || []}
                 />
+               <View>
+                 <CanvasControls
+                   onUndo={handleUndo}
+                   onClear={handleClear}
+                   onToggleEraser={handleToggleEraser}
+                   onToggleBrushProperties={handleToggleBrushProperties}
+                   tool={tool}
+                   color={color}
+                   opacity={opacity}
+                   thickness={thickness}
+                 />
+                 {visibleBrushProperties && (
+                   <BrushProperties
+                     color={color}
+                     thickness={thickness}
+                     opacity={opacity}
+                     onColorChange={setColor}
+                     onThicknessChange={setThickness}
+                     onOpacityChange={setOpacity}
+                     //@ts-ignore
+                     style={{
+                       position: 'absolute',
+                       bottom: 80,
+                       left: 0,
+                       right: 0,
+                       padding: 10,
+                       backgroundColor: 'white',
+                       borderTopEndRadius: 10,
+                       borderTopStartRadius: 10,
+                       borderBottomWidth: 0,
+                       borderTopColor: '#ccc',
+                       opacity: overlayOpacity,
+                     }}
+                   />
+                 )}
+               </View>
             </ScrollView>
             <Button onPress={() => saveDiagram()}>Save Diagram</Button>
         </SafeAreaView>
