@@ -56,13 +56,13 @@ export function dependencyParser(response, data, formID) {
                 // there were multiple selections
                 if (typeof dependentResponse.selection == "object") {
                     dependentResponse.selection.forEach(element => {
-                        if (element == targetOptionCode) {
+                        if (parseInt(element) == parseInt(targetOptionCode)) {
                             renderComponent = true;
                         }
                     })
                 }
                 // there was only one selection
-                else if (dependentResponse.selection == targetOptionCode) {
+                else if (parseInt(dependentResponse.selection) == parseInt(targetOptionCode)) {
                     renderComponent = true;
                 }
             }
