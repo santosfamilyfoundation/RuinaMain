@@ -225,6 +225,7 @@ const AdvancedDropDown = (props) => {
             title={data.question}
             helperText={data.helperText}
             tooltip={tooltip()}
+            required={data.required}
         >
             {WeatherHelper()}
             <HStack justifyContent='space-around'>

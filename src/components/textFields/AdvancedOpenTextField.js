@@ -222,6 +222,7 @@ const AdvancedOpenTextField = (props) => {
                 errorMessage={ErrorMsg()}
                 isInvalid={invalidLength ? invalidLength : invalidVin}
                 tooltip={tooltip()}
+                required={data.required}
             >
                 <HStack>
                     <Input

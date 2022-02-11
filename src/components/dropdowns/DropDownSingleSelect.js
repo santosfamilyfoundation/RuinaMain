@@ -83,6 +83,7 @@ const DropDownSingleSelect = (props) => {
                 title={data.question}
                 helperText={data.helperText}
                 tooltip={tooltip()}
+                required={data.required}
             >
                 <SectionedMultiSelect
                   items={data.answerOptions}
