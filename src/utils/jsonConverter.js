@@ -325,94 +325,94 @@ export class JSONconverter extends Component {
 			console.log('processing data for construction data section');
 			htmlString += processQuestionIds(htmlStrings.constructionDataSectionString, jsondata["road"][0], "datasection");
 		}
-		// // fill in vehicle section pages if applicable
-		// vehicleSectionDict = getVehicleSectionDict(jsondata);
-		// for (var i = 0; i < numSectionsDict["vehicle"]; i++) {
-		// 	// fill out vehicle page
-		// 	var vehicleAnswers = jsondata["vehicle"][i];
-		// 	if (displayConstruction) {
-		// 		console.log('processing data for vehicle page header');
-		// 		htmlString += fillVehiclePageHeader(htmlStrings.vehicleHeaderString, vehicleAnswers, i+1, -1);
-		// 		displayConstruction = false;
-		// 	} else {
-		// 		console.log('processing data for vehicle page header');
-		// 		htmlString += fillVehiclePageHeader(htmlStrings.vehicleHeaderString, vehicleAnswers, i+1);
-		// 	}
-		// 	console.log('processing data for vehicle data section string 1');
-		// 	htmlString += processQuestionIds(htmlStrings.vehicleDataSectionString1, vehicleAnswers, "datasection");
-		// 	// fill out lvhm vehicle sections if applicable
-		// 	if (getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") != "Not Applicable") {
-		// 		console.log('processing data for first trailer data section');
-		// 		htmlString += processQuestionIds(htmlStrings.firstTrailerDataSectionString, vehicleAnswers, "datasection");
-		// 	}
-		// 	if ((getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") == "2") || (getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") == "3")) {
-		// 		console.log('processing data for second trailer data section');
-		// 		htmlString += processQuestionIds(htmlStrings.secondTrailerDataSectionString, vehicleAnswers, "datasection");
-		// 	}
-		// 	if (getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") == "3") {
-		// 		console.log('processing data for third trailer data section');
-		// 		htmlString += processQuestionIds(htmlStrings.thirdTrailerDataSectionString, vehicleAnswers, "datasection");
-		// 	}
-		// 	if ((getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") != "Not Applicable") || (getAnswer(vehicleAnswers, "vehicle-size") != "Light (10,000 lbs. or less GVWR/GCWR)") || (getAnswer(vehicleAnswers, "vehicle-hazardousMaterials") == "Yes")) {
-		// 		console.log('processing data for lvhm vehicle data section')
-		// 		htmlString += processQuestionIds(htmlStrings.lvhmVehicleDataSectionString, vehicleAnswers, "datasection");
-		// 	}
-		// 	if (getAnswer(vehicleAnswers, "vehicle-hazardousMaterials") == "Yes") {
-		// 		console.log('processing data for hazardous data section');
-		// 		htmlString += processQuestionIds(htmlStrings.hazardousDataSectionString, vehicleAnswers, "datasection");
-		// 	}
-		// 	console.log('processing data for vehicle data section 2');
-		// 	htmlString += processQuestionIds(htmlStrings.vehicleDataSectionString2, vehicleAnswers, "datasection");
-		// 	// fill out driver page if applicable
-		// 	var hasDriver;
-		// 	(vehicleAnswers["id"] in vehicleSectionDict["drivers"]) ? hasDriver = true : hasDriver = false;
-		// 	if (hasDriver) {
-		// 		var driverAnswers = vehicleSectionDict["drivers"][vehicleAnswers["id"]];
-		// 		console.log('processing driver header')
-		// 		htmlString += fillDriverPageHeader(htmlStrings.driverHeaderString, driverAnswers, i+1);
-		// 		console.log('processing driver data section 1');
-		// 		htmlString += processQuestionIds(htmlStrings.driverDataSectionString1, driverAnswers, "datasection");
-		// 		if ((getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") != "Not Applicable") || (getAnswer(vehicleAnswers, "vehicle-size") != "Light (10,000 lbs. or less GVWR/GCWR)") || (getAnswer(vehicleAnswers, "vehicle-hazardousMaterials") == "Yes")) {
-		// 			// display lvhm driver section
-		// 			console.log('processing driver lvhm data')
-		// 			htmlString += processQuestionIds(htmlStrings.lvhmDriverDataSectionString, driverAnswers, "datasection");
-		// 		}
-		// 		if (getAnswer(driverAnswers, "driver-injuryStatus") != "No Apparent Injury") {
-		// 			// display injury driver section
-		// 			console.log('processing driver injury data')
-		// 			htmlString += processQuestionIds(htmlStrings.injuryDriverDataSectionString, driverAnswers, "datasection");
-		// 		}
-		// 		console.log('processing driver data section 2')
-		// 		htmlString += processQuestionIds(htmlStrings.driverDataSectionString2, driverAnswers, "datasection");
-		// 	}
-		// 	// fill out passenger pages if applicable
-		// 	if (vehicleAnswers["id"] in vehicleSectionDict["passengers"]) {
-		// 		var passengers = vehicleSectionDict["passengers"][vehicleAnswers["id"]];
-		// 		for (var j = 0; j < passengers.length; j++) {
-		// 			var passengerAnswers = passengers[j];
-		// 			console.log('processing passenger page header')
-		// 			htmlString += fillPassengerPageHeader(htmlStrings.passengerHeaderString, passengerAnswers, j+1, i+1, hasDriver);
-		// 			console.log('processing passenger data section')
-		// 			htmlString += processQuestionIds(htmlStrings.passengerDataSectionString, passengerAnswers, "datasection");
-		// 			if (getAnswer(passengerAnswers, "passenger-injuryStatus") != "No Apparent Injury") {
-		// 				console.log('processing passenger injury data section')
-		// 				htmlString += processQuestionIds(htmlStrings.injuryPassengerDataSectionString, passengerAnswers, "datasection");
-		// 			}
-		// 		}
-		// 	}
-		// }
-		// // fill out non motorist pages if applicable
-		// for (var i = 0; i < numSectionsDict["nonmotorist"]; i++) {
-		// 	var nonmotoristAnswers = jsondata["nonmotorist"][i];
-		// 	console.log('processing nomotorist page header')
-		// 	htmlString += fillNonMotoristPageHeader(htmlStrings.nonmotoristHeaderString, nonmotoristAnswers, i+1);
-		// 	console.log('processing nonmotorist data section')
-		// 	htmlString += processQuestionIds(htmlStrings.nonmotoristDataSectionString, nonmotoristAnswers, "datasection");
-		// 	if (getAnswer(nonmotoristAnswers, "nonmotorist-injuryStatus") != "No Apparent Injury") {
-		// 		console.log('processing nomotorist injury data section')
-		// 		htmlString += processQuestionIds(htmlStrings.injuryNonmotoristDataSectionString, nonmotoristAnswers, "datasection");
-		// 	}
-		// }
+		// fill in vehicle section pages if applicable
+		vehicleSectionDict = getVehicleSectionDict(jsondata);
+		for (var i = 0; i < numSectionsDict["vehicle"]; i++) {
+			// fill out vehicle page
+			var vehicleAnswers = jsondata["vehicle"][i];
+			if (displayConstruction) {
+				console.log('processing data for vehicle page header');
+				htmlString += fillVehiclePageHeader(htmlStrings.vehicleHeaderString, vehicleAnswers, i+1, -1);
+				displayConstruction = false;
+			} else {
+				console.log('processing data for vehicle page header');
+				htmlString += fillVehiclePageHeader(htmlStrings.vehicleHeaderString, vehicleAnswers, i+1);
+			}
+			console.log('processing data for vehicle data section string 1');
+			htmlString += processQuestionIds(htmlStrings.vehicleDataSectionString1, vehicleAnswers, "datasection");
+			// fill out lvhm vehicle sections if applicable
+			if (getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") != "Not Applicable") {
+				console.log('processing data for first trailer data section');
+				htmlString += processQuestionIds(htmlStrings.firstTrailerDataSectionString, vehicleAnswers, "datasection");
+			}
+			if ((getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") == "2") || (getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") == "3")) {
+				console.log('processing data for second trailer data section');
+				htmlString += processQuestionIds(htmlStrings.secondTrailerDataSectionString, vehicleAnswers, "datasection");
+			}
+			if (getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") == "3") {
+				console.log('processing data for third trailer data section');
+				htmlString += processQuestionIds(htmlStrings.thirdTrailerDataSectionString, vehicleAnswers, "datasection");
+			}
+			if ((getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") != "Not Applicable") || (getAnswer(vehicleAnswers, "vehicle-size") != "Light (10,000 lbs. or less GVWR/GCWR)") || (getAnswer(vehicleAnswers, "vehicle-hazardousMaterials") == "Yes")) {
+				console.log('processing data for lvhm vehicle data section')
+				htmlString += processQuestionIds(htmlStrings.lvhmVehicleDataSectionString, vehicleAnswers, "datasection");
+			}
+			if (getAnswer(vehicleAnswers, "vehicle-hazardousMaterials") == "Yes") {
+				console.log('processing data for hazardous data section');
+				htmlString += processQuestionIds(htmlStrings.hazardousDataSectionString, vehicleAnswers, "datasection");
+			}
+			console.log('processing data for vehicle data section 2');
+			htmlString += processQuestionIds(htmlStrings.vehicleDataSectionString2, vehicleAnswers, "datasection");
+			// fill out driver page if applicable
+			var hasDriver;
+			(vehicleAnswers["id"] in vehicleSectionDict["drivers"]) ? hasDriver = true : hasDriver = false;
+			if (hasDriver) {
+				var driverAnswers = vehicleSectionDict["drivers"][vehicleAnswers["id"]];
+				console.log('processing driver header')
+				htmlString += fillDriverPageHeader(htmlStrings.driverHeaderString, driverAnswers, i+1);
+				console.log('processing driver data section 1');
+				htmlString += processQuestionIds(htmlStrings.driverDataSectionString1, driverAnswers, "datasection");
+				if ((getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") != "Not Applicable") || (getAnswer(vehicleAnswers, "vehicle-size") != "Light (10,000 lbs. or less GVWR/GCWR)") || (getAnswer(vehicleAnswers, "vehicle-hazardousMaterials") == "Yes")) {
+					// display lvhm driver section
+					console.log('processing driver lvhm data')
+					htmlString += processQuestionIds(htmlStrings.lvhmDriverDataSectionString, driverAnswers, "datasection");
+				}
+				if (getAnswer(driverAnswers, "driver-injuryStatus") != "No Apparent Injury") {
+					// display injury driver section
+					console.log('processing driver injury data')
+					htmlString += processQuestionIds(htmlStrings.injuryDriverDataSectionString, driverAnswers, "datasection");
+				}
+				console.log('processing driver data section 2')
+				htmlString += processQuestionIds(htmlStrings.driverDataSectionString2, driverAnswers, "datasection");
+			}
+			// fill out passenger pages if applicable
+			if (vehicleAnswers["id"] in vehicleSectionDict["passengers"]) {
+				var passengers = vehicleSectionDict["passengers"][vehicleAnswers["id"]];
+				for (var j = 0; j < passengers.length; j++) {
+					var passengerAnswers = passengers[j];
+					console.log('processing passenger page header')
+					htmlString += fillPassengerPageHeader(htmlStrings.passengerHeaderString, passengerAnswers, j+1, i+1, hasDriver);
+					console.log('processing passenger data section')
+					htmlString += processQuestionIds(htmlStrings.passengerDataSectionString, passengerAnswers, "datasection");
+					if (getAnswer(passengerAnswers, "passenger-injuryStatus") != "No Apparent Injury") {
+						console.log('processing passenger injury data section')
+						htmlString += processQuestionIds(htmlStrings.injuryPassengerDataSectionString, passengerAnswers, "datasection");
+					}
+				}
+			}
+		}
+		// fill out non motorist pages if applicable
+		for (var i = 0; i < numSectionsDict["nonmotorist"]; i++) {
+			var nonmotoristAnswers = jsondata["nonmotorist"][i];
+			console.log('processing nomotorist page header')
+			htmlString += fillNonMotoristPageHeader(htmlStrings.nonmotoristHeaderString, nonmotoristAnswers, i+1);
+			console.log('processing nonmotorist data section')
+			htmlString += processQuestionIds(htmlStrings.nonmotoristDataSectionString, nonmotoristAnswers, "datasection");
+			if (getAnswer(nonmotoristAnswers, "nonmotorist-injuryStatus") != "No Apparent Injury") {
+				console.log('processing nomotorist injury data section')
+				htmlString += processQuestionIds(htmlStrings.injuryNonmotoristDataSectionString, nonmotoristAnswers, "datasection");
+			}
+		}
 		// concatenate strings to form complete HTML
 		htmlString += htmlStrings.tailString;
 		return htmlString;

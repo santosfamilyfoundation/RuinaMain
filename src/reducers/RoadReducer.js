@@ -21,8 +21,6 @@ export default function roadReducer (state=initialState, action) {
             const { id, question, selection } = action.payload;
             let updatedState = state.data;
             let roadData = updatedState.find(road => road.id == id);
-            // console.log('question answered for road:', question)
-            // console.log('selection for question:', selection)
             roadData.response[question] = selection;
             return {
                 ...state,
