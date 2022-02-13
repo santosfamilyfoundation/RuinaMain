@@ -9,7 +9,7 @@ import Pdf from 'react-native-pdf';
 import RNHTMLtoPDF from 'react-native-html-to-pdf';
 import JSONconverter from '../../utils/jsonConverter';
 import backgroundSave from '../../utils/backgroundSave';
-import { createPDF, getDefaultFilename } from '../../utils/helperFunctions'
+import { getDefaultFilename } from '../../utils/helperFunctions'
 import TopNavigation from '../../components/TopNavigation';
 import IconButton from '../../components/IconButton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -45,7 +45,7 @@ async componentDidMount() {
 
     if (format === "pdf") {
       this.setState({encoding:'base64'});
-      createPDF(data);
+      this.createPDF(data);
     } else {
       var converter = new JSONconverter();
       var file = await converter.handleConverter(format, data);
@@ -57,6 +57,24 @@ async componentDidMount() {
   // update filename based on user input
   setUserInputFilename = (text) => {
     this.setState({ filename: text });
+  }
+
+  createPDF = async (data) => {
+      var converter = new JSONconverter();
+      // const htmlString = converter.handleConverter('pdftest', "");
+      const htmlString = converter.handleConverter('pdf', data);
+      let options = {
+        html: htmlString,
+        base64: true,
+        fileName: 'crash_report',
+      };
+      try {
+        const data = await RNHTMLtoPDF.convert(options);
+        console.log("got PDF data");
+        this.setState({uri: data.filePath, data: data.base64, isPDF:true});
+      } catch (error) {
+        console.log('error->', error);
+      }
   }
 
   async saveData() {
@@ -82,10 +100,10 @@ async componentDidMount() {
       try {
         if ((format === 'xlsx') && (this.props.photo.image.length > 0)) {
             const photoPath = RNFS.ExternalDirectoryPath + '/' + this.state.filename + '.svg'
-          const encodedSvg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' + this.props.photo.image
             path = [path, photoPath]
+            const svgFile = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' + this.props.photo.image
+            let photoResult = await RNFS.writeFile(path[1], svgFile, 'utf8');
             let fileResult  = await RNFS.writeFile(path[0], this.state.data, this.state.encoding);
-            let photoResult = await RNFS.writeFile(path[1], this.props.photo.image);
         } else {
             let result = await RNFS.writeFile(path, this.state.data, this.state.encoding);
         }
