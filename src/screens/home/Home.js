@@ -245,6 +245,10 @@ class Home extends Component {
                                     <Text>After svg</Text>
                                     <Text>After svg</Text>
                                     <Text>After svg</Text>
+                                    <Text>After svg</Text>
+                                    <Text>After svg</Text>
+                                    <Text>After svg</Text>
+
 
                                 </Box>
                             </>:
