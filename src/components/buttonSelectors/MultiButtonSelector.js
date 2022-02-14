@@ -42,6 +42,7 @@ const MultiButtonSelector = (props) => {
             setSelection(optionText);
          }
          else {
+            /* set box red here */
             setIsInvalid(true)
             setSelection(optionText);
          }

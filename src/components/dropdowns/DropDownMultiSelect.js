@@ -10,6 +10,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import SelectionValidation from '../../utils/SelectionValidation.js'
 
 const DropDownMultiSelect = (props) => {
+    const [errors, setErrors] = React.useState({});
     const [selectedOptions, setSelectedOptions] = React.useState([]);
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
     const [isInvalid, setIsInvalid] = React.useState(false);
@@ -90,25 +91,29 @@ const DropDownMultiSelect = (props) => {
             }
         }
     }
-    const submitField = (selectedItems) => {
-                 submitFunction({id, question: currId, selection: selectedItems})
-                 selectedOptions.push(selectedItems)
-                 setSelectedOptions(selectedItems);
-                 let selectionValidation = SelectionValidation
-                 selectionValidation.validateField(selectedOptions);
-                 let localStatus = selectionValidation.status
-                 console.log('at the right place, at least')
-                 if (localStatus) {
-                    console.log(localStatus, ' local Status')
-                    setIsInvalid(false);
-                    console.log('selectedOptions', selectedOptions)
 
-                 }
-                 else {
-                    setIsInvalid(true);
-                    console.log('this part, yikes')
-                    return;
-                 }
+    const validateLocal = (localInfo) => {
+        let selectionValidation = SelectionValidation
+             console.log(localInfo)
+             selectionValidation.validateField(localInfo);
+             let localStatus = selectionValidation.status
+             console.log('at the right place, at least')
+             if (localStatus) {
+                console.log(localStatus, ' local Status')
+                setIsInvalid(false);
+                console.log('selectedOptions', selectedOptions)
+
+             }
+             else {
+                setIsInvalid(true);
+                console.log('this part, yikes')
+                return;
+             }
+    }
+
+    const submitField = (selectedItems, localInfo) => {
+                 submitFunction({id, question: currId, selection: selectedItems})
+//                 setSelectedOptions(selectedItems);
         let resId = []
         for(let i = 0; i < selectedItems.length; i++) {
             resId.push(selectedItems[i]);
@@ -136,6 +141,7 @@ const DropDownMultiSelect = (props) => {
     const addOption = (selectedItems) => {
         if (!selectedItems){
             console.log('check here: ', selectedOptions)
+            validateLocal(selectedOptions)
             return
         }
         if(selectedItems.length == 0) {
@@ -146,8 +152,10 @@ const DropDownMultiSelect = (props) => {
         else {
            setIsInvalid(false)
         }
-        console.log(selectedOptions)
         setSelectedOptions(selectedItems);
+        console.log("this is what I'm getting", selectedOptions)
+        let localInfo = selectedItems.concat(selectedOptions)
+        validateLocal(localInfo)
         submitField(selectedItems);
     }
 
@@ -178,9 +186,7 @@ const DropDownMultiSelect = (props) => {
                   }}
                   selectedItems={selectedOptions}
                   onConfirm={addOption}
-                  onCancel={() => {
-//                    let res = []
-                    addOption()}}
+                  onCancel={addOption}
                   showCancelButton={true}
                 />
             </QuestionSection>
