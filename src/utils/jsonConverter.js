@@ -194,7 +194,7 @@ export class JSONconverter extends Component {
 		XLSX.utils.book_append_sheet(wb, nonmotoristWS, "nonmotorist");
 		// output workbook so it can be written to a file
 		const output = str => str;
-		const wbout = XLSX.write(wb, { type: 'binary', bookType: "xlsx" });
+		const wbout = XLSX.write(wb, { type: 'base64', bookType: "xlsx" });
 		return output(wbout);
 	}
 
