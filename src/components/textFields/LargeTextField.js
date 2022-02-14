@@ -95,6 +95,7 @@ const LargeTextField = (props) => {
              tooltip={tooltip()}
              errorMessage='Maximum Character Limit Exceeded'
              isInvalid={isInvalid}
+             required={data.required}
             >
                 <TextArea
                  placeholder="Place your text"

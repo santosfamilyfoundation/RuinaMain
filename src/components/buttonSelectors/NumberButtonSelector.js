@@ -54,7 +54,7 @@ const NumberButtonSelector = (props) => {
     }
 
     return (
-        <QuestionSection title={data.question} helperText={data.helperText} tooltip={tooltip()}>
+        <QuestionSection title={data.question} helperText={data.helperText} tooltip={tooltip()} required={data.required}>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={true} contentContainerStyle={styles.container}>
                 <HStack space={4}>
                     <Button variant={selection === '0' ? 'solid': 'subtle'} onPress={() => submitField('0')}>None</Button>

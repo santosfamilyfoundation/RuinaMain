@@ -177,6 +177,7 @@ class Home extends Component {
                    storageOptions: {
                        skipBackup: true,
                    },
+                   includeBase64: true,
                 }
                 launchCamera(options, (response) => {
                   if (response.errorMessage) { console.log('ImagePicker Error: ', response.errorMessage) }
@@ -185,11 +186,13 @@ class Home extends Component {
                       console.log('response', JSON.stringify(response));
                       this.setState({
                            ...this.state,
-                           photoUri: response.assets[0].uri,
+//                           photoUri: response.assets[0].uri,
+                            photoUri: response.assets[0].base64,
                       })
                       let savedPhoto = new photoSave(this.state.filePath)
                       savedPhoto.addPhoto(response.assets[0].uri)
-                      this.props.addPhoto({image: 'file://' + savedPhoto.path});
+//                      this.props.addPhoto({image: 'file://' + savedPhoto.path});
+                      this.props.addPhoto({image: 'data:image/jpeg;base64,' + response.assets[0].base64});
                   }
                 });
            } else {
@@ -204,7 +207,7 @@ class Home extends Component {
 
         const fetchPhoto = () => {
             if (this.state.photoUri) {
-                return <Image mt={4} source={{uri:this.state.photoUri}} alt='Car Crash' size='xl'/>
+                return <Image mt={4} source={{uri:'data:image/jpeg;base64,' + this.state.photoUri}} alt='Car Crash' size='xl'/>
             } else if (photo.image) {
                 return <Image mt={4} source={{uri:photo.image}} alt='Car Crash' size='xl'/>
             } else return null

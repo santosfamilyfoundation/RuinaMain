@@ -1,8 +1,9 @@
 import {Component} from 'react';
 import XLSX from 'xlsx';
 import * as htmlStrings from '../utils/html_for_pdf_pages/htmlStrings'
-import {testAnswers} from '../data/testAnswers';
-import {questions} from '../data/questions';
+import { testAnswers } from '../data/testAnswers';
+import { questions } from '../data/questions';
+
 
 export class JSONconverter extends Component {
 	constructor(props) {
@@ -27,16 +28,13 @@ export class JSONconverter extends Component {
 		}
 	}
 
-	JSONtoXLS(jsondata) {
-		console.log('jsontoxls');
-		function getQuestion(questionId) {
-			console.log('questionId:', questionId);
-
-			var questionName = ''
+	async JSONtoXLS (jsondata) {
+		function getQuestion(questionUid) {
+		    var questionName = ''
 		    questions.data.forEach(questionGroup => {
 		        if (questionGroup.questions) {
 		            questionGroup.questions.forEach(question => {
-		                if (question.humanReadableId === questionId) {
+		                if (question.humanReadableId === questionUid) {
 		                    questionName =  question.question
 		                }
 		            });
@@ -208,8 +206,13 @@ export class JSONconverter extends Component {
 
 	JSONtoHTML(jsondata) {
 		function getAnswer(answerSubsetData, id) {
+		    if ("photo" in answerSubsetData && id === 'crashDia') {
+		        let source = 'src="' + answerSubsetData['photo'] + '" '
+		        return source
+		    }
 			if (("response" in answerSubsetData) && (id in answerSubsetData["response"])) {
 				if (answerSubsetData["response"][id] instanceof Array) {
+				    console.log(answerSubsetData["response"][id])
 					return answerSubsetData["response"][id].join(", ")
 				}
 				return answerSubsetData["response"][id];
@@ -264,6 +267,11 @@ export class JSONconverter extends Component {
 					// put ans into line and replace
 					if (fillInMethod == "datasection") {
 						line = line.slice(0, endPos+2) + ans + line.slice(endPos+2);
+					    if (id === 'crashDia') {
+					        line = line.slice(0, pos+18) + ans + line.slice(pos+18);
+					    } else {
+					        line = line.slice(0, pos+14) + ans + line.slice(pos+14);
+					    }
 					} else {
 						line = line.replace("###", ans);
 					}
@@ -318,6 +326,11 @@ export class JSONconverter extends Component {
 		// fill in cover page data sections
 		console.log('processing data for crash data section');
 		htmlString += processQuestionIds(htmlStrings.crashDataSectionString, jsondata["road"][0], "datasection");
+		let crashRoadData = jsondata['road'[0]]
+		if(jsondata['photo'].length > 0) {
+            crashRoadData = {...crashRoadData, photo: jsondata['photo']}
+        }
+		htmlString += processQuestionIds(htmlStrings.crashDataSectionString, crashRoadData, "datasection");
 		// if applicable, add in construction table
 		var displayConstruction = false;
 		if (getAnswer(jsondata["road"][0], "road-workZoneRelated") == "Yes") {

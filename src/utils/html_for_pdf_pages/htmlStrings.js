@@ -352,6 +352,18 @@ export const crashDataSectionString = `
       </tr>
     </tbody>
   </table>
+  <table class="avoid-break full-width">
+      <th class="boxheader" colspan="3">
+        <h3>Crash Diagram</h3>
+      </th>
+      <tbody>
+        <tr>
+          <td colspan="3">
+            <img class="fieldresponse" id="crashDiagram" alt="Diagram of Car Crash"/>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 `
 
 export const constructionDataSectionString = `
