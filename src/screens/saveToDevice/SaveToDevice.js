@@ -13,7 +13,9 @@ import { getDefaultFilename } from '../../utils/helperFunctions'
 import TopNavigation from '../../components/TopNavigation';
 import IconButton from '../../components/IconButton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Section from '../../components/Section'
+import Section from '../../components/Section';
+import { writeAsStringAsync, EncodingType, deleteAsync } from 'expo-file-system';
+import { StorageAccessFramework } from 'expo-file-system';
 
 class SaveToDevice extends Component {
   constructor(props) {
@@ -26,13 +28,13 @@ class SaveToDevice extends Component {
       uri: '',
       data: '',
       encoding: '',
+      reportMimeType: null,
       isPDF: false,
     };
   }
 
 async componentDidMount() {
     const format = this.props.navigation.state.params.format;
-    console.log(format);
     // convert data to desired format
     const data = {
       driver: this.props.driver.data,
@@ -44,13 +46,14 @@ async componentDidMount() {
     };
 
     if (format === "pdf") {
-      this.setState({encoding:'base64'});
+      this.setState({encoding:EncodingType.Base64, reportMimeType:'application/pdf'});
       this.createPDF(data);
     } else {
       var converter = new JSONconverter();
       var file = await converter.handleConverter(format, data);
-      var encoding = format === "xlsx" ? 'ascii' : 'utf8';
-      this.setState({data: file, encoding: encoding});
+      var encoding = format === "xlsx" ? EncodingType.Base64 : EncodingType.UTF8;
+      var reportMimeType = format === "xlsx" ? 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' : 'text/html';
+      this.setState({data: file, encoding: encoding, reportMimeType:reportMimeType});
     }
   }
 
@@ -79,6 +82,8 @@ async componentDidMount() {
 
   async saveData() {
       const format = this.props.navigation.state.params.format;
+      const directoryUri = this.props.navigation.state.params.directoryUri;
+
       var device_platform = Platform.OS
       var RNFS = require('react-native-fs');
 
@@ -87,7 +92,7 @@ async componentDidMount() {
       // for android: externalStorageDirectoryPath: /storage/emulated/0
       // for ios: DocumentDirectoryPath: /var/mobile/Containers/Data/Application/12F7361A-BC3E-42C9-B81E-FBBBF7BA3E2C/Documents
       const path_ios = RNFS.DocumentDirectoryPath + '/' + this.state.filename + "." + format;
-      const path_android = RNFS.ExternalStorageDirectoryPath + '/' + this.state.filename + "." + format;
+      const path_android = await StorageAccessFramework.createFileAsync(directoryUri, this.state.filename + "." + format, this.state.reportMimeType);
       //const path = this.state.devicePlatform === 'ios' ? path_ios : path_android;
       let path;
       if (this.state.devicePlatform === 'ios'){
@@ -96,16 +101,19 @@ async componentDidMount() {
         path = path_android;
       }
 
+      let photoPath;
+      let svgFile;
+      if (format === 'xlsx' && (this.props.photo.image.length > 0)) {
+        photoPath = await StorageAccessFramework.createFileAsync(directoryUri, this.state.filename + ".svg", 'image/svg+xml');
+        svgFile = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' + this.props.photo.image
+      }
+
+
       // write the file and save to Files app on device:
       try {
-        if ((format === 'xlsx') && (this.props.photo.image.length > 0)) {
-            const photoPath = RNFS.ExternalDirectoryPath + '/' + this.state.filename + '.svg'
-            path = [path, photoPath]
-            const svgFile = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' + this.props.photo.image
-            let photoResult = await RNFS.writeFile(path[1], svgFile, 'utf8');
-            let fileResult  = await RNFS.writeFile(path[0], this.state.data, this.state.encoding);
-        } else {
-            let result = await RNFS.writeFile(path, this.state.data, this.state.encoding);
+        let fileResult  = await writeAsStringAsync(path, this.state.data, { encoding: this.state.encoding});
+        if (photoPath) {
+            let photoResult = await writeAsStringAsync(photoPath, svgFile, { encoding: EncodingType.UTF8 });
         }
         console.log('FILE WRITTEN!');
         console.log('Data: ' + data + '\n' + 'Path: ' + path);
@@ -119,6 +127,10 @@ async componentDidMount() {
       } catch (err) {
         console.log(err.message);
         this.setState({ reportSavedFailedMessageVisible: true });
+        await deleteAsync(path_android)
+        if (photoPath) {
+            await deleteAsync(photoPath)
+        }
         return null;
       }
   }
