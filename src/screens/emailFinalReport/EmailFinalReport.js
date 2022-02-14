@@ -82,12 +82,12 @@ class EmailFinalReport extends Component {
   // save data as file inside app in order send email with attachment
   async saveDataInternal(filename) {
     var RNFS = require('react-native-fs');
-    var path = RNFS.ExternalDirectoryPath + '/' + filename;
+    var path = RNFS.DocumentDirectoryPath + '/' + filename;
 
     // write the file
     try {
         if (this.state.format === 'xlsx' && (this.props.photo.image.length > 0)) {
-            const photoPath = RNFS.ExternalDirectoryPath + '/' + this.state.filename + '.svg'
+            const photoPath = RNFS.DocumentDirectoryPath + '/' + this.state.filename + '.svg'
             path = [path, photoPath]
             const svgFile = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' + this.props.photo.image
             let photoResult = await RNFS.writeFile(path[1], svgFile, 'utf8');
