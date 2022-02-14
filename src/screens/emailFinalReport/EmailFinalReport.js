@@ -50,7 +50,7 @@ class EmailFinalReport extends Component {
       } else {
         var converter = new JSONconverter();
         var file = await converter.handleConverter(format, data);
-        var encoding = format === "xlsx" ? 'ascii' : 'utf8';
+        var encoding = format === "xlsx" ? 'base64' : 'utf8';
         this.setState({data: file, encoding: encoding, format:format});
       }
     }
