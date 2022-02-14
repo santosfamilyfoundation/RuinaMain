@@ -14,7 +14,7 @@ const MultiButtonSelector = (props) => {
     const [selection, setSelection] = React.useState(null);
     const {data, key, id, questionReducer, submitFunction, updateResponse, dependencyID} = props;
 
-    let currId = data.id
+    let currId = data.humanReadableId
 
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;

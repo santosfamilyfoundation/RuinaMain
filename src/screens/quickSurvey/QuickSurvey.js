@@ -49,7 +49,7 @@ class QuickSurvey extends Component {
                 console.log("Loading State from JSON");
                   await this.stateManager.RNFS.readFile(this.stateManager.path, 'utf8')
                     .then((data) => {
-                      console.log(data)
+                      // console.log(data)
                       try {
                         const loadedState = JSON.parse(data);
                         console.log("Successfully Parsed JSON");
@@ -85,7 +85,7 @@ class QuickSurvey extends Component {
           }
         }
         parseLoadedState(loadedState){
-                console.log('line 87 state', loadedState)
+                // console.log('line 87 state', loadedState)
 
           for (let d in loadedState) {
             console.log("LOADED SECTION: ", d, ": ", loadedState[d]);
@@ -192,10 +192,11 @@ class QuickSurvey extends Component {
 
           /*              Add Photo             */
           // add passengers to vehicles based on loaded state
+          // console.log('photo file path: ', this.props)
+// console.log({ image: loadedPhoto })
           this.props.addPhoto({ image: loadedPhoto });
           this.setState({ loadedAutoSave: true });
-
-          console.log("Finish loading saved state from disk.")
+          // console.log("Finish loading saved state from disk.")
         }
 
     render() {
@@ -268,7 +269,7 @@ class QuickSurvey extends Component {
              let questionsData = filterQuestionsData('setup');
 
            const submitField = () => {
-               console.log("Question", question);
+              //  console.log("Question", question);
                // updateResponse && updateResponse({id, question: currId, selection: idCode})
                updateSetup
                updateResponse

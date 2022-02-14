@@ -47,6 +47,7 @@ class EmailFinalReport extends Component {
         this.setState({encoding:'base64', format:format});
         this.createPDF(data);
       } else {
+        console.log('desired format is not pdf')
         var converter = new JSONconverter();
         var file = await converter.handleConverter(format, data);
         console.log('logging file type', typeof file)
