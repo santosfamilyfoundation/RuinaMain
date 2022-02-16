@@ -146,6 +146,8 @@ const DropDownMultiSelect = (props) => {
         }
         if(selectedItems.length == 0) {
             console.log('no one expected this one!!')
+            setSelectedOptions([])
+            validateLocal([])
             submitFunction({id, question: currId, selection: null})
             return;
         }
