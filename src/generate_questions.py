@@ -47,7 +47,7 @@ def generate_questions_json(filename):
 
                 section_json = {'sectionTitle': row['question_text'],
                                 'questions': [],
-                                'display': [section]}
+                                'display': [row['display_section']]}
                 # print('created new section', section_json['sectionTitle'])
 
             else:

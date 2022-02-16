@@ -10,11 +10,7 @@ import QuestionSection from '../QuestionSection';
 
 const NumberButtonSelectorQuickSurvey = (props) => {
     const [selection, setSelection] = React.useState('')
-<<<<<<< HEAD
     console.log('numerbuttonselectorquicksurvey selection:', selection)
-=======
-    // console.log(selection)
->>>>>>> dev
     const {title, data, id, submitFunction, genericReducer, fieldName, updateResponse, dependencyID, startRange, endRange, tooltipText} = props;
 
     const submitField = (val) => {
