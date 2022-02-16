@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Keyboard, BackHandler, Pressable, PermissionsAndroid } from 'react-native';
+import { View, ScrollView, BackHandler, PermissionsAndroid } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { VStack, HStack, Box, Text, Image, Alert, Center } from 'native-base';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { styles } from './Home.style';
-import {questions} from '../../data/questions';
+import { VStack, HStack, Text, Image, Alert, Center, Button } from 'native-base';
 import VehicleSection from '../formSections/VehicleSection';
 import NonMotoristSection from '../formSections/NonMotoristSection';
 import { addNonmotorist } from '../../actions/NonmotoristAction';
@@ -36,6 +33,7 @@ class Home extends Component {
             openOldFile: this.props.navigation.getParam('openOldFile'),
             photoUri: '',
             cameraPermission: false,
+            loadingForm: false
         }
         this.requestCameraPermission()
     }
@@ -236,6 +234,21 @@ class Home extends Component {
             );
         }
 
+        const crashRoadFormButton = () => {
+            return (
+                <IconButton topMargin={4} text={`Crash/Road \nForm`}
+                        onPress = {() => {
+                            this.setState({ loadingForm: true });
+                            navigateQuestion(road.data[0].id, 'Road', 'Crash/Road');
+                        }}
+                        icon = {<Icon color="white" name="edit-road" size={50}/>}/>
+            )
+        }
+
+        const loadingButton = () => {
+            return(<Button isLoading isLoadingText="Loading Form"/>)
+        }
+
         return(
             <SafeAreaView flex={1}>
                 {rightControls()}
@@ -248,7 +261,10 @@ class Home extends Component {
                         </HStack>:
                         <HStack>
                             <IconButton topMargin={4} text={`Crash/Road \nForm`}
-                            onPress = {() => navigateQuestion(road.data[0].id, 'Road', 'Crash/Road')}
+                            onPress = {() => {
+                                this.setState({ loadingForm: true });
+                                navigateQuestion(road.data[0].id, 'Road', 'Crash/Road');
+                            }}
                             icon = {<Icon color="white" name="edit-road" size={50}/>}/>
                         </HStack>
                         }

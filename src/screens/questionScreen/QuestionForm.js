@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
-import { Divider, Box, Accordion, VStack, Button } from 'native-base';
+import { Divider, Box, Accordion, VStack, Button, Center, Spinner } from 'native-base';
 import { styles } from '../../autocomponentContainer/AutoComponentContainer.style';
 import { ScrollView } from 'react-native-gesture-handler';
 import MultiButtonSelector from '../../components/buttonSelectors/MultiButtonSelector';
@@ -24,235 +24,255 @@ import { updateRoad } from '../../actions/RoadAction';
 import { updateResponse } from '../../actions/StoryActions';
 import TopNavigation from '../../components/TopNavigation';
 
-const QuestionForm = (props) => {
-  const {
-    questionDetail,
-    navigation,
-    updateResponse,
-  } = props
+class QuestionForm extends Component {
+  constructor(props) {
+    super(props);
 
-  const question = questionDetail.questions;
-
-  const navigateToAdvanced = (place, props) =>{
-      navigation.navigate(place, props);
+    this.state = {
+      loading: true,
+      questionDetail: props.questionDetail,
+      navigation: props.navigation,
+      updateResponse: props.updateResponse,
+      sections: undefined
     }
 
-   const questionProps = (type, res) => {
-      const PublicObj = {
+    this.question = this.props.questionDetail.questions;
+  }
+
+  navigateToAdvanced(place, props) {
+    this.state.navigation.navigate(place, props);
+  }
+
+  componentDidMount() {
+    console.log("Component did mount");
+    if (this.state.loading) {
+      console.log("Loading, not rendered");
+      this.renderSections(this.question);
+      this.setState({ loading: false })
+    }
+  }
+
+  questionProps(type, res) {
+    const PublicObj = {
+      data: res.data,
+      key: res.data.id,
+      id:res.detail.objectID,
+      dependencyID:res.detail.dependencyID,
+      reducer:res.setting.reducer,
+      submitFunction:res.setting.submitFunction,
+      updateResponse: this.state.updateResponse
+    }
+    const obj =
+    {
+      dropdown: {
+        ...PublicObj
+      },
+      dropdownMultiSelect: {
+        ...PublicObj
+      },
+      openTextBox: {
+        ...PublicObj
+      },
+      openTextBoxWithSelection: {
+        ...PublicObj
+      },
+      advancedOpenTextBox: {
+         ...PublicObj,
+        pageChange: this.navigateToAdvanced,
+        importFrom: res.data.autoMethod
+      },
+      advancedDropDown: {
+        ...PublicObj,
+        pageChange: this.navigateToAdvanced,
+        importFrom: res.data.autoMethod
+      },
+      countyDropDown: {
+        ...PublicObj
+      },
+      largeTextField: {
+         ...PublicObj
+      },
+      multiButton: {
+        ...PublicObj
+      },
+      numberButton: {
+        ...PublicObj
+      },
+      autoCompleteDropdown: {
+        ...PublicObj
+      },
+      questionHeader: {
         data: res.data,
-        key: res.data.id,
-        id:res.detail.objectID,
         dependencyID:res.detail.dependencyID,
-        reducer:res.setting.reducer,
-        submitFunction:res.setting.submitFunction,
-        updateResponse:updateResponse
-      }
-      const obj =
-      {
-        dropdown: {
-          ...PublicObj
-        },
-        dropdownMultiSelect: {
-          ...PublicObj
-        },
-        openTextBox: {
-          ...PublicObj
-        },
-        openTextBoxWithSelection: {
-          ...PublicObj
-        },
-        advancedOpenTextBox: {
-           ...PublicObj,
-          pageChange: navigateToAdvanced,
-          importFrom: res.data.autoMethod
-        },
-        advancedDropDown: {
-          ...PublicObj,
-          pageChange: navigateToAdvanced,
-          importFrom: res.data.autoMethod
-        },
-        countyDropDown: {
-          ...PublicObj
-        },
-        largeTextField: {
-           ...PublicObj
-        },
-        multiButton: {
-          ...PublicObj
-        },
-        numberButton: {
-          ...PublicObj
-        },
-        autoCompleteDropdown: {
-          ...PublicObj
-        },
-        questionHeader: {
-          data: res.data,
-          dependencyID:res.detail.dependencyID,
-        },
-      }
-      return  obj[type]
+      },
     }
-  
-   const renderSingleQuestion = (type, props) => {
-      switch (type) {
-        case 'dropdown':
-          return (
-            <DropDownSingleSelect
-              {...props}
-            />
-          )
+    return  obj[type]
+  }
 
-        case 'dropdownMultiSelect':
-
-          return (
-            <DropDownMultiSelect
-              {...props}
-            />
-          )
-
-        case 'openTextBox':
-          const comp = (<OpenTextField
-            {...props}
-          />)
-          return (
-            comp
-          )
-
-        case 'openTextBoxWithSelection':
-
-          return (
-            <OpenTextFieldWithSelection
-              {...props}
-            />
-          )
-
-          case 'advancedOpenTextBox':
-
-            return (
-              <AdvancedOpenTextField
-              {...props}
-              />
-            )
-
-        case 'advancedDropDown':
-
-          return (
-            <AdvancedDropDown
-              {...props}
-            />
-          )
-        
-        case 'countyDropDown':
-          return (
-            <CountyDropDown
-              {...props}
-            />
-          )
-
-        case 'largeTextField':
-          return (
-            <LargeTextField
-              {...props}
-            />
-          )
-
-        case 'multiButton':
-          return (
-            <MultiButtonSelector
-              {...props}
-            />
-          )
-        case 'numberButton':
-          return (
-            <NumberButtonSelector
-                {...props}
-            />
-          )
-        case 'autoCompleteDropdown':
-          return (
-            <QuestionAutoCompleteDropDown
-              {...props}
-            />
-          )
-        case 'questionHeader':
-            return(
-                <QuestionHeader
-                    {...props}
-                />
-            )
-        default:
-          return null;
-      }
-    }
-
-    
-
-    const renderedQuestions = (questions) => {
-      console.log('Beginning to render questions for section')
-      const questionsTimer = performance.now()
-      const questionList = questions.map(q => 
-        renderSingleQuestion(q.answerType, 
-          questionProps(q.answerType, 
-            {data:q, setting: question, detail: questionDetail}))
-      )
-        // const questionList = questions.map(q => <RenderSingleQuestion {...questionProps(q.answerType, {data:q, setting: question, detail: questionDetail})} key={q.id} type={q.answerType}/>)
-        console.log('Rendering all questions for section duration:', Math.round(performance.now() - questionsTimer))
+  renderSingleQuestion(type, props) {
+    switch (type) {
+      case 'dropdown':
         return (
-            <VStack>
-                {questionList}
-            </VStack>
+          <DropDownSingleSelect
+            {...props}
+          />
+        )
+
+      case 'dropdownMultiSelect':
+
+        return (
+          <DropDownMultiSelect
+            {...props}
+          />
+        )
+
+      case 'openTextBox':
+        const comp = (<OpenTextField
+          {...props}
+        />)
+        return (
+          comp
+        )
+
+      case 'openTextBoxWithSelection':
+
+        return (
+          <OpenTextFieldWithSelection
+            {...props}
+          />
+        )
+
+        case 'advancedOpenTextBox':
+
+          return (
+            <AdvancedOpenTextField
+            {...props}
+            />
+          )
+
+      case 'advancedDropDown':
+
+        return (
+          <AdvancedDropDown
+            {...props}
+          />
         )
       
-    };
+      case 'countyDropDown':
+        return (
+          <CountyDropDown
+            {...props}
+          />
+        )
 
-  const renderSingleSection = (item) => {
-    const sectionTimer = performance.now()
-    console.log('Beginning to render a single section')
-  console.log('Render single section duration:', Math.round(performance.now() - sectionTimer))
-    return (
-    <Accordion.Item>
-      <Accordion.Summary>
-        {item.sectionTitle}
-        <Accordion.Icon />
-      </Accordion.Summary>
-      <Accordion.Details>
-        {/* <RenderedQuestions questions={item.questions}/> */}
-        { renderedQuestions(item.questions) }
-      </Accordion.Details>
-    </Accordion.Item>)
+      case 'largeTextField':
+        return (
+          <LargeTextField
+            {...props}
+          />
+        )
 
-  // return (<RenderedQuestions questions={item.questions}/>)
+      case 'multiButton':
+        return (
+          <MultiButtonSelector
+            {...props}
+          />
+        )
+      case 'numberButton':
+        return (
+          <NumberButtonSelector
+              {...props}
+          />
+        )
+      case 'autoCompleteDropdown':
+        return (
+          <QuestionAutoCompleteDropDown
+            {...props}
+          />
+        )
+      case 'questionHeader':
+          return(
+              <QuestionHeader
+                  {...props}
+              />
+          )
+      default:
+        return null;
+    }
   }
 
-
-  const RenderSections = ({question}) => {
-    const sectionsTimer = performance.now()
-    console.log('Beginning to render all sections')
-    // const result = <Accordion index={[0]} mx={4} my={8}>{ question.questionsData.map(item => <RenderSingleSection item={item} key={item.sectionTitle}/>)}</Accordion>
-    const result = <Accordion index={[0]} mx={4} my={8}>{question.questionsData.map(item => renderSingleSection(item))}</Accordion>
-    console.log('Render all sections duration:', Math.round(performance.now() - sectionsTimer))
-    return result
+  renderQuestions(questions) {
+    console.log('Beginning to render questions for section')
+    const questionList = questions.map(q => 
+      this.renderSingleQuestion(q.answerType, 
+        this.questionProps(q.answerType, 
+          {data:q, setting: this.question, detail: this.state.questionDetail}))
+    )
+      return (
+          <VStack>
+              {questionList}
+          </VStack>
+      )
     
+  };
+
+  renderSingleSection(item) {
+    console.log('Beginning to render a single section')
+    return (
+      <Accordion.Item>
+        <Accordion.Summary>
+          {item.sectionTitle}
+          <Accordion.Icon />
+        </Accordion.Summary>
+        <Accordion.Details>
+          { this.renderQuestions(item.questions) }
+        </Accordion.Details>
+      </Accordion.Item>)
   }
-  
-  
-  return (
-    <SafeAreaView style={styles.container}>
-      <TopNavigation title={`Questions on ${questionDetail.name}`} backButton navigation={navigation}/>
-      <ScrollView>
-        <Box>
-            <RenderSections question={question}/>
-            {/* { renderSections(question) } */}
-        </Box>
-      </ScrollView>
-      <Divider />
-      <Box p={4}>
-        <Button onPress={()=> {navigation.goBack()}}>Save Progress</Button>
-      </Box>
-    </SafeAreaView>
-  );
-}
+
+  renderSections(question) {
+    console.log("Starting to render all sections");
+    const result = <Accordion index={[0]} mx={4} my={8}>{question.questionsData.map(item => this.renderSingleSection(item))}</Accordion>
+    console.log("Finished rendering all sections");
+    this.setState({sections: result })
+  }
+
+  render() {
+    console.log('rendering');
+
+    if (this.state.loading) {
+      console.log('rendering loading');
+      return (
+        <SafeAreaView style={styles.container}>
+          <TopNavigation title={`Questions on ${this.state.questionDetail.name}`} backButton navigation={this.state.navigation}/>
+          <Center flex={1}>
+              <Spinner accessibilityLabel="loadingScreen" size="lg"/>
+            </Center>
+        </SafeAreaView>
+      )
+    }
+    else {
+      console.log('rendering sections');
+      return (
+        <SafeAreaView style={styles.container}>
+          <TopNavigation title={`Questions on ${this.state.questionDetail.name}`} backButton navigation={this.state.navigation}/>
+            <VStack>
+            <ScrollView>
+            <Box>
+                {this.state.sections}
+            </Box>
+          </ScrollView>
+          <Divider />
+          <Box p={4}>
+            <Button onPress={()=> {this.state.navigation.goBack()}}>Save Progress</Button>
+          </Box>
+          </VStack> 
+        </SafeAreaView>
+      )
+    }
+  }
+
+  }
 
 const mapDispatchToProps = {
   updateDriver,
