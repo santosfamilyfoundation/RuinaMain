@@ -10,7 +10,11 @@ import QuestionSection from '../QuestionSection';
 
 const NumberButtonSelectorQuickSurvey = (props) => {
     const [selection, setSelection] = React.useState('')
+<<<<<<< HEAD
     console.log('numerbuttonselectorquicksurvey selection:', selection)
+=======
+    // console.log(selection)
+>>>>>>> dev
     const {title, data, id, submitFunction, genericReducer, fieldName, updateResponse, dependencyID, startRange, endRange, tooltipText} = props;
 
     const submitField = (val) => {
@@ -27,7 +31,7 @@ const NumberButtonSelectorQuickSurvey = (props) => {
 
     const renderSingleButton = (option) => {
         return (
-            <Button variant={selection === option.id ? 'solid': 'subtle'} onPress={() => submitField(option.id)} size={10}>{option.name}</Button>
+            <Button variant={selection === option.id ? 'solid': 'subtle'} onPress={() => submitField(option.id)} size={10} key={option.id}>{option.name}</Button>
         )
     }
 
@@ -58,6 +62,7 @@ const NumberButtonSelectorQuickSurvey = (props) => {
         <QuestionSection
           title={title}
           tooltip={tooltip()}
+          required={true}
         >
             {renderButtons()}
         </QuestionSection>

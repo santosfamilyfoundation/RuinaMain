@@ -19,7 +19,7 @@ const QuestionAutoCompleteDropDown = (props) => {
     const [selectionData, setSelectionData] = React.useState(data.answerOptions);
 
     let status;
-    let currId = data.id;
+    let currId = data.humanReadableId;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
 

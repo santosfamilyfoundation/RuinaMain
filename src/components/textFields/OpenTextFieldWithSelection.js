@@ -16,7 +16,7 @@ const OpenTextFieldWithSelection = (props) => {
     const {data, key, id, questionReducer, submitFunction, updateResponse, dependencyID} = props;
 
 
-    let currId = data.id
+    let currId = data.humanReadableId
     let status;
 
     const reducerData = questionReducer.data.find(entry => entry.id == id);
@@ -115,6 +115,7 @@ const OpenTextFieldWithSelection = (props) => {
                 errorMessage={`Maximum Character Limit: ${data.maxLength}`}
                 isInvalid={isInvalid}
                 tooltip={tooltip()}
+                required={data.required}
             >
                 <Input
                     placeholder='Place your Text'

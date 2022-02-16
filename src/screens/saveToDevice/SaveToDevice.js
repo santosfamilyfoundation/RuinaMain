@@ -30,7 +30,7 @@ class SaveToDevice extends Component {
     };
   }
 
-componentDidMount() {
+async componentDidMount() {
     const format = this.props.navigation.state.params.format;
     console.log(format);
     // convert data to desired format
@@ -40,13 +40,15 @@ componentDidMount() {
       vehicle: this.props.vehicle.data,
       passenger: this.props.passenger.data,
       road: this.props.road.data,
+      photo: this.props.photo.image,
     };
+
     if (format === "pdf") {
       this.setState({encoding:'base64'});
       createPDF(data);
     } else {
       var converter = new JSONconverter();
-      var file = converter.handleConverter(format, data);
+      var file = await converter.handleConverter(format, data);
       var encoding = format === "xlsx" ? 'ascii' : 'utf8';
       this.setState({data: file, encoding: encoding});
     }
@@ -78,7 +80,16 @@ componentDidMount() {
 
       // write the file and save to Files app on device:
       try {
-        let result = await RNFS.writeFile(path, this.state.data, this.state.encoding);
+        if ((format === 'xlsx') && (this.props.photo.image.length > 0)) {
+            console.log('inside xlsx and photo')
+            const photoPath = RNFS.ExternalDirectoryPath + '/' + this.state.filename + '.jpeg'
+            const base64Image = this.props.photo.image.split("data:image/jpeg;base64,")
+            path = [path, photoPath]
+            let fileResult  = await RNFS.writeFile(path[0], this.state.data, this.state.encoding);
+            let photoResult = await RNFS.writeFile(path[1], base64Image[1], 'base64');
+        } else {
+            let result = await RNFS.writeFile(path, this.state.data, this.state.encoding);
+        }
         console.log('FILE WRITTEN!');
         console.log('Data: ' + data + '\n' + 'Path: ' + path);
         this.setState({ reportSavedMessageVisible: true });
@@ -165,9 +176,9 @@ const mapStateToProps = (state) => {
         vehicle: state.vehicleReducer,
         passenger: state.passengerReducer,
         quiz: state.quickquizReducer,
-        photos: state.photosReducer,
+        photo: state.photosReducer,
         story: state.storyReducer,
-        road: state.roadReducer
+        road: state.roadReducer,
     }
 }
 

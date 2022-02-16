@@ -37,10 +37,10 @@ class FinalReport extends Component {
             }
           );
           if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-            console.log("You can use external storage");
+            // console.log("You can use external storage");
             this.setState({ filePermissionsGranted: true });
           } else {
-            console.log("external permission denied");
+            // console.log("external permission denied");
             this.setState({ filePermissionsGranted: false });
             this.setState({ filePermissionsErrorMessageVisible: true });
           }
@@ -48,24 +48,32 @@ class FinalReport extends Component {
           console.warn(err);
         }
       };
+    resetState(){
+        const {
+            navigation
+        } = this.props
 
+
+        navigation.navigate('Welcome');
+        this.props.state = {}
+    }
     render(){
         const {
             navigation
         } = this.props
 
         const navigateSaveToDevice = (format) => {
-            console.log('Save Report to Device!');
+            // console.log('Save Report to Device!');
             navigation.navigate('SaveToDevice', {format: format})
         }
 
         const navigateEmail = (format) =>{
-        console.log("navigating to email")
+        // console.log("navigating to email")
             navigation.navigate('EmailFinalReport', {format:format})
         }
 
         const navigateDatabase = (format) => {
-            console.log('SEND REPORT TO DATABASE!');
+            // console.log('SEND REPORT TO DATABASE!');
             navigation.navigate('ReportToDatabase', {format:format})
         }
         const file_format_extensions = Constants.ALLOW_JSON_EXPORT ? ["json", "pdf", "html", "xlsx"] : ["pdf", "html", "xlsx"];
@@ -86,7 +94,7 @@ class FinalReport extends Component {
         return (
           <SafeAreaView style={{flex:1}}>
             <TopNavigation title='Final Report' backButton navigation={navigation}>
-                <IconButton onPress={() => navigation.navigate('Welcome')} icon={<Icon color="white" size={25} name='file-document-outline'/>}  text='Start New Report'/>
+                <IconButton onPress={() => this.resetState()} icon={<Icon color="white" size={25} name='file-document-outline'/>}  text='Start New Report'/>
             </TopNavigation>
             <Center>
                 <VStack space={8}>
@@ -118,9 +126,9 @@ class FinalReport extends Component {
                     onOk={result => {
                         this.setState({ chooseReportFormatSelectedItem: result.selectedItem});
                         this.setState({ chooseReportFormatVisible: false });
-                        console.log('selected:', this.state.chooseReportFormatSelectedItem);
-                        console.log('result:', result.selectedItem);
-                        console.log('pop up window state:', this.state.chooseReportFormatVisible);
+                        // console.log('selected:', this.state.chooseReportFormatSelectedItem);
+                        // console.log('result:', result.selectedItem);
+                        // console.log('pop up window state:', this.state.chooseReportFormatVisible);
                         this.state.exportAction(result.selectedItem.label.substring(1));
                     }}
               />
@@ -136,9 +144,9 @@ const mapStateToProps = (state) => {
         vehicle: state.vehicleReducer,
         passenger: state.passengerReducer,
         quiz: state.quickquizReducer,
-        photos: state.photosReducer,
         story: state.storyReducer,
-        road: state.roadReducer
+        road: state.roadReducer,
+        photo: state.photosReducer
     }
 }
 

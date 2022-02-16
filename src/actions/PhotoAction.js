@@ -1,6 +1,6 @@
-export const photoAction = data => (
+export const addPhoto = data => (
     {
-      type: 'ADDPHOTOS',
+      type: 'ADDPHOTO',
       data,
     }
   );

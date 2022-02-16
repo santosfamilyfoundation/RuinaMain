@@ -5,16 +5,17 @@ import { Button, VStack, Center, Spinner } from 'native-base';
 import { connect } from 'react-redux';
 import { changeVehicle, changeDrivers, changeNonmotorists, changePassengers, changeFatality, changeNonFatalInjury, changeRespond, changePhotos, updateSetup } from '../../actions/QuickQuizActions';
 import { updateResponse } from '../../actions/StoryActions';
-import { addVehicle } from '../../actions/VehicleAction';
-import { addNonmotorist } from '../../actions/NonmotoristAction';
-import { addDriver } from '../../actions/DriverAction';
-import { addPassenger } from '../../actions/PassengerAction';
-import { addRoad } from '../../actions/RoadAction';
-import { updateDriver } from '../../actions/DriverAction';
-import { updateNonmotorist } from '../../actions/NonmotoristAction';
-import { updateVehicle } from '../../actions/VehicleAction';
-import { updatePassenger } from '../../actions/PassengerAction';
-import { updateRoad } from '../../actions/RoadAction';
+import { addVehicle, updateVehicle } from '../../actions/VehicleAction';
+import { addNonmotorist, updateNonmotorist } from '../../actions/NonmotoristAction';
+import { addDriver, updateDriver } from '../../actions/DriverAction';
+import { addPassenger, updatePassenger } from '../../actions/PassengerAction';
+import { addRoad, updateRoad } from '../../actions/RoadAction';
+import { addPhoto } from '../../actions/PhotoAction';
+//import { updateDriver } from '../../actions/DriverAction';
+//import { updateNonmotorist } from '../../actions/NonmotoristAction';
+//import { updateVehicle } from '../../actions/VehicleAction';
+//import { updatePassenger } from '../../actions/PassengerAction';
+//import { updateRoad } from '../../actions/RoadAction';
 
 import NumberButtonSelectorQuickSurvey from '../../components/buttonSelectors/NumberButtonSelectorQuickSurvey';
 import MultiButtonSelectorQuickSurvey from '../../components/buttonSelectors/MultiButtonSelectorQuickSurvey';
@@ -43,6 +44,34 @@ class QuickSurvey extends Component {
           this.stateManager = undefined;
     //      this.stateManager = new backgroundSave("");
         }
+                async loadStateFromJSON() {
+                console.log("Loading State from JSON");
+                  await this.stateManager.RNFS.readFile(this.stateManager.path, 'utf8')
+                    .then((data) => {
+                      // console.log(data)
+                      try {
+                        const loadedState = JSON.parse(data);
+                        console.log("Successfully Parsed JSON");
+                        this.parseLoadedState(loadedState);
+                        this.setState({ loadedAutoSaveSuccessMessageVisible: true})
+                      } catch(e) {
+                        // catch any error while parsing the JSON
+                        console.log("ERROR: " + e.message);
+//                        this.setState({ loadedAutoSaveFailMessageVisible: true })
+            //            this.stateManager.deleteCapturedState();
+                      }
+                      // Hide loading screen
+                      this.setState({ loading: false });
+                    })
+                    .catch((err) => {
+                      // catch any error while reading autoSavedSession JSON from disk
+            //          this.stateManager.deleteCapturedState();
+                      this.setState({ autoSavedSession: false });
+                      this.setState({ loading: false });
+            //          this.setState({ loadedAutoSaveFailMessageVisible: true })
+                      console.log(err.message);
+                    })
+                }
 
         async componentDidMount(){
           this.stateManager = new backgroundSave(this.state.autosavedFilePath.label, this.state.autoSavedSession);
@@ -84,6 +113,8 @@ class QuickSurvey extends Component {
         }
 
         parseLoadedState(loadedState){
+                // console.log('line 87 state', loadedState)
+
           for (let d in loadedState) {
             // console.log("LOADED SECTION: ", d, ": ", loadedState[d]);
           }
@@ -95,7 +126,9 @@ class QuickSurvey extends Component {
           const loadedVehicle = loadedState["vehicle"];
           const loadedPassenger = loadedState["passenger"];
           const loadedNonmotorist = loadedState["nonmotorist"];
-
+          const loadedPhoto = loadedState['photo'];
+            console.log('line 102 state', loadedState)
+            console.log(loadedPhoto)
           /*             Update Quiz               */
           this.props.changeVehicle(loadedQuiz["numVehicle"]);
           this.props.changeNonmotorists(loadedQuiz["numNonmotorist"]);
@@ -184,6 +217,12 @@ class QuickSurvey extends Component {
               this.props.updateNonmotorist({ id: nonmotoristID, question: question, selection: answer });
             }
           }
+
+          /*              Add Photo             */
+          // add passengers to vehicles based on loaded state
+          // console.log('photo file path: ', this.props)
+// console.log({ image: loadedPhoto })
+          this.props.addPhoto({ image: loadedPhoto });
           this.setState({ loadedAutoSave: true });
           // console.log("Finish loading saved state from disk.")
         }
@@ -201,6 +240,7 @@ class QuickSurvey extends Component {
                addDriver,
                addRoad,
                addPassenger,
+               addPhoto,
                updateResponse,
                updateSetup,
                updateVehicle,
@@ -318,7 +358,7 @@ class QuickSurvey extends Component {
       else {
     return(
       <React.Fragment>
-       <Center><TopNavigation title="QUICK SURVEY"/></Center>
+      <TopNavigation title="QUICK SURVEY"/>
        <ScrollView>
            <VStack>
                <SafeAreaView>
@@ -368,6 +408,7 @@ const mapDispatchToProps = {
   addDriver,
   addRoad,
   addPassenger,
+  addPhoto,
   updateResponse,
   updateSetup,
   updateVehicle,
@@ -383,7 +424,8 @@ const mapStateToProps = (state) => {
   const quiz = state.quickquizReducer
   const { response } = state.storyReducer
   const passenger = state.passengerReducer;
-  return { quiz, passenger, response }
+  const photo = state.PhotosReducer;
+  return { quiz, passenger, response, photo }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuickSurvey);
