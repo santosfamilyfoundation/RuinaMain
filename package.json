@@ -72,12 +72,14 @@
     "xlsx": "^0.17.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/runtime": "^7.11.2",
+    "@babel/core": "^7.16.5",
+    "@babel/preset-flow": "^7.16.5",
+    "@babel/runtime": "^7.16.5",
+    "@babel/traverse": "^7.16.5",
     "@react-native-community/eslint-config": "^3.0.1",
     "babel-jest": "^27.3.1",
     "jest": "^27.3.1",
-    "metro-react-native-babel-preset": "^0.56.0",
+    "metro-react-native-babel-preset": "^0.59.0",
     "react-test-renderer": "16.9.0",
     "redux-devtools-extension": "^2.13.8"
   },
