@@ -14,6 +14,7 @@ const MultiButtonSelectorQuickSurvey = (props) => {
   // obtained as inputs to component made in QuickSurvey
   const {data, quickSurveyReducer, submitFunction, updateResponse, dependencyID} = props;
   let currId = data.humanReadableId
+  console.log(data);
 
   // when button selected, set the option and update the quick survey setupData
   const submitField = (optionText, idCode) => {
