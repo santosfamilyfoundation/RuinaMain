@@ -47,11 +47,26 @@ const DropDownSingleSelect = (props) => {
         }
     }
 
-    const submitField = (selection) => {
-        if (!selection || selection.length == 0) {
-            setSelectedOptions([]);
-            return submitFunction({id, question: currId, selection: null});
+    const validateLocal = (localInfo) => {
+            let selectionValidation = SelectionValidation
+                 console.log(localInfo)
+                 selectionValidation.validateField(localInfo);
+                 let localStatus = selectionValidation.status
+                 console.log('at the right place, at least')
+                 if (localStatus) {
+                    console.log(localStatus, ' local Status')
+                    setIsInvalid(false);
+                    console.log('selectedOption', selectedOption)
+
+                 }
+                 else {
+                    setIsInvalid(true);
+                    console.log('this part, yikes')
+                    return;
+                 }
         }
+
+    const submitField = (selection) => {
         let selected = selection[0]
         if (dependencyID==null || dependencyID.length == 1){
             updateResponse && updateResponse({id, question: currId, selection: selected})
@@ -70,8 +85,43 @@ const DropDownSingleSelect = (props) => {
                     break;
             }
         }
-        setSelectedOption(selection)
+        setSelectedOption(selection);
+        submitFunction({id, question: currId, selection: selection})
     }
+
+    const addOption = (selectedItem) => {
+            console.log(selectedItem)
+            console.log("this is what I'm getting", selectedOption)
+            if (!selectedItem){
+                console.log('check here: ', selectedOption)
+                validateLocal(selectedOption)
+                return
+            }
+            if(selectedItem.length == 0) {
+                console.log('no one expected this one!!')
+                setSelectedOption([])
+                validateLocal([])
+                submitFunction({id, question: currId, selection: []})
+                return;
+            }
+            if (selectedItem[0] == selectedOption[0]){
+                setSelectedOption([])
+                submitFunction({id, question: currId, selection: []})
+                validateLocal([])
+                let selectedItem = []
+                console.log('this is really unfortunate')
+                return
+                  }
+            else {
+               setIsInvalid(false)
+               console.log(selectedItem, typeof(selectedItem))
+               console.log("this is what I'm getting", typeof(selectedOption))
+            }
+            setSelectedOption(selectedItem);
+            let localInfo = selectedItem
+            validateLocal(localInfo)
+            submitField(selectedItem);
+        }
 
     const tooltip = () => {
         return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
@@ -85,18 +135,22 @@ const DropDownSingleSelect = (props) => {
                 title={data.question}
                 helperText={data.helperText}
                 tooltip={tooltip()}
+                errorMessage='Invalid Input'
+                isInvalid={isInvalid}
             >
                 <SectionedMultiSelect
                   items={data.answerOptions}
                   IconRenderer={Icon}
                   uniqueKey='id'
                   selectText={'Select Option ...'}
-                  onSelectedItemsChange={(selectedItems) => {submitField(selectedItems)}}
+                  onSelectedItemsChange={(selectedItems) => {addOption(selectedItems)}}
                   onSelectedItemObjectsChange={(selectedObject) => {submitFunction({id, question: currId, selection: selectedObject[0].name})}}
                   selectedItems={selectedOption}
                   hideConfirm={true}
                   single={true}
                   showCancelButton={true}
+                  onCancel={(selectedItems) => {addOption(selectedItems)}}
+//                  onConfirm={(selectedItems) => {addOption(selectedItems)}}
                 />
             </QuestionSection>
         )
