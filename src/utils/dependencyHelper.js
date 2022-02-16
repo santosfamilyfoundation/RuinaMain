@@ -1,6 +1,4 @@
 export function dependencyParser(response, data, formID) {
-    const startParserTime = performance.now()
-    console.log('Starting to parse dependencies')
     var renderComponent = false;
     // if there is no dependency, then by default render the component
     if (data.questionDependency == undefined) {
@@ -51,8 +49,8 @@ export function dependencyParser(response, data, formID) {
                         break;
                     }
                 }
-            }
-
+            }  
+            
             // if response was found, check that the response was correct
             if (dependentResponse) {
                 // there were multiple selections
@@ -68,21 +66,9 @@ export function dependencyParser(response, data, formID) {
                     renderComponent = true;
                 }
             }
+        
         }
-        if (findResponse){
-            console.log(findResponse.selection);
-            console.log('tarOptionCode:', tarOptionCode);
-            console.log(typeof(tarOptionCode));
-            if (typeof findResponse.selection == "object"){
-                console.log('selection is object')
-                findResponse.selection.forEach(element => {
-                    if (element == tarOptionCode){renderComponent = true}
-                });
-            } else if (findResponse.selection === tarOptionCode) {
-                console.log('selection is not an object, selection and target option code match')
-                renderComponent = true
-            }
-        }
+
     }
 
     // console.log('value of render component:', renderComponent)
