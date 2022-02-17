@@ -89,6 +89,7 @@ class FinalReport extends Component {
             <TopNavigation title='Final Report' backButton navigation={navigation}>
                 <IconButton onPress={() => navigation.navigate('Welcome')} icon={<Icon color="white" size={25} name='file-document-outline'/>}  text='Start New Report'/>
             </TopNavigation>
+            <ScrollView>
             <Center>
                 <VStack mt={5} space={9}>
                     <Section title='Save to Local Device'>
