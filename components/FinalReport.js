@@ -126,6 +126,7 @@ class FinalReport extends Component {
                         this.state.exportAction(result.selectedItem.label.substring(1));
                     }}
               />
+              </ScrollView>
           </SafeAreaView>
         )
     }
