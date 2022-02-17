@@ -80,7 +80,7 @@ class FinalReport extends Component {
         );
 
         const feedbackButton = () => (
-            <Button onPress={()=>Linking.openURL('https://forms.gle/ho3cZNyoaFArNNN79')}>Submit Feedback</Button>
+            <Button onPress={()=>Linking.openURL('https://forms.gle/1sJzVj9MCzSRfzSV8')}>Submit Feedback</Button>
         );
 
 
@@ -125,16 +125,6 @@ class FinalReport extends Component {
                         this.state.exportAction(result.selectedItem.label.substring(1));
                     }}
               />
-              <Center flex={1} px="3">
-                <Box>
-                  <VStack alignItems="center" mt={150}>
-                    <TouchableOpacity onPress={() => Linking.openURL('https://forms.gle/aXVjxVrQU6jm3KUx6')}><Text style={{ color: 'blue' }}>Submit Feedback</Text></TouchableOpacity>
-                    <Text textAlign="center">
-                      {"Built by students at Olin College of Engineering in partnership with the Volpe Center and Santos Family Foundation"}
-                    </Text>
-                  </VStack>
-                </Box>
-              </Center>
           </SafeAreaView>
         )
     }
