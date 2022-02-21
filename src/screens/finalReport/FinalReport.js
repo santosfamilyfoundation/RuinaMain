@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { VStack, Button, Heading, Divider, Center, Text} from 'native-base'
+import { VStack, Button, Heading, Divider, Center, Text, Box} from 'native-base'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { StyleSheet, Linking, ScrollView, PermissionsAndroid } from 'react-native';
 import { MaterialDialog, SinglePickerMaterialDialog} from 'react-native-material-dialog';
 import * as Constants from '../../constants';
@@ -87,7 +88,7 @@ class FinalReport extends Component {
         );
 
         const feedbackButton = () => (
-            <Button onPress={()=>Linking.openURL('https://forms.gle/ho3cZNyoaFArNNN79')}>Submit Feedback</Button>
+            <Button onPress={()=>Linking.openURL('https://forms.gle/1sJzVj9MCzSRfzSV8')}>Submit Feedback</Button>
         );
 
 
@@ -96,8 +97,9 @@ class FinalReport extends Component {
             <TopNavigation title='Final Report' backButton navigation={navigation}>
                 <IconButton onPress={() => this.resetState()} icon={<Icon color="white" size={25} name='file-document-outline'/>}  text='Start New Report'/>
             </TopNavigation>
+            <ScrollView>
             <Center>
-                <VStack space={8}>
+                <VStack mt={5} space={9}>
                     <Section title='Save to Local Device'>
                      <Text my={2}>Press this button to save the crash report to local device.</Text>
                      {cardButton('Save Report to Local Device', navigateSaveToDevice)}
@@ -132,6 +134,7 @@ class FinalReport extends Component {
                         this.state.exportAction(result.selectedItem.label.substring(1));
                     }}
               />
+              </ScrollView>
           </SafeAreaView>
         )
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Keyboard, BackHandler, Pressable, PermissionsAndroid } from 'react-native';
+import { View, ScrollView, Keyboard, BackHandler, Pressable, PermissionsAndroid, Linking } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { VStack, HStack, Box, Text, Image, Alert, Center } from 'native-base';
@@ -297,6 +297,9 @@ class Home extends Component {
                     </>
                     }
                 </ScrollView>
+                <VStack mt={4} alignItems="center" mb={8}>
+                    <TouchableOpacity onPress={() => Linking.openURL('https://forms.gle/aXVjxVrQU6jm3KUx6')}><Text style={{ color: 'blue' }}>Submit Feedback</Text></TouchableOpacity>
+                </VStack>
             </SafeAreaView>
         );
     }
