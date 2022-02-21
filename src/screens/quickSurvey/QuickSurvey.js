@@ -377,7 +377,7 @@ class QuickSurvey extends Component {
       } else {
         return (
           <React.Fragment>
-            <TopNavigation title="QUICK SURVEY" />
+            <TopNavigation title="Quick Survey" />
             <ScrollView>
               <VStack>
                 <SafeAreaView>
