@@ -3,7 +3,7 @@ import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { VStack, Button, Heading, Divider, Center, Text} from 'native-base'
 import { StyleSheet, Linking, ScrollView, PermissionsAndroid } from 'react-native';
-import { MaterialDialog, SinglePickerMaterialDialog} from 'react-native-material-dialog';
+import { MaterialDialog, MultiPickerMaterialDialog} from 'react-native-material-dialog';
 import * as Constants from '../../constants';
 import Section from '../../components/Section';
 import TopNavigation from '../../components/TopNavigation';
@@ -116,21 +116,27 @@ class FinalReport extends Component {
                     </Section>
                 </VStack>
             </Center>
-              <SinglePickerMaterialDialog
-                    title={"Choose report export format"}
-                    scrolled
-                    items={file_format_extensions.map((row, index) => ({ value: index, label: "." + row }))}
-                    visible={this.state.chooseReportFormatVisible && this.state.filePermissionsGranted}
-                    selectedItem={this.state.chooseReportFormatSelectedItem}
-                    onCancel={() => this.setState({ chooseReportFormatVisible: false })}
-                    onOk={result => {
-                        this.setState({ chooseReportFormatSelectedItem: result.selectedItem});
-                        this.setState({ chooseReportFormatVisible: false });
-                        // console.log('selected:', this.state.chooseReportFormatSelectedItem);
-                        // console.log('result:', result.selectedItem);
-                        // console.log('pop up window state:', this.state.chooseReportFormatVisible);
-                        this.state.exportAction(result.selectedItem.label.substring(1));
-                    }}
+            <MultiPickerMaterialDialog
+                  title={"Choose report export format"}
+                  scrolled
+                  items={file_format_extensions.map((row, index) => ({ value: index, label: "." + row }))}
+                  visible={this.state.chooseReportFormatVisible}
+                  selectedItem={this.state.multiPickerSelectedItems}
+                  onCancel={() => this.setState({ chooseReportFormatVisible: false })}
+                  onOk={result => {
+                      this.setState({chooseReportFormatSelectedItem: result.selectedItems});
+                      console.log('chooseReportFormatSelectedItem:', this.state.chooseReportFormatSelectedItem);
+                      this.setState({chooseReportFormatVisible: false });
+                      console.log('result:', result.selectedItems);
+                      console.log('pop up window state:', this.state.chooseReportFormatVisible);
+                      var export_types = []
+                      for(let i = 0; i < result.selectedItems.length; i++){
+                          export_types.push(result.selectedItems[i].label.substring(1))
+                      }
+                      console.log('export_types:', export_types);
+                      this.state.exportAction(export_types);
+                      console.log('exportAction', this.state.exportAction)
+                  }}
               />
           </SafeAreaView>
         )

@@ -21,11 +21,13 @@ class EmailFinalReport extends Component {
     super(props);
     this.state = {
       filename: this.getDefaultFilename(),
-      offlineStatus: false,
-      uri: '',
-      data: '',
-      format: '',
-      encoding: '',
+      devicePlatform: Platform.OS,
+      reportSavedMessageVisible: false,
+      reportSavedFailedMessageVisible: false,
+      uri: [],
+      data: [],
+      encoding: [],
+      format: [],
       isPDF: false,
     };
     this.changeFilename = this.changeFilename.bind(this);
@@ -56,6 +58,7 @@ class EmailFinalReport extends Component {
         this.setState({data: file, encoding: encoding, format:format});
       }
     }
+  }
 
   // generate default filename
   getDefaultFilename() {
@@ -71,21 +74,29 @@ class EmailFinalReport extends Component {
   }
 
   // generate html and convert it into a PDF
-  async createPDF(data) {
-    var converter = new JSONconverter();
+  async createPDF(export_data) {
+    var converter = new JSONconverter()
     // const htmlString = converter.handleConverter('pdftest', "");
-    const htmlString = converter.handleConverter('pdf', data);
+    const htmlString = converter.handleConverter('pdf', export_data)
     let options = {
       html: htmlString,
       base64: true,
       fileName: 'crash_report',
     };
     try {
-      const data = await RNHTMLtoPDF.convert(options);
+      const pdf_data = await RNHTMLtoPDF.convert(options);
       console.log("got PDF data");
-      this.setState({uri: data.filePath, data: data.base64, isPDF:true});
+//      let updated_data = [pdf_data.base64];
+
+      this.state.uri.push(pdf_data.filePath);
+      this.state.data.push(pdf_data.base64);
+      this.state.isPDF= true;
+      this.state.encoding.push("base64");
+      this.state.format.push("pdf");
+      console.log("what is uri",this.state.uri[0])
+      console.log("Type of encoding",this.state.encoding[0])
     } catch (error) {
-      console.log('error->', error);
+      console.log('this is the pdf converter error->', error);
     }
   }
 
@@ -137,7 +148,7 @@ class EmailFinalReport extends Component {
       body: '',
       customChooserTitle: "Send Crash Report", // Android only (defaults to "Send Mail")
       isHTML: true,
-      attachments: attachments
+      attachments: attachments,
     }, (error, event) => {
       console.log('errror', error)
       Alert.alert(
@@ -163,9 +174,12 @@ class EmailFinalReport extends Component {
       return;
     }
     // save data internally
-    var path = await this.saveDataInternal(this.state.filename + "." + this.state.format);
+    var path = []
+    for (let i = 0; i < this.state.format.length; i++){
+        path += await this.saveDataInternal(this.state.filename + "." + this.state.format);
+     }
     // send email
-    await this.sendEmail(path, this.state.filename + "." + this.state.format);
+    await this.sendEmail(path, this.state.filename );
   }
   // required method that creates components of email screen
   render() {
