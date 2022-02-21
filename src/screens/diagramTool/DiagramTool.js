@@ -2,12 +2,11 @@ import React, { useRef, useState } from 'react';
 import {ScrollView, Dimensions, View, Animated } from 'react-native'
 import { SafeAreaView } from 'react-navigation';
 import TopNavigation from '../../components/TopNavigation';
-import { Button, Text } from 'native-base';
+import { Button, Text, AlertDialog } from 'native-base';
 import { Canvas, DrawingTool } from "@benjeau/react-native-draw";
 import { CanvasControls, BrushProperties, DEFAULT_COLORS } from "@benjeau/react-native-draw-extras";
 import { addPhoto } from '../../actions/PhotoAction';
 import { connect } from 'react-redux';
-
 
 const DiagramTool = (props) => {
     const { navigation, addPhoto, photo } = props
@@ -20,13 +19,23 @@ const DiagramTool = (props) => {
     const [opacity, setOpacity] = useState(1);
     const [tool, setTool] = useState(DrawingTool.Brush);
     const [visibleBrushProperties, setVisibleBrushProperties] = useState(false);
+    const [alert, setAlert] = useState(false);
+
+    const handleClose = () => {
+        setAlert(false)
+    }
 
     const handleUndo = () => {
      drawRef.current.undo();
     };
 
     const handleClear = () => {
-     drawRef.current.clear();
+        if (!alert) {
+            setAlert(true)
+        } else {
+            drawRef.current.clear();
+            setAlert(false);
+        }
     };
 
     const handleToggleEraser = () => {
@@ -112,8 +121,23 @@ const DiagramTool = (props) => {
                    />
                  )}
                </View>
+               <AlertDialog isOpen={alert} onClose={handleClose}>
+                    <AlertDialog.Content>
+                        <AlertDialog.CloseButton />
+                        <AlertDialog.Header>Delete Crash Diagram</AlertDialog.Header>
+                        <AlertDialog.Body>
+                            This will delete the entire diagram. This action cannot be reversed.
+                        </AlertDialog.Body>
+                        <AlertDialog.Footer>
+                            <Button.Group space={2}>
+                                <Button colorScheme='coolGray' onPress={handleClose}>Cancel</Button>
+                                <Button colorScheme='danger' onPress={handleClear}>Delete</Button>
+                            </Button.Group>
+                        </AlertDialog.Footer>
+                    </AlertDialog.Content>
+               </AlertDialog>
             </ScrollView>
-            <Button onPress={() => saveDiagram()}>Save Diagram</Button>
+            <Button m={4} onPress={() => saveDiagram()}>Save Diagram</Button>
         </SafeAreaView>
         );
 };
