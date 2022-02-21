@@ -56,6 +56,8 @@ switch (action.type) {
         }
     case 'UPDATESETUP':
       const { question, selection } = action.payload;
+      console.log('question in update setup:', question);
+      console.log('response in update setup:', selection);
       let updatedState = state.setupData;
       updatedState[question] = selection;
       // console.log(updatedState);

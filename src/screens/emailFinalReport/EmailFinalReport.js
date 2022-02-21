@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { StyleSheet, Alert, View, Dimensions } from 'react-native';
+import { StyleSheet, Alert, View, Dimensions, VStack, Linking, ScrollView } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Input, Button, Text } from 'native-base';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
@@ -48,6 +49,7 @@ class EmailFinalReport extends Component {
         this.setState({encoding:'base64', format:format});
         this.createPDF(data);
       } else {
+        console.log('desired format is not pdf')
         var converter = new JSONconverter();
         var file = await converter.handleConverter(format, data);
         var encoding = format === "xlsx" ? 'base64' : 'utf8';
@@ -188,7 +190,9 @@ class EmailFinalReport extends Component {
           onPress={() => this.handleEmail()} m={4}>
           Send Report
         </Button>
-
+        <SafeAreaView m={25} alignItems ="center">
+          <TouchableOpacity onPress={() => Linking.openURL('https://forms.gle/aXVjxVrQU6jm3KUx6')}><Text style={{ color: 'blue' }}>Submit Feedback</Text></TouchableOpacity>
+        </SafeAreaView>
         <MaterialDialog
           title={"Can't email when offline!"}
           visible={this.state.offlineStatus}
@@ -204,7 +208,6 @@ class EmailFinalReport extends Component {
             Please check your internet connection and try again later.
           </Text>
         </MaterialDialog>
-
       </SafeAreaView>
     )
   }

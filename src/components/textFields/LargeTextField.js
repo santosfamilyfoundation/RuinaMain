@@ -17,7 +17,7 @@ const LargeTextField = (props) => {
     const [isInvalid, setIsInvalid] = React.useState(false);
     const {data, key, id, questionReducer, submitFunction, dependencyID} = props;
 
-    let currId = data.id
+    let currId = data.humanReadableId
     let status;
 
     const reducerData = questionReducer.data.find(entry => entry.id == id);
@@ -95,6 +95,7 @@ const LargeTextField = (props) => {
              tooltip={tooltip()}
              errorMessage='Maximum Character Limit Exceeded'
              isInvalid={isInvalid}
+             required={data.required}
             >
                 <TextArea
                  placeholder="Place your text"

@@ -22,7 +22,7 @@ const AdvancedOpenTextField = (props) => {
     const [invalidLength, setInvalidLength] = React.useState(false);
     const [invalidVin, setInvalidVin] = React.useState(false);
     const {data, key, id, questionReducer, submitFunction, pageChange, importFrom, updateRoad, dependencyID} = props;
-    let currId = data.id;
+    let currId = data.humanReadableId;
     let status;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
@@ -144,7 +144,7 @@ const AdvancedOpenTextField = (props) => {
         let hours = (now.getHours()).toString();
         let min = (now.getMinutes()).toString();
         let fullDate = year + "/" +  month + "/" + date + "\t" + hours + ":" + min;;
-        updateRoad({id, question:data.id, selection: fullDate });
+        updateRoad({id, question:data.humanReadableId, selection: fullDate });
       }
     };
 
@@ -222,6 +222,7 @@ const AdvancedOpenTextField = (props) => {
                 errorMessage={ErrorMsg()}
                 isInvalid={invalidLength ? invalidLength : invalidVin}
                 tooltip={tooltip()}
+                required={data.required}
             >
                 <HStack>
                     <Input
