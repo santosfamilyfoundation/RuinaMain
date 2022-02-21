@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
-import { Divider, Box, Accordion, VStack, Button } from 'native-base';
+import { Divider, Box, Accordion, VStack, Button, Text } from 'native-base';
 import { styles } from '../../autocomponentContainer/AutoComponentContainer.style';
 import { ScrollView } from 'react-native-gesture-handler';
 import MultiButtonSelector from '../../components/buttonSelectors/MultiButtonSelector';
@@ -277,6 +277,9 @@ const QuestionForm = (props) => {
       <Box p={4}>
         <Button onPress={()=> {navigation.goBack()}}>Save Progress</Button>
       </Box>
+        <VStack alignItems="center" mt={2} mb={8}>
+          <TouchableOpacity onPress={() => Linking.openURL('https://forms.gle/aXVjxVrQU6jm3KUx6')}><Text style={{ color: 'blue' }}>Submit Feedback</Text></TouchableOpacity>
+        </VStack>
     </SafeAreaView>
   );
 }

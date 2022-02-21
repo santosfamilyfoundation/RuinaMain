@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     cardStyle: {
         flexDirection: 'row',
     },
-    buttonSytle: {
+    buttonStyle: {
         marginRight: 10,
     }
 });

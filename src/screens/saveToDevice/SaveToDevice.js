@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { Button, Heading, Divider, Text, Box, Input, VStack } from 'native-base';
-import { Platform, StyleSheet, View, TextInput, Dimensions } from 'react-native';
+import { Platform, StyleSheet, View, TextInput, Dimensions, ScrollView, Linking } from 'react-native';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import Pdf from 'react-native-pdf';
@@ -14,7 +14,7 @@ import TopNavigation from '../../components/TopNavigation';
 import IconButton from '../../components/IconButton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Section from '../../components/Section'
-
+import { TouchableOpacity } from 'react-native-gesture-handler';
 class SaveToDevice extends Component {
   constructor(props) {
     super(props);
@@ -166,6 +166,7 @@ async componentDidMount() {
   render() {
     return(
         <>
+        <ScrollView>
         <TopNavigation title="Save Crash Report to Files" backButton navigation={this.props.navigation}>
             <IconButton onPress={() => {this.props.navigation.navigate('Welcome')}} icon={<Icon color="white" size={25} name='file-document-outline'/>}  text='Start New Report'/>
         </TopNavigation>
@@ -207,6 +208,7 @@ async componentDidMount() {
           </Text>
         </MaterialDialog>
 
+
         <MaterialDialog
           title={"Fail to save your report!"}
           visible={this.state.reportSavedFailedMessageVisible}
@@ -221,6 +223,10 @@ async componentDidMount() {
             Your report did not save successfully. Please try again later.
           </Text>
         </MaterialDialog>
+            <SafeAreaView alignItems = "center">
+            <TouchableOpacity onPress={() => Linking.openURL('https://forms.gle/aXVjxVrQU6jm3KUx6')}><Text style={{ color: 'blue' }}>Submit Feedback</Text></TouchableOpacity>
+            </SafeAreaView>
+        </ScrollView>
         </>
     )
   }
