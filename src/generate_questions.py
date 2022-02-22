@@ -47,7 +47,7 @@ def generate_questions_json(filename):
 
                 section_json = {'sectionTitle': row['question_text'],
                                 'questions': [],
-                                'display': [row['display_section']]}
+                                'display': [section]}
                 # print('created new section', section_json['sectionTitle'])
 
             else:
@@ -55,7 +55,7 @@ def generate_questions_json(filename):
                                 'question': row['question_text'],
                                 'id': question_uid,
                                 'answerType': row['question_type'],
-                                'display': [row['display_section']],
+                                'display': [section],
                                 'humanReadableId': row['question_name']
                                 }
                 # print(question_dict['question'])
