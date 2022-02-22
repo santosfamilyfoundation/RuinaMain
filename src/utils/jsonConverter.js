@@ -200,19 +200,18 @@ export class JSONconverter extends Component {
 		XLSX.utils.book_append_sheet(wb, nonmotoristWS, "nonmotorist");
 		// output workbook so it can be written to a file
 		const output = str => str;
-		const wbout = XLSX.write(wb, { type: 'binary', bookType: "xlsx" });
+		const wbout = XLSX.write(wb, { type: 'base64', bookType: "xlsx" });
 		return output(wbout);
 	}
 
 	JSONtoHTML(jsondata) {
 		function getAnswer(answerSubsetData, id) {
 		    if ("photo" in answerSubsetData && id === 'crashDia') {
-		        let source = 'src="' + answerSubsetData['photo'] + '" '
+		        let source = answerSubsetData['photo']
 		        return source
 		    }
 			if (("response" in answerSubsetData) && (id in answerSubsetData["response"])) {
 				if (answerSubsetData["response"][id] instanceof Array) {
-				    console.log(answerSubsetData["response"][id])
 					return answerSubsetData["response"][id].join(", ")
 				}
 				return answerSubsetData["response"][id];
@@ -268,7 +267,7 @@ export class JSONconverter extends Component {
 					if (fillInMethod == "datasection") {
 						line = line.slice(0, endPos+2) + ans + line.slice(endPos+2);
 					    if (id === 'crashDia') {
-					        line = line.slice(0, pos+18) + ans + line.slice(pos+18);
+					        line = ans;
 					    } else {
 					        line = line.slice(0, pos+14) + ans + line.slice(pos+14);
 					    }

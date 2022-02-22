@@ -16,19 +16,18 @@ import TopNavigation from '../../components/TopNavigation';
 import Section from '../../components/Section';
 import IconButton from '../../components/IconButton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { getDefaultFilename } from '../../utils/helperFunctions';
 
 class EmailFinalReport extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filename: this.getDefaultFilename(),
-      devicePlatform: Platform.OS,
-      reportSavedMessageVisible: false,
-      reportSavedFailedMessageVisible: false,
-      uri: [],
-      data: [],
-      encoding: [],
-      format: [],
+      filename: getDefaultFilename(),
+      offlineStatus: false,
+      uri: '',
+      data: '',
+      format: '',
+      encoding: '',
       isPDF: false,
     };
     this.changeFilename = this.changeFilename.bind(this);
@@ -53,20 +52,10 @@ class EmailFinalReport extends Component {
         console.log('desired format is not pdf')
         var converter = new JSONconverter();
         var file = await converter.handleConverter(format, data);
-        console.log('logging file type', typeof file)
-        console.log(file)
-        var encoding = format === "xlsx" ? 'ascii' : 'utf8';
+        var encoding = format === "xlsx" ? 'base64' : 'utf8';
         this.setState({data: file, encoding: encoding, format:format});
       }
     }
-  }
-
-  // generate default filename
-  getDefaultFilename() {
-    var date = new Date();
-    var localTime = date.toLocaleTimeString().replace(/\W/g, '_');
-    var localDate = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
-    return "Crash_Report " + localDate + "_at_" + localTime;
   }
 
   // update the filename
@@ -104,18 +93,16 @@ class EmailFinalReport extends Component {
   // save data as file inside app in order send email with attachment
   async saveDataInternal(filename) {
     var RNFS = require('react-native-fs');
-    // var path = RNFS.DocumentDirectoryPath + '/' + filename;
-    var path = RNFS.ExternalDirectoryPath + '/' + filename;
+    var path = RNFS.DocumentDirectoryPath + '/' + filename;
 
     // write the file
-    console.log(this.state.data)
     try {
-        if (this.state.format === 'xlsx' && this.props.photo.image.length) {
-            const photoPath = RNFS.ExternalDirectoryPath + '/' + this.state.filename + '.jpeg'
-            const base64Image = this.props.photo.image.split("data:image/jpeg;base64,")
+        if (this.state.format === 'xlsx' && (this.props.photo.image.length > 0)) {
+            const photoPath = RNFS.DocumentDirectoryPath + '/' + this.state.filename + '.svg'
             path = [path, photoPath]
+            const svgFile = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' + this.props.photo.image
+            let photoResult = await RNFS.writeFile(path[1], svgFile, 'utf8');
             let fileResult  = await RNFS.writeFile(path[0], this.state.data, this.state.encoding);
-            let photoResult = await RNFS.writeFile(path[1], base64Image[1], 'base64');
         } else {
             let result = await RNFS.writeFile(path, this.state.data, this.state.encoding);
         }
@@ -131,6 +118,7 @@ class EmailFinalReport extends Component {
       return null;
     }
   }
+
   // send email based on the inputted filename
   // leave everything else blank, except subject (subject = filename)
   async sendEmail(path, filename) {
@@ -168,7 +156,6 @@ class EmailFinalReport extends Component {
     const net = new NetInfoAPI();
     let netStatus = await net.checkNetOnce();
     // net info is wraped in net.status
-    // console.log(`NetInfo: ${net.status}`);
     if (netStatus==false){
       // deal with internet not connected
       this.setState({ offlineStatus: true });

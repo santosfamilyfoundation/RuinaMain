@@ -5,7 +5,6 @@ import { MapScreen } from './screens/map/mapScreen';
 import { WelcomeScreen } from './screens/welcome/welcomeScreen';
 import { TesterScreen } from './screens/testerScreen';
 import { WeatherScreen } from './screens/weather/weatherScreen';
-import { PhotoCaptureScreen } from './screens/photoCapture/photoCaptureScreen'
 import { SinglePhotoScreen } from './screens/singlePhoto/singlePhotoScreen';
 import { VehicleInfoScreen } from './screens/vehicleInfo/vehicleinfoScreen';
 import { BarcodeScanScreen } from './screens/barcodeScan/barcodeScanScreen';
@@ -28,7 +27,6 @@ const HomeNavigator = createStackNavigator({
   Map: MapScreen,
   Test: TesterScreen,
   Weather: WeatherScreen,
-  PhotoCapture: PhotoCaptureScreen,
   Vehicle: VehicleInfoScreen,
   BarcodeScan: BarcodeScanScreen,
   Scan: BarcodeScanScreen,
