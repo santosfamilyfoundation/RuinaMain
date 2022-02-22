@@ -55,13 +55,12 @@ class EmailFinalReport extends Component {
         var encoding = format === "xlsx" ? 'base64' : 'utf8';
         this.setState({data: file, encoding: encoding, format:format});
       }
-    }
-  }
+  };
 
   // update the filename
   changeFilename(text) {
     this.setState({filename: text});
-  }
+  };
 
   // generate html and convert it into a PDF
   async createPDF(export_data) {
