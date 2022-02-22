@@ -67,6 +67,9 @@ def generate_questions_json(filename):
                     question_dict['helperImg'] = row['helper_img']
                 if pd.notna(row['automation_method']):
                     question_dict['autoMethod'] = row['automation_method']
+                if pd.notna(row['required']):
+                    question_dict['required'] = 'true'
+
 
 
                 if pd.notna(row['question_dependency']):
@@ -138,7 +141,7 @@ def generate_questions_json(filename):
     return questions_json
 
 if __name__ == '__main__':
-    filename = '~/2021_12_08_questions.xlsx'
+    filename = '~/2022_02_10_questions.xlsx'
     new_filename = 'data/questions.js'
 
     json_data = generate_questions_json(filename)

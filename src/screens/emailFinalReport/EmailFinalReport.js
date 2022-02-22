@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { StyleSheet, Alert, View, Dimensions } from 'react-native';
+import { StyleSheet, Alert, View, Dimensions, VStack, Linking, ScrollView } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Input, Button, Text } from 'native-base';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
@@ -15,68 +16,51 @@ import TopNavigation from '../../components/TopNavigation';
 import Section from '../../components/Section';
 import IconButton from '../../components/IconButton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { getDefaultFilename } from '../../utils/helperFunctions';
 
-export class EmailFinalReport extends Component {
+class EmailFinalReport extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filename: this.getDefaultFilename(),
-      devicePlatform: Platform.OS,
-      reportSavedMessageVisible: false,
-      reportSavedFailedMessageVisible: false,
-      uri: [],
-      data: [],
-      encoding: [],
-      format: [],
+      filename: getDefaultFilename(),
+      offlineStatus: false,
+      uri: '',
+      data: '',
+      format: '',
+      encoding: '',
       isPDF: false,
     };
     this.changeFilename = this.changeFilename.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
   }
 
-async componentDidMount() {
-    const format = this.props.navigation.state.params.format;
-    console.log(format);
-    // convert data to desired format
-    const export_data = {
-      driver: this.props.driver.data,
-      nonmotorist: this.props.nonmotorist.data,
-      vehicle: this.props.vehicle.data,
-      passenger: this.props.passenger.data,
-      road: this.props.road.data,
-    };
-    for (let i = 0; i < format.length; i++){
-        if (format[i] === "pdf") {
-          console.log("PDF LOOP")
-          this.createPDF(export_data);
-        } else {
-          var converter = new JSONconverter();
-          var file = converter.handleConverter(format[i], export_data);
-          var encode = format[i] === "xlsx" ? 'ascii' : 'utf8';
-          console.log('encode for html', encode);
-          console.log('HTML FILE', typeof(file));
-          this.state.data.push(file);
-          this.state.format.push(format[i])
-          console.log('data html', typeof(data[0]));
-
-          this.state.encoding.push(encode);
-//          this.setState({data: this.state.data.push(file), encoding: this.state.encoding.push(encode)});
-        }
-    }
-  }
-
-  // generate default filename
-  getDefaultFilename() {
-    var date = new Date();
-    var localTime = date.toLocaleTimeString().replace(/\W/g, '.');
-    var localDate = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
-    return "Crash Report " + localDate + " at " + localTime;
-  }
+  async componentDidMount() {
+      const format = this.props.navigation.state.params.format;
+      // convert data to desired format
+      const data = {
+        driver: this.props.driver.data,
+        nonmotorist: this.props.nonmotorist.data,
+        vehicle: this.props.vehicle.data,
+        passenger: this.props.passenger.data,
+        road: this.props.road.data,
+        photo: this.props.photo.image,
+      };
+      if (format === "pdf") {
+        this.setState({encoding:'base64', format:format});
+        this.createPDF(data);
+      } else {
+        console.log('desired format is not pdf')
+        var converter = new JSONconverter();
+        var file = await converter.handleConverter(format, data);
+        var encoding = format === "xlsx" ? 'base64' : 'utf8';
+        this.setState({data: file, encoding: encoding, format:format});
+      }
+  };
 
   // update the filename
   changeFilename(text) {
     this.setState({filename: text});
-  }
+  };
 
   // generate html and convert it into a PDF
   async createPDF(export_data) {
@@ -108,12 +92,19 @@ async componentDidMount() {
   // save data as file inside app in order send email with attachment
   async saveDataInternal(filename) {
     var RNFS = require('react-native-fs');
-    // var path = RNFS.DocumentDirectoryPath + '/' + filename;
-    var path = RNFS.ExternalDirectoryPath + '/' + filename;
+    var path = RNFS.DocumentDirectoryPath + '/' + filename;
 
     // write the file
     try {
-        let result = await RNFS.writeFile(path, this.state.data, this.state.encoding);
+        if (this.state.format === 'xlsx' && (this.props.photo.image.length > 0)) {
+            const photoPath = RNFS.DocumentDirectoryPath + '/' + this.state.filename + '.svg'
+            path = [path, photoPath]
+            const svgFile = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' + this.props.photo.image
+            let photoResult = await RNFS.writeFile(path[1], svgFile, 'utf8');
+            let fileResult  = await RNFS.writeFile(path[0], this.state.data, this.state.encoding);
+        } else {
+            let result = await RNFS.writeFile(path, this.state.data, this.state.encoding);
+        }
         console.log('FILE WRITTEN!');
         console.log(path);
 
@@ -126,9 +117,16 @@ async componentDidMount() {
       return null;
     }
   }
+
   // send email based on the inputted filename
   // leave everything else blank, except subject (subject = filename)
   async sendEmail(path, filename) {
+    let attachments
+    if (this.props.photo.image.length) {
+        attachments = [{path:path[0]}, {path:path[1]}]
+    } else {
+        attachments = [{path:path}]
+    }
     console.log('Sending email!');
     await Mailer.mail({
       subject: "Sending " + "\"" + filename + "\"",
@@ -138,7 +136,7 @@ async componentDidMount() {
       body: '',
       customChooserTitle: "Send Crash Report", // Android only (defaults to "Send Mail")
       isHTML: true,
-      attachments: path,
+      attachments: attachments,
     }, (error, event) => {
       console.log('errror', error)
       Alert.alert(
@@ -157,7 +155,6 @@ async componentDidMount() {
     const net = new NetInfoAPI();
     let netStatus = await net.checkNetOnce();
     // net info is wraped in net.status
-    // console.log(`NetInfo: ${net.status}`);
     if (netStatus==false){
       // deal with internet not connected
       this.setState({ offlineStatus: true });
@@ -204,7 +201,9 @@ async componentDidMount() {
           onPress={() => this.handleEmail()} m={4}>
           Send Report
         </Button>
-
+        <SafeAreaView m={25} alignItems ="center">
+          <TouchableOpacity onPress={() => Linking.openURL('https://forms.gle/aXVjxVrQU6jm3KUx6')}><Text style={{ color: 'blue' }}>Submit Feedback</Text></TouchableOpacity>
+        </SafeAreaView>
         <MaterialDialog
           title={"Can't email when offline!"}
           visible={this.state.offlineStatus}
@@ -220,7 +219,6 @@ async componentDidMount() {
             Please check your internet connection and try again later.
           </Text>
         </MaterialDialog>
-
       </SafeAreaView>
     )
   }
@@ -232,7 +230,8 @@ const mapStateToProps = (state) => {
         nonmotorist: state.nonmotoristReducer,
         vehicle: state.vehicleReducer,
         passenger: state.passengerReducer,
-        road: state.roadReducer
+        photo: state.photosReducer,
+        road: state.roadReducer,
     }
 }
 

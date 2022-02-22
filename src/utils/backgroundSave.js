@@ -1,6 +1,6 @@
 export class backgroundSave {
     constructor(filePath, openOldFile) {
-        console.log("Instatiating a new background save object")
+        // console.log("Instatiating a new background save object")
         this.RNFS = require('react-native-fs');
         this.openOldFile = openOldFile;
         this.path = "";
@@ -14,7 +14,7 @@ export class backgroundSave {
             this.path = this.getSavePath();
         }
 
-        console.log("path initialized to:", this.path);
+        // console.log("path initialized to:", this.path);
 
         this.filePaths = [];
         this.getFilePaths();
@@ -22,7 +22,7 @@ export class backgroundSave {
     }
 
     async getFilePaths() {
-        console.log(this.RNFS.DocumentDirectoryPath);
+        // console.log(this.RNFS.DocumentDirectoryPath);
         await this.RNFS.readdir(this.RNFS.DocumentDirectoryPath).then( files => {
             for (const file of files) {
                 if (file.includes('CrashReport') && file.includes('.json')) {
@@ -36,16 +36,17 @@ export class backgroundSave {
 
     async captureCurrentState(data){
         // write the file
-        //console.log("data: ", data);
         this.getFilePaths();
         if (!this.filePaths.includes(this.path)) {
+             this.RNFS.unlink(this.path)
              this.RNFS.writeFile(this.path, data, 'utf8')
-                        .then((success) => {
-                            console.log('Current state saved to: ' + this.path);
-                        })
-                        .catch((err) => {
-                            console.log(err.message);
-                        });
+                .then((success) => {
+                    console.log('Current state saved to: ' + this.path);
+                })
+                .catch((err) => {
+                    console.log('file write error')
+                    console.log(err.message);
+                });
         }
     }
 

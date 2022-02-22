@@ -48,10 +48,10 @@ class Welcome extends Component {
       this.props.resetMap();
       this.props.resetPhoto();
       await this.stateManager.getFilePaths();
-      console.log("Unfinished reports found:", this.stateManager.filePaths);
+      // console.log("Unfinished reports found:", this.stateManager.filePaths);
       this.unfinishedReportsAbsent = this.stateManager.filePaths.length == 0
-      console.log(this.stateManager.filePaths);
-      console.log(this.stateManager.filePaths.length == 0)
+      // console.log(this.stateManager.filePaths);
+      // console.log(this.stateManager.filePaths.length == 0)
       this.setState({ loading: false });
     }
 
@@ -86,7 +86,7 @@ class Welcome extends Component {
                     </Box>
                 </Center>
                 <VStack alignItems="center" mb={8}>
-                    <TouchableOpacity onPress={() => Linking.openURL('https://forms.gle/ho3cZNyoaFArNNN79')}><Text style={{ color: 'blue' }}>Submit Feedback</Text></TouchableOpacity>
+                    <TouchableOpacity onPress={() => Linking.openURL('https://forms.gle/aXVjxVrQU6jm3KUx6')}><Text style={{ color: 'blue' }}>Submit Feedback</Text></TouchableOpacity>
                     <Text textAlign="center">
                       {"Built by students at Olin College of Engineering in partnership with the Volpe Center and Santos Family Foundation"}
                     </Text>

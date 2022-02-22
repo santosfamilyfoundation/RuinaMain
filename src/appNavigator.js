@@ -5,7 +5,6 @@ import { MapScreen } from './screens/map/mapScreen';
 import { WelcomeScreen } from './screens/welcome/welcomeScreen';
 import { TesterScreen } from './screens/testerScreen';
 import { WeatherScreen } from './screens/weather/weatherScreen';
-import { PhotoCaptureScreen } from './screens/photoCapture/photoCaptureScreen'
 import { SinglePhotoScreen } from './screens/singlePhoto/singlePhotoScreen';
 import { VehicleInfoScreen } from './screens/vehicleInfo/vehicleinfoScreen';
 import { BarcodeScanScreen } from './screens/barcodeScan/barcodeScanScreen';
@@ -20,6 +19,7 @@ import { EmailFinalReportScreen } from './screens/emailFinalReport/emailFinalRep
 import { SaveToDeviceScreen } from './screens/saveToDevice/saveToDeviceScreen';
 import { FeatureComingSoonScreen } from './screens/featureComingSoon/featureComingSoonScreen';
 import { ReportToDatabaseScreen } from './screens/reportToDatabase/ReportToDatabaseScreen';
+import { DiagramToolScreen} from './screens/diagramTool/diagramToolScreen';
 
 const HomeNavigator = createStackNavigator({
   Welcome: WelcomeScreen,
@@ -27,7 +27,6 @@ const HomeNavigator = createStackNavigator({
   Map: MapScreen,
   Test: TesterScreen,
   Weather: WeatherScreen,
-  PhotoCapture: PhotoCaptureScreen,
   Vehicle: VehicleInfoScreen,
   BarcodeScan: BarcodeScanScreen,
   Scan: BarcodeScanScreen,
@@ -42,6 +41,7 @@ const HomeNavigator = createStackNavigator({
   InfoExchange: InfoExchangeScreen,
   SinglePhoto: SinglePhotoScreen,
   ReportToDatabase: FeatureComingSoonScreen,
+  DiagramTool: DiagramToolScreen,
 }, {
   headerMode: 'none',
 });

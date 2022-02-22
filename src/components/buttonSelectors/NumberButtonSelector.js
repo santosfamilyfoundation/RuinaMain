@@ -13,7 +13,7 @@ import QuestionSection from '../QuestionSection';
 const NumberButtonSelector = (props) => {
     const [selection, setSelection] = React.useState('');
     const { data, id, submitFunction, questionReducer, fieldName, updateResponse, dependencyID } = props;
-    let currId = data.id;
+    let currId = data.humanReadableId;
 
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
@@ -54,7 +54,7 @@ const NumberButtonSelector = (props) => {
     }
 
     return (
-        <QuestionSection title={data.question} helperText={data.helperText} tooltip={tooltip()}>
+        <QuestionSection title={data.question} helperText={data.helperText} tooltip={tooltip()} required={data.required}>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={true} contentContainerStyle={styles.container}>
                 <HStack space={4}>
                     <Button variant={selection === '0' ? 'solid': 'subtle'} onPress={() => submitField('0')}>None</Button>
