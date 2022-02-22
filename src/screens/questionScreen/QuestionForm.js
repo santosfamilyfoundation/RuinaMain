@@ -30,6 +30,7 @@ class QuestionForm extends Component {
 
     this.state = {
       loading: true,
+      sectionsVisible: false,
       questionDetail: props.questionDetail,
       navigation: props.navigation,
       updateResponse: props.updateResponse,
@@ -46,9 +47,7 @@ class QuestionForm extends Component {
   componentDidMount() {
     console.log("Component did mount");
     if (this.state.loading) {
-      console.log("Loading, not rendered");
-      this.renderSections(this.question);
-      this.setState({ loading: false })
+      this.renderSections();
     }
   }
 
@@ -230,17 +229,18 @@ class QuestionForm extends Component {
       </Accordion.Item>)
   }
 
-  renderSections(question) {
+  renderSections() {
     console.log("Starting to render all sections");
-    const result = <Accordion index={[0]} mx={4} my={8}>{question.questionsData.map(item => this.renderSingleSection(item))}</Accordion>
+    const result = <Accordion index={[0]} mx={4} my={8}>{this.question.questionsData.map(item => this.renderSingleSection(item))}</Accordion>
     console.log("Finished rendering all sections");
-    this.setState({sections: result })
+    this.setState({sections: result, sectionsVisible: true, loading: false })
   }
 
   render() {
+    
     console.log('rendering');
 
-    if (this.state.loading) {
+    if (!this.state.sectionsVisible) {
       console.log('rendering loading');
       return (
         <SafeAreaView style={styles.container}>
@@ -251,6 +251,7 @@ class QuestionForm extends Component {
         </SafeAreaView>
       )
     }
+
     else {
       console.log('rendering sections');
       return (
