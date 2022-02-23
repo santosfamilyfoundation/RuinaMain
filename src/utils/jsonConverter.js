@@ -256,11 +256,10 @@ export class JSONconverter extends Component {
 					var ans = getAnswer(answers, id);
 					// put ans into line and replace
 					if (fillInMethod == "datasection") {
-						line = line.slice(0, endPos+2) + ans + line.slice(endPos+2);
 					    if (id === 'crashDiagram') {
 					        line = ans;
 					    } else {
-					        line = line.slice(0, pos+14) + ans + line.slice(pos+14);
+					        line = line.slice(0, endPos+2) + ans + line.slice(endPos+2);
 					    }
 					} else {
 						line = line.replace("###", ans);
@@ -313,7 +312,7 @@ export class JSONconverter extends Component {
 		// fill in cover page header
 		htmlString += fillCoverPageHeader(htmlStrings.coverPageHeaderString, jsondata["road"][0], numSectionsDict);
 		// fill in cover page data sections
-		let crashRoadData = jsondata['road'[0]]
+		let crashRoadData = jsondata['road'][0]
 		if(jsondata['photo'].length > 0) {
             crashRoadData = {...crashRoadData, photo: jsondata['photo']}
         }
