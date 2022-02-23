@@ -42,7 +42,7 @@ const DropDownSingleSelect = (props) => {
     if(selectedOptions.length == data.numOptionsAllowed) {
         for(let i = 0; i < data.answerOptions.length; i++) {
             if(!selectedOptions.includes(data.answerOptions[i])) {
-                data.answerOptions[i].disabled = true;
+                data.answerOptions[i].disabled = false;
             };
         };
     } else {
@@ -114,10 +114,7 @@ const DropDownSingleSelect = (props) => {
     const submitField = (selectedItems, localInfo) => {
                  submitFunction({id, question: currId, selection: selectedItems})
 //                 setSelectedOptions(selectedItems);
-        let resId = []
-        for(let i = 0; i < selectedItems.length; i++) {
-            resId.push(selectedItems[i]);
-        }
+        let resId = selectedItems
 
         if (dependencyID==null || dependencyID.length == 1){
             updateResponse && updateResponse({id, question: currId, selection: resId})
@@ -151,14 +148,22 @@ const DropDownSingleSelect = (props) => {
             submitFunction({id, question: currId, selection: null})
             return;
         }
-        else {
-           setIsInvalid(false)
+        if (selectedItems.length == 1){
+            setIsInvalid(false)
+            setSelectedOptions(selectedItems);
+            console.log("this is what I'm getting", selectedOptions)
+            let localInfo = selectedOptions
+            validateLocal(localInfo)
+            submitField(selectedOptions);
         }
-        setSelectedOptions(selectedItems);
-        console.log("this is what I'm getting", selectedOptions)
-        let localInfo = selectedItems.concat(selectedOptions)
-        validateLocal(localInfo)
-        submitField(selectedItems);
+        else {
+            submitFunction({id, question: currId, selection: null})
+            let selectedOptions = []
+            selectedOptions[0] = selectedItems[1]
+            setSelectedOptions(selectedOptions);
+            submitField(selectedOptions)
+           return
+        }
     }
 
     const tooltip = () => {
