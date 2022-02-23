@@ -19,10 +19,6 @@ export class JSONconverter extends Component {
 				return file = this.JSONtoXLS(data);
 			case 'html': case 'pdf':
 				return file = this.JSONtoHTML(data);
-			case 'pdftest':
-				return this.JSONtoHTML(testAnswers);
-			case 'xlsxtest':
-				return this.JSONtoXLS(testAnswers);
 			default:
 				console.log("Error+"+format)
 		}
