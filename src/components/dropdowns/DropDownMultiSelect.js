@@ -42,7 +42,7 @@ const DropDownMultiSelect = (props) => {
     if(selectedOptions.length == data.numOptionsAllowed) {
         for(let i = 0; i < data.answerOptions.length; i++) {
             if(!selectedOptions.includes(data.answerOptions[i])) {
-                data.answerOptions[i].disabled = true;
+                data.answerOptions[i].disabled = false;
             };
         };
     } else {
@@ -139,7 +139,14 @@ const DropDownMultiSelect = (props) => {
     }
 
     const addOption = (selectedItems) => {
+        let upperLim = data.helperText
+        let upperLimParsed = parseInt(upperLim[upperLim.length - 2])
+        console.log('new testing block', upperLimParsed)
         if (!selectedItems){
+            if (selectedOptions.length > upperLimParsed){
+                validateLocal([])
+                return
+            }
             console.log('check here: ', selectedOptions)
             validateLocal(selectedOptions)
             return
@@ -150,6 +157,13 @@ const DropDownMultiSelect = (props) => {
             validateLocal([])
             submitFunction({id, question: currId, selection: null})
             return;
+        }
+        if (selectedItems.length > upperLimParsed){
+           console.log('it is passing through hallowed grounds')
+           validateLocal([])
+           setSelectedOptions(selectedItems)
+           submitField(selectedItems)
+           return
         }
         else {
            setIsInvalid(false)
@@ -172,7 +186,7 @@ const DropDownMultiSelect = (props) => {
                 title={data.question}
                 helperText={data.helperText}
                 tooltip={tooltip()}
-                errorMessage='Invalid Input'
+                errorMessage='Invalid input, make sure you satisfy the question requirements'
                 isInvalid={isInvalid}
             >
                 <SectionedMultiSelect
