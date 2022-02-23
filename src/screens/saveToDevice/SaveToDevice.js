@@ -119,8 +119,8 @@ class SaveToDevice extends Component {
       this.state.encoding.push(EncodingType.Base64);
       this.state.format.push("pdf");
       this.state.reportMimeType.push("application/pdf");
-      console.log("what is uri", this.state.uri[0]);
-      console.log("Type of encoding", this.state.encoding[0]);
+      console.log("what is uri", this.state.uri);
+      console.log("Type of encoding", this.state.encoding);
     } catch (error) {
       console.log("this is the pdf converter error->", error);
     }
@@ -129,24 +129,6 @@ class SaveToDevice extends Component {
   // update filename based on user input
   setUserInputFilename = (text) => {
     this.setState({ filename: text });
-  };
-
-  createPDF = async (data) => {
-    var converter = new JSONconverter();
-    // const htmlString = converter.handleConverter('pdftest', "");
-    const htmlString = converter.handleConverter("pdf", data);
-    let options = {
-      html: htmlString,
-      base64: true,
-      fileName: "crash_report",
-    };
-    try {
-      const data = await RNHTMLtoPDF.convert(options);
-      console.log("got PDF data");
-      this.setState({ uri: data.filePath, data: data.base64, isPDF: true });
-    } catch (error) {
-      console.log("error->", error);
-    }
   };
 
   async saveData() {
@@ -164,7 +146,7 @@ class SaveToDevice extends Component {
       filePath = await StorageAccessFramework.createFileAsync(
         directoryUri,
         this.state.filename + "." + format[i],
-        this.state.reportMimeType
+        this.state.reportMimeType[i]
       );
 
       if (format[i] === "xlsx" && this.props.photo.image.length > 0) {
@@ -197,12 +179,11 @@ class SaveToDevice extends Component {
         const clearBackgroundSave = new backgroundSave();
         var deleted = await clearBackgroundSave.deleteCapturedState();
 
-        return path;
+        return filePath;
       } catch (err) {
         console.log("message is here: ", err.message);
-        console.log("at loop ", i);
         this.setState({ reportSavedFailedMessageVisible: true });
-        await deleteAsync(path_android);
+        await deleteAsync(filePath);
         if (photoPath) {
           await deleteAsync(photoPath);
         }
