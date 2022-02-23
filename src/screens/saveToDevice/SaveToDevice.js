@@ -169,7 +169,6 @@ class SaveToDevice extends Component {
         const clearBackgroundSave = new backgroundSave();
         var deleted = await clearBackgroundSave.deleteCapturedState();
 
-        return filePath;
       } catch (err) {
         console.log("message is here: ", err.message);
         this.setState({ reportSavedFailedMessageVisible: true });
@@ -179,7 +178,6 @@ class SaveToDevice extends Component {
         }
         console.log("failed with", this.state.format[i]);
       }
-      return null;
     }
   }
 
