@@ -63,10 +63,9 @@ class EmailFinalReport extends Component {
   };
 
   // generate html and convert it into a PDF
-  async createPDF(export_data) {
+  async createPDF(data) {
     var converter = new JSONconverter()
-    // const htmlString = converter.handleConverter('pdftest', "");
-    const htmlString = converter.handleConverter('pdf', export_data)
+    const htmlString = await converter.handleConverter('pdf', data)
     let options = {
       html: htmlString,
       base64: true,
@@ -75,15 +74,7 @@ class EmailFinalReport extends Component {
     try {
       const pdf_data = await RNHTMLtoPDF.convert(options);
       console.log("got PDF data");
-//      let updated_data = [pdf_data.base64];
-
-      this.state.uri.push(pdf_data.filePath);
-      this.state.data.push(pdf_data.base64);
-      this.state.isPDF= true;
-      this.state.encoding.push("base64");
-      this.state.format.push("pdf");
-      console.log("what is uri",this.state.uri[0])
-      console.log("Type of encoding",this.state.encoding[0])
+      this.setState({uri: pdf_data.filePath, data: pdf_data.base64, isPDF:true});
     } catch (error) {
       console.log('this is the pdf converter error->', error);
     }
@@ -91,6 +82,7 @@ class EmailFinalReport extends Component {
 
   // save data as file inside app in order send email with attachment
   async saveDataInternal(filename) {
+    console.log(this.state)
     var RNFS = require('react-native-fs');
     var path = [RNFS.DocumentDirectoryPath + '/' + filename];
     // write the file
@@ -110,7 +102,7 @@ class EmailFinalReport extends Component {
         var deleted = await clearBackgroundSave.deleteCapturedState();
         return path;
     } catch(error) {
-      console.log(error.message);
+      console.log( "ERROR:", error.message);
       return null;
     }
   }
@@ -124,7 +116,6 @@ class EmailFinalReport extends Component {
     } else {
         attachments = [{path:path[0]}]
     }
-    console.log(attachments)
     console.log('Sending email!');
     await Mailer.mail({
       subject: "Sending " + "\"" + filename + "\"",
@@ -160,7 +151,6 @@ class EmailFinalReport extends Component {
     }
     // save data internally
     var path = await this.saveDataInternal(this.state.filename + "." + this.state.format);
-
     // send email
     await this.sendEmail(path, this.state.filename );
   }
@@ -187,7 +177,7 @@ class EmailFinalReport extends Component {
                     console.log(`number of pages: ${numberOfPages}`);
                 }}
                 onError={(error)=>{
-                    console.log(error);
+                    console.log("PDF error:",error);
                 }}
                 style={styles.pdf}/>
           </View>
