@@ -201,7 +201,7 @@ export class JSONconverter extends Component {
 
 	JSONtoHTML(jsondata) {
 		function getAnswer(answerSubsetData, id) {
-		    if ("photo" in answerSubsetData && id === 'crashDia') {
+		    if ("photo" in answerSubsetData && id === 'crashDiagram') {
 		        let source = answerSubsetData['photo']
 		        return source
 		    }
@@ -261,7 +261,9 @@ export class JSONconverter extends Component {
 					// put ans into line and replace
 					if (fillInMethod == "datasection") {
 						line = line.slice(0, endPos+2) + ans + line.slice(endPos+2);
-					    if (id === 'crashDia') {
+						console.log(id)
+					    if (id === 'crashDiagram') {
+					        console.log('updating diagram')
 					        line = ans;
 					    } else {
 					        line = line.slice(0, pos+14) + ans + line.slice(pos+14);
@@ -317,9 +319,9 @@ export class JSONconverter extends Component {
 		// fill in cover page header
 		htmlString += fillCoverPageHeader(htmlStrings.coverPageHeaderString, jsondata["road"][0], numSectionsDict);
 		// fill in cover page data sections
-		htmlString += processQuestionIds(htmlStrings.crashDataSectionString, jsondata["road"][0], "datasection");
 		let crashRoadData = jsondata['road'[0]]
 		if(jsondata['photo'].length > 0) {
+		    console.log('photo found')
             crashRoadData = {...crashRoadData, photo: jsondata['photo']}
         }
 		htmlString += processQuestionIds(htmlStrings.crashDataSectionString, crashRoadData, "datasection");
