@@ -92,18 +92,15 @@ class EmailFinalReport extends Component {
   // save data as file inside app in order send email with attachment
   async saveDataInternal(filename) {
     var RNFS = require('react-native-fs');
-    var path = RNFS.DocumentDirectoryPath + '/' + filename;
-
+    var path = [RNFS.DocumentDirectoryPath + '/' + filename];
     // write the file
     try {
+        let result = await RNFS.writeFile(path[0], this.state.data, this.state.encoding);
         if (this.state.format === 'xlsx' && (this.props.photo.image.length > 0)) {
             const photoPath = RNFS.DocumentDirectoryPath + '/' + this.state.filename + '.svg'
-            path = [path, photoPath]
+            path.push(photoPath)
             const svgFile = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' + this.props.photo.image
             let photoResult = await RNFS.writeFile(path[1], svgFile, 'utf8');
-            let fileResult  = await RNFS.writeFile(path[0], this.state.data, this.state.encoding);
-        } else {
-            let result = await RNFS.writeFile(path, this.state.data, this.state.encoding);
         }
         console.log('FILE WRITTEN!');
         console.log(path);
@@ -122,11 +119,12 @@ class EmailFinalReport extends Component {
   // leave everything else blank, except subject (subject = filename)
   async sendEmail(path, filename) {
     let attachments
-    if (this.props.photo.image.length) {
+    if (filename.includes('xlsx') && this.props.photo.image.length) {
         attachments = [{path:path[0]}, {path:path[1]}]
     } else {
-        attachments = [{path:path}]
+        attachments = [{path:path[0]}]
     }
+    console.log(attachments)
     console.log('Sending email!');
     await Mailer.mail({
       subject: "Sending " + "\"" + filename + "\"",
@@ -161,10 +159,8 @@ class EmailFinalReport extends Component {
       return;
     }
     // save data internally
-    var path = []
-    for (let i = 0; i < this.state.format.length; i++){
-        path += await this.saveDataInternal(this.state.filename + "." + this.state.format);
-     }
+    var path = await this.saveDataInternal(this.state.filename + "." + this.state.format);
+
     // send email
     await this.sendEmail(path, this.state.filename );
   }
