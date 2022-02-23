@@ -72,19 +72,15 @@ class SaveToDevice extends Component {
         this.createPDF(export_data);
       } else {
         var converter = new JSONconverter();
-        var file = converter.handleConverter(format[i], export_data);
-        var encode = format[i] === "xlsx" ? "ascii" : "utf8";
+        var file = await converter.handleConverter(format[i], export_data);
         var encoding =
           format[i] === "xlsx" ? EncodingType.Base64 : EncodingType.UTF8;
         var reportMimeType =
           format[i] === "xlsx"
             ? "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
             : "text/html";
-        console.log("encode for html", encode);
-        console.log("HTML FILE", typeof file);
         this.state.data.push(file);
         this.state.format.push(format[i]);
-        console.log("data html", typeof data[0]);
         this.state.encoding.push(encoding);
         this.state.reportMimeType.push(reportMimeType);
       }
@@ -103,8 +99,7 @@ class SaveToDevice extends Component {
   // generate html and convert it into a PDF
   async createPDF(export_data) {
     var converter = new JSONconverter();
-    // const htmlString = converter.handleConverter('pdftest', "");
-    const htmlString = converter.handleConverter("pdf", export_data);
+    const htmlString = await converter.handleConverter("pdf", export_data);
     let options = {
       html: htmlString,
       base64: true,
@@ -112,15 +107,13 @@ class SaveToDevice extends Component {
     };
     try {
       const pdf_data = await RNHTMLtoPDF.convert(options);
-      console.log("got PDF data");
+
       this.state.uri.push(pdf_data.filePath);
       this.state.data.push(pdf_data.base64);
       this.state.isPDF = true;
       this.state.encoding.push(EncodingType.Base64);
       this.state.format.push("pdf");
       this.state.reportMimeType.push("application/pdf");
-      console.log("what is uri", this.state.uri);
-      console.log("Type of encoding", this.state.encoding);
     } catch (error) {
       console.log("this is the pdf converter error->", error);
     }
@@ -148,7 +141,6 @@ class SaveToDevice extends Component {
         this.state.filename + "." + format[i],
         this.state.reportMimeType[i]
       );
-
       if (format[i] === "xlsx" && this.props.photo.image.length > 0) {
         photoPath = await StorageAccessFramework.createFileAsync(
           directoryUri,
@@ -159,7 +151,6 @@ class SaveToDevice extends Component {
           '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' +
           this.props.photo.image;
       }
-
       try {
         let fileResult = await writeAsStringAsync(
           filePath,
@@ -174,7 +165,6 @@ class SaveToDevice extends Component {
           });
         }
         this.setState({ reportSavedMessageVisible: true });
-
         // clear background save
         const clearBackgroundSave = new backgroundSave();
         var deleted = await clearBackgroundSave.deleteCapturedState();
