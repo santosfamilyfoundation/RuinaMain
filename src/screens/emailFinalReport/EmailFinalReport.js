@@ -55,47 +55,44 @@ class EmailFinalReport extends Component {
         var encoding = format === "xlsx" ? 'base64' : 'utf8';
         this.setState({data: file, encoding: encoding, format:format});
       }
-    }
+  };
 
   // update the filename
   changeFilename(text) {
     this.setState({filename: text});
-  }
+  };
 
   // generate html and convert it into a PDF
   async createPDF(data) {
-    var converter = new JSONconverter();
-    // const htmlString = converter.handleConverter('pdftest', "");
-    const htmlString = converter.handleConverter('pdf', data);
+    var converter = new JSONconverter()
+    const htmlString = await converter.handleConverter('pdf', data)
     let options = {
       html: htmlString,
       base64: true,
       fileName: 'crash_report',
     };
     try {
-      const data = await RNHTMLtoPDF.convert(options);
+      const pdf_data = await RNHTMLtoPDF.convert(options);
       console.log("got PDF data");
-      this.setState({uri: data.filePath, data: data.base64, isPDF:true});
+      this.setState({uri: pdf_data.filePath, data: pdf_data.base64, isPDF:true});
     } catch (error) {
-      console.log('error->', error);
+      console.log('this is the pdf converter error->', error);
     }
   }
 
   // save data as file inside app in order send email with attachment
   async saveDataInternal(filename) {
+    console.log(this.state)
     var RNFS = require('react-native-fs');
-    var path = RNFS.DocumentDirectoryPath + '/' + filename;
-
+    var path = [RNFS.DocumentDirectoryPath + '/' + filename];
     // write the file
     try {
+        let result = await RNFS.writeFile(path[0], this.state.data, this.state.encoding);
         if (this.state.format === 'xlsx' && (this.props.photo.image.length > 0)) {
             const photoPath = RNFS.DocumentDirectoryPath + '/' + this.state.filename + '.svg'
-            path = [path, photoPath]
+            path.push(photoPath)
             const svgFile = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' + this.props.photo.image
             let photoResult = await RNFS.writeFile(path[1], svgFile, 'utf8');
-            let fileResult  = await RNFS.writeFile(path[0], this.state.data, this.state.encoding);
-        } else {
-            let result = await RNFS.writeFile(path, this.state.data, this.state.encoding);
         }
         console.log('FILE WRITTEN!');
         console.log(path);
@@ -105,7 +102,7 @@ class EmailFinalReport extends Component {
         var deleted = await clearBackgroundSave.deleteCapturedState();
         return path;
     } catch(error) {
-      console.log(error.message);
+      console.log( "ERROR:", error.message);
       return null;
     }
   }
@@ -114,10 +111,10 @@ class EmailFinalReport extends Component {
   // leave everything else blank, except subject (subject = filename)
   async sendEmail(path, filename) {
     let attachments
-    if (this.props.photo.image.length) {
+    if (filename.includes('xlsx') && this.props.photo.image.length) {
         attachments = [{path:path[0]}, {path:path[1]}]
     } else {
-        attachments = [{path:path}]
+        attachments = [{path:path[0]}]
     }
     console.log('Sending email!');
     await Mailer.mail({
@@ -128,7 +125,7 @@ class EmailFinalReport extends Component {
       body: '',
       customChooserTitle: "Send Crash Report", // Android only (defaults to "Send Mail")
       isHTML: true,
-      attachments: attachments
+      attachments: attachments,
     }, (error, event) => {
       console.log('errror', error)
       Alert.alert(
@@ -155,7 +152,7 @@ class EmailFinalReport extends Component {
     // save data internally
     var path = await this.saveDataInternal(this.state.filename + "." + this.state.format);
     // send email
-    await this.sendEmail(path, this.state.filename + "." + this.state.format);
+    await this.sendEmail(path, this.state.filename );
   }
   // required method that creates components of email screen
   render() {
@@ -180,7 +177,7 @@ class EmailFinalReport extends Component {
                     console.log(`number of pages: ${numberOfPages}`);
                 }}
                 onError={(error)=>{
-                    console.log(error);
+                    console.log("PDF error:",error);
                 }}
                 style={styles.pdf}/>
           </View>
