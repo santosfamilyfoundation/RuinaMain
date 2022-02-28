@@ -34,8 +34,8 @@ import {
   writeAsStringAsync,
   EncodingType,
   deleteAsync,
+  StorageAccessFramework
 } from "expo-file-system";
-import { StorageAccessFramework } from "expo-file-system";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 class SaveToDevice extends Component {
