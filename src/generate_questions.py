@@ -47,7 +47,7 @@ def generate_questions_json(filename):
 
                 section_json = {'sectionTitle': row['question_text'],
                                 'questions': [],
-                                'display': [row['display_section']]}
+                                'display': [section]}
                 # print('created new section', section_json['sectionTitle'])
 
             else:
@@ -55,7 +55,7 @@ def generate_questions_json(filename):
                                 'question': row['question_text'],
                                 'id': question_uid,
                                 'answerType': row['question_type'],
-                                'display': [row['display_section']],
+                                'display': [section],
                                 'humanReadableId': row['question_name']
                                 }
                 # print(question_dict['question'])
@@ -67,6 +67,9 @@ def generate_questions_json(filename):
                     question_dict['helperImg'] = row['helper_img']
                 if pd.notna(row['automation_method']):
                     question_dict['autoMethod'] = row['automation_method']
+                if pd.notna(row['required']):
+                    question_dict['required'] = 'true'
+
 
 
                 if pd.notna(row['question_dependency']):
@@ -138,7 +141,7 @@ def generate_questions_json(filename):
     return questions_json
 
 if __name__ == '__main__':
-    filename = '~/2021_12_08_questions.xlsx'
+    filename = '~/2022_02_10_questions.xlsx'
     new_filename = 'data/questions.js'
 
     json_data = generate_questions_json(filename)

@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { StyleSheet, Alert, View, Dimensions } from 'react-native';
+import { StyleSheet, Alert, View, Dimensions, VStack, Linking, ScrollView } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Input, Button, Text } from 'native-base';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
@@ -15,12 +16,13 @@ import TopNavigation from '../../components/TopNavigation';
 import Section from '../../components/Section';
 import IconButton from '../../components/IconButton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { getDefaultFilename } from '../../utils/helperFunctions';
 
 class EmailFinalReport extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filename: this.getDefaultFilename(),
+      filename: getDefaultFilename(),
       offlineStatus: false,
       uri: [],
       data: [],
@@ -62,17 +64,10 @@ class EmailFinalReport extends Component {
     //          this.setState({data: this.state.data.push(file), encoding: this.state.encoding.push(encode)});
             }
 
+
       }
 
     }
-
-  // generate default filename
-  getDefaultFilename() {
-    var date = new Date();
-    var localTime = date.toLocaleTimeString().replace(/\W/g, '_');
-    var localDate = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
-    return "Crash_Report " + localDate + "_at_" + localTime;
-  }
 
   // update the filename
   changeFilename(text) {
@@ -124,6 +119,7 @@ class EmailFinalReport extends Component {
         let path;
         if (this.state.devicePlatform === 'ios'){
           path = path_ios;
+
         } else {
           path = path_android;
         }
@@ -169,6 +165,7 @@ class EmailFinalReport extends Component {
 
         return path;
   }
+
   // send email based on the inputted filename
   // leave everything else blank, except subject (subject = filename)
   async sendEmail(path, filename) {
@@ -210,7 +207,6 @@ class EmailFinalReport extends Component {
     const net = new NetInfoAPI();
     let netStatus = await net.checkNetOnce();
     // net info is wraped in net.status
-    // console.log(`NetInfo: ${net.status}`);
     if (netStatus==false){
       // deal with internet not connected
       this.setState({ offlineStatus: true });
@@ -254,7 +250,9 @@ class EmailFinalReport extends Component {
           onPress={() => this.handleEmail()} m={4}>
           Send Report
         </Button>
-
+        <SafeAreaView m={25} alignItems ="center">
+          <TouchableOpacity onPress={() => Linking.openURL('https://forms.gle/aXVjxVrQU6jm3KUx6')}><Text style={{ color: 'blue' }}>Submit Feedback</Text></TouchableOpacity>
+        </SafeAreaView>
         <MaterialDialog
           title={"Can't email when offline!"}
           visible={this.state.offlineStatus}
@@ -270,7 +268,6 @@ class EmailFinalReport extends Component {
             Please check your internet connection and try again later.
           </Text>
         </MaterialDialog>
-
       </SafeAreaView>
     )
   }

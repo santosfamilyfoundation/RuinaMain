@@ -1,16 +1,18 @@
 import { combineReducers } from 'redux';
 
 const INITIAL_STATE = {
-  image: ''
+  image: '',
+  paths: []
 };
 
 const photosReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'ADDPHOTO':
       let imageObj = state.image;
-      console.log('inside reducer: ', imageObj)
+      let pathsObj = state.paths;
       imageObj = action.data.image;
-      return { ...state, image: imageObj}
+      pathsObj = action.data.paths
+      return { ...state, image: imageObj, paths: pathsObj}
     case 'RESETPHOTO':
       console.log("RESET PHOTO!");
       state = INITIAL_STATE;

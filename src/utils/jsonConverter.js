@@ -10,6 +10,7 @@ export class JSONconverter extends Component {
 		super(props);
 	}
 	handleConverter(format, data) {
+		console.log('handleconverter starting');
 		let file;
 		switch (format) {
 			case 'json':
@@ -33,7 +34,7 @@ export class JSONconverter extends Component {
 		    questions.data.forEach(questionGroup => {
 		        if (questionGroup.questions) {
 		            questionGroup.questions.forEach(question => {
-		                if (question.id === questionUid) {
+		                if (question.humanReadableId === questionUid) {
 		                    questionName =  question.question
 		                }
 		            });
@@ -52,6 +53,7 @@ export class JSONconverter extends Component {
 				return ws;
 			}
 			for (var key in data["road"][0]["response"]) {
+				console.log('key in crash response:', key)
 				var question = getQuestion(key);
 				var answer = data["road"][0]["response"][key];
 				if (answer instanceof Array) {
@@ -77,6 +79,7 @@ export class JSONconverter extends Component {
 				vehicleNumDict[vehicleData["id"]] = i+1;
 				if ("response" in vehicleData) {
 					for (var key in vehicleData["response"]) {
+						console.log('key in vehicle sheet:', key)
 						var question = getQuestion(key);
 						var answer = vehicleData["response"][key];
 						if (answer instanceof Array) {
@@ -103,6 +106,7 @@ export class JSONconverter extends Component {
 				var vehicleNum = vehicleNumDict[driverData["vehicle"]];
 				if ("response" in driverData) {
 					for (var key in driverData["response"]) {
+						console.log('key in driver sheet:', key)
 						var question = getQuestion(key);
 						var answer = driverData["response"][key];
 						if (answer instanceof Array) {
@@ -137,6 +141,7 @@ export class JSONconverter extends Component {
 				}
 				if ("response" in passengerData) {
 					for (var key in passengerData["response"]) {
+						console.log('key in passenger sheet:', key)
 						var question = getQuestion(key);
 						var answer = passengerData["response"][key];
 						if (answer instanceof Array) {
@@ -162,6 +167,7 @@ export class JSONconverter extends Component {
 				var nonmotoristData = data["nonmotorist"][i];
 				if ("response" in nonmotoristData) {
 					for (var key in nonmotoristData["response"]) {
+						console.log('key in nonmotorist sheet:', key)
 						var question = getQuestion(key);
 						var answer = nonmotoristData["response"][key];
 						if (answer instanceof Array) {
@@ -194,19 +200,18 @@ export class JSONconverter extends Component {
 		XLSX.utils.book_append_sheet(wb, nonmotoristWS, "nonmotorist");
 		// output workbook so it can be written to a file
 		const output = str => str;
-		const wbout = XLSX.write(wb, { type: 'binary', bookType: "xlsx" });
+		const wbout = XLSX.write(wb, { type: 'base64', bookType: "xlsx" });
 		return output(wbout);
 	}
 
 	JSONtoHTML(jsondata) {
 		function getAnswer(answerSubsetData, id) {
 		    if ("photo" in answerSubsetData && id === 'crashDia') {
-		        let source = 'src="' + answerSubsetData['photo'] + '" '
+		        let source = answerSubsetData['photo']
 		        return source
 		    }
 			if (("response" in answerSubsetData) && (id in answerSubsetData["response"])) {
 				if (answerSubsetData["response"][id] instanceof Array) {
-				    console.log(answerSubsetData["response"][id])
 					return answerSubsetData["response"][id].join(", ")
 				}
 				return answerSubsetData["response"][id];
@@ -249,19 +254,20 @@ export class JSONconverter extends Component {
 			var lines = str.split("\n");
 			var filledString = "";
 			for (var i = 0; i < lines.length; i++){
-			  // console.log(crashDataSectionLines[i]);
 			  var line = lines[i];
 			  // check if line contains "id=" if so then get the id
 				// there could be multiple ids in one line so process all of them
 				var pos = line.indexOf("id=", 0);
 				while (pos != -1) {
 					// extract the id
-			    var id = line.slice(pos+4, pos+12);
+					var endPos = line.indexOf('>', pos)-1;
+					var id = line.slice(pos+4, endPos);
 					var ans = getAnswer(answers, id);
 					// put ans into line and replace
 					if (fillInMethod == "datasection") {
+						line = line.slice(0, endPos+2) + ans + line.slice(endPos+2);
 					    if (id === 'crashDia') {
-					        line = line.slice(0, pos+18) + ans + line.slice(pos+18);
+					        line = ans;
 					    } else {
 					        line = line.slice(0, pos+14) + ans + line.slice(pos+14);
 					    }
@@ -272,6 +278,7 @@ export class JSONconverter extends Component {
 				}
 				filledString += line + "\n";
 			}
+			console.log('filled string:', filledString);
 			return filledString;
 		};
 
@@ -316,6 +323,8 @@ export class JSONconverter extends Component {
 		// fill in cover page header
 		htmlString += fillCoverPageHeader(htmlStrings.coverPageHeaderString, jsondata["road"][0], numSectionsDict);
 		// fill in cover page data sections
+		console.log('processing data for crash data section');
+		htmlString += processQuestionIds(htmlStrings.crashDataSectionString, jsondata["road"][0], "datasection");
 		let crashRoadData = jsondata['road'[0]]
 		if(jsondata['photo'].length > 0) {
             crashRoadData = {...crashRoadData, photo: jsondata['photo']}
@@ -323,8 +332,9 @@ export class JSONconverter extends Component {
 		htmlString += processQuestionIds(htmlStrings.crashDataSectionString, crashRoadData, "datasection");
 		// if applicable, add in construction table
 		var displayConstruction = false;
-		if (getAnswer(jsondata["road"][0], "34oHCyQs") == "Yes") {
+		if (getAnswer(jsondata["road"][0], "road-workZoneRelated") == "Yes") {
 			displayConstruction = true;
+			console.log('processing data for construction data section');
 			htmlString += processQuestionIds(htmlStrings.constructionDataSectionString, jsondata["road"][0], "datasection");
 		}
 		// fill in vehicle section pages if applicable
@@ -333,44 +343,58 @@ export class JSONconverter extends Component {
 			// fill out vehicle page
 			var vehicleAnswers = jsondata["vehicle"][i];
 			if (displayConstruction) {
+				console.log('processing data for vehicle page header');
 				htmlString += fillVehiclePageHeader(htmlStrings.vehicleHeaderString, vehicleAnswers, i+1, -1);
 				displayConstruction = false;
 			} else {
+				console.log('processing data for vehicle page header');
 				htmlString += fillVehiclePageHeader(htmlStrings.vehicleHeaderString, vehicleAnswers, i+1);
 			}
+			console.log('processing data for vehicle data section string 1');
 			htmlString += processQuestionIds(htmlStrings.vehicleDataSectionString1, vehicleAnswers, "datasection");
 			// fill out lvhm vehicle sections if applicable
-			if (getAnswer(vehicleAnswers, "ovVntlnU") != "Not Applicable") {
+			if (getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") != "Not Applicable") {
+				console.log('processing data for first trailer data section');
 				htmlString += processQuestionIds(htmlStrings.firstTrailerDataSectionString, vehicleAnswers, "datasection");
 			}
-			if ((getAnswer(vehicleAnswers, "ovVntlnU") == "2") || (getAnswer(vehicleAnswers, "ovVntlnU") == "3")) {
+			if ((getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") == "2") || (getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") == "3")) {
+				console.log('processing data for second trailer data section');
 				htmlString += processQuestionIds(htmlStrings.secondTrailerDataSectionString, vehicleAnswers, "datasection");
 			}
-			if (getAnswer(vehicleAnswers, "ovVntlnU") == "3") {
+			if (getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") == "3") {
+				console.log('processing data for third trailer data section');
 				htmlString += processQuestionIds(htmlStrings.thirdTrailerDataSectionString, vehicleAnswers, "datasection");
 			}
-			if ((getAnswer(vehicleAnswers, "ovVntlnU") != "Not Applicable") || (getAnswer(vehicleAnswers, "CynWHwxP") != "Light (10,000 lbs. or less GVWR/GCWR)") || (getAnswer(vehicleAnswers, "sM5HGjcV") == "Yes")) {
+			if ((getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") != "Not Applicable") || (getAnswer(vehicleAnswers, "vehicle-size") != "Light (10,000 lbs. or less GVWR/GCWR)") || (getAnswer(vehicleAnswers, "vehicle-hazardousMaterials") == "Yes")) {
+				console.log('processing data for lvhm vehicle data section')
 				htmlString += processQuestionIds(htmlStrings.lvhmVehicleDataSectionString, vehicleAnswers, "datasection");
 			}
-			if (getAnswer(vehicleAnswers, "sM5HGjcV") == "Yes") {
+			if (getAnswer(vehicleAnswers, "vehicle-hazardousMaterials") == "Yes") {
+				console.log('processing data for hazardous data section');
 				htmlString += processQuestionIds(htmlStrings.hazardousDataSectionString, vehicleAnswers, "datasection");
 			}
+			console.log('processing data for vehicle data section 2');
 			htmlString += processQuestionIds(htmlStrings.vehicleDataSectionString2, vehicleAnswers, "datasection");
 			// fill out driver page if applicable
 			var hasDriver;
 			(vehicleAnswers["id"] in vehicleSectionDict["drivers"]) ? hasDriver = true : hasDriver = false;
 			if (hasDriver) {
 				var driverAnswers = vehicleSectionDict["drivers"][vehicleAnswers["id"]];
+				console.log('processing driver header')
 				htmlString += fillDriverPageHeader(htmlStrings.driverHeaderString, driverAnswers, i+1);
+				console.log('processing driver data section 1');
 				htmlString += processQuestionIds(htmlStrings.driverDataSectionString1, driverAnswers, "datasection");
-				if ((getAnswer(vehicleAnswers, "ovVntlnU") != "Not Applicable") || (getAnswer(vehicleAnswers, "CynWHwxP") != "Light (10,000 lbs. or less GVWR/GCWR)") || (getAnswer(vehicleAnswers, "sM5HGjcV") == "Yes")) {
+				if ((getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") != "Not Applicable") || (getAnswer(vehicleAnswers, "vehicle-size") != "Light (10,000 lbs. or less GVWR/GCWR)") || (getAnswer(vehicleAnswers, "vehicle-hazardousMaterials") == "Yes")) {
 					// display lvhm driver section
+					console.log('processing driver lvhm data')
 					htmlString += processQuestionIds(htmlStrings.lvhmDriverDataSectionString, driverAnswers, "datasection");
 				}
-				if (getAnswer(driverAnswers, "TNNilZo2") != "No Apparent Injury") {
+				if (getAnswer(driverAnswers, "driver-injuryStatus") != "No Apparent Injury") {
 					// display injury driver section
+					console.log('processing driver injury data')
 					htmlString += processQuestionIds(htmlStrings.injuryDriverDataSectionString, driverAnswers, "datasection");
 				}
+				console.log('processing driver data section 2')
 				htmlString += processQuestionIds(htmlStrings.driverDataSectionString2, driverAnswers, "datasection");
 			}
 			// fill out passenger pages if applicable
@@ -378,9 +402,12 @@ export class JSONconverter extends Component {
 				var passengers = vehicleSectionDict["passengers"][vehicleAnswers["id"]];
 				for (var j = 0; j < passengers.length; j++) {
 					var passengerAnswers = passengers[j];
+					console.log('processing passenger page header')
 					htmlString += fillPassengerPageHeader(htmlStrings.passengerHeaderString, passengerAnswers, j+1, i+1, hasDriver);
+					console.log('processing passenger data section')
 					htmlString += processQuestionIds(htmlStrings.passengerDataSectionString, passengerAnswers, "datasection");
-					if (getAnswer(passengerAnswers, "NJqVP8AH") != "No Apparent Injury") {
+					if (getAnswer(passengerAnswers, "passenger-injuryStatus") != "No Apparent Injury") {
+						console.log('processing passenger injury data section')
 						htmlString += processQuestionIds(htmlStrings.injuryPassengerDataSectionString, passengerAnswers, "datasection");
 					}
 				}
@@ -389,9 +416,12 @@ export class JSONconverter extends Component {
 		// fill out non motorist pages if applicable
 		for (var i = 0; i < numSectionsDict["nonmotorist"]; i++) {
 			var nonmotoristAnswers = jsondata["nonmotorist"][i];
+			console.log('processing nomotorist page header')
 			htmlString += fillNonMotoristPageHeader(htmlStrings.nonmotoristHeaderString, nonmotoristAnswers, i+1);
+			console.log('processing nonmotorist data section')
 			htmlString += processQuestionIds(htmlStrings.nonmotoristDataSectionString, nonmotoristAnswers, "datasection");
-			if (getAnswer(nonmotoristAnswers, "WRishqwU") != "No Apparent Injury") {
+			if (getAnswer(nonmotoristAnswers, "nonmotorist-injuryStatus") != "No Apparent Injury") {
+				console.log('processing nomotorist injury data section')
 				htmlString += processQuestionIds(htmlStrings.injuryNonmotoristDataSectionString, nonmotoristAnswers, "datasection");
 			}
 		}

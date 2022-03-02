@@ -17,11 +17,11 @@ const CountyDropDown = (props) => {
     const [selectedOption, setSelectedOption] = React.useState([]);
     const [deleteCountyFromState, setDeleteCountyFromState] = React.useState(false);
     const { data, key, id, questionReducer, submitFunction, updateResponse, deleteRoadSingleResponse } = props;
-    let currId = data.id;
+    let currId = data.humanReadableId;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
 
-    const stateDropDownQuestionID = data.questionDependency[0].dependencyUuid;
+    const stateDropDownQuestionID = data.questionDependency[0].dependencyName;
     let existingDataState = existingData ? existingData[stateDropDownQuestionID] : null;
 
     // Populate if value already exists in redux
@@ -127,6 +127,7 @@ const CountyDropDown = (props) => {
             title={data.question}
             helperText={data.helperText}
             tooltip={tooltip()}
+            required={data.required}
         >
                 <SectionedMultiSelect
                   items={countyOptions}

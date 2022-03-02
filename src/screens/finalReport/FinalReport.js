@@ -1,86 +1,115 @@
-import React, {Component} from 'react';
-import { SafeAreaView } from 'react-navigation';
-import { connect } from 'react-redux';
-import { VStack, Button, Heading, Divider, Center, Text} from 'native-base'
-import { StyleSheet, Linking, ScrollView, PermissionsAndroid } from 'react-native';
-import { MaterialDialog, MultiPickerMaterialDialog} from 'react-native-material-dialog';
-import * as Constants from '../../constants';
-import Section from '../../components/Section';
-import TopNavigation from '../../components/TopNavigation';
-import IconButton from '../../components/IconButton';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import React, { Component } from "react";
+import { SafeAreaView } from "react-navigation";
+import { connect } from "react-redux";
+import {
+  VStack,
+  Button,
+  Heading,
+  Divider,
+  Center,
+  Text,
+  Box,
+} from "native-base";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import {
+  StyleSheet,
+  Linking,
+  ScrollView,
+  PermissionsAndroid,
+} from "react-native";
+import {
+  MaterialDialog,
+  SinglePickerMaterialDialog,
+} from "react-native-material-dialog";
+import * as Constants from "../../constants";
+import Section from "../../components/Section";
+import TopNavigation from "../../components/TopNavigation";
+import IconButton from "../../components/IconButton";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import { StorageAccessFramework } from "expo-file-system";
 
 class FinalReport extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            chooseReportFormatVisible: false,
-            chooseReportFormatSelectedItem: undefined,
-            exportAction: undefined,
-            filePermissionsGranted: false,
-            filePermissionsErrorMessageVisible: false
-        };
-        this.requestExternalStoragePermission();
+  constructor(props) {
+    super(props);
+    this.state = {
+      chooseReportFormatVisible: false,
+      chooseReportFormatSelectedItem: undefined,
+      exportAction: undefined,
+      directoryUri: "",
+      filePermissionsGranted: false,
+      filePermissionsErrorMessageVisible: false,
+    };
+    this.requestExternalStoragePermission();
+  }
+
+  requestExternalStoragePermission = async () => {
+    try {
+      const permissions =
+        await StorageAccessFramework.requestDirectoryPermissionsAsync();
+      if (permissions.granted) {
+        console.log("You can use external storage");
+        this.setState({ filePermissionsGranted: true });
+        this.setState({ directoryUri: permissions.directoryUri });
+      } else {
+        // console.log("external permission denied");
+        this.setState({ filePermissionsGranted: false });
+        this.setState({ filePermissionsErrorMessageVisible: true });
+      }
+    } catch (err) {
+      console.warn(err);
     }
+  };
+  resetState() {
+    const { navigation } = this.props;
 
-    requestExternalStoragePermission = async () => {
-        try {
-          const granted = await PermissionsAndroid.request(
-            PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-            {
-              title: "Android External Storage Permission",
-              message:
-                "Ruina needs access to your external storage to save the report ",
-              buttonNeutral: "Ask Me Later",
-              buttonNegative: "Cancel",
-              buttonPositive: "OK"
-            }
-          );
-          if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-            console.log("You can use external storage");
-            this.setState({ filePermissionsGranted: true });
-          } else {
-            console.log("external permission denied");
-            this.setState({ filePermissionsGranted: false });
-            this.setState({ filePermissionsErrorMessageVisible: true });
-          }
-        } catch (err) {
-          console.warn(err);
+    navigation.navigate("Welcome");
+    this.props.state = {};
+  }
+  render() {
+    const { navigation } = this.props;
+
+    const navigateSaveToDevice = (format, directoryUri) => {
+      console.log("Save Report to Device!", directoryUri);
+      navigation.navigate("SaveToDevice", {
+        format: format,
+        directoryUri: directoryUri,
+      });
+    };
+
+    const navigateEmail = (format) => {
+      console.log("navigating to email");
+      navigation.navigate("EmailFinalReport", { format: format });
+    };
+
+    const navigateDatabase = (format) => {
+      console.log("SEND REPORT TO DATABASE!");
+      navigation.navigate("ReportToDatabase");
+    };
+    const file_format_extensions = Constants.ALLOW_JSON_EXPORT
+      ? ["json", "pdf", "html", "xlsx"]
+      : ["pdf", "html", "xlsx"];
+
+    const cardButton = (message, navigateTo, disabledButton) => (
+      <Button
+        onPress={() =>
+          this.setState({
+            chooseReportFormatVisible: true,
+            exportAction: navigateTo,
+          })
         }
-      };
+        isDisabled={!this.state.filePermissionsGranted || disabledButton}
+      >
+        {message}
+      </Button>
+    );
 
-    render(){
-        const {
-            navigation
-        } = this.props
-
-        const navigateSaveToDevice = (format) => {
-            console.log('Save Report to Device!');
-            navigation.navigate('SaveToDevice', {format: format})
-        }
-
-        const navigateEmail = (format) =>{
-        console.log("navigating to email")
-            navigation.navigate('EmailFinalReport', {format:format})
-        }
-
-        const navigateDatabase = (format) => {
-            console.log('SEND REPORT TO DATABASE!');
-            navigation.navigate('ReportToDatabase', {format:format})
-        }
-        const file_format_extensions = Constants.ALLOW_JSON_EXPORT ? ["json", "pdf", "html", "xlsx"] : ["pdf", "html", "xlsx"];
-
-        const cardButton = (message, navigateTo, disabledButton) => (
-            <Button
-                onPress={() => this.setState({ chooseReportFormatVisible: true, exportAction: navigateTo })}
-                isDisabled={!this.state.filePermissionsGranted || disabledButton}>
-                {message}
-            </Button>
-        );
-
-        const feedbackButton = () => (
-            <Button onPress={()=>Linking.openURL('https://forms.gle/ho3cZNyoaFArNNN79')}>Submit Feedback</Button>
-        );
+    const feedbackButton = () => (
+      <Button
+        onPress={() => Linking.openURL("https://forms.gle/1sJzVj9MCzSRfzSV8")}
+      >
+        Submit Feedback
+      </Button>
+    );
 
 
         return (
@@ -136,16 +165,17 @@ class FinalReport extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return{
-        driver: state.driverReducer,
-        nonmotorist: state.nonmotoristReducer,
-        vehicle: state.vehicleReducer,
-        passenger: state.passengerReducer,
-        quiz: state.quickquizReducer,
-        story: state.storyReducer,
-        road: state.roadReducer,
-        photo: state.photosReducer
-    }
-}
+  return {
+    driver: state.driverReducer,
+    nonmotorist: state.nonmotoristReducer,
+    vehicle: state.vehicleReducer,
+    passenger: state.passengerReducer,
+    quiz: state.quickquizReducer,
+    story: state.storyReducer,
+    road: state.roadReducer,
+    photo: state.photosReducer,
+  };
+};
 
-export default connect(mapStateToProps)(FinalReport)
+export default connect(mapStateToProps)(FinalReport);
+

@@ -26,7 +26,7 @@ const AdvancedDropDown = (props) => {
     const [speed, setSpeed] = React.useState("");
     const [degree, setDegree] = React.useState("");
 
-    let currId = data.id;
+    let currId = data.humanReadableId;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
     let i;
@@ -225,6 +225,7 @@ const AdvancedDropDown = (props) => {
             title={data.question}
             helperText={data.helperText}
             tooltip={tooltip()}
+            required={data.required}
         >
             {WeatherHelper()}
             <HStack justifyContent='space-around'>
