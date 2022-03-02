@@ -66,19 +66,29 @@ class EmailFinalReport extends Component {
 
 
       }
-
-    }
+//<<<<<<< HEAD
+//
+//    }
+//=======
+  };
+//>>>>>>> dev
 
   // update the filename
   changeFilename(text) {
     this.setState({filename: text});
-  }
+  };
 
   // generate html and convert it into a PDF
+//<<<<<<< HEAD
   async createPDF(export_data) {
     var converter = new JSONconverter()
     // const htmlString = converter.handleConverter('pdftest', "");
     const htmlString = converter.handleConverter('pdf', export_data)
+//=======
+//  async createPDF(data) {
+//    var converter = new JSONconverter()
+//    const htmlString = await converter.handleConverter('pdf', data)
+//>>>>>>> dev
     let options = {
       html: htmlString,
       base64: true,
@@ -87,6 +97,7 @@ class EmailFinalReport extends Component {
     try {
       const pdf_data = await RNHTMLtoPDF.convert(options);
       console.log("got PDF data");
+//<<<<<<< HEAD
 //      let updated_data = [pdf_data.base64];
 
       this.state.uri.push(pdf_data.filePath);
@@ -96,32 +107,50 @@ class EmailFinalReport extends Component {
       this.state.format.push("pdf");
       console.log("what is uri",this.state.uri[0])
       console.log("Type of encoding",this.state.encoding[0])
+//=======
+//      this.setState({uri: pdf_data.filePath, data: pdf_data.base64, isPDF:true});
+//>>>>>>> dev
     } catch (error) {
       console.log('this is the pdf converter error->', error);
     }
   }
 
   // save data as file inside app in order send email with attachment
-
-
-  async saveDataInternal(filename, i) {
-      const format = this.state.format;
-        var device_platform = Platform.OS
-        var RNFS = require('react-native-fs');
-
-        // Notes for Android External Storage
-        // for andorid: externalDirectoryPath: /storage/emulated/0/Android/data/com.ruina/files
-        // for android: externalStorageDirectoryPath: /storage/emulated/0
-        // for ios: DocumentDirectoryPath: /var/mobile/Containers/Data/Application/12F7361A-BC3E-42C9-B81E-FBBBF7BA3E2C/Documents
-        var path_ios = RNFS.DocumentDirectoryPath + '/' + this.state.filename;
-        var path_android = RNFS.ExternalStorageDirectoryPath + '/' + this.state.filename;
-        //const path = this.state.devicePlatform === 'ios' ? path_ios : path_android;
-        let path;
-        if (this.state.devicePlatform === 'ios'){
-          path = path_ios;
-
-        } else {
-          path = path_android;
+//<<<<<<< HEAD
+//
+//
+//  async saveDataInternal(filename, i) {
+//      const format = this.state.format;
+//        var device_platform = Platform.OS
+//        var RNFS = require('react-native-fs');
+//
+//        // Notes for Android External Storage
+//        // for andorid: externalDirectoryPath: /storage/emulated/0/Android/data/com.ruina/files
+//        // for android: externalStorageDirectoryPath: /storage/emulated/0
+//        // for ios: DocumentDirectoryPath: /var/mobile/Containers/Data/Application/12F7361A-BC3E-42C9-B81E-FBBBF7BA3E2C/Documents
+//        var path_ios = RNFS.DocumentDirectoryPath + '/' + this.state.filename;
+//        var path_android = RNFS.ExternalStorageDirectoryPath + '/' + this.state.filename;
+//        //const path = this.state.devicePlatform === 'ios' ? path_ios : path_android;
+//        let path;
+//        if (this.state.devicePlatform === 'ios'){
+//          path = path_ios;
+//
+//        } else {
+//          path = path_android;
+//=======
+  async saveDataInternal(filename) {
+    console.log(this.state)
+    var RNFS = require('react-native-fs');
+    var path = [RNFS.DocumentDirectoryPath + '/' + filename];
+    // write the file
+    try {
+        let result = await RNFS.writeFile(path[0], this.state.data, this.state.encoding);
+        if (this.state.format === 'xlsx' && (this.props.photo.image.length > 0)) {
+            const photoPath = RNFS.DocumentDirectoryPath + '/' + this.state.filename + '.svg'
+            path.push(photoPath)
+            const svgFile = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' + this.props.photo.image
+            let photoResult = await RNFS.writeFile(path[1], svgFile, 'utf8');
+//>>>>>>> dev
         }
   //      console.log("this.state.data: " + this.state.data)
         console.log("this.state.format: " + this.state.format)
@@ -164,43 +193,81 @@ class EmailFinalReport extends Component {
         var deleted = await clearBackgroundSave.deleteCapturedState();
 
         return path;
+//<<<<<<< HEAD
+//=======
+    } catch(error) {
+      console.log( "ERROR:", error.message);
+      return null;
+    }
+//>>>>>>> dev
   }
 
   // send email based on the inputted filename
   // leave everything else blank, except subject (subject = filename)
   async sendEmail(path, filename) {
-
-    console.log('Sending email!' + path);
-    var fp = []
-    for (let i = 0; i < this.state.format.length; i++){
-        var str = path + "." + this.state.format[i];
-        fp.push({path:str, type:this.state.format[i]})
+//<<<<<<< HEAD
+//
+//    console.log('Sending email!' + path);
+//    var fp = []
+//    for (let i = 0; i < this.state.format.length; i++){
+//        var str = path + "." + this.state.format[i];
+//        fp.push({path:str, type:this.state.format[i]})
+//    }
+//
+//        await Mailer.mail({
+//          subject: "Sending " + "\"" + filename + "\"",
+//          recipients: [''],
+//          ccRecipients: [''],
+//          bccRecipients: [''],
+//          body: '',
+//          customChooserTitle: "Send Crash Report", // Android only (defaults to "Send Mail")
+//          isHTML: true,
+//          attachments: fp,
+//        }, (error, event) => {
+//          console.log('errror', error)
+//          Alert.alert(
+//            error,
+//            event,
+//            [
+//              {text: 'Ok', onPress: () => console.log('OK: Email Error Response')},
+//              {text: 'Cancel', onPress: () => console.log('CANCEL: Email Error Response')}
+//            ],
+//            { cancelable: true }
+//          )
+//        });
+//
+//
+//
+//=======
+    let attachments
+    if (filename.includes('xlsx') && this.props.photo.image.length) {
+        attachments = [{path:path[0]}, {path:path[1]}]
+    } else {
+        attachments = [{path:path[0]}]
     }
-
-        await Mailer.mail({
-          subject: "Sending " + "\"" + filename + "\"",
-          recipients: [''],
-          ccRecipients: [''],
-          bccRecipients: [''],
-          body: '',
-          customChooserTitle: "Send Crash Report", // Android only (defaults to "Send Mail")
-          isHTML: true,
-          attachments: fp,
-        }, (error, event) => {
-          console.log('errror', error)
-          Alert.alert(
-            error,
-            event,
-            [
-              {text: 'Ok', onPress: () => console.log('OK: Email Error Response')},
-              {text: 'Cancel', onPress: () => console.log('CANCEL: Email Error Response')}
-            ],
-            { cancelable: true }
-          )
-        });
-
-
-
+    console.log('Sending email!');
+    await Mailer.mail({
+      subject: "Sending " + "\"" + filename + "\"",
+      recipients: [''],
+      ccRecipients: [''],
+      bccRecipients: [''],
+      body: '',
+      customChooserTitle: "Send Crash Report", // Android only (defaults to "Send Mail")
+      isHTML: true,
+      attachments: attachments,
+    }, (error, event) => {
+      console.log('errror', error)
+      Alert.alert(
+        error,
+        event,
+        [
+          {text: 'Ok', onPress: () => console.log('OK: Email Error Response')},
+          {text: 'Cancel', onPress: () => console.log('CANCEL: Email Error Response')}
+        ],
+        { cancelable: true }
+      )
+    });
+//>>>>>>> dev
   }
   // handles the entire email workflow
   async handleEmail() {
@@ -240,7 +307,7 @@ class EmailFinalReport extends Component {
                     console.log(`number of pages: ${numberOfPages}`);
                 }}
                 onError={(error)=>{
-                    console.log(error);
+                    console.log("PDF error:",error);
                 }}
                 style={styles.pdf}/>
           </View>

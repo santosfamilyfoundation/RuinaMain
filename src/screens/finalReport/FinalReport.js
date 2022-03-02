@@ -20,6 +20,7 @@ import {
 import {
   MaterialDialog,
   SinglePickerMaterialDialog,
+  MultiPickerMaterialDialog,
 } from "react-native-material-dialog";
 import * as Constants from "../../constants";
 import Section from "../../components/Section";
@@ -32,7 +33,8 @@ class FinalReport extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chooseReportFormatVisible: false,
+      chooseLocalFormatVisible: false,
+      chooseEmailFormatVisible: false,
       chooseReportFormatSelectedItem: undefined,
       exportAction: undefined,
       directoryUri: "",
@@ -89,19 +91,27 @@ class FinalReport extends Component {
       ? ["json", "pdf", "html", "xlsx"]
       : ["pdf", "html", "xlsx"];
 
-    const cardButton = (message, navigateTo, disabledButton) => (
-      <Button
-        onPress={() =>
-          this.setState({
-            chooseReportFormatVisible: true,
-            exportAction: navigateTo,
-          })
-        }
-        isDisabled={!this.state.filePermissionsGranted || disabledButton}
-      >
-        {message}
-      </Button>
-    );
+    const cardButton = (message, navigateTo, disabledButton) => {
+      if (message.includes('Local Device')) {
+        return <Button onPress={() => this.setState({chooseLocalFormatVisible: true, exportAction: navigateTo})}
+            isDisabled={!this.state.filePermissionsGranted || disabledButton}
+          >
+            {message}
+          </Button>
+      } else if (message.includes('Email')) {
+      return <Button onPress={() => this.setState({chooseEmailFormatVisible: true,exportAction: navigateTo})}
+            isDisabled={!this.state.filePermissionsGranted || disabledButton}
+        >
+            {message}
+        </Button>
+      } else {
+        return <Button onPress={() => this.setState({exportAction: navigateTo})}
+            isDisabled={!this.state.filePermissionsGranted || disabledButton}
+        >
+            {message}
+        </Button>
+      }
+    };
 
     const feedbackButton = () => (
       <Button
@@ -111,57 +121,167 @@ class FinalReport extends Component {
       </Button>
     );
 
-
-        return (
-          <SafeAreaView style={{flex:1}}>
-            <TopNavigation title='Final Report' backButton navigation={navigation}>
-                <IconButton onPress={() => navigation.navigate('Welcome')} icon={<Icon color="white" size={25} name='file-document-outline'/>}  text='Start New Report'/>
-            </TopNavigation>
-            <Center>
-                <VStack space={8}>
-                    <Section title='Save to Local Device'>
-                     <Text my={2}>Press this button to save the crash report to local device.</Text>
-                     {cardButton('Save Report to Local Device', navigateSaveToDevice)}
-                    </Section>
-                    <Section title='Email'>
-                     <Text my={2}>Press this button to email the crash report.</Text>
-                     {cardButton('Email Report', navigateEmail)}
-                    </Section>
-                    <Section title='Save to Database'>
-                     <Text my={2}>FEATURE COMING SOON</Text>
-                     {cardButton('Save Report to Database', navigateDatabase, true)}
-                    </Section>
-                    <Section title='Feedback'>
-                     <Text my={2}>Tell us what you liked and what you did not like so we can make your experience better.</Text>
-                     {feedbackButton()}
-                    </Section>
-                </VStack>
-            </Center>
-                  <MultiPickerMaterialDialog
-                        title={"Choose report export format"}
-                        scrolled
-                        items={file_format_extensions.map((row, index) => ({ value: index, label: "." + row }))}
-                        visible={this.state.chooseReportFormatVisible}
-                        selectedItem={this.state.multiPickerSelectedItems}
-                        onCancel={() => this.setState({ chooseReportFormatVisible: false })}
-                        onOk={result => {
-                            this.setState({chooseReportFormatSelectedItem: result.selectedItems});
-                            console.log('chooseReportFormatSelectedItem:', this.state.chooseReportFormatSelectedItem);
-                            this.setState({chooseReportFormatVisible: false });
-                            console.log('result:', result.selectedItems);
-                            console.log('pop up window state:', this.state.chooseReportFormatVisible);
-                            var export_types = []
-                            for(let i = 0; i < result.selectedItems.length; i++){
-                                export_types.push(result.selectedItems[i].label.substring(1))
-                            }
-                            console.log('export_types:', export_types);
-                            this.state.exportAction(export_types);
-                            console.log('exportAction', this.state.exportAction)
-                        }}
-                    />
-          </SafeAreaView>
-        )
-    }
+//<<<<<<< HEAD
+//
+//        return (
+//          <SafeAreaView style={{flex:1}}>
+//            <TopNavigation title='Final Report' backButton navigation={navigation}>
+//                <IconButton onPress={() => navigation.navigate('Welcome')} icon={<Icon color="white" size={25} name='file-document-outline'/>}  text='Start New Report'/>
+//            </TopNavigation>
+//            <Center>
+//                <VStack space={8}>
+//                    <Section title='Save to Local Device'>
+//                     <Text my={2}>Press this button to save the crash report to local device.</Text>
+//                     {cardButton('Save Report to Local Device', navigateSaveToDevice)}
+//                    </Section>
+//                    <Section title='Email'>
+//                     <Text my={2}>Press this button to email the crash report.</Text>
+//                     {cardButton('Email Report', navigateEmail)}
+//                    </Section>
+//                    <Section title='Save to Database'>
+//                     <Text my={2}>FEATURE COMING SOON</Text>
+//                     {cardButton('Save Report to Database', navigateDatabase, true)}
+//                    </Section>
+//                    <Section title='Feedback'>
+//                     <Text my={2}>Tell us what you liked and what you did not like so we can make your experience better.</Text>
+//                     {feedbackButton()}
+//                    </Section>
+//                </VStack>
+//            </Center>
+//                  <MultiPickerMaterialDialog
+//                        title={"Choose report export format"}
+//                        scrolled
+//                        items={file_format_extensions.map((row, index) => ({ value: index, label: "." + row }))}
+//                        visible={this.state.chooseReportFormatVisible}
+//                        selectedItem={this.state.multiPickerSelectedItems}
+//                        onCancel={() => this.setState({ chooseReportFormatVisible: false })}
+//                        onOk={result => {
+//                            this.setState({chooseReportFormatSelectedItem: result.selectedItems});
+//                            console.log('chooseReportFormatSelectedItem:', this.state.chooseReportFormatSelectedItem);
+//                            this.setState({chooseReportFormatVisible: false });
+//                            console.log('result:', result.selectedItems);
+//                            console.log('pop up window state:', this.state.chooseReportFormatVisible);
+//                            var export_types = []
+//                            for(let i = 0; i < result.selectedItems.length; i++){
+//                                export_types.push(result.selectedItems[i].label.substring(1))
+//                            }
+//                            console.log('export_types:', export_types);
+//                            this.state.exportAction(export_types);
+//                            console.log('exportAction', this.state.exportAction)
+//                        }}
+//                    />
+//          </SafeAreaView>
+//        )
+//    }
+//=======
+    return (
+      <SafeAreaView style={{ flex: 1 }}>
+        <TopNavigation title="Final Report" backButton navigation={navigation}>
+          <IconButton
+            onPress={() => this.resetState()}
+            icon={<Icon color="white" size={25} name="file-document-outline" />}
+            text="Start New Report"
+          />
+        </TopNavigation>
+        <ScrollView>
+          <Center>
+            <VStack mt={5} space={9}>
+              <Section title="Save to Local Device">
+                <Text my={2}>
+                  Press this button to save the crash report to local device.
+                </Text>
+                {cardButton(
+                  "Save Report to Local Device",
+                  navigateSaveToDevice
+                )}
+              </Section>
+              <Section title="Email">
+                <Text my={2}>Press this button to email the crash report.</Text>
+                {cardButton("Email Report", navigateEmail)}
+              </Section>
+              <Section title="Save to Database">
+                <Text my={2}>FEATURE COMING SOON</Text>
+                {cardButton("Save Report to Database", navigateDatabase, true)}
+              </Section>
+              <Section title="Feedback">
+                <Text my={2}>
+                  Tell us what you liked and what you did not like so we can
+                  make your experience better.
+                </Text>
+                {feedbackButton()}
+              </Section>
+            </VStack>
+          </Center>
+          <MultiPickerMaterialDialog
+            title={"Choose report export format"}
+            scrolled
+            items={file_format_extensions.map((row, index) => ({
+              value: index,
+              label: "." + row,
+            }))}
+            visible={this.state.chooseLocalFormatVisible}
+            selectedItem={this.state.multiPickerSelectedItems}
+            onCancel={() => this.setState({ chooseLocalFormatVisible: false })}
+            onOk={(result) => {
+              this.setState({
+                chooseReportFormatSelectedItem: result.selectedItems,
+              });
+              console.log(
+                "chooseReportFormatSelectedItem:",
+                this.state.chooseReportFormatSelectedItem
+              );
+              this.setState({ chooseLocalFormatVisible: false });
+              console.log("result:", result.selectedItems);
+              console.log(
+                "pop up window state:",
+                this.state.chooseLocalFormatVisible
+              );
+              var export_types = [];
+              for (let i = 0; i < result.selectedItems.length; i++) {
+                export_types.push(result.selectedItems[i].label.substring(1));
+              }
+              console.log("export_types:", export_types);
+              this.state.exportAction(export_types, this.state.directoryUri);
+              console.log("exportAction", this.state.exportAction);
+            }}
+          />
+          <SinglePickerMaterialDialog
+              title={"Choose report export format"}
+              scrolled
+              items={file_format_extensions.map((row, index) => ({
+                value: index,
+                label: "." + row,
+              }))}
+              visible={
+                this.state.chooseEmailFormatVisible
+              }
+              selectedItem={this.state.chooseReportFormatSelectedItem}
+              onCancel={() => this.setState({ chooseEmailFormatVisible: false })}
+              onOk={(result) => {
+                this.setState({
+                  chooseReportFormatSelectedItem: result.selectedItem,
+                });
+                this.setState({ chooseEmailFormatVisible: false });
+                console.log(
+                  "selected:",
+                  this.state.chooseReportFormatSelectedItem
+                );
+                console.log("result:", result.selectedItem);
+                console.log(
+                  "pop up window state:",
+                  this.state.chooseEmailFormatVisible
+                );
+                this.state.exportAction(
+                  result.selectedItem.label.substring(1),
+                  this.state.directoryUri
+                );
+              }}
+            />
+        </ScrollView>
+      </SafeAreaView>
+    );
+  }
+//>>>>>>> dev
 }
 
 const mapStateToProps = (state) => {
@@ -178,4 +298,7 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps)(FinalReport);
+//<<<<<<< HEAD
 
+//=======
+//>>>>>>> dev
