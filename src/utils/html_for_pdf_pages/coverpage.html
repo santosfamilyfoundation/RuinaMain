@@ -1,0 +1,235 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Crash Form Cover</title>
+
+  <link rel="stylesheet" href="styles.css?v=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Roboto:300,400,500" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container">
+
+	<div class="row">
+		<h4 class="inline right"> Page 1 of ##</h4>
+		<h1 class="inline">Ruina Motor Vehicle Crash Report</h1>
+
+		<hr>
+	</div>
+
+	<div class="row">
+		<div class="column left half">
+			<h4># Motor Vehicles</h4>
+			<h4># Non-motorists</h4>
+			<h4 id="road-severity">Crash Severity:</h4>
+      <h4 id="road-sourceInfo">Reporting *Officer or Citizen*: printed name when applicable</h4>
+		</div>
+		<div class="column right half">
+			<h4 id="road-crashIdentifier">Crash Identifier: ######</h4>
+			<h4 id="road-agencyIdentifier">Agency Crash Identifier: ####</h4>
+			<h4 id="road-lawEnforcementIdentifier">Reporting Agency:</h4>
+			<h4 class="sig-box">signature</h4>
+		</div>
+	</div>
+
+	<table>
+		<th class="boxheader" colspan="3">
+			<h3> Crash date, time, and location</h3>
+		</th>
+		<tbody>
+			<tr>
+				<td rowspan="2">
+					<p class="field">Crash Date and Time</p>
+					<p class="fieldresponse" id="road-dateTimeMilitary">for visual</p>
+				</td>
+				<td rowspan="2">
+					<p class="field">Crash County</p>
+					<p class="fieldresponse" id="road-county"></p>
+				</td>
+				<td>
+					<p class="field">Within Interchange Area</p>
+					<p class="fieldresponse" id="road-withinInterchange"></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p class="field">Specific Location</p>
+					<p class="fieldresponse" id="road-specificLocation"></p>
+				</td>
+			</tr>
+			<tr>
+        <td>
+          <p class="field">Time of Roadway Clearance</p>
+          <p class="fieldresponse" id="road-timeClearance"></p>
+        </td>
+        <td>
+          <p class="field">Crash City/Place</p>
+          <p class="fieldresponse" id="road-city"></p>
+        </td>
+				<td>
+					<p class="field">Number of Approaches</p>
+					<p class="fieldresponse" id="road-numApproaches"></p>
+				</td>
+			</tr>
+			<tr>
+        <td>
+          <p class="field">Ownership</p>
+          <p class="fieldresponse" id="road-ownership"></p>
+        </td>
+				<td>
+          <p class="field">Latitude</p>
+          <p class="fieldresponse" id="road-latitude"></p>
+        </td>
+				<td class="databox">
+					<p class="field">Overall Intersection Geometry</p>
+					<p class="fieldresponse" id="road-intersectionGeometry"></p>
+				</td>
+			</tr>
+			<tr>
+        <td class="databox">
+          <p class="field">Characteristics</p>
+          <p class="fieldresponse" id="road-characteristics"></p>
+        </td>
+        <td class="databox">
+          <p class="field">Longitude</p>
+          <p class="fieldresponse" id="road-longitude"></p>
+        </td>
+				<td>
+          <p class="field">Overall Traffic Control Device</p>
+          <p class="fieldresponse" id="road-overallTCD"></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+  <table>
+    <th class="boxheader" colspan="3">
+        <h3> Crash factors and conditions</h3>
+    </th>
+    <tbody>
+      <tr>
+        <td>
+          <p class="field">Secondary Crash</p>
+          <p class="fieldresponse" id="road-secondary"></p>
+        </td>
+        <td>
+          <p class="field">Weather Conditions</p>
+          <p class="fieldresponse" id="road-weatherConditions"></p>
+        </td>
+        <td>
+          <p class="field">Number of Non-Fatally Injured Persons</p>
+          <p class="fieldresponse" id="PPxIpVat"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">First Harmful Event</p>
+          <p class="fieldresponse" id="road-firstHarmfulEvent"></p>
+        </td>
+        <td>
+          <p class="field">Light Conditions</p>
+          <p class="fieldresponse" id="road-lightConditions"></p>
+        </td>
+        <td>
+          <p class="field">Alcohol Involvement</p>
+          <p class="fieldresponse" id="8pdkF3He"></p>
+        </td>
+      </tr>
+      <tr>
+        <td rowspan="2">
+          <p class="field">Location of First Harmful Event Relative to the Trafficway</p>
+          <p class="fieldresponse" id="road-locationFirstHarmful"></p>
+        </td>
+        <td>
+          <p class="field">Roadway Surface Condition</p>
+          <p class="fieldresponse" id="road-surfaceCondition"></p>
+        </td>
+        <td>
+          <p class="field">Drug Involvement</p>
+          <p class="fieldresponse" id="tJhmN6cf"></p>
+        </td>
+      </tr>
+      <tr>
+
+        <td rowspan="2">
+          <p class="field">Contributing Circumstances - Roadway Environment</p>
+          <p class="fieldresponse" id="road-roadwayEnvironment"></p>
+        </td>
+        <td>
+          <p class="field">School Bus-Related?</p>
+          <p class="fieldresponse" id="road-schoolBus"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field"> Manner of Crash/Collision Impact</p>
+          <p class="fieldresponse" id="road-mannerCollision"></p>
+        </td>
+        <td>
+          <p class="field">Construction or Work Zone Related?</p>
+          <p class="fieldresponse" id="road-workzoneRelated"></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <th class="boxheader" colspan="3">
+      <h3>Crash Description</h3>
+    </th>
+    <tbody>
+      <tr>
+        <td colspan="3">
+          <p class="fieldresponse" id="road-description"></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+      <th class="boxheader" colspan="3">
+          <h3>Crash Diagram</h3>
+      </th>
+      <tbody>
+      <tr>
+          <td colspan="3">
+              <img class="fieldresponse" id="crashDiagram" />
+          </td>
+      </tr>
+      </tbody>
+  </table>
+
+  <table>
+    <th class="boxheader" colspan="3">
+      <h3>Construction Information</h3>
+    </th>
+    <tbody>
+      <tr>
+        <td rowspan="2">
+          <p class="field">Crash Location</p>
+          <p class="fieldresponse" id="road-locationWorkZone"></p>
+        </td>
+        <td rowspan="2">
+          <p class="field">Type of Work Zone</p>
+          <p class="fieldresponse" id="road-typeWorkZone"></p>
+        </td>
+        <td>
+          <p class="field">Workers Present?</p>
+          <p class="fieldresponse" id="road-workersPresent"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="field">Law Enforcement Present?</p>
+          <p class="fieldresponse" id="road-lawEnforcementPresent"></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>
