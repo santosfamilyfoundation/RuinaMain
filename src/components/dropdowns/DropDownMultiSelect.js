@@ -8,8 +8,10 @@ import QuestionSection from '../QuestionSection';
 import SectionedMultiSelect from 'react-native-sectioned-multi-select';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import SelectionValidation from '../../utils/SelectionValidation.js'
+import { Box, NativeBaseProvider } from "native-base";
 
 const DropDownMultiSelect = (props) => {
+    const [border_color, set_border_color] = React.useState("coolGray.200")
     const [errors, setErrors] = React.useState({});
     const [selectedOptions, setSelectedOptions] = React.useState([]);
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
@@ -94,19 +96,16 @@ const DropDownMultiSelect = (props) => {
 
     const validateLocal = (localInfo) => {
         let selectionValidation = SelectionValidation
-             console.log(localInfo)
              selectionValidation.validateField(localInfo);
              let localStatus = selectionValidation.status
-             console.log('at the right place, at least')
              if (localStatus) {
-                console.log(localStatus, ' local Status')
+                set_border_color("coolGray.200")
                 setIsInvalid(false);
-                console.log('selectedOptions', selectedOptions)
 
              }
              else {
                 setIsInvalid(true);
-                console.log('this part, yikes')
+                set_border_color("error.500")
                 return;
              }
     }
@@ -141,25 +140,21 @@ const DropDownMultiSelect = (props) => {
     const addOption = (selectedItems) => {
         let upperLim = data.helperText
         let upperLimParsed = parseInt(upperLim[upperLim.length - 2])
-        console.log('new testing block', upperLimParsed)
-        if (!selectedItems){
+        if (!selectedItems && selectedOptions){
             if (selectedOptions.length > upperLimParsed){
                 validateLocal([])
                 return
             }
-            console.log('check here: ', selectedOptions)
             validateLocal(selectedOptions)
             return
         }
         if(selectedItems.length == 0) {
-            console.log('no one expected this one!!')
             setSelectedOptions([])
             validateLocal([])
             submitFunction({id, question: currId, selection: null})
             return;
         }
         if (selectedItems.length > upperLimParsed){
-           console.log('it is passing through hallowed grounds')
            validateLocal([])
            setSelectedOptions(selectedItems)
            submitField(selectedItems)
@@ -169,7 +164,6 @@ const DropDownMultiSelect = (props) => {
            setIsInvalid(false)
         }
         setSelectedOptions(selectedItems);
-        console.log("this is what I'm getting", selectedOptions)
         let localInfo = selectedItems.concat(selectedOptions)
         validateLocal(localInfo)
         submitField(selectedItems);
@@ -189,6 +183,7 @@ const DropDownMultiSelect = (props) => {
                 errorMessage='Invalid input, make sure you satisfy the question requirements'
                 isInvalid={isInvalid}
             >
+                <Box borderColor={border_color} borderWidth ="1">
                 <SectionedMultiSelect
                   items={data.answerOptions}
                   IconRenderer={Icon}
@@ -205,6 +200,7 @@ const DropDownMultiSelect = (props) => {
                   onCancel={addOption}
                   showCancelButton={true}
                 />
+                </Box>
             </QuestionSection>
         )
     }else{

@@ -8,6 +8,7 @@ import SectionedMultiSelect from 'react-native-sectioned-multi-select';
 import TooltipView from '../Tooltip';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import SelectionValidation from '../../utils/SelectionValidation.js'
+import { Box, NativeBaseProvider } from "native-base";
 
 const CountyDropDown = (props) => {
     // json created from running:
@@ -16,6 +17,7 @@ const CountyDropDown = (props) => {
     const countiesByStates = require('../../data/stateCountyMapping.json');
 
     const [selectedOption, setSelectedOption] = React.useState([]);
+    const [border_color, set_border_color] = React.useState("coolGray.200")
     const [deleteCountyFromState, setDeleteCountyFromState] = React.useState(false);
     const { data, key, id, questionReducer, submitFunction, updateResponse, deleteRoadSingleResponse } = props;
     const [isInvalid, setIsInvalid] = React.useState(false);
@@ -38,11 +40,14 @@ const CountyDropDown = (props) => {
                     if (existingDataState != null) {
                         // Check if county answer in redux is part of the list of counties under
                         // the state answer in redux
+                        if (countiesByStates[existingDataState]){
+
                         const correspondingCounties = countiesByStates[existingDataState];
                         if (correspondingCounties.includes(existingData[currId])) {
                             let curOption = [existingData[currId]];
                             setSelectedOption(curOption);
                         }
+                       }
                     }
                 }
             }
@@ -100,20 +105,44 @@ const CountyDropDown = (props) => {
 
     let countyOptions = [];
     if (existingDataState) {
+        if(countiesByStates[existingDataState]){
         countyOptions = countiesByStates[existingDataState].sort().map(county => {
             return { "name": county }
         });
-    } else {
+    }} else {
         countyOptions = [{
             "name": "Please select a state..."
         }]
     }
+
+    const validateLocal = (localInfo) => {
+        if (!localInfo){
+            setIsInvalid(true);
+            set_border_color("error.500")
+            return
+        }
+        let selectionValidation = SelectionValidation
+             selectionValidation.validateField(localInfo);
+             let localStatus = selectionValidation.status
+             if (localStatus) {
+                set_border_color("coolGray.200")
+                setIsInvalid(false);
+
+             }
+             else {
+                setIsInvalid(true);
+                set_border_color("error.500")
+                return;
+             }
+    }
+
     const submitField = (selection) => {
         if (!selection || selection.length == 0) {
-            setSelectedOptions([]);
+            setSelectedOption([]);
             return submitFunction({id, question: currId, selection: null});
         }
         let selected = selection[0]
+        validateLocal(selected)
         updateResponse && updateResponse({ id, question: currId, selection: selected })
         setSelectedOption(selection);
 
@@ -129,7 +158,10 @@ const CountyDropDown = (props) => {
             title={data.question}
             helperText={data.helperText}
             tooltip={tooltip()}
+            isInvalid={isInvalid}
+            errorMessage={'Please Select a County'}
         >
+                <Box borderColor={border_color} borderWidth ="1">
                 <SectionedMultiSelect
                   items={countyOptions}
                   IconRenderer={Icon}
@@ -141,7 +173,9 @@ const CountyDropDown = (props) => {
                   hideConfirm={true}
                   single={true}
                   showCancelButton={true}
+                  onCancel={validateLocal}
                 />
+                </Box>
         </QuestionSection>
     );
 };

@@ -5,11 +5,13 @@ import { connect } from 'react-redux';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
 import QuestionSection from '../QuestionSection';
+import { Box, NativeBaseProvider } from "native-base";
 import SectionedMultiSelect from 'react-native-sectioned-multi-select';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import SelectionValidation from '../../utils/SelectionValidation.js'
 
 const DropDownSingleSelect = (props) => {
+    const [border_color, set_border_color] = React.useState("coolGray.200")
     const [errors, setErrors] = React.useState({});
     const [selectedOptions, setSelectedOptions] = React.useState([]);
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
@@ -23,6 +25,7 @@ const DropDownSingleSelect = (props) => {
     if (selectedOptions) {
     // Populate if value already exists in redux
     if(selectedOptions.length == 0) {
+      if(data.answerOptions){
         if(existingData != null) {
             if(existingData[currId] != null) {
                 let currOptions = []
@@ -36,9 +39,11 @@ const DropDownSingleSelect = (props) => {
                 };
             };
         }
+       }
     };}
 
     // Disable/enable if numOptionsAllowed reached
+   if (data.answerOptions){
     if(selectedOptions.length == data.numOptionsAllowed) {
         for(let i = 0; i < data.answerOptions.length; i++) {
             if(!selectedOptions.includes(data.answerOptions[i])) {
@@ -51,6 +56,7 @@ const DropDownSingleSelect = (props) => {
                 data.answerOptions[i].disabled = false;
             };
         };
+    }
     }
 
     const setComplete = () => {
@@ -94,26 +100,21 @@ const DropDownSingleSelect = (props) => {
 
     const validateLocal = (localInfo) => {
         let selectionValidation = SelectionValidation
-             console.log(localInfo)
              selectionValidation.validateField(localInfo);
              let localStatus = selectionValidation.status
-             console.log('at the right place, at least')
              if (localStatus) {
-                console.log(localStatus, ' local Status')
+                set_border_color("coolGray.200")
                 setIsInvalid(false);
-                console.log('selectedOptions', selectedOptions)
-
              }
              else {
                 setIsInvalid(true);
-                console.log('this part, yikes')
+                set_border_color("error.500")
                 return;
              }
     }
 
     const submitField = (selectedItems, localInfo) => {
                  submitFunction({id, question: currId, selection: selectedItems})
-//                 setSelectedOptions(selectedItems);
         let resId = selectedItems
 
         if (dependencyID==null || dependencyID.length == 1){
@@ -137,12 +138,10 @@ const DropDownSingleSelect = (props) => {
 
     const addOption = (selectedItems) => {
         if (!selectedItems){
-            console.log('check here: ', selectedOptions)
             validateLocal(selectedOptions)
             return
         }
         if(selectedItems.length == 0) {
-            console.log('no one expected this one!!')
             setSelectedOptions([])
             validateLocal([])
             submitFunction({id, question: currId, selection: null})
@@ -151,7 +150,6 @@ const DropDownSingleSelect = (props) => {
         if (selectedItems.length == 1){
             setIsInvalid(false)
             setSelectedOptions(selectedItems);
-            console.log("this is what I'm getting", selectedOptions)
             let localInfo = selectedOptions
             validateLocal(localInfo)
             submitField(selectedOptions);
@@ -180,6 +178,7 @@ const DropDownSingleSelect = (props) => {
                 errorMessage='Invalid Input'
                 isInvalid={isInvalid}
             >
+                <Box borderColor={border_color} borderWidth ="1">
                 <SectionedMultiSelect
                   items={data.answerOptions}
                   IconRenderer={Icon}
@@ -196,6 +195,7 @@ const DropDownSingleSelect = (props) => {
                   onCancel={addOption}
                   showCancelButton={true}
                 />
+                </Box>
             </QuestionSection>
         )
     }else{
