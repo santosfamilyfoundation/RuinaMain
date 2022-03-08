@@ -6,7 +6,7 @@ const TopNavigation = (props) => {
 
     return(
         <>
-         <HStack m={4} alignItems='center' justifyContent='space-between'>
+         <HStack m={4} alignItems='center' justifyContent={backButton||props.children ? 'space-between': 'center'}>
             {backButton ?
                 <IconButton
                  icon={<ArrowBackIcon name="arrow-back"/>}

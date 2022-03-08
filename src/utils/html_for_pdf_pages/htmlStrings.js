@@ -359,7 +359,7 @@ export const crashDataSectionString = `
       <tbody>
         <tr>
           <td colspan="3">
-            <img class="fieldresponse" id="crashDiagram" alt="Diagram of Car Crash"/>
+            <svg class="fieldresponse" id="crashDiagram"></svg>
           </td>
         </tr>
       </tbody>
