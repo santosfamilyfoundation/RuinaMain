@@ -268,25 +268,6 @@ class QuestionForm extends Component {
       )
     }
   }
-
-  }
-  return (
-    <SafeAreaView style={styles.container}>
-      <TopNavigation title={`Questions on ${questionDetail.name}`} backButton navigation={navigation}/>
-      <ScrollView>
-        <Box>
-            {renderSections(question)}
-        </Box>
-      </ScrollView>
-      <Divider />
-      <Box p={4}>
-        <Button onPress={()=> {navigation.goBack()}}>Save Progress</Button>
-      </Box>
-        <VStack alignItems="center" mt={2} mb={8}>
-          <TouchableOpacity onPress={() => Linking.openURL('https://forms.gle/aXVjxVrQU6jm3KUx6')}><Text style={{ color: 'blue' }}>Submit Feedback</Text></TouchableOpacity>
-        </VStack>
-    </SafeAreaView>
-  );
 }
 
 const mapDispatchToProps = {

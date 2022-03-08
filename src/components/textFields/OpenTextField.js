@@ -19,11 +19,6 @@ const OpenTextField = (props) => {
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
 
-<<<<<<< HEAD
-    // Populate if value already exists in redux
-=======
-
->>>>>>> dev
     if(!value) {
         if(existingData != null) {
             if(existingData[currId] != null && existingData[currId] != '' && !value) {
