@@ -29,14 +29,12 @@ class QuestionForm extends Component {
     super(props);
 
     this.state = {
-      loading: true,
-      sectionsVisible: false,
       questionDetail: props.questionDetail,
       navigation: props.navigation,
       updateResponse: props.updateResponse,
-      sections: undefined
     }
 
+    this.sections = undefined
     this.question = this.props.questionDetail.questions;
   }
 
@@ -46,9 +44,7 @@ class QuestionForm extends Component {
 
   componentDidMount() {
     console.log("Component did mount");
-    if (this.state.loading) {
-      this.renderSections();
-    }
+    this.renderSections();
   }
 
   questionProps(type, res) {
@@ -233,14 +229,14 @@ class QuestionForm extends Component {
     console.log("Starting to render all sections");
     const result = <Accordion index={[0]} mx={4} my={8}>{this.question.questionsData.map(item => this.renderSingleSection(item))}</Accordion>
     console.log("Finished rendering all sections");
-    this.setState({sections: result, sectionsVisible: true, loading: false })
+    this.sections = result;
   }
 
   render() {
     
     console.log('rendering');
 
-    if (!this.state.sectionsVisible) {
+    if (this.sections == undefined) {
       console.log('rendering loading');
       return (
         <SafeAreaView style={styles.container}>
@@ -251,7 +247,6 @@ class QuestionForm extends Component {
         </SafeAreaView>
       )
     }
-
     else {
       console.log('rendering sections');
       return (
