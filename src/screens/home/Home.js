@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import {
   View,
   ScrollView,
-  Keyboard,
   BackHandler,
-  Pressable,
   PermissionsAndroid,
   Linking,
 } from "react-native";
@@ -12,9 +10,8 @@ import { SafeAreaView } from "react-navigation";
 import { connect } from "react-redux";
 import { VStack, HStack, Box, Text, Image, Alert, Center } from "native-base";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { styles } from "./Home.style";
-import { questions } from "../../data/questions";
 import VehicleSection from "../formSections/VehicleSection";
+import { questionData } from '../../utils/questionParser';
 import NonMotoristSection from "../formSections/NonMotoristSection";
 import { addNonmotorist } from "../../actions/NonmotoristAction";
 import { addVehicle } from "../../actions/VehicleAction";
@@ -25,8 +22,6 @@ import Section from "../../components/Section";
 import IconButton from "../../components/IconButton";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import TopNavigation from "../../components/TopNavigation";
-import { launchCamera } from "react-native-image-picker";
-import { photoSave } from "../../utils/helperFunctions";
 import { SvgXml } from "react-native-svg";
 var uuid = require("react-native-uuid");
 
@@ -57,12 +52,6 @@ class Home extends Component {
     this.props.addVehicle({ vehicleID, driverID });
     this.props.addDriver({ driverID, vehicleID });
   }
-
-  filterQuestionsData = (questionType) => {
-    return questions.data.filter((question) =>
-      question.display.includes(questionType)
-    );
-  };
 
   // add event listener for when user clicks Android back button
   componentDidMount() {
@@ -116,12 +105,10 @@ class Home extends Component {
     captureState.captureCurrentState(JSON.stringify(data));
     // console.log('capturing current state at filepath:', this.state.filePath);
 
-    let roadQuestions = this.filterQuestionsData("road");
-
     // navigate to question form
-    const navigateQuestion = (form, id, type, name) => {
+    const navigateQuestion = (id, type, name) => {
       navigation.navigate("Question", {
-        questions: form.data,
+        questions: questionData(type),
         objectID: id,
         type,
         name,
@@ -215,7 +202,6 @@ class Home extends Component {
                   text={`Crash/Road \nForm`}
                   onPress={() =>
                     navigateQuestion(
-                      roadQuestions,
                       road.data[0].id,
                       "Road",
                       "Crash/Road"

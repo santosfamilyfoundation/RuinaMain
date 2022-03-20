@@ -23,7 +23,6 @@ import { updatePassenger } from '../../actions/PassengerAction';
 import { updateRoad } from '../../actions/RoadAction';
 import { updateResponse } from '../../actions/StoryActions';
 import TopNavigation from '../../components/TopNavigation';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 class QuestionForm extends Component {
   constructor(props) {
