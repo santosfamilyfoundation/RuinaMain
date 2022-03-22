@@ -63,14 +63,12 @@ const QuestionAutoCompleteDropDown = (props) => {
             }
         }
         submitFunction({id, question: currId, selection: value})
-//        setButtonAppearance('filled');
     }
 
     const clearField = () => {
         setValue('');
         setTitle('');
         submitFunction({id, question: currId, selection: null})
-//        setButtonAppearance('outline');
     }
 
     const onOptionSelect = (selection) => {
@@ -94,10 +92,6 @@ const QuestionAutoCompleteDropDown = (props) => {
             setButtonAppearance('outline');
         }
     }
-
-    /*const Header = () => (
-        <CardHeader title={data.question}/>
-    );*/
 
     const renderClear = (style) => (
         <Icon name='clear'/>
