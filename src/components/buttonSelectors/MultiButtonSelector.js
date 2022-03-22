@@ -32,17 +32,14 @@ const MultiButtonSelector = (props) => {
 
 
     const submitField = (optionText, idCode) => {
-//        setSelection(optionText);
         let selectionValidation = SelectionValidation
          selectionValidation.validateField(optionText);
          let localStatus = selectionValidation.status
-         console.log('at the right place, at least')
          if (localStatus) {
             setIsInvalid(false)
             setSelection(optionText);
          }
          else {
-            /* set box red here */
             setIsInvalid(true)
             setSelection(optionText);
          }
