@@ -8,7 +8,7 @@ import QuestionSection from '../QuestionSection';
 import SectionedMultiSelect from 'react-native-sectioned-multi-select';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import SelectionValidation from '../../utils/SelectionValidation.js'
-import { Box, NativeBaseProvider } from "native-base";
+import { Box } from "native-base";
 
 const DropDownMultiSelect = (props) => {
     const [border_color, set_border_color] = React.useState("coolGray.200")
