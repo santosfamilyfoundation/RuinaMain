@@ -30,19 +30,17 @@ const NumberButtonSelector = (props) => {
     }
 
     const submitField = (val) => {
-//        setSelection(val);
-        let selectionValidation = SelectionValidation
-                 selectionValidation.validateField(val);
-                 let localStatus = selectionValidation.status
-                 console.log('at the right place, at least')
-                 if (localStatus) {
-                    setIsInvalid(false)
-                    setSelection(val);
-                 }
-                 else {
-                    setIsInvalid(true)
-                    setSelection(val);
-                 }
+         let selectionValidation = SelectionValidation
+         selectionValidation.validateField(val);
+         let localStatus = selectionValidation.status
+         if (localStatus) {
+            setIsInvalid(false)
+            setSelection(val);
+         }
+         else {
+            setIsInvalid(true)
+            setSelection(val);
+         }
         if (dependencyID==null || dependencyID.length == 1){
             updateResponse && updateResponse({id, question: currId, selection: val})
         }else{
