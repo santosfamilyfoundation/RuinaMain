@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
 import QuestionSection from '../QuestionSection';
-import { Box, NativeBaseProvider } from "native-base";
+import { Box } from "native-base";
 import SectionedMultiSelect from 'react-native-sectioned-multi-select';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import SelectionValidation from '../../utils/SelectionValidation.js'
