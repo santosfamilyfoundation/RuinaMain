@@ -64,7 +64,8 @@ const MultiButtonSelector = (props) => {
     }
 
     const selectionSet = (currId) => {
-                 try {if (existingData[currId] != null){
+                 try {
+                     if (existingData[currId] != null){
                      return existingData[currId]
                  }
                  }
