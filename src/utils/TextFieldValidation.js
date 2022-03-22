@@ -5,7 +5,6 @@ export class TextFieldValidation {
         this.validationData = null;
     }
     debounceValidation(func, timeout){
-    console.log('debounceValidation')
         let timer;
           return (...args) => {
             clearTimeout(timer);
