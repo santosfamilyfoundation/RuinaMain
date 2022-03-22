@@ -90,7 +90,7 @@ const DropDownSingleSelect = (props) => {
             if (selectedOptions.length < existingData[currId].length) {
                 incompleteFlag = true;
             }
-            if(incompleteFlag) {
+            if (incompleteFlag) {
                 setIncomplete();
             } else {
                 setComplete();
@@ -141,7 +141,7 @@ const DropDownSingleSelect = (props) => {
             validateLocal(selectedOptions)
             return
         }
-        if(selectedItems.length == 0) {
+        if (selectedItems.length == 0) {
             setSelectedOptions([])
             validateLocal([])
             submitFunction({id, question: currId, selection: null})
