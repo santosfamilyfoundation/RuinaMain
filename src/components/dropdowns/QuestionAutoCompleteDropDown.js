@@ -42,9 +42,7 @@ const QuestionAutoCompleteDropDown = (props) => {
 
     const submitField = () => {
         if(!value) {
-            // potentially do validation here
-            console.log('this is when it would be invalid')
-
+            // TODO: Add validation. Check if nothing has been selected.
             return;
         }
         if (dependencyID==null || dependencyID.length == 1){
