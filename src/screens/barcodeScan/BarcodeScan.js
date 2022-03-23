@@ -3,14 +3,19 @@ import React, { PureComponent } from 'react';
 import { Button, StyleSheet, View } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 import { updateDriver } from '../../actions/DriverAction';
+import { updateVehicle } from '../../actions/VehicleAction';
 import { connect } from 'react-redux';
 import * as Constants from '../../constants';
 
 class BarcodeScan extends PureComponent {
   constructor(props) {
     super(props);
+    this.type = props.type
+    this.questionId = props.questionId
+    this.questionReducer = props.questionReducer
     this.state = {
       licenseData: '',
+      plate: ''
     };
   }
 
@@ -141,32 +146,38 @@ class BarcodeScan extends PureComponent {
   render() {
 
     const {barcodeScanAction, driver} = this.props;
-
-    return (
-      <View style={styles.container}>
-        <RNCamera
-          ref={ref => {
-            this.camera = ref;
-          }}
-          style={styles.preview}
-          type={RNCamera.Constants.Type.back}
-          flashMode={RNCamera.Constants.FlashMode.on}
-          androidCameraPermissionOptions={{
-            title: 'Permission to use camera',
-            message: 'We need your permission to use your camera',
-            buttonPositive: 'Ok',
-            buttonNegative: 'Cancel',
-          }}
-
-          onGoogleVisionBarcodesDetected={this.onGoogleVisionBarcodesDetected.bind(this)}
-          googleVisionBarcodeType={RNCamera.Constants.GoogleVisionBarcodeDetection.BarcodeType.PDF_417}
-          googleVisionBarcodeMode={
-            RNCamera.Constants.GoogleVisionBarcodeDetection.BarcodeMode.ALTERNATE
-          }
-        />
-        <Button title="Go back" onPress={() => this.props.navigation.goBack()} />
-      </View>
-    );
+    if (this.type == Constants.LICENSE) {
+      return (
+        <View style={styles.container}>
+          <RNCamera
+            ref={ref => {
+              this.camera = ref;
+            }}
+            style={styles.preview}
+            type={RNCamera.Constants.Type.back}
+            flashMode={RNCamera.Constants.FlashMode.on}
+            androidCameraPermissionOptions={{
+              title: 'Permission to use camera',
+              message: 'We need your permission to use your camera',
+              buttonPositive: 'Ok',
+              buttonNegative: 'Cancel',
+            }}
+  
+            onGoogleVisionBarcodesDetected={this.onGoogleVisionBarcodesDetected.bind(this)}
+            googleVisionBarcodeType={RNCamera.Constants.GoogleVisionBarcodeDetection.BarcodeType.PDF_417}
+            googleVisionBarcodeMode={
+              RNCamera.Constants.GoogleVisionBarcodeDetection.BarcodeMode.ALTERNATE
+            }
+          />
+          <Button title="Go back" onPress={() => this.props.navigation.goBack()} />
+        </View>
+      );
+    }
+    else if (this.type == CONSTANTS.PLATE) {
+      return (
+        <View>Hello, World!</View>
+      )
+    }
   }
 }
 

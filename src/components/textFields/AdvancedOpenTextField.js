@@ -42,7 +42,7 @@ const AdvancedOpenTextField = (props) => {
       //submits data to reducer and is shown as complete
         submitFunction({id, question: currId, selection: text})
         switch(currId) {
-          case "Bw7d2KTr": // VIN question id
+          case "vehicle-VIN": // VIN question id
             if (!vinValidator.validate(value)) {
               setInvalidVin(true);
             } else {
