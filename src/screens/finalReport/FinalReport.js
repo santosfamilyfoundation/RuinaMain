@@ -245,7 +245,7 @@ class FinalReport extends Component {
               console.log("exportAction", this.state.exportAction);
             }}
           />
-          <SinglePickerMaterialDialog
+          <MultiPickerMaterialDialog
               title={"Choose report export format"}
               scrolled
               items={file_format_extensions.map((row, index) => ({
@@ -255,7 +255,7 @@ class FinalReport extends Component {
               visible={
                 this.state.chooseEmailFormatVisible
               }
-              selectedItem={this.state.chooseReportFormatSelectedItem}
+              selectedItem={this.state.multiPickerSelectedItems}
               onCancel={() => this.setState({ chooseEmailFormatVisible: false })}
               onOk={(result) => {
                 this.setState({
