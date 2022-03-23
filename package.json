@@ -96,5 +96,12 @@
       "<rootDir>/setupTest.js",
       "./__mocks__/mockFirebase.js"
     ]
+  },
+  "expo": {
+    "autolinking": {
+      "exclude": [
+        "react-native-reanimated"
+      ]
+    }
   }
 }
