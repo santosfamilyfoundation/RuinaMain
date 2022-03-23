@@ -31,6 +31,8 @@ export class backgroundSave {
                     }
                 }
             }
+            this.filePaths.sort()
+            this.filePaths.reverse()
         });
     }
 

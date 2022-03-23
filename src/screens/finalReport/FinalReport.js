@@ -20,6 +20,7 @@ import {
 import {
   MaterialDialog,
   SinglePickerMaterialDialog,
+  MultiPickerMaterialDialog,
 } from "react-native-material-dialog";
 import * as Constants from "../../constants";
 import Section from "../../components/Section";
@@ -32,7 +33,8 @@ class FinalReport extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chooseReportFormatVisible: false,
+      chooseLocalFormatVisible: false,
+      chooseEmailFormatVisible: false,
       chooseReportFormatSelectedItem: undefined,
       exportAction: undefined,
       directoryUri: "",
@@ -89,19 +91,27 @@ class FinalReport extends Component {
       ? ["json", "pdf", "html", "xlsx"]
       : ["pdf", "html", "xlsx"];
 
-    const cardButton = (message, navigateTo, disabledButton) => (
-      <Button
-        onPress={() =>
-          this.setState({
-            chooseReportFormatVisible: true,
-            exportAction: navigateTo,
-          })
-        }
-        isDisabled={!this.state.filePermissionsGranted || disabledButton}
-      >
-        {message}
-      </Button>
-    );
+    const cardButton = (message, navigateTo, disabledButton) => {
+      if (message.includes('Local Device')) {
+        return <Button onPress={() => this.setState({chooseLocalFormatVisible: true, exportAction: navigateTo})}
+            isDisabled={!this.state.filePermissionsGranted || disabledButton}
+          >
+            {message}
+          </Button>
+      } else if (message.includes('Email')) {
+      return <Button onPress={() => this.setState({chooseEmailFormatVisible: true,exportAction: navigateTo})}
+            isDisabled={!this.state.filePermissionsGranted || disabledButton}
+        >
+            {message}
+        </Button>
+      } else {
+        return <Button onPress={() => this.setState({exportAction: navigateTo})}
+            isDisabled={!this.state.filePermissionsGranted || disabledButton}
+        >
+            {message}
+        </Button>
+      }
+    };
 
     const feedbackButton = () => (
       <Button
@@ -149,39 +159,71 @@ class FinalReport extends Component {
               </Section>
             </VStack>
           </Center>
-          <SinglePickerMaterialDialog
+          <MultiPickerMaterialDialog
             title={"Choose report export format"}
             scrolled
             items={file_format_extensions.map((row, index) => ({
               value: index,
               label: "." + row,
             }))}
-            visible={
-              this.state.chooseReportFormatVisible &&
-              this.state.filePermissionsGranted
-            }
-            selectedItem={this.state.chooseReportFormatSelectedItem}
-            onCancel={() => this.setState({ chooseReportFormatVisible: false })}
+            visible={this.state.chooseLocalFormatVisible}
+            selectedItem={this.state.multiPickerSelectedItems}
+            onCancel={() => this.setState({ chooseLocalFormatVisible: false })}
             onOk={(result) => {
               this.setState({
-                chooseReportFormatSelectedItem: result.selectedItem,
+                chooseReportFormatSelectedItem: result.selectedItems,
               });
-              this.setState({ chooseReportFormatVisible: false });
               console.log(
-                "selected:",
+                "chooseReportFormatSelectedItem:",
                 this.state.chooseReportFormatSelectedItem
               );
-              console.log("result:", result.selectedItem);
+              this.setState({ chooseLocalFormatVisible: false });
+              console.log("result:", result.selectedItems);
               console.log(
                 "pop up window state:",
-                this.state.chooseReportFormatVisible
+                this.state.chooseLocalFormatVisible
               );
-              this.state.exportAction(
-                result.selectedItem.label.substring(1),
-                this.state.directoryUri
-              );
+              var export_types = [];
+              for (let i = 0; i < result.selectedItems.length; i++) {
+                export_types.push(result.selectedItems[i].label.substring(1));
+              }
+              console.log("export_types:", export_types);
+              this.state.exportAction(export_types, this.state.directoryUri);
+              console.log("exportAction", this.state.exportAction);
             }}
           />
+          <SinglePickerMaterialDialog
+              title={"Choose report export format"}
+              scrolled
+              items={file_format_extensions.map((row, index) => ({
+                value: index,
+                label: "." + row,
+              }))}
+              visible={
+                this.state.chooseEmailFormatVisible
+              }
+              selectedItem={this.state.chooseReportFormatSelectedItem}
+              onCancel={() => this.setState({ chooseEmailFormatVisible: false })}
+              onOk={(result) => {
+                this.setState({
+                  chooseReportFormatSelectedItem: result.selectedItem,
+                });
+                this.setState({ chooseEmailFormatVisible: false });
+                console.log(
+                  "selected:",
+                  this.state.chooseReportFormatSelectedItem
+                );
+                console.log("result:", result.selectedItem);
+                console.log(
+                  "pop up window state:",
+                  this.state.chooseEmailFormatVisible
+                );
+                this.state.exportAction(
+                  result.selectedItem.label.substring(1),
+                  this.state.directoryUri
+                );
+              }}
+            />
         </ScrollView>
       </SafeAreaView>
     );
