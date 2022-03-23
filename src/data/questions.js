@@ -2652,7 +2652,7 @@ export const questions = {
                     "numOptionsAllowed": "0.0",
                     "question": "Motor Vehicle License Plate Number",
                     "id": "21942696-8aa8-11ec-89db-397090b5a771",
-                    "answerType": "openTextBox",
+                    "answerType": "advancedOpenTextBox",
                     "autoMethod": "plateCamera",
                     "display": [
                         "vehicle"

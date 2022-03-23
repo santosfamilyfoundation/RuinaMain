@@ -1,6 +1,6 @@
 'use strict';
 import React, { PureComponent } from 'react';
-import { Button, StyleSheet, View } from 'react-native';
+import { Button, StyleSheet, View, Text } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 import { updateDriver } from '../../actions/DriverAction';
 import { updateVehicle } from '../../actions/VehicleAction';
@@ -10,9 +10,10 @@ import * as Constants from '../../constants';
 class BarcodeScan extends PureComponent {
   constructor(props) {
     super(props);
-    this.type = props.type
-    this.questionId = props.questionId
-    this.questionReducer = props.questionReducer
+    this.scanDetails = props.navigation.state.params
+    this.type = this.scanDetails.type
+    this.questionId = this.scanDetails.questionId
+    this.questionReducer = this.scanDetails.questionReducer
     this.state = {
       licenseData: '',
       plate: ''
@@ -173,9 +174,9 @@ class BarcodeScan extends PureComponent {
         </View>
       );
     }
-    else if (this.type == CONSTANTS.PLATE) {
+    else if (this.type == Constants.PLATE) {
       return (
-        <View>Hello, World!</View>
+        <View><Text>Hello, World!</Text></View>
       )
     }
   }
