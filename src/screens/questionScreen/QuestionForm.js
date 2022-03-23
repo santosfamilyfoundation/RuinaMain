@@ -193,8 +193,8 @@ class QuestionForm extends Component {
 	}
 
   componentDidMount() {
-    console.log("component did mount");
-    this.renderSections();
+    console.log("component did update");
+	this.renderSections();
     this.forceUpdate(); 
   }
 
