@@ -9,10 +9,8 @@ import backgroundSave from '../../utils/backgroundSave';
 import { MaterialDialog, SinglePickerMaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import { connect } from 'react-redux';
-import TopNavigation from '../TopNavigation';
 import getMobileSpreadsheet  from '../../utils/helperFunctions'
 import TopNavigation from '../../components/TopNavigation';
-
 import { resetDriver } from '../../actions/DriverAction';
 import { resetNonmotorist } from '../../actions/NonmotoristAction';
 import { resetPassenger } from '../../actions/PassengerAction';
@@ -35,52 +33,23 @@ class Welcome extends Component {
         filePickerDialogBoxVisible: false,
         filePathSelected: false,
         selectedFile: {label: "", value: ""},
-        filePermissionsGranted: false,
-        filePermissionsErrorMessageVisible: false
       };
       this.unfinishedReportsPresent = false
     }
 
-   requestExternalStoragePermission = async () => {
-       try {
-         const granted = await PermissionsAndroid.request(
-           PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-           {
-             title: "Android External Storage Permission",
-             message:
-               "Ruina needs access to your external storage to save the report ",
-             buttonNeutral: "Ask Me Later",
-             buttonNegative: "Cancel",
-             buttonPositive: "OK"
-           }
-         );
-         if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-           console.log("You can use external storage");
-         } else {
-           console.log("external permission denied");
-         }
-       } catch (err) {
-         console.warn(err);
-       }
-     };
+   async getMobileSpreadsheet(){
+        var RNFS = require('react-native-fs');
+        // create a path you want to write to
+        // :warning: on iOS, you cannot write into `RNFS.MainBundlePath`,
+        // but `RNFS.DocumentDirectoryPath` exists on both platforms and is writable
 
-//   getMobileSpreadsheet(){
-//
-//                var RNFS = require('react-native-fs');
-//
-//                // create a path you want to write to
-//                // :warning: on iOS, you cannot write into `RNFS.MainBundlePath`,
-//                // but `RNFS.DocumentDirectoryPath` exists on both platforms and is writable
-//                var path = RNFS.ExternalStorageDirectoryPath + '/test.html';
-//
-//                // write the file
-//                RNFS.downloadFile({
-//                          fromUrl: 'https://docs.google.com/spreadsheets/d/1IJQxPEhVJnvAXOn2gLR25wyBVPcpk7c6RwlQwd5M_Fc/edit?usp=sharing',
-//                          toFile: path
-//                      }).promise
-//                 }
-
-//This section would autodownload a file to the device on launch if it was uncommented. It's been commented out to prevent extraneous downloads.
+        var path = RNFS.DocumentDirectoryPath + '/questions';
+        // write the file
+        await RNFS.downloadFile({
+                  fromUrl: 'https://docs.google.com/spreadsheets/d/14lZRQR836xIVzGTcSNlvu_owYIPgiIrEJnS1P0VE2IE/edit?usp=sharing',
+                  toFile: path
+              })
+   }
 
     async componentDidMount() {
       this.props.resetDriver();
@@ -98,7 +67,6 @@ class Welcome extends Component {
       // console.log(this.stateManager.filePaths);
       // console.log(this.stateManager.filePaths.length == 0)
       this.setState({ loading: false });
-      await this.requestExternalStoragePermission
       this.getMobileSpreadsheet()
     }
 
@@ -152,7 +120,7 @@ class Welcome extends Component {
                                             selectedFile: result.selectedItem,
                                             autoSavedSession: true });
 
-                            this.props.navigation.navigate('Survey', {autoSavedSession: true, selectedFile: result.selectedItem});
+                            this.props.navigation.navigate('Survey', {autoSavedSession: true, selectedFile: result.selectedItem, questions: this.questions});
                         }}
 
                 />
