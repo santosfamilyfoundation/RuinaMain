@@ -13,7 +13,6 @@ import { connect } from "react-redux";
 import { VStack, HStack, Box, Text, Image, Alert, Center } from "native-base";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { styles } from "./Home.style";
-import { questions } from "../../data/questions";
 import VehicleSection from "../formSections/VehicleSection";
 import NonMotoristSection from "../formSections/NonMotoristSection";
 import { addNonmotorist } from "../../actions/NonmotoristAction";
@@ -32,10 +31,10 @@ var uuid = require("react-native-uuid");
 
 class Home extends Component {
   constructor(props) {
-    super(props);
-
+    super(props)
     this._addNonmotorist = this._addNonmotorist.bind(this);
     this._addVehicleSection = this._addVehicleSection.bind(this);
+    this.questions = this.props.navigation.getParam('questions')
 
     this.state = {
       edit: props.edit || false,
@@ -59,7 +58,7 @@ class Home extends Component {
   }
 
   filterQuestionsData = (questionType) => {
-    return questions.data.filter((question) =>
+    return this.questions.data.filter((question) =>
       question.display.includes(questionType)
     );
   };
@@ -120,8 +119,9 @@ class Home extends Component {
 
     // navigate to question form
     const navigateQuestion = (form, id, type, name) => {
+      console.log('LOGGING FORM', form)
       navigation.navigate("Question", {
-        questions: form.data,
+        questions: form,
         objectID: id,
         type,
         name,
@@ -133,6 +133,7 @@ class Home extends Component {
       const { edit } = this.state;
       return (
         <VehicleSection
+          questions={this.questions}
           edit={edit}
           key={index}
           navigation={navigation}
@@ -150,6 +151,7 @@ class Home extends Component {
       const { edit } = this.state;
       return (
         <NonMotoristSection
+          questions={this.questions}
           edit={edit}
           key={index}
           navigation={navigation}
