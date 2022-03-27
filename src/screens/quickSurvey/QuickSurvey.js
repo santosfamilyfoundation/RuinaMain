@@ -39,6 +39,7 @@ import TopNavigation from "../../components/TopNavigation";
 import { styles } from "./QuickSurvey.style";
 
 import { questions } from "../../data/questions";
+import { setupQuestions } from '../../utils/questionParser';
 import backgroundSave from "../../utils/backgroundSave";
 
 import { MaterialDialog } from "react-native-material-dialog";
@@ -303,15 +304,6 @@ class QuickSurvey extends Component {
       });
     };
 
-    // filter out questions in questions.js with particular display
-    const filterQuestionsData = (questionType) => {
-      return questions.data.filter((question) =>
-        question.display.includes(questionType)
-      );
-    };
-
-    let questionsData = filterQuestionsData("setup");
-
     const submitField = () => {
       //  console.log("Question", question);
       // updateResponse && updateResponse({id, question: currId, selection: idCode})
@@ -340,7 +332,7 @@ class QuickSurvey extends Component {
     };
 
     const renderedQuestions = () => {
-      let res = questionsData.map((question) => renderSingleQuestion(question));
+      let res = setupQuestions.map((question) => renderSingleQuestion(question));
       return res;
     };
     if (this.state.loading) {
