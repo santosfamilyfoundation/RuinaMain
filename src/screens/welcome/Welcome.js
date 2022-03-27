@@ -73,10 +73,10 @@ class Welcome extends Component {
     checkAutoSavedSession(){
         if (this.stateManager.filePaths != null) {
             this.setState({autoSavedSession : true, filePickerDialogBoxVisible: true});
-            console.log('Detect unfinished reports!');
+            // console.log('Detect unfinished reports!');
         } else {
             this.setState({ autoSavedSession: false, filePickerDialogBoxVisible: false });
-            console.log('No unfinished report!');
+            // console.log('No unfinished report!');
         }
     }
 

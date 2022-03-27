@@ -49,8 +49,8 @@ export function dependencyParser(response, data, formID) {
                         break;
                     }
                 }
-            }
-
+            }  
+            
             // if response was found, check that the response was correct
             if (dependentResponse) {
                 // there were multiple selections
@@ -66,7 +66,9 @@ export function dependencyParser(response, data, formID) {
                     renderComponent = true;
                 }
             }
+        
         }
+
     }
 
     // console.log('value of render component:', renderComponent)

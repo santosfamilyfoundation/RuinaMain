@@ -73,3 +73,6 @@ ios/Pods/
 
 #Anyline
 anylineConfigs/
+
+# VSCode
+.prettierrc

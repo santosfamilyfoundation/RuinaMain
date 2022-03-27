@@ -56,7 +56,6 @@
     "react-native-multi-selectbox": "^1.5.0",
     "react-native-multiple-select": "^0.5.7",
     "react-native-pdf": "^6.3.0",
-    "react-native-reanimated": "^2.2.3",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-safe-area-view": "^1.1.1",
     "react-native-screens": "^2.11.0",
@@ -99,5 +98,12 @@
       "<rootDir>/setupTest.js",
       "./__mocks__/mockFirebase.js"
     ]
+  },
+  "expo": {
+    "autolinking": {
+      "exclude": [
+        "react-native-reanimated"
+      ]
+    }
   }
 }

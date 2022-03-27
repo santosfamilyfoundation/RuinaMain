@@ -14,6 +14,7 @@ const MultiButtonSelectorQuickSurvey = (props) => {
   // obtained as inputs to component made in QuickSurvey
   const {data, quickSurveyReducer, submitFunction, updateResponse, dependencyID} = props;
   let currId = data.humanReadableId
+  console.log(data);
 
   // when button selected, set the option and update the quick survey setupData
   const submitField = (optionText, idCode) => {
@@ -66,9 +67,11 @@ const MultiButtonSelectorQuickSurvey = (props) => {
         return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
     }
 
-    console.log(typeof data.required)
+    var renderComponent = true;
+    if (data.questionDependency != undefined && props.response != null) {
+        renderComponent = dependencyParser(props.response, data, dependencyID)
+    }
 
-    var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
         <React.Fragment>

@@ -38,7 +38,7 @@ import MultiButtonSelectorQuickSurvey from "../../components/buttonSelectors/Mul
 import TopNavigation from "../../components/TopNavigation";
 import { styles } from "./QuickSurvey.style";
 
-import ProcessQuestions from '../../utils/ProcessQuestionsSheets';
+import ProcessQuestions from "../../utils/ProcessQuestionsSheets";
 import backgroundSave from "../../utils/backgroundSave";
 
 import { MaterialDialog } from "react-native-material-dialog";
@@ -90,8 +90,8 @@ class QuickSurvey extends Component {
   }
 
   async componentDidMount() {
-    this.questions = await ProcessQuestions()
-    console.log(this.questions)
+    this.questions = await ProcessQuestions();
+    console.log(this.questions);
     this.stateManager = new backgroundSave(
       this.state.autosavedFilePath.label,
       this.state.autoSavedSession
@@ -288,7 +288,7 @@ class QuickSurvey extends Component {
           edit: false,
           filePath: this.stateManager.path,
           openOldFile: true,
-          questions: this.questions
+          questions: this.questions,
         });
         return;
       }
@@ -301,21 +301,9 @@ class QuickSurvey extends Component {
         edit: false,
         filePath: this.stateManager.path,
         openOldFile: true,
-        questions: this.questions
+        questions: this.questions,
       });
     };
-
-    // filter out questions in questions.js with particular display
-    const filterQuestionsData = (questionType) => {
-      if (this.questions) {
-          return this.questions.data.filter((question) =>
-              question.display.includes(questionType)
-          );
-      } else  { return}
-
-    };
-
-    let questionsData = filterQuestionsData("setup");
 
     const submitField = () => {
       //  console.log("Question", question);
@@ -345,7 +333,9 @@ class QuickSurvey extends Component {
     };
 
     const renderedQuestions = () => {
-      let res = questionsData.map((question) => renderSingleQuestion(question));
+      let res = setupQuestions.map((question) =>
+        renderSingleQuestion(question)
+      );
       return res;
     };
     if (this.state.loading) {
