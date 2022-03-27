@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { styles } from '../home/Home.style';
-//import { Text, Card, Icon } from '@ui-kitten/components';
 import { Box, Text } from 'native-base';
 import { connect } from 'react-redux';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import { deleteNonmotorist } from '../../actions/NonmotoristAction';
-import {questions} from '../../data/questions';
+//import {questions} from '../../data/questions';
 import Section from '../../components/Section'
 import IconButton from '../../components/IconButton'
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -23,16 +22,16 @@ class NonMotoristSection extends Component{
     }
 
     filterQuestionsData = (questionType) => {
-        return questions.data.filter(question => question.display.includes(questionType));
+        return this.props.questions.data.filter(question => question.display.includes(questionType));
     }
 
     render(){
-        const {navigation, nonmotorist, index, edit, roadID} = this.props
+        const {navigation, nonmotorist, index, edit, roadID, questions} = this.props
         let nonmotoristQuestions = this.filterQuestionsData('nonmotorist');
 
         const navigateQuestion = (form, id, type, idx) => {
           var name = type + ' ' + idx;
-          navigation.navigate('Question', {questions: form.data, objectID: id, type, name, dependencyID: [0, 0, 0, id]})
+          navigation.navigate('Question', {questions: form.data, objectID: id, type, name, dependencyID: [0, 0, 0, id], defaultQuestions: this.props.questions})
         }
 
         // describes two different nonmotorist cards (edit and non edit modes)
