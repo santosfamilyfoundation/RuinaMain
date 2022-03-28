@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { combineReducers } from 'redux';
 import { SafeAreaView } from 'react-navigation';
 import { Linking, ActivityIndicator, Text, PermissionsAndroid } from 'react-native';
-import { Button, Divider, Container, Heading, VStack, Center, View, Spinner, Pressable, Box } from 'native-base';
+import { Button, Divider, Container, Heading, VStack, Center, View, Spinner, Pressable, Box, AlertDialog, Input } from 'native-base';
 import { styles } from './Welcome.style';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import backgroundSave from '../../utils/backgroundSave';
@@ -33,22 +33,24 @@ class Welcome extends Component {
         filePickerDialogBoxVisible: false,
         filePathSelected: false,
         selectedFile: {label: "", value: ""},
+        importQuestions: false,
+        link:"",
       };
       this.unfinishedReportsPresent = false
     }
 
-   async getMobileSpreadsheet(){
+   async getMobileSpreadsheet(link) {
         var RNFS = require('react-native-fs');
         // create a path you want to write to
         // :warning: on iOS, you cannot write into `RNFS.MainBundlePath`,
         // but `RNFS.DocumentDirectoryPath` exists on both platforms and is writable
-
         var path = RNFS.DocumentDirectoryPath + '/questions';
         // write the file
         await RNFS.downloadFile({
-                  fromUrl: 'https://docs.google.com/spreadsheets/d/14lZRQR836xIVzGTcSNlvu_owYIPgiIrEJnS1P0VE2IE/edit?usp=sharing',
+                  fromUrl: link,
                   toFile: path
               })
+        this.setState({importQuestions:false})
    }
 
     async componentDidMount() {
@@ -67,7 +69,6 @@ class Welcome extends Component {
       // console.log(this.stateManager.filePaths);
       // console.log(this.stateManager.filePaths.length == 0)
       this.setState({ loading: false });
-      this.getMobileSpreadsheet()
     }
 
     checkAutoSavedSession(){
@@ -79,6 +80,8 @@ class Welcome extends Component {
             // console.log('No unfinished report!');
         }
     }
+
+    handleAlertDialogClose = () => this.setState({importQuestions:false})
 
     render() {
         const navigateTo = (loc) => {
@@ -93,7 +96,9 @@ class Welcome extends Component {
          else {
             return (
             <React.Fragment>
-                <Center><TopNavigation title="RUINA" navigation = {this.props.navigation}/></Center>
+                <TopNavigation title="RUINA">
+                    <Button onPress={() => this.setState({importQuestions:true})}>Import Questions</Button>
+                </TopNavigation>
                 <Center flex={1} px="3">
                     <Box>
                         <Button onPress = {() => navigateTo('Survey')} size="lg" p={4}>Start New Report</Button>
@@ -105,9 +110,24 @@ class Welcome extends Component {
                     <Text textAlign="center">
                       {"Built by students at Olin College of Engineering in partnership with the Volpe Center and Santos Family Foundation"}
                     </Text>
-                 </VStack>
-
-                 <SinglePickerMaterialDialog
+                </VStack>
+                <AlertDialog isOpen={this.state.importQuestions} onClose={this.handleAlertDialogClose}>
+                    <AlertDialog.Content>
+                        <AlertDialog.CloseButton />
+                        <AlertDialog.Header>Import Crash Report Questions</AlertDialog.Header>
+                        <AlertDialog.Body>
+                            <Text>Enter the link to the Google Sheet containing your report questions. Double check that the sheet is viewable to anyone with the link.</Text>
+                            <Input my={4} value={this.state.link} onChangeText={(text) => {this.setState({link:text})}} placeholder="Spreadsheet Link"/>
+                        </AlertDialog.Body>
+                        <AlertDialog.Footer>
+                            <Button.Group space={2}>
+                                <Button colorScheme='coolGray' onPress={this.handleAlertDialogClose}>Cancel</Button>
+                                <Button onPress={() => this.getMobileSpreadsheet(this.state.link)}>Import</Button>
+                            </Button.Group>
+                        </AlertDialog.Footer>
+                    </AlertDialog.Content>
+                </AlertDialog>
+                <SinglePickerMaterialDialog
                     title={"Choose the unfinished report you want to continue"}
                     scrolled
                     items={this.stateManager.filePaths.map((row, index) => ({ value: index, label: row}))}
