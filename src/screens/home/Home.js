@@ -31,6 +31,7 @@ class Home extends Component {
 
     this._addNonmotorist = this._addNonmotorist.bind(this);
     this._addVehicleSection = this._addVehicleSection.bind(this);
+    this.questions = this.props.navigation.getParam('questions')
 
     this.state = {
       edit: props.edit || false,
@@ -108,7 +109,7 @@ class Home extends Component {
     // navigate to question form
     const navigateQuestion = (id, type, name) => {
       navigation.navigate("Question", {
-        questions: questionData(type),
+        questions: questionData(this.questions, type),
         objectID: id,
         type,
         name,
@@ -128,6 +129,7 @@ class Home extends Component {
           name={"Vehicle"}
           passenger={passenger}
           roadID={road.data[0].id}
+          questions={this.questions}
         />
       );
     });
@@ -143,6 +145,7 @@ class Home extends Component {
           nonmotorist={nonmotorist}
           index={index}
           roadID={road.data[0].id}
+          questions={this.questions}
         />
       );
     });
