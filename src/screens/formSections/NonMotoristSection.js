@@ -25,7 +25,7 @@ class NonMotoristSection extends Component {
   };
 
   render() {
-    const { navigation, nonmotorist, index, edit, roadID } = this.props;
+    const { navigation, nonmotorist, index, edit, roadID, questions } = this.props;
 
     const navigateQuestion = (form, id, type, idx) => {
       var name = type + " " + idx;
@@ -72,7 +72,7 @@ class NonMotoristSection extends Component {
           <IconButton
             onPress={() =>
               navigateQuestion(
-                questionData("Nonmotorist"),
+                questionData(questions, "Nonmotorist"),
                 nonmotorist.id,
                 "Nonmotorist",
                 index + 1

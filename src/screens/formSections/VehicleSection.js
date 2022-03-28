@@ -56,8 +56,7 @@ class VehicleSection extends Component{
     }
 
     render(){
-        const {navigation, vehicle, index, name, edit, passenger, roadID } = this.props
-
+        const {navigation, vehicle, index, name, edit, passenger, roadID, questions } = this.props
         // would need to refine if we want to put delete vehicle section icon next to card header
         // const VehiclesHeader = () => (
         //     <View style={{ flexDirection: 'row' }}>
@@ -96,7 +95,7 @@ class VehicleSection extends Component{
                 return (
               <IconButton topMargin={4} rightMargin={4} text={`Passenger ${idx + 1} \nForm`}
                 onPress={() =>
-                    navigateQuestion(questionData('Passenger'), passenger.id,
+                    navigateQuestion(questionData(questions, 'Passenger'), passenger.id,
                     'Passenger', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}
                 icon={<Icon color="white" name="person" size={50}/>}/>
                 )
@@ -191,7 +190,7 @@ class VehicleSection extends Component{
                         <IconButton
                          topMargin={4}
                          rightMargin={4}
-                         onPress = {() => navigateQuestion(questionData('Vehicle'), vehicle.id, 'Vehicle', (index+1), 0, [roadID, vehicle.id])}
+                         onPress = {() => navigateQuestion(questionData(questions, 'Vehicle'), vehicle.id, 'Vehicle', (index+1), 0, [roadID, vehicle.id])}
                          text={`${name} \nForm`}
                          icon={<Icon color='white' name='local-taxi' size={50}/>}
                          />
@@ -200,7 +199,7 @@ class VehicleSection extends Component{
                          topMargin={4}
                          rightMargin={4}
                          onPress={styles.individualCard}
-                         onPress= {() => navigateQuestion(questionData('Driver'), vehicle.driver, 'Driver', (index+1), 0, [roadID, vehicle.id])}
+                         onPress= {() => navigateQuestion(questionData(questions, 'Driver'), vehicle.driver, 'Driver', (index+1), 0, [roadID, vehicle.id])}
                          text={`Driver \nForm`}
                          icon={<Icon color='white' name='person' size={50}/>}
                         />}
