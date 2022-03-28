@@ -9,7 +9,6 @@ import backgroundSave from '../../utils/backgroundSave';
 import { MaterialDialog, SinglePickerMaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
 import { connect } from 'react-redux';
-import getMobileSpreadsheet  from '../../utils/helperFunctions'
 import TopNavigation from '../../components/TopNavigation';
 import { resetDriver } from '../../actions/DriverAction';
 import { resetNonmotorist } from '../../actions/NonmotoristAction';
@@ -20,6 +19,7 @@ import { resetQuiz } from '../../actions/QuickQuizActions';
 import { resetMap } from '../../actions/MapAction';
 import { resetStory } from '../../actions/StoryActions';
 import { resetPhoto } from '../../actions/PhotoAction';
+import RNFS from 'react-native-fs';
 
 class Welcome extends Component {
     constructor(props){
@@ -40,7 +40,6 @@ class Welcome extends Component {
     }
 
    async getMobileSpreadsheet(link) {
-        var RNFS = require('react-native-fs');
         // create a path you want to write to
         // :warning: on iOS, you cannot write into `RNFS.MainBundlePath`,
         // but `RNFS.DocumentDirectoryPath` exists on both platforms and is writable
@@ -68,6 +67,13 @@ class Welcome extends Component {
       this.unfinishedReportsAbsent = this.stateManager.filePaths.length == 0
       // console.log(this.stateManager.filePaths);
       // console.log(this.stateManager.filePaths.length == 0)
+      if (this.state.link === '') {
+        const spreadsheetExists = await RNFS.exists(RNFS.DocumentDirectoryPath + '/questions')
+        if (!spreadsheetExists) {
+            await this.getMobileSpreadsheet('https://docs.google.com/spreadsheets/d/1IJQxPEhVJnvAXOn2gLR25wyBVPcpk7c6RwlQwd5M_Fc/edit?usp=sharing');
+            console.log('got spreadsheet')
+        }
+      }
       this.setState({ loading: false });
     }
 
