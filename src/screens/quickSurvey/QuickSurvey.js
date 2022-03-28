@@ -39,6 +39,7 @@ import TopNavigation from "../../components/TopNavigation";
 import { styles } from "./QuickSurvey.style";
 
 import ProcessQuestions from "../../utils/ProcessQuestionsSheets";
+import { setupQuestions } from '../../utils/questionParser';
 import backgroundSave from "../../utils/backgroundSave";
 
 import { MaterialDialog } from "react-native-material-dialog";
@@ -91,7 +92,6 @@ class QuickSurvey extends Component {
 
   async componentDidMount() {
     this.questions = await ProcessQuestions();
-    console.log(this.questions);
     this.stateManager = new backgroundSave(
       this.state.autosavedFilePath.label,
       this.state.autoSavedSession
@@ -333,7 +333,7 @@ class QuickSurvey extends Component {
     };
 
     const renderedQuestions = () => {
-      let res = setupQuestions.map((question) =>
+      let res = setupQuestions(this.questions).map((question) =>
         renderSingleQuestion(question)
       );
       return res;
