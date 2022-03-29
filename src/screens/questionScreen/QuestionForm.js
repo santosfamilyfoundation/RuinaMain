@@ -40,12 +40,11 @@ class QuestionForm extends Component {
 			questionDetail: props.questionDetail,
 			navigation: props.navigation,
 			updateResponse: props.updateResponse,
+			loading: true
 		};
 
 		this.sections = undefined;
 		this.question = this.props.questionDetail.questions;
-    console.log('questions passed to this component:', this.question);
-		this.loading = true;
 	}
 
 	navigateToAdvanced(place, props) {
@@ -194,13 +193,15 @@ class QuestionForm extends Component {
 
   componentDidMount() {
     console.log("component did update");
-	this.renderSections();
-    this.forceUpdate(); 
+	const p = new Promise(r => setTimeout(() => {
+		this.renderSections();
+		this.setState({loading: false});
+	}));
   }
 
 	render() {
 		console.log("rendering");
-		if (this.loading) {
+		if (this.state.loading) {
 			console.log("rendering loading");
 			return (
 				<SafeAreaView style={styles.container}>
