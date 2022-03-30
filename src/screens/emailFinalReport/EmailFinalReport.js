@@ -35,7 +35,9 @@ class EmailFinalReport extends Component {
   }
 
   async componentDidMount() {
-      const format = this.props.navigation.state.params.format;
+      const format = this.props.navigation.getParam('format');
+      const questions = this.props.navigation.getParam('questions')
+
       // convert data to desired format
       const data = {
         driver: this.props.driver.data,
@@ -51,7 +53,7 @@ class EmailFinalReport extends Component {
       } else {
         console.log('desired format is not pdf')
         var converter = new JSONconverter();
-        var file = await converter.handleConverter(format, data);
+        var file = await converter.handleConverter(format, data, questions);
         var encoding = format === "xlsx" ? 'base64' : 'utf8';
         this.setState({data: file, encoding: encoding, format:format});
       }
@@ -88,7 +90,7 @@ class EmailFinalReport extends Component {
     // write the file
     try {
         let result = await RNFS.writeFile(path[0], this.state.data, this.state.encoding);
-        if (this.state.format === 'xlsx' && (this.props.photo.image.length > 0)) {
+        if (this.state.format === 'xlsx' && (this.props.photo.image)) {
             const photoPath = RNFS.DocumentDirectoryPath + '/' + this.state.filename + '.svg'
             path.push(photoPath)
             const svgFile = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' + this.props.photo.image
@@ -111,12 +113,13 @@ class EmailFinalReport extends Component {
   // leave everything else blank, except subject (subject = filename)
   async sendEmail(path, filename) {
     let attachments
-    if (filename.includes('xlsx') && this.props.photo.image.length) {
+    if (filename.includes('xlsx') && this.props.photo.image) {
         attachments = [{path:path[0]}, {path:path[1]}]
     } else {
         attachments = [{path:path[0]}]
     }
     console.log('Sending email!');
+    console.log('attachments', attachments)
     await Mailer.mail({
       subject: "Sending " + "\"" + filename + "\"",
       recipients: [''],
@@ -127,7 +130,7 @@ class EmailFinalReport extends Component {
       isHTML: true,
       attachments: attachments,
     }, (error, event) => {
-      console.log('errror', error)
+      console.log('error', error)
       Alert.alert(
         error,
         event,

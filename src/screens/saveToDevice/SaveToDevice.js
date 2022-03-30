@@ -56,7 +56,8 @@ class SaveToDevice extends Component {
   }
 
   async componentDidMount() {
-    const format = this.props.navigation.state.params.format;
+    const format = this.props.navigation.getParam('format');
+    const questions = this.props.navigation.getParam('questions')
     // convert data to desired format
     const export_data = {
       driver: this.props.driver.data,
@@ -72,7 +73,7 @@ class SaveToDevice extends Component {
         this.createPDF(export_data);
       } else {
         var converter = new JSONconverter();
-        var file = await converter.handleConverter(format[i], export_data);
+        var file = await converter.handleConverter(format[i], export_data, questions);
         var encoding =
           format[i] === "xlsx" ? EncodingType.Base64 : EncodingType.UTF8;
         var reportMimeType =
@@ -141,7 +142,7 @@ class SaveToDevice extends Component {
         this.state.filename + "." + format[i],
         this.state.reportMimeType[i]
       );
-      if (format[i] === "xlsx" && this.props.photo.image.length > 0) {
+      if (format[i] === "xlsx" && this.props.photo.image) {
         photoPath = await StorageAccessFramework.createFileAsync(
           directoryUri,
           this.state.filename + ".svg",
