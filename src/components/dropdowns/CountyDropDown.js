@@ -95,10 +95,12 @@ const CountyDropDown = (props) => {
         else {
             // when county selection falls under/is included in the state selection's county list
             // This is for the scenario when user changes state answer after filling out county question
+            if (countiesByStates[existingDataState]){
             if (countiesByStates[existingDataState].includes(existingData[currId])){
                 status = 'success';
             } else {
                 status = 'danger';
+            }
             }
         }
     }

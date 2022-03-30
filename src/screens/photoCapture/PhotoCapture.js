@@ -6,7 +6,6 @@ import firebase from 'react-native-firebase';
 import { connect } from 'react-redux';
 import { photoAction } from '../../actions/PhotoAction';
 import { RNCamera } from 'react-native-camera';
-import BasicDropDown from '../../components/dropdowns/BasicDropDown'
 import * as Constants from '../../constants';
 import { styles } from './PhotoCapture.style';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -144,7 +143,6 @@ class PhotoCapture extends Component {
                     }
                     </Layout>
                   <Layout style={styles.bottomControlBar}>
-                    <BasicDropDown data={objectData} selectFunction={this.setOption} isDisabled={isObjDisabled}/>
                     <Button style={styles.captureButton} appearance={"filled"} onPress={this.capture.bind(this)}>{"Capture"}</Button>
                   </Layout>
                 </Layout>
