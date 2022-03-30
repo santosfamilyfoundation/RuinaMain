@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { MaterialDialog } from "react-native-material-dialog";
 import { material } from "react-native-typography";
 import { deleteNonmotorist } from "../../actions/NonmotoristAction";
-import { questions } from "../../data/questions";
 import IconButton from "../../components/IconButton";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { questionData } from "../../utils/questionParser";
