@@ -223,8 +223,10 @@ class FinalReport extends Component {
             selectedItem={this.state.multiPickerSelectedItems}
             onCancel={() => this.setState({ chooseLocalFormatVisible: false })}
             onOk={(result) => {
+              this.setState({ multiPickerVisible: false });
+
               this.setState({
-                chooseReportFormatSelectedItem: result.selectedItems,
+                  chooseReportFormatSelectedItem: result.selectedItems,
               });
               console.log(
                 "chooseReportFormatSelectedItem:",
@@ -257,26 +259,28 @@ class FinalReport extends Component {
               }
               selectedItem={this.state.multiPickerSelectedItems}
               onCancel={() => this.setState({ chooseEmailFormatVisible: false })}
-              onOk={(result) => {
-                this.setState({
-                  chooseReportFormatSelectedItem: result.selectedItem,
-                });
-                this.setState({ chooseEmailFormatVisible: false });
-                console.log(
-                  "selected:",
-                  this.state.chooseReportFormatSelectedItem
-                );
-                console.log("result:", result.selectedItem);
-                console.log(
-                  "pop up window state:",
-                  this.state.chooseEmailFormatVisible
-                );
-                this.state.exportAction(
-                  result.selectedItem.label.substring(1),
-                  this.state.directoryUri
-                );
-              }}
-            />
+            onOk={(result) => {
+                      this.setState({
+                        chooseReportFormatSelectedItem: result.selectedItems,
+                      });
+                      console.log(
+                        "chooseReportFormatSelectedItem:",
+                        this.state.chooseReportFormatSelectedItem
+                      );
+                      this.setState({ chooseEmailFormatVisible: false });
+                      console.log("result:", result.selectedItems);
+                      console.log(
+                        "pop up window state:",
+                        this.state.chooseLocalFormatVisible
+                      );
+                      var export_types = [];
+                      for (let i = 0; i < result.selectedItems.length; i++) {
+                        export_types.push(result.selectedItems[i].label.substring(1));
+                      }
+                      console.log("export_types:", export_types);
+                      this.state.exportAction(export_types, this.state.directoryUri);
+                      console.log("exportAction", this.state.exportAction);
+                    }}            />
         </ScrollView>
       </SafeAreaView>
     );

@@ -138,43 +138,47 @@ class EmailFinalReport extends Component {
 //        } else {
 //          path = path_android;
 //=======
-  async saveDataInternal(filename) {
-    console.log(this.state)
+  async saveDataInternal() {
+    console.log("Stuff");
     var RNFS = require('react-native-fs');
-    var path = [RNFS.DocumentDirectoryPath + '/' + filename];
+    var path = RNFS.DocumentDirectoryPath;
+    console.log("FP", path)
+    var path_List = [];
     // write the file
     try {
-        let result = await RNFS.writeFile(path[0], this.state.data, this.state.encoding);
-        if (this.state.format === 'xlsx' && (this.props.photo.image.length > 0)) {
-            const photoPath = RNFS.DocumentDirectoryPath + '/' + this.state.filename + '.svg'
-            path.push(photoPath)
-            const svgFile = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' + this.props.photo.image
-            let photoResult = await RNFS.writeFile(path[1], svgFile, 'utf8');
-//>>>>>>> dev
-        }
+//        let result = await RNFS.writeFile(path, this.state.data, this.state.encoding);
   //      console.log("this.state.data: " + this.state.data)
         console.log("this.state.format: " + this.state.format)
-        console.log("file_path android: " + path_android)
-        for (let i = 0; i < format.length; i++){
+        for (let i = 0; i < this.state.format.length; i++){
         // write the file and save to Files app on device:
+          console.log("I was here")
+
             try {
-              if (format[i] == "pdf"){
-                  var filepath = path  + "." + format[i]
-                  console.log('data and encoding', format[i], this.state.encoding[i]);
+              var filepath = path  + "/"+ this.state.filename + "." + this.state.format[i]
+
+              if (this.state.format[i] == "pdf"){
+//                  console.log('data and encoding', this.state.format[i], this.state.encoding[i]);
                   RNFS.writeFile(filepath, this.state.data[i], "base64");
                   console.log(filepath);
   //                console.log('Data: ' + this.state.data[i]);
                   this.setState({ reportSavedMessageVisible: true });
 
               } else {
-                  var filepath = path  + "." + format[i]
-                  console.log('data and encoding', format[i], this.state.encoding[i]);
+//                  console.log('data and encoding', this.state.format[i], this.state.encoding[i]);
                   RNFS.writeFile(filepath, this.state.data[i], this.state.encoding[i]);
   //                console.log('FILE WRITTEN!');
   //                console.log('Data: ' + this.state.data[i]);
                   this.setState({ reportSavedMessageVisible: true });
+                  if (this.state.format[i] === 'xlsx' && (this.props.photo.image.length > 0)) {
+                      const photoPath = RNFS.DocumentDirectoryPath + '/' + this.state.filename + '.svg'
+                      path.push(photoPath)
+                      const svgFile = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' + this.props.photo.image
+                      let photoResult = await RNFS.writeFile(path[1], svgFile, 'utf8');
+                //>>>>>>> dev
+                  }
 
               }
+              path_List.push(filepath);
 
 
 
@@ -192,7 +196,7 @@ class EmailFinalReport extends Component {
         const clearBackgroundSave = new backgroundSave();
         var deleted = await clearBackgroundSave.deleteCapturedState();
 
-        return path;
+        return path_List;
 //<<<<<<< HEAD
 //=======
     } catch(error) {
@@ -239,13 +243,11 @@ class EmailFinalReport extends Component {
 //
 //
 //=======
-    let attachments
-    if (filename.includes('xlsx') && this.props.photo.image.length) {
-        attachments = [{path:path[0]}, {path:path[1]}]
-    } else {
-        attachments = [{path:path[0]}]
+    var fp = []
+    for (let i = 0; i < this.state.format.length; i++){
+        fp.push({path:path[i]})
     }
-    console.log('Sending email!');
+    console.log('Sending email!', fp);
     await Mailer.mail({
       subject: "Sending " + "\"" + filename + "\"",
       recipients: [''],
@@ -254,7 +256,7 @@ class EmailFinalReport extends Component {
       body: '',
       customChooserTitle: "Send Crash Report", // Android only (defaults to "Send Mail")
       isHTML: true,
-      attachments: attachments,
+      attachments: fp,
     }, (error, event) => {
       console.log('errror', error)
       Alert.alert(
@@ -280,7 +282,9 @@ class EmailFinalReport extends Component {
       return;
     }
     // save data internally
-    var path = await this.saveDataInternal(this.state.filename + "." + this.state.format);
+    var path = await this.saveDataInternal();
+;
+    console.log("path at handleEmail:",path)
     // send email
     await this.sendEmail(path, this.state.filename );
   }
