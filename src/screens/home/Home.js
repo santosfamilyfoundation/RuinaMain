@@ -177,7 +177,7 @@ class Home extends Component {
                   leftMargin={4}
                   text="Export Report"
                   onPress={() => {
-                    navigation.navigate("FinalReport");
+                    navigation.navigate("FinalReport", {questions: this.questions});
                   }}
                   icon={<Icon color="white" name="assignment" size={25} />}
                 />
