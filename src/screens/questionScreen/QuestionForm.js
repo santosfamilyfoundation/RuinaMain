@@ -223,21 +223,19 @@ class QuestionForm extends Component {
 						backButton
 						navigation={this.state.navigation}
 					/>
-					<VStack>
-						<ScrollView>
-							<Box>{this.sections}</Box>
-						</ScrollView>
-						<Divider />
-						<Box p={4}>
-							<Button
-								onPress={() => {
-									this.state.navigation.goBack();
-								}}
-							>
-								Save Progress
-							</Button>
-						</Box>
-					</VStack>
+                    <ScrollView>
+                        <Box>{this.sections}</Box>
+                    </ScrollView>
+                    <Divider />
+                    <Box p={4}>
+                        <Button
+                            onPress={() => {
+                                this.state.navigation.goBack();
+                            }}
+                        >
+                            Save Progress
+                        </Button>
+                    </Box>
 				</SafeAreaView>
 			);
 		}
