@@ -50,7 +50,9 @@ class SaveToDevice extends Component {
       data: [],
       encoding: [],
       format: [],
+
       reportMimeType: [],
+
       isPDF: false,
     };
   }
@@ -66,6 +68,7 @@ class SaveToDevice extends Component {
       road: this.props.road.data,
       photo: this.props.photo.image,
     };
+
     for (let i = 0; i < format.length; i++) {
       if (format[i] === "pdf") {
         console.log("PDF LOOP");
@@ -115,6 +118,7 @@ class SaveToDevice extends Component {
       this.state.format.push("pdf");
       this.state.reportMimeType.push("application/pdf");
     } catch (error) {
+
       console.log("this is the pdf converter error->", error);
     }
   }
@@ -125,6 +129,7 @@ class SaveToDevice extends Component {
   };
 
   async saveData() {
+
     const format = this.state.format;
     const directoryUri = this.props.navigation.state.params.directoryUri;
 
