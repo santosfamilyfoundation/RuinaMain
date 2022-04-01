@@ -3,7 +3,10 @@ import HtmlTableToJson from 'html-table-to-json';
 import uuid from 'uuid-random';
 
 const fetchData = async () => {
-    // Fetch the data from the downloaded spreadsheet and convert the HTML table to a JSON object
+    /*
+        This function fetches the file that holds the downloaded Google sheet and transforms the
+        data from an HTML table to JSON. Returns the JSON version of data.
+    */
     const data = await RNFS.readFile(RNFS.DocumentDirectoryPath + '/questions');
     const sheets = HtmlTableToJson.parse(data);
     sheets['_results'].shift();
@@ -11,6 +14,10 @@ const fetchData = async () => {
 }
 
 const processAnswerSheet = (sheet) => {
+    /*
+        This function takes the raw data of an answer sheet and formats it into a usable object.
+        Returns an array of answer objects.
+    */
     let answerSheet = []
     sheet.forEach(row => {
         columnValues = Object.values(row)
@@ -28,11 +35,16 @@ const processAnswerSheet = (sheet) => {
 }
 
 const processQuestionSheet = (sheet) => {
+    /*
+        This function takes the raw data of a question sheet and formats it into a usable object.
+        Returns an array of question objects and name of the sheet.
+    */
     let questionSheet = []
     let sheetName;
 
     for (const [index, val] of sheet.entries()) {
         columnValues = Object.values(val)
+        // Check if a row is empty, if empty continue looping through entries
         if (columnValues[0] === '') {
             continue
         }
@@ -53,6 +65,7 @@ const processQuestionSheet = (sheet) => {
         questionSheet.push(currRow)
     }
 
+    // Determine the name of the sheet and save the name
     if (questionSheet[0]['question_name'].includes('driver')) {sheetName = 'driver'}
     else if (questionSheet[0]['question_name'].includes('vehicle')) {sheetName = 'vehicle'}
     else if (questionSheet[0]['question_name'].includes('nonmotorist')) {sheetName = 'nonmotorist'}
@@ -64,6 +77,10 @@ const processQuestionSheet = (sheet) => {
 }
 
 const getInverseDependencies = (name, option, answers) => {
+    /*
+        This function gets all the dependencies for a question when specific dependencies are
+        excluded. The function returns all the valid dependencies.
+    */
     const subAnswers = answers.filter(answer => answer['question_name'] === name)
     let dependencies = []
     subAnswers.forEach(subAnswer => {
@@ -79,7 +96,11 @@ const getInverseDependencies = (name, option, answers) => {
 }
 
 const formatQuestions = (questions, sheetName, currQuestions, questionNameIdMap, answers) => {
-
+    /*
+        This function takes the question objects for a sheet and organizes it into the hierarchy
+        expected to assign the question to the proper accordion section. The function returns an
+        updated questions object and updated map of question IDs.
+    */
     let section;
     currQuestions.forEach(currQuestion => {
         const questionUid = uuid();
@@ -162,12 +183,20 @@ const formatQuestions = (questions, sheetName, currQuestions, questionNameIdMap,
 }
 
 const ProcessedQuestions = async () => {
+    /*
+        This function handles all the function calls that fetch the data and transform it the
+        expected format and structure in order to be parsed by the app. This function returns a
+        questions object that contains all the data from the downloaded spreadsheet.
+    */
     let sheets = {};
     let answers = []
     let questions = {'data': []}
     let questionNameIdMap = {}
 
+    // Get the data from the downloaded spreadsheet
     const data = await fetchData();
+
+    // Loop through the data and format it based on it being an answer sheet or a question sheet
     data.forEach(row => {
         row.shift()
         if (Object.keys(row[0]).includes('1020') || Object.keys(row[0]).includes('1050')) {
@@ -184,11 +213,12 @@ const ProcessedQuestions = async () => {
             answers = updatedAnswers
         }
     });
+
+    // Loop through all the processed question sheets and add them to the questions object
     for (const [name, data] of Object.entries(sheets)) {
         const [questionData, currQuestionNameIdMap] = formatQuestions(questions, name, data, questionNameIdMap, answers);
         questions = questionData
         questionNameIdMap = currQuestionNameIdMap
-        console.log('successfully')
     };
 
     questions.data.forEach(section => {
