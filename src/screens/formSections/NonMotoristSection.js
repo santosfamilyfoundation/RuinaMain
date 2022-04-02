@@ -6,7 +6,6 @@ import { material } from "react-native-typography";
 import { deleteNonmotorist } from "../../actions/NonmotoristAction";
 import IconButton from "../../components/IconButton";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import { questionData } from "../../utils/questionParser";
 
 class NonMotoristSection extends Component {
   constructor(props) {
@@ -71,7 +70,7 @@ class NonMotoristSection extends Component {
           <IconButton
             onPress={() =>
               navigateQuestion(
-                questionData(questions, "Nonmotorist"),
+                this.filterQuestionsData('nonmotorist'),
                 nonmotorist.id,
                 "Nonmotorist",
                 index + 1

@@ -11,7 +11,6 @@ import { connect } from "react-redux";
 import { VStack, HStack, Box, Text, Image, Alert, Center } from "native-base";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import VehicleSection from "../formSections/VehicleSection";
-import { questionData } from "../../utils/questionParser";
 import NonMotoristSection from "../formSections/NonMotoristSection";
 import { addNonmotorist } from "../../actions/NonmotoristAction";
 import { addVehicle } from "../../actions/VehicleAction";
@@ -53,6 +52,10 @@ class Home extends Component {
     this.props.addVehicle({ vehicleID, driverID });
     this.props.addDriver({ driverID, vehicleID });
   }
+
+  filterQuestionsData = (questionType) => {
+      return this.questions.data.filter((question) => question.display.includes(questionType));
+  };
 
   // add event listener for when user clicks Android back button
   componentDidMount() {
@@ -104,12 +107,13 @@ class Home extends Component {
       this.state.openOldFile
     );
     captureState.captureCurrentState(JSON.stringify(data));
-    // console.log('capturing current state at filepath:', this.state.filePath);
+
+    const roadForm = this.filterQuestionsData('road')
 
     // navigate to question form
-    const navigateQuestion = (id, type, name) => {
+    const navigateQuestion = (form, id, type, name) => {
       navigation.navigate("Question", {
-        questions: questionData(this.questions, type),
+        questions: form,
         objectID: id,
         type,
         name,
@@ -204,7 +208,7 @@ class Home extends Component {
                   topMargin={4}
                   text={`Crash/Road \nForm`}
                   onPress={() =>
-                    navigateQuestion(road.data[0].id, "Road", "Crash/Road")
+                    navigateQuestion(roadForm, road.data[0].id, "Road", "Crash/Road")
                   }
                   icon={<Icon color="white" name="edit-road" size={50} />}
                 />

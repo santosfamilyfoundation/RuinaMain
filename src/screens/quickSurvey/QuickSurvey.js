@@ -39,7 +39,6 @@ import TopNavigation from "../../components/TopNavigation";
 import { styles } from "./QuickSurvey.style";
 
 import ProcessQuestions from "../../utils/ProcessQuestionsSheets";
-import { setupQuestions } from '../../utils/questionParser';
 import backgroundSave from "../../utils/backgroundSave";
 
 import { MaterialDialog } from "react-native-material-dialog";
@@ -236,6 +235,10 @@ class QuickSurvey extends Component {
     // console.log("Finish loading saved state from disk.")
   }
 
+  filterSetupData = () => {
+        return this.questions.data.filter((question) => question.display.includes('setup'));
+    };
+
   render() {
     const {
       navigation,
@@ -333,7 +336,7 @@ class QuickSurvey extends Component {
     };
 
     const renderedQuestions = () => {
-      let res = setupQuestions(this.questions).map((question) =>
+      let res = this.filterSetupData().map((question) =>
         renderSingleQuestion(question)
       );
       return res;
