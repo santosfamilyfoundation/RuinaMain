@@ -302,6 +302,13 @@ class Home extends Component {
 												width="100%"
 												height="50%"
 											/>
+											{/*TODO: Investigate why the SVG does not show up unless
+											    other elements are present to force more space on
+											    the screen. As a temportary fix, we added in a
+											    a bunch of text components. Depending on the device
+											    and size of the scree, some of the text components
+											    will appear below the SVG.
+											*/}
 											<Text>After svg</Text>
 											<Text>After svg</Text>
 											<Text>After svg</Text>
