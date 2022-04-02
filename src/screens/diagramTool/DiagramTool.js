@@ -9,11 +9,19 @@ import { addPhoto } from '../../actions/PhotoAction';
 import { connect } from 'react-redux';
 
 const DiagramTool = (props) => {
+    /*
+        This function controls the display for the diagram tool. The drawing generation is controlled
+        by the @benjeau/react-native-draw library. Reference the library documentation for detailed
+        explanations of component props.
+    */
     const { navigation, addPhoto, photo } = props
     const drawRef = useRef(null);
+
+    // Get the dimensions of device screen to properly place drawing canvas on screen
     const windowWidth = Dimensions.get('window').width;
     const windowHeight = Dimensions.get('window').height - (Dimensions.get('window').height/4);
 
+    // Set default values for drawing tool parameters
     const [color, setColor] = useState(DEFAULT_COLORS[1][0][0]);
     const [thickness, setThickness] = useState(5);
     const [opacity, setOpacity] = useState(1);
@@ -22,52 +30,61 @@ const DiagramTool = (props) => {
     const [alert, setAlert] = useState(false);
 
     const handleClose = () => {
+        // close the alert dialog
         setAlert(false)
     }
 
     const handleUndo = () => {
-     drawRef.current.undo();
+        // undos the last line drawn
+        drawRef.current.undo();
     };
 
     const handleClear = () => {
+        // prompts alert with delete warning to appear before user can delete drawing
         if (!alert) {
             setAlert(true)
         } else {
+            // deletes all paths of drawing
             drawRef.current.clear();
             setAlert(false);
         }
     };
 
     const handleToggleEraser = () => {
-     setTool((prev) =>
-       prev === DrawingTool.Brush ? DrawingTool.Eraser : DrawingTool.Brush
-     );
+        // sets the user tool as brush or eraser
+        setTool((prev) =>
+            prev === DrawingTool.Brush ? DrawingTool.Eraser : DrawingTool.Brush
+        );
     };
 
     const [overlayOpacity] = useState(new Animated.Value(0));
     const handleToggleBrushProperties = () => {
-     if (!visibleBrushProperties) {
-       setVisibleBrushProperties(true);
-
-       Animated.timing(overlayOpacity, {
-         toValue: 1,
-         duration: 200,
-         useNativeDriver: true,
-       }).start();
-     } else {
-       Animated.timing(overlayOpacity, {
-         toValue: 0,
-         duration: 200,
-         useNativeDriver: true,
-       }).start(() => {
-         setVisibleBrushProperties(false);
-       });
-     }
+        /*
+           This function controls if the user can see the color picker pop-up. This code is directly
+           sourced the @benjeau/react-native-draw library example.
+        */
+        if (!visibleBrushProperties) {
+            setVisibleBrushProperties(true);
+            Animated.timing(overlayOpacity, {
+                toValue: 1,
+                duration: 200,
+                useNativeDriver: true,
+            }).start();
+        } else {
+            Animated.timing(overlayOpacity, {
+                toValue: 0,
+                duration: 200,
+                 useNativeDriver: true,
+            }).start(() => {
+            setVisibleBrushProperties(false);
+            });
+        }
     }
 
     const saveDiagram = async() => {
         const diagram = drawRef.current.getSvg();
         const diagramPaths = drawRef.current.getPaths();
+        // save photo to reducer
         await addPhoto({image:diagram, paths: diagramPaths});
         navigation.navigate('Home');
     };
