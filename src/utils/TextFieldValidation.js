@@ -5,7 +5,6 @@ export class TextFieldValidation {
         this.validationData = null;
     }
     debounceValidation(func, timeout){
-    console.log('debounceValidation')
         let timer;
           return (...args) => {
             clearTimeout(timer);
@@ -14,28 +13,41 @@ export class TextFieldValidation {
         }
 
 
-    validateInput(text){
-          console.log('validateInput')
-          if(text.length === 0){
-            console.log('false')
-            this.status = false;
+    validateInput(text, type, constraint, msg){
+          if (type == 'min_num'){
+            let constraint = parseInt(constraint)
+            if (text.length >= constraint){
+                this.status = true
+            }
+            else {
+                this.status = false
+            }
           }
-          else if(text.length <= 500) {
-              console.log('true')
-              this.status = true;
-          }
-          else{
-            console.log('false')
-            this.status = false;
-          }
-     console.log(this.status)
 
-    }
+          if (type == 'max_num'){
+              let constraint = parseInt(constraint)
+              if (text.length <= constraint){
+                  this.status = true
+              }
+              else {
+                  this.status = false
+              }
+            }
+
+          if (type == 'range'){
+                        if (text.length <= constraint){
+                            //TODO: take range and split into max and min
+                            if (text.length >= constraint){
+                                //TODO: return true if both if statements are satisfied
+                            }
+                            }
+                        }
+                        else {
+                            this.status = false
+                        }
+                      }
     submitField(text){
-        console.log('submitField')
         this.validateInput(text)
-        console.log("this.status: ", this.status)
-
     }
 }
 
