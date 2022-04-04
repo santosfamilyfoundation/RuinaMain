@@ -36,3 +36,5 @@ export const DLICENSE_CLASS_ID = "driver-25";
 export const DLICENSE_ENDORSEMENTS_ID = "driver-27";
 
 export const ALLOW_JSON_EXPORT = false;
+
+export const DEFAULT_SPREADSHEET = 'https://docs.google.com/spreadsheets/d/1IJQxPEhVJnvAXOn2gLR25wyBVPcpk7c6RwlQwd5M_Fc/edit?usp=sharing';
