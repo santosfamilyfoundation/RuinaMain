@@ -19,6 +19,7 @@ import { resetQuiz } from '../../actions/QuickQuizActions';
 import { resetMap } from '../../actions/MapAction';
 import { resetStory } from '../../actions/StoryActions';
 import { resetPhoto } from '../../actions/PhotoAction';
+import { DEFAULT_SPREADSHEET } from '../../constants';
 import RNFS from 'react-native-fs';
 
 class Welcome extends Component {
@@ -70,7 +71,7 @@ class Welcome extends Component {
       if (this.state.link === '') {
         const spreadsheetExists = await RNFS.exists(RNFS.DocumentDirectoryPath + '/questions')
         if (!spreadsheetExists) {
-            await this.getMobileSpreadsheet('https://docs.google.com/spreadsheets/d/1IJQxPEhVJnvAXOn2gLR25wyBVPcpk7c6RwlQwd5M_Fc/edit?usp=sharing');
+            await this.getMobileSpreadsheet(DEFAULT_SPREADSHEET);
             console.log('got spreadsheet')
         }
       }
