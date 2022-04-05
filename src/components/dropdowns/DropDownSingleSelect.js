@@ -11,7 +11,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import SelectionValidation from '../../utils/SelectionValidation.js'
 
 const DropDownSingleSelect = (props) => {
-    const [border_color, set_border_color] = React.useState("coolGray.200")
+    const [borderColor, setBorderColor] = React.useState("coolGray.200")
     const [errors, setErrors] = React.useState({});
     const [selectedOptions, setSelectedOptions] = React.useState([]);
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
@@ -103,12 +103,12 @@ const DropDownSingleSelect = (props) => {
              selectionValidation.validateField(localInfo);
              let localStatus = selectionValidation.status
              if (localStatus) {
-                set_border_color("coolGray.200")
+                setBorderColor("coolGray.200")
                 setIsInvalid(false);
              }
              else {
                 setIsInvalid(true);
-                set_border_color("error.500")
+                setBorderColor("error.500")
                 return;
              }
     }
@@ -178,7 +178,7 @@ const DropDownSingleSelect = (props) => {
                 errorMessage='Invalid Input'
                 isInvalid={isInvalid}
             >
-                <Box borderColor={border_color} borderWidth ="1">
+                <Box borderColor={borderColor} borderWidth ="1">
                 <SectionedMultiSelect
                   items={data.answerOptions}
                   IconRenderer={Icon}

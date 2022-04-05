@@ -17,7 +17,7 @@ const CountyDropDown = (props) => {
     const countiesByStates = require('../../data/stateCountyMapping.json');
 
     const [selectedOption, setSelectedOption] = React.useState([]);
-    const [border_color, set_border_color] = React.useState("coolGray.200")
+    const [borderColor, setBorderColor] = React.useState("coolGray.200")
     const [deleteCountyFromState, setDeleteCountyFromState] = React.useState(false);
     const { data, key, id, questionReducer, submitFunction, updateResponse, deleteRoadSingleResponse } = props;
     const [isInvalid, setIsInvalid] = React.useState(false);
@@ -120,20 +120,20 @@ const CountyDropDown = (props) => {
     const validateLocal = (localInfo) => {
         if (!localInfo){
             setIsInvalid(true);
-            set_border_color("error.500")
+            setBorderColor("error.500")
             return
         }
         let selectionValidation = SelectionValidation
              selectionValidation.validateField(localInfo);
              let localStatus = selectionValidation.status
              if (localStatus) {
-                set_border_color("coolGray.200")
+                setBorderColor("coolGray.200")
                 setIsInvalid(false);
 
              }
              else {
                 setIsInvalid(true);
-                set_border_color("error.500")
+                setBorderColor("error.500")
                 return;
              }
     }
@@ -163,7 +163,7 @@ const CountyDropDown = (props) => {
             isInvalid={isInvalid}
             errorMessage={'Please Select a County'}
         >
-                <Box borderColor={border_color} borderWidth ="1">
+                <Box borderColor={borderColor} borderWidth ="1">
                 <SectionedMultiSelect
                   items={countyOptions}
                   IconRenderer={Icon}
