@@ -3,15 +3,6 @@ export class SelectionValidation {
         this.status = null;
         this.validationData = null;
     }
-//    debounceValidation(func, timeout){
-//    console.log('debounceValidation')
-//        let timer;
-//          return (...args) => {
-//            clearTimeout(timer);
-//            timer = setTimeout(() => { func.apply(this, args); }, timeout);
-//          };
-//        }
-
 
     validateInput(selection){
           console.log('validateInput')
