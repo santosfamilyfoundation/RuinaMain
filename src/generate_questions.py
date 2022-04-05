@@ -69,6 +69,12 @@ def generate_questions_json(filename):
                     question_dict['autoMethod'] = row['automation_method']
                 if pd.notna(row['required']):
                     question_dict['required'] = 'true'
+                if pd.notna(row['val_type']):
+                    question_dict['val_type'] = row['val_type']
+                if pd.notna(row['val_constraint']):
+                    question_dict['val_constraint'] = row['val_constraint']
+                if pd.notna(row['warning_msg']):
+                    question_dict['warning_msg'] = row['warning_msg']
 
 
 

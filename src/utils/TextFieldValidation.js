@@ -35,10 +35,10 @@ export class TextFieldValidation {
             }
 
           if (type == 'range'){
-                        if (text.length <= constraint){
-                            //TODO: take range and split into max and min
-                            if (text.length >= constraint){
-                                //TODO: return true if both if statements are satisfied
+             lowerUpperLim = constraint.split()
+                        if (text.length >= parseInt(lowerUpperLim[0])){
+                            if (text.length <= parseInt(lowerUpperLim[0])){
+                                this.status = true
                             }
                             }
                         }
