@@ -1,6 +1,5 @@
 import React from 'react';
 import { updateResponse } from '../../actions/StoryActions';
-import { styles } from './DropDownMultiSelect.style';
 import { connect } from 'react-redux';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
