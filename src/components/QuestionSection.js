@@ -3,6 +3,14 @@
     including the question text, tooltip, helper text, and error message. The QuestionSection 
     renders a faint border around all of these elements so that the user can differentiate 
     between different questions more easily.
+
+    Props:
+        title - the title for the overall question section
+        helperText - the helper text for the question section
+        errorMessage - the text that should show up in the event of an error
+        tooltip - a Tooltip component (if the question has a tooltip)
+        required - a boolean indicating whether the question is required
+        children - the questions that should be rendered within this question section
 ```
 
 import React from "react";
