@@ -1,7 +1,7 @@
-/*
+```
     The IconButton component. Renders a simple white Button with an icon. The button can also optionally contain text.
     The icon should be passed as a prop to this component.
-*/
+```
 
 import React from "react";
 import { Button, Text, HStack } from "native-base";

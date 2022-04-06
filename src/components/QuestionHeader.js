@@ -1,8 +1,8 @@
-/*
+```
     The QuestionHeader component is used as a header for question that has subquestion.
     This component does not prompt the user for input in any way; it just displays
     a large header.
-*/
+```
 
 import React from "react";
 import { connect } from "react-redux";

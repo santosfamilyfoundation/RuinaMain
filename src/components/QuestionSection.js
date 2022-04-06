@@ -1,9 +1,9 @@
-/*
+```
     The QuestionSection component is a functional component used to render an entire question,
     including the question text, tooltip, helper text, and error message. The QuestionSection 
     renders a faint border around all of these elements so that the user can differentiate 
     between different questions more easily.
-*/
+```
 
 import React from "react";
 import { Divider, Box, FormControl, VStack, HStack } from "native-base";
