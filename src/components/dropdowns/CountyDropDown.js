@@ -118,13 +118,12 @@ const CountyDropDown = (props) => {
     }
 
     const validateLocal = (localInfo) => {
-        if (!localInfo){
-            setIsInvalid(true);
-            setBorderColor("error.500")
-            return
+        let localSelection = localInfo
+        if (!localSelection){
+            localSelection = selectedOption
         }
         let selectionValidation = SelectionValidation
-             selectionValidation.validateField(localInfo);
+             selectionValidation.validateField(localSelection);
              let localStatus = selectionValidation.status
              if (localStatus) {
                 setBorderColor("coolGray.200")
