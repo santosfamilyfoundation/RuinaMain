@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { combineReducers } from 'redux';
 import { SafeAreaView } from 'react-navigation';
 import { Linking, ActivityIndicator, Text, PermissionsAndroid } from 'react-native';
-import { Button, Divider, Container, Heading, VStack, Center, View, Spinner, Pressable, Box, AlertDialog, Input } from 'native-base';
+import { Button, Divider, Container, Heading, VStack, Center, View, Spinner, Pressable, Box, AlertDialog, Input, Toast } from 'native-base';
 import { styles } from './Welcome.style';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import backgroundSave from '../../utils/backgroundSave';
@@ -47,10 +47,32 @@ class Welcome extends Component {
         var path = RNFS.DocumentDirectoryPath + '/questions';
         // write the file
         await RNFS.downloadFile({
-                  fromUrl: link,
-                  toFile: path
-              })
-        this.setState({importQuestions:false})
+            fromUrl: link,
+            toFile: path,
+        }).promise.then(response => {
+            console.log('promise response', response)
+            this.setState({importQuestions:false})
+                    this.setState({link:''})
+                    console.log('returning true')
+
+                    return true
+        }).catch((error) => {
+            console.log('DOWNLOAD ERROR: ', error)
+            this.setState({importQuestions:false})
+            console.log('returnin false')
+            return false
+        })
+
+//        try {
+//            await RNFS.downloadFile({
+//                fromUrl: link,
+//                toFile: path,
+//            })
+//        } catch (error) {
+//            console.log('DOWNLOAD ERROR: ', error)
+//            return false
+//        }
+
    }
 
     async componentDidMount() {
@@ -64,15 +86,11 @@ class Welcome extends Component {
       this.props.resetMap();
       this.props.resetPhoto();
       await this.stateManager.getFilePaths();
-      // console.log("Unfinished reports found:", this.stateManager.filePaths);
       this.unfinishedReportsAbsent = this.stateManager.filePaths.length == 0
-      // console.log(this.stateManager.filePaths);
-      // console.log(this.stateManager.filePaths.length == 0)
       if (this.state.link === '') {
         const spreadsheetExists = await RNFS.exists(RNFS.DocumentDirectoryPath + '/questions')
         if (!spreadsheetExists) {
-            await this.getMobileSpreadsheet(DEFAULT_SPREADSHEET);
-            console.log('got spreadsheet')
+            await this.getMobileSpreadsheet(DEFAULT_SPREADSHEET)
         }
       }
       this.setState({ loading: false });
@@ -81,19 +99,41 @@ class Welcome extends Component {
     checkAutoSavedSession(){
         if (this.stateManager.filePaths != null) {
             this.setState({autoSavedSession : true, filePickerDialogBoxVisible: true});
-            // console.log('Detect unfinished reports!');
         } else {
             this.setState({ autoSavedSession: false, filePickerDialogBoxVisible: false });
-            // console.log('No unfinished report!');
         }
     }
 
     handleAlertDialogClose = () => this.setState({importQuestions:false})
 
+    async ableToDownloadSpreadsheet() {const response = await getMobileSpreadsheet(this.state.link); return response}
+
     render() {
         const navigateTo = (loc) => {
            this.props.navigation.navigate(loc, {autoSavedSession: this.state.autoSavedSession, selectedFile: this.state.selectedFile});
          };
+        const importToast = (importSuccess) => {
+            console.log("success",importSuccess)
+            if (importSuccess) {
+                 Toast.show({
+                     title:"Questions successfully imported",
+                     placement: "top",
+                     status: "success",
+                     accessibilityAnnouncement: "Questions successfully imported",
+                     accessibilityLiveRegion: 'polite',
+                     duration: 8000,
+                 })
+            } else {
+                 Toast.show({
+                     title:"Questions failed to import",
+                     placement: "top",
+                     status: "error",
+                     accessibilityAnnouncement: "Questions failed to import. Check the link that you used to fetch the spreadsheet is correct and open to anyone with the link.",
+                     accessibilityLiveRegion: 'polite',
+                     duration: 8000,
+                 })
+            }
+         }
          if (this.state.loading) {
            return (
              <Center flex={1}>
@@ -129,7 +169,13 @@ class Welcome extends Component {
                         <AlertDialog.Footer>
                             <Button.Group space={2}>
                                 <Button colorScheme='coolGray' onPress={this.handleAlertDialogClose}>Cancel</Button>
-                                <Button onPress={() => this.getMobileSpreadsheet(this.state.link)}>Import</Button>
+                                <Button onPress={() => {
+                                    const importSuccess = this.ableToDownloadSpreadsheet();
+                                    console.log("import success", importSuccess)
+                                    importToast(importSuccess)
+                                }}>
+                                    Import
+                                </Button>
                             </Button.Group>
                         </AlertDialog.Footer>
                     </AlertDialog.Content>
