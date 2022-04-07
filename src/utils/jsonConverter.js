@@ -1,7 +1,6 @@
 import {Component} from 'react';
 import XLSX from 'xlsx';
 import * as htmlStrings from '../utils/html_for_pdf_pages/htmlStrings'
-import { testAnswers } from '../data/testAnswers';
 import { questions } from '../data/questions';
 
 

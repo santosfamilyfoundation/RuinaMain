@@ -1,3 +1,7 @@
+```
+  The AutoComponentContainer is a class component that renders questions.
+```
+
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { VStack } from 'native-base';
