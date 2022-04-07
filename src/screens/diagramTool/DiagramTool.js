@@ -1,8 +1,13 @@
 /*
-    The DiagramTool component is used to draw a diagram of a crash. The drawing
-    generation is controlled by the @benjeau/react-native-draw library.
-    Reference the library documentation for detailed explanations of component
-    props.
+    The DiagramTool component is used to draw a diagram of a crash. The
+    component is composed of a drawing canvas with brush tools that allow the
+    user to change to brush color and thickness, toggle the eraser, undo the
+    previous line, and delete the entire drawing. When the user deletes the
+    drawing, a dialog appears asking for confirmation to delete the drawing.
+    The user must click on the save button to save the drawing to the reducer,
+    otherwise the drawing will be disgarded. The drawing generation is
+    controlled by the @benjeau/react-native-draw library.Reference the library
+    documentation for detailed explanations of component props.
 */
 import React, { useRef, useState } from "react";
 import { ScrollView, Dimensions, View, Animated } from "react-native";
