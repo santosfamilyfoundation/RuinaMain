@@ -67,6 +67,7 @@ class Welcome extends Component {
     // :warning: on iOS, you cannot write into `RNFS.MainBundlePath`,
     // but `RNFS.DocumentDirectoryPath` exists on both platforms and is writable
     var path = RNFS.DocumentDirectoryPath + "/questions";
+    let errorBool
     // write the file
     await RNFS.downloadFile({
       fromUrl: link,
@@ -74,14 +75,18 @@ class Welcome extends Component {
     })
       .promise.then((response) => {
         this.setState({ importQuestions: false });
-        this.setState({ link: "" });
-        return true;
       })
       .catch((error) => {
         console.log("DOWNLOAD ERROR: ", error);
+        errorBool = true
         this.setState({ importQuestions: false });
-        return false;
       });
+      this.setState({ link: "" });
+      if (errorBool) {
+        return false
+      }
+      return true;
+      console.log('outside of promise')
   }
 
   async componentDidMount() {
@@ -229,8 +234,8 @@ class Welcome extends Component {
                     Cancel
                   </Button>
                   <Button
-                    onPress={() => {
-                      const importSuccess = this.getMobileSpreadsheet(this.state.link);
+                    onPress={async () => {
+                      const importSuccess = await this.getMobileSpreadsheet(this.state.link);
                       importToast(importSuccess)
                     }}
                   >
