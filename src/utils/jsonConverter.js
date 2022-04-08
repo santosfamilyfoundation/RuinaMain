@@ -1,22 +1,19 @@
 import {Component} from 'react';
 import XLSX from 'xlsx';
 import * as htmlStrings from '../utils/html_for_pdf_pages/htmlStrings'
-import { testAnswers } from '../data/testAnswers';
-import { questions } from '../data/questions';
-
 
 export class JSONconverter extends Component {
 	constructor(props) {
 		super(props);
 	}
-	handleConverter(format, data) {
+	handleConverter(format, data, questions) {
 		console.log('handleconverter starting');
 		let file;
 		switch (format) {
 			case 'json':
 				return file = JSON.stringify(data);
 			case 'xlsx':
-				return file = this.JSONtoXLS(data);
+				return file = this.JSONtoXLS(data, questions);
 			case 'html': case 'pdf':
 				return file = this.JSONtoHTML(data);
 			default:
@@ -24,7 +21,7 @@ export class JSONconverter extends Component {
 		}
 	}
 
-	async JSONtoXLS (jsondata) {
+	async JSONtoXLS (jsondata, questions) {
 		function getQuestion(questionUid) {
 		    var questionName = ''
 		    questions.data.forEach(questionGroup => {
@@ -313,7 +310,7 @@ export class JSONconverter extends Component {
 		htmlString += fillCoverPageHeader(htmlStrings.coverPageHeaderString, jsondata["road"][0], numSectionsDict);
 		// fill in cover page data sections
 		let crashRoadData = jsondata['road'][0]
-		if(jsondata['photo'].length > 0) {
+		if(jsondata['photo']) {
             crashRoadData = {...crashRoadData, photo: jsondata['photo']}
         }
 		htmlString += processQuestionIds(htmlStrings.crashDataSectionString, crashRoadData, "datasection");

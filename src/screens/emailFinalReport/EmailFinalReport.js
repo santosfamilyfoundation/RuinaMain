@@ -1,22 +1,30 @@
-import React, {Component} from 'react';
-import { SafeAreaView } from 'react-navigation';
-import { connect } from 'react-redux';
-import { StyleSheet, Alert, View, Dimensions, VStack, Linking, ScrollView } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Input, Button, Text } from 'native-base';
-import { MaterialDialog } from 'react-native-material-dialog';
+import React, { Component } from "react";
+import { SafeAreaView } from "react-navigation";
+import { connect } from "react-redux";
+import {
+  StyleSheet,
+  Alert,
+  View,
+  Dimensions,
+  VStack,
+  Linking,
+  ScrollView,
+} from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { Input, Button, Text } from "native-base";
+import { MaterialDialog } from "react-native-material-dialog";
 import { material } from "react-native-typography";
-import Mailer from 'react-native-mail';
-import JSONconverter from '../../utils/jsonConverter';
+import Mailer from "react-native-mail";
+import JSONconverter from "../../utils/jsonConverter";
 import NetInfoAPI from "../../utils/NetAPI";
-import Pdf from 'react-native-pdf';
-import RNHTMLtoPDF from 'react-native-html-to-pdf';
-import backgroundSave from '../../utils/backgroundSave';
-import TopNavigation from '../../components/TopNavigation';
-import Section from '../../components/Section';
-import IconButton from '../../components/IconButton';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { getDefaultFilename } from '../../utils/helperFunctions';
+import Pdf from "react-native-pdf";
+import RNHTMLtoPDF from "react-native-html-to-pdf";
+import backgroundSave from "../../utils/backgroundSave";
+import TopNavigation from "../../components/TopNavigation";
+import Section from "../../components/Section";
+import IconButton from "../../components/IconButton";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import { getDefaultFilename } from "../../utils/helperFunctions";
 
 class EmailFinalReport extends Component {
   constructor(props) {
@@ -24,10 +32,10 @@ class EmailFinalReport extends Component {
     this.state = {
       filename: getDefaultFilename(),
       offlineStatus: false,
-      uri: '',
-      data: '',
-      format: '',
-      encoding: '',
+      uri: [],
+      data: [],
+      format: [],
+      encoding: [],
       isPDF: false,
     };
     this.changeFilename = this.changeFilename.bind(this);
@@ -35,160 +43,189 @@ class EmailFinalReport extends Component {
   }
 
   async componentDidMount() {
-      const format = this.props.navigation.state.params.format;
-      // convert data to desired format
-      const data = {
-        driver: this.props.driver.data,
-        nonmotorist: this.props.nonmotorist.data,
-        vehicle: this.props.vehicle.data,
-        passenger: this.props.passenger.data,
-        road: this.props.road.data,
-        photo: this.props.photo.image,
-      };
-      if (format === "pdf") {
-        this.setState({encoding:'base64', format:format});
-        this.createPDF(data);
+    const format = this.props.navigation.getParam("format");
+    const questions = this.props.navigation.getParam("questions");
+
+    // convert data to desired format
+    const export_data = {
+      driver: this.props.driver.data,
+      nonmotorist: this.props.nonmotorist.data,
+      vehicle: this.props.vehicle.data,
+      passenger: this.props.passenger.data,
+      road: this.props.road.data,
+      photo: this.props.photo.image,
+    };
+
+    for (let i = 0; i < format.length; i++) {
+      if (format[i] === "pdf") {
+        this.createPDF(export_data);
       } else {
-        console.log('desired format is not pdf')
         var converter = new JSONconverter();
-        var file = await converter.handleConverter(format, data);
-        var encoding = format === "xlsx" ? 'base64' : 'utf8';
-        this.setState({data: file, encoding: encoding, format:format});
+        var file = await converter.handleConverter(format[i], export_data, questions);
+        var encode = format[i] === "xlsx" ? "base64" : "utf8";
+        this.state.data.push(file);
+        this.state.format.push(format[i]);
+        this.state.encoding.push(encode);
       }
-  };
+    }
+  }
 
   // update the filename
   changeFilename(text) {
-    this.setState({filename: text});
-  };
+    this.setState({ filename: text });
+  }
 
   // generate html and convert it into a PDF
-  async createPDF(data) {
-    var converter = new JSONconverter()
-    const htmlString = await converter.handleConverter('pdf', data)
+  async createPDF(export_data) {
+    var converter = new JSONconverter();
+    const htmlString = converter.handleConverter("pdf", export_data);
     let options = {
       html: htmlString,
       base64: true,
-      fileName: 'crash_report',
+      fileName: "crash_report",
     };
     try {
       const pdf_data = await RNHTMLtoPDF.convert(options);
-      console.log("got PDF data");
-      this.setState({uri: pdf_data.filePath, data: pdf_data.base64, isPDF:true});
+      this.state.uri.push(pdf_data.filePath);
+      this.state.data.push(pdf_data.base64);
+      this.state.isPDF = true;
+      this.state.encoding.push("base64");
+      this.state.format.push("pdf");
     } catch (error) {
-      console.log('this is the pdf converter error->', error);
+      console.log("PDF Converter Error: ", error);
     }
   }
 
-  // save data as file inside app in order send email with attachment
-  async saveDataInternal(filename) {
-    console.log(this.state)
-    var RNFS = require('react-native-fs');
-    var path = [RNFS.DocumentDirectoryPath + '/' + filename];
+  async saveDataInternal() {
+    var RNFS = require("react-native-fs");
+    var pathList = [];
     // write the file
-    try {
-        let result = await RNFS.writeFile(path[0], this.state.data, this.state.encoding);
-        if (this.state.format === 'xlsx' && (this.props.photo.image.length > 0)) {
-            const photoPath = RNFS.DocumentDirectoryPath + '/' + this.state.filename + '.svg'
-            path.push(photoPath)
-            const svgFile = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' + this.props.photo.image
-            let photoResult = await RNFS.writeFile(path[1], svgFile, 'utf8');
+      for (let i = 0; i < this.state.format.length; i++) {
+        // write the file and save to Files app on device:
+        const filePath = RNFS.DocumentDirectoryPath + "/" + this.state.filename + "." + this.state.format[i];
+        try {
+            await RNFS.writeFile(filePath, this.state.data[i], this.state.encoding[i])
+           if (
+              this.state.format[i] === "xlsx" &&
+              this.props.photo.image.length > 0
+            ) {
+              const photoPath =
+                RNFS.DocumentDirectoryPath + "/" + this.state.filename + ".svg";
+              const svgFile =
+                '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' +
+                this.props.photo.image;
+              await RNFS.writeFile(photoPath, svgFile, "utf8");
+               pathList.push(photoPath);
+          }
+          pathList.push(filePath);
+        } catch (err) {
+          console.log("File Save Error: ", err.message);
+          console.log("failed with", this.state.format[i]);
+          break
         }
-        console.log('FILE WRITTEN!');
-        console.log(path);
-
-        // clear background save
-        const clearBackgroundSave = new backgroundSave();
-        var deleted = await clearBackgroundSave.deleteCapturedState();
-        return path;
-    } catch(error) {
-      console.log( "ERROR:", error.message);
-      return null;
-    }
+      }
+      return pathList;
   }
 
-  // send email based on the inputted filename
-  // leave everything else blank, except subject (subject = filename)
   async sendEmail(path, filename) {
-    let attachments
-    if (filename.includes('xlsx') && this.props.photo.image.length) {
-        attachments = [{path:path[0]}, {path:path[1]}]
-    } else {
-        attachments = [{path:path[0]}]
+    var fp = [];
+    for (let i = 0; i < path.length; i++) {
+      fp.push({ path: path[i] });
     }
-    console.log('Sending email!');
-    await Mailer.mail({
-      subject: "Sending " + "\"" + filename + "\"",
-      recipients: [''],
-      ccRecipients: [''],
-      bccRecipients: [''],
-      body: '',
-      customChooserTitle: "Send Crash Report", // Android only (defaults to "Send Mail")
-      isHTML: true,
-      attachments: attachments,
-    }, (error, event) => {
-      console.log('errror', error)
-      Alert.alert(
-        error,
-        event,
-        [
-          {text: 'Ok', onPress: () => console.log('OK: Email Error Response')},
-          {text: 'Cancel', onPress: () => console.log('CANCEL: Email Error Response')}
-        ],
-        { cancelable: true }
-      )
-    });
+    await Mailer.mail(
+      {
+        subject: "Sending " + '"' + filename + '"',
+        recipients: [""],
+        ccRecipients: [""],
+        bccRecipients: [""],
+        body: "",
+        customChooserTitle: "Send Crash Report", // Android only (defaults to "Send Mail")
+        isHTML: true,
+        attachments: fp,
+      },
+      (error, event) => {
+        console.log("Mailer Error: ", error);
+        Alert.alert(
+          error,
+          event,
+          [
+            {
+              text: "Ok",
+              onPress: () => console.log("OK: Email Error Response"),
+            },
+            {text: "Cancel",
+                onPress: () => console.log("Cancel:Email Error Reponse")
+            }
+          ],
+          { cancelable: false }
+        );
+      }
+    );
   }
-  // handles the entire email workflow
   async handleEmail() {
     const net = new NetInfoAPI();
     let netStatus = await net.checkNetOnce();
-    // net info is wraped in net.status
-    if (netStatus==false){
-      // deal with internet not connected
+    if (netStatus == false) {
       this.setState({ offlineStatus: true });
       return;
     }
     // save data internally
-    var path = await this.saveDataInternal(this.state.filename + "." + this.state.format);
+    var paths = await this.saveDataInternal();
     // send email
-    await this.sendEmail(path, this.state.filename );
+    await this.sendEmail(paths, this.state.filename);
   }
   // required method that creates components of email screen
   render() {
-    return(
-      <SafeAreaView style={{flex:1}}>
-        <TopNavigation id="emailNavBar" title="Email Crash Report" backButton navigation={this.props.navigation}>
-            <IconButton onPress={() => {this.props.navigation.navigate('Welcome')}} icon={<Icon color="white" size={25} name='file-document-outline'/>}  text='Start New Report'/>
+    return (
+      <SafeAreaView style={{ flex: 1 }}>
+        <TopNavigation
+          id="emailNavBar"
+          title="Email Crash Report"
+          backButton
+          navigation={this.props.navigation}
+        >
+          <IconButton
+            onPress={() => {
+              this.props.navigation.navigate("Welcome");
+            }}
+            icon={<Icon color="white" size={25} name="file-document-outline" />}
+            text="Start New Report"
+          />
         </TopNavigation>
         <Section title="Edit filename below.">
-            <Input
-                defaultValue = {this.state.filename}
-                onChangeText = {this.changeFilename}
-            />
+          <Input
+            defaultValue={this.state.filename}
+            onChangeText={this.changeFilename}
+          />
         </Section>
 
-        {this.state.isPDF &&
+        {this.state.isPDF && (
           <View style={styles.container}>
             <Pdf
-                source={this.state}
-                enableRTL={true}
-                onLoadComplete={(numberOfPages,filePath)=>{
-                    console.log(`number of pages: ${numberOfPages}`);
-                }}
-                onError={(error)=>{
-                    console.log("PDF error:",error);
-                }}
-                style={styles.pdf}/>
+              source={this.state}
+              enableRTL={true}
+              onLoadComplete={(numberOfPages, filePath) => {
+                console.log(`number of pages: ${numberOfPages}`);
+              }}
+              onError={(error) => {
+                console.log("PDF error:", error);
+              }}
+              style={styles.pdf}
+            />
           </View>
-        }
+        )}
 
-        <Button
-          onPress={() => this.handleEmail()} m={4}>
+        <Button onPress={() => this.handleEmail()} m={4}>
           Send Report
         </Button>
-        <SafeAreaView m={25} alignItems ="center">
-          <TouchableOpacity onPress={() => Linking.openURL('https://forms.gle/aXVjxVrQU6jm3KUx6')}><Text style={{ color: 'blue' }}>Submit Feedback</Text></TouchableOpacity>
+        <SafeAreaView m={25} alignItems="center">
+          <TouchableOpacity
+            onPress={() =>
+              Linking.openURL("https://forms.gle/aXVjxVrQU6jm3KUx6")
+            }
+          >
+            <Text style={{ color: "blue" }}>Submit Feedback</Text>
+          </TouchableOpacity>
         </SafeAreaView>
         <MaterialDialog
           title={"Can't email when offline!"}
@@ -201,53 +238,53 @@ class EmailFinalReport extends Component {
           }}
         >
           <Text style={material.subheading}>
-            You can not send emails while being offline.
-            Please check your internet connection and try again later.
+            You can not send emails while being offline. Please check your
+            internet connection and try again later.
           </Text>
         </MaterialDialog>
       </SafeAreaView>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state) => {
-    return{
-        driver: state.driverReducer,
-        nonmotorist: state.nonmotoristReducer,
-        vehicle: state.vehicleReducer,
-        passenger: state.passengerReducer,
-        photo: state.photosReducer,
-        road: state.roadReducer,
-    }
-}
+  return {
+    driver: state.driverReducer,
+    nonmotorist: state.nonmotoristReducer,
+    vehicle: state.vehicleReducer,
+    passenger: state.passengerReducer,
+    photo: state.photosReducer,
+    road: state.roadReducer,
+  };
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
+    justifyContent: "flex-start",
+    alignItems: "center",
     marginTop: 25,
   },
   topContainer: {
-   flexDirection: 'row',
-   justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   card: {
-   flex: 1,
-   margin: 2,
+    flex: 1,
+    margin: 2,
   },
   footerContainer: {
-   flexDirection: 'row',
-   justifyContent: 'flex-end',
+    flexDirection: "row",
+    justifyContent: "flex-end",
   },
   footerControl: {
-   marginHorizontal: 5,
-   marginTop: 20,
+    marginHorizontal: 5,
+    marginTop: 20,
   },
   pdf: {
     flex: 1,
-    width: Dimensions.get('window').width,
-  }
-})
+    width: Dimensions.get("window").width,
+  },
+});
 
-export default connect(mapStateToProps)(EmailFinalReport)
+export default connect(mapStateToProps)(EmailFinalReport);
