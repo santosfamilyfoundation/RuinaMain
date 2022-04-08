@@ -30,7 +30,7 @@ class Home extends Component {
 
     this._addNonmotorist = this._addNonmotorist.bind(this);
     this._addVehicleSection = this._addVehicleSection.bind(this);
-    this.questions = this.props.navigation.getParam('questions')
+    this.questions = this.props.navigation.getParam("questions");
 
     this.state = {
       edit: props.edit || false,
@@ -54,7 +54,9 @@ class Home extends Component {
   }
 
   filterQuestionsData = (questionType) => {
-      return this.questions.data.filter((question) => question.display.includes(questionType));
+    return this.questions.data.filter((question) =>
+      question.display.includes(questionType)
+    );
   };
 
   // add event listener for when user clicks Android back button
@@ -108,7 +110,7 @@ class Home extends Component {
     );
     captureState.captureCurrentState(JSON.stringify(data));
 
-    const roadForm = this.filterQuestionsData('road')
+    const roadForm = this.filterQuestionsData("road");
 
     // navigate to question form
     const navigateQuestion = (form, id, type, name) => {
@@ -181,7 +183,9 @@ class Home extends Component {
                   leftMargin={4}
                   text="Export Report"
                   onPress={() => {
-                    navigation.navigate("FinalReport", {questions: this.questions});
+                    navigation.navigate("FinalReport", {
+                      questions: this.questions,
+                    });
                   }}
                   icon={<Icon color="white" name="assignment" size={25} />}
                 />
@@ -208,7 +212,12 @@ class Home extends Component {
                   topMargin={4}
                   text={`Crash/Road \nForm`}
                   onPress={() =>
-                    navigateQuestion(roadForm, road.data[0].id, "Road", "Crash/Road")
+                    navigateQuestion(
+                      roadForm,
+                      road.data[0].id,
+                      "Road",
+                      "Crash/Road"
+                    )
                   }
                   icon={<Icon color="white" name="edit-road" size={50} />}
                 />
