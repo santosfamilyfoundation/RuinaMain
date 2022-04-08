@@ -6,6 +6,7 @@ import { updateDriver } from '../../actions/DriverAction';
 import { updateVehicle } from '../../actions/VehicleAction';
 import { connect } from 'react-redux';
 import * as Constants from '../../constants';
+import Camera, { Aspect, CaptureQuality, TorchMode } from 'react-native-openalpr';
 
 class BarcodeScan extends PureComponent {
   constructor(props) {
@@ -144,6 +145,10 @@ class BarcodeScan extends PureComponent {
     const id = this.props.navigation.state.params.objectID;
   }
 
+  onPlateRecognized = ({plate, confidence}) => {
+    this.setState({plate,})
+  }
+
   render() {
 
     const {barcodeScanAction, driver} = this.props;
@@ -176,7 +181,21 @@ class BarcodeScan extends PureComponent {
     }
     else if (this.type == Constants.PLATE) {
       return (
-        <View><Text>Hello, World!</Text></View>
+        <View><Camera
+                         style={styles.preview}
+                         aspect={Aspect.fill}
+                         captureQuality={CaptureQuality.medium}
+                         country="us"
+                         onPlateRecognized={this.onPlateRecognized}
+                         plateOutlineColor="#ff0000"
+                         showPlateOutline
+                         zoom={0}
+                         torchMode={TorchMode.off}
+                         touchToFocus
+                       />
+                       <View style={styles.textContainer}>
+                         <Text style={styles.text}>{this.state.plate}</Text>
+                       </View></View>
       )
     }
   }
