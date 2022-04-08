@@ -9,8 +9,6 @@ import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
 import IconButton from '../IconButton';
 import TextFieldValidation from '../../utils/TextFieldValidation.js';
-import { questions } from '../../data/questions.js';
-
 
 const LargeTextField = (props) => {
     const [errors, setErrors] = React.useState({});
