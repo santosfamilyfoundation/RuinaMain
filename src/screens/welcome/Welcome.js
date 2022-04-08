@@ -130,6 +130,28 @@ class Welcome extends Component {
         selectedFile: this.state.selectedFile,
       });
     };
+     const importToast = (importSuccess) => {
+                console.log("success",importSuccess)
+                if (importSuccess) {
+                     Toast.show({
+                         title:"Questions successfully imported",
+                         placement: "top",
+                         status: "success",
+                         accessibilityAnnouncement: "Questions successfully imported",
+                         accessibilityLiveRegion: 'polite',
+                         duration: 8000,
+                     })
+                } else {
+                     Toast.show({
+                         title:"Questions failed to import",
+                         placement: "top",
+                         status: "error",
+                         accessibilityAnnouncement: "Questions failed to import. Check the link that you used to fetch the spreadsheet is correct and open to anyone with the link.",
+                         accessibilityLiveRegion: 'polite',
+                         duration: 8000,
+                     })
+                }
+             }
     if (this.state.loading) {
       return (
         <Center flex={1}>
@@ -208,7 +230,8 @@ class Welcome extends Component {
                   </Button>
                   <Button
                     onPress={() => {
-                      this.getMobileSpreadsheet(this.state.link);
+                      const importSuccess = this.getMobileSpreadsheet(this.state.link);
+                      importToast(importSuccess)
                     }}
                   >
                     Import
