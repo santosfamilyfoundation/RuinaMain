@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import {
   View,
   ScrollView,
-  Keyboard,
   BackHandler,
-  Pressable,
   PermissionsAndroid,
   Linking,
 } from "react-native";
@@ -12,8 +10,6 @@ import { SafeAreaView } from "react-navigation";
 import { connect } from "react-redux";
 import { VStack, HStack, Box, Text, Image, Alert, Center } from "native-base";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { styles } from "./Home.style";
-import { questions } from "../../data/questions";
 import VehicleSection from "../formSections/VehicleSection";
 import NonMotoristSection from "../formSections/NonMotoristSection";
 import { addNonmotorist } from "../../actions/NonmotoristAction";
@@ -25,8 +21,6 @@ import Section from "../../components/Section";
 import IconButton from "../../components/IconButton";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import TopNavigation from "../../components/TopNavigation";
-import { launchCamera } from "react-native-image-picker";
-import { photoSave } from "../../utils/helperFunctions";
 import { SvgXml } from "react-native-svg";
 var uuid = require("react-native-uuid");
 
@@ -36,6 +30,7 @@ class Home extends Component {
 
     this._addNonmotorist = this._addNonmotorist.bind(this);
     this._addVehicleSection = this._addVehicleSection.bind(this);
+    this.questions = this.props.navigation.getParam("questions");
 
     this.state = {
       edit: props.edit || false,
@@ -59,7 +54,7 @@ class Home extends Component {
   }
 
   filterQuestionsData = (questionType) => {
-    return questions.data.filter((question) =>
+    return this.questions.data.filter((question) =>
       question.display.includes(questionType)
     );
   };
@@ -114,14 +109,13 @@ class Home extends Component {
       this.state.openOldFile
     );
     captureState.captureCurrentState(JSON.stringify(data));
-    // console.log('capturing current state at filepath:', this.state.filePath);
 
-    let roadQuestions = this.filterQuestionsData("road");
+    const roadForm = this.filterQuestionsData("road");
 
     // navigate to question form
     const navigateQuestion = (form, id, type, name) => {
       navigation.navigate("Question", {
-        questions: form.data,
+        questions: form,
         objectID: id,
         type,
         name,
@@ -141,6 +135,7 @@ class Home extends Component {
           name={"Vehicle"}
           passenger={passenger}
           roadID={road.data[0].id}
+          questions={this.questions}
         />
       );
     });
@@ -156,6 +151,7 @@ class Home extends Component {
           nonmotorist={nonmotorist}
           index={index}
           roadID={road.data[0].id}
+          questions={this.questions}
         />
       );
     });
@@ -187,7 +183,9 @@ class Home extends Component {
                   leftMargin={4}
                   text="Export Report"
                   onPress={() => {
-                    navigation.navigate("FinalReport");
+                    navigation.navigate("FinalReport", {
+                      questions: this.questions,
+                    });
                   }}
                   icon={<Icon color="white" name="assignment" size={25} />}
                 />
@@ -215,7 +213,7 @@ class Home extends Component {
                   text={`Crash/Road \nForm`}
                   onPress={() =>
                     navigateQuestion(
-                      roadQuestions,
+                      roadForm,
                       road.data[0].id,
                       "Road",
                       "Crash/Road"

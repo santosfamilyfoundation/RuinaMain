@@ -1,15 +1,10 @@
-import React from 'react';
-import DiagramTool from './DiagramTool';
-import { View, ScrollView, Keyboard, BackHandler, Pressable } from 'react-native';
-import { styles } from '../home/Home.style';
-import { TopNavigationAction, Icon } from '@ui-kitten/components';
+/*
+  This file is used by the appNavigation component to render the DiagramTool
+  screen.
+*/
+import React from "react";
+import DiagramTool from "./DiagramTool";
 
-export const DiagramToolScreen = ({navigation}) => {
-    return(
-        <DiagramTool
-            navigation = {navigation}
-            BackAction = {()=> <TopNavigationAction icon={(style) => <Icon {...style} name='arrow-back'/>}
-                                                    onPress={() => navigation.goBack()}/>}
-        />
-    );
+export const DiagramToolScreen = ({ navigation }) => {
+  return <DiagramTool navigation={navigation} />;
 };

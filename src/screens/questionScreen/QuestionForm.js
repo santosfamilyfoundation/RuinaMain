@@ -25,8 +25,6 @@ import { updateResponse } from '../../actions/StoryActions';
 import TopNavigation from '../../components/TopNavigation';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-import {questions} from '../../data/questions';
-
 const QuestionForm = (props) => {
   const {
     questionDetail,
@@ -40,10 +38,6 @@ const QuestionForm = (props) => {
     updateResponse,
   } = props
 
-  // filter question information based on section type
-  const filterQuestionsData = (questionType) => {
-    return questions.data.filter(question => question.display.includes(questionType));
-  }
   const navigateToAdvanced = (place, props) =>{
       navigation.navigate(place, props);
     }
@@ -110,31 +104,31 @@ const QuestionForm = (props) => {
         reducer: "driverReducer",
         submitFunction: updateDriver,
         actionType: "UPDATEDRIVER",
-        questionsData : filterQuestionsData('driver'),
+        questionsData : questionDetail.questions,
       },
       Nonmotorist: {
         reducer: "nonmotoristReducer",
         submitFunction: updateNonmotorist,
         actionType: "UPDATENONMOTORIST",
-        questionsData : filterQuestionsData('nonmotorist'),
+        questionsData : questionDetail.questions,
       },
       Passenger: {
         reducer: "passengerReducer",
         submitFunction: updatePassenger,
         actionType: "UPDATEPASSENGER",
-        questionsData : filterQuestionsData('passenger'),
+        questionsData : questionDetail.questions,
       },
       Vehicle: {
         reducer: "vehicleReducer",
         submitFunction: updateVehicle,
         actionType: "UPDATEVEHICLE",
-        questionsData : filterQuestionsData('vehicle'),
+        questionsData : questionDetail.questions,
       },
       Road: {
         reducer: "roadReducer",
         submitFunction: updateRoad,
         actionType: "UPDATEROAD",
-        questionsData : filterQuestionsData('road'),
+        questionsData : questionDetail.questions,
       }
     }
     return type?obj[type]:obj
@@ -187,7 +181,7 @@ const QuestionForm = (props) => {
               {...props}
             />
           )
-        
+
         case 'countyDropDown':
           return (
             <CountyDropDown
@@ -234,7 +228,6 @@ const QuestionForm = (props) => {
         let questionList = []
         for (const q of questions) {
             const obj = {data:q, setting: question, detail:questionDetail}
-            // console.log('questionDetail.type:', questionDetail.type);
             const dom = renderSingleQuestion(q.answerType, questionProps(q.answerType, obj));
             questionList.push(dom)
         }

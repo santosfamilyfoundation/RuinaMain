@@ -1,5 +1,4 @@
 import React from 'react';
-import { Icon, TopNavigationAction } from '@ui-kitten/components';
 import SinglePhoto from './SinglePhoto'
 
 export const SinglePhotoScreen = ({ navigation }) => {

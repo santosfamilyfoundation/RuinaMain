@@ -9,8 +9,6 @@ import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
 import IconButton from '../IconButton';
 import TextFieldValidation from '../../utils/TextFieldValidation.js';
-import { questions } from '../../data/questions.js';
-
 
 const LargeTextField = (props) => {
     const [errors, setErrors] = React.useState({});
@@ -88,7 +86,11 @@ const LargeTextField = (props) => {
         return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
     }
 
-    var renderComponent = dependencyParser(props.response, data, dependencyID)
+    var renderComponent = true;
+    if (data.questionDependency != undefined && props.response != null) {
+        renderComponent = dependencyParser(props.response, data, dependencyID)
+    }
+
     if (renderComponent){
         return(
         <Box>
