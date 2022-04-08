@@ -38,8 +38,7 @@ import MultiButtonSelectorQuickSurvey from "../../components/buttonSelectors/Mul
 import TopNavigation from "../../components/TopNavigation";
 import { styles } from "./QuickSurvey.style";
 
-import { questions } from "../../data/questions";
-import { setupQuestions } from '../../utils/questionParser';
+import ProcessQuestions from "../../utils/ProcessQuestionsSheets";
 import backgroundSave from "../../utils/backgroundSave";
 
 import { MaterialDialog } from "react-native-material-dialog";
@@ -58,14 +57,14 @@ class QuickSurvey extends Component {
       loading: true, //loading screen
       autosavedFilePath: this.props.navigation.getParam("selectedFile"),
     };
+    this.questions = undefined;
     this.stateManager = undefined;
-    //      this.stateManager = new backgroundSave("");
   }
+
   async loadStateFromJSON() {
     console.log("Loading State from JSON");
     await this.stateManager.RNFS.readFile(this.stateManager.path, "utf8")
       .then((data) => {
-        // console.log(data)
         try {
           const loadedState = JSON.parse(data);
           console.log("Successfully Parsed JSON");
@@ -91,6 +90,7 @@ class QuickSurvey extends Component {
   }
 
   async componentDidMount() {
+    this.questions = await ProcessQuestions();
     this.stateManager = new backgroundSave(
       this.state.autosavedFilePath.label,
       this.state.autoSavedSession
@@ -104,8 +104,6 @@ class QuickSurvey extends Component {
     }
   }
   parseLoadedState(loadedState) {
-    // console.log('line 87 state', loadedState)
-
     for (let d in loadedState) {
       console.log("LOADED SECTION: ", d, ": ", loadedState[d]);
     }
@@ -237,6 +235,10 @@ class QuickSurvey extends Component {
     // console.log("Finish loading saved state from disk.")
   }
 
+  filterSetupData = () => {
+        return this.questions.data.filter((question) => question.display.includes('setup'));
+    };
+
   render() {
     const {
       navigation,
@@ -289,6 +291,7 @@ class QuickSurvey extends Component {
           edit: false,
           filePath: this.stateManager.path,
           openOldFile: true,
+          questions: this.questions,
         });
         return;
       }
@@ -301,6 +304,7 @@ class QuickSurvey extends Component {
         edit: false,
         filePath: this.stateManager.path,
         openOldFile: true,
+        questions: this.questions,
       });
     };
 
@@ -332,7 +336,9 @@ class QuickSurvey extends Component {
     };
 
     const renderedQuestions = () => {
-      let res = setupQuestions.map((question) => renderSingleQuestion(question));
+      let res = this.filterSetupData().map((question) =>
+        renderSingleQuestion(question)
+      );
       return res;
     };
     if (this.state.loading) {
