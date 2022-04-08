@@ -28,7 +28,7 @@ const fetchData = async () => {
 const processAnswerSheet = (sheet) => {
     let answerSheet = []
     sheet.forEach(row => {
-        columnValues = Object.values(row)
+        const  columnValues = Object.values(row)
         currRow = {
             "question_name": columnValues[0],
             "question_text": columnValues[1],
@@ -50,7 +50,7 @@ const processQuestionSheet = (sheet) => {
     let questionSheet = []
 
     for (const [index, val] of sheet.entries()) {
-        columnValues = Object.values(val)
+        const columnValues = Object.values(val)
         // Check if a row is empty, if empty continue looping through entries
         if (columnValues[0] === '') {
             continue
