@@ -61,7 +61,7 @@ class EmailFinalReport extends Component {
         this.createPDF(export_data);
       } else {
         var converter = new JSONconverter();
-        var file = converter.handleConverter(format[i], export_data, questions);
+        var file = await converter.handleConverter(format[i], export_data, questions);
         var encode = format[i] === "xlsx" ? "base64" : "utf8";
         this.state.data.push(file);
         this.state.format.push(format[i]);
@@ -86,86 +86,52 @@ class EmailFinalReport extends Component {
     };
     try {
       const pdf_data = await RNHTMLtoPDF.convert(options);
-      console.log("got PDF data");
-
       this.state.uri.push(pdf_data.filePath);
       this.state.data.push(pdf_data.base64);
       this.state.isPDF = true;
       this.state.encoding.push("base64");
       this.state.format.push("pdf");
-      console.log("what is uri", this.state.uri[0]);
-      console.log("Type of encoding", this.state.encoding[0]);
     } catch (error) {
-      console.log("this is the pdf converter error->", error);
+      console.log("PDF Converter Error: ", error);
     }
   }
 
   async saveDataInternal() {
-    console.log("Stuff");
     var RNFS = require("react-native-fs");
-    var path = RNFS.DocumentDirectoryPath;
-    console.log("FP", path);
-    var path_List = [];
+    var pathList = [];
     // write the file
-    try {
-      console.log("this.state.format: " + this.state.format);
       for (let i = 0; i < this.state.format.length; i++) {
         // write the file and save to Files app on device:
-        console.log("I was here");
-
+        const filePath = RNFS.DocumentDirectoryPath + "/" + this.state.filename + "." + this.state.format[i];
         try {
-          var filepath =
-            path + "/" + this.state.filename + "." + this.state.format[i];
-
-          if (this.state.format[i] == "pdf") {
-            RNFS.writeFile(filepath, this.state.data[i], "base64");
-            console.log(filepath);
-            this.setState({ reportSavedMessageVisible: true });
-          } else {
-            RNFS.writeFile(
-              filepath,
-              this.state.data[i],
-              this.state.encoding[i]
-            );
-            this.setState({ reportSavedMessageVisible: true });
-            if (
+            await RNFS.writeFile(filePath, this.state.data[i], this.state.encoding[i])
+           if (
               this.state.format[i] === "xlsx" &&
               this.props.photo.image.length > 0
             ) {
               const photoPath =
                 RNFS.DocumentDirectoryPath + "/" + this.state.filename + ".svg";
-              path.push(photoPath);
               const svgFile =
                 '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' +
                 this.props.photo.image;
-              let photoResult = await RNFS.writeFile(path[1], svgFile, "utf8");
-            }
+              await RNFS.writeFile(photoPath, svgFile, "utf8");
+               pathList.push(photoPath);
           }
-          path_List.push(filepath);
+          pathList.push(filePath);
         } catch (err) {
-          console.log("message is here: ", err.message);
-          console.log("at loop ", i);
-          this.setState({ reportSavedFailedMessageVisible: true });
+          console.log("File Save Error: ", err.message);
           console.log("failed with", this.state.format[i]);
+          break
         }
       }
-      // clear background save
-      const clearBackgroundSave = new backgroundSave();
-      var deleted = await clearBackgroundSave.deleteCapturedState();
-
-      return path_List;
-    } catch (error) {
-      console.log("ERROR:", error.message);
-      return null;
-    }
+      return pathList;
   }
 
   async sendEmail(path, filename) {
     var fp = [];
-    for (let i = 0; i < this.path.length; i++) {
+    for (let i = 0; i < path.length; i++) {
       fp.push({ path: path[i] });
     }
-    console.log("Sending email!", fp);
     await Mailer.mail(
       {
         subject: "Sending " + '"' + filename + '"',
@@ -178,7 +144,7 @@ class EmailFinalReport extends Component {
         attachments: fp,
       },
       (error, event) => {
-        console.log("error", error);
+        console.log("Mailer Error: ", error);
         Alert.alert(
           error,
           event,
@@ -187,12 +153,11 @@ class EmailFinalReport extends Component {
               text: "Ok",
               onPress: () => console.log("OK: Email Error Response"),
             },
-            {
-              text: "Cancel",
-              onPress: () => console.log("CANCEL: Email Error Response"),
-            },
+            {text: "Cancel",
+                onPress: () => console.log("Cancel:Email Error Reponse")
+            }
           ],
-          { cancelable: true }
+          { cancelable: false }
         );
       }
     );
@@ -205,10 +170,9 @@ class EmailFinalReport extends Component {
       return;
     }
     // save data internally
-    var path = await this.saveDataInternal();
-    console.log("path at handleEmail:", path);
+    var paths = await this.saveDataInternal();
     // send email
-    await this.sendEmail(path, this.state.filename);
+    await this.sendEmail(paths, this.state.filename);
   }
   // required method that creates components of email screen
   render() {
