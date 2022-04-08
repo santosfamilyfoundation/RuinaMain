@@ -151,7 +151,7 @@ class Welcome extends Component {
                          title:"Questions failed to import",
                          placement: "top",
                          status: "error",
-                         accessibilityAnnouncement: "Questions failed to import. Check the link that you used to fetch the spreadsheet is correct and open to anyone with the link.",
+                         accessibilityAnnouncement: "Questions failed to import. Ruina will use the default questions for the report forms.",
                          accessibilityLiveRegion: 'polite',
                          duration: 8000,
                      })
