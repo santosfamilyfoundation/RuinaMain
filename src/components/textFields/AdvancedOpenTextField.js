@@ -19,7 +19,6 @@ const AdvancedOpenTextField = (props) => {
     const [visible, setVisible] = React.useState(false);
     const [value, setValue] = React.useState('');
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
-    const [advancedButtonAppearance, setAdvancedButtonAppearance] = React.useState('outline');
     const [invalidLength, setInvalidLength] = React.useState(false);
     const [invalidVin, setInvalidVin] = React.useState(false);
     const [isInvalid, setIsInvalid] = React.useState(false);
@@ -101,22 +100,13 @@ const AdvancedOpenTextField = (props) => {
       //Sends user to map tool
       let currStateVal = !reducerData?.response ? null: reducerData.response;
 
-      if(advancedButtonAppearance == "filled"){
-        clearField();
-        setAdvancedButtonAppearance("outline");
-      }else{
-        setAdvancedButtonAppearance("filled")
         pageChange('Map', {id:id, questionID:props.data.id})
-      }
+
     };
 
     const onImportCameraPress = () => {
-      //Sends user to camera tool (for VIN, LISCENSE PLATE, or DRIVERS LISCENSE photo)
-      if(advancedButtonAppearance == "filled"){
-        clearField();
-        setAdvancedButtonAppearance("outline");
-      }else{
-        setAdvancedButtonAppearance("filled")
+      //Sends user to camera tool (for VIN, LICENSE PLATE, or DRIVERS LICENSE photo)
+
         let type
         switch(importFrom) {
           case "VINCamera":
@@ -134,16 +124,12 @@ const AdvancedOpenTextField = (props) => {
         pageChange('Scan', {objectID:id, type:type, questionId:currId,
           questionReducer:questionReducer})
 
-      }
+
     };
 
     const onImportTimePress = () => {
       //Gets the current date and time for user and autofills question
-      if(advancedButtonAppearance == "filled"){
-        clearField();
-        setAdvancedButtonAppearance("outline");
-      }else{
-        setAdvancedButtonAppearance("filled")
+
         let now = new Date();
         let year = (now.getFullYear()).toString();
         let month = ((now.getMonth() + 1)).toString();
@@ -152,10 +138,8 @@ const AdvancedOpenTextField = (props) => {
         let min = (now.getMinutes()).toString();
         let fullDate = year + "/" +  month + "/" + date + "\t" + hours + ":" + min;;
         updateRoad({id, question:data.humanReadableId, selection: fullDate });
-      }
-    };
 
-    //Icons from Eva Icons: https://akveo.github.io/eva-icons/#/
+    };
 
     const MapIcon = () => (
         <Icon name='map-outline' color='white' size={25} />
