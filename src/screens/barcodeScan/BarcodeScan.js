@@ -181,8 +181,8 @@ class BarcodeScan extends PureComponent {
     }
     else if (this.type == Constants.PLATE) {
       return (
-        <View><Camera
-                         style={styles.preview}
+        <View style={styles.container}><Camera
+                        style={styles.preview}
                          aspect={Aspect.fill}
                          captureQuality={CaptureQuality.medium}
                          country="us"
@@ -190,12 +190,14 @@ class BarcodeScan extends PureComponent {
                          plateOutlineColor="#ff0000"
                          showPlateOutline
                          zoom={0}
-                         torchMode={TorchMode.off}
+                         torchMode={TorchMode.auto}
                          touchToFocus
                        />
-                       <View style={styles.textContainer}>
+                       <View>
                          <Text style={styles.text}>{this.state.plate}</Text>
-                       </View></View>
+                       </View>
+                       <Button title="Go back" onPress={() => this.props.navigation.goBack()} />
+                       </View>
       )
     }
   }
@@ -221,6 +223,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     alignSelf: 'center',
     margin: 20,
+  },
+  textContainer: {
+    position: 'absolute',
+    top: 100,
+    left: 50,
+  },
+  text: {
+    textAlign: 'center',
+    fontSize: 20,
   },
 });
 
