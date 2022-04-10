@@ -33,7 +33,7 @@ export const ZIP_CODE_ID = "driver-zip";
 export const SEX_ID = "driver-sex";
 export const DLICENSE_ID = "driver-licenseInfo";
 export const DLICENSE_CLASS_ID = "driver-licenseClass";
-export const DLICENSE_ENDORSEMENTS_ID = "driver-CDLEndorsements;
+export const DLICENSE_ENDORSEMENTS_ID = "driver-CDLEndorsements";
 
 export const ALLOW_JSON_EXPORT = false;
 
