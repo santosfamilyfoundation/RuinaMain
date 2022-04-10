@@ -36,8 +36,8 @@ validateInput(selection, type, constraint){
                             this.status = false
                         }
                       }
-    validateField(selection){
-        this.validateInput(selection)
+    validateField(selection, type, constraint){
+        this.validateInput(selection, type, constraint)
     }
 }
 

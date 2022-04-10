@@ -97,7 +97,7 @@ const DropDownMultiSelect = (props) => {
 
     const validateLocal = (localInfo) => {
         let selectionValidation = SelectionValidation
-             selectionValidation.validateField(localInfo);
+             selectionValidation.validateField(localInfo, data.val_constraint, data.warning_msg);
              let localStatus = selectionValidation.status
              if (localStatus) {
                 setBorderColor("coolGray.200")
@@ -185,7 +185,7 @@ const DropDownMultiSelect = (props) => {
                 title={data.question}
                 helperText={data.helperText}
                 tooltip={tooltip()}
-                errorMessage='Invalid input, make sure you satisfy the question requirements'
+                errorMessage={data.warning_msg}
                 isInvalid={isInvalid}
                 required={data.required}
             >

@@ -177,7 +177,7 @@ const DropDownSingleSelect = (props) => {
                 title={data.question}
                 helperText={data.helperText}
                 tooltip={tooltip()}
-                errorMessage='Invalid Input'
+                errorMessage={data.warning_msg}
                 isInvalid={isInvalid}
                 required={data.required}
             >
