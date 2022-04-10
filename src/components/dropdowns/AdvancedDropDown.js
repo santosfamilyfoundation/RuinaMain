@@ -105,8 +105,7 @@ const AdvancedDropDown = (props) => {
     const setIncomplete = () => {
         status = 'danger'
         if(buttonAppearance != 'outline') {
-            setButtonAppearance('outline');
-        };
+            setButtonAppearance('outline');        };
     };
 
     // Determine submission status

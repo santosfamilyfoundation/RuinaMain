@@ -69,18 +69,20 @@ class FinalReport extends Component {
   }
   render() {
     const { navigation } = this.props;
+    const questions = this.props.navigation.getParam('questions')
 
     const navigateSaveToDevice = (format, directoryUri) => {
       console.log("Save Report to Device!", directoryUri);
       navigation.navigate("SaveToDevice", {
         format: format,
         directoryUri: directoryUri,
+        questions: questions,
       });
     };
 
     const navigateEmail = (format) => {
       console.log("navigating to email");
-      navigation.navigate("EmailFinalReport", { format: format });
+      navigation.navigate("EmailFinalReport", { format: format, questions: questions, });
     };
 
     const navigateDatabase = (format) => {
