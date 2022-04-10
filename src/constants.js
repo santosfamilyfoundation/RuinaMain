@@ -11,29 +11,29 @@ export const WIND_SPEED_ANNOUNCE = "Wind speed is:";
 export const WIND_DEG_ANNOUNCE = "Wind degree is:";
 
 
-export const LAT_ID = "road-12";
-export const LONG_ID = "road-13";
-export const WEATHER = "road-20";
-export const VIN_ID = "vehicle-11";
-export const TIME_ID = "road-7";
-export const LICENSE_PLATE_ID = "vehicle-18";
+export const LAT_ID = "road-latitude";
+export const LONG_ID = "road-longitude";
+export const WEATHER = "road-weatherConditions";
+export const VIN_ID = "vehicle-VIN";
+export const TIME_ID = "road-dateTimeMilitary";
+export const LICENSE_PLATE_ID = "vehicle-licensePlate";
 
-export const MAKE_ID = "vehicle-19";
-export const MODEL_ID = "vehicle-21";
-export const YEAR_ID = "vehicle-20";
+export const MAKE_ID = "vehicle-make";
+export const MODEL_ID = "vehicle-model";
+export const YEAR_ID = "vehicle-modelYear";
 
-export const FIRST_NAME_ID = "driver-0";
-export const MIDDLE_INITIAL_ID = "driver-1";
-export const LAST_NAME_ID = "driver-2";
-export const DATE_OF_BIRTH_ID = "driver-4";
-export const STREET_ADDRESS_ID = "driver-5";
-export const CITY_ID = "driver-6";
-export const STATE_ID = "driver-7";
-export const ZIP_CODE_ID = "driver-8";
-export const SEX_ID = "driver-10";
-export const DLICENSE_ID = "driver-24";
-export const DLICENSE_CLASS_ID = "driver-25";
-export const DLICENSE_ENDORSEMENTS_ID = "driver-27";
+export const FIRST_NAME_ID = "driver-firstName";
+export const MIDDLE_INITIAL_ID = "driver-middleName";
+export const LAST_NAME_ID = "driver-lastName";
+export const DATE_OF_BIRTH_ID = "driver-dob";
+export const STREET_ADDRESS_ID = "driver-streetAddress1";
+export const CITY_ID = "driver-city";
+export const STATE_ID = "driver-state";
+export const ZIP_CODE_ID = "driver-zip";
+export const SEX_ID = "driver-sex";
+export const DLICENSE_ID = "driver-licenseInfo";
+export const DLICENSE_CLASS_ID = "driver-licenseClass";
+export const DLICENSE_ENDORSEMENTS_ID = "driver-CDLEndorsements;
 
 export const ALLOW_JSON_EXPORT = false;
 
