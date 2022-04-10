@@ -1,14 +1,16 @@
 import {Component} from 'react';
 import XLSX from 'xlsx';
 import * as htmlStrings from '../utils/html_for_pdf_pages/htmlStrings'
-import {testAnswers} from '../data/testAnswers';
-import {questions} from '../data/questions';
+import { testAnswers } from '../data/testAnswers';
+import { questions } from '../data/questions';
+
 
 export class JSONconverter extends Component {
 	constructor(props) {
 		super(props);
 	}
 	handleConverter(format, data) {
+		console.log('handleconverter starting');
 		let file;
 		switch (format) {
 			case 'json':
@@ -17,19 +19,24 @@ export class JSONconverter extends Component {
 				return file = this.JSONtoXLS(data);
 			case 'html': case 'pdf':
 				return file = this.JSONtoHTML(data);
-			case 'pdftest':
-				return this.JSONtoHTML(testAnswers);
-			case 'xlsxtest':
-				return this.JSONtoXLS(testAnswers);
 			default:
 				console.log("Error+"+format)
 		}
 	}
 
-	JSONtoXLS(jsondata) {
+	async JSONtoXLS (jsondata) {
 		function getQuestion(questionUid) {
-			var queryResult = questions.data.filter(question => question.id == questionUid);
-			return queryResult[0].question
+		    var questionName = ''
+		    questions.data.forEach(questionGroup => {
+		        if (questionGroup.questions) {
+		            questionGroup.questions.forEach(question => {
+		                if (question.humanReadableId === questionUid) {
+		                    questionName =  question.question
+		                }
+		            });
+		        }
+		    })
+			return questionName
 		};
 
 		function populateCrashSheet(data) {
@@ -184,12 +191,16 @@ export class JSONconverter extends Component {
 		XLSX.utils.book_append_sheet(wb, nonmotoristWS, "nonmotorist");
 		// output workbook so it can be written to a file
 		const output = str => str;
-		const wbout = XLSX.write(wb, { type: 'binary', bookType: "xlsx" });
+		const wbout = XLSX.write(wb, { type: 'base64', bookType: "xlsx" });
 		return output(wbout);
 	}
 
 	JSONtoHTML(jsondata) {
 		function getAnswer(answerSubsetData, id) {
+		    if ("photo" in answerSubsetData && id === 'crashDiagram') {
+		        let source = answerSubsetData['photo']
+		        return source
+		    }
 			if (("response" in answerSubsetData) && (id in answerSubsetData["response"])) {
 				if (answerSubsetData["response"][id] instanceof Array) {
 					return answerSubsetData["response"][id].join(", ")
@@ -234,18 +245,22 @@ export class JSONconverter extends Component {
 			var lines = str.split("\n");
 			var filledString = "";
 			for (var i = 0; i < lines.length; i++){
-			  // console.log(crashDataSectionLines[i]);
 			  var line = lines[i];
 			  // check if line contains "id=" if so then get the id
 				// there could be multiple ids in one line so process all of them
 				var pos = line.indexOf("id=", 0);
 				while (pos != -1) {
 					// extract the id
-			    var id = line.slice(pos+4, pos+12);
+					var endPos = line.indexOf('>', pos)-1;
+					var id = line.slice(pos+4, endPos);
 					var ans = getAnswer(answers, id);
 					// put ans into line and replace
 					if (fillInMethod == "datasection") {
-						line = line.slice(0, pos+14) + ans + line.slice(pos+14);
+					    if (id === 'crashDiagram') {
+					        line = ans;
+					    } else {
+					        line = line.slice(0, endPos+2) + ans + line.slice(endPos+2);
+					    }
 					} else {
 						line = line.replace("###", ans);
 					}
@@ -297,10 +312,14 @@ export class JSONconverter extends Component {
 		// fill in cover page header
 		htmlString += fillCoverPageHeader(htmlStrings.coverPageHeaderString, jsondata["road"][0], numSectionsDict);
 		// fill in cover page data sections
-		htmlString += processQuestionIds(htmlStrings.crashDataSectionString, jsondata["road"][0], "datasection");
+		let crashRoadData = jsondata['road'][0]
+		if(jsondata['photo'].length > 0) {
+            crashRoadData = {...crashRoadData, photo: jsondata['photo']}
+        }
+		htmlString += processQuestionIds(htmlStrings.crashDataSectionString, crashRoadData, "datasection");
 		// if applicable, add in construction table
 		var displayConstruction = false;
-		if (getAnswer(jsondata["road"][0], "34oHCyQs") == "Yes") {
+		if (getAnswer(jsondata["road"][0], "road-workZoneRelated") == "Yes") {
 			displayConstruction = true;
 			htmlString += processQuestionIds(htmlStrings.constructionDataSectionString, jsondata["road"][0], "datasection");
 		}
@@ -317,19 +336,19 @@ export class JSONconverter extends Component {
 			}
 			htmlString += processQuestionIds(htmlStrings.vehicleDataSectionString1, vehicleAnswers, "datasection");
 			// fill out lvhm vehicle sections if applicable
-			if (getAnswer(vehicleAnswers, "ovVntlnU") != "Not Applicable") {
+			if (getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") != "Not Applicable") {
 				htmlString += processQuestionIds(htmlStrings.firstTrailerDataSectionString, vehicleAnswers, "datasection");
 			}
-			if ((getAnswer(vehicleAnswers, "ovVntlnU") == "2") || (getAnswer(vehicleAnswers, "ovVntlnU") == "3")) {
+			if ((getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") == "2") || (getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") == "3")) {
 				htmlString += processQuestionIds(htmlStrings.secondTrailerDataSectionString, vehicleAnswers, "datasection");
 			}
-			if (getAnswer(vehicleAnswers, "ovVntlnU") == "3") {
+			if (getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") == "3") {
 				htmlString += processQuestionIds(htmlStrings.thirdTrailerDataSectionString, vehicleAnswers, "datasection");
 			}
-			if ((getAnswer(vehicleAnswers, "ovVntlnU") != "Not Applicable") || (getAnswer(vehicleAnswers, "CynWHwxP") != "Light (10,000 lbs. or less GVWR/GCWR)") || (getAnswer(vehicleAnswers, "sM5HGjcV") == "Yes")) {
+			if ((getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") != "Not Applicable") || (getAnswer(vehicleAnswers, "vehicle-size") != "Light (10,000 lbs. or less GVWR/GCWR)") || (getAnswer(vehicleAnswers, "vehicle-hazardousMaterials") == "Yes")) {
 				htmlString += processQuestionIds(htmlStrings.lvhmVehicleDataSectionString, vehicleAnswers, "datasection");
 			}
-			if (getAnswer(vehicleAnswers, "sM5HGjcV") == "Yes") {
+			if (getAnswer(vehicleAnswers, "vehicle-hazardousMaterials") == "Yes") {
 				htmlString += processQuestionIds(htmlStrings.hazardousDataSectionString, vehicleAnswers, "datasection");
 			}
 			htmlString += processQuestionIds(htmlStrings.vehicleDataSectionString2, vehicleAnswers, "datasection");
@@ -340,11 +359,11 @@ export class JSONconverter extends Component {
 				var driverAnswers = vehicleSectionDict["drivers"][vehicleAnswers["id"]];
 				htmlString += fillDriverPageHeader(htmlStrings.driverHeaderString, driverAnswers, i+1);
 				htmlString += processQuestionIds(htmlStrings.driverDataSectionString1, driverAnswers, "datasection");
-				if ((getAnswer(vehicleAnswers, "ovVntlnU") != "Not Applicable") || (getAnswer(vehicleAnswers, "CynWHwxP") != "Light (10,000 lbs. or less GVWR/GCWR)") || (getAnswer(vehicleAnswers, "sM5HGjcV") == "Yes")) {
+				if ((getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") != "Not Applicable") || (getAnswer(vehicleAnswers, "vehicle-size") != "Light (10,000 lbs. or less GVWR/GCWR)") || (getAnswer(vehicleAnswers, "vehicle-hazardousMaterials") == "Yes")) {
 					// display lvhm driver section
 					htmlString += processQuestionIds(htmlStrings.lvhmDriverDataSectionString, driverAnswers, "datasection");
 				}
-				if (getAnswer(driverAnswers, "TNNilZo2") != "No Apparent Injury") {
+				if (getAnswer(driverAnswers, "driver-injuryStatus") != "No Apparent Injury") {
 					// display injury driver section
 					htmlString += processQuestionIds(htmlStrings.injuryDriverDataSectionString, driverAnswers, "datasection");
 				}
@@ -357,7 +376,7 @@ export class JSONconverter extends Component {
 					var passengerAnswers = passengers[j];
 					htmlString += fillPassengerPageHeader(htmlStrings.passengerHeaderString, passengerAnswers, j+1, i+1, hasDriver);
 					htmlString += processQuestionIds(htmlStrings.passengerDataSectionString, passengerAnswers, "datasection");
-					if (getAnswer(passengerAnswers, "NJqVP8AH") != "No Apparent Injury") {
+					if (getAnswer(passengerAnswers, "passenger-injuryStatus") != "No Apparent Injury") {
 						htmlString += processQuestionIds(htmlStrings.injuryPassengerDataSectionString, passengerAnswers, "datasection");
 					}
 				}
@@ -368,7 +387,7 @@ export class JSONconverter extends Component {
 			var nonmotoristAnswers = jsondata["nonmotorist"][i];
 			htmlString += fillNonMotoristPageHeader(htmlStrings.nonmotoristHeaderString, nonmotoristAnswers, i+1);
 			htmlString += processQuestionIds(htmlStrings.nonmotoristDataSectionString, nonmotoristAnswers, "datasection");
-			if (getAnswer(nonmotoristAnswers, "WRishqwU") != "No Apparent Injury") {
+			if (getAnswer(nonmotoristAnswers, "nonmotorist-injuryStatus") != "No Apparent Injury") {
 				htmlString += processQuestionIds(htmlStrings.injuryNonmotoristDataSectionString, nonmotoristAnswers, "datasection");
 			}
 		}

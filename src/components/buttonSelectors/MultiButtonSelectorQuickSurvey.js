@@ -13,7 +13,8 @@ const MultiButtonSelectorQuickSurvey = (props) => {
   const [selection, setSelection] = React.useState(null);
   // obtained as inputs to component made in QuickSurvey
   const {data, quickSurveyReducer, submitFunction, updateResponse, dependencyID} = props;
-  let currId = data.id
+  let currId = data.humanReadableId
+  console.log(data);
 
   // when button selected, set the option and update the quick survey setupData
   const submitField = (optionText, idCode) => {
@@ -35,7 +36,7 @@ const MultiButtonSelectorQuickSurvey = (props) => {
                     break;
             }
         }
-      submitFunction({question: data.id, selection: optionText})
+      submitFunction({question: data.humanReadableId, selection: optionText})
   }
 
     const renderSingleButton = (option) => {
@@ -66,7 +67,11 @@ const MultiButtonSelectorQuickSurvey = (props) => {
         return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
     }
 
-    var renderComponent = dependencyParser(props.response, data, dependencyID)
+    var renderComponent = true;
+    if (data.questionDependency != undefined && props.response != null) {
+        renderComponent = dependencyParser(props.response, data, dependencyID)
+    }
+
     if (renderComponent){
         return(
         <React.Fragment>
@@ -74,6 +79,7 @@ const MultiButtonSelectorQuickSurvey = (props) => {
              title={data.question}
              helperText={data.helperText}
              tooltip={tooltip()}
+             required={data.required}
             >
                {renderButtons()}
             </QuestionSection>

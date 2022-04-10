@@ -20,7 +20,7 @@ const LargeTextField = (props) => {
     const [isInvalid, setIsInvalid] = React.useState(false);
     const {data, key, id, questionReducer, submitFunction, dependencyID} = props;
 
-    let currId = data.id
+    let currId = data.humanReadableId
     let status;
 
     const reducerData = questionReducer.data.find(entry => entry.id == id);
@@ -88,7 +88,11 @@ const LargeTextField = (props) => {
         return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
     }
 
-    var renderComponent = dependencyParser(props.response, data, dependencyID)
+    var renderComponent = true;
+    if (data.questionDependency != undefined && props.response != null) {
+        renderComponent = dependencyParser(props.response, data, dependencyID)
+    }
+
     if (renderComponent){
         return(
         <Box>
@@ -98,6 +102,7 @@ const LargeTextField = (props) => {
              tooltip={tooltip()}
              errorMessage='Invalid Input'
              isInvalid={isInvalid}
+             required={data.required}
             >
                 <TextArea
                  placeholder="Place your text"

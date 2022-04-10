@@ -1,6 +1,6 @@
 export class backgroundSave {
     constructor(filePath, openOldFile) {
-        console.log("Instatiating a new background save object")
+        // console.log("Instatiating a new background save object")
         this.RNFS = require('react-native-fs');
         this.openOldFile = openOldFile;
         this.path = "";
@@ -14,7 +14,7 @@ export class backgroundSave {
             this.path = this.getSavePath();
         }
 
-        console.log("path initialized to:", this.path);
+        // console.log("path initialized to:", this.path);
 
         this.filePaths = [];
         this.getFilePaths();
@@ -22,7 +22,7 @@ export class backgroundSave {
     }
 
     async getFilePaths() {
-        console.log(this.RNFS.DocumentDirectoryPath);
+        // console.log(this.RNFS.DocumentDirectoryPath);
         await this.RNFS.readdir(this.RNFS.DocumentDirectoryPath).then( files => {
             for (const file of files) {
                 if (file.includes('CrashReport') && file.includes('.json')) {
@@ -31,6 +31,8 @@ export class backgroundSave {
                     }
                 }
             }
+            this.filePaths.sort()
+            this.filePaths.reverse()
         });
     }
 

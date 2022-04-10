@@ -20,12 +20,15 @@ const CountyDropDown = (props) => {
     const [borderColor, setBorderColor] = React.useState("coolGray.200")
     const [deleteCountyFromState, setDeleteCountyFromState] = React.useState(false);
     const { data, key, id, questionReducer, submitFunction, updateResponse, deleteRoadSingleResponse } = props;
+
     const [isInvalid, setIsInvalid] = React.useState(false);
-    let currId = data.id;
+    let currId = data.humanReadableId;
+
+
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
 
-    const stateDropDownQuestionID = data.questionDependency[0].dependencyUuid;
+    const stateDropDownQuestionID = data.questionDependency[0].dependencyName;
     let existingDataState = existingData ? existingData[stateDropDownQuestionID] : null;
 
     // Populate if value already exists in redux
@@ -161,6 +164,8 @@ const CountyDropDown = (props) => {
             tooltip={tooltip()}
             isInvalid={isInvalid}
             errorMessage={'Please Select a County'}
+            required={data.required}
+
         >
                 <Box borderColor={borderColor} borderWidth ="1">
                 <SectionedMultiSelect

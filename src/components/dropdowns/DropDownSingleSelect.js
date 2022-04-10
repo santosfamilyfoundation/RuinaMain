@@ -17,7 +17,7 @@ const DropDownSingleSelect = (props) => {
     const [isInvalid, setIsInvalid] = React.useState(false);
     const {data, key, id, questionReducer, submitFunction, updateResponse, dependencyID} = props;
 
-    let currId = data.id;
+    let currId = data.humanReadableId;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
 
@@ -167,7 +167,10 @@ const DropDownSingleSelect = (props) => {
         return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
     }
 
-    var renderComponent = dependencyParser(props.response, data, dependencyID)
+    var renderComponent = true;
+    if (data.questionDependency != undefined && props.response != null) {
+        renderComponent = dependencyParser(props.response, data, dependencyID)
+    }
     if (renderComponent){
         return(
             <QuestionSection
@@ -176,6 +179,7 @@ const DropDownSingleSelect = (props) => {
                 tooltip={tooltip()}
                 errorMessage='Invalid Input'
                 isInvalid={isInvalid}
+                required={data.required}
             >
                 <Box borderColor={borderColor} borderWidth ="1">
                 <SectionedMultiSelect

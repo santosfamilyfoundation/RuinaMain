@@ -21,7 +21,7 @@ const QuestionAutoCompleteDropDown = (props) => {
     const [selectionData, setSelectionData] = React.useState(data.answerOptions);
 
     let status;
-    let currId = data.id;
+    let currId = data.humanReadableId;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
 
@@ -108,7 +108,11 @@ const QuestionAutoCompleteDropDown = (props) => {
         return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
     }
 
-    var renderComponent = dependencyParser(props.response, data, dependencyID)
+    var renderComponent = true;
+    if (data.questionDependency != undefined && props.response != null) {
+        renderComponent = dependencyParser(props.response, data, dependencyID)
+    }
+
     if (renderComponent) {
         return(
             <QuestionSection title={data.question} tooltip={tooltip()}>

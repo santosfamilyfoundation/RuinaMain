@@ -28,7 +28,7 @@ const AdvancedDropDown = (props) => {
     const [degree, setDegree] = React.useState("");
     const [isInvalid, setIsInvalid] = React.useState(false);
 
-    let currId = data.id;
+    let currId = data.humanReadableId;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
     let i;
@@ -242,6 +242,7 @@ const AdvancedDropDown = (props) => {
             tooltip={tooltip()}
             errorMessage='Invalid Input'
             isInvalid={isInvalid}
+            required={data.required}
         >
             {WeatherHelper()}
             <HStack justifyContent='space-around'>
