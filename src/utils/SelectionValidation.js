@@ -1,22 +1,13 @@
-
-export class TextFieldValidation {
+export class SelectionValidation {
     constructor(){
         this.status = null;
         this.validationData = null;
     }
-    debounceValidation(func, timeout){
-        let timer;
-          return (...args) => {
-            clearTimeout(timer);
-            timer = setTimeout(() => { func.apply(this, args); }, timeout);
-          };
-        }
 
-    validateInput(text, type, constraint){
+validateInput(selection, type, constraint){
           if (type == 'min_num'){
-            console.log('made it here', text.length)
             let constraint = parseInt(constraint)
-            if (text.length >= constraint){
+            if (selection.length >= constraint){
                 this.status = true
             }
             else {
@@ -25,7 +16,7 @@ export class TextFieldValidation {
           }
           if (type == 'max_num'){
               let constraint = parseInt(constraint)
-              if (text.length <= constraint){
+              if (selection.length <= constraint){
                   this.status = true
               }
               else {
@@ -35,8 +26,8 @@ export class TextFieldValidation {
 
           if (type == 'range'){
              lowerUpperLim = constraint.split()
-                        if (text.length >= parseInt(lowerUpperLim[0])){
-                            if (text.length <= parseInt(lowerUpperLim[0])){
+                        if (selection.length >= parseInt(lowerUpperLim[0])){
+                            if (selection.length <= parseInt(lowerUpperLim[0])){
                                 this.status = true
                             }
                             }
@@ -45,11 +36,9 @@ export class TextFieldValidation {
                             this.status = false
                         }
                       }
-    submitField(text, type, constraint){
-        console.log('this is at least guaranteed')
-        console.log(type, constraint)
-        this.validateInput(text, type, constraint)
+    validateField(selection){
+        this.validateInput(selection)
     }
 }
 
-export default (new TextFieldValidation);
+export default (new SelectionValidation);

@@ -10,7 +10,6 @@ import { addPassenger, deletePassenger } from '../../actions/PassengerAction';
 import { deleteVehicle } from '../../actions/VehicleAction';
 import { deleteDriver } from '../../actions/DriverAction';
 import Section from '../../components/Section'
-import { questionData } from '../../utils/questionParser';
 
 var uuid = require('react-native-uuid');
 
@@ -55,9 +54,14 @@ class VehicleSection extends Component{
         this.props.deleteVehicle({vehicleID: vehicle.id});
     }
 
-    render(){
-        const {navigation, vehicle, index, name, edit, passenger, roadID } = this.props
+    filterQuestionsData = (questionType) => {
+        return this.props.questions.data.filter((question) =>
+          question.display.includes(questionType)
+        );
+      };
 
+    render(){
+        const {navigation, vehicle, index, name, edit, passenger, roadID, questions } = this.props
         // would need to refine if we want to put delete vehicle section icon next to card header
         // const VehiclesHeader = () => (
         //     <View style={{ flexDirection: 'row' }}>
@@ -66,7 +70,7 @@ class VehicleSection extends Component{
         //     </View>
         // );
 
-        const navigateQuestion = (filteredQuestionsData, id, type, vehicleIdx, passengerIdx, ids) => {
+        const navigateQuestion = (form, id, type, vehicleIdx, passengerIdx, ids) => {
           if (type == 'Driver') {
             var name = type + ' of ' + 'Vehicle ' + vehicleIdx;
           } else if (type == 'Passenger') {
@@ -77,7 +81,7 @@ class VehicleSection extends Component{
           } else {
             var name = 'Vehicle ' + vehicleIdx;
           }
-          navigation.navigate('Question', {questions: filteredQuestionsData, objectID: id, type, name, dependencyID: ids})
+          navigation.navigate('Question', {questions: form, objectID: id, type, name, dependencyID: ids})
         }
 
         // create passengers associated with vehicle section in two modes (edit and non edit)
@@ -96,7 +100,7 @@ class VehicleSection extends Component{
                 return (
               <IconButton topMargin={4} rightMargin={4} text={`Passenger ${idx + 1} \nForm`}
                 onPress={() =>
-                    navigateQuestion(questionData('Passenger'), passenger.id,
+                    navigateQuestion(this.filterQuestionsData('passenger'), passenger.id,
                     'Passenger', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}
                 icon={<Icon color="white" name="person" size={50}/>}/>
                 )
@@ -114,7 +118,7 @@ class VehicleSection extends Component{
               } else {
                 return (
                     <IconButton topMargin={4} rightMargin={4} text={`Occupant ${idx + 1} \nForm`}
-                    onPress={() => navigateQuestion(questionData('Passenger'), passenger.id, 'Occupant', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}
+                    onPress={() => navigateQuestion(this.filterQuestionsData('passenger'), passenger.id, 'Occupant', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}
                     icon={<Icon color="white" name="person" size={50}/>}/>
                 )
               }
@@ -191,7 +195,7 @@ class VehicleSection extends Component{
                         <IconButton
                          topMargin={4}
                          rightMargin={4}
-                         onPress = {() => navigateQuestion(questionData('Vehicle'), vehicle.id, 'Vehicle', (index+1), 0, [roadID, vehicle.id])}
+                         onPress = {() => navigateQuestion(this.filterQuestionsData('vehicle'), vehicle.id, 'Vehicle', (index+1), 0, [roadID, vehicle.id])}
                          text={`${name} \nForm`}
                          icon={<Icon color='white' name='local-taxi' size={50}/>}
                          />
@@ -200,7 +204,7 @@ class VehicleSection extends Component{
                          topMargin={4}
                          rightMargin={4}
                          onPress={styles.individualCard}
-                         onPress= {() => navigateQuestion(questionData('Driver'), vehicle.driver, 'Driver', (index+1), 0, [roadID, vehicle.id])}
+                         onPress= {() => navigateQuestion(this.filterQuestionsData('driver'), vehicle.driver, 'Driver', (index+1), 0, [roadID, vehicle.id])}
                          text={`Driver \nForm`}
                          icon={<Icon color='white' name='person' size={50}/>}
                         />}

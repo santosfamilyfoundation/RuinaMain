@@ -46,7 +46,7 @@ const AdvancedOpenTextField = (props) => {
             setIsInvalid(false)
         }
         let textFieldValidation = TextFieldValidation
-        textFieldValidation.submitField(localText);
+        textFieldValidation.submitField(localText, data.val_type, data.val_constraint);
         let localStatus = textFieldValidation.status
         if (localStatus) {
             setIsInvalid(false)
@@ -205,7 +205,7 @@ const AdvancedOpenTextField = (props) => {
             <QuestionSection key={key}
                 title={data.question}
                 helperText={data.helperText}
-                errorMessage={ErrorMsg()}
+                errorMessage={data.warning_msg}
                 tooltip={tooltip()}
                 required={data.required}
             >

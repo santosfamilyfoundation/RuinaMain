@@ -9,8 +9,6 @@ import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
 import IconButton from '../IconButton';
 import TextFieldValidation from '../../utils/TextFieldValidation.js';
-import { questions } from '../../data/questions.js';
-
 
 const LargeTextField = (props) => {
     const [errors, setErrors] = React.useState({});
@@ -63,7 +61,7 @@ const LargeTextField = (props) => {
             setIsInvalid(true)
          }
          let textFieldValidation = TextFieldValidation
-         textFieldValidation.submitField(localText);
+         textFieldValidation.submitField(localText, data.val_type, data.val_constraint);
          let localStatus = textFieldValidation.status
          if (localStatus) {
             setIsInvalid(false)
@@ -100,7 +98,7 @@ const LargeTextField = (props) => {
              title={data.question}
              helperText={data.helperText}
              tooltip={tooltip()}
-             errorMessage='Invalid Input'
+             errorMessage={data.warning_msg}
              isInvalid={isInvalid}
              required={data.required}
             >

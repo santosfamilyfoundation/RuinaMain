@@ -57,7 +57,7 @@ const OpenTextFieldWithSelection = (props) => {
             setIsInvalid(true)
          }
          let textFieldValidation = TextFieldValidation
-         textFieldValidation.submitField(localText);
+         textFieldValidation.submitField(localText, data.val_type, data.val_constraint);
          var localStatus = textFieldValidation.status
          if (localStatus) {
             setIsInvalid(false)
