@@ -39,7 +39,10 @@ class QuestionForm extends Component {
       super(props);
 
       this.sections = undefined;
-      this.loading = true;
+
+      this.state = {
+        loading: true
+      }
       this.question = this.questionData(this.props.questionDetail.type);
    }
 
@@ -80,9 +83,9 @@ class QuestionForm extends Component {
             pageChange: this.navigateToAdvanced,
             importFrom: res.data.autoMethod,
          },
-         countyDropDown: {
-            ...PublicObj,
-         },
+         // countyDropDown: {
+         //    ...PublicObj,
+         // },
          largeTextField: {
             ...PublicObj,
          },
@@ -161,8 +164,8 @@ class QuestionForm extends Component {
          case "advancedDropDown":
             return <AdvancedDropDown {...props} />;
 
-         case "countyDropDown":
-            return <CountyDropDown {...props} />;
+         // case "countyDropDown":
+         //    return <CountyDropDown {...props} />;
 
          case "largeTextField":
             return <LargeTextField {...props} />;
@@ -228,15 +231,14 @@ class QuestionForm extends Component {
          setTimeout(() => {
             this.sections = this.renderSections();
             console.log("updated sections:", this.sections);
-            this.loading = false;
-            this.forceRender();
+            this.setState({loading: false})
          })
       );
    }
 
    render() {
-      console.log("Rendering");
-      if (this.loading) {
+      console.log("Rendering - value of this.state.loading:", this.state.loading);
+      if (this.state.loading) {
          return (
             <SafeAreaView style={styles.container}>
                <TopNavigation
