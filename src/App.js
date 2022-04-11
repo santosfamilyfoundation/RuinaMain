@@ -1,4 +1,5 @@
 import React from 'react';
+import { SSRProvider } from '@react-aria/ssr';
 import { Provider } from 'react-redux';
 import { AppNavigator } from './appNavigator';
 import configureStore from './store';
@@ -55,13 +56,13 @@ const theme = extendTheme({
 
 const App = () => {
   return (
-      <React.Fragment>
+      <SSRProvider>
         <NativeBaseProvider theme = {theme}>
           <Provider store = { store }>
             <AppNavigator/>
           </Provider>
         </NativeBaseProvider>
-      </React.Fragment>
+      </SSRProvider>
   )
 };
 
