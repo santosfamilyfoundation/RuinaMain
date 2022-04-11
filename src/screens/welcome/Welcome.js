@@ -113,27 +113,24 @@ class Welcome extends Component {
     this.props.resetStory();
     this.props.resetMap();
     this.props.resetPhoto();
-    // Fetch the list of file paths
+    // Fetch the list of file paths of all in-progress reports on devices, if any.
     await this.stateManager.getFilePaths();
-    // If the list of file paths is empty, set this.unfinishedReportsAbsent false
     this.unfinishedReportsAbsent = this.stateManager.filePaths.length == 0;
-    if (this.state.link === "") {
-      // Fetch the data from the question folder in the app file directory
-      const spreadsheetExists = await RNFS.exists(
-        RNFS.DocumentDirectoryPath + "/questions"
-      );
-      // If the data does not exist, fetch the default spreadsheet
-      if (!spreadsheetExists) {
-        await this.getMobileSpreadsheet(DEFAULT_SPREADSHEET);
-      }
+    // Fetch the data from the question folder in the app file directory
+    const spreadsheetExists = await RNFS.exists(
+      RNFS.DocumentDirectoryPath + "/questions"
+    );
+    // If the data does not exist, fetch the default spreadsheet
+    if (!spreadsheetExists) {
+      await this.getMobileSpreadsheet(DEFAULT_SPREADSHEET);
     }
     this.setState({ loading: false });
   }
 
   /*
-    This function checks if the state manager has a list of file paths. If there
-    is a non-empty list, update the state to show the dialog with a list of
-    saved reports.
+    This function checks if the state manager identified any in-progress reports.
+    If there is a non-empty list, update the state to show the dialog with a
+    list of saved reports.
   */
   checkAutoSavedSession() {
     if (this.stateManager.filePaths != null) {

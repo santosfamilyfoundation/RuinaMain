@@ -1,14 +1,17 @@
 /*
-  The QuickSurvey component receives from the Welcome screen a file path or an
-  empty string (for a new report) and loads the questions from the downloaded
+  The QuickSurvey component receives a file path (for an in-progress report) or
+  an empty string (for a new report) and loads the questions from the downloaded
   spreadsheet. If the component receives a file path, it fetches the saved JSON
   from the app file directory. When the JSON successfully loads with data, a
   dialog will alert the user and on acknowledgement will navigate to the Home
-  screen. If the JSON fails or no file path is provided the component renders
+  screen. If the JSON fails or no file path is provided, the component renders
   the set up questions (the number of vehicles, non-motorists, type of property,
   if there was a secondary crash, and crash severity). The bottom of the page is
   a "Continue" button that navigates to the Home screen. The questions do not
   need to be answered to continue to the Home screen.
+
+  The purpose of the QuickSurvey is to collect basic information to set up
+  relevant sections in the other screens.
 */
 import React, { Component } from "react";
 import { SafeAreaView } from "react-navigation";
@@ -69,17 +72,17 @@ class QuickSurvey extends Component {
   }
 
   /*
-    This function reads the file at a given file path. When the file is done
-    reading the data is passed to parseLoadedState and the displays a dialog
-    with a success message and the loading state is set to false. If the file
-    cannot be read, the screen will render the setup questions.
+    This function loads the data from a JSON file retreived from the state
+    manager then parses the loaded state.
   */
   async loadStateFromJSON() {
+    // Reading data stored in local file
     await this.stateManager.RNFS.readFile(this.stateManager.path, "utf8")
       .then((data) => {
         try {
           const loadedState = JSON.parse(data);
           this.parseLoadedState(loadedState);
+          // displays a dialog with a success message
           this.setState({ loadedAutoSaveSuccessMessageVisible: true });
         } catch (e) {
           // catch any error while parsing the JSON
@@ -90,6 +93,7 @@ class QuickSurvey extends Component {
       })
       .catch((err) => {
         // catch any error while reading autoSavedSession JSON from disk
+        // the screen will render the setup questions
         this.setState({ autoSavedSession: false });
         this.setState({ loading: false });
         console.log(err.message);
@@ -97,11 +101,9 @@ class QuickSurvey extends Component {
   }
 
   /*
-    This function runs during the initial render of the screen. The function
-    loads the questions from the downloaded spreadsheet and saves them to a
-    variable. If the screen is given a saved session and the data has not been
-    loaded, it loads the data from the file. Otherwise, the loading state will
-    be set to false.
+    The function loads the questions from the downloaded spreadsheet and
+    instatiates a background save object in order to retrieve the in-progress
+    report (if there was an in-progress report selected).
   */
   async componentDidMount() {
     this.questions = await ProcessQuestions();
