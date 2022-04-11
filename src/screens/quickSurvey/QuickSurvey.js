@@ -1,9 +1,20 @@
+/*
+  The QuickSurvey component receives from the Welcome screen a file path or an
+  empty string (for a new report) and loads the questions from the downloaded
+  spreadsheet. If the component receives a file path, it fetches the saved JSON
+  from the app file directory. When the JSON successfully loads with data, a
+  dialog will alert the user and on acknowledgement will navigate to the Home
+  screen. If the JSON fails or no file path is provided the component renders
+  the set up questions (the number of vehicles, non-motorists, type of property,
+  if there was a secondary crash, and crash severity). The bottom of the page is
+  a "Continue" button that navigates to the Home screen. The questions do not
+  need to be answered to continue to the Home screen.
+*/
 import React, { Component } from "react";
 import { SafeAreaView } from "react-navigation";
 import {
   TextInput,
   Text,
-  StyleSheet,
   ScrollView,
   ActivityIndicator,
   Linking,
@@ -11,6 +22,8 @@ import {
 import { Button, Heading, Divider, VStack, Center, Spinner } from "native-base";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { connect } from "react-redux";
+import { material } from "react-native-typography";
+import { MaterialDialog } from "react-native-material-dialog";
 import {
   changeVehicle,
   changeDrivers,
@@ -32,17 +45,11 @@ import { addDriver, updateDriver } from "../../actions/DriverAction";
 import { addPassenger, updatePassenger } from "../../actions/PassengerAction";
 import { addRoad, updateRoad } from "../../actions/RoadAction";
 import { addPhoto } from "../../actions/PhotoAction";
-
 import NumberButtonSelectorQuickSurvey from "../../components/buttonSelectors/NumberButtonSelectorQuickSurvey";
 import MultiButtonSelectorQuickSurvey from "../../components/buttonSelectors/MultiButtonSelectorQuickSurvey";
 import TopNavigation from "../../components/TopNavigation";
-import { styles } from "./QuickSurvey.style";
-
 import ProcessQuestions from "../../utils/ProcessQuestionsSheets";
 import backgroundSave from "../../utils/backgroundSave";
-
-import { MaterialDialog } from "react-native-material-dialog";
-import { material } from "react-native-typography";
 
 var uuid = require("react-native-uuid");
 
@@ -61,34 +68,41 @@ class QuickSurvey extends Component {
     this.stateManager = undefined;
   }
 
+  /*
+    This function reads the file at a given file path. When the file is done
+    reading the data is passed to parseLoadedState and the displays a dialog
+    with a success message and the loading state is set to false. If the file
+    cannot be read, the screen will render the setup questions.
+  */
   async loadStateFromJSON() {
-    console.log("Loading State from JSON");
     await this.stateManager.RNFS.readFile(this.stateManager.path, "utf8")
       .then((data) => {
         try {
           const loadedState = JSON.parse(data);
-          console.log("Successfully Parsed JSON");
           this.parseLoadedState(loadedState);
           this.setState({ loadedAutoSaveSuccessMessageVisible: true });
         } catch (e) {
           // catch any error while parsing the JSON
           console.log("ERROR: " + e.message);
-          //                        this.setState({ loadedAutoSaveFailMessageVisible: true })
-          //            this.stateManager.deleteCapturedState();
         }
         // Hide loading screen
         this.setState({ loading: false });
       })
       .catch((err) => {
         // catch any error while reading autoSavedSession JSON from disk
-        //          this.stateManager.deleteCapturedState();
         this.setState({ autoSavedSession: false });
         this.setState({ loading: false });
-        //          this.setState({ loadedAutoSaveFailMessageVisible: true })
         console.log(err.message);
       });
   }
 
+  /*
+    This function runs during the initial render of the screen. The function
+    loads the questions from the downloaded spreadsheet and saves them to a
+    variable. If the screen is given a saved session and the data has not been
+    loaded, it loads the data from the file. Otherwise, the loading state will
+    be set to false.
+  */
   async componentDidMount() {
     this.questions = await ProcessQuestions();
     this.stateManager = new backgroundSave(
@@ -98,16 +112,17 @@ class QuickSurvey extends Component {
     if (this.state.autoSavedSession && !this.state.loadedAutoSave) {
       await this.loadStateFromJSON();
     } else {
-      // Delete previous auto saved session if there is any, so we can save the new report
-      //        this.stateManager.deleteCapturedState();
       this.setState({ loading: false });
     }
   }
-  parseLoadedState(loadedState) {
-    for (let d in loadedState) {
-      console.log("LOADED SECTION: ", d, ": ", loadedState[d]);
-    }
 
+  /*
+    This function takes the data read from the provided file. The data is
+    divided to its respective page variable as list. Each of the lists are read
+    saved to their respective reducers (e.i loadedDriver corresponds to the
+    reducer functions addDriver and updateDriver).
+  */
+  parseLoadedState(loadedState) {
     // Parse all fields from loaded state
     const loadedQuiz = loadedState["quiz"];
     const loadedRoad = loadedState["road"][0]; // road is single dictionary in a list [{}]
@@ -116,6 +131,7 @@ class QuickSurvey extends Component {
     const loadedPassenger = loadedState["passenger"];
     const loadedNonmotorist = loadedState["nonmotorist"];
     const loadedPhoto = loadedState["photo"];
+
     /*             Update Quiz               */
     this.props.changeVehicle(loadedQuiz["numVehicle"]);
     this.props.changeNonmotorists(loadedQuiz["numNonmotorist"]);
@@ -132,7 +148,6 @@ class QuickSurvey extends Component {
     /*              Add and Update Road               */
     // add road with pre-populated questions from loaded state setup questions in questions.js
     let roadID = loadedRoad["id"];
-    console.log("roadID: ", roadID);
     this.props.addRoad({ setupData: loadedQuiz["setupData"], roadID: roadID });
     // update resposes from loaded road state
     let roadResponse = loadedRoad["response"];
@@ -151,7 +166,6 @@ class QuickSurvey extends Component {
       let currentDriver = loadedDriver[i];
       let vehicleID = currentDriver["vehicle"];
       let driverID = currentDriver["id"];
-      console.log("driverID: ", driverID, "vehicleID: ", vehicleID);
       this.props.addDriver({ driverID, vehicleID });
 
       // update responses for this driver
@@ -172,7 +186,6 @@ class QuickSurvey extends Component {
       let currentVehicle = loadedVehicle[i];
       let vehicleID = currentVehicle["id"];
       let driverID = currentVehicle["driver"];
-      console.log("vehicleID: ", vehicleID, "driverID: ", driverID);
       this.props.addVehicle({ vehicleID, driverID });
 
       // update responses for this vehicle
@@ -193,7 +206,6 @@ class QuickSurvey extends Component {
       let currentPassenger = loadedPassenger[i];
       let vehicleID = currentPassenger["vehicle"];
       let passengerID = currentPassenger["id"];
-      console.log("vehicleID: ", vehicleID, "passengerID: ", passengerID);
       this.props.addPassenger({ id: passengerID, vehicleID: vehicleID });
 
       // update responses for this passenger
@@ -213,7 +225,6 @@ class QuickSurvey extends Component {
     for (let i = 0; i < loadedNonmotorist.length; i++) {
       let currentNonmotorist = loadedNonmotorist[i];
       let nonmotoristID = currentNonmotorist["id"];
-      console.log("nonmotorist ID: ", nonmotoristID);
       this.props.addNonmotorist({ id: nonmotoristID });
 
       // update responses for this nonmotorist
@@ -232,12 +243,16 @@ class QuickSurvey extends Component {
     // add passengers to vehicles based on loaded state
     this.props.addPhoto(loadedPhoto);
     this.setState({ loadedAutoSave: true });
-    // console.log("Finish loading saved state from disk.")
   }
 
+  /*
+    This function returns a list of questions that are from the setup sheet.
+  */
   filterSetupData = () => {
-        return this.questions.data.filter((question) => question.display.includes('setup'));
-    };
+    return this.questions.data.filter((question) =>
+      question.display.includes("setup")
+    );
+  };
 
   render() {
     const {
@@ -265,17 +280,14 @@ class QuickSurvey extends Component {
 
     // contains the state from the QuickQuizReducer
     const quiz = this.props.quiz;
-    console.log("quiz from reducer:", quiz);
 
     // gets called from moveHome
     const dispatchAll = () => {
       // add as many nonmotorists as user inputs
-      console.log("quiz.numNonmotorist:", quiz.numNonmotorist);
       addNonmotorist(quiz.numNonmotorist);
       // add road with pre-populated questions from setup questions in questions.js
       addRoad({ setupData: quiz["setupData"], roadID: uuid.v1() });
       // connect vehicles with drivers
-      console.log("quiz.numVehicle:", quiz.numVehicle);
       for (let i = 0; i < quiz.numVehicle; i++) {
         let vehicleID = uuid.v1(); // Generate a v1 (time-based) id
         let driverID = uuid.v1();
@@ -300,6 +312,7 @@ class QuickSurvey extends Component {
       if (!this.state.loadedAutoSave) {
         dispatchAll();
       }
+
       this.props.navigation.navigate("Home", {
         edit: false,
         filePath: this.stateManager.path,
@@ -309,16 +322,15 @@ class QuickSurvey extends Component {
     };
 
     const submitField = () => {
-      //  console.log("Question", question);
-      // updateResponse && updateResponse({id, question: currId, selection: idCode})
       updateSetup;
       updateResponse;
     };
 
-    // render a single setup question
-    // note that right now we only render multiButton questions
-    // if more questions of different types were to be added to the setup tab, then
-    // we would need to create new quick survey components for them and render them here
+    /* render a single setup question
+      note that right now we only render multiButton questions
+      if more questions of different types were to be added to the setup tab, then
+      we would need to create new quick survey components for them and render them here
+    */
     const renderSingleQuestion = (question) => {
       switch (question.answerType) {
         case "multiButton":
@@ -341,6 +353,7 @@ class QuickSurvey extends Component {
       );
       return res;
     };
+
     if (this.state.loading) {
       return (
         <Center flex={1}>
@@ -378,27 +391,23 @@ class QuickSurvey extends Component {
             <TopNavigation title="Quick Survey" />
             <ScrollView>
               <VStack>
-                <SafeAreaView>
-                  <NumberButtonSelectorQuickSurvey
-                    title="Number of vehicles involved"
-                    submitFunction={changeVehicle}
-                    reducerName="quickquizReducer"
-                    fieldName="numVehicle"
-                    startRange={1}
-                    endRange={5}
-                  />
-                </SafeAreaView>
-                <SafeAreaView>
-                  <NumberButtonSelectorQuickSurvey
-                    title="Number of non-motorists involved"
-                    submitFunction={changeNonmotorists}
-                    reducerName="quickquizReducer"
-                    fieldName="numNonmotorist"
-                    startRange={0}
-                    endRange={5}
-                    tooltipText="Non Motorist are people who were not in a vehicle at the time of the crash"
-                  />
-                </SafeAreaView>
+                <NumberButtonSelectorQuickSurvey
+                  title="Number of vehicles involved"
+                  submitFunction={changeVehicle}
+                  reducerName="quickquizReducer"
+                  fieldName="numVehicle"
+                  startRange={1}
+                  endRange={5}
+                />
+                <NumberButtonSelectorQuickSurvey
+                  title="Number of non-motorists involved"
+                  submitFunction={changeNonmotorists}
+                  reducerName="quickquizReducer"
+                  fieldName="numNonmotorist"
+                  startRange={0}
+                  endRange={5}
+                  tooltipText="Non Motorist are people who were not in a vehicle at the time of the crash"
+                />
                 {renderedQuestions()}
               </VStack>
             </ScrollView>
