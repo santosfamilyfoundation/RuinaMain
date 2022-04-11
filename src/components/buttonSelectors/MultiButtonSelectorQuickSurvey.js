@@ -66,9 +66,11 @@ const MultiButtonSelectorQuickSurvey = (props) => {
         return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
     }
 
-    console.log(typeof data.required)
+    var renderComponent = true;
+    if (data.questionDependency != undefined && props.response != null) {
+        renderComponent = dependencyParser(props.response, data, dependencyID)
+    }
 
-    var renderComponent = dependencyParser(props.response, data, dependencyID)
     if (renderComponent){
         return(
         <React.Fragment>

@@ -34,6 +34,7 @@
     "expo": ">=44.0.0-0 <45.0.0",
     "expo-file-system": "~13.1.4",
     "flat": "^5.0.2",
+    "html-table-to-json": "^1.0.0",
     "json2csv": "^5.0.6",
     "native-base": "^3.2.1",
     "netinfo": "^0.1.3",
@@ -55,7 +56,6 @@
     "react-native-multi-selectbox": "^1.5.0",
     "react-native-multiple-select": "^0.5.7",
     "react-native-pdf": "^6.3.0",
-    "react-native-reanimated": "^2.2.3",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-safe-area-view": "^1.1.1",
     "react-native-screens": "^2.11.0",
@@ -72,6 +72,7 @@
     "sinon": "^9.2.1",
     "styled-components": "^5.3.1",
     "styled-system": "^5.1.5",
+    "uuid-random": "^1.3.2",
     "vin-validator": "^1.0.0",
     "xlsx": "^0.17.0"
   },
@@ -97,5 +98,12 @@
       "<rootDir>/setupTest.js",
       "./__mocks__/mockFirebase.js"
     ]
+  },
+  "expo": {
+    "autolinking": {
+      "exclude": [
+        "react-native-reanimated"
+      ]
+    }
   }
 }

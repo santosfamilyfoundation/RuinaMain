@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { styles } from '../home/Home.style';
-import { View} from 'react-native';
 import IconButton from '../../components/IconButton';
-import { Box, Heading, Divider, VStack, HStack, Text } from 'native-base';
+import { VStack, HStack, Text } from 'native-base';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { material } from "react-native-typography";
@@ -10,7 +9,6 @@ import { connect } from 'react-redux';
 import { addPassenger, deletePassenger } from '../../actions/PassengerAction';
 import { deleteVehicle } from '../../actions/VehicleAction';
 import { deleteDriver } from '../../actions/DriverAction';
-import { questions } from '../../data/questions';
 import Section from '../../components/Section'
 
 var uuid = require('react-native-uuid');
@@ -31,10 +29,6 @@ class VehicleSection extends Component{
           passengerToDelete: '',
           driverDeleted: false,
         }
-    }
-
-    filterQuestionsData = (questionType) => {
-        return questions.data.filter(question => question.display.includes(questionType));
     }
 
     // add passenger to global state
@@ -60,12 +54,14 @@ class VehicleSection extends Component{
         this.props.deleteVehicle({vehicleID: vehicle.id});
     }
 
-    render(){
-        const {navigation, vehicle, index, name, edit, passenger, roadID} = this.props
-        let vehicleQuestions = this.filterQuestionsData('vehicle');
-        let passengerQuestions = this.filterQuestionsData('passenger');
-        let driverQuestions = this.filterQuestionsData('driver');
+    filterQuestionsData = (questionType) => {
+        return this.props.questions.data.filter((question) =>
+          question.display.includes(questionType)
+        );
+      };
 
+    render(){
+        const {navigation, vehicle, index, name, edit, passenger, roadID, questions } = this.props
         // would need to refine if we want to put delete vehicle section icon next to card header
         // const VehiclesHeader = () => (
         //     <View style={{ flexDirection: 'row' }}>
@@ -85,7 +81,7 @@ class VehicleSection extends Component{
           } else {
             var name = 'Vehicle ' + vehicleIdx;
           }
-          navigation.navigate('Question', {questions: form.data, objectID: id, type, name, dependencyID: ids})
+          navigation.navigate('Question', {questions: form, objectID: id, type, name, dependencyID: ids})
         }
 
         // create passengers associated with vehicle section in two modes (edit and non edit)
@@ -104,7 +100,7 @@ class VehicleSection extends Component{
                 return (
               <IconButton topMargin={4} rightMargin={4} text={`Passenger ${idx + 1} \nForm`}
                 onPress={() =>
-                    navigateQuestion(passengerQuestions, passenger.id,
+                    navigateQuestion(this.filterQuestionsData('passenger'), passenger.id,
                     'Passenger', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}
                 icon={<Icon color="white" name="person" size={50}/>}/>
                 )
@@ -122,7 +118,7 @@ class VehicleSection extends Component{
               } else {
                 return (
                     <IconButton topMargin={4} rightMargin={4} text={`Occupant ${idx + 1} \nForm`}
-                    onPress={() => navigateQuestion(passengerQuestions, passenger.id, 'Occupant', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}
+                    onPress={() => navigateQuestion(this.filterQuestionsData('passenger'), passenger.id, 'Occupant', (index+1), (idx+1), [roadID, passenger.vehicle, passenger.id])}
                     icon={<Icon color="white" name="person" size={50}/>}/>
                 )
               }
@@ -199,7 +195,7 @@ class VehicleSection extends Component{
                         <IconButton
                          topMargin={4}
                          rightMargin={4}
-                         onPress = {() => navigateQuestion(vehicleQuestions, vehicle.id, 'Vehicle', (index+1), 0, [roadID, vehicle.id])}
+                         onPress = {() => navigateQuestion(this.filterQuestionsData('vehicle'), vehicle.id, 'Vehicle', (index+1), 0, [roadID, vehicle.id])}
                          text={`${name} \nForm`}
                          icon={<Icon color='white' name='local-taxi' size={50}/>}
                          />
@@ -208,7 +204,7 @@ class VehicleSection extends Component{
                          topMargin={4}
                          rightMargin={4}
                          onPress={styles.individualCard}
-                         onPress= {() => navigateQuestion(driverQuestions, vehicle.driver, 'Driver', (index+1), 0, [roadID, vehicle.id])}
+                         onPress= {() => navigateQuestion(this.filterQuestionsData('driver'), vehicle.driver, 'Driver', (index+1), 0, [roadID, vehicle.id])}
                          text={`Driver \nForm`}
                          icon={<Icon color='white' name='person' size={50}/>}
                         />}
