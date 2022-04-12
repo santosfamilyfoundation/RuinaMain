@@ -13,11 +13,9 @@ export class TextFieldValidation {
         }
 
     validateInput(text, type, constraint){
-          console.log(text, ' | ', type, ' | ', constraint)
           if (type == 'min_num'){
-            console.log('made it here', text.length)
-            let constraint = parseInt(constraint)
-            if (text.length >= constraint){
+            let constraint2 = parseInt(constraint)
+            if (text.length >= constraint2){
                 this.status = true
             }
             else {
@@ -35,20 +33,18 @@ export class TextFieldValidation {
             }
 
           if (type == 'range'){
-             lowerUpperLim = constraint.split()
+             lowerUpperLim = constraint.split('-')
                         if (text.length >= parseInt(lowerUpperLim[0])){
-                            if (text.length <= parseInt(lowerUpperLim[0])){
+                            if (text.length <= parseInt(lowerUpperLim[1])){
                                 this.status = true
                             }
                             }
-                        }
+
                         else {
                             this.status = false
-                        }
+                        }}
                       }
     submitField(text, type, constraint){
-        console.log('this is at least guaranteed')
-        console.log(type, constraint)
         this.validateInput(text, type, constraint)
     }
 }
