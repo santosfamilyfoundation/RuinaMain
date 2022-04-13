@@ -4,6 +4,14 @@
 
 import { Component } from "react";
 import XLSX from "xlsx";
+import {
+   DRIVER_INJURY_STATUS,
+   HAZARDOUS_MATERIALS,
+   NONMOTORIST_INJURY_STATUS,
+   NUM_TRAILING_UNITS,
+   VEHICLE_SIZE,
+   WORKZONE_RELATED,
+} from "../constants";
 import * as htmlStrings from "../utils/html_for_pdf_pages/htmlStrings";
 
 export class JSONconverter extends Component {
@@ -277,7 +285,7 @@ export class JSONconverter extends Component {
          return ws;
       }
 
-	  /*
+      /*
 	  Populates the Nonmotorist sheet. Nonmotorist sheet contains data on each nonmotorist involved in 
 	  the crash. The Nonmotorist sheet has 3 columns: nonmotorist number (number for each nonmotorist;
 	  starting at 1 for the first nonmotorist), question (contains the text of the question), and
@@ -400,20 +408,20 @@ export class JSONconverter extends Component {
          // create object representing driver data - the keys are the vehicle ids for each driver
          // values are driver data
          var drivers = {};
-         var driversData = data['driver']
+         var driversData = data["driver"];
          for (var i = 0; i < driversData.length; i++) {
             var driverData = driversData[i];
-            var vehicle = driverData['vehicle'];
+            var vehicle = driverData["vehicle"];
             drivers[vehicle] = driverData;
          }
          // add driver data
          vehicleSectionDict["drivers"] = drivers;
 
          // create object representing passenger data
-         // keys are vehicle ids for each passenger 
+         // keys are vehicle ids for each passenger
          // values are a list with data for each passenger
          var passengers = {};
-         var passengersData = data['passenger'];
+         var passengersData = data["passenger"];
          for (var i = 0; i < passengersData.length; i++) {
             var passengerData = passengersData[i];
             var vehicle = passengerData["vehicle"];
@@ -432,7 +440,9 @@ export class JSONconverter extends Component {
       /*
       Given an HTML string (str), a dictionary object containing question answers (answers), and a fill in method,
       this function fills the HTML string with the answers to the questions and returns the filled in HTML string.
-      This function is used to populate the HTML string templates.
+      The fill-in method is either "datasection" if filling in a data section or none if filling in a header page.
+      If filling in a data section, the data should be filled in by splicing lines together, but if filling in a 
+      header page, the data can simply replace a set of "####" characters.
       */
       function fillInHTMLString(str, answers, fillInMethod) {
          var lines = str.split("\n");
@@ -450,7 +460,8 @@ export class JSONconverter extends Component {
                // get the answer for the question with the id
                var ans = getAnswer(answers, id);
                // put ans into line and replace
-               // need to check what the fillInMethod means
+               // if filling in a data section, replace data differently (splice
+               // lines together as opposed to just replacing text)
                if (fillInMethod == "datasection") {
                   // the crash diagram is a special case where the answer is itself an HTML string
                   if (id === "crashDiagram") {
@@ -478,7 +489,7 @@ export class JSONconverter extends Component {
       */
       function fillCoverPageHeader(answers, numSectionsDict) {
          // retrieve the cover page header
-         str = htmlStrings.coverPageHeaderString
+         str = htmlStrings.coverPageHeaderString;
          str = str.replace(
             "# Motor Vehicles",
             numSectionsDict["vehicle"] + " Motor Vehicles"
@@ -516,13 +527,18 @@ export class JSONconverter extends Component {
          return fillInHTMLString(str, answers, "header");
       }
 
+      /*
+      Fills in the header for a passenger. The header includes the vehicle number, the occuptant number of the
+      passenger, and some basic information on the passenger. Returns the filled in HTML String for the 
+      passenger page header.
+      */
       function fillPassengerPageHeader(
-         str,
          answers,
          occupantNum,
          vehicleNum,
          hasDriver
       ) {
+         str = htmlStrings.passengerHeaderString;
          str = str.replace(
             "Occupant ### of Motor Vehicle ###",
             "Occupant " + occupantNum + " of Motor Vehicle " + vehicleNum
@@ -539,7 +555,13 @@ export class JSONconverter extends Component {
          return fillInHTMLString(str, answers, "header");
       }
 
-      function fillNonMotoristPageHeader(str, answers, nonmotoristNum) {
+      /*
+      Fills in the header for a nonmotorist. The header includes the number of the nonmotorist and
+      other basic information on the nonmotorist. Returns the filled in HTML string for the nonmotorist
+      page header.
+      */
+      function fillNonMotoristPageHeader(answers, nonmotoristNum) {
+         str = htmlStrings.nonmotoristHeaderString;
          str = str.replace(
             "Non-Motorist ###",
             "Non-Motorist " + nonmotoristNum
@@ -548,26 +570,29 @@ export class JSONconverter extends Component {
          return fillInHTMLString(str, answers, "header");
       }
 
+      // construct the html outpt string
+      // start with the header string for the whole report
       var htmlString = htmlStrings.headerString;
       const numSectionsDict = getNumSections(jsondata);
       // fill in cover page header
-      htmlString += fillCoverPageHeader(
-         jsondata["road"][0],
-         numSectionsDict
-      );
+      htmlString += fillCoverPageHeader(jsondata["road"][0], numSectionsDict);
+
       // fill in cover page data sections
       let crashRoadData = jsondata["road"][0];
+      // add crash diagram if there is a crash diagram
       if (jsondata["photo"]) {
          crashRoadData = { ...crashRoadData, photo: jsondata["photo"] };
       }
+      // add crash data section
       htmlString += fillInHTMLString(
          htmlStrings.crashDataSectionString,
          crashRoadData,
          "datasection"
       );
+
       // if applicable, add in construction table
       var displayConstruction = false;
-      if (getAnswer(jsondata["road"][0], "road-workZoneRelated") == "Yes") {
+      if (getAnswer(jsondata["road"][0], WORKZONE_RELATED) == "Yes") {
          displayConstruction = true;
          htmlString += fillInHTMLString(
             htmlStrings.constructionDataSectionString,
@@ -575,63 +600,69 @@ export class JSONconverter extends Component {
             "datasection"
          );
       }
+
       // fill in vehicle section pages if applicable
       vehicleSectionDict = getVehicleSectionDict(jsondata);
       for (var i = 0; i < numSectionsDict["vehicle"]; i++) {
-         // fill out vehicle page
+         let vehicleNum = i + 1;
          var vehicleAnswers = jsondata["vehicle"][i];
+
+         // add vehicle page header
          if (displayConstruction) {
             htmlString += fillVehiclePageHeader(
                vehicleAnswers,
-               i + 1,
-               -1
+               vehicleNum
+               // -1 used to be here but idk what its purpose is
             );
             displayConstruction = false;
          } else {
-            htmlString += fillVehiclePageHeader(
-               vehicleAnswers,
-               i + 1
-            );
+            htmlString += fillVehiclePageHeader(vehicleAnswers, vehicleNum);
          }
+
+         // add vehicle data
          htmlString += fillInHTMLString(
             htmlStrings.vehicleDataSectionString1,
             vehicleAnswers,
             "datasection"
          );
+
          // fill out lvhm vehicle sections if applicable
-         if (
-            getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") !=
-            "Not Applicable"
-         ) {
+         let numTrailingUnits = getAnswer(vehicleAnswers, NUM_TRAILING_UNITS);
+         // if there is at least one trailer, add first trailer
+         if (numTrailingUnits != "Not Applicable") {
             htmlString += fillInHTMLString(
                htmlStrings.firstTrailerDataSectionString,
                vehicleAnswers,
                "datasection"
             );
+
+            // add additional trailers as needed
+            if (numTrailingUnits == 2) {
+               htmlString += fillInHTMLString(
+                  htmlStrings.secondTrailerDataSectionString,
+                  vehicleAnswers,
+                  "datasection"
+               );
+            }
+            if (numTrailingUnits == 3) {
+               htmlString += fillInHTMLString(
+                  htmlStrings.thirdTrailerDataSectionString,
+                  vehicleAnswers,
+                  "datasection"
+               );
+            }
          }
+
+         let vehicleSize = getAnswer(vehicleAnswers, VEHICLE_SIZE);
+         let hazardousMaterials = getAnswer(
+            vehicleAnswers,
+            HAZARDOUS_MATERIALS
+         );
+         // add large vehicle hazardous materials section if applicable
          if (
-            getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") == "2" ||
-            getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") == "3"
-         ) {
-            htmlString += fillInHTMLString(
-               htmlStrings.secondTrailerDataSectionString,
-               vehicleAnswers,
-               "datasection"
-            );
-         }
-         if (getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") == "3") {
-            htmlString += fillInHTMLString(
-               htmlStrings.thirdTrailerDataSectionString,
-               vehicleAnswers,
-               "datasection"
-            );
-         }
-         if (
-            getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") !=
-               "Not Applicable" ||
-            getAnswer(vehicleAnswers, "vehicle-size") !=
-               "Light (10,000 lbs. or less GVWR/GCWR)" ||
-            getAnswer(vehicleAnswers, "vehicle-hazardousMaterials") == "Yes"
+            numTrailingUnits != "Not Applicable" ||
+            vehicleSize != "Light (10,000 lbs. or less GVWR/GCWR)" ||
+            hazardousMaterials == "Yes"
          ) {
             htmlString += fillInHTMLString(
                htmlStrings.lvhmVehicleDataSectionString,
@@ -639,66 +670,69 @@ export class JSONconverter extends Component {
                "datasection"
             );
          }
-         if (getAnswer(vehicleAnswers, "vehicle-hazardousMaterials") == "Yes") {
+
+         // add hazardous data section if applicable
+         if (hazardousMaterials == "Yes") {
             htmlString += fillInHTMLString(
                htmlStrings.hazardousDataSectionString,
                vehicleAnswers,
                "datasection"
             );
          }
+
+         // add second vehicle data section
          htmlString += fillInHTMLString(
             htmlStrings.vehicleDataSectionString2,
             vehicleAnswers,
             "datasection"
          );
+
          // fill out driver page if applicable
-         var hasDriver;
-         vehicleAnswers["id"] in vehicleSectionDict["drivers"]
-            ? (hasDriver = true)
-            : (hasDriver = false);
+         var hasDriver = vehicleAnswers["id"] in vehicleSectionDict["drivers"];
          if (hasDriver) {
             var driverAnswers =
                vehicleSectionDict["drivers"][vehicleAnswers["id"]];
-            htmlString += fillDriverPageHeader(
-               driverAnswers,
-               i + 1
-            );
+            // add header and first data section
+            htmlString += fillDriverPageHeader(driverAnswers, i + 1);
             htmlString += fillInHTMLString(
                htmlStrings.driverDataSectionString1,
                driverAnswers,
                "datasection"
             );
+
+            // display lvhm driver section if applicable
             if (
-               getAnswer(vehicleAnswers, "vehicle-numTrailingUnits") !=
-                  "Not Applicable" ||
-               getAnswer(vehicleAnswers, "vehicle-size") !=
-                  "Light (10,000 lbs. or less GVWR/GCWR)" ||
-               getAnswer(vehicleAnswers, "vehicle-hazardousMaterials") == "Yes"
+               numTrailingUnits != "Not Applicable" ||
+               vehicleSize != "Light (10,000 lbs. or less GVWR/GCWR)" ||
+               hazardousMaterials == "Yes"
             ) {
-               // display lvhm driver section
                htmlString += fillInHTMLString(
                   htmlStrings.lvhmDriverDataSectionString,
                   driverAnswers,
                   "datasection"
                );
             }
+
+            // display injury driver section if applicable
             if (
-               getAnswer(driverAnswers, "driver-injuryStatus") !=
+               getAnswer(driverAnswers, DRIVER_INJURY_STATUS) !=
                "No Apparent Injury"
             ) {
-               // display injury driver section
                htmlString += fillInHTMLString(
                   htmlStrings.injuryDriverDataSectionString,
                   driverAnswers,
                   "datasection"
                );
             }
+
+            // add remaining driver data
             htmlString += fillInHTMLString(
                htmlStrings.driverDataSectionString2,
                driverAnswers,
                "datasection"
             );
          }
+
          // fill out passenger pages if applicable
          if (vehicleAnswers["id"] in vehicleSectionDict["passengers"]) {
             var passengers =
@@ -706,7 +740,6 @@ export class JSONconverter extends Component {
             for (var j = 0; j < passengers.length; j++) {
                var passengerAnswers = passengers[j];
                htmlString += fillPassengerPageHeader(
-                  htmlStrings.passengerHeaderString,
                   passengerAnswers,
                   j + 1,
                   i + 1,
@@ -730,21 +763,20 @@ export class JSONconverter extends Component {
             }
          }
       }
+
       // fill out non motorist pages if applicable
       for (var i = 0; i < numSectionsDict["nonmotorist"]; i++) {
          var nonmotoristAnswers = jsondata["nonmotorist"][i];
-         htmlString += fillNonMotoristPageHeader(
-            htmlStrings.nonmotoristHeaderString,
-            nonmotoristAnswers,
-            i + 1
-         );
+         htmlString += fillNonMotoristPageHeader(nonmotoristAnswers, i + 1);
          htmlString += fillInHTMLString(
             htmlStrings.nonmotoristDataSectionString,
             nonmotoristAnswers,
             "datasection"
          );
+
+         // add injury data if applicable
          if (
-            getAnswer(nonmotoristAnswers, "nonmotorist-injuryStatus") !=
+            getAnswer(nonmotoristAnswers, NONMOTORIST_INJURY_STATUS) !=
             "No Apparent Injury"
          ) {
             htmlString += fillInHTMLString(
@@ -754,9 +786,11 @@ export class JSONconverter extends Component {
             );
          }
       }
+
       // concatenate strings to form complete HTML
       htmlString += htmlStrings.tailString;
       return htmlString;
    }
 }
+
 export default JSONconverter;

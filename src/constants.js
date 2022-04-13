@@ -35,6 +35,13 @@ export const DLICENSE_ID = "driver-24";
 export const DLICENSE_CLASS_ID = "driver-25";
 export const DLICENSE_ENDORSEMENTS_ID = "driver-27";
 
+export const WORKZONE_RELATED = "road-workZoneRelated";
+export const NUM_TRAILING_UNITS = "vehicle-numTrailingUnits";
+export const VEHICLE_SIZE = "vehicle-size";
+export const HAZARDOUS_MATERIALS = "vehicle-hazardousMaterials";
+export const DRIVER_INJURY_STATUS = "driver-injuryStatus";
+export const NONMOTORIST_INJURY_STATUS = "nonmotorist-injuryStatus";
+
 export const ALLOW_JSON_EXPORT = false;
 
 export const DEFAULT_SPREADSHEET = 'https://docs.google.com/spreadsheets/d/1IJQxPEhVJnvAXOn2gLR25wyBVPcpk7c6RwlQwd5M_Fc/edit?usp=sharing';
