@@ -35,7 +35,7 @@ export const DLICENSE_ID = "driver-24";
 export const DLICENSE_CLASS_ID = "driver-25";
 export const DLICENSE_ENDORSEMENTS_ID = "driver-27";
 
-export const WORKZONE_RELATED = "road-workZoneRelated";
+export const WORKZONE_RELATED = "road-workzoneRelated";
 export const NUM_TRAILING_UNITS = "vehicle-numTrailingUnits";
 export const VEHICLE_SIZE = "vehicle-size";
 export const HAZARDOUS_MATERIALS = "vehicle-hazardousMaterials";
