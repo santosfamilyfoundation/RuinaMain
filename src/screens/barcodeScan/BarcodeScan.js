@@ -5,6 +5,9 @@
   component will render a view of the camera and will search for the letters and numbers on a
   United States license plate. For both renders, the component will render a "Go Back" button that
   allows the user to navigate back to the form screen without processing any information.
+
+	The license plate scanning take from the react-native-openalpr library. Refer to the library
+	for questions about the Camera component.
 */
 
 import React, { PureComponent } from "react";
@@ -59,6 +62,9 @@ class BarcodeScan extends PureComponent {
 		this.requireCameraPermission();
 	}
 
+	/*
+	This function checks the device's camera permissions.
+	*/
 	requireCameraPermission = async () => {
 		try {
 			const grantedCamera = await PermissionsAndroid.request(
@@ -74,6 +80,7 @@ class BarcodeScan extends PureComponent {
 			if (grantedCamera === PermissionsAndroid.RESULTS.GRANTED) {
 				this.setState({ cameraPermissionGranted: true });
 			} else {
+				// Denied permissions will redirect to form
 				this.setState({ filePermissionsGranted: false });
 			}
 		} catch (err) {
@@ -362,7 +369,13 @@ class BarcodeScan extends PureComponent {
 									.BarcodeMode.ALTERNATE
 							}
 						/>
-						<Button mb={2} mt={2} onPress={() => this.props.navigation.goBack()}>Go Back</Button>
+						<Button
+							mb={2}
+							mt={2}
+							onPress={() => this.props.navigation.goBack()}
+						>
+							Go Back
+						</Button>
 					</View>
 				);
 			} else if (this.type == Constants.PLATE) {
@@ -380,7 +393,13 @@ class BarcodeScan extends PureComponent {
 							torchMode={TorchMode.auto}
 							touchToFocus
 						/>
-						<Button mb={2} mt={2} onPress={() => this.props.navigation.goBack()}>Go Back</Button>
+						<Button
+							mb={2}
+							mt={2}
+							onPress={() => this.props.navigation.goBack()}
+						>
+							Go Back
+						</Button>
 					</View>
 				);
 			}
