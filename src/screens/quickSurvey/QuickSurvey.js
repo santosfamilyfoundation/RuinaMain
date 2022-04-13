@@ -91,10 +91,11 @@ class QuickSurvey extends Component {
 
   async componentDidMount() {
     this.questions = await ProcessQuestions();
-    this.stateManager = new backgroundSave(
-      this.state.autosavedFilePath.label,
-      this.state.autoSavedSession
-    );
+    if (this.state.autosavedFilePath)
+        {this.stateManager = new backgroundSave(
+          this.state.autosavedFilePath.label,
+          this.state.autoSavedSession
+        );}
     if (this.state.autoSavedSession && !this.state.loadedAutoSave) {
       await this.loadStateFromJSON();
     } else {
