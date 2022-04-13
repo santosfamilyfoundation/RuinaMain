@@ -37,9 +37,7 @@ export class TextFieldValidation {
             }
 
           if (type == 'range'){
-             console.log('constraint: ', constraint, parseInt(constraint.split('-')[0]))
              let lowerUpperLim = constraint.split('-')
-             console.log(lowerUpperLim)
                         if (text.length >= parseInt(lowerUpperLim[0])){
                             if (text.length <= parseInt(lowerUpperLim[1])){
                                 this.status = true
@@ -49,8 +47,6 @@ export class TextFieldValidation {
                         else {
                             this.status = false
                         }}
-                       console.log("what is this text", this.status)
-
                       }
     submitField(text, type, constraint){
         this.validateInput(text, type, constraint)
