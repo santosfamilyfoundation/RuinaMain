@@ -25,7 +25,8 @@ export class backgroundSave {
       this.openOldFile = openOldFile;
       // keeps track of the filepath that the report should be saved to
       this.path = "";
-      // if opening an old file, update the path accordingly (depending on whether the file path already includes the document directory path)
+      // if opening an old file, update the path accordingly (depending on whether the file path already
+      // includes the document directory path)
       if (openOldFile) {
          if (filePath.includes(this.RNFS.DocumentDirectoryPath)) {
             this.path = filePath;
@@ -87,8 +88,9 @@ export class backgroundSave {
    }
 
    /*
-    Puts together the correctly formatted filepath that the in-progress report should be saved to. This path starts
-    with CrashReport, then the date (YYYY-MM-DD) and time (HHMMSS) at which the report was created.
+    Puts together the correctly formatted filepath that the in-progress report should be saved to. 
+    This path starts with CrashReport, then the date (YYYY-MM-DD) and time (HHMMSS) at which the 
+    report was created.
     */
    getSavePath() {
       var date = new Date();
@@ -113,10 +115,10 @@ export class backgroundSave {
    Delete the file at the current path.
    */
    async deleteCapturedState() {
-       // check if there is a file at this path 
+      // check if there is a file at this path
       await this.RNFS.exists(this.path).then((exists) => {
          if (exists) {
-             // delete the file and remove from filepaths array
+            // delete the file and remove from filepaths array
             this.RNFS.unlink(this.path)
                .then(() => {
                   console.log("DELETED: " + this.path);
