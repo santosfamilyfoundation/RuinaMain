@@ -10,6 +10,7 @@ import QuestionSection from '../QuestionSection';
 import IconButton from '../IconButton';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import SectionedMultiSelect from 'react-native-sectioned-multi-select'
+import SelectionValidation from '../../utils/SelectionValidation.js';
 
 //This component is used for "advanced" tool access with drop downs (weather)
 
@@ -25,6 +26,7 @@ const AdvancedDropDown = (props) => {
     const [place, setPlace] = React.useState("");
     const [speed, setSpeed] = React.useState("");
     const [degree, setDegree] = React.useState("");
+    const [isInvalid, setIsInvalid] = React.useState(false);
 
     let currId = data.humanReadableId;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
@@ -103,8 +105,7 @@ const AdvancedDropDown = (props) => {
     const setIncomplete = () => {
         status = 'danger'
         if(buttonAppearance != 'outline') {
-            setButtonAppearance('outline');
-        };
+            setButtonAppearance('outline');        };
     };
 
     // Determine submission status
@@ -134,8 +135,21 @@ const AdvancedDropDown = (props) => {
 
     //Updated reducer
     const submitField = () => {
-        if(selectedOptions.length == 0) {
-            return;
+        let selectionValidation = SelectionValidation
+                 selectionValidation.validateField(optionText);
+                 let localStatus = selectionValidation.status
+                 console.log('at the right place, at least')
+                 if (localStatus) {
+                    setIsInvalid(false)
+                    setSelection(optionText);
+                 }
+                 else {
+                    setIsInvalid(true)
+                    setSelection(optionText);
+                 }
+            if(selectedOptions.length == 0) {
+                setIsInvalid(true)
+                return;
         }
         let res = [];
         for(i = 0; i < selectedOptions.length; i++) {
@@ -225,6 +239,8 @@ const AdvancedDropDown = (props) => {
             title={data.question}
             helperText={data.helperText}
             tooltip={tooltip()}
+            errorMessage='Invalid Input'
+            isInvalid={isInvalid}
             required={data.required}
         >
             {WeatherHelper()}

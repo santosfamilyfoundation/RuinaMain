@@ -1,74 +1,166 @@
 import React from 'react';
-import MultiSelect from 'react-native-multiple-select';
 import { updateResponse } from '../../actions/StoryActions';
-import { styles } from './DropDownSingleSelect.style';
 import { connect } from 'react-redux';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
 import QuestionSection from '../QuestionSection';
+import { Box } from "native-base";
 import SectionedMultiSelect from 'react-native-sectioned-multi-select';
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import IconButton from '../IconButton';
+import SelectionValidation from '../../utils/SelectionValidation.js'
 
 const DropDownSingleSelect = (props) => {
-    const [selectedOption, setSelectedOption] = React.useState([]);
+    const [borderColor, setBorderColor] = React.useState("coolGray.200")
+    const [errors, setErrors] = React.useState({});
+    const [selectedOptions, setSelectedOptions] = React.useState([]);
+    const [buttonAppearance, setButtonAppearance] = React.useState('outline');
+    const [isInvalid, setIsInvalid] = React.useState(false);
     const {data, key, id, questionReducer, submitFunction, updateResponse, dependencyID} = props;
+
     let currId = data.humanReadableId;
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
 
-    if(selectedOption.length < 1) {
+    if (selectedOptions) {
+    // Populate if value already exists in redux
+    if(selectedOptions.length == 0) {
+      if(data.answerOptions){
         if(existingData != null) {
-            // console.log()
             if(existingData[currId] != null) {
-                let curOption;
+                let currOptions = []
                 for (let i = 0; i < data.answerOptions.length; i++) {
-                    if(data.answerOptions[i].name == existingData[currId]) {
-                        curOption = [data.answerOptions[i].id];
+                    if(existingData[currId].includes(data.answerOptions[i].name)) {
+                        currOptions.push(data.answerOptions[i].id);
                     };
                 };
-                if (curOption != null) {
-                    setSelectedOption(curOption);
-                }
+                if(currOptions.length != 0) {
+                    setSelectedOptions(currOptions);
+                };
+            };
+        }
+       }
+    };}
+
+    // Disable/enable if numOptionsAllowed reached
+   if (data.answerOptions){
+    if(selectedOptions.length == data.numOptionsAllowed) {
+        for(let i = 0; i < data.answerOptions.length; i++) {
+            if(!selectedOptions.includes(data.answerOptions[i])) {
+                data.answerOptions[i].disabled = false;
             };
         };
-    };
+    } else {
+        for(let i = 0; i < data.answerOptions.length; i++) {
+            if(!selectedOptions.includes(data.answerOptions[i])) {
+                data.answerOptions[i].disabled = false;
+            };
+        };
+    }
+    }
 
+    const setComplete = () => {
+        status = 'success'
+        if(buttonAppearance != 'filled') {
+            setButtonAppearance('filled');
+        };
+    }
+
+    const setIncomplete = () => {
+        status = 'danger'
+        if(buttonAppearance != 'outline') {
+            setButtonAppearance('outline');
+        };
+    }
+
+    // Determine submission status
     let status;
     if(!existingData) {
-        status = 'danger'
+        setIncomplete();
     } else {
         if(!existingData[currId]) {
-            status = 'danger';
+            setIncomplete();
         } else {
-            status = 'success';
+            let incompleteFlag = false;
+            for(let i = 0; i < selectedOptions.length; i++) {
+                if(!existingData[currId].includes(selectedOptions[i].name)){
+                    incompleteFlag = true;
+                }
+            }
+            if (selectedOptions.length < existingData[currId].length) {
+                incompleteFlag = true;
+            }
+            if (incompleteFlag) {
+                setIncomplete();
+            } else {
+                setComplete();
+            }
         }
     }
 
-    const submitField = (selection) => {
-        if (!selection || selection.length == 0) {
-            setSelectedOptions([]);
-            return submitFunction({id, question: currId, selection: null});
-        }
-        let selected = selection[0]
+    const validateLocal = (localInfo) => {
+        let selectionValidation = SelectionValidation
+             selectionValidation.validateField(localInfo);
+             let localStatus = selectionValidation.status
+             if (localStatus) {
+                setBorderColor("coolGray.200")
+                setIsInvalid(false);
+             }
+             else {
+                setIsInvalid(true);
+                setBorderColor("error.500")
+                return;
+             }
+    }
+
+    const submitField = (selectedItems, localInfo) => {
+                 submitFunction({id, question: currId, selection: selectedItems})
+        let resId = selectedItems
+
         if (dependencyID==null || dependencyID.length == 1){
-            updateResponse && updateResponse({id, question: currId, selection: selected})
+            updateResponse && updateResponse({id, question: currId, selection: resId})
         }else{
             let vehicleID = dependencyID[1]
             switch (dependencyID.length) {
                 case 2:
-                    updateResponse && updateResponse({id, question: currId, selection: selected, vehicleID: vehicleID})
+                    updateResponse && updateResponse({id, question: currId, selection: resId, vehicleID: vehicleID})
                     break;
                 case 3:
                     let passengerID = dependencyID[2]
-                    updateResponse && updateResponse({id, question: currId, selection: selected, vehicleID: vehicleID, passengerID: passengerID})
+                    updateResponse && updateResponse({id, question: currId, selection: resId, vehicleID: vehicleID, passengerID: passengerID})
                 case 4:
-                    updateResponse && updateResponse({id, question: currId, selection: selected, vehicleID: vehicleID, nonmotoristID: dependencyID[3]})
+                    updateResponse && updateResponse({id, question: currId, selection: resId, vehicleID: vehicleID, nonmotoristID: dependencyID[3]})
                 default:
                     break;
             }
         }
-        setSelectedOption(selection)
+    }
+
+    const addOption = (selectedItems) => {
+        if (!selectedItems){
+            validateLocal(selectedOptions)
+            return
+        }
+        if (selectedItems.length == 0) {
+            setSelectedOptions([])
+            validateLocal([])
+            submitFunction({id, question: currId, selection: null})
+            return;
+        }
+        if (selectedItems.length == 1){
+            setIsInvalid(false)
+            setSelectedOptions(selectedItems);
+            let localInfo = selectedOptions
+            validateLocal(localInfo)
+            submitField(selectedOptions);
+        }
+        else {
+            submitFunction({id, question: currId, selection: null})
+            let selectedOptions = []
+            selectedOptions[0] = selectedItems[1]
+            setSelectedOptions(selectedOptions);
+            submitField(selectedOptions)
+           return
+        }
     }
 
     const tooltip = () => {
@@ -82,27 +174,34 @@ const DropDownSingleSelect = (props) => {
     if (renderComponent){
         return(
             <QuestionSection
-                key={key}
                 title={data.question}
                 helperText={data.helperText}
                 tooltip={tooltip()}
+                errorMessage='Invalid Input'
+                isInvalid={isInvalid}
                 required={data.required}
             >
+                <Box borderColor={borderColor} borderWidth ="1">
                 <SectionedMultiSelect
                   items={data.answerOptions}
                   IconRenderer={Icon}
                   uniqueKey='id'
                   selectText={'Select Option ...'}
-                  onSelectedItemsChange={(selectedItems) => {submitField(selectedItems)}}
-                  onSelectedItemObjectsChange={(selectedObject) => {submitFunction({id, question: currId, selection: selectedObject[0].name})}}
-                  selectedItems={selectedOption}
-                  hideConfirm={true}
-                  single={true}
+                  onSelectedItemsChange={(selectedItems) => addOption(selectedItems)}
+                  onSelectedItemObjectsChange={(selectedObject) => {
+                    let res = [];
+                    selectedObject.forEach(object => {res.push(object.name)});
+                    submitFunction({id, question: currId, selection: res})
+                  }}
+                  selectedItems={selectedOptions}
+                  onConfirm={addOption}
+                  onCancel={addOption}
                   showCancelButton={true}
                 />
+                </Box>
             </QuestionSection>
         )
-    } else{
+    }else{
         return null
     }
 };
