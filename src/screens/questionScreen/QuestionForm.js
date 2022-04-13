@@ -83,9 +83,9 @@ class QuestionForm extends Component {
             pageChange: this.navigateToAdvanced,
             importFrom: res.data.autoMethod,
          },
-         // countyDropDown: {
-         //    ...PublicObj,
-         // },
+         countyDropDown: {
+            ...PublicObj,
+         },
          largeTextField: {
             ...PublicObj,
          },
@@ -164,8 +164,8 @@ class QuestionForm extends Component {
          case "advancedDropDown":
             return <AdvancedDropDown {...props} />;
 
-         // case "countyDropDown":
-         //    return <CountyDropDown {...props} />;
+         case "countyDropDown":
+            return <CountyDropDown {...props} />;
 
          case "largeTextField":
             return <LargeTextField {...props} />;
