@@ -13,6 +13,9 @@ export class TextFieldValidation {
         }
 
     validateInput(text, type, constraint){
+          if (!type){
+            return
+          }
           if (type == 'min_num'){
             let constraint2 = parseInt(constraint)
             if (text.length >= constraint2){

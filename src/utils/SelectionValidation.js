@@ -5,7 +5,9 @@ export class SelectionValidation {
     }
 
 validateInput(selection, type, constraint){
-          console.log(selection, type, constraint)
+            if (!type){
+              return
+            }
           if (type == 'min_num'){
             let constraint2 = parseInt(constraint)
             if (selection.length >= constraint2){
