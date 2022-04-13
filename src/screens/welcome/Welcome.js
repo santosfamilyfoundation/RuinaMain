@@ -1,3 +1,13 @@
+/*
+  The Welcome component is the landing page for the app. The screen has a header
+  that has a title and button to import a new set of questions. When the import
+  button is pressed, a dialog appears with a text inupt field for a Google Sheet
+  link. In the body of the page there are two buttons. The top button ("Start
+  New Report") starts a new report and navigates to the QuickSurvey screen. The
+  bottom button ("Continue Report") opens a dialog with a single select list of
+  saved reports. The report is selceted and navigates to the QuickSurvey screen
+  to check if the saved report has data.
+*/
 import React, { Component } from "react";
 import { combineReducers } from "redux";
 import { SafeAreaView } from "react-navigation";
@@ -22,7 +32,6 @@ import {
 	Input,
 	Toast,
 } from "native-base";
-import { styles } from "./Welcome.style";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import backgroundSave from "../../utils/backgroundSave";
 import {
@@ -62,13 +71,17 @@ class Welcome extends Component {
 		this.unfinishedReportsPresent = false;
 	}
 
+	/*
+    This function downloads the spreadsheet from a provided link and saves it to
+    the questions folder in the app file directory. When the file successfully
+    downloads, the dialog closes and returns true. When the file fails to
+    download the dialog closes and returns false.
+  */
 	async getMobileSpreadsheet(link) {
 		// create a path you want to write to
-		// :warning: on iOS, you cannot write into `RNFS.MainBundlePath`,
-		// but `RNFS.DocumentDirectoryPath` exists on both platforms and is writable
-		var path = RNFS.DocumentDirectoryPath + "/questions";
+		let path = RNFS.DocumentDirectoryPath + "/questions";
 		let errorBool;
-		// write the file
+		// download the file
 		await RNFS.downloadFile({
 			fromUrl: link,
 			toFile: path,
@@ -88,7 +101,13 @@ class Welcome extends Component {
 		return true;
 	}
 
+	/*
+    This function resets all the reducers for the app, fetches the list of
+    saved files, and checks if there are questions for the reports saved in the
+    app file directories.
+  */
 	async componentDidMount() {
+		// reset all the app reducers
 		this.props.resetDriver();
 		this.props.resetNonmotorist();
 		this.props.resetPassenger();
@@ -98,19 +117,25 @@ class Welcome extends Component {
 		this.props.resetStory();
 		this.props.resetMap();
 		this.props.resetPhoto();
+		// Fetch the list of file paths of all in-progress reports on devices, if any.
 		await this.stateManager.getFilePaths();
 		this.unfinishedReportsAbsent = this.stateManager.filePaths.length == 0;
-		if (this.state.link === "") {
-			const spreadsheetExists = await RNFS.exists(
-				RNFS.DocumentDirectoryPath + "/questions"
-			);
-			if (!spreadsheetExists) {
-				await this.getMobileSpreadsheet(DEFAULT_SPREADSHEET);
-			}
+		// Fetch the data from the question folder in the app file directory
+		const spreadsheetExists = await RNFS.exists(
+			RNFS.DocumentDirectoryPath + "/questions"
+		);
+		// If the data does not exist, fetch the default spreadsheet
+		if (!spreadsheetExists) {
+			await this.getMobileSpreadsheet(DEFAULT_SPREADSHEET);
 		}
 		this.setState({ loading: false });
 	}
 
+	/*
+    This function checks if the state manager identified any in-progress reports.
+    If there is a non-empty list, update the state to show the dialog with a
+    list of saved reports.
+  */
 	checkAutoSavedSession() {
 		if (this.stateManager.filePaths != null) {
 			this.setState({
@@ -125,6 +150,7 @@ class Welcome extends Component {
 		}
 	}
 
+	// This function handles closing the Question Import Dialog
 	handleAlertDialogClose = () => this.setState({ importQuestions: false });
 
 	render() {
@@ -134,8 +160,8 @@ class Welcome extends Component {
 				selectedFile: this.state.selectedFile,
 			});
 		};
+		// Controls the display of spreadsheet download success or failure message
 		const importToast = (importSuccess) => {
-			console.log("success", importSuccess);
 			if (importSuccess) {
 				Toast.show({
 					title: "Questions successfully imported",
@@ -325,5 +351,3 @@ const mapStateToProps = (state, action) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Welcome);
-
-//export default Welcome;
