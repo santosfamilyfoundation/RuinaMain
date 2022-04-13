@@ -23,8 +23,8 @@ export class TextFieldValidation {
             }
           }
           if (type == 'max_num'){
-              let constraint = parseInt(constraint)
-              if (text.length <= constraint){
+              let constraint2 = parseInt(constraint)
+              if (text.length <= constraint2){
                   this.status = true
               }
               else {
@@ -43,6 +43,8 @@ export class TextFieldValidation {
                         else {
                             this.status = false
                         }}
+                       console.log("what is this text", this.status)
+
                       }
     submitField(text, type, constraint){
         this.validateInput(text, type, constraint)

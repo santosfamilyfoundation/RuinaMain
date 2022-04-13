@@ -34,6 +34,7 @@ const OpenTextField = (props) => {
             setIsInvalid(true)
             }
         let textFieldValidation = TextFieldValidation
+        console.log(localText, data.val_type, data.val_constraint)
         textFieldValidation.submitField(localText, data.val_type, data.val_constraint);
         var localStatus = textFieldValidation.status
         if (localStatus) {

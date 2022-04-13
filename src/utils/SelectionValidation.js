@@ -6,8 +6,8 @@ export class SelectionValidation {
 
 validateInput(selection, type, constraint){
           if (type == 'min_num'){
-            let constraint = parseInt(constraint)
-            if (selection.length >= constraint){
+            let constraint2 = parseInt(constraint)
+            if (selection.length >= constraint2){
                 this.status = true
             }
             else {
@@ -15,8 +15,8 @@ validateInput(selection, type, constraint){
             }
           }
           if (type == 'max_num'){
-              let constraint = parseInt(constraint)
-              if (selection.length <= constraint){
+              let constraint2 = parseInt(constraint)
+              if (selection.length <= constraint2){
                   this.status = true
               }
               else {
@@ -26,6 +26,7 @@ validateInput(selection, type, constraint){
 
           if (type == 'range'){
              lowerUpperLim = constraint.split('-')
+             console.log(lowerUpperLim)
                         if (selection.length >= parseInt(lowerUpperLim[0])){
                             if (selection.length <= parseInt(lowerUpperLim[1])){
                                 this.status = true
@@ -35,10 +36,12 @@ validateInput(selection, type, constraint){
                         else {
                             this.status = false
                         }
+                        console.log("what is this", this.status)
                       }
     validateField(selection, type, constraint){
         this.validateInput(selection, type, constraint)
     }
+
 }
 
 export default (new SelectionValidation);
