@@ -6,6 +6,7 @@ export class SelectionValidation {
 
 validateInput(selection, type, constraint){
             if (!type){
+              this.status = true
               return
             }
           if (type == 'min_num'){
