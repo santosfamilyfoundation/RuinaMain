@@ -608,16 +608,7 @@ export class JSONconverter extends Component {
          var vehicleAnswers = jsondata["vehicle"][i];
 
          // add vehicle page header
-         if (displayConstruction) {
-            htmlString += fillVehiclePageHeader(
-               vehicleAnswers,
-               vehicleNum
-               // -1 used to be here but idk what its purpose is
-            );
-            displayConstruction = false;
-         } else {
-            htmlString += fillVehiclePageHeader(vehicleAnswers, vehicleNum);
-         }
+         htmlString += fillVehiclePageHeader(vehicleAnswers, vehicleNum);
 
          // add vehicle data
          htmlString += fillInHTMLString(
