@@ -1,0 +1,4092 @@
+{
+  "document": {
+    "@pageCount": "5",
+    "@pageCountWithOCRPerformed": "0",
+    "page": [
+      {
+        "@index": "0",
+        "@width": "612",
+        "@height": "792",
+        "@OCRWasPerformed": "False",
+        "row": [
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "10.0",
+                  "@x": "34.99",
+                  "@y": "38.16",
+                  "@width": "359.56",
+                  "@height": "14.06",
+                  "#text": "RUINA MOTOR VEHICLE CRASH REPORT"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "rgba(0,0,0,0.0)",
+                  "@x": "34.99",
+                  "@y": "76.49",
+                  "@width": "103.94",
+                  "@height": "13.18",
+                  "#text": "1 Motor Vehicles"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "rgba(0,0,0,0.0)",
+                  "@x": "426.89",
+                  "@y": "76.49",
+                  "@width": "149.46",
+                  "@height": "13.18",
+                  "#text": "Crash Identifier: Crash i"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "rgba(0,0,0,0.0)",
+                  "@x": "576.35",
+                  "@y": "76.49",
+                  "@width": "8.09",
+                  "@height": "13.18",
+                  "#text": "d"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "rgba(0,0,0,0.0)",
+                  "@x": "34.99",
+                  "@y": "94.46",
+                  "@width": "100.29",
+                  "@height": "13.18",
+                  "#text": "0 Non-motorists"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "rgba(0,0,0,0.0)",
+                  "@x": "368.02",
+                  "@y": "94.46",
+                  "@width": "208.33",
+                  "@height": "13.18",
+                  "#text": "Agency Crash Identifier: Agency i"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "rgba(0,0,0,0.0)",
+                  "@x": "576.35",
+                  "@y": "94.46",
+                  "@width": "8.09",
+                  "@height": "13.18",
+                  "#text": "d"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "rgba(0,0,0,0.0)",
+                  "@x": "34.99",
+                  "@y": "112.44",
+                  "@width": "191.43",
+                  "@height": "13.18",
+                  "#text": "Crash Severity: Possible Injury"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "rgba(0,0,0,0.0)",
+                  "@x": "399.87",
+                  "@y": "112.44",
+                  "@width": "177.21",
+                  "@height": "13.18",
+                  "#text": "Reporting Agency: 12345678"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "rgba(0,0,0,0.0)",
+                  "@x": "577.07",
+                  "@y": "112.44",
+                  "@width": "7.37",
+                  "@height": "13.18",
+                  "#text": "9"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "rgba(0,0,0,0.0)",
+                  "@x": "34.99",
+                  "@y": "130.41",
+                  "@width": "241.79",
+                  "@height": "13.18",
+                  "#text": "Reporting *Officer or Citizen*: Civilian"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "rgba(0,0,0,0.0)",
+                  "@x": "521.26",
+                  "@y": "134.16",
+                  "@width": "59.44",
+                  "@height": "13.18",
+                  "#text": "signature"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "#FFFFFF",
+                  "@x": "202.61",
+                  "@y": "174.60",
+                  "@width": "213.78",
+                  "@height": "13.18",
+                  "#text": "CRASH DATE, TIME, AND LOCATION"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "206.13",
+                  "@width": "123.50",
+                  "@height": "9.37",
+                  "#text": "Crash Date and Time"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "206.13",
+                  "@width": "79.63",
+                  "@height": "9.37",
+                  "#text": "Crash County"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "206.13",
+                  "@width": "142.86",
+                  "@height": "9.37",
+                  "#text": "Within Interchange Area"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "224.10",
+                  "@width": "83.99",
+                  "@height": "9.37",
+                  "#text": "2022/4/6 10:2"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "224.10",
+                  "@width": "104.25",
+                  "@height": "9.37",
+                  "#text": "Worcester County"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "224.10",
+                  "@width": "16.92",
+                  "@height": "9.37",
+                  "#text": "No"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "251.81",
+                  "@width": "165.09",
+                  "@height": "9.37",
+                  "#text": "Time of Roadway Clearance"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "251.81",
+                  "@width": "98.82",
+                  "@height": "9.37",
+                  "#text": "Crash City/Place"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "251.81",
+                  "@width": "102.43",
+                  "@height": "9.37",
+                  "#text": "Speciﬁc Location"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "269.79",
+                  "@width": "32.82",
+                  "@height": "9.37",
+                  "#text": "11:12"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "269.79",
+                  "@width": "59.80",
+                  "@height": "9.37",
+                  "#text": "Worcester"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "269.79",
+                  "@width": "78.86",
+                  "@height": "9.37",
+                  "#text": "Non-Junction"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "297.50",
+                  "@width": "115.87",
+                  "@height": "9.37",
+                  "#text": "Overall Intersection"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "297.50",
+                  "@width": "172.96",
+                  "@height": "9.37",
+                  "#text": "Overall Traﬃc Control Device"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "297.50",
+                  "@width": "48.50",
+                  "@height": "9.37",
+                  "#text": "Latitude"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "312.48",
+                  "@width": "58.10",
+                  "@height": "9.37",
+                  "#text": "Geometry"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "315.48",
+                  "@width": "69.72",
+                  "@height": "9.37",
+                  "#text": "No Controls"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "330.46",
+                  "@width": "130.34",
+                  "@height": "9.37",
+                  "#text": "Not Applicable/Not an"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "345.44",
+                  "@width": "69.62",
+                  "@height": "9.37",
+                  "#text": "Intersection"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "343.19",
+                  "@width": "59.35",
+                  "@height": "9.37",
+                  "#text": "Longitude"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "388.88",
+                  "@width": "63.14",
+                  "@height": "9.37",
+                  "#text": "Ownership"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "388.88",
+                  "@width": "89.82",
+                  "@height": "9.37",
+                  "#text": "Characteristics"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "388.88",
+                  "@width": "136.87",
+                  "@height": "9.37",
+                  "#text": "Number of Approaches"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "406.85",
+                  "@width": "93.89",
+                  "@height": "9.37",
+                  "#text": "Private Property"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "406.85",
+                  "@width": "115.13",
+                  "@height": "9.37",
+                  "#text": "Traﬃcway, On Road"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "406.85",
+                  "@width": "111.83",
+                  "@height": "9.37",
+                  "#text": "Not an Intersection"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "#FFFFFF",
+                  "@x": "203.02",
+                  "@y": "443.49",
+                  "@width": "212.96",
+                  "@height": "13.18",
+                  "#text": "CRASH FACTORS AND CONDITIONS"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "475.01",
+                  "@width": "100.68",
+                  "@height": "9.37",
+                  "#text": "Secondary Crash"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "475.01",
+                  "@width": "109.68",
+                  "@height": "9.37",
+                  "#text": "Weather Condition"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "475.01",
+                  "@width": "134.65",
+                  "@height": "9.37",
+                  "#text": "Number of Non-Fatally"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "492.99",
+                  "@width": "16.92",
+                  "@height": "9.37",
+                  "#text": "No"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "492.99",
+                  "@width": "30.40",
+                  "@height": "9.37",
+                  "#text": "Clear"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "489.99",
+                  "@width": "93.28",
+                  "@height": "9.37",
+                  "#text": "Injured Persons"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "535.68",
+                  "@width": "114.30",
+                  "@height": "9.37",
+                  "#text": "First Harmful Event"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "535.68",
+                  "@width": "90.39",
+                  "@height": "9.37",
+                  "#text": "Light Condition"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "535.68",
+                  "@width": "121.05",
+                  "@height": "9.37",
+                  "#text": "Alcohol Involvement"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "553.66",
+                  "@width": "27.71",
+                  "@height": "9.37",
+                  "#text": "Curb"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "581.37",
+                  "@width": "148.19",
+                  "@height": "9.37",
+                  "#text": "Location of First Harmful"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "581.37",
+                  "@width": "163.48",
+                  "@height": "9.37",
+                  "#text": "Roadway Surface Condition"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "581.37",
+                  "@width": "104.40",
+                  "@height": "9.37",
+                  "#text": "Drug Involvement"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "596.35",
+                  "@width": "121.05",
+                  "@height": "9.37",
+                  "#text": "Event Relative to the"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "599.34",
+                  "@width": "19.47",
+                  "@height": "9.37",
+                  "#text": "Dry"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "611.33",
+                  "@width": "61.78",
+                  "@height": "9.37",
+                  "#text": "Traﬃcway"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "629.30",
+                  "@width": "54.66",
+                  "@height": "9.37",
+                  "#text": "Roadside"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "627.06",
+                  "@width": "174.51",
+                  "@height": "9.37",
+                  "#text": "Contributing Circumstances -"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "627.06",
+                  "@width": "123.40",
+                  "@height": "9.37",
+                  "#text": "School Bus-Related?"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "642.04",
+                  "@width": "131.68",
+                  "@height": "9.37",
+                  "#text": "Roadway Environment"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "645.03",
+                  "@width": "16.92",
+                  "@height": "9.37",
+                  "#text": "No"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "660.01",
+                  "@width": "31.18",
+                  "@height": "9.37",
+                  "#text": "None"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "672.75",
+                  "@width": "154.94",
+                  "@height": "9.37",
+                  "#text": "Manner of Crash/Collision"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "672.75",
+                  "@width": "159.05",
+                  "@height": "9.37",
+                  "#text": "Construction or Work Zone"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "687.73",
+                  "@width": "41.06",
+                  "@height": "9.37",
+                  "#text": "Impact"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "687.73",
+                  "@width": "51.65",
+                  "@height": "9.37",
+                  "#text": "Related?"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "705.70",
+                  "@width": "33.47",
+                  "@height": "9.37",
+                  "#text": "Angle"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "705.70",
+                  "@width": "16.92",
+                  "@height": "9.37",
+                  "#text": "No"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "@index": "1",
+        "@width": "612",
+        "@height": "792",
+        "@OCRWasPerformed": "False",
+        "row": [
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "#FFFFFF",
+                  "@x": "244.83",
+                  "@y": "33.79",
+                  "@width": "129.35",
+                  "@height": "13.18",
+                  "#text": "CRASH DESCRIPTION"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "65.32",
+                  "@width": "60.93",
+                  "@height": "9.37",
+                  "#text": "Test crash"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "#FFFFFF",
+                  "@x": "257.11",
+                  "@y": "101.95",
+                  "@width": "104.77",
+                  "@height": "13.18",
+                  "#text": "CRASH DIAGRAM"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "8.0",
+                  "@x": "34.99",
+                  "@y": "161.84",
+                  "@width": "114.76",
+                  "@height": "11.71",
+                  "#text": "Motor Vehicle 1"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "rgba(0,0,0,0.0)",
+                  "@x": "34.99",
+                  "@y": "179.10",
+                  "@width": "80.28",
+                  "@height": "13.18",
+                  "#text": "# Occupants:"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "#FFFFFF",
+                  "@x": "219.24",
+                  "@y": "215.80",
+                  "@width": "180.50",
+                  "@height": "13.18",
+                  "#text": "OWNERSHIP AND INSURANCE"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "247.32",
+                  "@width": "72.23",
+                  "@height": "9.37",
+                  "#text": "Jack M Mao"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "247.32",
+                  "@width": "155.81",
+                  "@height": "9.37",
+                  "#text": "Insurance Company Name"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "247.32",
+                  "@width": "41.83",
+                  "@height": "9.37",
+                  "#text": "NAIC #"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "265.30",
+                  "@width": "83.70",
+                  "@height": "9.37",
+                  "#text": "1000 Olin Way"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "265.30",
+                  "@width": "54.48",
+                  "@height": "9.37",
+                  "#text": "Unknown"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "265.30",
+                  "@width": "54.48",
+                  "@height": "9.37",
+                  "#text": "Unknown"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "283.27",
+                  "@width": "123.14",
+                  "@height": "9.37",
+                  "#text": "Needham, MA 02492"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "293.01",
+                  "@width": "47.40",
+                  "@height": "9.37",
+                  "#text": "Policy #"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "310.98",
+                  "@width": "54.48",
+                  "@height": "9.37",
+                  "#text": "Unknown"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "#FFFFFF",
+                  "@x": "256.25",
+                  "@y": "347.62",
+                  "@width": "106.51",
+                  "@height": "13.18",
+                  "#text": "VEHICLE DETAILS"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "379.14",
+                  "@width": "125.50",
+                  "@height": "9.37",
+                  "#text": "Vehicle Identiﬁcation"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "379.14",
+                  "@width": "103.17",
+                  "@height": "9.37",
+                  "#text": "Vehicle Unit Type"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "379.14",
+                  "@width": "119.06",
+                  "@height": "9.37",
+                  "#text": "Body Type Category"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "394.12",
+                  "@width": "47.45",
+                  "@height": "9.37",
+                  "#text": "Number"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "397.12",
+                  "@width": "125.21",
+                  "@height": "9.37",
+                  "#text": "Parked Motor Vehicle"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "397.12",
+                  "@width": "85.61",
+                  "@height": "9.37",
+                  "#text": "Passenger Car"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "412.10",
+                  "@width": "37.03",
+                  "@height": "9.37",
+                  "#text": "99999"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "439.81",
+                  "@width": "119.29",
+                  "@height": "9.37",
+                  "#text": "Vehicle Registration"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "439.81",
+                  "@width": "79.67",
+                  "@height": "9.37",
+                  "#text": "Vehicle Make"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "439.81",
+                  "@width": "72.38",
+                  "@height": "9.37",
+                  "#text": "Vehicle Size"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "454.79",
+                  "@width": "53.70",
+                  "@height": "9.37",
+                  "#text": "Identiﬁer"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "457.79",
+                  "@width": "31.39",
+                  "@height": "9.37",
+                  "#text": "Tesla"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "457.79",
+                  "@width": "143.13",
+                  "@height": "9.37",
+                  "#text": "Light (10,000 lbs. or less"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "472.77",
+                  "@width": "84.57",
+                  "@height": "9.37",
+                  "#text": "GVWR/GCWR)"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "500.48",
+                  "@width": "149.30",
+                  "@height": "9.37",
+                  "#text": "Vehicle Registration Year"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "500.48",
+                  "@width": "84.05",
+                  "@height": "9.37",
+                  "#text": "Vehicle Model"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "500.48",
+                  "@width": "144.98",
+                  "@height": "9.37",
+                  "#text": "Number of Trailing Units"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "518.45",
+                  "@width": "29.63",
+                  "@height": "9.37",
+                  "#text": "2022"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "518.45",
+                  "@width": "7.83",
+                  "@height": "9.37",
+                  "#text": "S"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "518.45",
+                  "@width": "7.41",
+                  "@height": "9.37",
+                  "#text": "2"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "546.17",
+                  "@width": "130.48",
+                  "@height": "9.37",
+                  "#text": "License Plate Number"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "546.17",
+                  "@width": "114.06",
+                  "@height": "9.37",
+                  "#text": "Vehicle Model Year"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "546.17",
+                  "@width": "122.89",
+                  "@height": "9.37",
+                  "#text": "Hazardous Materials"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "564.14",
+                  "@width": "37.94",
+                  "@height": "9.37",
+                  "#text": "P1000"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "564.14",
+                  "@width": "29.63",
+                  "@height": "9.37",
+                  "#text": "2020"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "561.15",
+                  "@width": "51.63",
+                  "@height": "9.37",
+                  "#text": "Placard?"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "579.12",
+                  "@width": "16.92",
+                  "@height": "9.37",
+                  "#text": "No"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "#FFFFFF",
+                  "@x": "208.64",
+                  "@y": "615.76",
+                  "@width": "201.71",
+                  "@height": "13.18",
+                  "#text": "FIRST TRAILER BEHIND TRACTOR"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "647.28",
+                  "@width": "130.48",
+                  "@height": "9.37",
+                  "#text": "License Plate Number"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "647.28",
+                  "@width": "32.62",
+                  "@height": "9.37",
+                  "#text": "Make"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "647.28",
+                  "@width": "92.14",
+                  "@height": "9.37",
+                  "#text": "Model and Year"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "665.26",
+                  "@width": "20.95",
+                  "@height": "9.37",
+                  "#text": "null"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "665.26",
+                  "@width": "27.09",
+                  "@height": "9.37",
+                  "#text": "Deer"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "665.26",
+                  "@width": "87.36",
+                  "@height": "9.37",
+                  "#text": "Unknown 2020"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "692.97",
+                  "@width": "21.76",
+                  "@height": "9.37",
+                  "#text": "VIN"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "692.97",
+                  "@width": "131.85",
+                  "@height": "9.37",
+                  "#text": "Total Number of Axles"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "710.94",
+                  "@width": "44.44",
+                  "@height": "9.37",
+                  "#text": "121213"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "710.94",
+                  "@width": "7.41",
+                  "@height": "9.37",
+                  "#text": "9"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "@index": "2",
+        "@width": "612",
+        "@height": "792",
+        "@OCRWasPerformed": "False",
+        "row": [
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "#FFFFFF",
+                  "@x": "200.67",
+                  "@y": "33.79",
+                  "@width": "217.65",
+                  "@height": "13.18",
+                  "#text": "SECOND TRAILER BEHIND TRACTOR"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "65.32",
+                  "@width": "130.48",
+                  "@height": "9.37",
+                  "#text": "License Plate Number"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "65.32",
+                  "@width": "32.62",
+                  "@height": "9.37",
+                  "#text": "Make"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "65.32",
+                  "@width": "92.14",
+                  "@height": "9.37",
+                  "#text": "Model and Year"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "83.29",
+                  "@width": "27.09",
+                  "@height": "9.37",
+                  "#text": "Deer"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "98.27",
+                  "@width": "29.63",
+                  "@height": "9.37",
+                  "#text": "2021"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "111.00",
+                  "@width": "21.76",
+                  "@height": "9.37",
+                  "#text": "VIN"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "111.00",
+                  "@width": "131.85",
+                  "@height": "9.37",
+                  "#text": "Total Number of Axles"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "128.98",
+                  "@width": "44.44",
+                  "@height": "9.37",
+                  "#text": "393993"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "128.98",
+                  "@width": "7.41",
+                  "@height": "9.37",
+                  "#text": "8"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "#FFFFFF",
+                  "@x": "207.80",
+                  "@y": "165.62",
+                  "@width": "203.40",
+                  "@height": "13.18",
+                  "#text": "MOTOR CARRIER IDENTIFICATION"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "197.14",
+                  "@width": "29.32",
+                  "@height": "9.37",
+                  "#text": "John"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "197.14",
+                  "@width": "110.55",
+                  "@height": "9.37",
+                  "#text": "Identiﬁcation Type"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "197.14",
+                  "@width": "129.17",
+                  "@height": "9.37",
+                  "#text": "Identiﬁcation Number"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "215.11",
+                  "@width": "83.70",
+                  "@height": "9.37",
+                  "#text": "1000 Olin Way"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "215.11",
+                  "@width": "95.38",
+                  "@height": "9.37",
+                  "#text": "US DOT Number"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "215.11",
+                  "@width": "51.84",
+                  "@height": "9.37",
+                  "#text": "7758258"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "233.09",
+                  "@width": "123.14",
+                  "@height": "9.37",
+                  "#text": "Needham, MA 02492"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "242.83",
+                  "@width": "116.82",
+                  "@height": "9.37",
+                  "#text": "Country/State Code"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "242.83",
+                  "@width": "88.28",
+                  "@height": "9.37",
+                  "#text": "Type of Carrier"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "260.80",
+                  "@width": "47.45",
+                  "@height": "9.37",
+                  "#text": "Us code"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "260.80",
+                  "@width": "98.81",
+                  "@height": "9.37",
+                  "#text": "Interstate Carrier"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "#FFFFFF",
+                  "@x": "230.76",
+                  "@y": "297.44",
+                  "@width": "157.49",
+                  "@height": "13.18",
+                  "#text": "VEHICLE CONFIGURATION"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "328.96",
+                  "@width": "80.83",
+                  "@height": "9.37",
+                  "#text": "Conﬁguration"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "328.96",
+                  "@width": "83.52",
+                  "@height": "9.37",
+                  "#text": "Special Sizing"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "328.96",
+                  "@width": "65.27",
+                  "@height": "9.37",
+                  "#text": "Permitted?"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "346.94",
+                  "@width": "152.00",
+                  "@height": "9.37",
+                  "#text": "Vehicle 10,000 lbs. or less"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "346.94",
+                  "@width": "99.54",
+                  "@height": "9.37",
+                  "#text": "No special sizing"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "346.94",
+                  "@width": "117.80",
+                  "@height": "9.37",
+                  "#text": "Non-Permitted Load"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "361.92",
+                  "@width": "142.62",
+                  "@height": "9.37",
+                  "#text": "placarded for hazardous"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "376.90",
+                  "@width": "54.87",
+                  "@height": "9.37",
+                  "#text": "materials"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "374.65",
+                  "@width": "163.26",
+                  "@height": "9.37",
+                  "#text": "Number of Axles on Tractor"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "374.65",
+                  "@width": "100.62",
+                  "@height": "9.37",
+                  "#text": "Cargo Body Type"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "392.62",
+                  "@width": "7.41",
+                  "@height": "9.37",
+                  "#text": "9"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "392.62",
+                  "@width": "22.28",
+                  "@height": "9.37",
+                  "#text": "Bus"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "@index": "3",
+        "@width": "612",
+        "@height": "792",
+        "@OCRWasPerformed": "False",
+        "row": [
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "#FFFFFF",
+                  "@x": "226.11",
+                  "@y": "33.79",
+                  "@width": "166.77",
+                  "@height": "13.18",
+                  "#text": "FACTORS AND CONDITIONS"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "65.32",
+                  "@width": "174.97",
+                  "@height": "9.37",
+                  "#text": "Posted/Statutory Speed Limit"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "65.32",
+                  "@width": "100.04",
+                  "@height": "9.37",
+                  "#text": "Travel Directions"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "65.32",
+                  "@width": "173.76",
+                  "@height": "9.37",
+                  "#text": "Travel Direction Before Crash"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "83.29",
+                  "@width": "14.81",
+                  "@height": "9.37",
+                  "#text": "60"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "83.29",
+                  "@width": "51.76",
+                  "@height": "9.37",
+                  "#text": "One-Way"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "83.29",
+                  "@width": "96.00",
+                  "@height": "9.37",
+                  "#text": "Not on Roadway"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "111.00",
+                  "@width": "135.02",
+                  "@height": "9.37",
+                  "#text": "Traﬃc Control Devices"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "111.00",
+                  "@width": "167.52",
+                  "@height": "9.37",
+                  "#text": "Inoperative or Missing TCDs"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "111.00",
+                  "@width": "149.44",
+                  "@height": "9.37",
+                  "#text": "Vehicle Maneuver/Action"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "125.98",
+                  "@width": "41.17",
+                  "@height": "9.37",
+                  "#text": "(TCDs)"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "143.96",
+                  "@width": "69.72",
+                  "@height": "9.37",
+                  "#text": "No Controls"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "156.69",
+                  "@width": "72.64",
+                  "@height": "9.37",
+                  "#text": "Barrier Type"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "174.67",
+                  "@width": "59.15",
+                  "@height": "9.37",
+                  "#text": "No Barrier"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "202.38",
+                  "@width": "50.72",
+                  "@height": "9.37",
+                  "#text": "Divided?"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "202.38",
+                  "@width": "138.49",
+                  "@height": "9.37",
+                  "#text": "Towed Due to Disabling"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "202.38",
+                  "@width": "166.04",
+                  "@height": "9.37",
+                  "#text": "Contributing Circumstances"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "220.36",
+                  "@width": "67.79",
+                  "@height": "9.37",
+                  "#text": "Not Divided"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "217.36",
+                  "@width": "48.73",
+                  "@height": "9.37",
+                  "#text": "Damage"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "217.36",
+                  "@width": "75.25",
+                  "@height": "9.37",
+                  "#text": "from Vehicle"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "235.34",
+                  "@width": "31.18",
+                  "@height": "9.37",
+                  "#text": "None"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "263.05",
+                  "@width": "165.69",
+                  "@height": "9.37",
+                  "#text": "Location of Damage Area(s)"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "263.05",
+                  "@width": "132.66",
+                  "@height": "9.37",
+                  "#text": "Initial Point of Contact"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "263.05",
+                  "@width": "164.30",
+                  "@height": "9.37",
+                  "#text": "Resulting Extent of Damage"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "281.03",
+                  "@width": "78.34",
+                  "@height": "9.37",
+                  "#text": "Non-Collision"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "308.74",
+                  "@width": "96.61",
+                  "@height": "9.37",
+                  "#text": "HOV/HOT Lanes"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "308.74",
+                  "@width": "165.51",
+                  "@height": "9.37",
+                  "#text": "Crash Related to HOV/HOT?"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "354.43",
+                  "@width": "116.80",
+                  "@height": "9.37",
+                  "#text": "Sequence of Events"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "354.43",
+                  "@width": "152.03",
+                  "@height": "9.37",
+                  "#text": "Emergency Motor Vehicle"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "354.43",
+                  "@width": "173.73",
+                  "@height": "9.37",
+                  "#text": "Special Function in Transport"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "372.40",
+                  "@width": "96.58",
+                  "@height": "9.37",
+                  "#text": "Cross Centerline"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "369.41",
+                  "@width": "22.57",
+                  "@height": "9.37",
+                  "#text": "Use"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "387.38",
+                  "@width": "85.96",
+                  "@height": "9.37",
+                  "#text": "Not Applicable"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "415.09",
+                  "@width": "173.02",
+                  "@height": "9.37",
+                  "#text": "Vehicle's Most Harmful Event"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "415.09",
+                  "@width": "125.88",
+                  "@height": "9.37",
+                  "#text": "Horizontal Alignment"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "415.09",
+                  "@width": "121.39",
+                  "@height": "9.37",
+                  "#text": "Total Through Lanes"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "433.07",
+                  "@width": "150.03",
+                  "@height": "9.37",
+                  "#text": "Cargo/Equipment Loss or"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "433.07",
+                  "@width": "45.69",
+                  "@height": "9.37",
+                  "#text": "Straight"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "433.07",
+                  "@width": "7.41",
+                  "@height": "9.37",
+                  "#text": "1"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "448.05",
+                  "@width": "27.18",
+                  "@height": "9.37",
+                  "#text": "Shift"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "475.76",
+                  "@width": "75.43",
+                  "@height": "9.37",
+                  "#text": "Hit and Run?"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "475.76",
+                  "@width": "35.18",
+                  "@height": "9.37",
+                  "#text": "Grade"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "475.76",
+                  "@width": "123.45",
+                  "@height": "9.37",
+                  "#text": "Total Auxiliary Lanes"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "493.74",
+                  "@width": "143.51",
+                  "@height": "9.37",
+                  "#text": "No, Did Not Leave Scene"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "493.74",
+                  "@width": "30.49",
+                  "@height": "9.37",
+                  "#text": "Level"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "493.74",
+                  "@width": "7.41",
+                  "@height": "9.37",
+                  "#text": "1"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "521.45",
+                  "@width": "162.09",
+                  "@height": "9.37",
+                  "#text": "Has Automated System(s)?"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "521.45",
+                  "@width": "154.53",
+                  "@height": "9.37",
+                  "#text": "Automated System Levels"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "521.45",
+                  "@width": "164.60",
+                  "@height": "9.37",
+                  "#text": "ASLs Engaged during Crash"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "539.43",
+                  "@width": "16.92",
+                  "@height": "9.37",
+                  "#text": "No"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "536.43",
+                  "@width": "40.10",
+                  "@height": "9.37",
+                  "#text": "(ASLs)"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "8.0",
+                  "@x": "34.99",
+                  "@y": "588.76",
+                  "@width": "180.66",
+                  "@height": "11.71",
+                  "#text": "Driver of Motor Vehicle 1"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "rgba(0,0,0,0.0)",
+                  "@x": "34.99",
+                  "@y": "606.02",
+                  "@width": "211.22",
+                  "@height": "13.18",
+                  "#text": "Injury Status: No Apparent Injury"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "rgba(0,0,0,0.0)",
+                  "@x": "430.06",
+                  "@y": "605.27",
+                  "@width": "146.78",
+                  "@height": "13.18",
+                  "#text": "Incident Responder?: N"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "rgba(0,0,0,0.0)",
+                  "@x": "576.83",
+                  "@y": "605.27",
+                  "@width": "7.61",
+                  "@height": "13.18",
+                  "#text": "o"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "@index": "4",
+        "@width": "612",
+        "@height": "792",
+        "@OCRWasPerformed": "False",
+        "row": [
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "#FFFFFF",
+                  "@x": "199.28",
+                  "@y": "33.79",
+                  "@width": "220.45",
+                  "@height": "13.18",
+                  "#text": "DRIVER AND LICENSE INFORMATION"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "65.32",
+                  "@width": "72.23",
+                  "@height": "9.37",
+                  "#text": "Jack M Mao"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "65.32",
+                  "@width": "77.97",
+                  "@height": "9.37",
+                  "#text": "License Type"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "65.32",
+                  "@width": "123.95",
+                  "@height": "9.37",
+                  "#text": "Name of Jurisdiction"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "83.29",
+                  "@width": "99.23",
+                  "@height": "9.37",
+                  "#text": "DOB:2000/06/13"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "83.29",
+                  "@width": "20.22",
+                  "@height": "9.37",
+                  "#text": "MA"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "101.27",
+                  "@width": "56.67",
+                  "@height": "9.37",
+                  "#text": "Sex: Male"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "111.00",
+                  "@width": "96.59",
+                  "@height": "9.37",
+                  "#text": "License Number"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "111.00",
+                  "@width": "134.66",
+                  "@height": "9.37",
+                  "#text": "License Endorsements"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "119.24",
+                  "@width": "123.04",
+                  "@height": "9.37",
+                  "#text": "39 Seaver Farm Lane"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "128.98",
+                  "@width": "122.58",
+                  "@height": "9.37",
+                  "#text": "None/Not Applicable"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "137.22",
+                  "@width": "18.12",
+                  "@height": "9.37",
+                  "#text": "NA"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "155.19",
+                  "@width": "147.71",
+                  "@height": "9.37",
+                  "#text": "South Grafton, MA 01560"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "156.69",
+                  "@width": "81.85",
+                  "@height": "9.37",
+                  "#text": "License Class"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "156.69",
+                  "@width": "159.43",
+                  "@height": "9.37",
+                  "#text": "Commercial Driver License"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "174.67",
+                  "@width": "47.33",
+                  "@height": "9.37",
+                  "#text": "Class M"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "171.67",
+                  "@width": "40.11",
+                  "@height": "9.37",
+                  "#text": "(CDL)?"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "189.65",
+                  "@width": "21.29",
+                  "@height": "9.37",
+                  "#text": "Yes"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "#FFFFFF",
+                  "@x": "123.49",
+                  "@y": "226.28",
+                  "@width": "372.02",
+                  "@height": "13.18",
+                  "#text": "LARGE VEHICLES AND HAZARDOUS MATERIAL INFORMATION"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "257.81",
+                  "@width": "119.42",
+                  "@height": "9.37",
+                  "#text": "CMV License Status"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "312.87",
+                  "@y": "257.81",
+                  "@width": "224.17",
+                  "@height": "9.37",
+                  "#text": "Compliance with CDL Endorsement(s)"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "275.78",
+                  "@width": "29.11",
+                  "@height": "9.37",
+                  "#text": "Valid"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "312.87",
+                  "@y": "275.78",
+                  "@width": "256.85",
+                  "@height": "9.37",
+                  "#text": "No Endorsement(s) Required for the Vehicle"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "13.0",
+                  "@color": "#FFFFFF",
+                  "@x": "226.11",
+                  "@y": "312.42",
+                  "@width": "166.77",
+                  "@height": "13.18",
+                  "#text": "FACTORS AND CONDITIONS"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "343.94",
+                  "@width": "97.30",
+                  "@height": "9.37",
+                  "#text": "Seating Position"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "343.94",
+                  "@width": "112.42",
+                  "@height": "9.37",
+                  "#text": "Speeding-Related?"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "343.94",
+                  "@width": "143.28",
+                  "@height": "9.37",
+                  "#text": "Suspected Alcohol Use?"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "361.92",
+                  "@width": "30.56",
+                  "@height": "9.37",
+                  "#text": "Front"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "361.92",
+                  "@width": "16.92",
+                  "@height": "9.37",
+                  "#text": "No"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "361.92",
+                  "@width": "16.92",
+                  "@height": "9.37",
+                  "#text": "No"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "389.63",
+                  "@width": "123.87",
+                  "@height": "9.37",
+                  "#text": "Restraint Systems or"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "389.63",
+                  "@width": "146.65",
+                  "@height": "9.37",
+                  "#text": "Actions at Time of Crash"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "389.63",
+                  "@width": "115.65",
+                  "@height": "9.37",
+                  "#text": "Alcohol Test Status"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "404.61",
+                  "@width": "138.31",
+                  "@height": "9.37",
+                  "#text": "Motorcycle Helmet Use"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "407.60",
+                  "@width": "133.46",
+                  "@height": "9.37",
+                  "#text": "No Contributing Action"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "422.58",
+                  "@width": "155.49",
+                  "@height": "9.37",
+                  "#text": "None Used - Motor Vehicle"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "437.56",
+                  "@width": "56.28",
+                  "@height": "9.37",
+                  "#text": "Occupant"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "435.32",
+                  "@width": "106.24",
+                  "@height": "9.37",
+                  "#text": "Alcohol Test Type"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "481.00",
+                  "@width": "164.05",
+                  "@height": "9.37",
+                  "#text": "Indication of Improper Use?"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "481.00",
+                  "@width": "93.49",
+                  "@height": "9.37",
+                  "#text": "Violation Codes"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "481.00",
+                  "@width": "126.63",
+                  "@height": "9.37",
+                  "#text": "Suspected Drug Use?"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "498.98",
+                  "@width": "16.92",
+                  "@height": "9.37",
+                  "#text": "No"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "498.98",
+                  "@width": "37.03",
+                  "@height": "9.37",
+                  "#text": "42069"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "498.98",
+                  "@width": "16.92",
+                  "@height": "9.37",
+                  "#text": "No"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "526.69",
+                  "@width": "108.27",
+                  "@height": "9.37",
+                  "#text": "Air Bag Deployed?"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "526.69",
+                  "@width": "158.51",
+                  "@height": "9.37",
+                  "#text": "Condition at Time of Crash"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "526.69",
+                  "@width": "99.00",
+                  "@height": "9.37",
+                  "#text": "Drug Test Status"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "544.67",
+                  "@width": "78.73",
+                  "@height": "9.37",
+                  "#text": "Not Deployed"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "544.67",
+                  "@width": "109.50",
+                  "@height": "9.37",
+                  "#text": "Apparently Normal"
+                }
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "572.38",
+                  "@width": "89.59",
+                  "@height": "9.37",
+                  "#text": "Drug Test Type"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "618.07",
+                  "@width": "54.15",
+                  "@height": "9.37",
+                  "#text": "Ejection?"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "221.49",
+                  "@y": "618.07",
+                  "@width": "124.90",
+                  "@height": "9.37",
+                  "#text": "Source of Distraction"
+                }
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "618.07",
+                  "@width": "127.75",
+                  "@height": "9.37",
+                  "#text": "Attempted Avoidance"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "636.05",
+                  "@width": "67.76",
+                  "@height": "9.37",
+                  "#text": "Not Ejected"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "404.24",
+                  "@y": "633.05",
+                  "@width": "59.00",
+                  "@height": "9.37",
+                  "#text": "Maneuver"
+                }
+              }
+            ]
+          },
+          {
+            "column": [
+              {
+                "text": {
+                  "@fontName": "Times",
+                  "@fontSize": "6.0",
+                  "@x": "38.74",
+                  "@y": "663.76",
+                  "@width": "96.68",
+                  "@height": "9.37",
+                  "#text": "Distraction Type"
+                }
+              },
+              {
+                "text": ""
+              },
+              {
+                "text": ""
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
