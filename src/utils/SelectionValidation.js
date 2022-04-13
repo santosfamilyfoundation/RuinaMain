@@ -25,9 +25,9 @@ validateInput(selection, type, constraint){
             }
 
           if (type == 'range'){
-             lowerUpperLim = constraint.split()
+             lowerUpperLim = constraint.split('-')
                         if (selection.length >= parseInt(lowerUpperLim[0])){
-                            if (selection.length <= parseInt(lowerUpperLim[0])){
+                            if (selection.length <= parseInt(lowerUpperLim[1])){
                                 this.status = true
                             }
                             }
