@@ -36,6 +36,9 @@ const processAnswerSheet = (sheet) => {
             "option_text": columnValues[3],
             "option_number": columnValues[4],
             "mmucc_option_number": columnValues[5],
+            "val_type": columnValues[6],
+            "val_constraint": columnValues[7],
+            "warning_msg": columnValues[8]
         }
         answerSheet.push(currRow)
     })
@@ -68,6 +71,9 @@ const processQuestionSheet = (sheet) => {
             "num_selected_option": columnValues[9],
             "automation_method": columnValues[10],
             "mmucc_id": columnValues[11],
+            "val_type": columnValues[12],
+            "val_constraint": columnValues[13],
+            "warning_msg": columnValues[14]
         }
         questionSheet.push(currRow)
     }
