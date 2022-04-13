@@ -79,6 +79,15 @@ def create_output_df_road(trct, my_data, lookup):
 
     return result
 
+def create_output_df_passenger(trct, my_data, lookup):
+    pass
+
+def create_output_df_nonmotorist(trct, my_data, lookup):
+    pass
+
+def create_output_df_driver(trct, my_data, lookup):
+    pass
+
 # creates an insert statement with a df
 def insert_statement(df, table_name):
     key, value = '(','('
@@ -115,6 +124,14 @@ def insert_road(df):
         cursor.execute('SET IDENTITY_INSERT dbo.tblCrash ON')
         cursor.execute(insert_road)
 
+def insert_passenger(trct, my_data, lookup):
+    pass
+
+def insert_nonmotorist(trct, my_data, lookup):
+    pass
+
+def insert_driver(trct, my_data, lookup):
+    pass
 
 if __name__ == "__main__":
 
@@ -130,13 +147,6 @@ if __name__ == "__main__":
     insert_vehicle(vehicle)
     road = pd.read_sql('SELECT name FROM sys.columns WHERE object_id = OBJECT_ID(\'dbo.tblCrash\') ', conn)
     insert_road(road)
-    # lookup_vehicle = lookup_table(FILE_TEST)
-    # new_data_vehicle = create_output_df_vehicle(df, excel_data['vehicle'], lookup_vehicle)
-    # for i in new_data_vehicle:
-    #     insert_vehicle = insert_statement(i, "dbo.tblVehicle")
-    #     print('insert_vehicle:\n', insert_vehicle)
-    #     cursor.execute('SET ANSI_WARNINGS OFF')
-    #     cursor.execute(insert_vehicle)
 
     conn.commit()
     cursor.close()
