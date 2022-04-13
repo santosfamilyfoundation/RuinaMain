@@ -99,7 +99,7 @@ const DropDownSingleSelect = (props) => {
 
     const validateLocal = (localInfo) => {
         let selectionValidation = SelectionValidation
-             selectionValidation.validateField(localInfo);
+             selectionValidation.validateField(localInfo, data.val_type, data.val_constraint);
              let localStatus = selectionValidation.status
              if (localStatus) {
                 setBorderColor("coolGray.200")
