@@ -79,7 +79,8 @@ class Welcome extends Component {
   */
 	async getMobileSpreadsheet(link) {
 		// create a path you want to write to
-		var path = RNFS.DocumentDirectoryPath + "/questions";
+		let path = RNFS.DocumentDirectoryPath + "/questions";
+		let errorBool;
 		// download the file
 		await RNFS.downloadFile({
 			fromUrl: link,
