@@ -47,7 +47,7 @@ export class JSONconverter extends Component {
 	is a separate sheet for every vehicle (with that sheet containing the driver and passenger data
 	for that vehicle as well), though this should depend on feedback from users on what is more helpful.
 
-   Question: How does this currently handle the crash diagram export?
+   The crash diagram, if one exists, is saved as a separate file.
 
 	Returns a string representation of the Excel workbook so that it can be written to a file.
    */
