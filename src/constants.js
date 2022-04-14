@@ -46,6 +46,16 @@ export const SEX_ID = "driver-sex";
 export const DLICENSE_ID = "driver-licenseInfo";
 export const DLICENSE_CLASS_ID = "driver-licenseClass";
 export const DLICENSE_ENDORSEMENTS_ID = "driver-CDLEndorsements";
+export const DL_CLASS_MAP = { B: "2", C: "Class C" };
+export const DL_ENDORSEMENT_MAP = {
+	NONE: "None/Not Applicable",
+	H: "1",
+	N: "2",
+	P: "3",
+	S: "4",
+	T: "5",
+	X: "6",
+};
 
 export const ALLOW_JSON_EXPORT = false;
 

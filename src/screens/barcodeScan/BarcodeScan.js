@@ -229,19 +229,11 @@ class BarcodeScan extends PureComponent {
 						elements[
 							Constants.BARCODE_DLICENSE_ENDORSEMENTS
 						].toUpperCase();
-					const dlEndorsementMapping = {
-						NONE: "None/Not Applicable",
-						H: "1",
-						N: "2",
-						P: "3",
-						S: "4",
-						T: "5",
-						X: "6",
-					};
 					this.props.updateDriver({
 						id,
 						question: Constants.DLICENSE_ENDORSEMENTS_ID,
-						selection: dlEndorsementMapping[endorsmentValue],
+						selection:
+							Constants.DL_ENDORSEMENT_MAP[endorsmentValue],
 					});
 				}
 
@@ -249,12 +241,10 @@ class BarcodeScan extends PureComponent {
 					// add driver's license class
 					const licenseClass =
 						elements[Constants.BARCODE_DLICENSE_CLASS];
-
-					const dlClassMappping = { B: "2", C: "Class C" };
 					this.props.updateDriver({
 						id,
 						question: Constants.DLICENSE_CLASS_ID,
-						selection: dlClassMappping[licenseClass],
+						selection: Constants.DL_CLASS_MAP[licenseClass],
 					});
 				}
 				this.setState({
