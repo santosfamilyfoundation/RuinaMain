@@ -6,8 +6,14 @@
   United States license plate. For both renders, the component will render a "Go Back" button that
   allows the user to navigate back to the form screen without processing any information.
 
-	The license plate scanning take from the react-native-openalpr library. Refer to the library
+	The license plate scanning uses from the react-native-openalpr library. Refer to the library
 	for questions about the Camera component.
+
+	Props:
+			scanDetails - the object that maps the type, questionId, and questionReducer
+			type - the type of scan (License or Plate)
+			questionId - the id for the question
+			questionReducer - the reducer function to save the question answer
 */
 
 import React, { PureComponent } from "react";
@@ -94,10 +100,12 @@ class BarcodeScan extends PureComponent {
     The function loops through the array and updates the driver reducer with the
     appropriate data. Once driver reducer and state are fully updated, the
     screen navigates back to the driver form.
-  */
+    */
 	onGoogleVisionBarcodesDetected(scanResult) {
 		for (let barcode of scanResult.barcodes) {
-			if (barcode.type === "PDF417") {
+			// Check if the barcode type is a stacked linear barcode, which is used for
+			// driver's license barcodes
+			if (barcode.type === Constant.BARCODETYPE) {
 				data = barcode.rawData;
 				const splitData = data.split("\n");
 				var elements = {};
@@ -118,36 +126,36 @@ class BarcodeScan extends PureComponent {
 						elements[element.substring(0, 3)] =
 							element.substring(3);
 					}
-					c;
 				}
 				const id = this.props.navigation.state.params.objectID;
-				if ("DAC" in elements) {
+				if (Constants.BARCODE_FIRST_NAME in elements) {
 					// add first name
 					this.props.updateDriver({
 						id,
 						question: Constants.FIRST_NAME_ID,
-						selection: elements["DAC"],
+						selection: elements[Constants.BARCODE_FIRST_NAME],
 					});
 				}
-				if ("DAD" in elements) {
+				if (Constants.BARCODE_MIDDLE_INITIAL in elements) {
 					// add middle inital
 					this.props.updateDriver({
 						id,
 						question: Constants.MIDDLE_INITIAL_ID,
-						selection: elements["DAD"][0],
+						selection:
+							elements[Constants.BARCODE_MIDDLE_INITIAL][0],
 					});
 				}
-				if ("DCS" in elements) {
+				if (Constants.BARCODE_LAST_NAME in elements) {
 					// add last name
 					this.props.updateDriver({
 						id,
 						question: Constants.LAST_NAME_ID,
-						selection: elements["DCS"],
+						selection: elements[Constants.BARCODE_LAST_NAME],
 					});
 				}
-				if ("DBB" in elements) {
+				if (Constants.BARCODE_DATE_OF_BIRTH in elements) {
 					// add date of birth
-					const dob = elements["DBB"];
+					const dob = elements[Constants.BARCODE_DATE_OF_BIRTH];
 					const formattedDOB =
 						dob.substring(dob.length - 4) +
 						"/" +
@@ -160,33 +168,33 @@ class BarcodeScan extends PureComponent {
 						selection: formattedDOB,
 					});
 				}
-				if ("DAG" in elements) {
+				if (Constants.BARCODE_STREET_ADDRESS in elements) {
 					// add street address
 					this.props.updateDriver({
 						id,
 						question: Constants.STREET_ADDRESS_ID,
-						selection: elements["DAG"],
+						selection: elements[Constants.BARCODE_STREET_ADDRESS],
 					});
 				}
-				if ("DAI" in elements) {
+				if (Constants.BARCODE_CITY in elements) {
 					// add city
 					this.props.updateDriver({
 						id,
 						question: Constants.CITY_ID,
-						selection: elements["DAI"],
+						selection: elements[Constants.BARCODE_CITY],
 					});
 				}
-				if ("DAJ" in elements) {
+				if (Constants.BARCODE_STATE in elements) {
 					// add state
 					this.props.updateDriver({
 						id,
 						question: Constants.STATE_ID,
-						selection: elements["DAJ"],
+						selection: elements[Constants.BARCODE_STATE],
 					});
 				}
-				if ("DAK" in elements) {
+				if (Constants.BARCODE_ZIP_CODE in elements) {
 					// add ZIP code
-					var zip = elements["DAK"];
+					var zip = elements[Constants.BARCODE_ZIP_CODE];
 					if (zip.substring(zip.length - 4) == "0000") {
 						// if last four digits are unknown, ignore them
 						zip = zip.substring(0, zip.length - 4);
@@ -197,9 +205,9 @@ class BarcodeScan extends PureComponent {
 						selection: zip,
 					});
 				}
-				if ("DBC" in elements) {
+				if (Constants.BARCODE_SEX in elements) {
 					// add sex
-					var sex = elements["DBC"];
+					var sex = elements[Constants.BARCODE_SEX];
 					sex = sex == 2 ? 0 : sex; // if sex is female(2), change to correct id (0)
 					this.props.updateDriver({
 						id,
@@ -207,109 +215,47 @@ class BarcodeScan extends PureComponent {
 						selection: sex,
 					});
 				}
-				if ("DAQ" in elements) {
+				if (Constants.BARCODE_DLICENSE in elements) {
 					// add driver's license id
 					this.props.updateDriver({
 						id,
 						question: Constants.DLICENSE_ID,
-						selection: elements["DAQ"],
+						selection: elements[Constants.BARCODE_DLICENSE],
 					});
 				}
-				if ("DCD" in elements) {
+				if (Constants.BARCODE_DLICENSE_ENDORSEMENTS in elements) {
 					// add license endorsements
-					const endorsmentValue = elements["DCD"].toUpperCase();
-					var endorsementCode = "";
-					switch (endorsmentValue) {
-						case "NONE":
-							endorsementCode = "None/Not Applicable";
-							this.props.updateDriver({
-								id,
-								question: Constants.DLICENSE_ENDORSEMENTS_ID,
-								selection: endorsementCode,
-							});
-							break;
-						case "H":
-							endorsementCode = "1";
-							this.props.updateDriver({
-								id,
-								question: Constants.DLICENSE_ENDORSEMENTS_ID,
-								selection: endorsementCode,
-							});
-							break;
-						case "N":
-							endorsementCode = "2";
-							this.props.updateDriver({
-								id,
-								question: Constants.DLICENSE_ENDORSEMENTS_ID,
-								selection: endorsementCode,
-							});
-							break;
-						case "P":
-							endorsementCode = "3";
-							this.props.updateDriver({
-								id,
-								question: Constants.DLICENSE_ENDORSEMENTS_ID,
-								selection: endorsementCode,
-							});
-							break;
-						case "S":
-							endorsementCode = "4";
-							this.props.updateDriver({
-								id,
-								question: Constants.DLICENSE_ENDORSEMENTS_ID,
-								selection: endorsementCode,
-							});
-							break;
-						case "T":
-							endorsementCode = "5";
-							this.props.updateDriver({
-								id,
-								question: Constants.DLICENSE_ENDORSEMENTS_ID,
-								selection: endorsementCode,
-							});
-							break;
-						case "X":
-							endorsementCode = "6";
-							this.props.updateDriver({
-								id,
-								question: Constants.DLICENSE_ENDORSEMENTS_ID,
-								selection: endorsementCode,
-							});
-							break;
-						case "X":
-							endorsementCode = "7";
-							this.props.updateDriver({
-								id,
-								question: Constants.DLICENSE_ENDORSEMENTS_ID,
-								selection: endorsementCode,
-							});
-							break;
-						default:
-							break;
-					}
+					const endorsmentValue =
+						elements[
+							Constants.BARCODE_DLICENSE_ENDORSEMENTS
+						].toUpperCase();
+					const dlEndorsementMapping = {
+						NONE: "None/Not Applicable",
+						H: "1",
+						N: "2",
+						P: "3",
+						S: "4",
+						T: "5",
+						X: "6",
+					};
+					this.props.updateDriver({
+						id,
+						question: Constants.DLICENSE_ENDORSEMENTS_ID,
+						selection: dlEndorsementMapping[endorsmentValue],
+					});
 				}
-				if ("DCA" in elements) {
+
+				if (Constants.BARCODE_DLICENSE_CLASS in elements) {
 					// add driver's license class
-					const licenseClass = elements["DCA"];
-					var classChoice = "";
-					switch (licenseClass) {
-						case "B":
-							classChoice = "2";
-							this.props.updateDriver({
-								id,
-								question: Constants.DLICENSE_CLASS_ID,
-								selection: classChoice,
-							});
-							break;
-						case "C":
-							classChoice = "Class C";
-							this.props.updateDriver({
-								id,
-								question: Constants.DLICENSE_CLASS_ID,
-								selection: classChoice,
-							});
-							break;
-					}
+					const licenseClass =
+						elements[Constants.BARCODE_DLICENSE_CLASS];
+
+					const dlClassMappping = { B: "2", C: "Class C" };
+					this.props.updateDriver({
+						id,
+						question: Constants.DLICENSE_CLASS_ID,
+						selection: dlClassMappping[licenseClass],
+					});
 				}
 				this.setState({
 					licenseData: barcode.rawData,
@@ -340,6 +286,7 @@ class BarcodeScan extends PureComponent {
 	render() {
 		if (this.state.cameraPermissionGranted) {
 			if (this.type == Constants.LICENSE) {
+				// rendering driver's license scanner
 				return (
 					<View style={styles.container}>
 						<RNCamera
@@ -379,6 +326,7 @@ class BarcodeScan extends PureComponent {
 					</View>
 				);
 			} else if (this.type == Constants.PLATE) {
+				// rendering license plate scanner
 				return (
 					<View style={styles.container}>
 						<Camera
