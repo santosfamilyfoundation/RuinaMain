@@ -2,14 +2,26 @@ export const CAPTURE = "Take Photo";
 export const VIN = "VIN Number";
 export const LICENSE = "Driver's License";
 export const PLATE = "License Plate";
-export const BASIC_PHOTO = "Crash Scene Photo";
+
+export const BARCODE_TYPE = "PDF417";
+export const BARCODE_FIRST_NAME = "DAC";
+export const BARCODE_MIDDLE_INITIAL = "DAD";
+export const BARCODE_LAST_NAME = "DCS";
+export const BARCODE_DATE_OF_BIRTH = "DBB";
+export const BARCODE_STREET_ADDRESS = "DAG";
+export const BARCODE_CITY = "DAI";
+export const BARCODE_STATE = "DAJ";
+export const BARCODE_ZIP_CODE = "DAK";
+export const BARCODE_SEX = "DBC";
+export const BARCODE_DLICENSE = "DAQ";
+export const BARCODE_DLICENSE_CLASS = "DCA";
+export const BARCODE_DLICENSE_ENDORSEMENTS = "DCD";
 
 export const TEMP_ANNOUNCE_NAME = "Weather in";
 export const TEMP_ANNOUNCE = "The current temperature is (C):";
 export const CONDITIONS_ANNOUNCE = "Weather conditions are:";
 export const WIND_SPEED_ANNOUNCE = "Wind speed is:";
 export const WIND_DEG_ANNOUNCE = "Wind degree is:";
-
 
 export const LAT_ID = "road-latitude";
 export const LONG_ID = "road-longitude";
@@ -37,4 +49,5 @@ export const DLICENSE_ENDORSEMENTS_ID = "driver-CDLEndorsements";
 
 export const ALLOW_JSON_EXPORT = false;
 
-export const DEFAULT_SPREADSHEET = 'https://docs.google.com/spreadsheets/d/1IJQxPEhVJnvAXOn2gLR25wyBVPcpk7c6RwlQwd5M_Fc/edit?usp=sharing';
+export const DEFAULT_SPREADSHEET =
+	"https://docs.google.com/spreadsheets/d/1IJQxPEhVJnvAXOn2gLR25wyBVPcpk7c6RwlQwd5M_Fc/edit?usp=sharing";
