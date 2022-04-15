@@ -8,7 +8,7 @@ import SectionedMultiSelect from 'react-native-sectioned-multi-select';
 import TooltipView from '../Tooltip';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import SelectionValidation from '../../utils/SelectionValidation.js'
-import { Box, NativeBaseProvider } from "native-base";
+import { Box } from "native-base";
 
 const CountyDropDown = (props) => {
     // json created from running:
