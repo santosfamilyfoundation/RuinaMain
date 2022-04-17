@@ -34,6 +34,20 @@ import { updateRoad } from "../../actions/RoadAction";
 import { updateResponse } from "../../actions/StoryActions";
 import TopNavigation from "../../components/TopNavigation";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import {
+   ADVANCED_OPENTEXTBOX,
+   AUTOCOMPLETE_DROPDOWN,
+   ADVANCED_DROPDOWN,
+   COUNTY_DROPDOWN,
+   DROPDOWN,
+   DROPDOWN_MULTISELECT,
+   LARGE_TEXT_FIELD,
+   MULTIBUTTON,
+   NUMBERBUTTON,
+   OPENTEXTBOX,
+   OPENTEXTBOX_SELECTION,
+   QUESTION_HEADER,
+} from "../../constants";
 
 const QuestionForm = (props) => {
    const {
@@ -48,7 +62,7 @@ const QuestionForm = (props) => {
       updateResponse,
    } = props;
 
-   // used to navigate to special screens, like the Map/License Plate Scanning screen 
+   // used to navigate to special screens, like the Map/License Plate Scanning screen
    // for the advanced dropdown or advanced open text box
    const navigateToAdvanced = (place, props) => {
       navigation.navigate(place, props);
@@ -57,10 +71,10 @@ const QuestionForm = (props) => {
    /*
    Returns an object containing the relevant props for the question based on the question type.
    The object contains the following data:
-   data - ?
-   key - the form ID?
-   id - the object ID?
-   dependencyID - the list of dependencies related to this question
+   data - the question data
+   key - the question ID
+   id - the id of the form the question is part of
+   dependencyID - the list of dependencies related to this question, including the entities this question is related (the forms)
    reducer - the reducer for this question
    submitFunction - the submit function for this question
    updateResponse - the updateResponse reducer
@@ -123,6 +137,11 @@ const QuestionForm = (props) => {
       };
       return obj[type];
    };
+
+   /*
+   Returns an object containing all of the data for the appropriate form, including the
+   reducer type, function to update the reducer, the action type, and the actual questions.
+   */
    const questionData = (type) => {
       const obj = {
          Driver: {
@@ -158,44 +177,57 @@ const QuestionForm = (props) => {
       };
       return type ? obj[type] : obj;
    };
+
+   /*
+   Returns a question component of the appropriate type with the given props.
+   */
    const renderSingleQuestion = (type, props) => {
       switch (type) {
-         case "dropdown":
+         case DROPDOWN:
             return <DropDownSingleSelect {...props} />;
 
-         case "dropdownMultiSelect":
+         case DROPDOWN_MULTISELECT:
             return <DropDownMultiSelect {...props} />;
 
-         case "openTextBox":
+         case OPENTEXTBOX:
             return <OpenTextField {...props} />;
 
-         case "openTextBoxWithSelection":
+         case OPENTEXTBOX_SELECTION:
             return <OpenTextFieldWithSelection {...props} />;
 
-         case "advancedOpenTextBox":
+         case ADVANCED_OPENTEXTBOX:
             return <AdvancedOpenTextField {...props} />;
 
-         case "advancedDropDown":
+         case ADVANCED_DROPDOWN:
             return <AdvancedDropDown {...props} />;
 
-         case "countyDropDown":
+         case COUNTY_DROPDOWN:
             return <CountyDropDown {...props} />;
 
-         case "largeTextField":
+         case LARGE_TEXT_FIELD:
             return <LargeTextField {...props} />;
 
-         case "multiButton":
+         case MULTIBUTTON:
             return <MultiButtonSelector {...props} />;
-         case "numberButton":
+
+         case NUMBERBUTTON:
             return <NumberButtonSelector {...props} />;
-         case "autoCompleteDropdown":
+
+         case AUTOCOMPLETE_DROPDOWN:
             return <QuestionAutoCompleteDropDown {...props} />;
-         case "questionHeader":
+
+         case QUESTION_HEADER:
             return <QuestionHeader {...props} />;
       }
    };
 
+   // Retrieve the question data object for the form type
    const question = questionData(questionDetail.type);
+
+   /*
+   Returns the DOM for all the questions within a single section, given the list of 
+   questions.
+   */
    const renderedQuestions = (questions) => {
       let questionList = [];
       for (const q of questions) {
@@ -208,6 +240,10 @@ const QuestionForm = (props) => {
       }
       return <VStack>{questionList}</VStack>;
    };
+
+   /*
+   Given a section of questions, returns the components to render the section.
+   */
    const renderSingleSection = (item) => {
       return (
          <Accordion.Item>
@@ -222,6 +258,10 @@ const QuestionForm = (props) => {
       );
    };
 
+   /*
+   Returns the components to render all of the sections for the form, given the complete
+   question data object for the form.
+   */
    const renderSections = (question) => {
       return (
          <Accordion index={[0]} mx={4} my={8}>
@@ -229,6 +269,7 @@ const QuestionForm = (props) => {
          </Accordion>
       );
    };
+
    return (
       <SafeAreaView style={styles.container}>
          <TopNavigation
