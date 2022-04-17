@@ -15,16 +15,10 @@ Component props:
 */
 
 import React, { Component } from "react";
-import {
-   View,
-   ScrollView,
-   BackHandler,
-   PermissionsAndroid,
-   Linking,
-} from "react-native";
+import { View, ScrollView, BackHandler, Linking } from "react-native";
 import { SafeAreaView } from "react-navigation";
 import { connect } from "react-redux";
-import { VStack, HStack, Box, Text, Image, Alert, Center } from "native-base";
+import { VStack, HStack, Box, Text } from "native-base";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import VehicleSection from "../formSections/VehicleSection";
 import NonMotoristSection from "../formSections/NonMotoristSection";
@@ -43,16 +37,6 @@ var uuid = require("react-native-uuid");
 class Home extends Component {
    constructor(props) {
       super(props);
-
-      const {
-        navigation,
-        driver,
-        nonmotorist,
-        vehicle,
-        passenger,
-        road,
-        photo,
-     } = this.props;
 
       // add actions for adding vehicle and nonmotorist data to the redux
       this._addNonmotorist = this._addNonmotorist.bind(this);
@@ -129,7 +113,7 @@ class Home extends Component {
    };
 
    render() {
-     // set up data object with keys for each data type
+      // set up data object with keys for each data type
       const data = {
          driver: this.props.driver.data,
          nonmotorist: this.props.nonmotorist.data,
