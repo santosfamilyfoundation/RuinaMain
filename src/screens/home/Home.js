@@ -113,6 +113,16 @@ class Home extends Component {
    };
 
    render() {
+      const {
+         navigation,
+         driver,
+         vehicle,
+         nonmotorist,
+         passenger,
+         road,
+         photo
+      } = this.props;
+
       // set up data object with keys for each data type
       const data = {
          driver: this.props.driver.data,
