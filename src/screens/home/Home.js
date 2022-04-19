@@ -195,7 +195,7 @@ class Home extends Component {
         </View>
       );
     };
-
+        
     return (
       <SafeAreaView flex={1}>
         {rightControls()}
