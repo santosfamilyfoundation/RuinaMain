@@ -5,8 +5,6 @@ tiles, they are navigated to the appropriate form. The component has two views: 
 the icon buttons, and the edit view, which allows users to delete the vehicle or delete drivers or passengers
 inside the vehicle.
 
-const {navigation, vehicle, index, name, edit, passenger, roadID, questions } = this.props
-
 Props:
 navigation - object that handles navigation between screens
 vehicle - the vehicle object

@@ -1,7 +1,7 @@
 /*
 The NonMotoristSection is a class component that renders the tile for a nonmotorist section on the home screen.
 If a user clicks on the tile, they are navigated to the NonMotorist form. The component has two views: the regular view,
-which just displays an icon representing a nonmotorist, and the edit view, which displays a minus icon and allows the 
+which just displays an icon representing the nonmotorist form, and the edit view, which displays a minus icon and allows the 
 user to delete the nonmotorist section.
 
 Props:
