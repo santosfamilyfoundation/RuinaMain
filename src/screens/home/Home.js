@@ -7,11 +7,11 @@ on the form icon buttons.
 Component props:
 - navigation - object that handles navigation between screens
 - driver - driver object
-- nonmotorist 
-- vehicle
-- passenger
-- road
-- photo
+- nonmotorist - nonmotorist object
+- vehicle - vehicle object
+- passenger - passenger object
+- road - road object
+- photo - photo object
 */
 
 import React, { Component } from "react";
