@@ -4,6 +4,8 @@ export class TextFieldValidation {
         this.status = null;
         this.validationData = null;
     }
+
+    /* prevents input lag by delaying the run until typing ends */
     debounceValidation(func, timeout){
         let timer;
           return (...args) => {
@@ -12,9 +14,8 @@ export class TextFieldValidation {
           };
         }
 
-
+    /*  checks to see whether the input fits in the customized paramaters */
     validateInput(text){
-          console.log('validateInput')
           if(text.length === 0){
             this.status = false;
           }
