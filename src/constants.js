@@ -1,3 +1,15 @@
+export const DROPDOWN = "dropdown";
+export const DROPDOWN_MULTISELECT = "dropdownMultiSelect";
+export const OPENTEXTBOX = "openTextBox";
+export const OPENTEXTBOX_SELECTION = "openTextBoxWithSelection";
+export const ADVANCED_OPENTEXTBOX = "advancedOpenTextBox";
+export const ADVANCED_DROPDOWN = "advancedDropDown";
+export const COUNTY_DROPDOWN = "countyDropDown";
+export const LARGE_TEXT_FIELD = "largeTextField";
+export const MULTIBUTTON = "multiButton";
+export const NUMBERBUTTON = "numberButton";
+export const QUESTION_HEADER = "questionHeader";
+
 export const CAPTURE = "Take Photo";
 export const VIN = "VIN Number";
 export const LICENSE = "Driver's License";
