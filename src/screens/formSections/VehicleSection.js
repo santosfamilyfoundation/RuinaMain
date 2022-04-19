@@ -1,3 +1,22 @@
+/*
+The VehicleSection is a class component that renders the tiles for a vehicle section on the home screen. This
+includes a tile for the vehicle, a tile for the driver and tiles for any passengers. If the user clicks on the
+tiles, they are navigated to the appropriate form. The component has two views: the regular view, which displays
+the icon buttons, and the edit view, which allows users to delete the vehicle or delete drivers or passengers
+inside the vehicle.
+
+const {navigation, vehicle, index, name, edit, passenger, roadID, questions } = this.props
+
+Props:
+navigation - object that handles navigation between screens
+vehicle - the vehicle object
+name - the title of this vehicle
+index - the number of the vehicle
+edit - boolean indicating whether we're in the edit view or not
+passenger - the passenger object
+roadID - the id of the road; vehicle is associated with this road
+questions - object representing all of the questions
+*/
 import React, { Component } from 'react';
 import { styles } from '../home/Home.style';
 import IconButton from '../../components/IconButton';
@@ -18,6 +37,7 @@ class VehicleSection extends Component{
     constructor(props) {
         super(props);
 
+        // add actions for adding or deleting passengers or deleting the vehicle
         this._addPassenger = this._addPassenger.bind(this);
         this._deletePassenger = this._deletePassenger.bind(this);
         this._deleteVehicleSection = this._deleteVehicleSection.bind(this);
@@ -62,14 +82,10 @@ class VehicleSection extends Component{
 
     render(){
         const {navigation, vehicle, index, name, edit, passenger, roadID, questions } = this.props
-        // would need to refine if we want to put delete vehicle section icon next to card header
-        // const VehiclesHeader = () => (
-        //     <View style={{ flexDirection: 'row' }}>
-        //       <Text category='h6' style={styles.vehicleSectionHeader}>{`${name} ${index + 1}`}</Text>
-        //       <Icon name='minus-circle' width={25} height={25} />
-        //     </View>
-        // );
 
+        /*
+        Navigate to the appropriate form.
+        */
         const navigateQuestion = (form, id, type, vehicleIdx, passengerIdx, ids) => {
           if (type == 'Driver') {
             var name = type + ' of ' + 'Vehicle ' + vehicleIdx;
@@ -125,7 +141,7 @@ class VehicleSection extends Component{
             }
         });
 
-        // describes components of a single vehicle section with two modes (edit and non edit)
+        // renders components of a single vehicle section with two modes (edit and non edit)
         if (edit){
             return(
                 <>
