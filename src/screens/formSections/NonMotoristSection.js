@@ -45,14 +45,14 @@ class NonMotoristSection extends Component {
          this.props;
 
       // Navigate to the nonmotorist form
-      const navigateQuestion = (form, id, type, idx) => {
-         var name = type + " " + idx;
+      const navigateNonmotoristQuestion = () => {
+         var name = "Nonmotorist" + " " + this.props.index;
          navigation.navigate("Question", {
-            questions: form,
-            objectID: id,
-            type,
-            name,
-            dependencyID: [0, 0, 0, id],
+            questions: this.nonmotoristQuestionsData(),
+            objectID: this.props.nonmotorist.id,
+            type: "Nonmotorist",
+            title: name,
+            dependencyID: [0, 0, 0, this.props.index + 1],
          });
       };
 
@@ -96,14 +96,7 @@ class NonMotoristSection extends Component {
          return (
             <Box mt={4}>
                <IconButton
-                  onPress={() =>
-                     navigateQuestion(
-                        this.nonmotoristQuestionsData(),
-                        nonmotorist.id,
-                        "Nonmotorist",
-                        index + 1
-                     )
-                  }
+                  onPress={() => this.navigateNonmotoristQuestion()}
                   text={`Non-Motorist ${index + 1} \nForm`}
                   rightMargin={4}
                   icon={<Icon color="white" name="person" size={50} />}
