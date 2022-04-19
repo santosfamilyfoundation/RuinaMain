@@ -12,11 +12,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { SafeAreaView } from "react-navigation";
 import { Divider, Box, Accordion, VStack, Button, Text } from "native-base";
-import { styles } from "../../autocomponentContainer/AutoComponentContainer.style";
 import { ScrollView } from "react-native-gesture-handler";
 import MultiButtonSelector from "../../components/buttonSelectors/MultiButtonSelector";
 import NumberButtonSelector from "../../components/buttonSelectors/NumberButtonSelector";
-import QuestionAutoCompleteDropDown from "../../components/dropdowns/QuestionAutoCompleteDropDown";
 import DropDownSingleSelect from "../../components/dropdowns/DropDownSingleSelect";
 import OpenTextField from "../../components/textFields/OpenTextField";
 import OpenTextFieldWithSelection from "../../components/textFields/OpenTextFieldWithSelection";
@@ -36,7 +34,6 @@ import TopNavigation from "../../components/TopNavigation";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import {
    ADVANCED_OPENTEXTBOX,
-   AUTOCOMPLETE_DROPDOWN,
    ADVANCED_DROPDOWN,
    COUNTY_DROPDOWN,
    DROPDOWN,
@@ -127,9 +124,6 @@ const QuestionForm = (props) => {
          numberButton: {
             ...PublicObj,
          },
-         autoCompleteDropdown: {
-            ...PublicObj,
-         },
          questionHeader: {
             data: res.data,
             dependencyID: res.detail.dependencyID,
@@ -213,9 +207,6 @@ const QuestionForm = (props) => {
          case NUMBERBUTTON:
             return <NumberButtonSelector {...props} />;
 
-         case AUTOCOMPLETE_DROPDOWN:
-            return <QuestionAutoCompleteDropDown {...props} />;
-
          case QUESTION_HEADER:
             return <QuestionHeader {...props} />;
       }
@@ -271,7 +262,7 @@ const QuestionForm = (props) => {
    };
 
    return (
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView>
          <TopNavigation
             title={`Questions on ${questionDetail.name}`}
             backButton

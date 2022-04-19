@@ -8,7 +8,6 @@ export const COUNTY_DROPDOWN = "countyDropDown";
 export const LARGE_TEXT_FIELD = "largeTextField";
 export const MULTIBUTTON = "multiButton";
 export const NUMBERBUTTON = "numberButton";
-export const AUTOCOMPLETE_DROPDOWN = "autoCompleteDropdown";
 export const QUESTION_HEADER = "questionHeader";
 
 export const CAPTURE = "Take Photo";
