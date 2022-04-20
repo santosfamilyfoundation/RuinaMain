@@ -45,7 +45,7 @@ const NumberButtonSelectorQuickSurvey = (props) => {
     endRange,
     tooltipText,
   } = props;
-  console.log(fieldName);
+
   // when button selected, set the option and update the quick survey setupData
   const submitField = (val) => {
     val = parseInt(val);

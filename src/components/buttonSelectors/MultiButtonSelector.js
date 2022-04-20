@@ -14,20 +14,20 @@
  */
 import React from "react";
 import { connect } from "react-redux";
-import { View, Image } from "react-native";
 import { Box, Text, VStack, Button, HStack } from "native-base";
 import QuestionSection from "../QuestionSection";
-import ImageSelector from "../../image/imgIndex";
 import { updateResponse } from "../../actions/StoryActions";
 import TooltipView from "../Tooltip.js";
 import { dependencyParser } from "../../utils/dependencyHelper";
 import { SafeAreaView } from "react-navigation";
+import SelectionValidation from "../../utils/SelectionValidation.js";
 
 const MultiButtonSelector = (props) => {
   // The selection state variable is used to store the name and value of the
   // button that has been selected. The inital value is null because no button
   // has been selected.
   const [selection, setSelection] = React.useState(null);
+  const [isInvalid, setIsInvalid] = React.useState(false);
   const {
     data,
     key,
@@ -57,7 +57,16 @@ const MultiButtonSelector = (props) => {
     the  selected button to the appropriate reducer.
   */
   const submitField = (optionText, idCode) => {
-    setSelection(optionText);
+    let selectionValidation = SelectionValidation;
+    selectionValidation.validateField(optionText);
+    let localStatus = selectionValidation.status;
+    if (localStatus) {
+      setIsInvalid(false);
+      setSelection(optionText);
+    } else {
+      setIsInvalid(true);
+      setSelection(optionText);
+    }
     // Checks which form the question belongs to updates the story reducer with
     // newest id, question, selecion, and corresponding dependencyID (if needed)
     if (dependencyID == null || dependencyID.length == 1) {
@@ -104,6 +113,16 @@ const MultiButtonSelector = (props) => {
       }
     }
     submitFunction({ id, question: currId, selection: optionText });
+  };
+
+  const selectionSet = (currId) => {
+    try {
+      if (existingData[currId] != null) {
+        return existingData[currId];
+      }
+    } catch (err) {
+      return null;
+    }
   };
 
   /*

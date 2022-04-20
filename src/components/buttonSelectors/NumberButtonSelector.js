@@ -19,12 +19,14 @@ import { View } from "react-native";
 import { updateResponse } from "../../actions/StoryActions";
 import TooltipView from "../Tooltip";
 import QuestionSection from "../QuestionSection";
+import SelectionValidation from "../../utils/SelectionValidation.js";
 
 const NumberButtonSelector = (props) => {
   // The selection state variable is used to store the name and value of the
   // button that has been selected. The inital value is null because no button
   // has been selected.
   const [selection, setSelection] = React.useState("");
+  const [isInvalid, setIsInvalid] = React.useState(false);
   const {
     data,
     id,
@@ -35,8 +37,6 @@ const NumberButtonSelector = (props) => {
     dependencyID,
   } = props;
   let currId = data.humanReadableId;
-
-  console.log(fieldName);
 
   const reducerData = questionReducer.data.find((entry) => entry.id == id);
   let existingData = !reducerData?.response ? null : reducerData.response;
@@ -54,7 +54,16 @@ const NumberButtonSelector = (props) => {
     This function saves the value of the button pressed to the form reducer.
   */
   const submitField = (val) => {
-    setSelection(val);
+    let selectionValidation = SelectionValidation;
+    selectionValidation.validateField(val);
+    let localStatus = selectionValidation.status;
+    if (localStatus) {
+      setIsInvalid(false);
+      setSelection(val);
+    } else {
+      setIsInvalid(true);
+      setSelection(val);
+    }
     // Checks which form the question belongs to updates the story reducer with
     // newest id, question, selecion, and corresponding dependencyID (if needed)
     if (dependencyID == null || dependencyID.length == 1) {

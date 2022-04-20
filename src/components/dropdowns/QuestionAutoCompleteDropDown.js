@@ -9,8 +9,10 @@ import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
 import QuestionSection from '../QuestionSection';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import SelectionValidation from '../../utils/SelectionValidation.js';
 
 const QuestionAutoCompleteDropDown = (props) => {
+    const [isInvalid, setIsInvalid] = React.useState(false);
     const [visible, setVisible] = React.useState(false);
     const [value, setValue] = React.useState('');   // value that will be stored in Redux
     const [title, setTitle] = React.useState('');   // value that will be displayed to user in form field
@@ -40,6 +42,7 @@ const QuestionAutoCompleteDropDown = (props) => {
 
     const submitField = () => {
         if(!value) {
+            // TODO: Add validation. Check if nothing has been selected.
             return;
         }
         if (dependencyID==null || dependencyID.length == 1){
@@ -60,14 +63,12 @@ const QuestionAutoCompleteDropDown = (props) => {
             }
         }
         submitFunction({id, question: currId, selection: value})
-//        setButtonAppearance('filled');
     }
 
     const clearField = () => {
         setValue('');
         setTitle('');
         submitFunction({id, question: currId, selection: null})
-//        setButtonAppearance('outline');
     }
 
     const onOptionSelect = (selection) => {
@@ -91,10 +92,6 @@ const QuestionAutoCompleteDropDown = (props) => {
             setButtonAppearance('outline');
         }
     }
-
-    /*const Header = () => (
-        <CardHeader title={data.question}/>
-    );*/
 
     const renderClear = (style) => (
         <Icon name='clear'/>
