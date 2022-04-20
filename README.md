@@ -10,11 +10,13 @@ Reliable crash data is essential to improving traffic safety. As part of a senio
 
 ### Installation Instructions
 
-See [this guide](https://github.com/santosfamilyfoundation/RuinaMain/blob/fix/18chowdhary/installation-instructions/windowsInstallationGuide.md) for Windows installation instructions.
+- [Linux Installation Guide](https://github.com/santosfamilyfoundation/RuinaMain/blob/master/documentation/installationGuide.md#linux-installation-guide)
+- [MacOS Installation Guide](https://github.com/santosfamilyfoundation/RuinaMain/blob/master/documentation/installationGuide.md#mac-installation-guide)
+- [Windows Installation Guide](https://github.com/santosfamilyfoundation/RuinaMain/blob/master/documentation/installationGuide.md#windows-installation-guide)
 
 ### Additional Installation Instructions
 
-Additional installation instructions can be found [here](https://docs.google.com/document/d/1Jq3eBB1jNj5tPj4pSyWM1NAS5JwnqvRIsML5aK6KDPE/edit?usp=sharing).
+[Additional installation instructions](https://docs.google.com/document/d/1Jq3eBB1jNj5tPj4pSyWM1NAS5JwnqvRIsML5aK6KDPE/edit?usp=sharing).
 
 ## Running the app
 
