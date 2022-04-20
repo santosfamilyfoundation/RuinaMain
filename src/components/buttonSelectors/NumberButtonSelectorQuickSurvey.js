@@ -6,7 +6,6 @@
 
   Props:
       * title - the text that should be rendered in the Heading of the Section.
-      * data - an object representing all data for the question
       * id - the UUID for the asscoiated form
       * submitFunction - this function updates the questions' association reducer
       * genericReducer - the reducer that stores the number of vehicles and nonmotorist
@@ -34,7 +33,6 @@ const NumberButtonSelectorQuickSurvey = (props) => {
   const [selection, setSelection] = React.useState("");
   const {
     title,
-    data,
     id,
     submitFunction,
     genericReducer,
@@ -111,11 +109,6 @@ const NumberButtonSelectorQuickSurvey = (props) => {
   };
 
   let renderComponent = true;
-  // Check if there are dependencies that need to be satisfied before the
-  // question can be rendered
-  if (data.questionDependency != undefined && props.response != null) {
-    renderComponent = dependencyParser(props.response, data, dependencyID);
-  }
 
   return (
     <QuestionSection title={title} tooltip={tooltip()} required={true}>
