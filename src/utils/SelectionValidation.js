@@ -5,7 +5,7 @@ export class SelectionValidation {
     }
 
 validateInput(selection, type, constraint){
-            if (!type){
+            if (!type || !constraint){
               this.status = true
               return
             }
@@ -30,15 +30,15 @@ validateInput(selection, type, constraint){
 
           if (type == 'range'){
              let lowerUpperLim = constraint.split('-')
-                        if (selection.length >= parseInt(lowerUpperLim[0])){
-                            if (selection.length <= parseInt(lowerUpperLim[1])){
-                                this.status = true
-                            }
-                            }
-                        else {
-                            this.status = false
-                        }}
-                      }
+                if (selection.length >= parseInt(lowerUpperLim[0])){
+                    if (selection.length <= parseInt(lowerUpperLim[1])){
+                        this.status = true
+                    }
+                    }
+                else {
+                    this.status = false
+                }}
+              }
     validateField(selection, type, constraint){
         this.validateInput(selection, type, constraint)
     }

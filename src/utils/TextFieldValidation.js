@@ -13,7 +13,7 @@ export class TextFieldValidation {
         }
 
     validateInput(text, type, constraint){
-            if (!type){
+            if (!type || !constraint){
               this.status = true
               return
             }
