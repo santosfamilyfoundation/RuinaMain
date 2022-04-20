@@ -10,7 +10,7 @@
       * id - the UUID for the asscoiated form
       * submitFunction - this function updates the questions' association reducer
       * genericReducer - the reducer that stores the number of vehicles and nonmotorist
-      * fieldName -
+      * fieldName - the name of button group
       * updateResponse - the function that updates the story reducer.
       * dependencyID - a list of form IDs that the question belongs to
       * startRange - the first number that is acceptable.
