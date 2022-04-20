@@ -233,7 +233,7 @@ class Home extends Component {
          );
       };
 
-      // render the right view
+      // render the edit view or non-edit view based on the value of the edit boolean
       return (
          <SafeAreaView flex={1}>
             {rightControls()}
