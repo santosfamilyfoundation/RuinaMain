@@ -1,10 +1,22 @@
 /*
   The NumberButtonSelector component returns a group of five buttons and an
-  input field for the QuickSurvey component.
+  input field for the QuickSurvey component. This component is different from
+  the NumberButtonSelector (used by the QuestionForm component) because it uses
+  the genericReducer and does not check for any existing data.
+
   Props:
-      title - the text that should be rendered in the Heading of the Section.
-      startRange - the first number that is acceptable.
-      endRange - the last number that is acceptable.
+      * title - the text that should be rendered in the Heading of the Section.
+      * data - an object representing all data for the question
+      * id - the UUID for the asscoiated form
+      * submitFunction - this function updates the questions' association reducer
+      * genericReducer - the reducer that stores the number of vehicles and nonmotorist
+      * fieldName -
+      * updateResponse - the function that updates the story reducer.
+      * dependencyID - a list of form IDs that the question belongs to
+      * startRange - the first number that is acceptable.
+      * endRange - the last number that is acceptable.
+      * tooltipText - a string that helps explain the question. This is passsed to
+        the Tooltip Component
  */
 import React from "react";
 import { connect } from "react-redux";
@@ -16,6 +28,9 @@ import { View } from "react-native";
 import QuestionSection from "../QuestionSection";
 
 const NumberButtonSelectorQuickSurvey = (props) => {
+  // The selection state variable is used to store the name and value of the
+  // button that has been selected. The inital value is null because no button
+  // has been selected.
   const [selection, setSelection] = React.useState("");
   const {
     title,
@@ -30,7 +45,7 @@ const NumberButtonSelectorQuickSurvey = (props) => {
     endRange,
     tooltipText,
   } = props;
-
+  console.log(fieldName);
   // when button selected, set the option and update the quick survey setupData
   const submitField = (val) => {
     val = parseInt(val);
@@ -75,8 +90,7 @@ const NumberButtonSelectorQuickSurvey = (props) => {
     for (let i = startRange; i <= endRange; i++) {
       let button;
       if (i == 0) {
-        // Name is None because 0 gives is read as null so the button does not
-        // have a name.
+        // Name is None because 0 is read as null so the button does not have a name.
         button = renderSingleButton({ id: i, name: "None" });
       } else {
         button = renderSingleButton({ id: i, name: i });
@@ -97,7 +111,8 @@ const NumberButtonSelectorQuickSurvey = (props) => {
   };
 
   let renderComponent = true;
-  // Check if the question has any dependencies to update
+  // Check if there are dependencies that need to be satisfied before the
+  // question can be rendered
   if (data.questionDependency != undefined && props.response != null) {
     renderComponent = dependencyParser(props.response, data, dependencyID);
   }

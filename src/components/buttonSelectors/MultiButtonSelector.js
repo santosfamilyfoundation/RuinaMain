@@ -2,6 +2,15 @@
   The MultiButtonSelector component returns a group of buttons for questions in
   forms. The number of buttons is determined by the answers in the dowloaded
   spreadsheet.
+
+  Props:
+  * data - an object representing all data for the question
+  * key - the UUID for the quesion
+  * id - the UUID for the asscoiated form
+  * questionReducer - the redux reducer used to update the stored question data
+  * submitFunction - this function updates the questions' association reducer
+  * updateResponse - the function that updates the story reducer.
+  * dependencyID - a list of form IDs that the question belongs to
  */
 import React from "react";
 import { connect } from "react-redux";
@@ -15,6 +24,9 @@ import { dependencyParser } from "../../utils/dependencyHelper";
 import { SafeAreaView } from "react-navigation";
 
 const MultiButtonSelector = (props) => {
+  // The selection state variable is used to store the name and value of the
+  // button that has been selected. The inital value is null because no button
+  // has been selected.
   const [selection, setSelection] = React.useState(null);
   const {
     data,
@@ -41,11 +53,16 @@ const MultiButtonSelector = (props) => {
   }
 
   /*
-    This function saves the value of the  selected button to the form reducer.
+    This function checks which form the question is in and saves the value of
+    the  selected button to the appropriate reducer.
   */
   const submitField = (optionText, idCode) => {
     setSelection(optionText);
+    // Checks which form the question belongs to updates the story reducer with
+    // newest id, question, selecion, and corresponding dependencyID (if needed)
     if (dependencyID == null || dependencyID.length == 1) {
+      // This updates questions in the crash/road form or questions with no
+      // associated form
       updateResponse &&
         updateResponse({ id, question: currId, selection: idCode });
     } else {
@@ -120,7 +137,8 @@ const MultiButtonSelector = (props) => {
   };
 
   let renderComponent = true;
-  // Check if the question has any dependencies to update
+  // Check if there are dependencies that need to be satisfied before the
+  // question can be rendered
   if (data.questionDependency != undefined && props.response != null) {
     renderComponent = dependencyParser(props.response, data, dependencyID);
   }
