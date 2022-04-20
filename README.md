@@ -1,7 +1,5 @@
 # Ruina Main App Repo
 
-[![Build status](https://build.appcenter.ms/v0.1/apps/ded08a0c-19ea-4bab-9520-b4ba359ab2eb/branches/release/badge)](https://appcenter.ms)
-
 ## Overview
 
 Reliable crash data is essential to improving traffic safety. As part of a senior Capstone project at Olin College of Engineering, we have identified many holes in the current processes via user interviews and analysis of the crash data ecosystem. We chose a solution that we believed provided our team with the best opportunity for impact: improving crash data collection at the crash scene. Our solution, Ruina, is a mobile toolkit that provides police officers with an extensive set of tools allowing them to more accurately document a crash digitally and in a higher resolution manner. This toolkit manifested itself in a cross platform mobile application where officers could digitally document a crash using a tablet. Runia uses many technology features in mobile devices that aid officers in their ability to do their job such as the extensive sensor suite, camera, and internet connectivity. Ruina supports advanced camera and scanning features, aspects of location and scene diagramming, and full MMUCC compliance. The result of our semester of work is found in this repository as a proof of concept mobile application.
