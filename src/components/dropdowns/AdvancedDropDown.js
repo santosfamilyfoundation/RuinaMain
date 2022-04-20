@@ -136,7 +136,7 @@ const AdvancedDropDown = (props) => {
     //Updated reducer
     const submitField = () => {
         let selectionValidation = SelectionValidation
-                 selectionValidation.validateField(optionText);
+                 selectionValidation.validateField(optionText, data.val_type, data.warning_msg);
                  let localStatus = selectionValidation.status
                  console.log('at the right place, at least')
                  if (localStatus) {
@@ -239,7 +239,7 @@ const AdvancedDropDown = (props) => {
             title={data.question}
             helperText={data.helperText}
             tooltip={tooltip()}
-            errorMessage='Invalid Input'
+            errorMessage={data.warning_msg}
             isInvalid={isInvalid}
             required={data.required}
         >

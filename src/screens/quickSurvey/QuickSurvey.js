@@ -112,10 +112,12 @@ class QuickSurvey extends Component {
 	async componentDidMount() {
 		// This calls the function that retrieves the questions from spreadsheet
 		this.questions = await ProcessQuestions();
-		this.stateManager = new backgroundSave(
-			this.state.autosavedFilePath.label,
-			this.state.autoSavedSession
-		);
+		if (this.state.autosavedFilePath) {
+			this.stateManager = new backgroundSave(
+				this.state.autosavedFilePath.label,
+				this.state.autoSavedSession
+			);
+		}
 		if (this.state.autoSavedSession && !this.state.loadedAutoSave) {
 			await this.loadStateFromJSON();
 		} else {
