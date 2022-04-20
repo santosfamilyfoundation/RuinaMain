@@ -5,31 +5,31 @@ Date of Birth;
 Street Address 1;
 Street Address 2;
 City/Town;
-State
+State;
 ZIP Code;
 Phone Number;
 Sex;
-Type
+Type;
 Name of Jurisdiction (ANSI Code);
-Class
+Class;
 Commercial Driver License (CDL);
-Endorsements
+Endorsements;
 Driver License Restrictions;
 Alcohol Interlock Present?;
 Type Applicable for This Person;
-Status
+Status;
 Seating Position;
 Restraint Systems in Use;
 Any Indication of Improper Use?;
 Air Bag Deployed?;
-Ejection?
+Ejection?;
 Speeding-Related?;
 Driver Actions at Time of Crash;
-Violation Codes
+Violation Codes;
 Action;
 Condition at Time of the Crash;
 Incident Responder?;
-Injury Status
+Injury Status;
 CMV License Status;
 Compliance with CDL Endorsement(s);
 Law Enforcement Suspects Alcohol Use;
