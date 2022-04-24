@@ -1,17 +1,16 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Input, Text, HStack } from 'native-base';
-import { styles } from './AdvancedOpenTextField.style';
-import { updateRoad } from '../../actions/RoadAction';
-import * as Constants from '../../constants';
-import vinValidator from 'vin-validator';
-import { dependencyParser } from '../../utils/dependencyHelper';
-import TooltipView from '../Tooltip';
-import QuestionSection from '../QuestionSection';
-import IconButton from '../IconButton';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import TextFieldValidation from '../../utils/TextFieldValidation.js';
-
+import React from "react";
+import { connect } from "react-redux";
+import { Input, Text, HStack } from "native-base";
+import { styles } from "./AdvancedOpenTextField.style";
+import { updateRoad } from "../../actions/RoadAction";
+import * as Constants from "../../constants";
+import vinValidator from "vin-validator";
+import { dependencyParser } from "../../utils/dependencyHelper";
+import TooltipView from "../Tooltip";
+import QuestionSection from "../QuestionSection";
+import IconButton from "../IconButton";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import TextFieldValidation from "../../utils/TextFieldValidation.js";
 
 //This component is used for "advanced" tool access (map, photo, VIN, and time)
 
@@ -46,7 +45,7 @@ const AdvancedOpenTextField = (props) => {
             setIsInvalid(false)
         }
         let textFieldValidation = TextFieldValidation
-        textFieldValidation.submitField(localText);
+        textFieldValidation.submitField(localText, data.val_type, data.val_constraint);
         let localStatus = textFieldValidation.status
         if (localStatus) {
             setIsInvalid(false)
@@ -55,7 +54,7 @@ const AdvancedOpenTextField = (props) => {
             setIsInvalid(true)
          }
          switch(currId) {
-                   case "Bw7d2KTr": // VIN question id
+                   case Constants.VIN_ID: // VIN question id
                      if (!vinValidator.validate(value)) {
                        setInvalidVin(true);
                      } else {
@@ -205,7 +204,7 @@ const AdvancedOpenTextField = (props) => {
             <QuestionSection key={key}
                 title={data.question}
                 helperText={data.helperText}
-                errorMessage={ErrorMsg()}
+                errorMessage={data.warning_msg}
                 tooltip={tooltip()}
                 required={data.required}
             >
@@ -226,14 +225,17 @@ const AdvancedOpenTextField = (props) => {
 };
 
 const mapDispatchToProps = {
-  updateRoad
-}
-
-const mapStateToProps = (state, props) => {
-    const { response } = state.storyReducer
-    const { reducer } = props;
-    const questionReducer = state[reducer];
-    return { questionReducer, response}
+	updateRoad,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdvancedOpenTextField);
+const mapStateToProps = (state, props) => {
+	const { response } = state.storyReducer;
+	const { reducer } = props;
+	const questionReducer = state[reducer];
+	return { questionReducer, response };
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(AdvancedOpenTextField);

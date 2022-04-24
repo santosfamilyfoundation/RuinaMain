@@ -7,6 +7,8 @@ import QuestionSection from '../QuestionSection';
 import SectionedMultiSelect from 'react-native-sectioned-multi-select';
 import TooltipView from '../Tooltip';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import SelectionValidation from '../../utils/SelectionValidation.js'
+import { Box } from "native-base";
 
 const CountyDropDown = (props) => {
     // json created from running:
@@ -15,9 +17,14 @@ const CountyDropDown = (props) => {
     const countiesByStates = require('../../data/stateCountyMapping.json');
 
     const [selectedOption, setSelectedOption] = React.useState([]);
+    const [borderColor, setBorderColor] = React.useState("coolGray.200")
     const [deleteCountyFromState, setDeleteCountyFromState] = React.useState(false);
     const { data, key, id, questionReducer, submitFunction, updateResponse, deleteRoadSingleResponse } = props;
+
+    const [isInvalid, setIsInvalid] = React.useState(false);
     let currId = data.humanReadableId;
+
+
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null : reducerData.response;
 
@@ -36,11 +43,14 @@ const CountyDropDown = (props) => {
                     if (existingDataState != null) {
                         // Check if county answer in redux is part of the list of counties under
                         // the state answer in redux
+                        if (countiesByStates[existingDataState]){
+
                         const correspondingCounties = countiesByStates[existingDataState];
                         if (correspondingCounties.includes(existingData[currId])) {
                             let curOption = [existingData[currId]];
                             setSelectedOption(curOption);
                         }
+                       }
                     }
                 }
             }
@@ -88,30 +98,55 @@ const CountyDropDown = (props) => {
         else {
             // when county selection falls under/is included in the state selection's county list
             // This is for the scenario when user changes state answer after filling out county question
+            if (countiesByStates[existingDataState]){
             if (countiesByStates[existingDataState].includes(existingData[currId])){
                 status = 'success';
             } else {
                 status = 'danger';
+            }
             }
         }
     }
 
     let countyOptions = [];
     if (existingDataState) {
+        if(countiesByStates[existingDataState]){
         countyOptions = countiesByStates[existingDataState].sort().map(county => {
             return { "name": county }
         });
-    } else {
+    }} else {
         countyOptions = [{
             "name": "Please select a state..."
         }]
     }
+
+    const validateLocal = (localInfo) => {
+        let localSelection = localInfo
+        if (!localSelection){
+            localSelection = selectedOption
+        }
+        let selectionValidation = SelectionValidation
+             selectionValidation.validateField(localSelection, data.val_type, data.val_constraint);
+             let localStatus = selectionValidation.status
+             if (localStatus) {
+                setBorderColor("coolGray.200")
+                setIsInvalid(false);
+
+             }
+             else {
+                setIsInvalid(true);
+                setBorderColor("error.500")
+                return;
+             }
+    }
+
     const submitField = (selection) => {
         if (!selection || selection.length == 0) {
-            setSelectedOptions([]);
+            setSelectedOption([]);
             return submitFunction({id, question: currId, selection: null});
         }
         let selected = selection[0]
+        validateLocal(selected)
         updateResponse && updateResponse({ id, question: currId, selection: selected })
         setSelectedOption(selection);
 
@@ -127,8 +162,12 @@ const CountyDropDown = (props) => {
             title={data.question}
             helperText={data.helperText}
             tooltip={tooltip()}
+            isInvalid={isInvalid}
+            errorMessage={data.warning_msg}
             required={data.required}
+
         >
+                <Box borderColor={borderColor} borderWidth ="1">
                 <SectionedMultiSelect
                   items={countyOptions}
                   IconRenderer={Icon}
@@ -140,7 +179,9 @@ const CountyDropDown = (props) => {
                   hideConfirm={true}
                   single={true}
                   showCancelButton={true}
+                  onCancel={validateLocal}
                 />
+                </Box>
         </QuestionSection>
     );
 };

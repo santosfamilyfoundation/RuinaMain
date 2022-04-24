@@ -1,16 +1,20 @@
 import React from 'react';
 import { updateResponse } from '../../actions/StoryActions';
-import { styles } from './DropDownMultiSelect.style';
 import { connect } from 'react-redux';
 import { dependencyParser } from '../../utils/dependencyHelper';
 import TooltipView from '../Tooltip';
 import QuestionSection from '../QuestionSection';
 import SectionedMultiSelect from 'react-native-sectioned-multi-select';
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import SelectionValidation from '../../utils/SelectionValidation.js'
+import { Box } from "native-base";
 
 const DropDownMultiSelect = (props) => {
+    const [borderColor, setBorderColor] = React.useState("coolGray.200")
+    const [errors, setErrors] = React.useState({});
     const [selectedOptions, setSelectedOptions] = React.useState([]);
     const [buttonAppearance, setButtonAppearance] = React.useState('outline');
+    const [isInvalid, setIsInvalid] = React.useState(false);
     const {data, key, id, questionReducer, submitFunction, updateResponse, dependencyID} = props;
 
     let currId = data.humanReadableId;
@@ -39,15 +43,17 @@ const DropDownMultiSelect = (props) => {
     if(selectedOptions.length == data.numOptionsAllowed) {
         for(let i = 0; i < data.answerOptions.length; i++) {
             if(!selectedOptions.includes(data.answerOptions[i])) {
-                data.answerOptions[i].disabled = true;
+                data.answerOptions[i].disabled = false;
             };
         };
     } else {
+        if (data.answerOptions != null) {
         for(let i = 0; i < data.answerOptions.length; i++) {
             if(!selectedOptions.includes(data.answerOptions[i])) {
                 data.answerOptions[i].disabled = false;
             };
         };
+        }
     }
 
     const setComplete = () => {
@@ -88,7 +94,26 @@ const DropDownMultiSelect = (props) => {
             }
         }
     }
-    const submitField = (selectedItems) => {
+
+    const validateLocal = (localInfo) => {
+        let selectionValidation = SelectionValidation
+             selectionValidation.validateField(localInfo, data.val_constraint, data.warning_msg);
+             let localStatus = selectionValidation.status
+             if (localStatus) {
+                setBorderColor("coolGray.200")
+                setIsInvalid(false);
+
+             }
+             else {
+                setIsInvalid(true);
+                setBorderColor("error.500")
+                return;
+             }
+    }
+
+    const submitField = (selectedItems, localInfo) => {
+                 submitFunction({id, question: currId, selection: selectedItems})
+//                 setSelectedOptions(selectedItems);
         let resId = []
         for(let i = 0; i < selectedItems.length; i++) {
             resId.push(selectedItems[i]);
@@ -114,16 +139,34 @@ const DropDownMultiSelect = (props) => {
     }
 
     const addOption = (selectedItems) => {
-        if (!selectedItems){
+        let upperLim = data.helperText
+        let upperLimParsed = parseInt(upperLim[upperLim.length - 2])
+        if (!selectedItems && selectedOptions){
+            if (selectedOptions.length > upperLimParsed){
+                validateLocal([])
+                return
+            }
+            validateLocal(selectedOptions)
             return
         }
         if(selectedItems.length == 0) {
+            setSelectedOptions([])
+            validateLocal([])
             submitFunction({id, question: currId, selection: null})
-            setSelectedOptions([]);
             return;
         }
-        console.log('dropdownmultiselect selectedoptions:', selectedOptions)
+        if (selectedItems.length > upperLimParsed){
+           validateLocal([])
+           setSelectedOptions(selectedItems)
+           submitField(selectedItems)
+           return
+        }
+        else {
+           setIsInvalid(false)
+        }
         setSelectedOptions(selectedItems);
+        let localInfo = selectedItems.concat(selectedOptions)
+        validateLocal(localInfo)
         submitField(selectedItems);
     }
 
@@ -142,8 +185,11 @@ const DropDownMultiSelect = (props) => {
                 title={data.question}
                 helperText={data.helperText}
                 tooltip={tooltip()}
+                errorMessage={data.warning_msg}
+                isInvalid={isInvalid}
                 required={data.required}
             >
+                <Box borderColor={borderColor} borderWidth ="1">
                 <SectionedMultiSelect
                   items={data.answerOptions}
                   IconRenderer={Icon}
@@ -157,8 +203,10 @@ const DropDownMultiSelect = (props) => {
                   }}
                   selectedItems={selectedOptions}
                   onConfirm={addOption}
+                  onCancel={addOption}
                   showCancelButton={true}
                 />
+                </Box>
             </QuestionSection>
         )
     }else{

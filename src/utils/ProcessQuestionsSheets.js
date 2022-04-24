@@ -36,6 +36,9 @@ const processAnswerSheet = (sheet) => {
             "option_text": columnValues[3],
             "option_number": columnValues[4],
             "mmucc_option_number": columnValues[5],
+            "val_type": columnValues[6],
+            "val_constraint": columnValues[7],
+            "warning_msg": columnValues[8]
         }
         answerSheet.push(currRow)
     })
@@ -68,6 +71,9 @@ const processQuestionSheet = (sheet) => {
             "num_selected_option": columnValues[9],
             "automation_method": columnValues[10],
             "mmucc_id": columnValues[11],
+            "val_type": columnValues[12],
+            "val_constraint": columnValues[13],
+            "warning_msg": columnValues[14]
         }
         questionSheet.push(currRow)
     }
@@ -142,13 +148,16 @@ const formatQuestions = (questions, sheetName, sheetQuestions, questionNameIdMap
                 'id': questionUid,
                 'answerType': currQuestion['question_type'],
                 'display': [sheetName],
-                'humanReadableId': currQuestion['question_name']
+                'humanReadableId': currQuestion['question_name'],
             }
             if (currQuestion['helper_text'].length > 0) {questionObj['helperText'] = currQuestion['helper_text']}
             if (currQuestion['tooltip'].length > 0) {questionObj['tooltip'] = currQuestion['tooltip']}
             if (currQuestion['helper_img'].length > 0) {questionObj['helperImg'] = currQuestion['helper_img']}
+            if (currQuestion['val_type']) {questionObj['val_type'] = currQuestion['val_type']}
+            if (currQuestion['val_constraint']) {questionObj['val_constraint'] = currQuestion['val_constraint']}
+            if (currQuestion['warning_msg']) {questionObj['warning_msg'] = currQuestion['warning_msg']}
             if (currQuestion['automation_method'].length > 0) {questionObj['autoMethod'] = currQuestion['automation_method']}
-            if (currQuestion['required'].length > 0) {questionObj['required'] = currQuestion['required']}1
+            if (currQuestion['required'].length > 0) {questionObj['required'] = currQuestion['required']}
             if (currQuestion['question_dependency'].length > 0) {
                 let questDependency = []
                 // Create list of the questions dependencies

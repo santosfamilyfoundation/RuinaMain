@@ -136,9 +136,9 @@ android {
         versionName "4.1.2"
         multiDexEnabled true
         manifestPlaceholders = [GOOGLE_MAPS_API_KEY: "$System.env.GOOGLE_MAPS_API_KEY"]
-/*        ndk {
-            abiFilters "armeabi-v7a", "x86"
-        }*/
+        ndk {
+            abiFilters "armeabi-v7a"
+        }
     }
     splits {
         abi {
