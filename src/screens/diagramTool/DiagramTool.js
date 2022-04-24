@@ -129,51 +129,53 @@ const DiagramTool = (props) => {
             opacity={opacity}
             thickness={thickness}
           />
-          {visibleBrushProperties && (<BrushProperties
-          color={color}
-          opacity={opacity}
-          thickness={thickness}
-          onColorChange={setColor}
-          onThicknessChange={setThickness}
-          onOpacityChange={()=>{setOpacity()}}
-          //@ts-ignore
-            style={{
-              position: "absolute",
-              bottom: 80,
-              left: 0,
-              right: 0,
-              padding: 10,
-              backgroundColor: "white",
-              borderTopEndRadius: 10,
-              borderTopStartRadius: 10,
-              borderBottomWidth: 0,
-              borderTopColor: "#ccc",
-              opacity: overlayOpacity,
-            }}
+          {visibleBrushProperties && (
+            <BrushProperties
+              color={color}
+              opacity={opacity}
+              thickness={thickness}
+              onColorChange={setColor}
+              onThicknessChange={setThickness}
+              onOpacityChange={() => {
+                setOpacity();
+              }}
+              //@ts-ignore
+              style={{
+                position: "absolute",
+                bottom: 80,
+                left: 0,
+                right: 0,
+                padding: 10,
+                backgroundColor: "white",
+                borderTopEndRadius: 10,
+                borderTopStartRadius: 10,
+                borderBottomWidth: 0,
+                borderTopColor: "#ccc",
+                opacity: overlayOpacity,
+              }}
             />
           )}
         </View>
       </ScrollView>
-        <AlertDialog isOpen={alert} onClose={handleClose}>
-          <AlertDialog.Content>
-            <AlertDialog.CloseButton />
-            <AlertDialog.Header>Delete Crash Diagram</AlertDialog.Header>
-            <AlertDialog.Body>
-              This will delete the entire diagram. This action cannot be
-              reversed.
-            </AlertDialog.Body>
-            <AlertDialog.Footer>
-              <Button.Group space={2}>
-                <Button colorScheme="coolGray" onPress={handleClose}>
-                  Cancel
-                </Button>
-                <Button colorScheme="danger" onPress={handleClear}>
-                  Delete
-                </Button>
-              </Button.Group>
-            </AlertDialog.Footer>
-          </AlertDialog.Content>
-        </AlertDialog>
+      <AlertDialog isOpen={alert} onClose={handleClose}>
+        <AlertDialog.Content>
+          <AlertDialog.CloseButton />
+          <AlertDialog.Header>Delete Crash Diagram</AlertDialog.Header>
+          <AlertDialog.Body>
+            This will delete the entire diagram. This action cannot be reversed.
+          </AlertDialog.Body>
+          <AlertDialog.Footer>
+            <Button.Group space={2}>
+              <Button colorScheme="coolGray" onPress={handleClose}>
+                Cancel
+              </Button>
+              <Button colorScheme="danger" onPress={handleClear}>
+                Delete
+              </Button>
+            </Button.Group>
+          </AlertDialog.Footer>
+        </AlertDialog.Content>
+      </AlertDialog>
       <Button m={4} onPress={() => saveDiagram()}>
         Save Diagram
       </Button>
