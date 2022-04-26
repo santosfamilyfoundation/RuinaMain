@@ -1,0 +1,56 @@
+Ownership;C2_Classification_S1
+Secondary Crash;C2_Classification_S3
+Crash Severity;C19_CrashSeverity
+Crash Identifier;C1_Identifier
+Agency Crash Identifier;
+Crash Description;
+Characteristics;C2_Classification_S2
+School Bus-Related?;C17_SchoolBusRelated
+Crash Date and Time (Valid Military Time);C3_Date
+Time of Roadway Clearance (Valid Military Time);
+Crash State;
+Crash County;C4_County
+Crash City/Place;C5_City
+First Harmful Event;C7_FirstEvent
+Location of First Harmful Event Relative to the Trafficway;C8_FirstEventLocation
+Manner of Crash/ Collision Impact;C9_CrashManner
+Within Interchange Area?;
+Specific Location;
+Source of Information;C10_InformationSource_S2
+Law Enforcement Agency Identifier;C10_InformationSource_S1
+Weather Conditions;C11_WeatherCondition1
+Light Condition;C12_LightCondition
+Roadway Surface Condition;C13_RoadwayCondition
+Contributing Circumstances - Roadway Environment;C14_RoadwayEnvironment1
+Number of Approaches;C16_IntersectionType_S1
+Overall Intersection Geometry;C16_IntersectionType_S2
+Overall Traffic Control Device;C16_IntersectionType_S3
+Was the crash work-zone related?;
+Bridge/Structure Identification Number;
+Curve Radius;
+Length;
+Superelevation;
+Direction of Slope;
+Percent of Slope;
+Part of National Highway System;
+Roadway Functional Class: Rural or Urban;
+AADT (Year);
+AADT (Value);
+Truck (over 10,000 lbs) Count or Percentage;
+Motorcycle Count or Percentage;
+Lane Width;
+Left Shoulder Width;
+Right Shoulder Width;
+Width of Median;
+Access Control;
+Railway Crossing ID;
+Roadway Lighting;
+Edgeline Presence/Type;
+Centerline Presence/Type;
+Lane Line Markings;
+Facility;
+Signed Bicycle Route;
+Mainline Number of Lanes at Intersection;
+Cross-Street Number of Lanes at Intersection;
+Year;
+Value;
