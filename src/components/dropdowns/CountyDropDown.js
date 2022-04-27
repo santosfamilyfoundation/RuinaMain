@@ -8,7 +8,7 @@ import SectionedMultiSelect from 'react-native-sectioned-multi-select';
 import TooltipView from '../Tooltip';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import SelectionValidation from '../../utils/SelectionValidation.js'
-import { Box, NativeBaseProvider } from "native-base";
+import { Box } from "native-base";
 
 const CountyDropDown = (props) => {
     // json created from running:
@@ -126,7 +126,7 @@ const CountyDropDown = (props) => {
             localSelection = selectedOption
         }
         let selectionValidation = SelectionValidation
-             selectionValidation.validateField(localSelection);
+             selectionValidation.validateField(localSelection, data.val_type, data.val_constraint);
              let localStatus = selectionValidation.status
              if (localStatus) {
                 setBorderColor("coolGray.200")
@@ -163,7 +163,7 @@ const CountyDropDown = (props) => {
             helperText={data.helperText}
             tooltip={tooltip()}
             isInvalid={isInvalid}
-            errorMessage={'Please Select a County'}
+            errorMessage={data.warning_msg}
             required={data.required}
 
         >

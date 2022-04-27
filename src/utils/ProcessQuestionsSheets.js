@@ -148,13 +148,16 @@ const formatQuestions = (questions, sheetName, sheetQuestions, questionNameIdMap
                 'id': questionUid,
                 'answerType': currQuestion['question_type'],
                 'display': [sheetName],
-                'humanReadableId': currQuestion['question_name']
+                'humanReadableId': currQuestion['question_name'],
             }
             if (currQuestion['helper_text'].length > 0) {questionObj['helperText'] = currQuestion['helper_text']}
             if (currQuestion['tooltip'].length > 0) {questionObj['tooltip'] = currQuestion['tooltip']}
             if (currQuestion['helper_img'].length > 0) {questionObj['helperImg'] = currQuestion['helper_img']}
+            if (currQuestion['val_type']) {questionObj['val_type'] = currQuestion['val_type']}
+            if (currQuestion['val_constraint']) {questionObj['val_constraint'] = currQuestion['val_constraint']}
+            if (currQuestion['warning_msg']) {questionObj['warning_msg'] = currQuestion['warning_msg']}
             if (currQuestion['automation_method'].length > 0) {questionObj['autoMethod'] = currQuestion['automation_method']}
-            if (currQuestion['required'].length > 0) {questionObj['required'] = currQuestion['required']}1
+            if (currQuestion['required'].length > 0) {questionObj['required'] = currQuestion['required']}
             if (currQuestion['question_dependency'].length > 0) {
                 let questDependency = []
                 // Create list of the questions dependencies
