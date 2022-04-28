@@ -1,3 +1,17 @@
+/*
+  The Map component is part of the autocomplete features. The Map component is
+  rendered when the advancedOpenTextField button is click for the longitude and
+  latitude questions in the crash/road form. This component relies on the
+  Google Maps API key to sucessfully fetch the devices location. Because the
+  location is dependent on Google Maps, it will need a WiFi or cellular
+  connection to return the device's location. The screen will show a map of the
+  area with a pin at the device's location. To save the location the "SAVE"
+  button has to be clicked. If the device cannot load the map, a dialog will
+  appear and navigate back to the question form. If the location cannot be
+  saved, a dialog will appear and navigate back to the question form.
+
+*/
+
 import React, { Component } from "react";
 import { SafeAreaView } from "react-navigation";
 import { Dimensions, StyleSheet, View, TouchableOpacity } from "react-native";
@@ -20,6 +34,7 @@ import NetInfoAPI from "../../utils/NetAPI";
 import TopNavigation from "../../components/TopNavigation";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
+// set global variables
 const { width, height } = Dimensions.get("window");
 const SCREEN_WIDTH = width;
 const SCREEN_HEIGHT = height;
@@ -74,7 +89,10 @@ export class Map extends Component {
     );
   }
 
-  // load map when component loads
+  /*
+    This function loads the intial postion of the device and loads the map on
+    the screen.
+  */
   async componentDidMount() {
     const net = new NetInfoAPI();
     let netStatus = await net.checkNetOnce();
@@ -84,6 +102,7 @@ export class Map extends Component {
       this.setState({ displayFailedToLoadMessage: true, loading: false });
       return;
     }
+    // get the current location of device
     Geolocation.getCurrentPosition(
       (position) => {
         let region = {
@@ -279,11 +298,6 @@ export class Map extends Component {
             id="saveFailedDialog"
             title={"Failed to save location!"}
             visible={this.state.displayFailedToSaveMessage}
-            onCancel={() => {
-              this.setState({ displayFailedToSaveMessage: false });
-              // Return to questions
-              this.props.navigation.goBack();
-            }}
             onOk={() => {
               this.setState({ displayFailedToSaveMessage: false });
               // Return to questions
@@ -299,11 +313,6 @@ export class Map extends Component {
             id="loadFailedDialog"
             title={"Failed to load map!"}
             visible={this.state.displayFailedToLoadMessage}
-            onCancel={() => {
-              this.setState({ displayFailedToLoadMessage: false });
-              // Return to questions
-              this.props.navigation.goBack();
-            }}
             onOk={() => {
               this.setState({ displayFailedToLoadMessage: false });
               // Return to questions
