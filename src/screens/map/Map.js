@@ -1,14 +1,20 @@
 /*
   The Map component is part of the autocomplete features. The Map component is
-  rendered when the advancedOpenTextField button is click for the longitude and
+  rendered when the advancedOpenTextField button is clicked for the longitude and
   latitude questions in the crash/road form. This component relies on the
-  Google Maps API key to sucessfully fetch the devices location. Because the
-  location is dependent on Google Maps, it will need a WiFi or cellular
-  connection to return the device's location. The screen will show a map of the
+  @react-native-community/geolocation library to sucessfully fetch the devices
+  location and the Google Maps API to show the location map. Because the map is
+  dependent on Google Maps, it will need a WiFi or cellular connection to return
+  a map displaying the device's location. The screen will show a map of the
   area with a pin at the device's location. To save the location the "SAVE"
   button has to be clicked. If the device cannot load the map, a dialog will
   appear and navigate back to the question form. If the location cannot be
   saved, a dialog will appear and navigate back to the question form.
+
+  Required APIs:
+  * Google Maps - used to fetch the map of location
+  * Net Info - checks the devices internet connection which is needed for Google
+      Maps and @react-native-community/geolocation
 
 */
 
@@ -182,12 +188,6 @@ export class Map extends Component {
     try {
       const id = this.props.navigation.state.params.id; // The road id for this crash
       // Update the road reducer with displayed lat and long
-      console.log(
-        "Lat: " +
-          this.state.region.latitude.toString() +
-          " Long: " +
-          this.state.region.longitude.toString()
-      );
       this.props.updateRoad({
         id,
         question: Constants.LAT_ID,
