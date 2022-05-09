@@ -5,7 +5,7 @@ export class TextFieldValidation {
         this.validationData = null;
     }
 
-    /* prevents input lag by delaying the run until typing ends */
+    // prevents input lag by delaying the run until typing ends
     debounceValidation(func, timeout){
         let timer;
           return (...args) => {
@@ -14,7 +14,7 @@ export class TextFieldValidation {
           };
         }
 
-    /*  checks to see whether the input fits in the customized paramaters */
+    // checks to see whether the input fits in the customized paramaters, based on input from the provided google sheet
     validateInput(text){
           if(text.length === 0){
             this.status = false;
