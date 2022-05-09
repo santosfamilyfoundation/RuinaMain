@@ -19,6 +19,8 @@ const OpenTextField = (props) => {
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
 
+
+    /* checks whether a saved value exists for each rendered field*/
     if(!value) {
         if(existingData != null) {
             if(existingData[currId] != null && existingData[currId] != '' && !value) {
@@ -27,6 +29,7 @@ const OpenTextField = (props) => {
         }
     }
 
+    /* when text field value changes, checks whether text is valid based on provided validation data, and then assigns state accordingly */
      const onTextChange = (text) => {
         var localText = text
         submitFunction({id, question: currId, selection: localText})
@@ -44,6 +47,8 @@ const OpenTextField = (props) => {
             }
     }
 
+
+    /* returns text field value, if it exists */
     const valueSet = (currId) => {
         try {if (existingData[currId] != null){
             return existingData[currId]
@@ -59,6 +64,7 @@ const OpenTextField = (props) => {
         return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
     }
 
+    /* retrieve dependencies and props */
     var renderComponent = true;
     if (data.questionDependency != undefined && props.response != null) {
         renderComponent = dependencyParser(props.response, data, dependencyID)

@@ -53,7 +53,8 @@ const LargeTextField = (props) => {
          }
      }
 
-
+      /* Calls when text is updated, creates local version of current input text, sends text to be evaluated in
+      in the TextFieldValidation component, returns a True or False, and based on that value assigns a style and message*/
       const onTextChange = (text) => {
          let localText = text
          submitFunction({id, question: currId, selection: localText})
@@ -71,6 +72,7 @@ const LargeTextField = (props) => {
          }
      }
 
+     /* stores value based on text input */
      const valueSet = (currId) => {
              try {if (existingData[currId] != null){
                  return existingData[currId]
