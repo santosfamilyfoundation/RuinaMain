@@ -1,0 +1,100 @@
+Notes on Unimplemented Features:
+
+Below are our preliminary thoughts and decisions for VIN scanning, re-importing from a database, and edit checks. The steps for each feature are suggestions based on the research from our team and previous teams and conversations with our subject matter experts.
+VIN Scanning
+Existing Infrastructure:
+OutputFromVin.js
+Appears to be a list of dictionaries, each containing “Value”, “ValueId”, “Variable” (which describes the variable), and “VariableId”
+Not exactly sure what this whole sheet is meant to do, but there are many null values and value ids. There aren’t any empty Variables or VariableIDs
+Vin Validation (Last year’s team notes)
+A simple place to start our error-checking was with VINs. There are a number of rules that control what a VIN can look like -- not any sequence of numbers can make a valid combination. Luckily, the rules are well documented, and plenty of libraries exist that have implemented the logic to check if a sequence is valid. We simply added one of these, a public library called vin-validator, to the app, and connected it to the field where a user inputs their VIN.
+This validation only works on VINs from 1981 or later, as that is when the standard format we have now was first introduced by NHTSA. For any from 1980 or before, it may incorrectly display that it is incorrect. However, this intentionally does not stop the user from submitting, in case this situation were to arise.
+
+TODO:
+
+Map out necessary functionalities of VIN Scanning. For example, we may want fully functional VIN Scanning + Full logic check validation (this would likely involve some level of edit checks, so may not be feasible). A first step would be an OCR system that simply takes an image of a VIN number and places it in the field.
+This should be done in stages, similar to the mapping of the crash diagramming tool, so that there is room for error.
+Research potential libraries. For the time being, I’ve pointed out a possible one, although this one does not appear to have fully implemented iOS support, so there may be better options. https://www.npmjs.com/package/react-native-tesseract-ocr
+Start work on initial implementation of vin scanning. We already have the necessary question types (from our existing autofill questions), existing camera integration (from driver’s license scanning and other autofill fields) and partially prepared validation (just the API download for VIN codes)
+In fact, the driver’s license scanning being copy pasted over with a few minor adjustments is probably a great MVP for this feature, and could likely be done incredibly quickly.
+Another note on this, what are the distinctions of VIN scanning and Driver’s license scanning? We should discuss this as a group.
+Re-import From Database
+Goal: Be able to re-import a finished report
+Step 0: Add a button to the welcome screen that allows user to upload a finished report
+Step 1: Convert from exported format to JSON
+Excel to JSON
+Potentially use this library:
+https://www.npmjs.com/package/convert-excel-to-json
+Figure out how to configure the output of this library to fit the expected input of the backgroundSave object
+HTML to JSON
+The HTML files are basically built up in a hardcoded way, but we can convert from JSON to HTML using libraries:
+https://www.npmjs.com/package/html-to-json-converter
+Then restructure the output of this library to fit the expected input of the backgroundSave object
+PDF to JSON
+It seems like it’ll be a lot harder to convert from PDF to JSON. Ideally, we can convert from PDF to HTML, but that also seems to be tricky...I haven’t found a library that can do that.
+Step 2: Load JSON into the app using the backgroundSave object
+
+Python Pseudocode for Reimporting
+
+Python script:
+Prompt user for the report name or report identifier
+Query database for data for the report you want to re-import
+Create a csv file with all the data from the report
+Convert the csv file to a JSON that should be structured like a report (reference jsonParser & generate_questions.py)
+
+Re-importing from database
+
+Step 1: query data from database into python using pyodbc
+Documentation on pyodbc: https://pypi.org/project/pyodbc/
+You might be able to use dataframe from_sql() function but that might also be unsupported
+Step 2: write a script that would generate a JSON file from the queried data
+You can see the format of the data from the JSON
+An alternative is to create a xlsx file from the
+Step 3: Replace the json file in the app and rebuild
+https://github.com/santosfamilyfoundation/RuinaMain/blob/master/src/screens/quickSurvey/QuickSurvey.js#L106
+Edit Checks
+Create a new tab in the spreadsheet that’s purely for edit checks.
+Each row should represent a different edit check, for each individual question.
+Edit checks should be written in a domain-specific language--Riccardo suggested JSON. So, for example, this edit check:
+
+If “P23. Drug Test” Subfield 3 = 01 (Negative) or 02 (Positive), then Subfield 1 should not = 00 (Test Not Given) and Subfield 2 should not = 97 (Not Applicable (Test Not Given)).
+
+can be written as the following JSON construction:
+{
+“if”: { “operation”: “OR”,
+    “arguments”: [
+        {
+            “operator”: “=”,
+            “question_id”: “uTZ8u8an”,
+            “value”: 1
+        },
+        {
+            “operator”: “=”,
+            “question_id”: “uTZ8u8an”,
+            “value”: 2
+        }
+    ]
+      },
+“then”: { “operation”: “AND”,
+     “arguments”: [
+        {
+            “operator”: “!=”,
+            “question_id”: “nCXTPsU5”,
+            “value”: 0
+        },
+        {
+            “operator”: “!=”,
+            “question_id”: “QUYxXsUT”,
+            “value”: 97
+        }
+    ]
+}
+We would then need to write an interpreter that could break down this JSON object to check if this condition was satisfied. But this should not be overly complicated, given how structured this JSON object is and how it’s only using Boolean expressions.
+Another step up would be to allow users to write the edit check in Excel as an Excel string, like so:
+
+IF(OR(RE(“uTZ8u8an”, 1), RE(“uTZ8u8an”, 2)), AND(RE(“nCXTPsU5”, 0), RE(“QUYxXsUT”, 97)))
+
+And then we would write a simple parser to convert this string into a JSON object, which while not trivial, is not too difficult given how structured it is.
+
+
+We should look at each question with an edit check and determine whether we need to implement the edit check or if we can add a dependency. (See: NAIC #, Unit striking nonmotorist--could be dependencies, potentially).
