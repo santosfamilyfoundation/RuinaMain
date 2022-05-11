@@ -13,7 +13,7 @@ const TooltipView = (props) => {
     const [visible, setVisible] = React.useState(false);
     const [toolTipText, setToolTipText] = React.useState(toolTip ? true: false);
     const InfoIcon = (props) => (
-        <Icon name="help" color='white' size={15}/>
+        <Icon name="help" color='black' size={15}/>
     )
 
     const CloseIcon = (style) => (

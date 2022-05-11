@@ -61,7 +61,7 @@ const LargeTextField = (props) => {
             setIsInvalid(true)
          }
          let textFieldValidation = TextFieldValidation
-         textFieldValidation.submitField(localText);
+         textFieldValidation.submitField(localText, data.val_type, data.val_constraint);
          let localStatus = textFieldValidation.status
          if (localStatus) {
             setIsInvalid(false)
@@ -98,7 +98,7 @@ const LargeTextField = (props) => {
              title={data.question}
              helperText={data.helperText}
              tooltip={tooltip()}
-             errorMessage='Invalid Input'
+             errorMessage={data.warning_msg}
              isInvalid={isInvalid}
              required={data.required}
             >
