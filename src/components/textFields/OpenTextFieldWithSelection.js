@@ -22,6 +22,7 @@ const OpenTextFieldWithSelection = (props) => {
     const reducerData = questionReducer.data.find(entry => entry.id == id);
     let existingData = !reducerData?.response ? null: reducerData.response;
 
+    /* check for autosaved text values and retrieve*/
     if(!value) {
          if(existingData != null) {
              if(existingData[currId] != '' && existingData[currId] != null && !value) {
@@ -29,11 +30,11 @@ const OpenTextFieldWithSelection = (props) => {
              }
          }
      }
+     /* check for autosaved selection values and retrieve */
      if(!selected) {
              if(existingData != null) {
                  if(existingData[currId] != selected) {
                      setSelected(existingData[currId]);
-
                  }
              }
          }
@@ -50,6 +51,7 @@ const OpenTextFieldWithSelection = (props) => {
 //        setButtonAppearance('filled');
     }
 
+      /* triggers on text change, checks to see whether text is valid and assigns the validation state to match */
       const onTextChange = (text) => {
          var localText = text
          submitFunction({id, question: currId, selection: localText})
@@ -70,6 +72,7 @@ const OpenTextFieldWithSelection = (props) => {
          }
      }
 
+    /*  check for an existing stored value, and return it*/
      const valueSet = (currId) => {
              try {if (existingData[currId] != null){
                  return existingData[currId]
@@ -81,7 +84,7 @@ const OpenTextFieldWithSelection = (props) => {
              }
          }
 
-
+    /* triggers on textField changing or selection, determines the validity state of the input and sets the state accordingly */
     const onSelectOneOption = (option) => {
       setSelected(option.id)
       submitFunction({id, question: currId, selection: option.name});
@@ -95,7 +98,6 @@ const OpenTextFieldWithSelection = (props) => {
        setIsInvalid(true)
        }
     }
-
 
 
     const renderSingleButton = (option) => {
@@ -117,6 +119,7 @@ const OpenTextFieldWithSelection = (props) => {
         );
     }
 
+    /* assign tooltip data and any assets associated */
     const tooltip = () => {
         return(<TooltipView toolTip={data.tooltip} helperImg={data.helperImg}/>)
     }
