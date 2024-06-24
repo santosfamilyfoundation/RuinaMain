@@ -1,0 +1,68 @@
+First Name;
+Middle Initial;
+Last Name;
+Street Address 1;
+City/Town;
+State;V3_Registration_S
+ZIP Code;
+Insurance Company Name;
+NAIC #;
+Policy #;
+Vehicle Identification Number (VIN);
+Motor Vehicle Unit Type;V2_Vehicle_S1
+Identifier;V2_Vehicle_S2
+Year of Motor Vehicle Registration;V3_Registration_S2
+Motor Vehicle License Plate Number;
+Motor Vehicle Make;V5_Make
+Motor Vehicle Model;V7_Model
+Motor Vehicle Model Year;V6_Year
+Body Type Category;V8_BodyType_S1
+Vehicle Size;V8_BodyType_S3
+Number of Trailing Units;V8_BodyType_S2
+Did this motor vehicle display a hazardous materials (HM) placard?;V8_BodyType_S4
+Total Occupants in Motor Vehicle;V9_OccupantsNumber
+Emergency Motor Vehicle Use;
+Motor Vehicle Posted/ Statutory Speed Limit;
+Direction of Travel Before Crash;
+Travel Directions;
+Divided?;
+Barrier Type;
+HOV/HOT Lanes;
+Enter the total through lanes, excluding auxiliary lanes.;
+Enter the total auxiliary lanes;
+Horizontal Alignment;
+Grade;
+TCD Type(s);
+Motor Vehicle Maneuver/Action;V18_Maneuver
+Initial Point of Contact;
+Sequence of Events;V20_Events_S1
+Most Harmful Event for this Motor Vehicle;V21_HarmfulEvent
+Hit and Run;V22_HitAndRun
+Towed Due to Disabling Damage;V23_Towed
+Contributing Circumstances, Motor Vehicle;V24_Circumstances
+Automated System(s) in Vehicle;
+First Trailer Behind Tractor;
+First Trailer Behind Tractor;
+Second Trailer Behind Tractor;
+First Trailer Behind Tractor;
+Second Trailer Behind Tractor;
+First Trailer Behind Tractor;
+Second Trailer Behind Tractor;
+First Trailer Behind Tractor;
+Second Trailer Behind Tractor;
+Truck Tractor;
+First Trailer Behind Tractor;
+Second Trailer Behind Tractor;
+Identification Type;
+Country/State Code;
+Identification Number;
+Motor Carrier Name;
+Motor Carrier Street Address;
+Motor Carrier City/Town;
+Motor Carrier State;
+Motor Carrier ZIP Code;
+Type of Carrier;
+Vehicle Configuration;
+Special Sizing;
+Permitted?;
+Cargo Body Type;
